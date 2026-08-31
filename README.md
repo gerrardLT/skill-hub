@@ -51,8 +51,21 @@ skills-hub/
 
 分发后以 Qoder 内实际触发的效果为准，问题回本仓库修，再重新分发。
 
+## 内置系统：PM-OS（产品经理操作系统）
+
+本仓库已落地一套完整的产品经理操作系统，详见 [skills/pm-operating-system/SKILL.md](skills/pm-operating-system/SKILL.md)：
+
+- **10 个路由层 PM skill**（deanpeters / phuryn / refoundai）安装在 `skills/`，由 `pm-operating-system` 总控调度；另补装 17 个子依赖 skill（被 workflow 型 skill 内部引用），合计 28 个
+- **状态机**：INTAKE → DISCOVERY → STRATEGY → PRIORITIZATION → DEFINITION → PLANNING → VALIDATION → MEASUREMENT → LEARNING ↺
+- **阶段 Gate + 回退规则**、**动态路由**、**Learning Loop**、**`.product/` 项目记忆**均定义在 skill 的 `references/` 内
+- **4 个 subagent**（research / competitive / red-team / evidence）在 `subagents/`，仅在需要独立上下文/红队审查时才派
+- 第三方 skill 统一用 `npx skills add <repo> --skill <name> -a openclaw -y` 安装到本项目 `skills/`（openclaw 目标即 `skills/` 目录）
+
+在产品项目中使用时直接说产品任务（如“帮我判断这个产品值不值得做”），PM-OS 会接管路由；单环节任务（如“要一份访谈提纲”）会直接走对应子 skill。
+
 ## 维护原则
 
 1. 本仓库是唯一创作源（single source of truth），Qoder 里的是部署副本
 2. 任何资产先在 `docs/conventions.md` 框架下命名，再动手写
 3. 报废资产直接删除目录，不留 `*-old`、`*-backup`
+4. 第三方 skill（`npx skills add` 安装的）同样纳入本仓库 git 管理；升级时重跑安装命令后提交
