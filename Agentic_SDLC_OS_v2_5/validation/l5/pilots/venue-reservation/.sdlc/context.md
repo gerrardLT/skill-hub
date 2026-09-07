@@ -1,0 +1,23 @@
+# Project Context
+
+## Product
+
+- Name: Venue Reservation Dogfood
+- Type: greenfield
+- Criticality: medium
+
+## Users and problem
+
+Record verified users, jobs, pain points and context. Separate facts, inferences and assumptions.
+
+## Business objective
+
+Define the measurable outcome and time horizon.
+
+## Constraints
+
+Record legal, privacy, security, accessibility, budget, platform and delivery constraints.
+
+## Current scope
+
+Define in-scope and non-goals.

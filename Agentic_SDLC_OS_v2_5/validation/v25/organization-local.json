@@ -1,0 +1,44 @@
+{
+  "schema_version": "2.5.0",
+  "passed": true,
+  "formal_requested": false,
+  "formal_evidence_eligible": false,
+  "environment_scope": "local-control-plane",
+  "database": "sqlite",
+  "kms_provider": "local",
+  "rbac": true,
+  "secret_rotation": true,
+  "backup_restore": true,
+  "audit_export": true,
+  "details": {
+    "rbac": {
+      "viewer_cannot_write": true,
+      "contributor_cannot_approve": true,
+      "reviewer_cannot_write": true,
+      "service_cannot_approve": true,
+      "admin_can_write": true,
+      "reviewer_can_approve": true,
+      "self_approval_blocked": true
+    },
+    "secret_rotation": {
+      "rotated": 1,
+      "old_key_rejected": true
+    },
+    "backup_restore": {
+      "passed": true,
+      "backup_sha256": "08a89eb7a88322aeb4f06c6a4817152368300e4d43be6c30a6b4913be39ed66e",
+      "restored_audit": {
+        "valid": true,
+        "events": 2,
+        "errors": []
+      },
+      "mode": "sqlite-native-backup"
+    },
+    "audit_export": {
+      "passed": true,
+      "events": 2,
+      "sha256": "dadfac476930b721cdacc8fca229303be806ecadb09d2df5dc5bf712be4062c3",
+      "path": "/mnt/data/v25_work/Agentic_SDLC_OS_v2_5/validation/v25/organization-drill-artifacts/audit-export.json"
+    }
+  }
+}

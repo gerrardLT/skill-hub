@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "default_mode": "deny-unlocked",
+  "allowed_licenses": ["Apache-2.0", "MIT", "BSD-2-Clause", "BSD-3-Clause", "ISC", "CC-BY-4.0"],
+  "blocked_licenses": ["AGPL-3.0-only", "SSPL-1.0", "BUSL-1.1", "unknown"],
+  "maximum_active_skills": {"lite": 8, "standard": 16, "high-assurance": 24},
+  "security": {
+    "block_critical_findings": true,
+    "require_review_for_network_or_shell": true,
+    "forbidden_patterns": ["eval(", "exec(", "os.system(", "shell=True", "rm -rf", "curl | sh", "wget | sh"],
+    "sensitive_patterns": ["subprocess", "urllib", "requests.", "socket", "os.environ", "shutil.rmtree", "unlink("]
+  },
+  "effectiveness": {
+    "minimum_runs_for_active": 5,
+    "minimum_success_rate": 0.8,
+    "deprecate_below_success_rate": 0.5,
+    "maximum_cost_regression": 0.25
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agentic SDLC Handoff Contract",
+  "type": "object",
+  "required": ["from_os", "to_os", "gate", "artifacts", "risks", "acceptance", "owner"],
+  "properties": {
+    "from_os": {"enum": ["pm", "design", "engineering", "qa", "release", "evolution"]},
+    "to_os": {"enum": ["pm", "design", "engineering", "qa", "release", "evolution"]},
+    "gate": {"type": "string"},
+    "artifacts": {"type": "array", "items": {"type": "string"}},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "open_questions": {"type": "array", "items": {"type": "string"}},
+    "acceptance": {"type": "array", "items": {"type": "string"}},
+    "owner": {"type": "string"}
+  },
+  "additionalProperties": true
+}

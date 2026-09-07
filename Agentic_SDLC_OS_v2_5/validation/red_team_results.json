@@ -1,0 +1,1009 @@
+{
+  "system_version": "2.5.0",
+  "summary": {
+    "cases": 27,
+    "passed": 27,
+    "failed": 0,
+    "all_controls_passed": true
+  },
+  "results": [
+    {
+      "case": "stage_skip_blocked",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Direct INTAKE -> HANDOFF is rejected without approved force.",
+      "observed": {
+        "returncode": 2,
+        "stage": "INTAKE",
+        "stderr": "ERROR: Cannot skip stages pm/INTAKE -> HANDOFF. Advance one stage at a time or use an approved --force transition."
+      }
+    },
+    {
+      "case": "missing_artifact_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A missing local artifact cannot be accepted.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Accepted artifact path does not exist: C:\\Users\\gerrard\\AppData\\Local\\Temp\\sdlc-red-team-xunzdoaa\\project\\missing.md"
+      }
+    },
+    {
+      "case": "empty_artifact_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "An empty artifact cannot be accepted.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Accepted artifact is not substantive: C:\\Users\\gerrard\\AppData\\Local\\Temp\\sdlc-red-team-v4fm63zh\\project\\docs\\empty.md (insufficient_substantive_content, insufficient_nonempty_sections, missing_required_sections:problem/问题/context;users/用户/customer/客户/audience/受众;outcome/结果/预期成果/objective/目标/目的/goal;scope/范围/non-goals/非目标;evidence/证据/facts/事实;risks/风险/assumptions/假设;success/成功/metrics/指标/acceptance criteria/验收标准, insufficient_concrete_signals, quality_score_below_threshold)"
+      }
+    },
+    {
+      "case": "duplicate_evidence_excluded",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Repeated evidence cannot satisfy minimum evidence or source diversity.",
+      "observed": {
+        "returncode": 2,
+        "status": "fail",
+        "evidence_count": 1,
+        "duplicates": 2
+      }
+    },
+    {
+      "case": "waiver_policy_enforced",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Project configuration can disable all gate waivers.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Gate waivers are disabled by .sdlc/config.json"
+      }
+    },
+    {
+      "case": "nonhuman_waiver_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "An AI or automation identity cannot approve a waiver.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Gate waiver requires an identifiable human approver"
+      }
+    },
+    {
+      "case": "unbounded_waiver_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A waiver requires an explicit future expiry.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Waiver requires --reason, --approver, --approval-id, --compensating-control and --expires"
+      }
+    },
+    {
+      "case": "state_corruption_detected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Invalid state values are detected before further workflow execution.",
+      "observed": {
+        "returncode": 2,
+        "errors": [
+          "Invalid project status: nonsense",
+          "Current state does not match the latest audited state hash"
+        ]
+      }
+    },
+    {
+      "case": "artifact_path_escape_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Artifact creation cannot escape .sdlc/artifacts.",
+      "observed": {
+        "returncode": 2,
+        "escaped_file_exists": false,
+        "stderr": "ERROR: Artifact filename escapes .sdlc/artifacts"
+      }
+    },
+    {
+      "case": "artifact_tampering_detected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Changing accepted content invalidates its gate binding.",
+      "observed": {
+        "before": 0,
+        "after": 2,
+        "issues": [
+          "content_changed_since_acceptance",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0",
+          "upstream_artifact_invalid:a-0"
+        ]
+      }
+    },
+    {
+      "case": "concurrent_updates_serialized",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Concurrent agents do not silently lose successful state updates.",
+      "observed": {
+        "successful_commands": 12,
+        "records_present": 12
+      }
+    },
+    {
+      "case": "risk_lifecycle_is_mutable",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "A risk can be updated or closed without creating duplicate ledger IDs.",
+      "observed": {
+        "add": 0,
+        "update": 0,
+        "risk": {
+          "id": "r-1",
+          "title": "data loss",
+          "severity": "critical",
+          "likelihood": "possible",
+          "status": "closed",
+          "mitigation": "restored and verified",
+          "owner": "Alice Chen",
+          "trigger": "",
+          "scope": "project",
+          "work_item_id": "",
+          "created_at": "2026-09-07T03:41:20Z",
+          "updated_at": "2026-09-07T03:41:20Z"
+        }
+      }
+    },
+    {
+      "case": "gate_requires_trace_coverage",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "Gate passage requires configured traceability coverage.",
+      "observed": {
+        "returncode": 2,
+        "status": "fail",
+        "coverage": 0.0
+      }
+    },
+    {
+      "case": "arbitrary_trace_spoof_blocked",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Arbitrary links cannot substitute for required directed lifecycle paths.",
+      "observed": {
+        "returncode": 2,
+        "artifact_coverage": 1.0,
+        "path_coverage": 0.0
+      }
+    },
+    {
+      "case": "trace_schema_enforced",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Trace endpoints and relation vocabulary are validated at write time.",
+      "observed": {
+        "invalid_endpoint": "ERROR: Invalid trace source endpoint: invented-node",
+        "invalid_relation": "ERROR: Invalid trace relation: pretends. Valid: contradicts, depends-on, deploys, derives, implements, informs, measures, mitigates, satisfies, supersedes, supports, verifies"
+      }
+    },
+    {
+      "case": "audit_hash_chain_detects_tampering",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Changing a historical audit event invalidates the append-only hash chain.",
+      "observed": {
+        "returncode": 2,
+        "errors": [
+          "Audit event hash mismatch at sequence 1"
+        ]
+      }
+    },
+    {
+      "case": "high_criticality_lite_profile_blocked",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "High-criticality projects cannot silently downgrade to the lite process.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: High-criticality projects cannot use the lite process profile"
+      }
+    },
+    {
+      "case": "health_score_cannot_average_away_critical_risk",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "A critical risk is a non-compensable health threshold failure.",
+      "observed": {
+        "returncode": 2,
+        "score": 36.0,
+        "hard_fails": [
+          "open-critical-risk"
+        ]
+      }
+    },
+    {
+      "case": "hollow_structural_shell_rejected",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Headings and length alone cannot make vague repetitive content acceptable.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Accepted artifact is not substantive: C:\\Users\\gerrard\\AppData\\Local\\Temp\\sdlc-red-team-2f47y4ey\\project\\docs\\hollow.md (insufficient_concrete_signals, repetitive_section_content)"
+      }
+    },
+    {
+      "case": "self_verification_blocked_in_high_assurance",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "High-assurance artifacts require a verifier independent from the owner.",
+      "observed": {
+        "returncode": 2,
+        "stderr": "ERROR: Artifact owner cannot independently verify the same artifact"
+      }
+    },
+    {
+      "case": "accepted_upstream_change_stales_downstream",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Changing an accepted upstream artifact invalidates accepted downstream derivatives.",
+      "observed": {
+        "returncode": 0,
+        "downstream": {
+          "id": "downstream",
+          "type": "prd",
+          "path": "docs\\downstream.md",
+          "status": "accepted",
+          "owner": "red-team",
+          "description": "",
+          "created_at": "2026-09-07T03:41:24Z",
+          "updated_at": "2026-09-07T03:41:24Z",
+          "accepted_at": "2026-09-07T03:41:24Z",
+          "verified_by": "red-team-reviewer",
+          "scope": "project",
+          "work_item_id": "",
+          "content_hash": "279d429c65f0760d5b4d51f94da8295eeb7e1c7b564f0e9e7b5922d941d9edc9",
+          "size_bytes": 1579,
+          "file_count": 1,
+          "quality_score": 1.0,
+          "quality_contract": "prd",
+          "stale": true,
+          "stale_from": [
+            "upstream"
+          ],
+          "stale_at": "2026-09-07T03:41:24Z",
+          "stale_reason": "Upstream artifact upstream changed after acceptance"
+        }
+      }
+    },
+    {
+      "case": "unlisted_upstream_drift_propagates_to_gate",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A changed upstream dependency cannot hide merely because it is not directly listed by the gate.",
+      "observed": {
+        "before": 0,
+        "after": 2,
+        "invalid": {
+          "id": "a-0",
+          "type": "product-brief",
+          "path": "docs\\a-0.md",
+          "valid": false,
+          "issues": [
+            "upstream_artifact_invalid:unlisted-upstream"
+          ],
+          "quality_score": 1.0,
+          "quality_threshold": 0.75,
+          "current_hash": "b0e404fe7d54ad390e0753ee1511198d4efcc0348029f913045425dc41e46625",
+          "total_bytes": 1561,
+          "file_count": 1,
+          "quality_contract": "product-brief",
+          "quality_metrics": {
+            "substantive_chars": 1248,
+            "minimum_substantive_chars": 320,
+            "nonempty_sections": 7,
+            "minimum_nonempty_sections": 5,
+            "required_group_coverage": 1.0,
+            "minimum_group_coverage": 0.8,
+            "concrete_signal_coverage": 1.0,
+            "minimum_concrete_signal_coverage": 0.5,
+            "concrete_signals": {
+              "evidence_anchor": true,
+              "decision_commitment": true,
+              "measurable_condition": true,
+              "ownership_or_identity": true
+            },
+            "section_repetition_ratio": 0.0,
+            "vague_markers": [],
+            "headings": [
+              "product-brief",
+              "problem",
+              "users",
+              "outcome",
+              "scope",
+              "evidence",
+              "risks",
+              "success"
+            ]
+          },
+          "upstream_invalid_sources": [
+            "unlisted-upstream"
+          ]
+        }
+      }
+    },
+    {
+      "case": "reconcile_persists_transitive_staleness",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Reconciliation persists both direct drift and transitive downstream staleness.",
+      "observed": {
+        "returncode": 2,
+        "source": {
+          "id": "reconcile-source",
+          "type": "product-brief",
+          "path": "docs\\reconcile-source.md",
+          "status": "accepted",
+          "owner": "red-team",
+          "description": "",
+          "created_at": "2026-09-07T03:41:26Z",
+          "updated_at": "2026-09-07T03:41:26Z",
+          "accepted_at": "2026-09-07T03:41:26Z",
+          "verified_by": "red-team-reviewer",
+          "scope": "project",
+          "work_item_id": "",
+          "content_hash": "b0e404fe7d54ad390e0753ee1511198d4efcc0348029f913045425dc41e46625",
+          "size_bytes": 1561,
+          "file_count": 1,
+          "quality_score": 1.0,
+          "quality_contract": "product-brief",
+          "stale": true,
+          "stale_from": [
+            "reconcile-source"
+          ],
+          "stale_at": "2026-09-07T03:41:26Z",
+          "stale_reason": "Reconcile detected: content_changed_since_acceptance"
+        },
+        "target": {
+          "id": "reconcile-target",
+          "type": "prd",
+          "path": "docs\\reconcile-target.md",
+          "status": "accepted",
+          "owner": "red-team",
+          "description": "",
+          "created_at": "2026-09-07T03:41:26Z",
+          "updated_at": "2026-09-07T03:41:26Z",
+          "accepted_at": "2026-09-07T03:41:26Z",
+          "verified_by": "red-team-reviewer",
+          "scope": "project",
+          "work_item_id": "",
+          "content_hash": "279d429c65f0760d5b4d51f94da8295eeb7e1c7b564f0e9e7b5922d941d9edc9",
+          "size_bytes": 1579,
+          "file_count": 1,
+          "quality_score": 1.0,
+          "quality_contract": "prd",
+          "stale": true,
+          "stale_from": [
+            "reconcile-source"
+          ],
+          "stale_at": "2026-09-07T03:41:26Z",
+          "stale_reason": "Upstream integrity or quality drift detected during reconcile"
+        }
+      }
+    },
+    {
+      "case": "agent_cost_and_token_budget_exposure",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "Agent runs expose cost and token budget overruns instead of hiding execution cost.",
+      "observed": {
+        "returncode": 0,
+        "metrics": {
+          "runs": 1,
+          "successful_runs": 1,
+          "run_success_rate": 1.0,
+          "tokens": 200,
+          "tool_calls": 4,
+          "cost_usd": 0.02,
+          "human_hours": 0.0,
+          "average_duration_ms": 0.0,
+          "transitions": 0,
+          "rework_transitions": 0,
+          "forced_transitions": 0,
+          "gate_passes": 0,
+          "gate_failures": 0,
+          "gate_waivers": 0,
+          "accepted_artifacts": 0,
+          "stale_artifacts": [],
+          "high_quality_evidence_ratio": null,
+          "warnings": [
+            "Cost budget exceeded: 0.02 > 0.01",
+            "Token budget exceeded: 200 > 100"
+          ]
+        }
+      }
+    },
+    {
+      "case": "upstream_drift_invalidates_existing_waiver",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A waiver is bound to current upstream integrity and cannot survive dependency drift.",
+      "observed": {
+        "waiver_returncode": 0,
+        "allowed_after_drift": false,
+        "current": {
+          "gate": "pm-ready",
+          "status": "fail",
+          "checked_at": "2026-09-07T03:41:29Z",
+          "purpose": "确认问题、战略、范围、成功指标和关键风险足以进入设计。",
+          "profile": "standard",
+          "criticality": "medium",
+          "project_profile": "standard",
+          "project_criticality": "medium",
+          "work_item_id": "",
+          "required": [
+            "product-brief",
+            "discovery-evidence",
+            "product-strategy",
+            "prioritized-opportunities",
+            "prd",
+            "outcome-roadmap",
+            "measurement-plan",
+            "risk-register"
+          ],
+          "domain_required_artifacts": [],
+          "missing_artifacts": [
+            "product-brief",
+            "discovery-evidence",
+            "product-strategy",
+            "prioritized-opportunities",
+            "prd",
+            "outcome-roadmap",
+            "measurement-plan",
+            "risk-register"
+          ],
+          "invalid_artifacts": [
+            {
+              "id": "a-0",
+              "type": "product-brief",
+              "path": "docs\\a-0.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "b0e404fe7d54ad390e0753ee1511198d4efcc0348029f913045425dc41e46625",
+              "total_bytes": 1561,
+              "file_count": 1,
+              "quality_contract": "product-brief",
+              "quality_metrics": {
+                "substantive_chars": 1248,
+                "minimum_substantive_chars": 320,
+                "nonempty_sections": 7,
+                "minimum_nonempty_sections": 5,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "product-brief",
+                  "problem",
+                  "users",
+                  "outcome",
+                  "scope",
+                  "evidence",
+                  "risks",
+                  "success"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-1",
+              "type": "discovery-evidence",
+              "path": "docs\\a-1.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "d8bb38f2c92c543d672d33f6caf9c5ec45df832bc1ba1bf1e62960876c222417",
+              "total_bytes": 1370,
+              "file_count": 1,
+              "quality_contract": "default",
+              "quality_metrics": {
+                "substantive_chars": 1101,
+                "minimum_substantive_chars": 280,
+                "nonempty_sections": 6,
+                "minimum_nonempty_sections": 5,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "discovery-evidence",
+                  "scope",
+                  "method",
+                  "result",
+                  "limitations",
+                  "conclusion",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-2",
+              "type": "product-strategy",
+              "path": "docs\\a-2.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "45d24e349ec66c04609e6845d65bcdf4573c0205746651fec68da8cf2172a4f3",
+              "total_bytes": 1160,
+              "file_count": 1,
+              "quality_contract": "default",
+              "quality_metrics": {
+                "substantive_chars": 933,
+                "minimum_substantive_chars": 220,
+                "nonempty_sections": 5,
+                "minimum_nonempty_sections": 4,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "product-strategy",
+                  "objective",
+                  "facts",
+                  "risks",
+                  "acceptance criteria",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-3",
+              "type": "prioritized-opportunities",
+              "path": "docs\\a-3.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "e37f8020e24c3f722493f7c36f975d6d4f49c3f97963a354615eef41cbae62e0",
+              "total_bytes": 1169,
+              "file_count": 1,
+              "quality_contract": "default",
+              "quality_metrics": {
+                "substantive_chars": 942,
+                "minimum_substantive_chars": 220,
+                "nonempty_sections": 5,
+                "minimum_nonempty_sections": 4,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "prioritized-opportunities",
+                  "objective",
+                  "facts",
+                  "risks",
+                  "acceptance criteria",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-4",
+              "type": "prd",
+              "path": "docs\\a-4.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "279d429c65f0760d5b4d51f94da8295eeb7e1c7b564f0e9e7b5922d941d9edc9",
+              "total_bytes": 1579,
+              "file_count": 1,
+              "quality_contract": "prd",
+              "quality_metrics": {
+                "substantive_chars": 1265,
+                "minimum_substantive_chars": 520,
+                "nonempty_sections": 7,
+                "minimum_nonempty_sections": 6,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.85,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "prd",
+                  "problem",
+                  "users",
+                  "goals",
+                  "requirements",
+                  "edge cases",
+                  "metrics",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-5",
+              "type": "outcome-roadmap",
+              "path": "docs\\a-5.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "ba63be9bac3db2b13ae5a56459d3a248e02e06c5b4993e492789f92bc229b098",
+              "total_bytes": 1159,
+              "file_count": 1,
+              "quality_contract": "default",
+              "quality_metrics": {
+                "substantive_chars": 932,
+                "minimum_substantive_chars": 220,
+                "nonempty_sections": 5,
+                "minimum_nonempty_sections": 4,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "outcome-roadmap",
+                  "objective",
+                  "facts",
+                  "risks",
+                  "acceptance criteria",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-6",
+              "type": "measurement-plan",
+              "path": "docs\\a-6.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "69c72b1a1f1841a3b65dd1a84f0706a48318ad82014215fb35e4cffceecd5515",
+              "total_bytes": 1160,
+              "file_count": 1,
+              "quality_contract": "default",
+              "quality_metrics": {
+                "substantive_chars": 933,
+                "minimum_substantive_chars": 220,
+                "nonempty_sections": 5,
+                "minimum_nonempty_sections": 4,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "measurement-plan",
+                  "objective",
+                  "facts",
+                  "risks",
+                  "acceptance criteria",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            },
+            {
+              "id": "a-7",
+              "type": "risk-register",
+              "path": "docs\\a-7.md",
+              "valid": false,
+              "issues": [
+                "upstream_artifact_invalid:waiver-upstream"
+              ],
+              "quality_score": 1.0,
+              "quality_threshold": 0.75,
+              "current_hash": "555664bb1a55aa54a1c24faeb4b529d3691cf5576dbec7ae08c83e4ed04d9109",
+              "total_bytes": 1353,
+              "file_count": 1,
+              "quality_contract": "risk-register",
+              "quality_metrics": {
+                "substantive_chars": 1084,
+                "minimum_substantive_chars": 220,
+                "nonempty_sections": 6,
+                "minimum_nonempty_sections": 4,
+                "required_group_coverage": 1.0,
+                "minimum_group_coverage": 0.8,
+                "concrete_signal_coverage": 1.0,
+                "minimum_concrete_signal_coverage": 0.5,
+                "concrete_signals": {
+                  "evidence_anchor": true,
+                  "decision_commitment": true,
+                  "measurable_condition": true,
+                  "ownership_or_identity": true
+                },
+                "section_repetition_ratio": 0.0,
+                "vague_markers": [],
+                "headings": [
+                  "risk-register",
+                  "scope",
+                  "risk",
+                  "severity",
+                  "mitigation",
+                  "owner",
+                  "traceability"
+                ]
+              },
+              "upstream_invalid_sources": [
+                "waiver-upstream"
+              ]
+            }
+          ],
+          "upstream_invalidations": {
+            "a-3": [
+              "waiver-upstream"
+            ],
+            "a-1": [
+              "waiver-upstream"
+            ],
+            "a-5": [
+              "waiver-upstream"
+            ],
+            "a-7": [
+              "waiver-upstream"
+            ],
+            "a-4": [
+              "waiver-upstream"
+            ],
+            "a-6": [
+              "waiver-upstream"
+            ],
+            "a-2": [
+              "waiver-upstream"
+            ],
+            "a-0": [
+              "waiver-upstream"
+            ]
+          },
+          "total_evidence_count": 0,
+          "evidence_count": 0,
+          "evidence_shortfall": 3,
+          "duplicate_evidence": [],
+          "invalid_evidence": [],
+          "high_quality_evidence_count": 0,
+          "high_quality_evidence_shortfall": 1,
+          "distinct_source_count": 0,
+          "distinct_source_shortfall": 2,
+          "evidence_target_count": 0,
+          "evidence_target_shortfall": 3,
+          "missing_domain_evidence": [],
+          "trace_coverage": 0.0,
+          "minimum_trace_coverage": 0.5,
+          "trace_coverage_shortfall": 0.5,
+          "trace_path_results": [
+            {
+              "path": [
+                "product-brief",
+                "discovery-evidence",
+                "product-strategy",
+                "prd"
+              ],
+              "passed": false,
+              "segments": [
+                {
+                  "from_type": "product-brief",
+                  "to_type": "discovery-evidence",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                },
+                {
+                  "from_type": "discovery-evidence",
+                  "to_type": "product-strategy",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                },
+                {
+                  "from_type": "product-strategy",
+                  "to_type": "prd",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                }
+              ]
+            },
+            {
+              "path": [
+                "product-strategy",
+                "prioritized-opportunities",
+                "prd"
+              ],
+              "passed": false,
+              "segments": [
+                {
+                  "from_type": "product-strategy",
+                  "to_type": "prioritized-opportunities",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                },
+                {
+                  "from_type": "prioritized-opportunities",
+                  "to_type": "prd",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                }
+              ]
+            },
+            {
+              "path": [
+                "prd",
+                "outcome-roadmap"
+              ],
+              "passed": false,
+              "segments": [
+                {
+                  "from_type": "prd",
+                  "to_type": "outcome-roadmap",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                }
+              ]
+            },
+            {
+              "path": [
+                "prd",
+                "measurement-plan"
+              ],
+              "passed": false,
+              "segments": [
+                {
+                  "from_type": "prd",
+                  "to_type": "measurement-plan",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                }
+              ]
+            },
+            {
+              "path": [
+                "prd",
+                "risk-register"
+              ],
+              "passed": false,
+              "segments": [
+                {
+                  "from_type": "prd",
+                  "to_type": "risk-register",
+                  "from_ids": [],
+                  "to_ids": [],
+                  "passed": false
+                }
+              ]
+            }
+          ],
+          "trace_paths_passed": 0,
+          "trace_paths_total": 5,
+          "trace_path_coverage": 0.0,
+          "minimum_trace_path_coverage": 0.8,
+          "trace_path_coverage_shortfall": 0.8,
+          "blocking_critical_risks": [],
+          "state_snapshot": "84baae61c4869e0626d7688de3b9e592c5666b51875edf51fd80937be1e14ef7"
+        }
+      }
+    },
+    {
+      "case": "low_confidence_router_abstains_safely",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "The deterministic router must abstain instead of silently routing an unseen paraphrase to the wrong OS.",
+      "observed": {
+        "cases": 36,
+        "auto_routes": 36,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "unsafe_routes": []
+      }
+    },
+    {
+      "case": "ambiguous_router_never_silently_advances",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "Ambiguous or underspecified tasks are returned for semantic/human clarification.",
+      "observed": {
+        "cases": 20,
+        "unexpected_auto_routes": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "system_version": "2.5.0",
+  "scope": "supply-chain-l5b-postgres-soak-organization-claim-safety",
+  "summary": {
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "all_controls_passed": true
+  },
+  "results": [
+    {
+      "case": "external_skill_requires_immutable_commit",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Mutable refs/branch names must never unlock third-party Skill installation.",
+      "observed": [
+        "missing immutable 40-char commit_sha"
+      ]
+    },
+    {
+      "case": "unknown_or_disallowed_license_is_blocked",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Unapproved licenses must fail closed.",
+      "observed": [
+        "license not allowed by policy: unknown"
+      ]
+    },
+    {
+      "case": "broken_skill_resource_link_is_blocked",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A Skill with missing local resources must not be installable.",
+      "observed": [
+        "static install simulation failed",
+        "broken local resource links in skill"
+      ]
+    },
+    {
+      "case": "synthetic_30day_soak_never_counts_as_formal",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Backdated/synthetic soak may test the harness but must never count toward maturity.",
+      "observed": {
+        "schema_version": "2.5.0",
+        "soak_id": "soak-8ee222cf41224831bcaa042e1ffbef3e",
+        "system_version": "2.5.0",
+        "synthetic": true,
+        "target_days": 3,
+        "observation_days": 4,
+        "elapsed_days": 3.0,
+        "max_gap_hours": 24.0,
+        "observations": 4,
+        "p0_incidents": 0,
+        "p1_control_plane_incidents": 0,
+        "health_failures": 0,
+        "audit_failures": 0,
+        "stress_failures": 0,
+        "chain_valid": true,
+        "sealed": true,
+        "seal_valid": true,
+        "formal_evidence_eligible": false,
+        "failures": []
+      }
+    },
+    {
+      "case": "soak_hash_chain_detects_tampering",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Post-hoc modification of soak observations must invalidate the chain.",
+      "observed": [
+        "record hash mismatch: b1a7d785b74b"
+      ]
+    },
+    {
+      "case": "sqlite_cannot_masquerade_as_live_postgresql",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Production PostgreSQL evidence must come from a PostgreSQL dialect/server.",
+      "observed": {
+        "passed": false,
+        "live_postgresql": false,
+        "database": "sqlite",
+        "failures": [
+          "database URL is not PostgreSQL"
+        ]
+      }
+    },
+    {
+      "case": "local_org_drill_cannot_unlock_formal_maturity",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Local SQLite/RBAC/secret mechanics can pass without becoming organization-grade evidence.",
+      "observed": {
+        "schema_version": "2.5.0",
+        "passed": true,
+        "formal_requested": false,
+        "formal_evidence_eligible": false,
+        "environment_scope": "local-control-plane",
+        "database": "sqlite",
+        "kms_provider": "local",
+        "rbac": true,
+        "secret_rotation": true,
+        "backup_restore": true,
+        "audit_export": true,
+        "details": {
+          "rbac": {
+            "viewer_cannot_write": true,
+            "contributor_cannot_approve": true,
+            "reviewer_cannot_write": true,
+            "service_cannot_approve": true,
+            "admin_can_write": true,
+            "reviewer_can_approve": true,
+            "self_approval_blocked": true
+          },
+          "secret_rotation": {
+            "rotated": 1,
+            "old_key_rejected": true
+          },
+          "backup_restore": {
+            "passed": true,
+            "backup_sha256": "429073e9e081a4e10f2d37dd3941604de1198c2c25b08fc89d227d2f95d7d92e",
+            "restored_audit": {
+              "valid": true,
+              "events": 2,
+              "errors": []
+            },
+            "mode": "sqlite-native-backup"
+          },
+          "audit_export": {
+            "passed": true,
+            "events": 2,
+            "sha256": "2ae9b4080038798bc1cc475dc8d15d9b899e150303e6ec4893ec9c1adcf46b4a",
+            "path": "C:\\Users\\gerrard\\AppData\\Local\\Temp\\sdlc-v25-red-sg20is_z\\organization-drill-artifacts\\audit-export.json"
+          }
+        }
+      }
+    },
+    {
+      "case": "formal_l5b_defaults_to_no_context_attestation",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A formal experiment template must default to blocked until independent contexts are externally attested.",
+      "observed": {
+        "formal_context_attestation": false,
+        "synthetic": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-08-31T03:23:19Z",
+  "project": "synthetic-smoke",
+  "comparison": "parallel",
+  "synthetic": true,
+  "counts": {
+    "baseline": 2,
+    "sdlc": 2
+  },
+  "target_iterations": 2,
+  "enough_data": true,
+  "decision": "positive",
+  "metrics": {
+    "lead_time_hours": {
+      "baseline_mean": 102.5,
+      "sdlc_mean": 77.0,
+      "absolute_change": -25.5,
+      "relative_improvement": 0.24878,
+      "direction": "lower",
+      "category": "cycle"
+    },
+    "rework_rate": {
+      "baseline_mean": 0.3,
+      "sdlc_mean": 0.18,
+      "absolute_change": -0.12,
+      "relative_improvement": 0.4,
+      "direction": "lower",
+      "category": "rework"
+    },
+    "escaped_defects": {
+      "baseline_mean": 5.0,
+      "sdlc_mean": 3.0,
+      "absolute_change": -2.0,
+      "relative_improvement": 0.4,
+      "direction": "lower",
+      "category": "quality"
+    },
+    "incidents": {
+      "baseline_mean": 2.0,
+      "sdlc_mean": 1.0,
+      "absolute_change": -1.0,
+      "relative_improvement": 0.5,
+      "direction": "lower",
+      "category": "quality"
+    },
+    "rollback_rate": {
+      "baseline_mean": 0.2,
+      "sdlc_mean": 0.1,
+      "absolute_change": -0.1,
+      "relative_improvement": 0.5,
+      "direction": "lower",
+      "category": "quality"
+    },
+    "trace_coverage": {
+      "baseline_mean": 0.45,
+      "sdlc_mean": 0.85,
+      "absolute_change": 0.4,
+      "relative_improvement": 0.888889,
+      "direction": "higher",
+      "category": "traceability"
+    },
+    "evidence_decision_rate": {
+      "baseline_mean": 0.4,
+      "sdlc_mean": 0.8,
+      "absolute_change": 0.4,
+      "relative_improvement": 1.0,
+      "direction": "higher",
+      "category": "traceability"
+    },
+    "goal_attainment": {
+      "baseline_mean": 0.55,
+      "sdlc_mean": 0.72,
+      "absolute_change": 0.17,
+      "relative_improvement": 0.309091,
+      "direction": "higher",
+      "category": "outcome"
+    },
+    "human_hours": {
+      "baseline_mean": 80.0,
+      "sdlc_mean": 65.0,
+      "absolute_change": -15.0,
+      "relative_improvement": 0.1875,
+      "direction": "lower",
+      "category": "effort"
+    },
+    "token_cost_usd": {
+      "baseline_mean": 0.0,
+      "sdlc_mean": 35.0,
+      "absolute_change": 35.0,
+      "relative_improvement": -1.0,
+      "direction": "lower",
+      "category": "cost"
+    },
+    "actionability_score": {
+      "baseline_mean": 6.0,
+      "sdlc_mean": 8.0,
+      "absolute_change": 2.0,
+      "relative_improvement": 0.333333,
+      "direction": "higher",
+      "category": "usability"
+    }
+  },
+  "categories": {
+    "cycle": {
+      "mean_relative_improvement": 0.24878,
+      "status": "improved"
+    },
+    "rework": {
+      "mean_relative_improvement": 0.4,
+      "status": "improved"
+    },
+    "quality": {
+      "mean_relative_improvement": 0.466667,
+      "status": "improved"
+    },
+    "traceability": {
+      "mean_relative_improvement": 0.944444,
+      "status": "improved"
+    },
+    "outcome": {
+      "mean_relative_improvement": 0.309091,
+      "status": "improved"
+    },
+    "effort": {
+      "mean_relative_improvement": 0.1875,
+      "status": "improved"
+    },
+    "cost": {
+      "mean_relative_improvement": -1.0,
+      "status": "regressed"
+    },
+    "usability": {
+      "mean_relative_improvement": 0.333333,
+      "status": "improved"
+    }
+  },
+  "primary_categories_improved": [
+    "cycle",
+    "rework",
+    "quality",
+    "traceability",
+    "outcome"
+  ],
+  "primary_categories_regressed": [],
+  "severe_regressions": [],
+  "blind_review_summary": {
+    "baseline": 6.1667,
+    "sdlc": 8.0
+  },
+  "blind_reviews": [
+    {
+      "artifact_id": "artifact-B1",
+      "reviewer_code": "R01",
+      "blind_arm_code": "A",
+      "composite": 6.1667
+    },
+    {
+      "artifact_id": "artifact-S1",
+      "reviewer_code": "R01",
+      "blind_arm_code": "B",
+      "composite": 8.0
+    },
+    {
+      "artifact_id": "artifact-B1",
+      "reviewer_code": "R02",
+      "blind_arm_code": "A",
+      "composite": 6.1667
+    },
+    {
+      "artifact_id": "artifact-S1",
+      "reviewer_code": "R02",
+      "blind_arm_code": "B",
+      "composite": 8.0
+    }
+  ],
+  "limitations": [
+    "This analysis does not establish causality unless allocation, matching, and confounders are controlled.",
+    "Synthetic data is a tooling smoke test only and cannot validate real-project effectiveness.",
+    "Means hide variance; inspect individual iterations before acting on small samples."
+  ]
+}

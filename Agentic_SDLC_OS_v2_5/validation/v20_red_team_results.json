@@ -1,0 +1,209 @@
+{
+  "system_version": "2.0.0",
+  "scope": "v2-production-control-plane-governance-and-l5b",
+  "summary": {
+    "cases": 15,
+    "passed": 15,
+    "failed": 0,
+    "all_controls_passed": true
+  },
+  "results": [
+    {
+      "case": "optimistic_revision_conflict_blocks_lost_update",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A stale agent cannot overwrite a newer project revision.",
+      "observed": "Revision conflict for project-red: expected 0, actual 1"
+    },
+    {
+      "case": "audit_hash_chain_detects_database_tampering",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Historical event mutation invalidates the audit chain.",
+      "observed": {
+        "valid": false,
+        "events": 1,
+        "errors": [
+          "event-hash:1"
+        ]
+      }
+    },
+    {
+      "case": "lease_fencing_rejects_expired_owner",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "An expired lease token cannot renew or release a lease reacquired by another worker.",
+      "observed": {
+        "first": 1,
+        "second": 2,
+        "stale_release": false,
+        "renew": "Lease is no longer owned by this token"
+      }
+    },
+    {
+      "case": "job_idempotency_and_worker_fencing",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Duplicate submissions collapse to one job and a different worker cannot complete its lease.",
+      "observed": {
+        "same_job": true,
+        "wrong_worker": "Stale or foreign job lease"
+      }
+    },
+    {
+      "case": "approval_separation_and_revision_binding",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "High-assurance self-approval and approval after project drift are both rejected.",
+      "observed": {
+        "self_approval": "High-assurance approvals require an independent approver",
+        "stale_approval": "Approval is stale because the project revision changed"
+      }
+    },
+    {
+      "case": "api_authentication_and_rbac",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Missing credentials are unauthorized; viewer writes are forbidden; contributor writes are allowed.",
+      "observed": {
+        "missing": 401,
+        "viewer_write": 403,
+        "contributor_write": 201
+      }
+    },
+    {
+      "case": "secret_operations_fail_closed_without_master_key",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Secrets cannot be stored or resolved without an explicit encryption key.",
+      "observed": "SDLC_MASTER_KEY_B64 is required for secret operations"
+    },
+    {
+      "case": "hard_budget_limit_blocks_execution",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Forecasts and actual run recording cannot exceed the hard project budget.",
+      "observed": {
+        "decision": {
+          "allowed": false,
+          "level": "blocked",
+          "remaining_usd": -1.0,
+          "remaining_tokens": 1000,
+          "actions": [
+            "stop optional subagents",
+            "require budget owner approval",
+            "use cached evidence only"
+          ],
+          "reason": "hard USD limit exceeded"
+        },
+        "record_run": "hard USD limit exceeded"
+      }
+    },
+    {
+      "case": "skill_scanner_avoids_policy_self_trigger_and_blocks_destructive_skill",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "The policy file does not self-trigger, while executable destructive guidance is blocked.",
+      "observed": {
+        "master_valid": true,
+        "malicious_findings": [
+          {
+            "severity": "critical",
+            "file": "SKILL.md",
+            "pattern": "rm -rf"
+          }
+        ]
+      }
+    },
+    {
+      "case": "unlocked_external_skills_fail_closed",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "Offline or unresolved third-party Skills cannot be installed under deny-unlocked policy.",
+      "observed": {
+        "external": 71,
+        "install_allowed": 0
+      }
+    },
+    {
+      "case": "risk_tailoring_hard_escalation_cannot_be_averaged_down",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A hard risk threshold forces high-assurance even when all other factors are low.",
+      "observed": {
+        "profile": "high-assurance",
+        "risk_score": 9.0,
+        "hard_escalations": [
+          "data_sensitivity>=5"
+        ],
+        "required_controls": [
+          "state-integrity",
+          "independent-evidence-review",
+          "complete-traceability",
+          "threat-model",
+          "privacy-review",
+          "security-tests",
+          "performance-tests",
+          "migration-rehearsal",
+          "canary-release",
+          "tested-rollback",
+          "audit-retention",
+          "incident-runbook"
+        ],
+        "optional_controls": [],
+        "minimum_independent_reviewers": 2,
+        "rationale": [
+          "Highest risk factors: data_sensitivity=5, blast_radius=0, change_size=0",
+          "Hard escalation: data_sensitivity>=5"
+        ]
+      }
+    },
+    {
+      "case": "l5b_preregistration_is_immutable",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Changing a frozen task invalidates the preregistration hash.",
+      "observed": [
+        "preregistration hash mismatch"
+      ]
+    },
+    {
+      "case": "l5b_run_chain_detects_metric_tampering",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Changing recorded outcomes invalidates the append-only experiment chain.",
+      "observed": [
+        "run 1 record_hash mismatch"
+      ]
+    },
+    {
+      "case": "l5b_cross_arm_contamination_invalidates_claim",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Cross-arm learning prevents a positive causal conclusion.",
+      "observed": "invalid-contamination"
+    },
+    {
+      "case": "regulated_domain_bootstrap_forces_controls",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "A regulated finance project is bootstrapped as high-assurance with domain controls, not a lite generic flow.",
+      "observed": {
+        "returncode": 0,
+        "profile": "high-assurance",
+        "controls": [
+          "daily-reconciliation",
+          "data-retention-policy",
+          "disaster-recovery",
+          "double-entry-ledger",
+          "fraud-monitoring",
+          "immutable-journal",
+          "precision-and-rounding-policy",
+          "regulatory-review",
+          "segregation-of-duties",
+          "transaction-idempotency"
+        ]
+      }
+    }
+  ]
+}

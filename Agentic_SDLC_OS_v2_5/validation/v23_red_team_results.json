@@ -1,0 +1,95 @@
+{
+  "system_version": "2.3.0",
+  "scope": "concurrency-l5b-maturity-claim-safety",
+  "summary": {
+    "cases": 6,
+    "passed": 5,
+    "failed": 1,
+    "all_controls_passed": false
+  },
+  "results": [
+    {
+      "case": "sqlite_multiworker_job_claim_is_unique",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Local SQLite safety mode must never double-lease the same job.",
+      "observed": {
+        "expected": 30,
+        "claims": 30,
+        "unique": 30,
+        "duplicate_claims": 0,
+        "errors": []
+      }
+    },
+    {
+      "case": "sqlite_concurrent_state_updates_are_cas_serialized",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Concurrent updates must preserve every successful retry and the audit chain.",
+      "observed": {
+        "expected_updates": 40,
+        "revision": 40,
+        "counter": 40,
+        "errors": [],
+        "audit": {
+          "valid": true,
+          "events": 41,
+          "errors": []
+        }
+      }
+    },
+    {
+      "case": "recovery_drill_requeues_and_reaps",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Expired jobs and leases must be recoverable without audit corruption.",
+      "observed": {
+        "audit_checked": 1,
+        "audit_failed": 0,
+        "jobs_requeued": 1,
+        "jobs_dead": 0,
+        "leases_reaped": 1,
+        "unpublished_outbox": 40
+      }
+    },
+    {
+      "case": "unsealed_l5b_cannot_be_formal_positive",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "An otherwise positive real experiment remains provisional until sealed.",
+      "observed": {
+        "decision": "provisional-positive",
+        "formal": false
+      }
+    },
+    {
+      "case": "l5b_toolset_mismatch_invalidates_causal_claim",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Cross-arm model/tool/start-state controls must match before a causal claim is allowed.",
+      "observed": [
+        "toolset mismatch for t0"
+      ]
+    },
+    {
+      "case": "maturity_gate_blocks_unsupported_production_claim",
+      "severity": "P0",
+      "control_passed": false,
+      "expected": "Synthetic L5-B and SQLite-only stress evidence cannot unlock Production Candidate.",
+      "observed": [
+        "insufficient independently verified executable real projects",
+        "external Skill supply chain is not formally locked and install-ready",
+        "external Skill supply chain evidence is not formal",
+        "external Skill supply chain has blocked units",
+        "l5b: sha256 mismatch",
+        "live PostgreSQL validation missing or failed",
+        "PostgreSQL concurrency stress not verified",
+        "PostgreSQL recovery drill not verified",
+        "PostgreSQL dead-letter recovery not verified",
+        "PostgreSQL connection-loss recovery not verified",
+        "production soak is not formal-evidence eligible",
+        "organization drills are not formal-evidence eligible"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "system_version": "2.4.0",
+  "scope": "skill-composition-separation-provider-safety",
+  "summary": {
+    "cases": 5,
+    "passed": 5,
+    "failed": 0,
+    "all_controls_passed": true
+  },
+  "results": [
+    {
+      "case": "design_has_single_primary_visual_director",
+      "severity": "P1",
+      "control_passed": true,
+      "expected": "Design Core must avoid multiple competing visual directors.",
+      "observed": [
+        "impeccable",
+        "review-animations",
+        "ui-ux-pro-max",
+        "web-design-guidelines"
+      ]
+    },
+    {
+      "case": "qa_cannot_self_fix_product_source",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "QA must report/reproduce/verify while production remediation routes to Engineering.",
+      "observed": {
+        "qa_core": [
+          "code-review",
+          "playwright",
+          "qa-only",
+          "testing-strategy",
+          "verification-before-completion"
+        ],
+        "policy_present": true
+      }
+    },
+    {
+      "case": "evolution_provider_adapters_are_opt_in",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Generic Evolution Core must not silently activate Sentry, Datadog or PostHog.",
+      "observed": []
+    },
+    {
+      "case": "provider_adapter_cannot_escape_evolution_boundary",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Provider adapters are Evolution-only and must be rejected for other OS selections.",
+      "observed": "ERROR: --provider is valid only with --os evolution or --os all"
+    },
+    {
+      "case": "provider_adapter_cannot_override_learning_gate",
+      "severity": "P0",
+      "control_passed": true,
+      "expected": "Provider evidence/actions must remain subordinate to learning and release/QA gates.",
+      "observed": {
+        "provider_policy_present": true
+      }
+    }
+  ]
+}

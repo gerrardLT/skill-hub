@@ -1,0 +1,51 @@
+{
+  "id": "ecommerce",
+  "name": "E-commerce Transaction System",
+  "version": "1.0.0",
+  "keywords": [
+    "ecommerce",
+    "checkout",
+    "cart",
+    "catalog",
+    "inventory",
+    "order",
+    "refund",
+    "payment"
+  ],
+  "risk_adjustment": 4.0,
+  "budget_multiplier": 1.25,
+  "required_controls": [
+    "inventory-reservation-idempotency",
+    "payment-idempotency",
+    "order-state-machine",
+    "refund-reconciliation",
+    "fraud-controls",
+    "tax-and-currency-rules",
+    "pii-minimization",
+    "peak-load-test"
+  ],
+  "required_artifacts": [
+    "order-state-machine",
+    "inventory-consistency-design",
+    "payment-failure-matrix",
+    "refund-runbook",
+    "peak-capacity-plan"
+  ],
+  "required_evidence": [
+    "duplicate-request-tests",
+    "payment-provider-sandbox-results",
+    "inventory-race-tests",
+    "refund-reconciliation",
+    "peak-load-results"
+  ],
+  "gate_overlays": {
+    "build-ready": [
+      "order-state-machine",
+      "inventory-consistency-design"
+    ],
+    "release-ready": [
+      "payment-failure-matrix",
+      "peak-capacity-plan"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "pilot": "venue-reservation",
+  "observed_at": "2026-08-31T09:12:09+00:00",
+  "server": {
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "uvicorn",
+      "venue_pilot.api:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "50043",
+      "--log-level",
+      "warning"
+    ],
+    "base_url": "http://127.0.0.1:50043",
+    "startup_ms": 930.279
+  },
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "observed": {
+        "status": "ok"
+      }
+    },
+    {
+      "name": "create_session",
+      "passed": true,
+      "status": 201,
+      "observed": {
+        "session_id": "session-smoke",
+        "tenant_id": "tenant-smoke",
+        "status": "OPEN",
+        "capacity": 1,
+        "reserved": 0,
+        "available": 1,
+        "waitlisted": 0,
+        "starts_at": "2026-09-01T09:12:09+00:00"
+      }
+    },
+    {
+      "name": "reserve_capacity",
+      "passed": true,
+      "status": 201,
+      "observed": {
+        "outcome": "RESERVED",
+        "session_id": "session-smoke",
+        "member_id": "member-1",
+        "reservation_id": "res_8e3533dc41f34da196e2c97961495601",
+        "waitlist_id": null,
+        "queue_position": null,
+        "promoted_member_id": null,
+        "promoted_reservation_id": null,
+        "message": "Reservation confirmed. The capacity was atomically allocated."
+      }
+    },
+    {
+      "name": "idempotent_replay",
+      "passed": true,
+      "status": 201,
+      "observed": {
+        "member_id": "member-1",
+        "message": "Reservation confirmed. The capacity was atomically allocated.",
+        "outcome": "RESERVED",
+        "promoted_member_id": null,
+        "promoted_reservation_id": null,
+        "queue_position": null,
+        "reservation_id": "res_8e3533dc41f34da196e2c97961495601",
+        "session_id": "session-smoke",
+        "waitlist_id": null
+      }
+    },
+    {
+      "name": "waitlist_on_full",
+      "passed": true,
+      "status": 202,
+      "observed": {
+        "outcome": "WAITLISTED",
+        "session_id": "session-smoke",
+        "member_id": "member-2",
+        "reservation_id": null,
+        "waitlist_id": "wait_41619596a9f541d7a685d090343a72d9",
+        "queue_position": 1,
+        "promoted_member_id": null,
+        "promoted_reservation_id": null,
+        "message": "Session is full. Added to the FIFO waitlist at position 1."
+      }
+    },
+    {
+      "name": "fifo_promotion",
+      "passed": true,
+      "status": 200,
+      "observed": {
+        "outcome": "CANCELED",
+        "session_id": "session-smoke",
+        "member_id": "member-1",
+        "reservation_id": "res_8e3533dc41f34da196e2c97961495601",
+        "waitlist_id": null,
+        "queue_position": null,
+        "promoted_member_id": "member-2",
+        "promoted_reservation_id": "res_5a1616b87ae34b75afb6387fe5b1fa7c",
+        "message": "Reservation canceled and the earliest eligible waitlist entry was promoted."
+      }
+    },
+    {
+      "name": "no_oversell",
+      "passed": true,
+      "status": 200,
+      "observed": {
+        "session_id": "session-smoke",
+        "tenant_id": "tenant-smoke",
+        "status": "OPEN",
+        "capacity": 1,
+        "reserved": 1,
+        "available": 0,
+        "waitlisted": 0,
+        "starts_at": "2026-09-01T09:12:09+00:00",
+        "waitlist_joined_total": 1,
+        "waitlist_promotions_total": 1,
+        "waitlist_conversion_rate": 1.0,
+        "cancellations_total": 1,
+        "oversold": false,
+        "audit_events": 5
+      }
+    },
+    {
+      "name": "tenant_isolation",
+      "passed": true,
+      "status": 404,
+      "observed": {
+        "error": {
+          "code": "SESSION_NOT_FOUND",
+          "message": "The session does not exist for this tenant.",
+          "next_action": "Review the request and retry."
+        }
+      }
+    }
+  ],
+  "passed": true,
+  "evidence_boundary": "Local loopback deployment smoke only; this is not external production traffic or a causal A/B result."
+}

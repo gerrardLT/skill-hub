@@ -1,0 +1,178 @@
+{
+  "version": "2.0.0",
+  "revision": 8,
+  "project": {
+    "name": "saas-mvp",
+    "type": "greenfield",
+    "criticality": "medium",
+    "profile": "standard",
+    "root": "/mnt/data/Agentic_SDLC_OS_v2_0_work/Agentic_SDLC_OS_v2_0/examples/saas-mvp",
+    "created_at": "2026-08-31T03:49:11Z",
+    "updated_at": "2026-08-31T05:28:24Z"
+  },
+  "current_os": "pm",
+  "current_stage": "INTAKE",
+  "status": "active",
+  "os_states": {
+    "pm": {
+      "stage": "INTAKE",
+      "status": "active",
+      "history": [
+        {
+          "stage": "INTAKE",
+          "at": "2026-08-31T03:49:11Z",
+          "reason": "initialized"
+        }
+      ]
+    },
+    "design": {
+      "stage": "INTAKE",
+      "status": "pending",
+      "history": []
+    },
+    "engineering": {
+      "stage": "INTAKE",
+      "status": "pending",
+      "history": []
+    },
+    "qa": {
+      "stage": "INTAKE",
+      "status": "pending",
+      "history": []
+    },
+    "release": {
+      "stage": "INTAKE",
+      "status": "pending",
+      "history": []
+    },
+    "evolution": {
+      "stage": "INTAKE",
+      "status": "pending",
+      "history": []
+    }
+  },
+  "history": [
+    {
+      "event": "project-initialized",
+      "at": "2026-08-31T03:49:11Z",
+      "os": "pm",
+      "stage": "INTAKE"
+    },
+    {
+      "event": "artifact-upserted",
+      "at": "2026-08-31T03:49:13Z",
+      "artifact": "product-brief-001",
+      "type": "product-brief",
+      "status": "accepted",
+      "downstream_marked_stale": []
+    },
+    {
+      "event": "trace-added",
+      "at": "2026-08-31T03:49:16Z",
+      "id": "trace-001"
+    },
+    {
+      "event": "state-migrated",
+      "at": "2026-08-31T05:28:24Z",
+      "from_version": "1.3.0",
+      "to_version": "2.0.0",
+      "profile": "standard"
+    }
+  ],
+  "artifacts": {
+    "product-brief-001": {
+      "id": "product-brief-001",
+      "type": "product-brief",
+      "path": "product-brief.md",
+      "status": "accepted",
+      "owner": "pm",
+      "description": "",
+      "created_at": "2026-08-31T03:49:13Z",
+      "updated_at": "2026-08-31T03:49:13Z",
+      "accepted_at": "2026-08-31T03:49:13Z",
+      "verified_by": "example-maintainer",
+      "content_hash": "75a357a13d569397131d3ae0d2115541ac21f68bc5b88c8a00e9d1f57a3e19d0",
+      "size_bytes": 1680,
+      "file_count": 1,
+      "quality_score": 1.0,
+      "quality_contract": "product-brief",
+      "stale": false,
+      "stale_from": [],
+      "stale_at": "",
+      "stale_reason": ""
+    }
+  },
+  "evidence": [
+    {
+      "id": "evidence-001",
+      "claim": "Three pilot operators coordinate bookings manually and reported double-booking risk",
+      "source": "pilot interview notes 2026-08-30",
+      "source_type": "user-research",
+      "quality": "high",
+      "supports": [
+        "product-brief-001"
+      ],
+      "method": "semi-structured interviews",
+      "limitations": "small pilot sample",
+      "observed_at": "2026-08-31T03:49:14Z",
+      "expires_at": "",
+      "created_at": "2026-08-31T03:49:14Z"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "assumption-001",
+      "text": "Operators will switch if setup takes less than one hour",
+      "risk": "medium",
+      "status": "open",
+      "owner": "pm",
+      "test": "concierge onboarding pilot",
+      "created_at": "2026-08-31T03:49:14Z",
+      "updated_at": "2026-08-31T03:49:14Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision-001",
+      "title": "Limit MVP to one venue type",
+      "choice": "Start with table-tennis venues",
+      "rationale": "Reduces workflow variation and implementation risk",
+      "owner": "product",
+      "alternatives": [],
+      "evidence": [
+        "evidence-001"
+      ],
+      "created_at": "2026-08-31T03:49:15Z"
+    }
+  ],
+  "risks": [
+    {
+      "id": "risk-001",
+      "title": "Payment reconciliation mismatch",
+      "severity": "high",
+      "likelihood": "possible",
+      "status": "open",
+      "mitigation": "Idempotent payment events and daily reconciliation",
+      "owner": "engineering",
+      "trigger": "",
+      "created_at": "2026-08-31T03:49:16Z",
+      "updated_at": "2026-08-31T03:49:16Z"
+    }
+  ],
+  "traceability": [
+    {
+      "id": "trace-001",
+      "from": "product-brief-001",
+      "to": "goal:validated-booking-flow",
+      "relation": "supports",
+      "evidence": [
+        "evidence-001"
+      ],
+      "created_at": "2026-08-31T03:49:16Z"
+    }
+  ],
+  "gates": {},
+  "learning": [],
+  "routing_log": [],
+  "runs": []
+}

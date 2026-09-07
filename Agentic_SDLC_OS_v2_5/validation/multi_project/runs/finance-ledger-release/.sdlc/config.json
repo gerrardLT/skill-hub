@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.5.0",
+  "gate_policy": "strict",
+  "allow_waiver": true,
+  "max_waiver_days": 14,
+  "allow_force_transition": true,
+  "force_requires_human_approval": true,
+  "waiver_requires_approver": true,
+  "artifact_status_required_for_gates": "accepted",
+  "gate_artifact_min_bytes": 64,
+  "gate_require_integrity": true,
+  "stage_policy": "adjacent",
+  "evidence_deduplicate": true,
+  "process_profile": "high-assurance",
+  "audit_chain": true,
+  "artifact_contract_enforcement": true,
+  "independent_verification": "risk-based",
+  "cost_budget_usd": 25.0,
+  "token_budget": 500000,
+  "budget_hard_enforcement": true,
+  "domain_packs": [
+    "finance"
+  ],
+  "domain_required_controls": [
+    "double-entry-ledger",
+    "immutable-journal",
+    "transaction-idempotency",
+    "daily-reconciliation",
+    "segregation-of-duties",
+    "data-retention-policy",
+    "regulatory-review",
+    "disaster-recovery",
+    "fraud-monitoring",
+    "precision-and-rounding-policy"
+  ],
+  "domain_required_artifacts": [
+    "ledger-invariants",
+    "reconciliation-design",
+    "segregation-of-duties-matrix",
+    "regulatory-control-map",
+    "disaster-recovery-plan",
+    "precision-policy"
+  ],
+  "domain_required_evidence": [
+    "property-based-ledger-tests",
+    "reconciliation-run",
+    "access-review",
+    "disaster-recovery-drill",
+    "audit-export"
+  ],
+  "domain_gate_overlays": {
+    "pm-ready": [
+      "regulatory-control-map"
+    ],
+    "build-ready": [
+      "ledger-invariants",
+      "precision-policy"
+    ],
+    "release-ready": [
+      "reconciliation-design",
+      "segregation-of-duties-matrix"
+    ],
+    "production-ready": [
+      "disaster-recovery-plan"
+    ]
+  },
+  "domain_risk_adjustment": 8.0,
+  "domain_budget_multiplier": 1.6,
+  "auto_tailoring": {
+    "profile": "high-assurance",
+    "risk_score": 61.9,
+    "hard_escalations": [
+      "data_sensitivity>=5",
+      "regulatory_exposure>=4",
+      "irreversibility>=5",
+      "blast_radius>=5"
+    ],
+    "required_controls": [
+      "state-integrity",
+      "independent-evidence-review",
+      "complete-traceability",
+      "threat-model",
+      "privacy-review",
+      "security-tests",
+      "performance-tests",
+      "migration-rehearsal",
+      "canary-release",
+      "tested-rollback",
+      "audit-retention",
+      "incident-runbook"
+    ],
+    "optional_controls": [],
+    "minimum_independent_reviewers": 2,
+    "rationale": [
+      "Highest risk factors: blast_radius=5, data_sensitivity=5, irreversibility=5",
+      "Domain risk adjustment: +8.0",
+      "Hard escalation: data_sensitivity>=5, regulatory_exposure>=4, irreversibility>=5, blast_radius>=5"
+    ],
+    "factors": {
+      "blast_radius": 5,
+      "data_sensitivity": 5,
+      "regulatory_exposure": 5,
+      "irreversibility": 5,
+      "technical_novelty": 3,
+      "problem_uncertainty": 2,
+      "user_exposure": 5,
+      "change_size": 4,
+      "operational_complexity": 5
+    }
+  }
+}

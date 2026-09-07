@@ -1,0 +1,32 @@
+{
+  "version": "2.5.0",
+  "targets": {
+    "beta-candidate": {
+      "minimum_real_project_inputs": 3,
+      "minimum_executable_real_projects": 1,
+      "require_control_regression": true
+    },
+    "production-candidate": {
+      "minimum_real_project_inputs": 3,
+      "minimum_executable_real_projects": 3,
+      "require_external_skill_supply_chain": true,
+      "minimum_l5b_pairs": 5,
+      "require_real_l5b": true,
+      "require_l5b_sealed": true,
+      "require_l5b_positive": true,
+      "require_live_postgresql": true,
+      "require_postgresql_concurrency_stress": true,
+      "require_postgresql_recovery_drill": true,
+      "require_postgresql_dead_letter_drill": true,
+      "require_postgresql_connection_fault_drill": true,
+      "minimum_soak_days": 30,
+      "maximum_soak_p0": 0,
+      "maximum_soak_p1": 0,
+      "require_rbac_drill": true,
+      "require_secret_rotation_drill": true,
+      "require_backup_restore_drill": true,
+      "require_audit_export_drill": true,
+      "require_formal_organization_drills": true
+    }
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-sdlc/project-state.schema.json",
+  "title": "Agentic SDLC OS Project State",
+  "type": "object",
+  "required": [
+    "version",
+    "revision",
+    "project",
+    "current_os",
+    "current_stage",
+    "status",
+    "os_states",
+    "history",
+    "artifacts",
+    "evidence",
+    "assumptions",
+    "decisions",
+    "risks",
+    "traceability",
+    "gates",
+    "learning",
+    "routing_log",
+    "runs"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "criticality",
+        "profile",
+        "root",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "greenfield",
+            "brownfield",
+            "incident",
+            "migration"
+          ]
+        },
+        "criticality": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "root": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "profile": {
+          "enum": [
+            "lite",
+            "standard",
+            "high-assurance"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "current_os": {
+      "enum": [
+        "pm",
+        "design",
+        "engineering",
+        "qa",
+        "release",
+        "evolution"
+      ]
+    },
+    "current_stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "active",
+        "blocked",
+        "paused",
+        "closed"
+      ]
+    },
+    "os_states": {
+      "type": "object"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "path",
+          "status",
+          "owner",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "accepted",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "accepted_at": {
+            "type": "string"
+          },
+          "verified_by": {
+            "type": "string"
+          },
+          "content_hash": {
+            "type": "string"
+          },
+          "size_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "file_count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "quality_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "quality_contract": {
+            "type": "string"
+          },
+          "stale": {
+            "type": "boolean"
+          },
+          "stale_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stale_at": {
+            "type": "string"
+          },
+          "stale_reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence.schema.json"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "traceability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "relation",
+          "to",
+          "evidence",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "enum": [
+              "derives",
+              "supports",
+              "satisfies",
+              "implements",
+              "verifies",
+              "deploys",
+              "measures",
+              "informs",
+              "mitigates",
+              "depends-on",
+              "supersedes",
+              "contradicts"
+            ]
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "gates": {
+      "type": "object"
+    },
+    "learning": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "routing_log": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "actor",
+          "os",
+          "skill",
+          "model",
+          "outcome",
+          "duration_ms",
+          "tokens_input",
+          "tokens_output",
+          "tool_calls",
+          "cost_usd",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actor": {
+            "type": "string",
+            "minLength": 1
+          },
+          "os": {
+            "enum": [
+              "pm",
+              "design",
+              "engineering",
+              "qa",
+              "release",
+              "evolution"
+            ]
+          },
+          "skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model": {
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "aborted"
+            ]
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tokens_input": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tokens_output": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tool_calls": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "cost_usd": {
+            "type": "number",
+            "minimum": 0
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "work_items": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "status",
+          "bounded",
+          "affected_paths",
+          "profile",
+          "criticality",
+          "risk_score",
+          "factors",
+          "domain_impacts",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "active",
+              "completed",
+              "cancelled",
+              "blocked"
+            ]
+          },
+          "bounded": {
+            "type": "boolean"
+          },
+          "affected_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "profile": {
+            "enum": [
+              "lite",
+              "standard",
+              "high-assurance"
+            ]
+          },
+          "criticality": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "risk_score": {
+            "type": "number",
+            "minimum": 0
+          },
+          "factors": {
+            "type": "object"
+          },
+          "domain_impacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "project_profile": {
+            "enum": [
+              "lite",
+              "standard",
+              "high-assurance"
+            ]
+          },
+          "hard_escalations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rationale": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "ended_at": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "active_work_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

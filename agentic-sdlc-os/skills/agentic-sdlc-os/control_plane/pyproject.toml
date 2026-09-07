@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-sdlc-control-plane"
+version = "2.0.0"
+description = "PostgreSQL-backed control plane for Agentic SDLC OS"
+requires-python = ">=3.11"
+dependencies = [
+  "SQLAlchemy>=2.0,<3",
+  "psycopg[binary]>=3.2,<4",
+  "FastAPI>=0.115,<1",
+  "uvicorn[standard]>=0.32,<1",
+  "cryptography>=43,<47",
+  "pydantic>=2.9,<3"
+]
+
+[project.scripts]
+agentic-sdlc-control-plane = "agentic_sdlc_cp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agentic_sdlc_cp*"]

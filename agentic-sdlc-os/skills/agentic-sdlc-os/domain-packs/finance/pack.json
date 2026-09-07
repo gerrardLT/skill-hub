@@ -1,0 +1,60 @@
+{
+  "id": "finance",
+  "name": "Financial Ledger and Payments",
+  "version": "1.0.0",
+  "keywords": [
+    "finance",
+    "ledger",
+    "banking",
+    "settlement",
+    "reconciliation",
+    "wallet",
+    "loan",
+    "trading"
+  ],
+  "risk_adjustment": 8.0,
+  "budget_multiplier": 1.6,
+  "required_controls": [
+    "double-entry-ledger",
+    "immutable-journal",
+    "transaction-idempotency",
+    "daily-reconciliation",
+    "segregation-of-duties",
+    "data-retention-policy",
+    "regulatory-review",
+    "disaster-recovery",
+    "fraud-monitoring",
+    "precision-and-rounding-policy"
+  ],
+  "required_artifacts": [
+    "ledger-invariants",
+    "reconciliation-design",
+    "segregation-of-duties-matrix",
+    "regulatory-control-map",
+    "disaster-recovery-plan",
+    "precision-policy"
+  ],
+  "required_evidence": [
+    "property-based-ledger-tests",
+    "reconciliation-run",
+    "access-review",
+    "disaster-recovery-drill",
+    "audit-export"
+  ],
+  "gate_overlays": {
+    "pm-ready": [
+      "regulatory-control-map"
+    ],
+    "build-ready": [
+      "ledger-invariants",
+      "precision-policy"
+    ],
+    "release-ready": [
+      "reconciliation-design",
+      "segregation-of-duties-matrix"
+    ],
+    "production-ready": [
+      "disaster-recovery-plan"
+    ]
+  }
+}
