@@ -1,6 +1,6 @@
-# 71 个开源 Skills 全景路由表
+# 68 个开源 Skills 全景路由表
 
-本表以 2026-09 严选的 **6 域 Top 10（60 个）+ 11 个 Provider Adapters = 71 个开源 Skills** 为第一顺位核心骨架。
+本表以 2026-09 严选的 **6 域 Top 10（60 个）+ 8 个 Provider Adapters = 68 个开源 Skills** 为第一顺位核心骨架。
 
 - **优先调用**：第一列的核心开源 Skill（来源仓库明确，支持 `npx skills add <source> --skill <name>` 安装）；
 - **已装平替**：若环境尚未安装该开源 skill，自动降级调用第二列的本地已装市场插件技能；
@@ -127,7 +127,7 @@
 
 ---
 
-## Evolution Provider Adapters（11 个）
+## Evolution Provider Adapters（8 个）
 
 仅在项目明确接入对应监控平台时激活，只提供数据证据，不能越权替代通用 Core 做决策：
 
@@ -138,9 +138,18 @@
 | Datadog | 3 | `dd-monitors` | recommended | 基于已确认信号管理监控与告警 |
 | Datadog | 4 | `agent-observability-trace-rca` | conditional | 从真实 Agent trace 做根因分析 |
 | Datadog | 5 | `agent-observability-eval-pipeline` | conditional | 生产 Agent 失败模式转持续评估流水线 |
-| **PostHog** | 1 | `querying-posthog-data` | core | PostHog 指标、漏斗、留存、路径查询 |
-| PostHog | 2 | `investigate-metric` | core | 指标异动分群、路径与留存根因调查 |
-| PostHog | 3 | `llm-analytics-setup` | conditional | 为 AI 产品接入 Token/Cost/Latency 分析 |
 | **Sentry** | 1 | `sentry-debug-issue` | core | 用 Sentry trace/log/breadcrumb 定位生产 Issue |
 | Sentry | 2 | `sentry-create-alert` | recommended | 生产信号转 Sentry 告警工作流 |
 | Sentry | 3 | `sentry-setup-ai-monitoring` | conditional | AI/LLM 产品的 Sentry 监控 |
+
+### 已移除：PostHog 适配器（3 个）
+
+按用户决策 **完全移除**，原因同 [`SKILLS.md`](../SKILLS.md) — 依赖 PostHog 平台或单技能源仓库体积达 6.5GB：
+
+| Skill | Tier | 移除原因 |
+|-------|------|---------|
+| `querying-posthog-data` | core | 绑定 PostHog 平台，非通用能力 |
+| `investigate-metric` | core | 需要拉取整个 `posthog/posthog` 主仓库（6645MB），成本不可接受 |
+| `llm-analytics-setup` | conditional | 绑定 PostHog 平台，非通用能力 |
+
+复盘域的指标分析能力已由本表的 `metrics-review` + `validate-data`（Anthropics）覆盖。

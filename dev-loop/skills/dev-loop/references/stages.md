@@ -1,6 +1,6 @@
 # 六步定义与 Gate 细则
 
-以 71 个开源候选的交接契约为标准。每步五要素：目标 / 核心开源 Skill / 输入 / 产出 / Gate / 兜底。
+以 68 个开源候选的交接契约为标准。每步五要素：目标 / 核心开源 Skill / 输入 / 产出 / Gate / 兜底。
 
 ## ① 需求
 
@@ -70,7 +70,7 @@
 ## ⑥ 复盘
 
 - **目标**：对照当初判断和实际结果，提炼下一轮要用的经验——闭环回流的关键步。
-- **核心 Skill**：`systematic-debugging`（obra）+ `analyzing-user-feedback`（refoundai）+ `retro`（gstack）；需要时激活 Sentry / Datadog / PostHog 适配器拉取真实监控证据。
+- **核心 Skill**：`systematic-debugging`（obra）+ `analyzing-user-feedback`（refoundai）+ `retro`（gstack）；需要时激活 Sentry / Datadog 适配器拉取真实监控证据。
 - **输入**：`docs/prd.md` 成功标准 + 真实运行指标 / 用户反馈 + 各步决策记录。
 - **产出**：`docs/retro.md`（其中"下一轮需求输入"一节直接作为下一轮 ① 的输入）。
 - **Gate**：

@@ -1,6 +1,6 @@
 # Dev Loop 研发闭环
 
-六步研发工作流编排器，打包为 Qoder 插件。以 **71 个开源顶流 Skills 体系** 为核心执行骨架。
+六步研发工作流编排器，打包为 Qoder 插件。以 **68 个开源顶流 Skills 体系** 为核心执行骨架（PostHog 移除后精简）。
 
 ```text
 ①需求 → ②设计 → ③实现 → ④验收 → ⑤交付 → ⑥复盘 ─┐
@@ -10,11 +10,11 @@
 
 ## 它是什么
 
-一个轻量总控 skill（`dev-loop`）：不硬编码任何具体方法论，只做四件事——**路由**到严选的 71 个开源顶流 Skills、把上游产物**传递**给下游、执行一句话 **Gate** 把关、维护 `.workflow/state.md` **轻量记忆**。可整条闭环运行，也可单步独立调用。
+一个轻量总控 skill（`dev-loop`）：不硬编码任何具体方法论，只做四件事——**路由**到严选的 68 个开源顶流 Skills、把上游产物**传递**给下游、执行一句话 **Gate** 把关、维护 `.workflow/state.md` **轻量记忆**。可整条闭环运行，也可单步独立调用。
 
-## 核心骨架：71 个开源 Skills 体系
+## 核心骨架：68 个开源 Skills 体系
 
-全部精选自 GitHub 顶级开源项目（deanpeters、phuryn、impeccable、superpowers、gstack 等），按六域划分，每域 10 个候选 + 11 个观测 Provider 适配器：
+全部精选自 GitHub 顶级开源项目（deanpeters、phuryn、impeccable、superpowers、gstack 等），按六域划分，每域 10 个候选 + 8 个观测 Provider 适配器：
 
 | 步骤 | 默认 Core 组合（开源第一顺位） | 来源仓库 | 本地已装插件平替 |
 |------|------------------------------|---------|------------------|
@@ -25,7 +25,9 @@
 | **⑤ 交付** | `ship` + `github-actions-hardening` | `garrytan/gstack`, `github/awesome-copilot` | `shipping-artifacts` |
 | **⑥ 复盘** | `systematic-debugging` + `analyzing-user-feedback` + `retro` | `obra/superpowers`, `refoundai/lenny-skills`, `garrytan/gstack` | `product-design:retro` |
 
-完整 71 个技能清单、适用场景与 Provider 适配器（Sentry/Datadog/PostHog）见 [skills/dev-loop/references/routing.md](skills/dev-loop/references/routing.md)。
+完整 68 个技能清单、适用场景与 Provider 适配器（Sentry/Datadog）见 [skills/dev-loop/references/routing.md](skills/dev-loop/references/routing.md)。
+
+安装状态与版本锁定见 [SKILLS.md](SKILLS.md)、[skills.lock.json](skills.lock.json)；一键恢复用 [restore-skills.sh](restore-skills.sh)。
 
 ## 安装外部开源 Skill
 

@@ -1,12 +1,12 @@
 ---
 name: dev-loop
 description: >-
-  六步研发闭环总控编排器：需求→设计→实现→验收→交付→复盘，复盘回流需求形成持续循环。以 71 个开源顶流 Skills（deanpeters、phuryn、impeccable、superpowers、gstack 等）为核心骨架，本身不实现方法论，只做路由、传递、把关与记忆。触发场景：完整开发闭环（"从 0 做一个产品"/"全流程走一遍"）、接力推进（"继续上次的项目"）、或单步骤独立使用（"只写 PRD"/"只做设计走查"/"只做验收"）。关键触发词：开发流程、工作流、闭环、PRD、设计、TDD、代码审查、验收、交付、复盘。多步骤任务用本 skill；单点任务（只要一份访谈提纲）直接用对应子 skill。
+  六步研发闭环总控编排器：需求→设计→实现→验收→交付→复盘，复盘回流需求形成持续循环。以 68 个开源顶流 Skills（deanpeters、phuryn、impeccable、superpowers、gstack 等）为核心骨架，本身不实现方法论，只做路由、传递、把关与记忆。触发场景：完整开发闭环（"从 0 做一个产品"/"全流程走一遍"）、接力推进（"继续上次的项目"）、或单步骤独立使用（"只写 PRD"/"只做设计走查"/"只做验收"）。关键触发词：开发流程、工作流、闭环、PRD、设计、TDD、代码审查、验收、交付、复盘。多步骤任务用本 skill；单点任务（只要一份访谈提纲）直接用对应子 skill。
 ---
 
 # Dev Loop：六步研发闭环总控
 
-你是研发流程的**总控编排器**，不是方法论执行者。你通过调度 **6 域 Top 10 开源 Skills 体系**（71 个严选候选）完成实际工作，自己只做四件事：**路由、传递、把关、记忆**。
+你是研发流程的**总控编排器**，不是方法论执行者。你通过调度 **6 域 Top 10 开源 Skills 体系**（68 个严选候选）完成实际工作，自己只做四件事：**路由、传递、把关、记忆**。
 
 ```text
 ①需求 → ②设计 → ③实现 → ④验收 → ⑤交付 → ⑥复盘 ─┐
@@ -33,7 +33,7 @@ description: >-
 | ⑤ 交付 | 安全发布执行与交付集 | `ship` (gstack) + `github-actions-hardening` (github) | 架构/流程/权限/测试四要素齐，CI 强化通过 | `docs/` 交付集 + PR |
 | ⑥ 复盘 | 根因定位、指标分析与经验回流 | `systematic-debugging` (superpowers) + `analyzing-user-feedback` (refoundai) + `retro` (gstack) | Gap 有归因，产出下一轮需求输入 | `docs/retro.md` → 回① |
 
-完整 71 个开源候选分类与来源见 [references/routing.md](references/routing.md)；每步的目标/输入/产出/Gate 细则/兜底见 [references/stages.md](references/stages.md)。
+完整 68 个开源候选分类与来源见 [references/routing.md](references/routing.md)；每步的目标/输入/产出/Gate 细则/兜底见 [references/stages.md](references/stages.md)。
 
 ## 执行协议
 
@@ -78,5 +78,5 @@ description: >-
 
 ## References
 
-- 71 个开源候选全景路由表：[routing.md](references/routing.md)
+- 68 个开源候选全景路由表：[routing.md](references/routing.md)
 - 六步定义与 Gate 细则：[stages.md](references/stages.md)
