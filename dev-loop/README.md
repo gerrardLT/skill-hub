@@ -1,6 +1,6 @@
 # Dev Loop 研发闭环
 
-六步研发工作流编排器，打包为 Qoder 插件。
+六步研发工作流编排器，打包为 Qoder 插件。以 **71 个开源顶流 Skills 体系** 为核心执行骨架。
 
 ```text
 ①需求 → ②设计 → ③实现 → ④验收 → ⑤交付 → ⑥复盘 ─┐
@@ -10,33 +10,49 @@
 
 ## 它是什么
 
-一个轻量总控 skill（`dev-loop`）：不实现任何方法论，只做四件事——**路由**到环境中最合适的已安装 skill、把上游产物**传递**给下游、执行一句话 **Gate** 把关、维护 `.workflow/state.md` **记忆**。可整条闭环跑，也可只用其中任意一步。
+一个轻量总控 skill（`dev-loop`）：不硬编码任何具体方法论，只做四件事——**路由**到严选的 71 个开源顶流 Skills、把上游产物**传递**给下游、执行一句话 **Gate** 把关、维护 `.workflow/state.md` **轻量记忆**。可整条闭环运行，也可单步独立调用。
 
-## 安装
+## 核心骨架：71 个开源 Skills 体系
 
-将本目录（`dev-loop/`）放入 Qoder 插件目录（如 `~/.qoder/plugins/`）。
+全部精选自 GitHub 顶级开源项目（deanpeters、phuryn、impeccable、superpowers、gstack 等），按六域划分，每域 10 个候选 + 11 个观测 Provider 适配器：
+
+| 步骤 | 默认 Core 组合（开源第一顺位） | 来源仓库 | 本地已装插件平替 |
+|------|------------------------------|---------|------------------|
+| **① 需求** | `prd-development` + `discovery-process` + `prioritization-frameworks` | `deanpeters/Product-Manager-Skills`, `phuryn/pm-skills` | `product-management:PRD生成` |
+| **② 设计** | `impeccable` + `ui-ux-pro-max` + `web-design-guidelines` | `pbakaus/impeccable`, `nextlevelbuilder/ui-ux-pro-max-skill` | `product-design:brief` → `flow-web` |
+| **③ 实现** | `writing-plans` + `test-driven-development` + `systematic-debugging` | `obra/superpowers` | `superpowers:*` |
+| **④ 验收** | `testing-strategy` + `verification-before-completion` + `qa-only` | `anthropics/knowledge-work-plugins`, `garrytan/gstack` | `product-design:qa` |
+| **⑤ 交付** | `ship` + `github-actions-hardening` | `garrytan/gstack`, `github/awesome-copilot` | `shipping-artifacts` |
+| **⑥ 复盘** | `systematic-debugging` + `analyzing-user-feedback` + `retro` | `obra/superpowers`, `refoundai/lenny-skills`, `garrytan/gstack` | `product-design:retro` |
+
+完整 71 个技能清单、适用场景与 Provider 适配器（Sentry/Datadog/PostHog）见 [skills/dev-loop/references/routing.md](skills/dev-loop/references/routing.md)。
+
+## 安装外部开源 Skill
+
+支持通过 `npx skills add` 按需安装任意候选：
+
+```bash
+# PM 域核心
+npx skills add deanpeters/Product-Manager-Skills --skill prd-development -y
+npx skills add phuryn/pm-skills --skill prioritization-frameworks -y
+
+# 设计域核心
+npx skills add pbakaus/impeccable --skill impeccable -y
+npx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max -y
+
+# 工程与验收核心（superpowers 套件）
+npx skills add obra/superpowers --skill test-driven-development -y
+npx skills add garrytan/gstack --skill qa-only -y
+```
+
+> **未安装时也不中断**：自动降级走本地已装市场插件，两类均无时走内置 1 页纸兜底指引并标注 `⚠️ 降级执行`。
 
 ## 用法
 
 - **全闭环**："帮我从 0 做一个记账小工具" → 从①走到⑥；
 - **接力**："继续上次的项目" → 按状态文件从断点继续；
-- **单步**："只做设计走查" / "只做验收" → 直接进对应步骤。
-
-每步详细路由与场景备选见 [skills/dev-loop/references/routing.md](skills/dev-loop/references/routing.md)。
-
-## 路由的 skill（可选依赖）
-
-未安装任何外部 skill 也能跑——每步有内置兜底指引，产物标注 `⚠️ 降级执行`。
-
-| 步 | 主要路由目标 |
-|----|--------------|
-| ① 需求 | `product-management:PRD生成`（备选：产品脑暴 / 用户故事拆解 / 需求优先级排序 / 竞品分析） |
-| ② 设计 | `product-design:brief` → `flow-web` / `flow-mobile`（备选：sitemap / board / chart / edge / impeccable） |
-| ③ 实现 | 主 agent 直接编码（辅助：`context7:context7-mcp` / `sql-queries` / `dummy-dataset`） |
-| ④ 验收 | `product-design:qa`（备选：`design-review:*` 系列 / `test-case-generator` / `intended-vs-implemented`） |
-| ⑤ 交付 | `shipping-artifacts`（备选：`product-design:prd`） |
-| ⑥ 复盘 | `product-design:retro`（备选：`product-management:产品指标复盘` / 用户反馈分析 / 路线图更新） |
+- **单步**："只写 PRD" / "只做设计走查" / "只做验收" → 直接进对应步骤。
 
 ## 状态文件
 
-工作状态写在目标项目的 `.workflow/state.md`（纯 markdown，人类可直接编辑）：当前步、六步产物索引、决策记录、下一步动作。删除该文件即重置流程。
+工作状态写在目标项目的 `.workflow/state.md`（纯 markdown）：当前步、六步产物索引、决策记录、下一步动作。
