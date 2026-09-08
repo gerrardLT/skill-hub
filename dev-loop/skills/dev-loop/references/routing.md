@@ -11,7 +11,7 @@
 | **① 需求** | `product-management:PRD生成` | `pm-output-engine:需求文档撰写` | `docs/prd.md` |
 | **② 设计** | `ui-ux-pro-max-skill:ui-ux-pro-max` | `product-design:flow-web` / `impeccable` | `docs/design.md` |
 | **③ 实现** | `superpowers:writing-plans`<br>`superpowers:test-driven-development` | 叠加 `andrej-karpathy-skills:karpathy-guidelines` | `src/` + 自动化单测 |
-| **④ 验收** | `playwright`<br>`superpowers:verification-before-completion` | `test-case-generator` | `docs/qa-report.md` |
+| **④ 验收** | `design-review:design-qa`<br>`superpowers:verification-before-completion` | `test-case-generator`<br>`playwright` (MCP) | `docs/qa-report.md` |
 | **⑤ 交付** | `shipping-artifacts` | `architecture-visualization:architecture-communicator` | `docs/` 交付集 + `README.md` |
 | **⑥ 复盘** | `superpowers:systematic-debugging`<br>`product-management:产品指标复盘` | `product-design:retro` | `docs/retro.md` (回流至①) |
 

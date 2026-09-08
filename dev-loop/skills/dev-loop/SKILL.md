@@ -29,7 +29,7 @@ description: >-
 | **① 需求** | 痛点验证、用户场景与功能规格定义 | `product-management:PRD生成` / `pm-output-engine:需求文档撰写` | 明确人群痛点，验收标准具备可独立验证的量化或演示指标 | `docs/prd.md` |
 | **② 设计** | 信息架构、页面状态穷举与设计系统 | `ui-ux-pro-max-skill:ui-ux-pro-max` / `product-design:flow-web` | 覆盖主流程 + 异常态（空/载/错/权），组件风格统一不打架 | `docs/design.md` |
 | **③ 实现** | 计划拆解与高质量工程编码 | `superpowers:writing-plans` + `superpowers:test-driven-development` | 红-绿-重构闭环，单元测试自验通过，无已知 P0/崩溃缺陷 | `src/` + 自动化测试 |
-| **④ 验收** | 独立验证，QA 绝不自修自验 | `playwright` + `test-case-generator` + `superpowers:verification-before-completion` | 依据 PRD 逐条出具真实运行/测试证据，阻断 Bug 为零 | `docs/qa-report.md` |
+| **④ 验收** | 独立验证，QA 绝不自修自验 | `design-review:design-qa` + `test-case-generator` + `superpowers:verification-before-completion` | 依据 PRD 逐条出具真实运行/测试证据，阻断 Bug 为零 | `docs/qa-report.md` |
 | **⑤ 交付** | 架构图解、发布清单与交付物包 | `shipping-artifacts` + `architecture-visualization` | 模块依赖清楚、环境配置与启动方法一目了然 | `docs/` 交付集 + README |
 | **⑥ 复盘** | 根因追溯、指标诊断与经验回流 | `superpowers:systematic-debugging` + `product-management:产品指标复盘` / `product-design:retro` | Expected vs Actual 对比归因，产出至少 1 条下一轮需求项 | `docs/retro.md` → 回① |
 

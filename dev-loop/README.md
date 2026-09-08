@@ -24,7 +24,7 @@
 | **① 需求** | `product-management:PRD生成` | 需求分析、用户痛点与 Given/When/Then 验收标准 → `docs/prd.md` |
 | **② 设计** | `ui-ux-pro-max-skill:ui-ux-pro-max` | 页面信息架构、异常态覆盖（空/载/错/权）与样式系统 → `docs/design.md` |
 | **③ 实现** | `superpowers:writing-plans` + `test-driven-development` | 任务拆解、测试先行与高质量编码实现 → `src/` + 自动化单测 |
-| **④ 验收** | `playwright` + `superpowers:verification-before-completion` | 独立运行、浏览器端到端走查与证据校验（只报不修） → `docs/qa-report.md` |
+| **④ 验收** | `design-review:design-qa` + `test-case-generator` + `superpowers:verification-before-completion` | 独立运行、浏览器端到端走查与证据校验（只报不修） → `docs/qa-report.md` |
 | **⑤ 交付** | `shipping-artifacts` | 系统架构说明、数据链路、环境变量清单与部署指南 → `docs/` 交付集 + `README.md` |
 | **⑥ 复盘** | `superpowers:systematic-debugging` + `product-management:产品指标复盘` | 真实运行复盘、指标差距归因，输出下一轮需求项 → `docs/retro.md` 回流至 ① |
 

@@ -53,7 +53,7 @@ Gate 判定不过必须在当前步补齐或明确回退，严禁空转带病流
 ## ④ 验收
 
 - **目标**：独立验证实现与需求的一致性——**QA 与实现分离，只报不修**。
-- **核心 Skill**：`playwright` + `test-case-generator` + `superpowers:verification-before-completion`。
+- **核心 Skill**：`design-review:design-qa` + `test-case-generator` + `superpowers:verification-before-completion`（端到端测试可配合 `browser-use` MCP）。
 - **输入**：`src/` + `docs/prd.md` 验收标准 + 自动化测试用例。
 - **产出**：`docs/qa-report.md`（逐条验收结论、真实运行/测试输出、缺陷清单）。
 - **Gate**：
