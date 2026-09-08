@@ -1,81 +1,94 @@
 # 六步定义与 Gate 细则
 
-以 68 个开源候选的交接契约为标准。每步五要素：目标 / 核心开源 Skill / 输入 / 产出 / Gate / 兜底。
+每步五要素：**目标 / 核心调度 Skill / 输入 / 产出 / Gate / 兜底**。
+Gate 判定不过必须在当前步补齐或明确回退，严禁空转带病流转。
+
+---
 
 ## ① 需求
 
-- **目标**：把模糊想法变成对齐过的问题定义、目标用户、成功标准与优先级。
-- **核心 Skill**：`prd-development` + `discovery-process`（deanpeters）；备选 `prioritization-frameworks`（phuryn）、`competitive-strategy`（refoundai）。
-- **输入**：用户口述 / 既有材料；无。
-- **产出**：`docs/prd.md`（含问题陈述、目标用户、核心场景、Given/When/Then 验收标准、非目标）。
+- **目标**：把模糊想法变成对齐过的问题定义、目标用户、核心场景与验收指标。
+- **核心 Skill**：`product-management:PRD生成`（备选 `pm-output-engine:需求文档撰写`）。
+- **输入**：用户口述需求 / 既有参考材料。
+- **产出**：`docs/prd.md`（包含：问题背景、目标人群、核心用例场景、Given/When/Then 验收标准、明确非目标）。
 - **Gate**：
-  1. 问题陈述指向具体人群的具体痛点，不是"做一个 X 平台"；
-  2. 验收标准必须符合 Gherkin（Given/When/Then）或具备可独立测试的量化指标；
-  3. 非目标明确列出（防止范围蔓延）；
-  4. 核心假设已列出并与已知事实区分，不得把假设写成事实。
-- **兜底**：自产 1 页 PRD；用户答不出的字段标注 `⚠️ 待验证`，不得编造。
+  1. 问题定义清晰，指向具体真实人群与核心痛点；
+  2. 验收标准完全可量化或可通过明确交互验证；
+  3. 边界明确，非目标（Non-goals）无歧义；
+  4. 核心假设有标注，无未经确认的凭空推论。
+- **兜底**：自产 1 页精简 PRD；待验证项标明 `⚠️ 待确认`。
+
+---
 
 ## ② 设计
 
-- **目标**：把 PRD 转化为可实现、可验收的设计规格。
-- **核心 Skill**：`impeccable`（pbakaus，唯一主视觉导演）+ `ui-ux-pro-max`（组件与排版知识）+ `web-design-guidelines`（规范约束）+ `review-animations`（动效把关）。
+- **目标**：把 PRD 规格转化为可指导编码的设计规格，拒绝艺术孤品。
+- **核心 Skill**：`ui-ux-pro-max-skill:ui-ux-pro-max`（备选 `product-design:flow-web` / `impeccable`）。
 - **输入**：`docs/prd.md`。
-- **产出**：`docs/design.md`（页面清单、每页关键状态、交互要点、导航结构、Design Tokens）。
+- **产出**：`docs/design.md`（页面结构、组件清单、交互流转、状态穷举与设计 Tokens）。
 - **Gate**：
-  1. 主流程完整可走通（入口→核心操作→完成）；
-  2. 异常态完整设计：空 / 加载 / 错误 / 权限 / 边界数据（移动端加离线）；
-  3. 遵守"单一视觉导演"铁律，不允许多个设计 skill 风格打架；
-  4. 与 PRD 的验收标准一一对应，无遗漏场景。
-- **兜底**：自产 1 页设计说明，重点是状态覆盖而非视觉修饰。
+  1. 主操作闭环无断点；
+  2. 完整覆盖异常态：空状态、加载态、错误提示、权限边界、极端长短数据；
+  3. UI 风格统一，遵循统一视觉层级；
+  4. 与 PRD 中的验收标准逐一对应。
+- **兜底**：自产 1 页设计架构说明，优先明确状态矩阵与核心字段。
+
+---
 
 ## ③ 实现
 
-- **目标**：以 TDD 驱动按规格编码，拆解小步计划并自验。
-- **核心 Skill**：`writing-plans` + `test-driven-development` + `systematic-debugging`（均为 obra/superpowers）；叠加 `andrej-karpathy-skills:karpathy-guidelines` 约束。
+- **目标**：TDD 驱动小步编码，交付健壮可靠的源码。
+- **核心 Skill**：`superpowers:writing-plans` + `superpowers:test-driven-development`（伴随 `andrej-karpathy-skills:karpathy-guidelines` 约束）。
 - **输入**：`docs/design.md` + `docs/prd.md` 验收标准。
-- **产出**：`src/`（源码）+ 测试用例套件；运行方式写入 README。
+- **产出**：`src/`（业务源码）+ 自动化测试套件。
 - **Gate**：
-  1. 严格红-绿-重构闭环：必须先写失败测试，再写实现，最后重构；
-  2. 核心功能可跑通，测试全部 PASS；
-  3. 无已知 P0 严重缺陷（崩溃 / 数据丢失 / 主流程断裂）；
-  4. 遵循外科手术式修改，无凭空引入的抽象与无关重构。
-- **兜底**：主 agent 手写实现 + 逐条运行单元测试自验。
+  1. 严格测试先行（红-绿-重构）；
+  2. 核心功能及主链路测试全部 PASS；
+  3. 无已知 P0 严重缺陷（无死循环、崩溃、数据静默丢失）；
+  4. 遵循极简原则，不做超前设计和无关重构。
+- **兜底**：手写核心逻辑实现并配齐核心单元测试自验。
+
+---
 
 ## ④ 验收
 
-- **目标**：独立验证实现是否符合设计与需求——**QA 不得自修自验**。
-- **核心 Skill**：`testing-strategy`（anthropics）+ `verification-before-completion`（superpowers）+ `qa-only`（gstack，只报不修）+ `code-review`（anthropics）。
-- **输入**：`src/` + `docs/design.md` + `docs/prd.md` 验收标准。
-- **产出**：`docs/qa-report.md`（逐条结论：通过 / 不通过 + 截图 / 运行日志证据）。
+- **目标**：独立验证实现与需求的一致性——**QA 与实现分离，只报不修**。
+- **核心 Skill**：`playwright` + `test-case-generator` + `superpowers:verification-before-completion`。
+- **输入**：`src/` + `docs/prd.md` 验收标准 + 自动化测试用例。
+- **产出**：`docs/qa-report.md`（逐条验收结论、真实运行/测试输出、缺陷清单）。
 - **Gate**：
-  1. 禁止无新鲜证据的通过声明（严格遵守 verification-before-completion）；
-  2. QA 仅输出报告，任何修复必须打回 ③ 由 Engineering 实施，严禁自修自验；
-  3. 阻断级 Bug（P0/P1）必须为零才能放行；
-  4. 不通过项明确指出回退目标（回③修实现 / 回②修设计 / 回①修需求）。
-- **兜底**：按 PRD 验收标准逐条人工核对并生成报告。
+  1. 每条 PRD 验收标准均有独立运行证据，禁止口头声称通过；
+  2. QA 仅记录缺陷并指出打回目标（③代码/②设计/①需求），不得自修自验；
+  3. 阻断级 Bug 为零；
+  4. 核心交互流程与至少一种边界异常态实测通过。
+- **兜底**：对照 PRD 逐条人工核对运行并输出核对清单。
+
+---
 
 ## ⑤ 交付
 
-- **目标**：让没参与开发的人能审查、部署、接手，并安全创建 PR。
-- **核心 Skill**：`ship`（gstack）+ `github-actions-hardening`（github CI 安全）。
-- **输入**：前四步全部产物。
-- **产出**：`docs/` 交付集（架构说明、关键流程、权限/变量、测试覆盖说明）+ 生产就绪 PR。
+- **目标**：产出可接手、可审查、可部署的标准化工程交付包。
+- **核心 Skill**：`shipping-artifacts` + `architecture-visualization`。
+- **输入**：前四步完整产出。
+- **产出**：`docs/` 交付集（系统架构图解、关键数据流向、环境变量/密钥清单、测试覆盖总结）+ 项目 `README.md`。
 - **Gate**：
-  1. 架构：模块划分 + 依赖方向，一页能看懂；
-  2. CI/CD 工作流已审查，无脚本注入与过度权限风险；
-  3. 环境变量与密钥只列名不泄露值；
-  4. 测试覆盖真实诚实标注，不隐藏未测边界。
-- **兜底**：从代码扫描自产 README + 架构说明与启动指南。
+  1. 架构模块划分与依赖关系清晰明了；
+  2. 环境变量与配置项完整声明（不硬编码密钥）；
+  3. 启动、测试与构建步骤真实有效；
+  4. 诚实标注已知限制与未覆盖边界。
+- **兜底**：从现有源码提炼标准化 README 与架构说明。
+
+---
 
 ## ⑥ 复盘
 
-- **目标**：对照当初判断和实际结果，提炼下一轮要用的经验——闭环回流的关键步。
-- **核心 Skill**：`systematic-debugging`（obra）+ `analyzing-user-feedback`（refoundai）+ `retro`（gstack）；需要时激活 Sentry / Datadog 适配器拉取真实监控证据。
-- **输入**：`docs/prd.md` 成功标准 + 真实运行指标 / 用户反馈 + 各步决策记录。
-- **产出**：`docs/retro.md`（其中"下一轮需求输入"一节直接作为下一轮 ① 的输入）。
+- **目标**：对照预期与实测结果提炼认知偏差，把经验回流为下一轮需求起点。
+- **核心 Skill**：`superpowers:systematic-debugging` + `product-management:产品指标复盘`（或 `product-design:retro`）。
+- **输入**：`docs/prd.md` 预期指标 + 实际运行结果 + 开发决策记录。
+- **产出**：`docs/retro.md`（其中包含"下一轮需求输入"章节，直接对接到下一次迭代的 ①）。
 - **Gate**：
-  1. Expected vs Actual 逐项对比，不报喜不报忧；
-  2. 每个 Gap 有归因（当初判断错 / 执行走样 / 外部变化）；
-  3. 产出至少 1 条下一轮明确的行动项（做 / 改 / 砍）；
-  4. 经验写入 `.workflow/state.md` 决策记录回流第 ① 步。
-- **兜底**：自产 Expected vs Actual 对比表 + 3 条行动建议。
+  1. Expected vs Actual 逐项诚实对比；
+  2. 差距（Gap）有客观根因归因，不推诿；
+  3. 产出至少 1 条下一轮明确的行动输入（要做 / 要改 / 要废弃）；
+  4. 决策与复盘心得落盘记录。
+- **兜底**：自产偏差对比表与 3 条具体优化建议。

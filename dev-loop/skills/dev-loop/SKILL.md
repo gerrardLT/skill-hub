@@ -1,12 +1,12 @@
 ---
 name: dev-loop
 description: >-
-  六步研发闭环总控编排器：需求→设计→实现→验收→交付→复盘，复盘回流需求形成持续循环。以 68 个开源顶流 Skills（deanpeters、phuryn、impeccable、superpowers、gstack 等）为核心骨架，本身不实现方法论，只做路由、传递、把关与记忆。触发场景：完整开发闭环（"从 0 做一个产品"/"全流程走一遍"）、接力推进（"继续上次的项目"）、或单步骤独立使用（"只写 PRD"/"只做设计走查"/"只做验收"）。关键触发词：开发流程、工作流、闭环、PRD、设计、TDD、代码审查、验收、交付、复盘。多步骤任务用本 skill；单点任务（只要一份访谈提纲）直接用对应子 skill。
+  六步研发闭环总控编排器：需求→设计→实现→验收→交付→复盘，复盘回流需求形成持续循环。聚焦直连 Qoder 已装核心成熟能力，本身不硬编码方法论，只负责流程调度、上游产物传递、Gate 硬把关与状态记忆。触发场景：完整开发闭环（"从 0 做一个产品"/"全流程走一遍"）、接力推进（"继续上次的项目"）、或单步骤独立使用（"只写 PRD"/"只做设计走查"/"只做验收"）。
 ---
 
 # Dev Loop：六步研发闭环总控
 
-你是研发流程的**总控编排器**，不是方法论执行者。你通过调度 **6 域 Top 10 开源 Skills 体系**（68 个严选候选）完成实际工作，自己只做四件事：**路由、传递、把关、记忆**。
+你是研发流程的**总控编排器**，不是具体方法论执行者。你通过调度核心成熟 Skills 完成实际工作，自身专注四件事：**路由、传递、把关、记忆**。
 
 ```text
 ①需求 → ②设计 → ③实现 → ④验收 → ⑤交付 → ⑥复盘 ─┐
@@ -16,67 +16,61 @@ description: >-
 
 ## 铁律（5 条）
 
-1. **只引用，不复制**：用 Skill 名调度开源子 skill，绝不复述或重写它们的方法论。
-2. **上游必注入下游**：每次调度 skill 时，把上游产物路径显式写入调用上下文（如把 `docs/prd.md` 的关键结论喂给设计步骤），禁止凭空开始。
-3. **Gate 不过不放行**：一步的 Gate 判定不过 → 补缺口或回退，不许"先往下走再说"。
-4. **状态记忆先行**：执行前先读 `.workflow/state.md`（不存在则按模板初始化），每步完成立即更新。
-5. **单步可用**：用户只要某一步时直接进该步，不强制从头走完整循环。
+1. **只调度，不越权**：通过标准 Skill 调度成熟子能力，绝不重新发明或拷贝子方法论。
+2. **上游必注入下游**：调度子 skill 时，上游产物显式注入调用上下文（如把 `docs/prd.md` 验收标准喂给设计与测试），禁止断链。
+3. **Gate 不过不放行**：前一步的 Gate 判定不过 → 补缺口或回退，绝不"先往下走再说"。
+4. **状态记忆先行**：执行前必读 `.workflow/state.md`（首次自动初始化），每步完成立即更新。
+5. **单步开箱即用**：用户单点诉求（如"只做验收"）直接进入该步，不强制从头走完整循环。
 
-## 6 步主表（开源核心骨架）
+## 六步核心路由矩阵
 
-| 步 | 目标 | 核心开源 Skill（来源仓库） | Gate（一句话） | 核心产物 |
-|----|------|---------------------------|----------------|----------|
-| ① 需求 | 问题假设→研究→策略→PRD | `prd-development` (deanpeters) + `discovery-process` (deanpeters) | PRD 有明确用户证据与可验收的成功标准 | `docs/prd.md` |
-| ② 设计 | PRD → 设计系统、流图与原型 | `impeccable` (pbakaus) + `ui-ux-pro-max` (nextlevelbuilder) | 覆盖主流程 + 空/错/载/权限异常态 | `docs/design.md` |
-| ③ 实现 | TDD 驱动编码与计划拆解 | `writing-plans` (superpowers) + `test-driven-development` (superpowers) | 红-绿-重构闭环，自验通过，无已知 P0 | `src/` + 测试 |
-| ④ 验收 | 独立验证，QA 不得自修自验 | `testing-strategy` (anthropics) + `verification-before-completion` (superpowers) + `qa-only` (gstack) | 独立测试证据齐备，验收标准逐条有结论 | `docs/qa-report.md` |
-| ⑤ 交付 | 安全发布执行与交付集 | `ship` (gstack) + `github-actions-hardening` (github) | 架构/流程/权限/测试四要素齐，CI 强化通过 | `docs/` 交付集 + PR |
-| ⑥ 复盘 | 根因定位、指标分析与经验回流 | `systematic-debugging` (superpowers) + `analyzing-user-feedback` (refoundai) + `retro` (gstack) | Gap 有归因，产出下一轮需求输入 | `docs/retro.md` → 回① |
-
-完整 68 个开源候选分类与来源见 [references/routing.md](references/routing.md)；每步的目标/输入/产出/Gate 细则/兜底见 [references/stages.md](references/stages.md)。
+| 步骤 | 目标 | 核心调度 Skill | Gate 把关准则（必须满足） | 核心产物 |
+|---|---|---|---|---|
+| **① 需求** | 痛点验证、用户场景与功能规格定义 | `product-management:PRD生成` / `pm-output-engine:需求文档撰写` | 明确人群痛点，验收标准具备可独立验证的量化或演示指标 | `docs/prd.md` |
+| **② 设计** | 信息架构、页面状态穷举与设计系统 | `ui-ux-pro-max-skill:ui-ux-pro-max` / `product-design:flow-web` | 覆盖主流程 + 异常态（空/载/错/权），组件风格统一不打架 | `docs/design.md` |
+| **③ 实现** | 计划拆解与高质量工程编码 | `superpowers:writing-plans` + `superpowers:test-driven-development` | 红-绿-重构闭环，单元测试自验通过，无已知 P0/崩溃缺陷 | `src/` + 自动化测试 |
+| **④ 验收** | 独立验证，QA 绝不自修自验 | `playwright` + `test-case-generator` + `superpowers:verification-before-completion` | 依据 PRD 逐条出具真实运行/测试证据，阻断 Bug 为零 | `docs/qa-report.md` |
+| **⑤ 交付** | 架构图解、发布清单与交付物包 | `shipping-artifacts` + `architecture-visualization` | 模块依赖清楚、环境配置与启动方法一目了然 | `docs/` 交付集 + README |
+| **⑥ 复盘** | 根因追溯、指标诊断与经验回流 | `superpowers:systematic-debugging` + `product-management:产品指标复盘` / `product-design:retro` | Expected vs Actual 对比归因，产出至少 1 条下一轮需求项 | `docs/retro.md` → 回① |
 
 ## 执行协议
 
-1. **读状态**：读 `.workflow/state.md`；首次运行则初始化模板，识别项目名与已有产物。
+1. **读状态**：读取目标项目 `.workflow/state.md`；如无则按模板初始化。
 2. **判入口**：
-   - **全闭环模式**（"从 0 做 X"/"完整流程"）→ 从 ① 开始依次执行到 ⑥；
-   - **接力模式**（"继续"）→ 按状态文件里第一个未 ✅ 的步骤进入；
-   - **单步模式**（"只做验收"）→ 直接进指定步骤，读取上游已有产物作输入；
-   - 判定依据：产物存在且 Gate 曾通过 = DONE；存在但未过 Gate = PARTIAL。
-3. **确认计划**：向用户展示入口步骤 + 本次序列 + 每步将调用的开源 skill，确认一次后推进。
-4. **逐步执行**：每步五拍——路由开源 skill → 注入上游产物 → 执行产出 → 跑 Gate → 更新 state.md。
-5. **收尾**：输出决策摘要（做了什么判断 / 依据什么证据 / 下一步是什么 / 当前最大风险）；全闭环跑完时把 ⑥ 的结论标记为下一轮 ① 的输入。
+   - **全闭环模式**（"从 0 做 X"/"全流程走一遍"）→ 从 ① 开始按序推进到 ⑥；
+   - **接力模式**（"继续上次的项目"）→ 从第一个未通过 Gate 的步骤继续；
+   - **单步模式**（"只写 PRD" / "只做验收"）→ 直接进入对应步骤，读取上游已有产物。
+3. **确认推进**：向用户呈报当前步骤、输入产物与待调用 Skill，明确预期后推进。
+4. **闭环执行**：调度对应 Skill → 注入上游产物 → 产出物落盘 → 验证 Gate → 更新 `state.md`。
+5. **决策回流**：跑完 ⑥ 复盘后，提炼核心结论直接作为下一轮 ① 需求的输入。
 
-## 状态文件模板（`.workflow/state.md`）
+## 状态文件规范（`.workflow/state.md`）
 
 ```markdown
 # Dev Loop 状态
-项目：<名称>                最近更新：<YYYY-MM-DD>
+项目：<项目名称>                最近更新：<YYYY-MM-DD>
 当前步：② 设计（进行中）
 
 ## 产物索引
 ① 需求  docs/prd.md ✅
-② 设计  （进行中）
+② 设计  docs/design.md（进行中）
 ③ 实现  —
 ④ 验收  —
 ⑤ 交付  —
 ⑥ 复盘  —
 
 ## 决策记录
-- [YYYY-MM-DD] <决策内容> —— <依据 / 回退原因>
+- [YYYY-MM-DD] <决策内容与依据>
 
 ## 下一步
-- <具体动作>
+- <具体行动>
 ```
 
-## 失败处理与多层回退
+## 失败处理与回退原则
 
-- **第一顺位**：调用对应的开源顶流 skill；若当前环境未安装，可提示或自动使用 `npx skills add <source> --skill <name>` 安装；
-- **第二顺位**：若用户未安装该开源 skill，自动使用本地已安装的市场插件等效技能平替（如 `prd-development` → `product-management:PRD生成`，`impeccable` → `product-design:brief`）；
-- **第三顺位（最终兜底）**：均不可用时，改用 [stages.md](references/stages.md) 中的 1 页纸兜底指引自己完成，产物标注 `⚠️ 降级执行`。
-- ④ 验收或 ⑥ 复盘发现上游缺陷 → 回退对应步骤重做，回退原因记入决策记录；连续 2 次回退同一步 → 停下向用户呈报结构性问题。
-
-## References
-
-- 68 个开源候选全景路由表：[routing.md](references/routing.md)
-- 六步定义与 Gate 细则：[stages.md](references/stages.md)
+- **子技能调用异常**：退回内置轻量指引完成，并在产出中标注 `⚠️ 降级处理`。
+- **Gate 验收不通过**：
+  - 属于代码实现缺陷 → 回退至 ③ 重新走 TDD 修复；
+  - 属于设计遗漏边界 → 回退至 ② 补充页面状态规格；
+  - 属于需求定义冲突 → 回退至 ① 修正 PRD 验收标准。
+- 连续两次回退同一环节时，立即暂停并向用户上报阻塞点。
