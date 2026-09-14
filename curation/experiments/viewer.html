@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRD→AC 提纯试点 - 人工评审 Viewer</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #24292e;
+            --border: #d0d7de;
+            --primary: #0969da;
+            --success: #1a7f37;
+            --warning: #9a6700;
+            --danger: #cf222e;
+            --muted: #57606a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); }
+        h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0; overflow-x: auto; }
+        .tab { padding: 0.75rem 1.5rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; transition: all 0.2s; white-space: nowrap; }
+        .tab:hover { background: #f6f8fa; }
+        .tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        .viewer-content { display: none; }
+        .viewer-content.active { display: block; }
+        
+        .card { border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; background: #fafbfc; }
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .metric-card { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 1rem; text-align: center; }
+        .metric-value { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .metric-label { font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem; }
+        
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .comparison-table th, .comparison-table td { border: 1px solid var(--border); padding: 0.75rem; text-align: left; }
+        .comparison-table th { background: #f6f8fa; font-weight: 600; }
+        .comparison-table tr:hover { background: #fafbfc; }
+        .pass { color: var(--success); font-weight: bold; }
+        .fail { color: var(--danger); font-weight: bold; }
+        .warn { color: var(--warning); font-weight: bold; }
+        
+        .revision-history { display: flex; gap: 1rem; margin: 1rem 0; }
+        .revision-pill { padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.875rem; font-weight: 500; white-space: nowrap; }
+        .revision-v1 { background: #ddf4c1; color: #1a7f37; }
+        .revision-v2 { background: #ffebe0; color: #cf222e; }
+        .revision-v3 { background: #b6e3ff; color: #0969da; }
+        .revision-baseline { background: #fefefe; color: var(--text); border: 1px solid var(--border); }
+        
+        .diff-section { margin-top: 2rem; }
+        .diff-item { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+        .diff-marker { font-weight: bold; min-width: 80px; flex-shrink: 0; }
+        .diff-positive { color: var(--success); }
+        .diff-negative { color: var(--danger); }
+        
+        pre { background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.875rem; margin: 1rem 0; border: 1px solid var(--border); }
+        code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
+        
+        .lesson-card { background: #fff8c5; border-left: 4px solid var(--warning); padding: 1rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+        
+        .chart-bar { height: 24px; background: linear-gradient(90deg, var(--primary) 0%, #54aeff 100%); border-radius: 12px; margin: 0.5rem 0; position: relative; }
+        .chart-bar-fill { height: 100%; background: rgba(255,255,255,0.3); border-radius: 12px; }
+        .chart-label { font-size: 0.75rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <h1>🔍 PRD→AC 能力提纯试点 - 人工评审 Viewer</h1>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('summary')">实验总结</div>
+        <div class="tab" onclick="showTab('comparison')">版本对比</div>
+        <div class="tab" onclick="showTab('metrics')">质量度量</div>
+        <div class="tab" onclick="showTab('lessons')">经验教训</div>
+        <div class="tab" onclick="showTab('artifacts')">原始文件</div>
+    </div>
+
+    <!-- SUMMARY TAB -->
+    <div id="summary" class="viewer-content active">
+        <h2>实验概览</h2>
+        <p><strong>目标：</strong>验证将 PRD 生成能力从多技能协作工作流（discovery-process + prd-development）提纯为单一 Prompt 后的质量保持程度。</p>
+        <p><strong>输入：</strong>「我想做一个 AI 搜索工具，像 Perplexity 但更聚焦中文内容」</p>
+        <p><strong>迭代历程：</strong>baseline → v1（朴素简化）→ v2（机械强制计数）→ v3（必要性过滤器）</p>
+        
+        <div class="revision-history">
+            <span class="revision-pill revision-baseline">Baseline (完整方法)</span>
+            <span class="revision-pill revision-v1">v1 (朴素简化)</span>
+            <span class="revision-pill revision-v2">v2 (失败 - 凑数)</span>
+            <span class="revision-pill revision-v3">v3 (通过 - 过滤器)</span>
+        </div>
+
+        <h2>核心结论</h2>
+        <div class="card">
+            <h3>✅ purified method v3 通过验证</h3>
+            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                <li>AC 数量：baseline(10) vs v3(9) = <span class="pass">-10%，在容忍边界内</span></li>
+                <li>GWT 完整性：<span class="pass">100% 合规</span></li>
+                <li>异常态覆盖：<span class="pass">100%</span>（所有 P0 故事≥1 条）</li>
+                <li>OQ 深度：<span class="pass">三元组完整且具体化</span></li>
+                <li>Token 压缩：<span class="pass">篇幅从 120 行降至 75 行 (-38%)</span></li>
+            </ul>
+        </div>
+
+        <h2>关键发现</h2>
+        <div class="lesson-card">
+            <strong>⚠️ v2 惨败教训：</strong> 机械数量规则（如“每故事≥3 AC"）会导致 AI 学会钻空子编造凑数内容，GWT 合规率从 100% 崩塌至 25%。这证明提纯必须区分“可压缩”与“不可压缩”维度，禁止用形式合规掩盖实质退质。
+        </div>
+        <div class="lesson-card">
+            <strong>✅ v3 成功秘诀：</strong> 移除计数规则，改用“必要性过滤器”——对每条 AC 问“若删掉它用户故事还可验证吗？”，保留的才是真实必要内容。形式服从实质，宁缺毋滥。
+        </div>
+        <div class="lesson-card">
+            <strong>📊 诚实性最稳定：</strong> “无证据不编造数值”是所有版本唯一未降级的维度，证明强措辞禁令具有跨简化的抗衰减能力。
+        </div>
+    </div>
+
+    <!-- COMPARISON TAB -->
+    <div id="comparison" class="viewer-content">
+        <h2>版本对比矩阵</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>维度</th>
+                    <th>Baseline</th>
+                    <th>v1 (朴素)</th>
+                    <th>v2 (失败)</th>
+                    <th>v3 (通过)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AC 总数</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>16</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>GWT 合规率</td>
+                    <td>100%</td>
+                    <td>100%</td>
+                    <td><span class="fail">25%</span></td>
+                    <td class="pass">100%</td>
+                </tr>
+                <tr>
+                    <td>异常态覆盖类数</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>标注 9 条</td>
+                    <td class="pass">5 条 AC 含异常态</td>
+                </tr>
+                <tr>
+                    <td>OQ 数量</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td class="pass">5</td>
+                </tr>
+                <tr>
+                    <td>OQ 结构</td>
+                    <td>三元组完整</td>
+                    <td><span class="warn">二元组</span></td>
+                    <td>三元组</td>
+                    <td class="pass">三元组 + 具体场景</td>
+                </tr>
+                <tr>
+                    <td>文档行数</td>
+                    <td>120</td>
+                    <td>45</td>
+                    <td>55</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>是否出现凑数故事</td>
+                    <td>否</td>
+                    <td>否</td>
+                    <td><span class="fail">US-5 编造</span></td>
+                    <td class="pass">否</td>
+                </tr>
+                <tr>
+                    <td><strong>最终 verdict</strong></td>
+                    <td>金标准</td>
+                    <td>质量损失超界</td>
+                    <td><span class="fail">灾难性退质</span></td>
+                    <td class="pass"><strong>通过</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>质量底线评估</h2>
+        <div class="card">
+            <h3>非妥协维度 checklist</h3>
+            <table class="comparison-table">
+                <tr>
+                    <td>诚实性（无证据不编造）</td>
+                    <td><span class="pass">✓</span> baseline</td>
+                    <td><span class="pass">✓</span> v1</td>
+                    <td><span class="pass">✓</span> v2</td>
+                    <td><span class="pass">✓</span> v3</td>
+                </tr>
+                <tr>
+                    <td>GWT 三段完整</td>
+                    <td><span class="pass">✓</span></td>
+                    <td><span class="pass">✓</span></td>
+                    <td><span class="fail">✗</span> 25%</td>
+                    <td><span class="pass">✓</span></td>
+                </tr>
+                <tr>
+                    <td>P0 故事异常态覆盖</td>
+                    <td><span class="pass">✓</span></td>
+                    <td><span class="fail">✗</span></td>
+                    <td><span class="fail">✗</span> 标了但无实际意义</td>
+                    <td><span class="pass">✓</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- METRICS TAB -->
+    <div id="metrics" class="viewer-content">
+        <h2>量化度量对比</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value pass">-10%</div>
+                <div class="metric-label">AC 数量降幅 (baseline→v3)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value pass">100%</div>
+                <div class="metric-label">GWT 合规率 (v3)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value warn">-38%</div>
+                <div class="metric-label">文档篇幅减少 (baseline→v3)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value pass">5/5</div>
+                <div class="metric-label">P0 故事异常态覆盖率</div>
+            </div>
+        </div>
+
+        <h3>各版本 GWT 合规率对比</h3>
+        <div class="card">
+            <div class="chart-bar">
+                <div class="chart-bar-fill" style="width: 100%;"></div>
+            </div>
+            <div class="chart-label">Baseline: 100% (全部合规)</div>
+            
+            <div class="chart-bar">
+                <div class="chart-bar-fill" style="width: 100%;"></div>
+            </div>
+            <div class="chart-label">v1: 100% (但仅 5 条 AC)</div>
+            
+            <div class="chart-bar">
+                <div class="chart-bar-fill" style="width: 25%; background: var(--danger);"></div>
+            </div>
+            <div class="chart-label warn">v2: 25% ⚠️ 灾难性退质</div>
+            
+            <div class="chart-bar">
+                <div class="chart-bar-fill" style="width: 100%;"></div>
+            </div>
+            <div class="chart-label pass">v3: 100% ✓ 成功恢复</div>
+        </div>
+
+        <h3>Token 效率估算</h3>
+        <pre>
+baseline   : 120 lines × ~10 tokens/line ≈ 1200 tokens
+v1         :  45 lines ×  10 tokens/line ≈  450 tokens (节约 62%)
+v3         :  75 lines ×  10 tokens/line ≈  750 tokens (节约 38%)
+          
+注意：tokens 是粗略估算；实际 API 调用量可能因上下文而异
+        </pre>
+    </div>
+
+    <!-- LESSONS TAB -->
+    <div id="lessons" class="viewer-content">
+        <h2>经验教训集</h2>
+        
+        <div class="lesson-card">
+            <h3>💡 教训 1：机械数量规则必然被钻空子</h3>
+            <p><strong>背景：</strong>v2 尝试用“每故事≥3 AC、至少 1 异常态”的计数式规则提升覆盖度。</p>
+            <p><strong>结果：</strong>AI 学会了偷工减料——给 US-5 编造凑数故事，GWT 合规率从 100% 崩塌至 25%。</p>
+            <p><strong>启示：</strong>任何提纯项目都禁用数量强制规则，改用质量底线 + 必要性自检。</p>
+        </div>
+
+        <div class="lesson-card">
+            <h3>💡 教训 2：质量底线必须显式划分</h3>
+            <p><strong>问题：</strong>v1 一刀切压缩导致 OQ 三元组结构丢失；v3 成功的关键是明确区分：</p>
+            <ul style="margin-left: 2rem;">
+                <li><strong>非妥协：</strong>诚实性、GWT 三段完整、OQ 第二列具体场景</li>
+                <li><strong>可压缩：</strong>Persona 次要维度、竞品分析深度、章节修辞</li>
+            </ul>
+            <p><strong>操作建议：</strong>阶段 6 提纯其余能力簇时，每个 Dossier 应自动生成这两个清单。</p>
+        </div>
+
+        <div class="lesson-card">
+            <h3>💡 教训 3：审计必须行级精确匹配</h3>
+            <p><strong>陷阱：</strong>粗粒度 grep 全文关键词曾误判 v3 GWT 合规率（把自检段落文字计入），给出假阴性结论。</p>
+            <p><strong>正确做法：</strong>用正则<code>^- AC-</code>等结构化前缀匹配，确保只统计目标区域。</p>
+        </div>
+
+        <div class="lesson-card">
+            <h3>💡 机会点：未来扩展方向</h3>
+            <ol style="margin-left: 2rem;">
+                <li>TC02/TC03 B2B/电商场景对照实验尚未运行，建议在阶段 6 批量执行</li>
+                <li>留出集 HO01-HO03（B2B/IoT/超早期）测试泛化能力</li>
+                <li>退化测试 COR01-COR04 检验极端情况表现</li>
+                <li>guided mode 真实交互时序测量需真人参与</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ARTIFACTS TAB -->
+    <div id="artifacts" class="viewer-content">
+        <h2>原始文件索引</h2>
+        <div class="card">
+            <h3>方法论文件</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📄 <code>curation/experiments/pr-to-ac-method-v3.json</code> — v3 规范定义</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📄 <code>curation/experiments/pr-to-ac-purification-plan.json</code> — 实验计划</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📄 <code>curation/experiments/pr-to-ac-method-v2.json</code> — v2 失败案例</li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem;">输出 PRD 文档</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📝 <code>curation/experiments/pr-to-ac-results/tc01-baseline-prd.md</code> — 120 行基线金标准</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📝 <code>curation/experiments/pr-to-ac-results/tc01-purified-v1-prd.md</code> — 45 行朴素简化</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📝 <code>curation/experiments/pr-to-ac-results/tc01-purified-v2-prd.md</code> — 55 行失败案例</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📝 <code>curation/experiments/pr-to-ac-results/tc01-purified-v3-prd.md</code> — 75 行推荐配置</li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem;">评测报告</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📊 <code>curation/experiments/pr-to-ac-results/tc01-comparison.json</code> — v1 vs baseline</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📊 <code>curation/experiments/pr-to-ac-results/tc01-v2-failure-report.json</code> — v2 惨败分析</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">📊 <code>curation/experiments/pr-to-ac-final-report.json</code> — 完整实验总结</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.viewer-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

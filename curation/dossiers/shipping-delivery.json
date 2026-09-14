@@ -1,0 +1,79 @@
+{
+  "dossier_id": "shipping-delivery",
+  "title": "交付域能力簇（Shipping & Delivery）",
+  "description": "从代码完成到生产部署的完整交付链条，包括版本管理、变更日志、PR 创建、灰度监控等核心能力",
+  "skills_included": [
+    {"name": "ship", "role": "主驱：端到端发布工作流"},
+    {"name": "canary", "role": "监控：发布后金丝雀监测"},
+    {"name": "vercel-optimize", "role": "优化：Vercel 平台性能调优"},
+    {"name": "deploy-to-vercel", "role": "流程：Vercel 部署流水线"},
+    {"name": "github-actions-hardening", "role": "加固：CI/CD 最佳实践"}
+  ],
+  "workflow_sequence": [
+    {
+      "phase": 1,
+      "activity": "发布前检查",
+      "skill_used": "verification-before-completion",
+      "inputs": ["已完成代码", "测试套件"],
+      "outputs": ["验证证据", "发布准入证明"]
+    },
+    {
+      "phase": 2,
+      "activity": "版本与变更记录",
+      "skill_used": "ship (auto)",
+      "inputs": ["git diff", "CHANGELOG.md"],
+      "outputs": ["VERSION bump", "CHANGELOG entry"]
+    },
+    {
+      "phase": 3,
+      "activity": "PR 创建与合并",
+      "skill_used": "ship + requesting-code-review",
+      "inputs": ["feature branch", "test results"],
+      "outputs": ["PR with review comments"]
+    },
+    {
+      "phase": 4,
+      "activity": "生产部署",
+      "skill_used": "ship → deploy-to-vercel",
+      "inputs": ["main branch", "deploy config"],
+      "outputs": ["production URL", "deployment logs"]
+    },
+    {
+      "phase": 5,
+      "activity": "金丝雀监控",
+      "skill_used": "canary",
+      "inputs": ["production URL", "pre-deploy baseline"],
+      "outputs": ["健康评分", "异常告警"]
+    }
+  ],
+  "capabilities_map": [
+    {"capability": "version-bumping", "skills": ["ship"]},
+    {"capability": "changelog-generation", "skills": ["ship"]},
+    {"capability": "pr-creation-workflow", "skills": ["ship", "requesting-code-review"]},
+    {"capability": "post-deploy-monitoring", "skills": ["canary"]},
+    {"capability": "performance-regression-detection", "skills": ["canary", "vercel-optimize"]}
+  ],
+  "iron_laws": [
+    {
+      "law_id": "ship-gates-first",
+      "source": "ship + verification-before-completion",
+      "statement": "NO SHIP WITHOUT VERIFICATION",
+      "enforcement": "未完成验证（测试、审查、文档）不得推送/main；ship 技能内置 Gate 检查"
+    },
+    {
+      "law_id": "canary-always-on",
+      "source": "canary",
+      "statement": "EVERY DEPLOY MUST BE MONITORED",
+      "enforcement": "每次部署后必须运行金丝雀监控；无监控的部署视为失败"
+    }
+  ],
+  "blocking_gaps": [
+    {
+      "gap_id": "vercel-credentials",
+      "description": "deploy-to-vercel / vercel-optimize 需要 Vercel API token 和 PROJECT_ID",
+      "severity": "non-blocking",
+      "mitigation": "凭据由用户自有环境提供；语义拆解只关注工作流逻辑而非凭证本身"
+    }
+  ],
+  "notes": "交付域是六步架构中的'交付'环节。ship 作为 gstack 旗舰技能之一实现了完整的 release workflow（detect branch → merge base → tests → review diff → version bump → changelog → commit/push/PR）。canary 则是对接生产环境的后置闸门，形成闭环。"
+}

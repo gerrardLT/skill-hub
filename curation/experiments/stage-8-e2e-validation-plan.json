@@ -1,0 +1,127 @@
+{
+  "final_e2e_test_id": "stage-8-complete-e2e-validation",
+  "title": "Stage 8: Complete End-to-End Integration Test & Final Validation",
+  "execution_timestamp": "2026-09-09T14:58:00Z",
+  "objective": "Final validation of complete dev-loop with all gates enabled, production-ready config deployed, and SKILLS.md updated",
+  "test_scenarios": [
+    {
+      "scenario_id": "E2E-01",
+      "name": "Full six-step workflow from scratch",
+      "description": "Run complete dev-loop (需求→设计→实现→验收→交付→复盘) with all 6 gates active",
+      "input": "New feature request: 'Add AI-powered search to dashboard'",
+      "expected_flow": [
+        {
+          "step": 1,
+          "phase": "需求域 - PRD generation",
+          "gate": "AC generation gate",
+          "action": "Generate PRD for AI search",
+          "gate_check": "Verify P0 stories have ≥3 GWT ACs each",
+          "pass_criteria": "All P0 stories pass gate ✓"
+        },
+        {
+          "step": 2,
+          "phase": "设计域 - UI specs",
+          "gate": "A11y gate",
+          "action": "Design tokens + component specs",
+          "gate_check": "Contrast measurements + prefers-reduced-motion block",
+          "pass_criteria": "All a11y requirements met ✓"
+        },
+        {
+          "step": 3,
+          "phase": "实现域 - Code",
+          "gate": "TDD gate",
+          "action": "Implement functionality with test-first pattern",
+          "gate_check": "Red-green-refactor cycle documented",
+          "pass_criteria": "Test-first pattern verified ✓"
+        },
+        {
+          "step": 4,
+          "phase": "验收域 - Testing",
+          "gate": "qa-only gate",
+          "action": "Run tests, generate baseline.json",
+          "gate_check": "Health score calculated from 8 categories",
+          "pass_criteria": "baseline.json saved ✓"
+        },
+        {
+          "step": 5,
+          "phase": "交付域 - Ship",
+          "gate": "Canary + Pre-mortem gates",
+          "action": "Deploy to staging, run canary monitoring",
+          "gate_check": "Baseline comparison, Launch-Blocking Tigers = 0",
+          "pass_criteria": "Deployment successful ✓"
+        },
+        {
+          "step": 6,
+          "phase": "复盘域 - Retro",
+          "gate": "Retro learning gate",
+          "action": "Analyze results, capture learnings",
+          "gate_check": "timeline.jsonl + learnings.jsonl updated",
+          "pass_criteria": "Learnings logged ✓"
+        }
+      ],
+      "expected_results": {
+        "all_gates_triggered_correctly": true,
+        "cross_domain_contracts_preserved": true,
+        "no_gate_violations_slipped_through": true,
+        "artifact_handoffs_complete": true
+      }
+    },
+    {
+      "scenario_id": "E2E-02",
+      "name": "Gate failure recovery simulation",
+      "description": "Intentionally trigger gate failures at different stages and verify correct blocking/recovery",
+      "test_cases": [
+        {
+          "case": "AC gate fails mid-PRD",
+          "response": "Block transition → Force user to expand ACs → Re-test passes"
+        },
+        {
+          "case": "TDD gate blocks code commit",
+          "response": "Delete code → Write failing test first → Restart red-green-refactor"
+        },
+        {
+          "case": "Pre-mortem has Launch-Blocking Tiger",
+          "response": "Block deployment → Create action plan → Verify mitigation progress"
+        }
+      ],
+      "expected_results": {
+        "all_failures_blocked_correctly": true,
+        "recovery_paths_clear_and_executable": true,
+        "no_gate_violations_unhandled": true
+      }
+    },
+    {
+      "scenario_id": "E2E-03",
+      "name": "Production-ready config validation",
+      "description": "Verify production config subset works correctly with minimal overhead",
+      "checklist": [
+        "Gate configurations loadable",
+        "Cross-domain contracts validated",
+        "Mechanical audit pipeline functional",
+        "Telemetry logging can be disabled",
+        "Error handling paths defined",
+        "Documentation minimal but complete"
+      ]
+    }
+  ],
+  "completion_audit_checklist": {
+    "deliverables_verified": [
+      {"item": "SKILLS.md updated with purified methods references", "status": "pending verification"},
+      {"item": "Production-ready config created", "status": "pending verification"},
+      {"item": "E2E test scenarios passed", "status": "pending verification"},
+      {"item": "Memory files updated", "status": "pending verification"}
+    ],
+    "success_criteria": {
+      "all_6_purified_methods_validated": true,
+      "all_6_gates_working_together": true,
+      "cross_domain_contracts_intact": true,
+      "production_config_functional": true,
+      "mechanical_audit_accuracy_100pct": true
+    }
+  },
+  "next_steps_after_success": [
+    "Update project memory files with final summary",
+    "Archive this session's artifacts for future reference",
+    "Mark goal status as complete"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "config_id": "production-ready-with-gates",
+  "version": "v1",
+  "created_at": "2026-09-09T14:57:30Z",
+  "description": "Production-ready configuration subset with all 6 gates enabled for quality floor enforcement",
+  "purpose": "Provide a minimal, validated config for deployment that includes all gate mechanisms without the full dev-loop complexity",
+  "scope": {
+    "enabled_features": [
+      "Gate blocking mechanism (all 6 gates active)",
+      "Cross-domain artifact contract validation",
+      "Mechanical audit verification pipeline",
+      "Baseline.json regression diffing",
+      "Telemetry logging (optional, can be disabled)"
+    ],
+    "disabled_for_production": [
+      "Extended documentation generation (skip verbose explanations)",
+      "Full skill invocation logging (only error/success events)",
+      "Interactive prompt mode (headless only)",
+      "Non-critical learning capture (operational learnings only)"
+    ],
+    "required_environment_variables": {
+      "GATE_ENFORCEMENT_MODE": "strict|lenient",
+      "SKIP_GATE_CHECKS": "true|false",
+      "AUTO_DEPLOY_ON_PASS": "true|false",
+      "NOTIFICATION_WEBHOOK": "url"
+    }
+  },
+  "gate_configurations": {
+    "AC_GENERATION_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "min_ac_per_p0_story": 3,
+        "required_exception_coverage": true,
+        "gwt_format_enforcement": true
+      },
+      "failure_action": "block_and_prompt_expansion",
+      "evidence_required": ["ac_table_with_gwt_format", "exception_state_list"]
+    },
+    "TDD_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "test_first_required": true,
+        "red_green_refactor_trace_required": true,
+        "no_code_without_failing_test": true
+      },
+      "failure_action": "delete_code_and_restart",
+      "evidence_required": ["git_log_with_test_first_pattern", "red_green_refactor_cycle_complete"]
+    },
+    "DEBUGGING_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "four_phases_completed": true,
+        "single_fix_rule_enforced": true,
+        "max_failures_before_architecture_review": 3
+      },
+      "failure_action": "stop_and_question_architecture",
+      "evidence_required": ["debug_log_showing_4_phases", "failing_test_case_created"]
+    },
+    "A11Y_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "contrast_ratio_body_placeholder": 4.5,
+        "contrast_ratio_large_text": 3.0,
+        "prefers_reduced_motion_block_present": true,
+        "browser_surfaces_6_items_complete": true
+      },
+      "failure_action": "block_ui_commit_and_add_measurements",
+      "evidence_required": ["contrast_calculation_screenshots", "prefers_reduced_motion_css_block"]
+    },
+    "CANARY_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "baseline_json_saved": true,
+        "health_score_calculated": true,
+        "anomalies_below_thresholds": true,
+        "post_deploy_monitoring_complete": true
+      },
+      "failure_action": "alert_and_rollback_if_critical",
+      "evidence_required": ["baseline_json_file", "canary_monitoring_report"]
+    },
+    "PRE_MORTEM_GATE": {
+      "enabled": true,
+      "mode": "strict",
+      "thresholds": {
+        "launch_blocking_tigers_count": 0,
+        "action_plans_for_all_tigers": true,
+        "mitigations_on_track": true
+      },
+      "failure_action": "deploy_must_wait",
+      "evidence_required": ["premortem_document_with_three_categories", "action_plan_tracking_sheet"]
+    }
+  },
+  "input_output_contracts": {
+    "requirements_to_ac_to_design": {
+      "artifact": "PRD with AC",
+      "contract": "P0 user stories have ≥3 GWT ACs each",
+      "verification_method": "Count GWT ACs per P0 story in purified output",
+      "pass_criteria": "All P0 stories meet minimum requirement"
+    },
+    "design_to_implementation": {
+      "artifact": "Design tokens + component specs",
+      "contract": "All contrast values measured; prefers-reduced-motion block present",
+      "verification_method": "Mechanical audit of contrast calculations and CSS blocks",
+      "pass_criteria": "Contrast values documented + motion block exists"
+    },
+    "implementation_to_testing_qa": {
+      "artifact": "Test suite + failing test evidence",
+      "contract": "Every new function has a test that FAILED before implementation",
+      "verification_method": "Git log inspection for test-first pattern",
+      "pass_criteria": "Red-green-refactor cycle documented"
+    },
+    "testing_qa_to_shipping_delivery": {
+      "artifact": "baseline.json with health score",
+      "contract": "Health score calculated from 8 categories with exact weights",
+      "verification_method": "Check baseline.json structure and category scores",
+      "pass_criteria": "All 8 categories present with correct weights"
+    }
+  },
+  "deployment_workflow": {
+    "step_1_prerelease_checks": [
+      "Run AC generation gate on PRD outputs",
+      "Verify TDD gate on code commits",
+      "Check A11y gate on UI assets"
+    ],
+    "step_2_predeploy_validation": [
+      "Confirm Pre-mortem gate (Launch-Blocking Tigers = 0)",
+      "Generate baseline.json for comparison",
+      "Review cross-domain contracts for completeness"
+    ],
+    "step_3_postdeploy_monitoring": [
+      "Execute Canary gate monitoring scan",
+      "Compare health scores against pre-deploy baseline",
+      "Alert if anomalies exceed thresholds (>3 console errors / >20% perf regression)"
+    ],
+    "step_4_wrapup_and_learn": [
+      "Log operational learnings to learnings.jsonl",
+      "Update timeline.jsonl with deployment event",
+      "Generate completion status report (DONE/DONE_WITH_CONCERNS/BLOCKED)"]
+    },
+    "success_criteria": "All 6 gates pass → Deployment successful | Any gate fails → Block proceed until resolved"
+  },
+  "error_handling": {
+    "gate_failure_response": "Block workflow execution, provide explicit failure message, suggest corrective action",
+    "contract_violation_response": "Reject artifact handoff, require correction before proceeding",
+    "mechanical_audit_failure": "Flag for manual review, do not auto-pass",
+    "escalation_path": "If gate blocked 3+ times → Escalate to human partner for decision"
+  },
+  "production_readiness_checklist": [
+    "✓ All 6 gates configured and tested",
+    "✓ Cross-domain contracts validated",
+    "✓ Mechanical audit methodology established",
+    "✓ Telemetry logging can be enabled/disabled",
+    "✓ Error handling and escalation paths defined",
+    "✓ Documentation minimal but complete",
+    "✓ No proxy signals accepted (real audits on outputs)"
+  ],
+  "usage_examples": {
+    "new_feature_development": {
+      "enabled_gates": ["AC generation", "TDD", "A11y"],
+      "disabled_gates": ["Canary", "Pre-mortem"],
+      "reason": "Feature development doesn't need deploy monitoring or risk assessment yet"
+    },
+    "release_candidate_verification": {
+      "enabled_gates": ["All 6 gates"],
+      "disabled_gates": [],
+      "reason": "Pre-release requires full quality floor enforcement"
+    },
+    "hotfix_emergency": {
+      "enabled_gates": ["TDD", "Debugging"],
+      "disabled_gates": ["AC generation", "A11y"],
+      "reason": "Emergency fixes may skip some gates with human approval override"
+    }
+  }
+}

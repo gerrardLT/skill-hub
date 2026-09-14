@@ -1,0 +1,99 @@
+{
+  "experiment_id": "implementation-purification",
+  "cluster": "implementation",
+  "version": "final-report",
+  "created_at": "2026-09-09T14:42:40Z",
+  "baseline_file": "curation/experiments/implementation-baseline-report.md",
+  "purified_v3_file": "curation/experiments/implementation-purified-v3-report.md",
+  "mechanical_audit_results": {
+    "document_lines": {
+      "baseline": 415,
+      "purified_v3": 141,
+      "compression_rate": "-66%",
+      "verdict": "EXCELLENT — far surpasses PRD domain (-38%) and Design domain (-7%)"
+    },
+    "iron_laws_present": {
+      "tdd_law": {
+        "text": "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST",
+        "count_in_v3": 2,
+        "threshold_min": 1,
+        "pass": true
+      },
+      "debugging_law": {
+        "text": "NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST",
+        "count_in_v3": 2,
+        "threshold_min": 1,
+        "pass": true
+      }
+    },
+    "red_green_refactor_order": {
+      "red_count": 3,
+      "green_count": 3,
+      "refactor_count": 2,
+      "pass": true
+    },
+    "verification_steps": {
+      "verify_red": 1,
+      "verify_green": 1,
+      "pass": true
+    },
+    "debugging_four_phases": {
+      "read_errors": 1,
+      "reproduce": 1,
+      "check_changes": 1,
+      "gather_evidence": 1,
+      "trace_data_flow": 1,
+      "all_five_present": true
+    },
+    "total_quality_floor_pass_rate": "6/6 metrics pass"
+  },
+  "comparison_summary": {
+    "key_findings": [
+      {
+        "finding": "Implementation 域压缩收益极高（-66%）远超其他域",
+        "evidence": "Baseline 415 行中大量篇幅是'why/how'解释文字、历史背景说明、常见借口反驳表格",
+        "significance": "铁律密集型能力簇的压缩潜力 >> 流程叙述型 (PRD) > 规则密度型 (Design)"
+      },
+      {
+        "finding": "两条铁律原文保留是最核心的质量保证",
+        "evidence": "v3 输出中每条铁律至少出现 2 次（加粗 + 代码块），确保不会被误读或弱化",
+        "significance": "强制措辞是跨简化的抗衰减能力的最佳证明"
+      },
+      {
+        "finding": "Debugging 四阶段从 verbose 描述压缩为每步 1 句核心词",
+        "evidence": "Phase 1 原需 10+ 行解释；v3 仅用'Read Errors/Reproduce/Check Changes...'五个关键词概括",
+        "significance": "信息密度未降反而提升——关键词更易被记忆和执行"
+      }
+    ],
+    "pattern_verification_success": [
+      {"pattern": "iron law TDD text presence", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "iron law debugging text presence", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "RED-GREEN-REFACTOR sequence", "actual": 3 terms present, "min": 3, "pass": true},
+      {"pattern": "verify_red verification step", "actual": 1, "min": 1, "pass": true},
+      {"pattern": "verify_green verification step", "actual": 1, "min": 1, "pass": true},
+      {"pattern": "debugging four phases (5 sub-items)", "actual": 5, "min": 5, "pass": true}
+    ],
+    "verdict": "PURIFIED V3 PASS — 压缩率 66%，质量底线全部达标，实现域提纯成功案例"
+  },
+  "design_to_ui_concise_v3_recommendation": {
+    "adopt_as_default": true,
+    "for_stage_6_purification": [
+      "每个能力簇先评估文档结构类型：铁律密集型/流程叙述型/规则密度型",
+      "铁律密集型（如 implementation）优先使用 v3 范式——压缩收益最高",
+      "流程叙述型（如 PRD）居中——有中等压缩空间但需注意不丢失关键逻辑链",
+      "规则密度型（如 design）谨慎压缩——核心是'可验证性升级'而非篇幅删减"
+    ]
+  },
+  "lessons_learned": [
+    "✅ 铁律密集型能力域具有最高的提纯潜力（-66% vs PRD 的 -38% vs Design 的 -7%）",
+    "✅ 两条铁律原文必须完整保留且至少出现两次（加粗强调）",
+    "✅ Debugging 四阶段从 verbose 到 keyword-only 的信息密度提升是成功的标志",
+    "⚠️ 'Red/Green/Refactor'三色循环的历史背景说明可完全删除（对执行无影响）",
+    "⚠️ 常见借口反驳表格可从 8 项压缩为前 3 项高频理由（Too simple/I'll test after/Missing edge cases）"
+  ],
+  "remaining_gaps": [
+    "实际代码审查场景未覆盖（需与 real-world PR review 对比）",
+    "子代理并行执行场景未测试（subagent-driven-development 是否仍有效）",
+    "与 verifying-before-completion 的 Gate 集成待验证"
+  ]
+}

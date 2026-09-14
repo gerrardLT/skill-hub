@@ -1,0 +1,83 @@
+{
+  "dossier_id": "testing-qa",
+  "title": "验收域能力簇（Testing & QA）",
+  "description": "在实现完成后进行质量保证的全过程，涵盖测试用例生成、质量评估策略、工具链验证等核心能力",
+  "skills_included": [
+    {"name": "test-case-generator", "role": "上游：生成高质量测试用例"},
+    {"name": "qa-only", "role": "流程：专门 QA 工作流"},
+    {"name": "testing-strategy", "role": "设计：构建测试金字塔"},
+    {"name": "vitest", "role": "工具：单元测试框架集成"},
+    {"name": "playwright", "role": "工具：端到端浏览器测试"},
+    {"name": "playwright-best-practices", "role": "指南：最佳实践应用"},
+    {"name": "validate-data", "role": "专项：数据一致性验证"}
+  ],
+  "workflow_sequence": [
+    {
+      "phase": 1,
+      "activity": "测试用例生成",
+      "skill_used": "test-case-generator",
+      "inputs": ["PRD", "用户故事", "验收标准"],
+      "outputs": ["结构化测试用例", "边界案例集"]
+    },
+    {
+      "phase": 2,
+      "activity": "测试策略设计",
+      "skill_used": "testing-strategy",
+      "inputs": ["功能清单", "架构分层"],
+      "outputs": ["测试金字塔", "覆盖率目标", "工具选型矩阵"]
+    },
+    {
+      "phase": 3,
+      "activity": "单元测试实施",
+      "skill_used": "vitest + test-driven-development",
+      "inputs": ["实现代码", "测试用例"],
+      "outputs": ["单元测试套件", "mock 规范"]
+    },
+    {
+      "phase": 4,
+      "activity": "端到端测试实施",
+      "skill_used": "playwright + playwright-best-practices",
+      "inputs": ["用户旅程", "关键路径"],
+      "outputs": ["E2E 测试脚本", "浏览器兼容矩阵"]
+    },
+    {
+      "phase": 5,
+      "activity": "数据一致性验证",
+      "skill_used": "validate-data",
+      "inputs": ["数据模型", "业务流程"],
+      "outputs": ["数据校验报告", "完整性证明"]
+    },
+    {
+      "phase": 6,
+      "activity": "综合质量评估",
+      "skill_used": "qa-only",
+      "inputs": ["测试套件结果", "缺陷统计"],
+      "outputs": ["质量报告", "发布建议"]
+    }
+  ],
+  "capabilities_map": [
+    {"capability": "test-case-generation", "skills": ["test-case-generator"]},
+    {"capability": "testing-strategy-design", "skills": ["testing-strategy"]},
+    {"capability": "unit-testing", "skills": ["vitest", "test-driven-development"]},
+    {"capability": "e2e-testing", "skills": ["playwright", "playwright-best-practices"]},
+    {"capability": "data-validation", "skills": ["validate-data"]},
+    {"capability": "qa-gate", "skills": ["qa-only"]}
+  ],
+  "iron_laws": [
+    {
+      "law_id": "qa-evidence-first",
+      "source": "verification-before-completion + qa-only",
+      "statement": "NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE",
+      "enforcement": "无实际测试证据不得宣称完成；禁止伪造或臆造测试结果"
+    }
+  ],
+  "blocking_gaps": [
+    {
+      "gap_id": "qa-toolchain-dependency",
+      "description": "vitest/playwright 需要 npm 依赖支持，但语义拆解只聚焦文本规则",
+      "severity": "non-blocking",
+      "mitigation": "工具安装和使用留到阶段 7 配方验证时处理；当前仅提取文本层面的规则和方法"
+    }
+  ],
+  "notes": "验收域是六步中的'验收'环节，也是 Gate 把关的核心。test-case-generator 属于上游产出（在实现前），而 qa-only/vitest/playwright 属于下游执行。与 PRD 域类似，这里也强调'测试先行'的理念——test-driven-development 横跨实现和验收两个域。"
+}

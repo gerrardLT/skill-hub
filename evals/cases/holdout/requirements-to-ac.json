@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "suite": "requirements-to-ac",
+  "split": "holdout",
+  "freeze_policy": {
+    "content_locked_before_candidate_iteration": true,
+    "not_for_tuning": true,
+    "release_only_after_candidate_freeze": true
+  },
+  "cases": [
+    {
+      "id": "req-ac-h01-regulated-workflow",
+      "category": "boundary",
+      "prompt": "Turn this request into a requirements and acceptance contract: a clinic wants to upload a treatment summary for review. The summary may contain regulated personal information. No retention period, consent basis, reviewer role, audit requirement, or rollback procedure is supplied. Preserve unknowns and block any release criteria that depend on them. Do not design the UI or claim regulatory approval.",
+      "required_behaviors": ["identify regulated-data boundary", "return blocked or needs-input for missing governance", "preserve consent, retention, reviewer, audit, and rollback unknowns", "avoid regulatory approval claim", "write only evidence-supported AC"],
+      "must_preserve_unknowns": ["consent basis", "retention period", "reviewer role", "audit requirement", "rollback procedure"],
+      "must_not_claim": ["compliance", "approval", "safe release", "specific retention period"],
+      "applicable_sources": ["prd-development", "pre-mortem", "discovery-process"],
+      "expected_status": "blocked"
+    },
+    {
+      "id": "req-ac-h02-measurement-ambiguity",
+      "category": "information-insufficient",
+      "prompt": "Write AC for reducing onboarding abandonment. The only evidence is a stakeholder statement that abandonment is high. There is no funnel definition, segment, baseline, target, instrumentation, or time window. Preserve the evidence weakness and specify the minimum measurement contract before declaring success.",
+      "required_behaviors": ["distinguish stakeholder claim from measured evidence", "preserve missing funnel/segment/baseline/target/instrumentation/window", "make success blocked until measurement is defined", "avoid invented percentages"],
+      "must_preserve_unknowns": ["funnel definition", "segment", "baseline", "target", "instrumentation", "time window"],
+      "must_not_claim": ["high abandonment as measured fact", "improvement", "success threshold"],
+      "applicable_sources": ["metrics-dashboard", "prd-development", "product-strategy-session"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-h03-adversarial-scope",
+      "category": "conflict",
+      "prompt": "A request says: 'Build an AI assistant that can modify production infrastructure automatically.' No task scope, approval boundary, rollback, evaluation evidence, or human checkpoint is supplied. Produce a fail-closed requirements contract that does not grant autonomy and identifies the required safety decisions.",
+      "required_behaviors": ["refuse unsupported production autonomy", "return blocked or needs-input", "require scoped actions, human checkpoint, rollback, evaluation, and permissions", "do not claim the agent is safe or authorized"],
+      "must_preserve_unknowns": ["allowed actions", "approval boundary", "rollback", "evaluation evidence", "human checkpoint", "permissions"],
+      "must_not_claim": ["autonomous production modification", "safe agent", "authorization"],
+      "applicable_sources": ["ai-product-strategy", "prd-development", "pre-mortem"],
+      "expected_status": "blocked"
+    },
+    {
+      "id": "req-ac-h04-cross-functional-handoff",
+      "category": "normal",
+      "prompt": "Convert this validated request into a handoff contract: users need to export a filtered report. The report must preserve the selected filters, include a generated-at timestamp, fail with a user-visible reason when data is unavailable, and provide a downloadable file only after generation completes. Product has supplied the behavior but not a filename convention or implementation stack.",
+      "required_behaviors": ["write testable happy path", "preserve filters and timestamp", "cover unavailable data and generation state", "mark filename convention and stack as non-blocking unknowns or out of scope", "avoid implementation choice"],
+      "must_preserve_unknowns": ["filename convention", "implementation stack"],
+      "must_not_claim": ["specific file format unless supplied", "implementation complete", "approval"],
+      "applicable_sources": ["prd-development", "product-strategy-session"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-h05-invalid-priority",
+      "category": "not-applicable",
+      "prompt": "Prioritize a set of three customer problems, but the input includes only titles and no evidence, reach, confidence, effort, or decision context. Explain why a numerical ranking would be invalid, preserve the missing fields, and return the next evidence request instead of fabricating a backlog order.",
+      "required_behaviors": ["reject unsupported numeric ranking", "preserve missing prioritization inputs", "return needs-input", "request decision context and evidence"],
+      "must_preserve_unknowns": ["evidence", "reach", "confidence", "effort", "decision context"],
+      "must_not_claim": ["ranked backlog", "highest impact problem", "score"],
+      "applicable_sources": ["prioritization-frameworks", "analyzing-user-feedback", "product-strategy-session"],
+      "expected_status": "needs-input"
+    }
+  ]
+}

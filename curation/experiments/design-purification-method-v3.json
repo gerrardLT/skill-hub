@@ -1,0 +1,73 @@
+{
+  "method_id": "design-to-ui-concise-v3",
+  "parent_cluster": "design-to-ui",
+  "version": "v3 — 质量底线 + 必要性过滤器（跳过 v2 计数式陷阱）",
+  "derived_from": [
+    "pr-to-ac-concise-v3 的成功范式",
+    "impeccable craft-floor 的规则原文",
+    "web-accessibility 的决策规则"
+  ],
+  "design_philosophy": "设计域的核心资产是'规则密度'而非'流程长度'。craft-floor 的 24 条规则中仅 9 条是机械可验证的（contrast/depth/spacing/type/motion/states/copy/coverage），其余 15 条拒绝清单依赖判断力。提纯策略：保留全部规则文本（规则本身已紧凑），压缩流程编排与交叉引用",
+  "changes_from_v1": [
+    {
+      "change": "A11y contrast 从'规则罗列'升级为'可实测值'",
+      "rule": "输出必须附带具体对比度数值计算（如 #1a1a1a on #ffffff = 16.1:1），而非只写'≥4.5:1'的规则声明",
+      "reason": "v1 的规则声明无法被自动验证；实测值让 Gate 可机械检查"
+    },
+    {
+      "change": "浏览器原生表面主题化从'提及'升级为'强制清单'",
+      "rule": "输出必须包含 6 项原生表面定制清单：text selection / caret / scrollbar / focus ring / underline offset / tabular numerals，每项给出具体 CSS 声明",
+      "reason": "craft-floor 明确指出'这是模型最可靠跳过的一环'——跳过即非 craft"
+    },
+    {
+      "change": "组件状态从'罗列四类'升级为'矩阵自检'",
+      "rule": "输出末尾附状态矩阵表：行=组件，列=hover/disabled/loading/error/empty，每格填'已定义 token'或'不适用+原因'，禁止空格",
+      "reason": "空格=凑数漏洞；强制填写'不适用+原因'保留了必要性过滤器精神"
+    },
+    {
+      "change": "Motion 的 prefers-reduced-motion 从'提及'升级为'代码块'",
+      "rule": "必须输出 @media (prefers-reduced-motion: reduce) 的完整 CSS 块，动画全部 transition: none 或 duration: 0.01ms",
+      "reason": "提及不等于实现；代码块可机械验证存在性"
+    }
+  ],
+  "prompt_template": {
+    "input": "目标页面描述/URL + 品牌关键词（可选）+ WCAG 目标级别",
+    "instructions": [
+      "1. 色彩系统：主/辅/语义色，每色给 HEX + token 名 + 对前景文本的实测对比度值",
+      "2. 排版：字号阶梯+行高+字距 floor（65-75ch 正文、display≤6rem、tracking≥-0.04em）",
+      "3. 间距：8px 网格，标题上方空间>下方",
+      "4. 阴影：≥3 层深度，每层 offset+blur（零偏移光晕=装饰）",
+      "5. 动效：Duration palette 三档 + exponential ease-out 默认 + 一个 authored moment + 完整 prefers-reduced-motion CSS 块",
+      "6. 浏览器原生表面：6 项定制清单（selection/caret/scrollbar/focus ring/underline offset/tabular numerals），每项附 CSS 声明",
+      "7. 组件：按钮/表单/卡片/导航四类基础组件，含状态矩阵表（行=组件，列=五状态，空格禁止）",
+      "8. 拒绝清单：5 项反模式原文保留（gradient text/玻璃装饰/硬阴影/emoji 图标/无谓 modal）",
+      "9. A11y：contrast 实测值 + 键盘可达 + ARIA 兜底原则（原生优先）+ 错误消息双要素（问题+恢复）"
+    ]
+  },
+  "quality_floor": {
+    "non_negotiable": [
+      "contrast 附实测数值（可机械验证）",
+      "prefers-reduced-motion 为完整 CSS 块（可机械验证）",
+      "状态矩阵无空格（可机械验证）",
+      "原生表面 6 项清单齐备（可机械验证）",
+      "拒绝清单 5 项原文保留（可机械验证）",
+      "诚实性：无品牌数据时标注假设，禁止编造品牌色"
+    ],
+    "compressible": [
+      "流程叙述（Setup/How to design 的引导文字）",
+      "跨技能交叉引用（impeccable → ui-ux-pro-max 的路由说明）",
+      "多平台适配说明（先聚焦 Web，native 延后）",
+      "示例代码数量（每组件 1 个代表例即可，不求全）"
+    ]
+  },
+  "mechanical_audit_spec": {
+    "line_patterns": {
+      "contrast_value": "对比度数值正则（如 \\d+\\.\\d+:1）出现 ≥3 次",
+      "reduced_motion_block": "@media \\(prefers-reduced-motion: reduce\\) 存在且含 transition 或 animation 声明",
+      "state_matrix_row": "^\\| (按钮|表单|卡片|导航) \\|",
+      "native_surface_item": "(selection|caret|scrollbar|focus|underline|numeral) 每项至少 1 次匹配",
+      "anti_pattern_term": "(gradient text|glass|hard shadow|emoji|modal) 每项至少 1 次"
+    },
+    "verdict": "全部 5 项 pattern 通过 = 提纯成功；任何一项失败 = 回到 v1 诊断"
+  }
+}

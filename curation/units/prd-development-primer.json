@@ -1,0 +1,132 @@
+[
+  {
+    "boundary_condition": "适用于 major initiative 而非 trivial bug fix",
+    "dependency_skills": [],
+    "id": "skills/prd-development/SKILL.md:1-5",
+    "meaning": "PRD 文档的结构化生成入口；通过 argument-hint 引导用户提供必要上下文",
+    "origin_line_end": 5,
+    "origin_line_start": 1,
+    "raw_excerpt": "Frontmatter name: prd-development; argument-hint: feature or initiative; description: Build a structured PRD.",
+    "status": "retained",
+    "type": "method",
+    "validation_criteria": "输出包含 Executive Summary/Problem Statement/Target Users/Strategic Context"
+  },
+  {
+    "boundary_condition": "不适用于已有清晰对齐的小功能，应直接写 user stories",
+    "dependency_skills": [
+      "discovery-process"
+    ],
+    "id": "skills/prd-development/SKILL.md:23-29",
+    "meaning": "PRD 创建流程的设计目标：避免 ambiguity/scope creep/build-what-s-in-my-head",
+    "origin_line_end": 29,
+    "origin_line_start": 23,
+    "raw_excerpt": "Purpose guide PMs through structured PRD creation from scattered notes to clear comprehensive document avoiding ambiguity and scope creep",
+    "status": "retained",
+    "type": "method",
+    "validation_criteria": "输出需标注哪些假设未验证(open questions)"
+  },
+  {
+    "boundary_condition": "可裁剪但不得省略 Executive Summary/Problem Statement/User Stories&Requirements",
+    "dependency_skills": [],
+    "id": "skills/prd-development/SKILL.md:49-100",
+    "meaning": "PRD 的完整模板结构，含 10 大节与每节的必填字段",
+    "origin_line_end": 100,
+    "origin_line_start": 49,
+    "raw_excerpt": "PRD Structure Standard Template with 10 sections: Executive Summary Problem Statement Target Users Strategic Context Solution Overview Success Metrics User Stories Requirements Out of Scope Dependencies Risks Open Questions",
+    "status": "retained",
+    "type": "template",
+    "validation_criteria": "输出覆盖至少 8 个核心章节"
+  },
+  {
+    "boundary_condition": "非交互模式（快速 PRD 生成）可跳过此协议",
+    "dependency_skills": [
+      "workshop-facilitation"
+    ],
+    "id": "skills/prd-development/SKILL.md:126-138",
+    "meaning": "交互式引导会话必须遵循 workshop-facilitation 协议（session heads-up/progress labels/quick-select options）",
+    "origin_line_end": 138,
+    "origin_line_start": 126,
+    "raw_excerpt": "Facilitation protocol for guided conversation using workshop-facilitation interaction pattern session heads-up progress labels quick-select options",
+    "status": "merged-with-supplement",
+    "type": "method",
+    "validation_criteria": "guided mode 下输出包含 Context Qx/N Scoring Qx/N progress labels"
+  },
+  {
+    "boundary_condition": "template.md 未随 snapshot 提取，需要从上游恢复或降级为简化版输出",
+    "dependency_skills": [],
+    "id": "skills/prd-development/SKILL.md:142-149",
+    "meaning": "template.md 提供分节指导块、gap 标签、自我评估、能力交叉引用表",
+    "origin_line_end": 149,
+    "origin_line_start": 142,
+    "raw_excerpt": "template.md fill-in document with coaching blocks inline gap tagging Assumption and Open Question cross-section recommendations skill reference table",
+    "status": "deferred-requirement-missing",
+    "type": "template",
+    "validation_criteria": "输出中的 Gap Tag 格式为 Assumption 或 Open Question emoji label"
+  },
+  {
+    "boundary_condition": "当用户只要求快速 PRD 时可直接跳到 Phase 3+Phase 4",
+    "dependency_skills": [
+      "workshop-facilitation"
+    ],
+    "id": "skills/prd-development/SKILL.md:154-162",
+    "meaning": "第一阶段产出 Executive Summary（一句话概览），耗时约 30 分钟",
+    "origin_line_end": 162,
+    "origin_line_start": 154,
+    "raw_excerpt": "Phase 1 Executive Summary 30 minutes activities Draft one paragraph overview problem solution impact",
+    "status": "retained",
+    "type": "method",
+    "validation_criteria": "Executive Summary 包含 problem solution impact 三要素"
+  },
+  {
+    "boundary_condition": "适用于跨团队交付场景，单 PM 自研项目可弱化此步骤",
+    "dependency_skills": [],
+    "id": "skills/prd-development/SKILL.md:164-172",
+    "meaning": "早期定义出范围，明确 Not-Building 以避免 scope creep",
+    "origin_line_end": 172,
+    "origin_line_start": 164,
+    "raw_excerpt": "Define scope and out-of-scope items early ask user to clarify what they are not building to avoid scope creep",
+    "status": "retained",
+    "type": "method",
+    "validation_criteria": "PRD 第 8 节 Out of Scope 有明确列项"
+  },
+  {
+    "boundary_condition": "P2 功能可降为 2 条 AC",
+    "dependency_skills": [
+      "impeccable"
+    ],
+    "id": "skills/prd-development/SKILL.md:220-228",
+    "meaning": "AC 生成规则：每条用户故事至少 3 条 G/W/T 标准，其中至少一条覆盖异常态",
+    "origin_line_end": 228,
+    "origin_line_start": 220,
+    "raw_excerpt": "Acceptance Criteria Rule each user story must have at least 3 ACs in GivenWhenThen format at least one covering exception scenario",
+    "status": "retained",
+    "type": "rule",
+    "validation_criteria": "无 P0 用户故事仅含 1 条 AC"
+  },
+  {
+    "boundary_condition": "适用于没有历史数据的 New Product Launch",
+    "dependency_skills": [
+      "metrics-dashboard"
+    ],
+    "id": "skills/prd-development/SKILL.md:230-235",
+    "meaning": "若用户未提供数据指标，标记为开放问题并推荐发现步骤，禁止编造数值",
+    "origin_line_end": 235,
+    "origin_line_start": 230,
+    "raw_excerpt": "If user supplies no data for metrics label section as Open Question and provide recommended discovery steps instead of fabricating values",
+    "status": "retained",
+    "type": "exception",
+    "validation_criteria": "Success Metrics 节包含 Current Goal 表格且未填值项有 Open Question 标签"
+  },
+  {
+    "boundary_condition": "快速模式可跳过 Gate，但需标注 Design basis incomplete",
+    "dependency_skills": [],
+    "id": "skills/prd-development/SKILL.md:240-248",
+    "meaning": "PRD 完成度门控：设计开始前必须验证问题陈述有证据、用户故事有 AC、开放问题已列出",
+    "origin_line_end": 248,
+    "origin_line_start": 240,
+    "raw_excerpt": "PRD Gate before moving to design check that Problem Statement has evidence User Stories have AC and Open Questions are listed",
+    "status": "retained",
+    "type": "gate",
+    "validation_criteria": "Gate pass 条件全满足或 blocker 清单已生成"
+  }
+]

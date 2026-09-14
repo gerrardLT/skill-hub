@@ -1,0 +1,84 @@
+{
+  "dossier_id": "implementation",
+  "title": "实现域能力簇",
+  "description": "从设计规格到可工作代码的转化过程，涵盖测试驱动开发、系统化调试、代码审查、计划执行等核心能力",
+  "skills_included": [
+    {"name": "test-driven-development", "role": "核心纪律：RED-GREEN-REFACTOR 循环"},
+    {"name": "systematic-debugging", "role": "核心纪律：四阶段根因调查"},
+    {"name": "executing-plans", "role": "流程：按计划逐项执行"},
+    {"name": "subagent-driven-development", "role": "流程：子代理分工执行"},
+    {"name": "code-review", "role": "质量门：实现后审查"},
+    {"name": "requesting-code-review", "role": "流程：发起审查请求"},
+    {"name": "verification-before-completion", "role": "质量门：完成前验证"},
+    {"name": "writing-plans", "role": "上游：实现计划编写"}
+  ],
+  "workflow_sequence": [
+    {
+      "phase": 1,
+      "activity": "实现计划确认",
+      "skill_used": "writing-plans → executing-plans",
+      "inputs": ["设计规格", "架构决策"],
+      "outputs": ["任务分解清单", "执行顺序"]
+    },
+    {
+      "phase": 2,
+      "activity": "测试先行实现",
+      "skill_used": "test-driven-development",
+      "inputs": ["验收标准", "接口设计"],
+      "outputs": ["失败测试", "最小实现", "重构后代码"]
+    },
+    {
+      "phase": 3,
+      "activity": "系统化调试（遇到缺陷时）",
+      "skill_used": "systematic-debugging",
+      "inputs": ["错误信息", "复现步骤"],
+      "outputs": ["根因分析", "失败测试用例", "单一修复"]
+    },
+    {
+      "phase": 4,
+      "activity": "代码审查",
+      "skill_used": "code-review + requesting-code-review",
+      "inputs": ["实现代码", "测试套件"],
+      "outputs": ["审查发现", "修复提交"]
+    },
+    {
+      "phase": 5,
+      "activity": "完成前验证",
+      "skill_used": "verification-before-completion",
+      "inputs": ["全部变更", "测试套件"],
+      "outputs": ["验证证据", "完成声明"]
+    }
+  ],
+  "capabilities_map": [
+    {"capability": "failing-test-first", "skills": ["test-driven-development"]},
+    {"capability": "root-cause-investigation", "skills": ["systematic-debugging"]},
+    {"capability": "minimal-implementation", "skills": ["test-driven-development"]},
+    {"capability": "refactor-discipline", "skills": ["test-driven-development"]},
+    {"capability": "plan-execution-tracking", "skills": ["executing-plans", "subagent-driven-development"]},
+    {"capability": "code-quality-review", "skills": ["code-review", "requesting-code-review"]},
+    {"capability": "completion-verification", "skills": ["verification-before-completion"]}
+  ],
+  "iron_laws": [
+    {
+      "law_id": "tdd-iron-law",
+      "source": "test-driven-development",
+      "statement": "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST",
+      "enforcement": "先写代码后补测试 → 删除代码重来；不得保留作为参考"
+    },
+    {
+      "law_id": "debugging-iron-law",
+      "source": "systematic-debugging",
+      "statement": "NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST",
+      "enforcement": "未完成四阶段调查前禁止提出修复；3+ 次修复失败必须质疑架构"
+    }
+  ],
+  "blocking_gaps": [
+    {
+      "gap_id": "tdd-references-anti-patterns",
+      "description": "test-driven-development 引用 @testing-anti-patterns.md，需确认该文件在快照中存在",
+      "severity": "to-verify",
+      "mitigation": "阶段 2 的 gaps.json 已记录引用完整性；核对该具体文件"
+    }
+  ],
+  "notes": "实现域是六步架构中'实现'步骤的主体。两条铁律（TDD 先失败测试、调试先根因）构成该域的纪律骨架，与 dev-loop 的 Gate 机制天然契合。executing-plans/writing-plans 属于流程编排技能，与 superpowers 套件同源。"
+}

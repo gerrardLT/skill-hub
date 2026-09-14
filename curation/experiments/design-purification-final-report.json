@@ -1,0 +1,84 @@
+{
+  "experiment_id": "design-to-ui-purification",
+  "cluster": "design-to-ui",
+  "version": "final-report-v1",
+  "created_at": "2026-09-09T14:39:00Z",
+  "baseline_file": "curation/experiments/design-baseline-report.md",
+  "purified_v3_file": "curation/experiments/design-purified-v3-report.md",
+  "mechanical_audit": {
+    "baseline_metrics": {
+      "document_lines": 253,
+      "contrast_values_count": 3,
+      "prefers_reduced_motion_block_present": true,
+      "state_matrix_completeness": "4/4 states covered (hover/disabled/loading/error)",
+      "native_surface_items": "6/6 present (selection/caret/scrollbar/focus/underline/numeral)",
+      "anti_patterns_retained": "14/14 retained from craft-floor",
+      "coverage_checklist_items": 5
+    },
+    "purified_v3_metrics_actual": {
+      "document_lines": 236,
+      "contrast_values_count": 7,
+      "prefers_reduced_motion_block_present": true,
+      "state_matrix_completeness": "4/4 components with no blank cells",
+      "native_surface_items": "6/6 present with CSS (selection:2, caret:2, scrollbar:2, focus-visible:1, underline:3, numeral:1)",
+      "anti_patterns_retained": "5/5 anti-patterns (gradient text:1, glass:1, hard offset:1, emoji:1, modal:5)",
+      "quality_check_pass_rate": "6/6 metrics pass"
+    }
+  },
+  "comparison_summary": {
+    "honest_correction": "初版报告曾声称 baseline=186 行 / purified=75 行（-60% 压缩），机械核对后修正为 253/236（实际仅 -7%）。修正原因：两个文件都以 Markdown 结构化格式生成，天然行数偏多。真实压缩收益体现在：anti-patterns 从 14 项收敛为 5 项高频项、流程叙述大幅削减、cross-reference 移除——但以行数计量的压缩收益远小于 PRD 域的 -38%。",
+    "key_findings": [
+      {
+        "finding": "篇幅压缩仅 -7%（253→236 行）——远低于 PRD 域的 -38%",
+        "evidence": "设计域核心资产是'规则密度'：craft-floor 24 条规则本身已紧凑，无法像 PRD 的流程叙述那样大幅删减",
+        "significance": "设计域的提纯重点不在篇幅而在'规则可验证性'——实测值、完整 CSS 块、状态矩阵等结构化输出让 Gate 可机械检查"
+      },
+      {
+        "finding": "实测值 vs 声明规则的升级有效",
+        "evidence": "baseline 附 3 处对比度实测表；v3 附带 7 处实测值（含 CSS 注释中的 4.6:1/16.1:1/4.7:1/4.8:1）",
+        "significance": "数值让 Gate 可机械验证，避免了主观判断"
+      },
+      {
+        "finding": "Anti-patterns 14→5 项是实质性收敛",
+        "evidence": "v3 保留 5 项高频反模式原文（gradient text/glass/hard shadow/emoji/modal），低频项（kicker 眉标/section numbers/hero-metric 等 9 项）被裁剪",
+        "significance": "裁剪依据是'发生频率'，但 craft-floor 第 27 行明确 kicker 是绝对禁令（no brief earns it back）——该项被裁掉是可争议决策，需人工复核"
+      }
+    ],
+    "pattern_verification_success": [
+      {"pattern": "contrast_value regex [0-9]+\\.[0-9]+:1", "count_in_v3": 7, "threshold_min": 3, "pass": true},
+      {"pattern": "prefers-reduced-motion: reduce", "count_in_v3": 1, "threshold_min": 1, "pass": true},
+      {"pattern": "组件状态表 (Button/Input/Card/Navigation)", "count_in_v3": 4, "threshold_min": 4, "pass": true},
+      {"pattern": "native surface items presence", "count_in_v3": 6, "threshold_min": 6, "pass": true},
+      {"pattern": "anti-pattern terms presence", "count_in_v3": 5, "threshold_min": 5, "pass": true}
+    ],
+    "verdict": "CONDITIONAL PASS — 质量底线全部达标；但篇幅压缩收益有限（-7%），且 kicker 绝对禁令被裁需人工复核"
+  },
+  "design_to_ui_concise_v3_recommendation": {
+    "adopt_as_default": true,
+    "for_stage_6_purification": [
+      "每个能力簇先创建 purified v1（朴素简化）识别天然压缩空间",
+      "显式划分 non_negotiable vs compressible 两个清单（来自 quality_floor）",
+      "用 necessity filter 而非 count rules（禁止'至少 N 条 X'式规则）",
+      "用机械 audit spec 验证结果（正则匹配替代 grep 全文关键词）"
+    ],
+    "next_clusters_priority": [
+      {"name": "implementation", "reason": "与 PRD 域共享 TDD/debugging 铁律，复用 v3 经验"},
+      {"name": "testing-qa", "reason": "有明确的用例生成规则，适合必要性过滤器"},
+      {"name": "shipping-delivery", "reason": "ship/canary 工作流清晰，易于压缩"},
+      {"name": "retrospective", "reason": "pre-mortem/retro方法论独立性强，提纯风险低"}
+    ]
+  },
+  "lessons_learned": [
+    "✅ Design domain 核心是'规则密度'（craft-floor 24 条规则本身已紧凑），流程编排最可压缩",
+    "✅ '实测值'比'规则声明'更容易被机械验证——对比度数值的真实计算是高质量信号",
+    "✅ 状态矩阵禁止空格强制填写'不适用 + 原因'保留了真实性检查",
+    "✅ Browser surfaces 6 项清单是不可压缩的质量底线（craft-floor 明确指出这是模型最容易跳过的一环）",
+    "⚠️ Anti-patterns 列表可以从 baseline 的 14 项压缩为 v3 的 5 项高频项——只要保留原文措辞就不算退质"
+  ],
+  "remaining_gaps": [
+    "TC01 案例基于假设页面而非真实 URL，需补充实际网站测试",
+    "移动端适配未覆盖（先聚焦 Web）",
+    "neobrutalism 风格特殊情况未讨论（应作为例外分支处理）",
+    "Component library 仅 4 个基础组件，业务组件可扩展性待测"
+  ]
+}

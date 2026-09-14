@@ -1,0 +1,67 @@
+<h2>能力编译器：从 68 项原料到可组合插槽</h2>
+<p class="subtitle">原始 Skills 不直接拼接；先拆解、裁决、验证，再由 dev-loop 装配。</p>
+
+<div class="section">
+  <div class="label">SOURCE LAYER · 只读原料层</div>
+  <div class="mockup">
+    <div class="mockup-header">skills/ — 保留原文与完整附件</div>
+    <div class="mockup-body" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center">
+      <div class="placeholder">需求</div><div class="placeholder">设计</div><div class="placeholder">实现</div><div class="placeholder">QA</div><div class="placeholder">交付</div><div class="placeholder">复盘</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;font-size:24px;margin:8px 0">↓ 解析 + 来源标注</div>
+
+<div class="section">
+  <div class="label">COMPILER · 提纯流水线</div>
+  <div class="cards" style="grid-template-columns:repeat(5,1fr)">
+    <div class="card"><div class="card-body"><h3>1. 清点</h3><p>统一能力、目录、子技能、套件身份</p></div></div>
+    <div class="card"><div class="card-body"><h3>2. 拆解</h3><p>切成单一职责的原子能力候选</p></div></div>
+    <div class="card"><div class="card-body"><h3>3. 对齐</h3><p>聚类重复项，记录冲突与独特贡献</p></div></div>
+    <div class="card"><div class="card-body"><h3>4. 裁决</h3><p>正确性、价值、边界、安全、冗余评分</p></div></div>
+    <div class="card"><div class="card-body"><h3>5. 实测</h3><p>对照案例、反例、退化测试后准入</p></div></div>
+  </div>
+</div>
+
+<div style="text-align:center;font-size:24px;margin:8px 0">↓ 只发布通过 Gate 的能力</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">slots/ — 原子插槽注册表</div>
+    <div class="mockup-body">
+      <div class="placeholder">problem-framing</div>
+      <div class="placeholder">acceptance-criteria</div>
+      <div class="placeholder">edge-state-enumeration</div>
+      <div class="placeholder">test-first-implementation</div>
+      <div class="placeholder">independent-qa</div>
+      <div class="placeholder">release-verification</div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">recipes/ — 场景配方</div>
+    <div class="mockup-body">
+      <div class="placeholder">write-prd.yaml</div>
+      <div class="placeholder">build-web-feature.yaml</div>
+      <div class="placeholder">fix-production-bug.yaml</div>
+      <div class="placeholder">qa-only.yaml</div>
+      <div class="placeholder">ship-release.yaml</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;font-size:24px;margin:8px 0">↓ 任务识别 + 约束求解 + Gate</div>
+
+<div class="mockup">
+  <div class="mockup-header">dev-loop 总控</div>
+  <div class="mockup-body" style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:12px;align-items:center;text-align:center">
+    <div class="placeholder">用户任务<br>项目证据</div>
+    <div style="border:2px solid #6d5efc;border-radius:12px;padding:18px;font-weight:700">选择 Recipe → 注入 Slot → 校验产物 → 失败回流</div>
+    <div class="placeholder">可审计产物<br>来源与测试证据</div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top:18px">
+  <div class="pros"><h4>保持</h4><ul><li>原始 68 项可追溯</li><li>每个插槽可独立调用与替换</li><li>配方可组合，Gate 可实测</li></ul></div>
+  <div class="cons"><h4>禁止</h4><ul><li>直接拼接多个巨型 Skill</li><li>无证据的主观删改</li><li>重复规则同时进入上下文</li></ul></div>
+</div>

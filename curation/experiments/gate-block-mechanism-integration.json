@@ -1,0 +1,143 @@
+{
+  "stage_7_experiment_id": "gate-block-mechanism-integration",
+  "cluster": "cross-domain-gate-coordination",
+  "version": "v1",
+  "created_at": "2026-09-09T14:54:00Z",
+  "objective": "验证六步架构中 Gate 阻断机制的协同效应——确保每个域的质量底线能够跨域传递并触发正确的阻断行为",
+  "scope": {
+    "included_gates": [
+      {"name": "TDD gate", "source_domain": "implementation", "description": "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST"},
+      {"name": "Debugging gate", "source_domain": "implementation", "description": "NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST"},
+      {"name": "AC generation gate", "source_domain": "requirements-to-ac", "description": "每条 P0 故事至少 3 条 GWT AC + 1 条异常态"},
+      {"name": "A11y gate", "source_domain": "design-to-ui", "description": "Contrast 实测值 ≥4.5:1 + prefers-reduced-motion CSS 块"},
+      {"name": "Canary monitoring gate", "source_domain": "shipping-delivery", "description": "EVERY DEPLOY MUST BE MONITORED - baseline.json 对比"},
+      {"name": "Pre-mortem gate", "source_domain": "retrospective", "description": "Launch-Blocking Tiger count > 0 → DEPLOY MUST WAIT"}
+    ],
+    "input_output_contracts": [
+      {"from": "requirements-to-ac", "to": "design-to-ui", "artifact": "PRD with AC", "contract": "P0 user stories have ≥3 GWT AC each (verified by AC generation gate)"},
+      {"from": "design-to-ui", "to": "implementation", "artifact": "Design tokens + component specs", "contract": "All contrast values measured, motion reduced_mode block present (verified by A11y gate)"},
+      {"from": "implementation", "to": "testing-qa", "artifact": "Test suite + failing test evidence", "contract": "Every new function has a test that failed before implementation (verified by TDD gate)"},
+      {"from": "testing-qa", "to": "shipping-delivery", "artifact": "baseline.json with health score", "contract": "Health score calculated from 8 categories with exact weights (verified by Canary monitoring gate)"},
+      {"from": "shipping-delivery", "to": "retrospective", "artifact": "Deploy logs + canary report", "contract": "Post-deploy monitoring completed (verified by Canary gate)"},
+      {"from": "retrospective", "to": "requirements-to-ac", "artifact": "Learnings + action items", "contract": "Next PRD incorporates key learnings (verified by Pre-mortem gate for future launches)"}
+    ]
+  },
+  "gate_activation_logic": {
+    "global_rules": [
+      "Each gate must be checked BEFORE proceeding to next phase",
+      "Gate failure = BLOCKED status; cannot continue without resolution",
+      "Gate resolution = explicit action taken OR documented exception approved by human partner",
+      "Gate violations are logged and surfaced in retrospective"
+    ],
+    "per_gate_specifications": [
+      {
+        "gate_name": "TDD gate",
+        "activation_point": "Before any production code commit",
+        "verification_method": "Git diff inspection for tests preceding implementation",
+        "failure_response": "Delete code, start over with failing test first",
+        "success_criteria": "Every new function/method has test that FAILED before code was written",
+        "evidence_required": ["commit messages showing test-first pattern", "git log demonstrating red-green-refactor cycle"]
+      },
+      {
+        "gate_name": "Debugging gate",
+        "activation_point": "When encountering bug or unexpected behavior",
+        "verification_method": "Check Phase 1-4 completion checklist",
+        "failure_response": "STOP, return to Phase 1, complete root cause investigation",
+        "success_criteria": "Root cause identified, single fix implemented, verification passed",
+        "evidence_required": ["debug log showing 4 phases completed", "test case reproducing bug before fix"]
+      },
+      {
+        "gate_name": "AC generation gate",
+        "activation_point": "After user story writing completes",
+        "verification_method": "Count GWT ACs per P0 story + verify exception coverage",
+        "failure_response": "Expand AC set to meet minimum requirements",
+        "success_criteria": "每条 P0 用户故事有≥3 条 Given-When-Then AC，其中≥1 条异常态",
+        "evidence_required": ["AC table with GWT format compliance", "exception state enumeration list"]
+      },
+      {
+        "gate_name": "A11y gate",
+        "activation_point": "Before UI implementation finalize",
+        "verification_method": "Mechanical audit of contrast values + prefers-reduced-motion presence",
+        "failure_response": "Add missing contrast measurements / write reduced_motion CSS block",
+        "success_criteria": "Body/placeholder text ≥4.5:1, large text ≥3:1, prefers-reduced-motion block exists",
+        "evidence_required": ["contrast calculation screenshots", "prefers-reduced-motion CSS code block"]
+      },
+      {
+        "gate_name": "Canary monitoring gate",
+        "activation_point": "After production deployment",
+        "verification_method": "Check console errors (<3 in 5min), performance regressions (>20%), page failures",
+        "failure_response": "ALERT immediately, roll back if critical issues detected",
+        "success_criteria": "Baseline.json saved, comparison done, no unaddressed anomalies > thresholds",
+        "evidence_required": ["baseline.json file", "canary monitoring report screenshot"]
+      },
+      {
+        "gate_name": "Pre-mortem gate",
+        "activation_point": "Before launch date reached",
+        "verification_method": "Count Launch-Blocking Tigers",
+        "failure_response": "DEPLOY MUST WAIT until all Launch-Blocking Tigers resolved",
+        "success_criteria": "Launch-Blocking Tiger count = 0 OR mitigations on track with owners/dates assigned",
+        "evidence_required": ["PreMortem-[product]-[date].md document", "action plan tracking sheet"]
+      }
+    ]
+  },
+  "integration_test_scenarios": [
+    {
+      "scenario_id": "ITS01",
+      "title": "Full six-step workflow with gate enforcement",
+      "description": "Run through complete dev-loop (需求→设计→实现→验收→交付→复盘) with each gate actively blocking invalid transitions",
+      "expected_behaviors": [
+        "AC generation gate blocks P0 story with only 2 ACs → forces expansion to 3+",
+        "A11y gate blocks UI commit without contrast measurements → requires adding them",
+        "TDD gate blocks production code commit without failing test → deletes code",
+        "Canary gate blocks post-deploy summary without baseline.json comparison → prevents skip"
+      ],
+      "success_criteria": "All gates successfully enforce quality floor; no invalid transition passes through"
+    },
+    {
+      "scenario_id": "ITS02",
+      "title": "Cross-domain artifact handoff validation",
+      "description": "Verify each domain's output matches next domain's input contract specifications",
+      "contracts_to_verify": [
+        "PRD AC → Design spec: P0 stories with ≥3 GWT ACs should map to concrete UI components",
+        "Design tokens → Implementation spec: Measured contrast values should guide color token choices",
+        "Failing test → Minimal code: Test failure reason should drive minimal implementation size",
+        "Test suite → Health score: All passing tests should contribute to functional category score"
+      ],
+      "success_criteria": "所有输入输出契约满足；无数据丢失或语义转换错误"
+    },
+    {
+      "scenario_id": "ITS03",
+      "title": "Gate failure propagation and recovery",
+      "description": "Simulate gate violation at different stages and verify correct blocking/recovery behavior",
+      "test_cases": [
+        "AC generation gate fails mid-PRD → force user to expand ACs before continuing",
+        "TDD gate fails during coding → require deleting code and re-writing test first",
+        "A11y gate fails during review → block merge until contrast measurements added",
+        "Canary gate fails post-deploy → trigger rollback procedure with alert notifications"
+      ],
+      "success_criteria": "每个 Gate 失败都能正确阻断工作流；恢复路径清晰可执行"
+    }
+  ],
+  "mechanical_audit_checklist": [
+    "All 6 gates defined with clear activation points",
+    "Each gate has verification method + failure response documented",
+    "Success criteria quantifiable and verifiable",
+    "Evidence requirements specified for each gate pass/fail decision",
+    "Input/output contracts between domains explicitly stated",
+    "Integration test scenarios cover full workflow + edge cases"
+  ],
+  "completion_criteria": {
+    "deliverables": [
+      "gate-block-mechanism-integration.json — this file (complete gate specification)",
+      "Integration test results (run ITS01-ITS03 scenarios)",
+      "Gate violation logs (from simulated failures)",
+      "Cross-domain contract validation report"
+    ],
+    "pass_thresholds": [
+      "100% gates have complete specifications",
+      "100% input/output contracts verified against purified methods",
+      "All integration test scenarios pass",
+      "No gate violations slip through without proper handling"
+    ]
+  }
+}

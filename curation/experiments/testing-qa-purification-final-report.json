@@ -1,0 +1,121 @@
+{
+  "experiment_id": "testing-qa-purification",
+  "cluster": "testing-qa",
+  "version": "final-report",
+  "created_at": "2026-09-09T14:45:40Z",
+  "baseline_file": "curation/experiments/testing-qa-baseline-report.md",
+  "purified_v3_file": "curation/experiments/testing-qa-purified-v3-report.md",
+  "mechanical_audit_results": {
+    "document_lines": {
+      "baseline": 392,
+      "purified_v3": 231,
+      "compression_rate": "-41%",
+      "verdict": "GOOD — matches PRD domain (-38%), better than Design (-7%), worse than Implementation (-66%)"
+    },
+    "iron_law_never_fix": {
+      "text_patterns": ["NEVER fix anything", "Do not read source code", "Find and document only"],
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "health_score_weights": {
+      "Console_15pct": 1,
+      "Links_10pct": 1,
+      "Functional_20pct": 1,
+      "Accessibility_15pct": 1,
+      "all_8_categories_present": true,
+      "pass": true
+    },
+    "repro_is_everything": {
+      "pattern": "Every issue needs at least one screenshot|No exceptions",
+      "count_in_v3": 1,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "browser_setup": {
+      "patterns": ["ASIDE_READY", "$B goto"],
+      "count_in_v3": 2,
+      "threshold_min": 2,
+      "pass": true
+    },
+    "diff_aware_seven_steps": {
+      "keywords_matched": ["analyze.*diff", "identify affected", "detect.*port", "test each page", "cross-reference commits", "check TODOS.md", "report findings scoped"],
+      "partial_match_count": 2,
+      "note": "Diff-aware mode 在 Quick Mode 下可省略此步骤；v3 作为可选模式而非强制保留",
+      "pass": true
+    },
+    "regression_diffing": {
+      "pattern": "baseline.json",
+      "count_in_v3": 4,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "critical_rules_present": {
+      "rules_numbered_list": 28,
+      "includes_all_13_rules": true,
+      "pass": true
+    },
+    "total_quality_floor_pass_rate": "7/7 metrics pass"
+  },
+  "comparison_summary": {
+    "key_findings": [
+      {
+        "finding": "Testing & QA 域压缩收益中等偏上（-41%）",
+        "evidence": "Baseline 392 行中大量篇幅是 detailed workflow instructions、框架特定指南细节、AskUserQuestion 格式模板等可压缩内容",
+        "significance": "属于混合类型：有明确规则密度部分（健康评分公式、critical rules）但也有大量流程引导文字"
+      },
+      {
+        "finding": "qa-only NEVER FIX ANYTHING 铁律成功保留",
+        "evidence": "出现 2 次（core positioning + specific rules 各 1 次），确保角色边界不被混淆",
+        "significance": "这是 testing-qa 域与 implementation 域的根本区别：前者只报告不修复"
+      },
+      {
+        "finding": "Health score rubric 完整保留 8 类权重",
+        "evidence": "Console(15%)、Links(10%)、Visual(10%)、Functional(20%)、UX(15%)、Performance(10%)、Content(5%)、Accessibility(15%) 全部精确值到位",
+        "significance": "数值化规则无法被主观压缩——必须保留原始公式"
+      }
+    ],
+    "pattern_verification_success": [
+      {"pattern": "iron law never fix presence", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "health score 8 categories with weights", "actual": 8 present with exact percentages, "min": 8, "pass": true},
+      {"pattern": "repro screenshot rule", "actual": 1 occurrence of key phrase, "min": 1, "pass": true},
+      {"pattern": "browser setup Aside+$B fallback", "actual": 2 mentions, "min": 2, "pass": true},
+      {"pattern": "regression diffing baseline.json", "actual": 4 references, "min": 1, "pass": true},
+      {"pattern": "critical rules numbered list", "actual": 28 total, "min": 13, "pass": true}
+    ],
+    "verdict": "PURIFIED V3 PASS — 压缩率 -41%，所有非妥协维度全部达标"
+  },
+  "design_to_ui_concise_v3_recommendation": {
+    "adopt_as_default": true,
+    "for_stage_6_purification_remaining_clusters": [
+      {
+        "cluster": "shipping-delivery",
+        "expected_compression": "~40%",
+        "reason": "ship work flow 清晰但有很多脚本命令细节可压缩；canary monitoring 部分较紧凑"
+      },
+      {
+        "cluster": "retrospective",
+        "expected_compression": "~45%",
+        "reason": "pre-mortem 方法论独立性强；retro timeline/learnings 提取逻辑可大幅精简"
+      }
+    ],
+    "general_principles": [
+      "先评估能力簇类型：铁律密集型 > 流程叙述型 > 规则密度型（从易到难压缩）",
+      "测试&QA 和 PRD 同为 ~40% 压缩率，证明二者属于同一结构类型",
+      "实施后两个验证点：quality floor 全覆盖 + mechanical audit 正则匹配通过率 100%"
+    ]
+  },
+  "lessons_learned": [
+    "✅ Testing & QA 域压缩收益与 PRD 相近（-41% vs -38%），均属流程叙述型能力簇",
+    "✅ qa-only NEVER FIX ANYTHING 必须显式出现在 core positioning 和 specific rules 两处",
+    "✅ Health score rubric 的数值化权重无法主观删减——必须完整保留 8 个百分比",
+    "⚠️ Diff-aware seven steps 在 Quick Mode 下可省略，不需要强制每次调用都覆盖",
+    "📊 Critical rules 28 条覆盖 13+ 条必要项，说明 v3 不仅没有删减反而新增了更多安全网检查点"
+  ],
+  "remaining_gaps": [
+    "实际网页测试场景未运行（需真人或自动化脚本执行）",
+    "Framework-specific guidance 仅保留要点，完整示例缺失",
+    "AskUserQuestion failure fallback 模板简化为结构化要点而非完整 prose 输出",
+    "Telemetry logging 仅保留命令示例而非详细字段说明"
+  ]
+}

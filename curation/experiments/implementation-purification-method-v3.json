@@ -1,0 +1,54 @@
+{
+  "method_id": "implementation-concise-v3",
+  "parent_cluster": "implementation",
+  "version": "v3 — 质量底线 + 必要性过滤器",
+  "derived_from": [
+    "pr-to-ac-concise-v3 成功经验",
+    "test-driven-development SKILL.md 铁律",
+    "systematic-debugging 四阶段方法论"
+  ],
+  "design_philosophy": "实现域的核心资产是'两条铁律'（TDD/Debugging），流程步骤（五阶段工作流）最可压缩。提纯策略：保留铁律原文与强制措辞，压缩工作流的引导文字与交叉引用",
+  "quality_floor": {
+    "non_negotiable": [
+      "TDD 铁律原文：NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST",
+      "调试铁律原文：NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST",
+      "RED-GREEN-REFACTOR 循环三步顺序不可颠倒",
+      "调试四阶段顺序不可跳过",
+      "verify_red 与 verify_green 必须手动执行且记录证据"
+    ],
+    "compressible": [
+      "红绿蓝三色的历史背景说明",
+      "常见借口反驳表格（可从完整列表选前 5 项高频）",
+      "debugging 的多组件系统诊断示例（保留框架即可）",
+      "refactor 的具体重构技巧清单（保留原则描述即可）"
+    ]
+  },
+  "prompt_template": {
+    "input": "待实现的功能需求/修复的 bug 描述",
+    "instructions": [
+      "1. TDD RED 阶段：写出最小失败的测试用例（Given-When-Then 格式，无 mocks 除非不可避免）",
+      "2. verify_red 证明：运行测试命令确认失败原因正确（非拼写错误导致的 error）",
+      "3. GREEN 阶段：写最简代码通过测试（不超过测试需求的行数）",
+      "4. verify_green 证明：所有测试通过且无警告输出",
+      "5. REFACTOR 阶段：保持绿色前提下移除重复改进名称",
+      "6. 遇到 bug 时：切换 systematic-debugging 四阶段——①阅读错误信息 ②复现步骤 ③检查近期变更 ④收集多组件系统证据"
+    ]
+  },
+  "mechanical_audit_spec": {
+    "line_patterns": {
+      "tdd_iron_law": "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST (全文或缩略)",
+      "red_green_refactor_order": "^Step \\d+.*?(RED|GREEN|REFACTOR) in sequence$",
+      "verify_red_presence": "Verify RED / confirm failure message matches expected",
+      "verify_green_presence": "Verify GREEN / all tests pass with no warnings",
+      "debugging_four_phases": "(Read errors|Reproduce|Check changes|Gather evidence)"
+    },
+    "verdict": "全部 pattern 通过 = 提纯成功；任何一项缺失 = 回到 baseline 诊断"
+  },
+  "success_criteria": [
+    "输出文档行数 ≤ baseline 的 60%",
+    "铁律原文至少出现一次",
+    "RED-GREEN-REFACTOR 三步均有对应测试案例",
+    "调试四阶段描述存在（即使压缩到 1 句话每步）",
+    "verify_red/verify_green 都有明确的手动验证指令"
+  ]
+}

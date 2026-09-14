@@ -1,0 +1,56 @@
+{
+  "method_id": "pr-to-ac-concise-v3",
+  "parent_experiment": "pr-to-ac-purification",
+  "revision": "v3 — 基于 v2 失败的必要性过滤器方案",
+  "design_philosophy": "从'强制数量'转向'质量底线+必要性过滤'：数量规则产生的凑数降质证明 AI 会钻空子，改为在生成后强制一个自检步骤",
+  "changes_from_v2": [
+    {
+      "change": "移除'每故事≥3 AC'的机械数量规则",
+      "reason": "TC01 v2 实验证明强制数量→US-5 式凑数故事→GWT 合规率 25%"
+    },
+    {
+      "change": "新增'必要性过滤器'后处理步骤",
+      "rule": "AC 生成后逐条自问：'若删除这条 AC，用户故事的可验证性是否受损？'若答案为否，删除该 AC",
+      "reason": "过滤凑数内容，保留真实覆盖"
+    },
+    {
+      "change": "GWT 完整性作为不可压缩底线",
+      "rule": "每条 AC 必须完整含 Given/When/Then 三段，缺任何一段则重写该条而非提交",
+      "reason": "v2 的 16 Given / 4 When / 2 Then 是最严重崩塌点"
+    },
+    {
+      "change": "异常态改为'评估式'而非'计数式'",
+      "rule": "对每个 P0 故事评估四类异常态（错误/空/加载/权限）：至少 1 类被 AC 覆盖；覆盖哪类由故事性质决定，不强制凑满",
+      "reason": "baseline 的 3 类异常态是自然覆盖的结果而非配额产物"
+    },
+    {
+      "change": "OQ 三元组保留但第二列具体化",
+      "rule": "'为什么需要回答'列必须包含具体决策场景（如'未答前无法设定 WAU 目标'）而非通用理由（如'影响决策'）",
+      "reason": "v2 的三元组虽在但内容空泛"
+    }
+  ],
+  "prompt_template": {
+    "input": "一句话需求描述或碎片笔记",
+    "instructions": [
+      "1. Executive Summary：problem/solution/impact 三要素各一句",
+      "2. Problem Statement：目标用户 + 痛点 + 证据（无证据标注假设并列入 OQ，禁止编造）",
+      "3. Target Users：主/次画像各一，JTBD 一句话",
+      "4. User Stories：P0 2-3 条 + P1 1-2 条；每条故事必须对应真实用户价值，禁止为凑 AC 编造故事",
+      "5. 对每个 P0 故事评估四类异常态（错误/空/加载/权限），至少 1 类进 AC",
+      "6. 每条 AC 完整 Given/When/Then 三段；宁少毋滥",
+      "7. AC 必要性自检：逐条问'删掉它用户故事还可验证吗？'不可验证的才保留",
+      "8. Open Questions 三元组表格；第二列写具体决策场景",
+      "9. Out of Scope 明确列项"
+    ]
+  },
+  "quality_floor": {
+    "non_negotiable": [
+      "诚实性：无证据数值必须标 OQ",
+      "GWT 三段完整：100% 合规，缺段重写",
+      "P0 故事至少 1 条异常态 AC（评估式）",
+      "OQ 第二列含具体决策场景",
+      "禁止凑数故事与凑数 AC"
+    ]
+  },
+  "expected_tradeoff": "AC 总数将介于 v1(5) 与 baseline(10) 之间，预期 6-8 条；质量维度全部不低于 baseline 的 85%"
+}

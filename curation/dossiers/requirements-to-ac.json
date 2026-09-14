@@ -1,0 +1,103 @@
+{
+  "blocking_gaps": [
+    {
+      "affected_skills": [
+        "prd-development",
+        "discovery-process",
+        "product-strategy-session"
+      ],
+      "id": "missing-interaction-protocol",
+      "mitigation": "使用 supplements 中的 workshop-facilitation 补充文件；若无则退化为快速输出但缺少交互式引导",
+      "severity": "block-standalone"
+    },
+    {
+      "affected_skills": [
+        "sentry-debug-issue"
+      ],
+      "id": "reference-hydration-sentry",
+      "mitigation": "在阶段 6 前需从上游缓存恢复 references/concepts/*.md",
+      "severity": "block-included-domain"
+    }
+  ],
+  "cluster_id": "requirements-to-ac",
+  "created_at": "2026-09-09T14:07:33.605282+00:00",
+  "included_skills": [
+    {
+      "path": "skills/prd-development/SKILL.md",
+      "role": "PRD 端到端编排"
+    },
+    {
+      "path": "skills/discovery-process/SKILL.md",
+      "role": "问题假设与研究综合"
+    },
+    {
+      "path": "skills/prioritization-frameworks/SKILL.md",
+      "role": "RICE/Kano/MoSCoW 等优先级框架"
+    },
+    {
+      "path": "skills/product-strategy-session/SKILL.md",
+      "role": "定位与战略推演"
+    },
+    {
+      "path": "skills/outcome-roadmap/SKILL.md",
+      "role": "Outcome Roadmap 而非 Feature"
+    },
+    {
+      "note": "交互协议被上述 3 项依赖，原始 snapshot 未提取此文件",
+      "path": "curation/supplements/deanpeters_Product-Manager-Skills/workshop-facilitation/SKILL.md",
+      "source": "deanpeters/Product-Manager-Skills@1b5a524e"
+    }
+  ],
+  "purpose": "将模糊想法/发现笔记转成 PRD+AC，确保验收标准可独立验证、无技术越权、包含异常态与已知假设标签",
+  "scope": {
+    "in_scope": [
+      "从问题陈述到用户故事/AC 的结构化文档产出",
+      "异常态枚举（空/载/错/权）与约束标签",
+      "给定已知假设的 AC 生成与待确认项标记"
+    ],
+    "out_of_scope": [
+      "代码实现细节或技术方案选型",
+      "UI 像素级设计规范（由设计域负责）",
+      "后端数据库 schema 决策"
+    ]
+  },
+  "title": "需求到验收标准生成能力簇",
+  "version": 1,
+  "workflow_sequence": [
+    {
+      "activity": "问题定义",
+      "input": "用户口述/碎片笔记",
+      "output": "问题陈述 + 目标用户 + 核心痛点",
+      "phase": 1,
+      "skill_used": "discovery-process + product-strategy-session"
+    },
+    {
+      "activity": "功能规格",
+      "input": "问题定义",
+      "output": "PRD 初稿",
+      "phase": 2,
+      "skill_used": "prd-development (guided mode)"
+    },
+    {
+      "activity": "优先级收敛",
+      "input": "PRD 初稿",
+      "output": "P0/P1/P2 划分 + MVP 范围",
+      "phase": 3,
+      "skill_used": "prioritization-frameworks"
+    },
+    {
+      "activity": "AC 生成",
+      "input": "MVP 范围 + 业务规则",
+      "output": "Given/When/Then AC 集合",
+      "phase": 4,
+      "skill_used": "prd-development template section"
+    },
+    {
+      "activity": "异常态枚举",
+      "input": "AC + 角色",
+      "output": "空/载/错/权边界清单",
+      "phase": 5,
+      "skill_used": "impeccable (edge cases) + web-accessibility"
+    }
+  ]
+}

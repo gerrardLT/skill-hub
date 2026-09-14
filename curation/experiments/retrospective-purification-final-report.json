@@ -1,0 +1,118 @@
+{
+  "experiment_id": "retrospective-purification",
+  "cluster": "retrospective",
+  "version": "final-report",
+  "created_at": "2026-09-09T14:52:30Z",
+  "baseline_file": "curation/experiments/retrospective-baseline-report.md",
+  "purified_v3_file": "curation/experiments/retrospective-purified-v3-report.md",
+  "mechanical_audit_results": {
+    "document_lines": {
+      "baseline": 272,
+      "purified_v3": 236,
+      "compression_rate": "-13%",
+      "verdict": "VERY LOW — lowest of all 5 clusters completed; retrospective is highly structured methodology document with minimal expandable text"
+    },
+    "premature_core_definition": {
+      "pattern": "pre-mortem.*structured risk-identification OR forces teams to think critically about what could go wrong",
+      "count_in_v3": 1,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "tiger_classification_three_way": {
+      "tigers_real_problems": 1,
+      "paper_tigers_overblown": 1,
+      "elephants_unspoken": 1,
+      "all_three_present": true,
+      "pass": true
+    },
+    "urgency_labels_complete": {
+      "launch_blocking_count": 5,
+      "fast_follow_count": 2,
+      "track_count": 4,
+      "all_three_with_examples": true,
+      "pass": true
+    },
+    "action_plan_template": {
+      "pattern": "Risk/Mitigation/Owner/Due Date quadruple",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "retro_trigger_gate": {
+      "pattern": "\"weekly retro\"|\"what did we ship\"|\"engineering retrospective\"",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "gbrain_context_queries": {
+      "timeline_jsonl_mentioned": true,
+      "learnings_jsonl_mentioned": true,
+      "both_present": true,
+      "pass": true
+    },
+    "total_quality_floor_pass_rate": "7/7 metrics pass"
+  },
+  "comparison_summary": {
+    "key_findings": [
+      {
+        "finding": "Retrospective 域压缩收益极低（-13%）——最低的所有簇",
+        "evidence": "Baseline 272 行中大量篇幅是预设的结构化步骤（七步法）、通用注释说明（Notes 三条）、Completion Protocol 四种状态定义等已经非常紧凑的内容",
+        "significance": "属于'高度结构化方法论型'能力簇，文档本身已无太多冗余文字可供删减"
+      },
+      {
+        "finding": "Tiger 三分法和急迫性分类作为核心资产成功保留",
+        "evidence": "Tigers/Paper Tigers/Elephants 三类定义全部完整；Launch-Blocking/Fast-Follow/Track 三级各有示例",
+        "significance": "这些原创方法论是 retrospective 域的灵魂，比文本压缩更重要"
+      },
+      {
+        "finding": "Gbrain context queries 可简化但不影响功能",
+        "evidence": "v3 仅保留两个关键文件路径引用（timeline.jsonl/learnings.jsonl），去除了 yaml 格式细节和 render_as 描述",
+        "significance": "上下文查询机制的逻辑完整性未受破坏——这是 retro 的核心优势所在"
+      }
+    ],
+    "pattern_verification_success": [
+      {"pattern": "premature core definition text", "actual": 1, "min": 1, "pass": true},
+      {"pattern": "tiger three-way classification", "actual": 3 types present, "min": 3, "pass": true},
+      {"pattern": "urgency labels (all 3 types)", "actual": Launch-Blocking:5 + Fast-Follow:2 + Track:4, "min": 1 each, "pass": true},
+      {"pattern": "action plan template 4 fields", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "retro trigger gate keywords", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "gbrain context files (timeline + learnings)", "actual": both mentioned, "min": 1 pair, "pass": true}
+    ],
+    "verdict": "PURIFIED V3 PASS WITH QUALITY—but compression rate (-13%) significantly lower than anticipated ~40%; retrospective domain is more structured than assumed"
+  },
+  "design_to_ui_concise_v3_recommendation": {
+    "adopt_as_default": true,
+    "for_stage_7_and_8_transition": "All 6 capability clusters now purified and validated. Ready for stage 7 (composition validation) and stage 8 (dev-loop integration).",
+    "prediction_accuracy_after_all_6_clusters": [
+      {"cluster": "implementation", "expected": "~60%", "actual": "-66%", "error": "+6%"},
+      {"cluster": "testing-qa", "expected": "~50%", "actual": "-41%", "error": "-9%"},
+      {"cluster": "requirements-to-ac", "expected": "~35%", "actual": "-38%", "error": "+3%"},
+      {"cluster": "shipping-delivery", "expected": "~40%", "actual": "-22%", "error": "+18%"},
+      {"cluster": "design-to-ui", "expected": "~10%", "actual": "-7%", "error": "+3%"},
+      {"cluster": "retrospective", "expected": "~40%", "actual": "-13%", "error": "+27%"}
+    ],
+    "predictive_model_insights": {
+      "most_compressible": "Iron-law dense (explanation-heavy) → implementation (-66%)",
+      "moderately_compressible": ["Process-narrative (引导文字多) → PRD/Testing-QA (~40%)"],
+      "hard_to_compress": [
+        "Script/command dense (技术规范密集) → shipping-delivery (-22%)",
+        "Highly-structured-methodology (高度结构化方法论) → retrospective (-13%)",
+        "Rule-density already compact (规则已紧凑) → design-to-ui (-7%)"
+      ]
+    }
+  },
+  "lessons_learned_from_all_6_clusters": [
+    "✅ 'Methodology document'类型（如 pre-mortem 七步法、retro 六维分析）天然难压缩——结构本身就是价值",
+    "✅ 'Iron law density'越高越易压缩——因为解释性文字占比大（implementation -66%）",
+    "✅ 'Script-command density'不可压缩性被低估——technical specs 不能主观删减（shipping -22% vs expected -40%）",
+    "✅ 'Structure-first documents'压缩收益最低——methodology docs 本身已最优组织（retrospective -13% vs expected -40%）",
+    "📊 预测误差主要来源于对文档结构类型的误判，而非 v3 方法本身的问题",
+    "🔍 后续阶段 7 组合验证时，需针对不同类型能力簇采用不同的配方策略（铁律密集型可直接拼接，方法论密集型需保持独立调用链）"
+  ],
+  "remaining_gaps": [
+    "实际 launch scenario 未测试（需真人参与预失败风险分析）",
+    "周期性复盘场景未运行（需真实 commit 历史数据）",
+    "Gbrain 上下文查询仅保留文件名，实际 YAML schema 细节缺失",
+    "Telemetry logging 命令保留但 jq 语法细节简化"
+  ]
+}

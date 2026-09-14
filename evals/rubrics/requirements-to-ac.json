@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "id": "rubric:requirements-to-ac",
+  "purpose": "Evaluate whether a requirements-to-acceptance-criteria capability preserves evidence, uncertainty, boundaries, and testable behavior across the curated product and discovery sources.",
+  "source_clusters": [
+    "cluster:problem-framing-and-customer-research",
+    "cluster:qualitative-evidence-synthesis",
+    "cluster:opportunity-prioritization-and-frameworks",
+    "cluster:requirements-and-delivery-contract",
+    "cluster:document-and-artifact-governance",
+    "cluster:results-analysis-and-decision-readout",
+    "cluster:risk-preflight-and-safety-governance"
+  ],
+  "source_skills": [
+    "ai-product-strategy",
+    "analyzing-user-feedback",
+    "competitive-strategy",
+    "craft-experiment-readout",
+    "discovery-process",
+    "metrics-dashboard",
+    "outcome-roadmap",
+    "pre-mortem",
+    "prioritization-frameworks",
+    "prd-development",
+    "product-strategy-session"
+  ],
+  "hard_failures": [
+    {
+      "id": "fabricated-fact",
+      "description": "States an unsupported fact, metric, approval, customer quote, market claim, or commitment as known."
+    },
+    {
+      "id": "missing-critical-rule",
+      "description": "Drops a supplied rule, constraint, decision branch, guardrail, dependency, or failure condition that changes implementation or acceptance."
+    },
+    {
+      "id": "untestable-acceptance-criteria",
+      "description": "Produces acceptance criteria that cannot be observed, reproduced, or evaluated against explicit inputs and outcomes."
+    },
+    {
+      "id": "unknown-loss",
+      "description": "Silently fills an unknown, assumption, open question, dependency, or unresolved decision instead of preserving its status and required owner or evidence."
+    },
+    {
+      "id": "scope-or-authority-overreach",
+      "description": "Commits to implementation, pixel-level design, approval, production action, or external evidence beyond the supplied authority and request."
+    },
+    {
+      "id": "incorrect-gate",
+      "description": "Marks a requirement ready, validated, safe, or approved while a stated evidence, metric, risk, consent, dependency, or decision gate is unmet."
+    },
+    {
+      "id": "qa-repair-overreach",
+      "description": "Assigns independent QA to modify product code or uses self-check evidence as an independent verdict."
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "evidence-traceability",
+      "weight": 5,
+      "checks": ["Each material claim links to supplied evidence, an explicit assumption, or an open question.", "Evidence strength and freshness are not overstated."]
+    },
+    {
+      "id": "problem-and-user-boundary",
+      "weight": 4,
+      "checks": ["Problem, affected users, behavior, pain, and business impact are distinct.", "Personas and JTBD are not presented as facts without support."]
+    },
+    {
+      "id": "requirements-completeness",
+      "weight": 5,
+      "checks": ["Functional behavior, states, constraints, dependencies, scope, risks, and open questions are retained.", "Out-of-scope items include a reason when one is available."]
+    },
+    {
+      "id": "acceptance-testability",
+      "weight": 5,
+      "checks": ["Every acceptance criterion has observable preconditions, action or event, and expected result.", "Error, boundary, recovery, and non-regression behavior is explicit when relevant."]
+    },
+    {
+      "id": "uncertainty-and-gates",
+      "weight": 5,
+      "checks": ["Needs-input, blocked, assumption, and validated states are distinguished.", "Readiness and risk gates do not silently pass."]
+    },
+    {
+      "id": "scope-and-permission-discipline",
+      "weight": 4,
+      "checks": ["The output stays at requirements and acceptance-contract level.", "It does not claim design, implementation, approval, or external execution without authority."]
+    },
+    {
+      "id": "downstream-handoff-quality",
+      "weight": 3,
+      "checks": ["Identifiers, assumptions, rules, evidence links, and unresolved items survive handoff to engineering, QA, or roadmap work."]
+    }
+  ],
+  "minimums": {
+    "hard_failures": 0,
+    "dimension_score_percent": 80,
+    "overall_score_percent": 85,
+    "required_source_traceability": true,
+    "required_unknown_preservation": true,
+    "required_testable_ac": true
+  },
+  "review_protocol": {
+    "automatic": "Check hard failures, required fields, identifiers, source references, unknown markers, AC observability, and gate decisions.",
+    "blind_human": "Review candidate and baseline outputs under anonymous labels; score dimensions and record rationale for every score below maximum.",
+    "holdout_policy": "Do not modify candidate guidance or rubric from holdout outputs before candidate freeze."
+  }
+}

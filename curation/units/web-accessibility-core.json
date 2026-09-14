@@ -1,0 +1,151 @@
+{
+  "skill_name": "web-accessibility",
+  "reference_file": "SKILL.md",
+  "total_units": 12,
+  "units": [
+    {
+      "id": "skills/web-accessibility/SKILL.md:18-18",
+      "type": "method",
+      "origin_line_start": 18,
+      "origin_line_end": 18,
+      "raw_excerpt": "Accessibility is successful task completion and recovery for disabled people, not a tool score.",
+      "meaning": "无障碍的定义哲学：成功的无障碍是残障人士完成任务并恢复，而非工具评分。在实现前定义可观察的要求，优先使用原生平台行为，在支持的浏览器和辅助技术环境中收集有界证据。",
+      "boundary_condition": "禁止将 lighthouse/axe 等自动化扫描分数作为无障碍成功的度量",
+      "dependency_skills": [],
+      "validation_criteria": "验收标准必须可观察（observable）且在实施前定义",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:22-22",
+      "type": "method",
+      "origin_line_start": 22,
+      "origin_line_end": 22,
+      "raw_excerpt": "Define the task, users, supported browsers/AT, input methods, and failure recovery. Start with assets/acceptance-criteria-template.md.",
+      "meaning": "工作流第 1 步：定义任务、用户、支持的浏览器/AT、输入方式和失败恢复。从 assets/acceptance-criteria-template.md 开始。",
+      "boundary_condition": "所有下游步骤依赖此步的验收标准定义",
+      "dependency_skills": [],
+      "validation_criteria": "产出物包含完整的验收标准文档",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:23-23",
+      "type": "rule",
+      "origin_line_start": 23,
+      "origin_line_end": 23,
+      "raw_excerpt": "Choose native HTML first. Load references/semantics-and-names.md for structure, native controls, accessible names, descriptions, and dynamic updates.",
+      "meaning": "工作流第 2 步（原生优先规则）：优先选择原生 HTML。加载 semantics-and-names.md 处理结构、原生控件、可访问名称、描述和动态更新。",
+      "boundary_condition": "仅当原生语义不满足需求时才考虑 ARIA",
+      "dependency_skills": [],
+      "validation_criteria": "审查实现中 ARIA 使用率是否最小化",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:24-24",
+      "type": "method",
+      "origin_line_start": 24,
+      "origin_line_end": 24,
+      "raw_excerpt": "Specify every interactive state: trigger, role/name/state/value, keyboard commands, focus entry/exit/return, pointer alternative, errors, and visible feedback.",
+      "meaning": "工作流第 3 步：指定每个交互状态：触发器、角色/名称/状态/值、键盘命令、焦点进入/退出/返回、指针替代方案、错误和可见反馈。",
+      "boundary_condition": "每个交互元素必须完整定义此状态矩阵",
+      "dependency_skills": [],
+      "validation_criteria": "状态矩阵完整性检查",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:26-26",
+      "type": "gate",
+      "origin_line_start": 26,
+      "origin_line_end": 26,
+      "raw_excerpt": "Implement only after the contract is defined. For custom composite widgets, first evaluate a proven native or maintained component in the chosen stack; APG examples are informative guidance, not production proof.",
+      "meaning": "工作流第 5 步（门控）：仅在契约定义后才实现。对于自定义复合组件，首先评估所选技术栈中已验证的原生或维护良好的组件；APG 示例是信息性指导，不是生产证明。",
+      "boundary_condition": "实现前必须有完整契约；APG examples 不能直接作为生产代码",
+      "dependency_skills": [],
+      "validation_criteria": "代码提交前核对契约文档存在",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:28-28",
+      "type": "rule",
+      "origin_line_start": 28,
+      "origin_line_end": 28,
+      "raw_excerpt": "Do not issue a WCAG conformance or general accessibility verdict from an automated scan. A conformance claim needs a complete, scoped evaluation outside this skill's automatic verdict.",
+      "meaning": "工作流第 7 步（规则）：不得从自动扫描中得出 WCAG 合规性或一般无障碍结论。合规性声明需要在此技能自动结论之外进行完整的、有范围限制的评估。",
+      "boundary_condition": "自动扫描结果只能报告具体失败项，不能给出整体合规结论",
+      "dependency_skills": [],
+      "validation_criteria": "审查输出报告中是否存在 WCAG compliant 等绝对结论",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:47-47",
+      "type": "rule",
+      "origin_line_start": 47,
+      "origin_line_end": 47,
+      "raw_excerpt": "Treat WCAG 2.2 success criteria, HTML/ARIA specifications, and informative tutorials/patterns as separate layers. See references/source-index.md.",
+      "meaning": "决策规则 1（分层标准）：将 WCAG 2.2 成功标准、HTML/ARIA 规范、信息性教程/模式视为独立层级。规范层不可与教程层混同。",
+      "boundary_condition": "引用标准时必须注明层级来源",
+      "dependency_skills": [],
+      "validation_criteria": "引用溯源检查",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:48-48",
+      "type": "rule",
+      "origin_line_start": 48,
+      "origin_line_end": 48,
+      "raw_excerpt": "Use WAI-ARIA 1.2 only when native host-language semantics do not provide the required behavior. ARIA changes semantics; it does not create keyboard behavior or visual presentation.",
+      "meaning": "决策规则 2（ARIA 兜底规则）：仅当原生宿主语言语义无法提供所需行为时使用 WAI-ARIA 1.2。ARIA 改变语义，但不创建键盘行为或视觉呈现。",
+      "boundary_condition": "ARIA 第一规则的规范表述",
+      "dependency_skills": [],
+      "validation_criteria": "审查 ARIA 属性是否对应原生替代方案缺失",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:49-49",
+      "type": "method",
+      "origin_line_start": 49,
+      "origin_line_end": 49,
+      "raw_excerpt": "Use the Accessible Name and Description Computation 1.2 algorithm for edge cases. Do not substitute a priority mnemonic; inspect the computed accessibility tree and name.",
+      "meaning": "决策规则 3（计算命名算法）：边缘案例使用 Accessible Name and Description Computation 1.2 算法。不要用优先级助记符替代；检查计算后的可访问性树和名称。",
+      "boundary_condition": "适用于复杂嵌套组件的可访问名称争议",
+      "dependency_skills": [],
+      "validation_criteria": "用 accessibility tree 检查器验证",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:50-50",
+      "type": "rule",
+      "origin_line_start": 50,
+      "origin_line_end": 50,
+      "raw_excerpt": "For a modal, prefer <dialog>.showModal() when it supports the target environment. Keep background content unavailable/inert, choose initial focus for the content and task, provide a visible close path, and return focus logically. Do not hide a backdrop with aria-hidden or hide an ancestor of the dialog.",
+      "meaning": "决策规则 4（原生对话框优先）：对模态框，在目标环境支持时优先使用 <dialog>.showModal()。保持背景内容不可用/inert，为内容和任务选择初始焦点，提供可见的关闭路径，逻辑地返回焦点。不要用 aria-hidden 隐藏背景，也不要隐藏对话框的祖先。",
+      "boundary_condition": "仅当目标浏览器环境支持 <dialog> 元素",
+      "dependency_skills": [],
+      "validation_criteria": "检查模态实现是否满足全部 5 个条件",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:51-51",
+      "type": "rule",
+      "origin_line_start": 51,
+      "origin_line_end": 51,
+      "raw_excerpt": "Treat ordinary responsive navigation as a disclosure over ordinary links, not an ARIA menu. Use menu semantics only with the application-menu keyboard contract.",
+      "meaning": "决策规则 5（披露优先于菜单）：普通响应式导航是普通链接上的披露模式，而非 ARIA 菜单。菜单语义仅在应用菜单键盘契约下使用。",
+      "boundary_condition": "网站主导航 vs 应用程序菜单的区分",
+      "dependency_skills": [],
+      "validation_criteria": "审查导航组件的 ARIA role 使用",
+      "status": "retained"
+    },
+    {
+      "id": "skills/web-accessibility/SKILL.md:52-52",
+      "type": "rule",
+      "origin_line_start": 52,
+      "origin_line_end": 52,
+      "raw_excerpt": "Target Size (Minimum) is 24 by 24 CSS pixels at WCAG 2.2 AA, subject to its spacing, equivalent, inline, user-agent, and essential exceptions. A larger target may be a product goal.",
+      "meaning": "决策规则 6（目标尺寸规则）：目标尺寸（最小）在 WCAG 2.2 AA 下为 24×24 CSS 像素，受间距、等效、内联、用户代理和必要例外约束。更大的目标可以是产品目标。",
+      "boundary_condition": "24×24 是合规下限；产品目标可更高",
+      "dependency_skills": [],
+      "validation_criteria": "测量交互元素的实际点击区域",
+      "status": "retained"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "skill_name": "ship + canary",
+  "reference_files": ["SKILL.md"],
+  "total_units": 10,
+  "units": [
+    {
+      "id": "skills/ship/SKILL.md:26-31",
+      "type": "gate",
+      "origin_line_start": 26,
+      "origin_line_end": 31,
+      "raw_excerpt": "Use when asked to \"ship\", \"deploy\", \"push to main\", \"create a PR\", \"merge and push\", or \"get it deployed\". Proactively invoke this skill (do NOT push/PR directly) when the user says code is ready, asks about deploying, wants to push code up, or asks to create a PR.",
+      "meaning": "ship 触发门控：用户说 ship/deploy/push to main/create a PR 时触发。关键约束：用户说代码就绪或要部署时必须主动调用本技能而非直接 push/PR——发布动作必须经过工作流而非裸 git 命令。",
+      "boundary_condition": "触发词覆盖中英文场景；直接 push 绕过 ship 是违规",
+      "dependency_skills": [],
+      "validation_criteria": "检查发布是否经由 ship 工作流（VERSION/CHANGELOG 变更即证据）",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:5-5",
+      "type": "method",
+      "origin_line_start": 5,
+      "origin_line_end": 5,
+      "raw_excerpt": "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR.",
+      "meaning": "发布工作流八步法：检测并合并基础分支 → 运行测试 → 审查 diff → 提升 VERSION → 更新 CHANGELOG → 提交 → 推送 → 创建 PR。这是交付域的骨架流程。",
+      "boundary_condition": "任何一步失败则中止发布；顺序不可颠倒",
+      "dependency_skills": ["verification-before-completion"],
+      "validation_criteria": "PR 中应可见 VERSION bump 和 CHANGELOG entry 两个提交物",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:36-40",
+      "type": "exception",
+      "origin_line_start": 36,
+      "origin_line_end": 40,
+      "raw_excerpt": "\"$_SS\" --skill \"ship\" --model \"claude\" --parent-pid \"$PPID\" \\\n  || echo \"SKILL_START: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\"",
+      "meaning": "降级模式例外：gstack-skill-start 脚本不可用（过期安装）时打印降级提示并继续用户任务，而非阻塞。安全的默认值：SESSION_KIND 按 interactive 处理、跳过遥测、提示用户运行 ./setup。",
+      "boundary_condition": "仅当 SKILL_START_PROTO: 1 缺失时进入降级；onboarding/consent 的门控延后到下次健康运行",
+      "dependency_skills": [],
+      "validation_criteria": "降级时仍有完整的用户任务输出",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:316-316",
+      "type": "rule",
+      "origin_line_start": 316,
+      "origin_line_end": 316,
+      "raw_excerpt": "/ship squashes WIP commits into clean commits.",
+      "meaning": "WIP 提交压缩规则：ship 将开发期间的 WIP: 前缀临时提交压缩为干净的正式提交。将 Checkpoint Mode 的碎提交与发布历史解耦。",
+      "boundary_condition": "仅压缩 WIP: 前缀提交；正式提交保持原样",
+      "dependency_skills": [],
+      "validation_criteria": "合并后 main 历史无 WIP: 前缀提交",
+      "status": "retained"
+    },
+    {
+      "id": "skills/canary/SKILL.md:21-27",
+      "type": "gate",
+      "origin_line_start": 21,
+      "origin_line_end": 27,
+      "raw_excerpt": "Watches the live app for console errors, performance regressions, and page failures. Takes periodic screenshots, compares against pre-deploy baselines, and alerts on anomalies. Use when: \"monitor deploy\", \"canary\", \"post-deploy check\", \"watch production\", \"verify deploy\".",
+      "meaning": "canary 触发门控与职责：监控线上应用的控制台错误、性能回归、页面故障。周期性截图、与部署前基线对比、异常时告警。触发词包括 monitor deploy/canary/post-deploy check/watch production/verify deploy。",
+      "boundary_condition": "部署后监控的标配环节；依赖部署前保存的基线",
+      "dependency_skills": [],
+      "validation_criteria": "监控输出包含与基线的对比结论",
+      "status": "retained"
+    },
+    {
+      "id": "skills/canary/SKILL.md:23-25",
+      "type": "method",
+      "origin_line_start": 23,
+      "origin_line_end": 25,
+      "raw_excerpt": "Watches the live app for console errors,\nperformance regressions, and page failures. Takes\nperiodic screenshots, compares against pre-deploy baselines, and alerts\non anomalies.",
+      "meaning": "金丝雀监测三要素方法：①监控对象——控制台错误、性能回归、页面故障；②监测手段——周期截图+基线对比；③输出——异常告警。形成部署后的持续观察闭环。",
+      "boundary_condition": "监测频率和时长由部署类型决定（灰度 vs 全量）",
+      "dependency_skills": [],
+      "validation_criteria": "告警在异常出现后的一个监测周期内触发",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:28-29",
+      "type": "rule",
+      "origin_line_start": 28,
+      "origin_line_end": 29,
+      "raw_excerpt": "Use when asked to \"ship\", \"deploy\",\n\"push to main\", \"create a PR\", \"merge and push\", or \"get it deployed\".",
+      "meaning": "发布意图识别规则：六类用户表述（ship/deploy/push to main/create a PR/merge and push/get it deployed）统一路由到 ship 工作流。避免用户直接操作 git 造成流程绕过。",
+      "boundary_condition": "与 qa-only 的 never fix 规则对应：ship 是发布专用，不承担测试职责",
+      "dependency_skills": [],
+      "validation_criteria": "意图识别后进入正确的 ship 分支",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:12-20",
+      "type": "tool-action",
+      "origin_line_start": 12,
+      "origin_line_end": 20,
+      "raw_excerpt": "allowed-tools:\n  - Bash\n  - Read\n  - Write\n  - Edit\n  - Grep\n  - Glob\n  - Agent\n  - AskUserQuestion\ntriggers:\n  - ship it\n  - create a pr\n  - push to main\n  - deploy this",
+      "meaning": "ship 工具权限声明：Bash/Read/Write/Edit/Grep/Glob/Agent/AskUserQuestion/WebSearch 九类工具，比 qa-only（五类）更宽——发布需要写操作和多代理协调。触发词四组。",
+      "boundary_condition": "权限边界即能力边界：ship 可改文件（VERSION/CHANGELOG）可推送，qa-only 不可",
+      "dependency_skills": [],
+      "validation_criteria": "权限模型与实际操作一致",
+      "status": "retained"
+    },
+    {
+      "id": "skills/canary/SKILL.md:6-11",
+      "type": "rule",
+      "origin_line_start": 6,
+      "origin_line_end": 11,
+      "raw_excerpt": "description: Post-deploy canary monitoring. (gstack)\nallowed-tools:\n  - Bash\n  - Read\n  - Write\n  - Glob\n  - AskUserQuestion",
+      "meaning": "canary 权限模型：五类工具（Bash/Read/Write/Glob/AskUserQuestion），无 Edit/Agent——监控是只读为主的活动，写入限于报告和截图产物。preamble-tier 2 低于 ship 的 tier 4。",
+      "boundary_condition": "权限收窄反映职责单一：观察而非修改",
+      "dependency_skills": [],
+      "validation_criteria": "监控运行不改应用代码",
+      "status": "retained"
+    },
+    {
+      "id": "skills/ship/SKILL.md:5-5-review",
+      "type": "gate",
+      "origin_line_start": 5,
+      "origin_line_end": 5,
+      "raw_excerpt": "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR.",
+      "meaning": "review diff 作为独立步骤的门控：ship 工作流中 review diff 是推送前的必经步骤（第三步），任何 diff 中的异常（未预期文件、调试代码、秘钥泄漏）在此拦截。与 run tests 一起构成发布前的双闸门。",
+      "boundary_condition": "review diff 失败（发现异常）则中止后续所有步骤",
+      "dependency_skills": ["requesting-code-review"],
+      "validation_criteria": "review 记录保留在 PR 描述或 review 注释中",
+      "status": "retained"
+    }
+  ]
+}

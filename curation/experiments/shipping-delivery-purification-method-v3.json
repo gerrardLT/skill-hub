@@ -1,0 +1,65 @@
+{
+  "method_id": "shipping-delivery-concise-v3",
+  "parent_cluster": "shipping-delivery",
+  "version": "v3 — 质量底线 + 必要性过滤器",
+  "derived_from": [
+    "pr-to-ac-concise-v3 成功经验",
+    "implementation-purification-v3 铁律保留范式",
+    "ship SKILL.md 发布工作流八步法",
+    "canary SKILL.md 金丝雀监控核心职责"
+  ],
+  "design_philosophy": "Shipping & Delivery 的核心资产是'工作流八步顺序不可颠倒'与'发布后必须监控'铁律。提纯策略：保留关键步骤的强制措辞，压缩脚本命令细节、AskUserQuestion 格式模板、telemetry logging 字段说明等辅助信息",
+  "quality_floor": {
+    "non_negotiable": [
+      "Ship 触发门控原文：use when asked to \"ship\"/\"deploy\"/\"push to main\"/\"create a PR\"",
+      "版本控制流程核心：VERSION bump + CHANGELOG entry 必现",
+      "Code review gate: review diff before pushing/merging",
+      "Canary always-on 铁律：EVERY DEPLOY MUST BE MONITORED",
+      "Post-deploy monitoring 三要素：console errors/performance regressions/page failures",
+      "Diff-aware mode: git diff main...HEAD → affected pages → deploy port detection",
+      "Baseline.json regression diffing 机制存在"
+    ],
+    "compressible": [
+      "Preamble gstack-skill-start 脚本完整命令（仅保留调用示意）",
+      "AskUserQuestion 格式详细模板（简化为结构化要点）",
+      "Prose fallback 失败回退的具体文字描述（保留决策逻辑即可）",
+      "Telemetry 日志具体字段说明（保留命令示例即可）",
+      "Continuous Checkpoint Mode WIP commit 格式细节（保留前缀规则即可）",
+      "Eureka 洞见记录脚本的具体 jq 语法（保留命令名称即可）"
+    ]
+  },
+  "prompt_template": {
+    "input": "完成代码的分支名/功能描述 + 目标环境（staging/prod）",
+    "instructions": [
+      "1. Detection: identify branch with feature commits, check for test results",
+      "2. Version Bump: bump VERSION number (MAJOR.MINOR.PATCH convention), document in CHANGELOG",
+      "3. Test Run: ensure all tests pass (unit + integration + e2e)",
+      "4. Code Review: generate review checklist for changes, request approvals if required",
+      "5. Merge Strategy: create PR or merge to main based on workflow",
+      "6. Deploy: push to production (Vercel/other platforms as configured)",
+      "7. Canary Monitoring: run post-deploy checks for console errors/performance/page failures",
+      "8. Baseline Update: save health score and issues to baseline.json for future regression comparison",
+      "9. NEVER skip monitoring step after deployment"
+    ]
+  },
+  "mechanical_audit_spec": {
+    "line_patterns": {
+      "ship_trigger_gate": "\"ship\"|\"deploy\"|\"push to main\"|\"create a PR\" (exact quotes from trigger list)",
+      "version_changelog_pair": "VERSION bump.*CHANGELOG|bump VERSION.*update CHANGELOG",
+      "review_diff_gate": "review diff|review the diff (before push/merge)",
+      "canary_always_on": "EVERY DEPLOY MUST BE MONITORED|post-deploy monitoring is mandatory",
+      "diff_aware_git_cmd": "git diff main\\.\\.\\.HEAD|branch diff analysis"
+    },
+    "verdict": "全部 5 项 pattern 通过 = 提纯成功；任何一项缺失 = 回到 baseline 诊断"
+  },
+  "success_criteria": [
+    "输出文档行数 ≤ baseline 的 60%",
+    "Ship 触发门控六类关键词出现 ≥1 次",
+    "VERSION bump + CHANGELOG entry 配对出现",
+    "Review diff gate 明确出现在 merge 之前",
+    "Canary monitoring 铁律原文至少出现一次",
+    "Diff-aware mode 七步流程覆盖完整或明确标注为可选",
+    "Regression diffing baseline.json 机制存在",
+    "无凑数内容（禁止 '至少 N 个元素' 式计数规则）"
+  ]
+}

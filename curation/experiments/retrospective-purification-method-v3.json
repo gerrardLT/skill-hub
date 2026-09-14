@@ -1,0 +1,63 @@
+{
+  "method_id": "retrospective-concise-v3",
+  "parent_cluster": "retrospective",
+  "version": "v3 — 质量底线 + 必要性过滤器",
+  "derived_from": [
+    "pr-to-ac-concise-v3 成功经验",
+    "implementation-purification-v3 铁律保留范式",
+    "pre-mortem SKILL.md 五步方法论",
+    "retro SKILL.md 周期性复盘核心职责"
+  ],
+  "design_philosophy": "Retrospective 的核心资产是'逆向思维技术'（假设失败→向前找问题）与'经验沉淀闭环'（发布后学习→指导下次需求）。提纯策略：保留 Tiger/Paper Tigers/Elephants 三分法原文，压缩上下文查询细节、gbrain schema 字段说明等辅助信息",
+  "quality_floor": {
+    "non_negotiable": [
+      "Pre-mortem 核心定义原文：A pre-mortem is a structured risk-identification exercise that forces teams to think critically about what could go wrong before launch, when there's still time to act",
+      "Tiger 分类三原则：Tigers(真实风险)/Paper Tigers(过度担忧)/Elephants(未说出口忧虑) 必须完整且各有明确判定标准",
+      "Urgency classification: Launch-Blocking/Fast-Follow/Track 三类必现且带定义",
+      "Action plan template for Launch-Blocking Tigers: Risk/Mitigation/Owner/Due Date 四字段不可缺",
+      "Retro trigger gate: weekly retro/what did we ship/engineering retrospective 触发词存在",
+      "Gbrain context queries 核心查询项至少保留 timeline.jsonl 和 learnings.jsonl 引用"
+    ],
+    "compressible": [
+      "Preamble gstack-skill-start 脚本完整命令（仅保留调用示意）",
+      "AskUserQuestion 格式详细模板（简化为结构化要点）",
+      "Telemetry logging 具体字段说明（保留命令示例即可）",
+      "Cross-project learnings consent question prose（保留核心逻辑即可）",
+      "Completion Status Protocol 四种状态定义详细说明（保留表格即可）",
+      "Operational Self-Improvement log 脚本的具体 jq 语法（保留命令名称即可）"
+    ]
+  },
+  "prompt_template": {
+    "input": "项目 URL/功能描述 + 时间周期（周/迭代/月度）",
+    "instructions": [
+      "1. Pre-mortem Analysis (if preparing for launch): Imagine product launches/fails in X days → categorize as Tigers/Paper Tigers/Elephants",
+      "2. Urgency Classification: Label each Tiger as Launch-Blocking/Fast-Follow/Track with concrete thresholds",
+      "3. Action Plans: For each Launch-Blocking Tiger, create Risk/Mitigation/Owner/Due Date quadruple",
+      "4. Retro Review (if completing period): Analyze commit history, work patterns, code quality metrics",
+      "5. Team-Aware Breakdown: Per-person contributions with praise and growth areas",
+      "6. Trend Tracking: Cross-reference prior retros, recent timeline events, recent learnings",
+      "7. Output Format: Markdown with emoji section tags, tiger/electphant labels, urgency badges"
+    ]
+  },
+  "mechanical_audit_spec": {
+    "line_patterns": {
+      "premortem_core_definition": "pre-mortem.*structured risk-identification|forces teams to think critically about what could go wrong",
+      "tiger_classification_three": "Tigers.*real problems|Paper Tigers.*overblown concerns|Elephants.*unspoken worries",
+      "urgency_labels": "Launch-Blocking|Fast-Follow|Track (all three present)",
+      "action_plan_template": "Risk.*Mitigation.*Owner.*Due Date (all four fields)",
+      "retro_trigger_gate": "\"weekly retro\"|\"what did we ship\"|\"engineering retrospective\"",
+      "gbrain_context_queries": "timeline.jsonl|learnings.jsonl (both at least mentioned)"
+    },
+    "verdict": "全部 6 项 pattern 通过 = 提纯成功；任何一项缺失 = 回到 baseline 诊断"
+  },
+  "success_criteria": [
+    "输出文档行数 ≤ baseline 的 60%",
+    "Pre-mortem 核心定义出现 ≥1 次",
+    "Tiger/Paper Tigers/Elephants 三分法完整（每项有定义）",
+    "Launch-Blocking/Fast-Follow/Track 三类急迫性标签全部存在",
+    "Action Plan 四字段模板（Risk/Mitigation/Owner/Due Date）完整",
+    "Retro 触发门控六类关键词 ≥1 次",
+    "Gbrain context queries 至少提及 timeline.jsonl + learnings.jsonl 两个文件",
+    "无凑数内容（禁止 '至少 N 个元素' 式计数规则）"
+  ]
+}

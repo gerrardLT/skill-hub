@@ -1,0 +1,87 @@
+{
+  "dossier_id": "design-to-ui",
+  "title": "设计域→UI 实现能力簇",
+  "description": "从设计决策到 UI 实现的完整链条，包括视觉语言、动效规范、无障碍合规、组件库对齐等核心能力",
+  "skills_included": [
+    {"name": "impeccable", "role": "主驱：设计与实施全栈能力"},
+    {"name": "web-design-guidelines", "role": "审查：Web 界面规范合规性"},
+    {"name": "ui-ux-pro-max", "role": "增强：多维度设计智能搜索"},
+    {"name": "review-animations", "role": "专攻：动效质量审查"},
+    {"name": "web-accessibility", "role": "专攻：无障碍合规审计"}
+  ],
+  "workflow_sequence": [
+    {
+      "phase": 1,
+      "activity": "设计方向探索",
+      "skill_used": "ui-ux-pro-max --design-system / impeccable init",
+      "inputs": ["产品需求", "竞品 URL"],
+      "outputs": ["design-system MASTER.md", "风格/色彩/排版方案"]
+    },
+    {
+      "phase": 2,
+      "activity": "视觉语言定义",
+      "skill_used": "impeccable (new-work + craft-floor)",
+      "inputs": ["design-tokens", "色彩/字体系统"],
+      "outputs": ["设计规范文档", "组件契约", "拒绝清单"]
+    },
+    {
+      "phase": 3,
+      "activity": "动效策略层设计",
+      "skill_used": "ui-ux-pro-max --domain gsap / review-animations",
+      "inputs": ["情感意图", "视觉叙事目标"],
+      "outputs": ["Motion Personality", "Duration palette", "Easing rules"]
+    },
+    {
+      "phase": 4,
+      "activity": "动效工程实施",
+      "skill_used": "impeccable animate",
+      "inputs": ["motion-spec", "React/Vue/Svelte 项目上下文"],
+      "outputs": ["动画组件代码", "CSS 关键帧", "GSAP 时间轴"]
+    },
+    {
+      "phase": 5,
+      "activity": "无障碍合规审计",
+      "skill_used": "web-accessibility + impeccable audit",
+      "inputs": ["已实现 UI", "WCAG AA/AAA 目标"],
+      "outputs": ["a11y findings", "修复建议", "严重度评级"]
+    },
+    {
+      "phase": 6,
+      "activity": "整体设计走查",
+      "skill_used": "impeccable critique + web-design-guidelines",
+      "inputs": ["最终设计稿", "设计标准文档"],
+      "outputs": ["design-review checklist", "缺陷列表", "放行建议"]
+    }
+  ],
+  "capabilities_map": [
+    {"capability": "visual-language-generation", "skills": ["ui-ux-pro-max --design-system", "impeccable document"]},
+    {"capability": "token-system-extraction", "skills": ["impeccable extract", "extract-design-system"]},
+    {"capability": "motion-specification", "skills": ["ui-ux-pro-max --domain gsap", "impeccable animate", "review-animations"]},
+    {"capability": "a11y-compliance-audit", "skills": ["web-accessibility", "impeccable audit"]},
+    {"capability": "component-library-alignment", "skills": ["impeccable polish"]},
+    {"capability": "design-debt-detection", "skills": ["impeccable optimize"]},
+    {"capability": "responsive-design-validation", "skills": ["impeccable adapt", "ui-ux-pro-max --domain ux"]}
+  ],
+  "related_skills_not_in_cluster": [
+    {"name": "design-taste-frontend", "reason": "设计品味指南，可作为 impeccable 的辅助参考"},
+    {"name": "frontend-design", "reason": "前端设计实现，与 impeccable 职责重叠度高"},
+    {"name": "redesign-existing-projects", "reason": "改版专用流程，属于设计域的子场景"},
+    {"name": "prototype", "reason": "原型制作，属于设计域的前置环节"},
+    {"name": "audit-website", "reason": "网站审计，属于设计域的审查环节"}
+  ],
+  "blocking_gaps": [
+    {
+      "gap_id": "impeccable-scripts-node-dep",
+      "description": "impeccable scripts/context.mjs 需要 Node.js 环境运行",
+      "severity": "non-blocking",
+      "mitigation": "语义拆解聚焦文本层面的方法、规则、例外；运行时依赖留到阶段 7 配方验证时处理"
+    },
+    {
+      "gap_id": "ui-ux-search-python-dep",
+      "description": "ui-ux-pro-max search.py 需要 Python 运行时和 CLAUDE_PLUGIN_ROOT 环境变量",
+      "severity": "non-blocking",
+      "mitigation": "Python 为外部依赖；若未安装则回退到内置优先级表格（SKILL.md 明确该回退路径）"
+    }
+  ],
+  "notes": "设计域相比 PRD 域更强调视觉表达和工程实现的紧密耦合。核心挑战是将抽象的设计原则转化为具体的代码实现（Tailwind 类名、CSS 变量、组件属性）。需要特别注意 review-animations 作为独立审查环节的必要性。本簇已修正早期版本对 Qoder 插件技能（product-design:*）的错误引用，全部指向 skills/ 目录内的本地资产。"
+}

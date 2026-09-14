@@ -1,0 +1,124 @@
+{
+  "experiment_id": "shipping-delivery-purification",
+  "cluster": "shipping-delivery",
+  "version": "final-report",
+  "created_at": "2026-09-09T14:49:00Z",
+  "baseline_file": "curation/experiments/shipping-delivery-baseline-report.md",
+  "purified_v3_file": "curation/experiments/shipping-delivery-purified-v3-report.md",
+  "mechanical_audit_results": {
+    "document_lines": {
+      "baseline": 336,
+      "purified_v3": 261,
+      "compression_rate": "-22%",
+      "verdict": "LOW — far below expected ~40%, indicating shipping-delivery is more script-command intensive than assumed"
+    },
+    "ship_trigger_gate": {
+      "text_patterns": ["\"ship\"", "\"deploy\"", "\"push to main\"", "\"create a PR\""],
+      "count_in_v3": 3,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "version_changelog_pairing": {
+      "version_bump_mention": 2,
+      "changelog_mention": 3,
+      "paired_sequence_check": "Step 2 explicitly combines VERSION bump + CHANGELOG update in single bullet point",
+      "pass": true
+    },
+    "review_diff_gate": {
+      "pattern": "review diff|Review Diff (Step 3)",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "canary_always_on_law": {
+      "pattern": "EVERY DEPLOY MUST BE MONITORED",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "monitored_issues_types": {
+      "console_errors": 2,
+      "performance_regressions": 2,
+      "page_failures": 3,
+      "total_occurrences": 7,
+      "all_three_present": true,
+      "pass": true
+    },
+    "diff_aware_git_command": {
+      "pattern": "git diff main\\.\\.\\.HEAD",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "regression_diffing_baseline_json": {
+      "pattern": "baseline.json",
+      "count_in_v3": 2,
+      "threshold_min": 1,
+      "pass": true
+    },
+    "critical_rules_present": {
+      "rules_numbered_list": 22,
+      "includes_all_13_rules": true,
+      "pass": true
+    },
+    "total_quality_floor_pass_rate": "8/8 metrics pass"
+  },
+  "comparison_summary": {
+    "key_findings": [
+      {
+        "finding": "Shipping & Delivery 域压缩收益低（-22% vs 预期 -40%）",
+        "evidence": "Baseline 336 行中大量篇幅是脚本命令细节（Aside/$B 完整命令表）、AskUserQuestion 格式模板、Telemetry logging 字段等无法大幅压缩的技术规范",
+        "significance": "属于'技术规范密集型'而非'解释性文字密集型'，这与 Implementation 域（解释文字多）形成鲜明对比"
+      },
+      {
+        "finding": "核心铁律与步骤顺序成功保留",
+        "evidence": "CANARY ALWAYS ON 铁律 2 次；八步流程 Step 2-8 明确编号且顺序不可颠倒",
+        "significance": "工作流顺序是安全网核心，比文本压缩更重要"
+      },
+      {
+        "finding": "Health Score Rubric 完整保留（从 qa-only 复用）",
+        "evidence": "Console(15%) 等 8 类权重公式完整，因这是共享算法无需重写",
+        "significance": "跨技能复用内容天然易于压缩——只需引用而非重复定义"
+      }
+    ],
+    "pattern_verification_success": [
+      {"pattern": "ship trigger gate keywords", "actual": 3, "min": 1, "pass": true},
+      {"pattern": "VERSION+CHANGELOG pairing", "actual": paired in Step 2 bullet, "min": 1, "pass": true},
+      {"pattern": "review diff before merge gate", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "canary always-on law", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "monitored issues (3 types)", "actual": 7 total occurrences, "min": 3 present, "pass": true},
+      {"pattern": "diff-aware git command", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "baseline.json regression mechanism", "actual": 2, "min": 1, "pass": true},
+      {"pattern": "critical rules list completeness", "actual": 22 numbered items, "min": 13, "pass": true}
+    ],
+    "verdict": "PURIFIED V3 PASS WITH QUALITY—but compression rate (-22%) lower than anticipated due to script-command density being irreducible"
+  },
+  "design_to_ui_concise_v3_recommendation": {
+    "adopt_as_default": true,
+    "for_remaining_cluster_retrospective": {
+      "expected_compression": "~45%",
+      "reasoning": "pre-mortem 方法论独立性强；retro timeline/learnings 提取逻辑可精简较多；相比 shipping-delivery 的技术规范密度更低"
+    },
+    "general_insight_from_4_clusters": {
+      "iron_law_dense": "implementation (-66%) — 解释性文字占比最大，最易压缩",
+      "process_narrative": "PRD (-38%), testing-qa (-41%) — 中等水平，引导文字可删减",
+      "script_command_dense": "shipping-delivery (-22%) — 技术规范密集，难压缩",
+      "rule_density": "design (-7%) — craft-floor 规则本身已紧凑，几乎无法压缩"
+    },
+    "prediction_accuracy_analysis": "初期预测基于直觉猜测而非实际经验数据。完成 4 个簇后应建立更准确的能力簇分类体系：按文档结构类型预测压缩潜力"
+  },
+  "lessons_learned": [
+    "✅ Script/command 密集型能力域（shipping-delivery）压缩潜力远低于预期——技术规范本身难以主观删减",
+    "✅ 'Iron law 密集型 > Process narrative > Script command > Rule density'排序成立（从易到难压缩）",
+    "✅ Health score rubric 可跨技能复用（从 qa-only 导入）——这天然带来额外压缩收益",
+    "⚠️ Diff-aware seven steps 在 Quick Mode 下可省略，不需要强制每次调用都覆盖",
+    "📊 Critical rules 22 条覆盖 13+ 条必要项，说明 v3 不仅没有删减反而新增了更多安全检查点",
+    "🔍 预测偏差分析：预期 -40% → 实际 -22%，误差 +18% 主要来自低估脚本命令的不可压缩性"
+  ],
+  "remaining_gaps": [
+    "实际部署场景未运行（需真人或自动化脚本执行 ship/canary 完整工作流）",
+    "Framework-specific guidance 仅保留要点，完整示例缺失",
+    "AskUserQuestion failure fallback 简化为结构化要点而非完整 prose 输出",
+    "Telemetry logging 仅保留命令名称而非详细 jq 语法字段说明"
+  ]
+}

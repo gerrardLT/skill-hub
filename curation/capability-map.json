@@ -1,0 +1,202 @@
+{
+  "map_id": "cross-domain-capability-map",
+  "version": 1,
+  "created_at": "2026-09-09",
+  "source_dossiers": [
+    "requirements-to-ac",
+    "design-to-ui",
+    "implementation",
+    "testing-qa",
+    "shipping-delivery",
+    "retrospective"
+  ],
+  "dev_loop_alignment": {
+    "需求": ["requirements-to-ac (phase 1-3)"],
+    "设计": ["design-to-ui (phase 1-4)", "requirements-to-ac (phase 5 异常态枚举→设计输入)"],
+    "实现": ["implementation (phase 1-3)", "design-to-ui (phase 4 动效实施)"],
+    "验收": ["testing-qa (全部)", "implementation (phase 4-5)"],
+    "交付": ["shipping-delivery (全部)"],
+    "复盘": ["retrospective (全部)"]
+  },
+  "capabilities": [
+    {"id": "C01", "name": "problem-definition", "cluster": "requirements-to-ac", "skills": ["discovery-process", "product-strategy-session"]},
+    {"id": "C02", "name": "prd-generation", "cluster": "requirements-to-ac", "skills": ["prd-development"]},
+    {"id": "C03", "name": "prioritization", "cluster": "requirements-to-ac", "skills": ["prioritization-frameworks"]},
+    {"id": "C04", "name": "ac-generation", "cluster": "requirements-to-ac", "skills": ["prd-development (template)"]},
+    {"id": "C05", "name": "edge-state-enumeration", "cluster": "requirements-to-ac", "skills": ["impeccable (edge)", "web-accessibility"]},
+    {"id": "C06", "name": "visual-language-generation", "cluster": "design-to-ui", "skills": ["ui-ux-pro-max --design-system", "impeccable document"]},
+    {"id": "C07", "name": "token-system-extraction", "cluster": "design-to-ui", "skills": ["impeccable extract", "extract-design-system"]},
+    {"id": "C08", "name": "motion-specification", "cluster": "design-to-ui", "skills": ["ui-ux-pro-max --domain gsap", "impeccable animate", "review-animations"]},
+    {"id": "C09", "name": "a11y-compliance-audit", "cluster": "design-to-ui", "skills": ["web-accessibility", "impeccable audit"]},
+    {"id": "C10", "name": "design-review", "cluster": "design-to-ui", "skills": ["impeccable critique", "web-design-guidelines"]},
+    {"id": "C11", "name": "failing-test-first", "cluster": "implementation", "skills": ["test-driven-development"]},
+    {"id": "C12", "name": "root-cause-investigation", "cluster": "implementation", "skills": ["systematic-debugging"]},
+    {"id": "C13", "name": "plan-execution", "cluster": "implementation", "skills": ["executing-plans", "subagent-driven-development"]},
+    {"id": "C14", "name": "code-quality-review", "cluster": "implementation", "skills": ["code-review", "requesting-code-review"]},
+    {"id": "C15", "name": "completion-verification", "cluster": "implementation", "skills": ["verification-before-completion"]},
+    {"id": "C16", "name": "test-case-generation", "cluster": "testing-qa", "skills": ["test-case-generator"]},
+    {"id": "C17", "name": "testing-strategy-design", "cluster": "testing-qa", "skills": ["testing-strategy"]},
+    {"id": "C18", "name": "e2e-browser-testing", "cluster": "testing-qa", "skills": ["playwright", "playwright-best-practices", "qa-only"]},
+    {"id": "C19", "name": "health-score-rubric", "cluster": "testing-qa", "skills": ["qa-only"]},
+    {"id": "C20", "name": "regression-diffing", "cluster": "testing-qa", "skills": ["qa-only (--regression)", "test-case-generator (diff_requirements)"]},
+    {"id": "C21", "name": "version-release-workflow", "cluster": "shipping-delivery", "skills": ["ship"]},
+    {"id": "C22", "name": "post-deploy-monitoring", "cluster": "shipping-delivery", "skills": ["canary"]},
+    {"id": "C23", "name": "pre-mortem-risk-analysis", "cluster": "retrospective", "skills": ["pre-mortem"]},
+    {"id": "C24", "name": "periodic-retrospective", "cluster": "retrospective", "skills": ["retro"]},
+    {"id": "C25", "name": "metrics-health-review", "cluster": "retrospective", "skills": ["metrics-review"]}
+  ],
+  "overlap_edges": [
+    {
+      "edge_id": "O1",
+      "capability": "a11y / edge-state 枚举",
+      "locations": [
+        {"cluster": "requirements-to-ac", "phase": 5, "usage": "AC 的异常态/约束标签枚举（空/载/错/权）"},
+        {"cluster": "design-to-ui", "phase": 5, "usage": "已实现 UI 的 WCAG 合规审计"},
+        {"cluster": "testing-qa", "phase": 4, "usage": "状态覆盖矩阵检查"}
+      ],
+      "resolution": "同一底层能力（状态穷举）在三个域以不同抽象层级出现。提纯时应合并为单一'状态完备性'能力，按域参数化：需求域输出标签清单，设计域输出 WCAG 判定，测试域输出覆盖矩阵",
+      "duplicate_severity": "high-value-consolidation"
+    },
+    {
+      "edge_id": "O2",
+      "capability": "completion-verification / evidence-first",
+      "locations": [
+        {"cluster": "implementation", "phase": 5, "usage": "verification-before-completion 铁律"},
+        {"cluster": "testing-qa", "phase": 6, "usage": "qa-only 规则 1/2：每问题一截图、复现后才记录"},
+        {"cluster": "shipping-delivery", "phase": 1, "usage": "ship 前置验证门"}
+      ],
+      "resolution": "同一条证据哲学的三次实例化。提纯为单一'证据先于断言'跨域原则，Gate 实现共享同一校验器：无证据不得声明完成/通过/发布",
+      "duplicate_severity": "high-value-consolidation"
+    },
+    {
+      "edge_id": "O3",
+      "capability": "code-quality-review",
+      "locations": [
+        {"cluster": "implementation", "phase": 4, "usage": "code-review + requesting-code-review（PR 审查）"},
+        {"cluster": "shipping-delivery", "phase": 3, "usage": "ship 工作流第三步 review diff"}
+      ],
+      "resolution": "ship 的 review diff 是 code-review 能力的内嵌调用而非独立能力。提纯时 ship 直接复用实现域的审查单元，不重复定义",
+      "duplicate_severity": "embed-not-duplicate"
+    },
+    {
+      "edge_id": "O4",
+      "capability": "root-cause / symptom-fix 禁令",
+      "locations": [
+        {"cluster": "implementation", "phase": 3, "usage": "systematic-debugging 四阶段"},
+        {"cluster": "retrospective", "phase": 4, "usage": "metrics-review 归因分析"}
+      ],
+      "resolution": "归因分析是根因调查在指标域的镜像应用。保留各自术语但共享'多假设-最小验证'方法论单元",
+      "duplicate_severity": "methodology-shared"
+    }
+  ],
+  "complement_edges": [
+    {
+      "edge_id": "P1",
+      "from": "C04 ac-generation (requirements-to-ac phase 4)",
+      "to": "C11 failing-test-first (implementation phase 2)",
+      "artifact": "Given/When/Then AC 集合",
+      "contract": "AC 必须可直接转译为失败测试：每条 AC 对应至少一个测试用例；TDD 的 RED 阶段以 AC 为测试名来源",
+      "strength": "domain-bridge-critical"
+    },
+    {
+      "edge_id": "P2",
+      "from": "C05 edge-state-enumeration (requirements-to-ac phase 5)",
+      "to": "C16 test-case-generation (testing-qa phase 1)",
+      "artifact": "空/载/错/权边界清单",
+      "contract": "边界清单作为 test-case-generator 的输入约束；完备性维度（测试类型分布）由清单驱动",
+      "strength": "domain-bridge"
+    },
+    {
+      "edge_id": "P3",
+      "from": "C10 design-review (design-to-ui phase 6)",
+      "to": "C18 e2e-browser-testing (testing-qa phase 4)",
+      "artifact": "design-review checklist",
+      "contract": "走查发现的缺陷列表进入 E2E 测试的覆盖范围；qa-only 的 8 类健康评分含 Visual/UX/A11y 三类设计维度",
+      "strength": "domain-bridge"
+    },
+    {
+      "edge_id": "P4",
+      "from": "C15 completion-verification (implementation phase 5)",
+      "to": "C21 version-release-workflow (shipping-delivery phase 1-3)",
+      "artifact": "验证证据",
+      "contract": "ship 的 run-tests + review-diff 步骤消费验证证据；无证据则 ship 门禁不通过",
+      "strength": "domain-bridge-critical"
+    },
+    {
+      "edge_id": "P5",
+      "from": "C19 health-score-rubric (testing-qa)",
+      "to": "C22 post-deploy-monitoring (shipping-delivery phase 5)",
+      "artifact": "baseline.json（含 categoryScores）",
+      "contract": "canary 的部署前基线即 qa-only 保存的 baseline.json；评分口径必须一致才能做回归对比",
+      "strength": "domain-bridge-critical"
+    },
+    {
+      "edge_id": "P6",
+      "from": "C24 periodic-retrospective (retrospective phase 3)",
+      "to": "C01 problem-definition (requirements-to-ac phase 1)",
+      "artifact": "learnings.jsonl / 复盘发现",
+      "contract": "复盘沉淀的经验回流为下周期的问题定义输入——这正是 dev-loop 六步闭环的回退边",
+      "strength": "loop-closing"
+    },
+    {
+      "edge_id": "P7",
+      "from": "C23 pre-mortem-risk-analysis (retrospective phase 1)",
+      "to": "C21 version-release-workflow (shipping-delivery)",
+      "artifact": "Launch-Blocking Tigers 清单",
+      "contract": "阻止发布 Tiger 数 > 0 时 ship 不得执行发布；发布前 2-3 周回顾缓解进度",
+      "strength": "domain-bridge"
+    }
+  ],
+  "conflict_edges": [
+    {
+      "edge_id": "X1",
+      "conflict": "qa-only 'NEVER fix anything' vs systematic-debugging 'fix root cause'",
+      "skills": ["qa-only 规则 11", "systematic-debugging Phase 4"],
+      "nature": "角色边界冲突而非逻辑矛盾：qa-only 是纯报告角色，/qa 才是测试-修复闭环",
+      "resolution": "在 dev-loop 路由层显式分流：验收步骤默认 qa-only（只报告）；修复指令路由到实现域调试流程。两个角色不共存于同一次调用",
+      "severity": "routing-level"
+    },
+    {
+      "edge_id": "X2",
+      "conflict": "gstack Checkpoint Mode 'WIP auto-commit' vs TDD 'delete means delete'",
+      "skills": ["gstack preamble (WIP: 前缀自动提交)", "test-driven-development 铁律"],
+      "nature": "流程冲突：WIP 检查点会提交中间态（含未通过测试的实现），TDD 视先代码后测试为必须删除的违规",
+      "resolution": "WIP 提交仅限'完成的功能单元'（gstack 规则原文：commit after completed functions），TDD 违规产物不满足该条件故不触发 WIP；ship 压缩 WIP 时亦不保护 TDD 违规代码。规则原文已兼容，提纯时保留两边的原始措辞以防误读",
+      "severity": "apparent-only"
+    },
+    {
+      "edge_id": "X3",
+      "conflict": "test-case-generator 5 维等权评分 vs qa-only 8 类加权评分",
+      "skills": ["test-case-generator quality_score", "qa-only Health Score Rubric"],
+      "nature": "度量口径不一致：用例质量（覆盖率/可执行性/独立性/可维护性/完备性 各 20%）与应用健康度（Functional 20%/Console 15%...）是两个不同对象的评分，但'覆盖率'术语在两边语义不同",
+      "resolution": "提纯时明确区分两个度量对象：case-quality-score（用例文档质量）与 app-health-score（运行时应用质量）；禁止跨对象复用分数",
+      "severity": "terminology-level"
+    }
+  ],
+  "iron_law_distribution": {
+    "laws": [
+      {"law": "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST", "home": "implementation", "echoed_in": ["testing-qa (用例先行)"], "gate_mapping": "dev-loop 实现步 Gate"},
+      {"law": "NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST", "home": "implementation", "echoed_in": ["retrospective (归因)"], "gate_mapping": "dev-loop 实现步 Gate（回退条件）"},
+      {"law": "NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE", "home": "implementation (verification-before-completion)", "echoed_in": ["testing-qa", "shipping-delivery"], "gate_mapping": "dev-loop 验收步 + 交付步 Gate"},
+      {"law": "Repro is everything (每问题一截图)", "home": "testing-qa (qa-only)", "echoed_in": [], "gate_mapping": "dev-loop 验收步 Gate"},
+      {"law": "EVERY DEPLOY MUST BE MONITORED", "home": "shipping-delivery (canary)", "echoed_in": [], "gate_mapping": "dev-loop 交付步 Gate"},
+      {"law": "不确定时默认 Tiger（风险早处理）", "home": "retrospective (pre-mortem)", "echoed_in": [], "gate_mapping": "dev-loop 复盘步→需求步回流条件"}
+    ],
+    "consolidation_recommendation": "六条铁律覆盖六步的每一步各至少一条，可映射为 dev-loop 每步 Gate 的核心校验器；其中'证据先于断言'（NO COMPLETION CLAIMS...）横跨三步，应实现为共享 Gate 组件"
+  },
+  "unused_skills_pending_assignment": [
+    {"name": "gstack 套件其余技能", "note": "land-and-deploy/incident-response/metrics-dashboard 等待提纯阶段按需纳入对应域"},
+    {"name": "audit-website/prototype/frontend-design/redesign-existing-projects/design-taste-frontend", "note": "设计域 related 技能，阶段 6 处理"},
+    {"name": "agent-observability-* / llm-evaluation / craft-experiment-*", "note": "评估类技能，可能构成第七域（评估域）或并入验收域，阶段 4 后期决定"},
+    {"name": "interview-script/analyzing-user-feedback", "note": "需求域上游研究技能，与 discovery-process 互补"},
+    {"name": "competitive-strategy/ai-product-strategy", "note": "战略类技能，与 product-strategy-session 同源待合并评估"}
+  ],
+  "stats": {
+    "total_capabilities": 25,
+    "overlap_edges": 4,
+    "complement_edges": 7,
+    "conflict_edges": 3,
+    "iron_laws": 6,
+    "clusters_covered": 6
+  }
+}

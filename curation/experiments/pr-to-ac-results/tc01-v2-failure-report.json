@@ -1,0 +1,55 @@
+{
+  "experiment_run_id": "tc01-comparison-v2",
+  "timestamp": "2026-09-09T14:31:00Z",
+  "baseline_file": "curation/experiments/pr-to-ac-results/tc01-baseline-prd.md",
+  "purified_v2_file": "curation/experiments/pr-to-ac-results/tc01-purified-v2-prd.md",
+  "mechanical_audit": {
+    "baseline_metrics": {
+      "acs_count": 10,
+      "acs_per_p0_story": {"US-1": 4, "US-2": 2, "US-3": 2, "US-4": 1, "US-5": 1},
+      "exception_coverage": ["网络中断 (AC-1.4)", "无信源诚实性 (AC-3.1/3.2)", "原文失效 (AC-2.2)"],
+      "gwt_compliance": 100,
+      "oq_triple_group": 5
+    },
+    "v2_metrics_actual": {
+      "acs_count": 16,
+      "acs_per_p0_story": {"US-1": 4, "US-2": 3, "US-3": 3, "US-4": 3, "US-5": 3},
+      "exception_labeled": 9,
+      "gwt_structure_actual": {
+        "given_count": 16,
+        "when_count": 4,
+        "then_count": 2,
+        "gwt_compliance_rate": "25% 实际合规率 — DISASTER"
+      },
+      "oq_count": 5,
+      "oq_quality_issue": "三元组存在但 US-5 示例证明凑数降质"
+    }
+  },
+  "critical_findings": [
+    {
+      "finding": "规则强制→凑数降质的恶性循环",
+      "evidence": "为了强制‘每故事≥3 AC'，生成了低质量/不自然的 AC（US-5 的三条），导致 GWT 完整性从 100% 崩塌到 25%",
+      "root_cause": "规则只规定了数量（≥3）和异常态（≥1），但未规定‘自然度’与‘可执行性’；AI 填充了凑数内容"
+    },
+    {
+      "finding": "v2 OQ 三元组有进步但仍浅薄",
+      "evidence": "v2 确实写入了三列表格，但缺少深度解释（如'OQ-4 未答前无法设定 MRR 目标值’比 baseline 的‘影响需求分析’更简短）",
+      "root_cause": "token 优化压力仍在，三元组结构虽在但内容被压缩"
+    },
+    {
+      "finding": "异常态枚举从 baseline 的精心选择→v2 的数量堆积",
+      "evidence": "baseline 覆盖了最关键的 3 类异常态；v2 通过添加 US-5 空状态强行增加 AC 数量，但 US-5 本身就是为凑数而编造的故事",
+      "root_cause": "没有对 AC 的必要性进行约束，仅约束数量导致垃圾产出"
+    }
+  ],
+  "conclusion": {
+    "is_v2_acceptable": false,
+    "rationale": "v2 用形式合规（16 条 AC、9 条标注异常态）掩盖了实质退质（GWT 25% 合规率、US-5 凑数故事）。这证明了‘机械强制数量规则’在 AI 生成场景下的危险性——AI 会学会找捷径填满表格而非理解规则精神",
+    "recommendation": "放弃 v2 式强制计数；改用 v1 模式 + 两个轻量检查点：①AC 生成后自问'这条 AC 若去掉是否改变用户价值'；②OQ 三元组中第二列必须包含具体决策场景描述（不只是通用理由）"
+  },
+  "next_steps": [
+    "创建 purified-v3 方法：回归单轮输出，但增加‘必要性过滤器’作为 post-processing step",
+    "TC02/TC03暂不运行纯化版验证；先完成方法论修正",
+    "将‘凑数降质’的发现写入 curation/lessons-learned/purification-traps.md"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "suite": "requirements-to-ac",
+  "purpose": "Phase 5 requirements-to-acceptance-criteria extraction pilot.",
+  "rubric": "rubrics/requirements-to-ac.json",
+  "source_clusters": [
+    "cluster:problem-framing-and-customer-research",
+    "cluster:qualitative-evidence-synthesis",
+    "cluster:opportunity-prioritization-and-frameworks",
+    "cluster:requirements-and-delivery-contract",
+    "cluster:document-and-artifact-governance",
+    "cluster:results-analysis-and-decision-readout",
+    "cluster:risk-preflight-and-safety-governance"
+  ],
+  "source_skills": [
+    "ai-product-strategy",
+    "analyzing-user-feedback",
+    "competitive-strategy",
+    "craft-experiment-readout",
+    "discovery-process",
+    "metrics-dashboard",
+    "outcome-roadmap",
+    "pre-mortem",
+    "prioritization-frameworks",
+    "prd-development",
+    "product-strategy-session"
+  ],
+  "splits": {
+    "tuning": "cases/tuning/requirements-to-ac.json",
+    "holdout": "cases/holdout/requirements-to-ac.json"
+  },
+  "baseline": {
+    "required": true,
+    "entry_root": "runs/requirements-to-ac/baseline",
+    "must_record": ["case_id", "source_skill", "full_output", "tool_evidence", "model", "input_hash", "tool_permissions", "budget", "duration_ms", "token_usage", "exit_status", "failure_reason"],
+    "failure_policy": "Record failed baseline runs as evidence; do not replace, retry selectively, or omit them from the report."
+  },
+  "candidate": {
+    "entry_root": "runs/requirements-to-ac/iteration-1",
+    "not_created": true,
+    "freeze_before_holdout": true
+  },
+  "scoring": {
+    "automatic": ["hard_failure_scan", "required_case_fields", "status_match", "unknown_preservation", "acceptance_criteria_observability", "source_traceability"],
+    "human": ["evidence-traceability", "problem-and-user-boundary", "requirements-completeness", "acceptance-testability", "uncertainty-and-gates", "scope-and-permission-discipline", "downstream-handoff-quality"],
+    "holdout_isolation": true
+  },
+  "mutation_plan": {
+    "required_after_candidate_freeze": true,
+    "mutations": [
+      "remove evidence-insufficiency rule",
+      "remove unknown marker requirement",
+      "remove acceptance-criteria field",
+      "replace blocked gate with pass",
+      "add unsupported implementation commitment"
+    ],
+    "expected": "Each mutation causes the corresponding objective or hard-failure check to fail."
+  },
+  "status": "contracts-frozen-baseline-not-run"
+}

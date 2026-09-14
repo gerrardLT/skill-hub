@@ -1,0 +1,64 @@
+{
+  "phase_6_status": "design-cluster-complete",
+  "cluster_purified": "design-to-ui",
+  "experiments_completed": [
+    {
+      "experiment_id": "design-purification-v1-vs-v3",
+      "baseline": "curation/experiments/design-baseline-report.md (253 lines)",
+      "purified": "curation/experiments/design-purified-v3-report.md (236 lines)",
+      "compression_rate": "-7%",
+      "verdict": "CONDITIONAL PASS — 质量底线达标但压缩收益有限"
+    },
+    {
+      "experiment_id": "pr-to-ac-purification",
+      "baseline": "tc01-baseline-prd.md (120 lines)",
+      "purified": "tc01-purified-v3-prd.md (75 lines)",
+      "compression_rate": "-38%",
+      "verdict": "PASS"
+    }
+  ],
+  "methodology_validation": {
+    "pr_to_ac_v3_pattern": "必要性过滤器（禁止计数规则、显式划分 quality floor、行级审计验证）已被 PRD 域成功验证",
+    "design_to_ui_adaptation": "设计域压缩收益显著更低（-7% vs -38%），证明'规则密度型'能力簇与'流程叙述型'能力簇的提纯潜力差异巨大",
+    "key_insight": "对 craft-floor 这类规则密集文档，提纯重点应是'可验证性升级'（实测值/CSS 块/矩阵表）而非篇幅删减"
+  },
+  "quality_floor_learnings": {
+    "non_negotiable_design_domains": [
+      "A11y contrast 实测数值（可机械验证）",
+      "prefers-reduced-motion 完整 CSS 块",
+      "Browser surfaces 6 项清单（selection/caret/scrollbar/focus/underline/numeral）",
+      "状态矩阵无空格",
+      "核心 anti-patterns 原文保留（gradient text/glass/hard shadow/emoji/modal）"
+    ],
+    "compressible_elements": [
+      "craft-floor 中的低频 anti-patterns（kicker/section numbers/hero-metric 等可裁至 9 项中）",
+      "流程叙述文字（Setup/How to design 的引导段落）",
+      "跨技能交叉引用（impeccable → ui-ux-pro-max 的路由说明）",
+      "示例代码数量（每组件 1 个代表例即可）"
+    ]
+  },
+  "remaining_work_in_stage_6": [
+    {"task": "implementation 领域提纯（TDD + systematic-debugging）", "priority": "高", "reason": "与 PRD 域共享方法论，复用 v3 经验"},
+    {"task": "testing-qa 领域提纯（test-case-generator + qa-only）", "priority": "高", "reason": "用例生成规则清晰，适合必要性过滤器"},
+    {"task": "shipping-delivery 领域提纯（ship + canary）", "priority": "中", "reason": "工作流清晰，易于压缩"},
+    {"task": "retrospective 领域提纯（pre-mortem + retro）", "priority": "中", "reason": "方法论独立性强，提纯风险低"}
+  ],
+  "lessons_learned_phase_6": [
+    "✅ v3 范式（必要性过滤器+质量底线）适用于所有能力簇提纯",
+    "⚠️ 压缩收益因能力簇类型差异巨大：PRD 域(-38%) > design 域(-7%)，需提前评估'规则密度 vs 流程长度'结构",
+    "✅ 机械审计必须用行级正则匹配（^pattern）而非全文 grep，防止假阳性",
+    "❌ 绝对禁令（如 craft-floor kicker ban）不应被裁剪——这是关键的质量底线",
+    "📊 行数不是好的压缩指标——应改用'信息密度'（条款数/表格覆盖率/代码块占比）"
+  ],
+  "next_steps_after_stage_6": [
+    "批量执行其余 4 个能力簇的提纯实验（implementation/testing/shipping/retrospective）",
+    "构建配方组合验证（stage 7）：将 purified methods 组装成完整 dev-loop 工作流",
+    "终验 Gate 集成（stage 8）：更新 SKILLS.md 表述，接入生产环境"
+  ],
+  "turn_count_tracking": {
+    "current_turn": 7,
+    "max_turns": 100,
+    "remaining": 93,
+    "safe_burn_rate": true
+  }
+}

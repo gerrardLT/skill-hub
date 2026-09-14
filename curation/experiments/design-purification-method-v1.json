@@ -1,0 +1,93 @@
+{
+  "method_id": "design-to-ui-concise-v1",
+  "parent_cluster": "design-to-ui",
+  "version": "v1 — 朴素简化（无强制计数规则）",
+  "purpose": "将 impeccab le + web-design-guidelines + ui-ux-pro-max 五技能工作流压缩为单一 Prompt，同时保持核心质量维度不崩塌",
+  "input_requirements": ["目标页面 URL / 截图", "品牌风格关键词（可选）", "WCAG 目标级别（AA/AAA）"],
+  "prompt_template": {
+    "instruction": "作为设计专家，从用户输入生成高保真 UI 规范文档。遵循以下结构：",
+    "sections": [
+      {
+        "section": "📐 Visual Design Specification",
+        "rules": [
+          "色彩系统：主色/辅色/语义色，提供 HEX+Token 名称（如 --color-primary-600）",
+          "排版系统：字号阶梯（Display/Heading/Body/Mono）、行高、字间距 floor",
+          "间距系统：8px 网格基准，内外边距层级（紧凑/标准/宽松）",
+          "阴影系统：至少三层深度（浮起/悬浮/层叠），每层含 offset+blur",
+          "圆角系统：小部件/卡片/模态框的 radius 映射表"
+        ]
+      },
+      {
+        "section": "⚡ Motion Design",
+        "rules": [
+          "Duration palette：quick(150ms)/standard(300ms)/slow(500ms)",
+          "Easing：exponential ease-out 为默认曲线，禁用线性",
+          "签名动效：不超过一个 authored moment（滚动视差/内容显现/状态切换）之一",
+          "无障碍友好：支持 prefers-reduced-motion 降级为无动画"
+        ]
+      },
+      {
+        "section": "♿ A11y Compliance",
+        "rules": [
+          "Contrast：正文≥4.5:1，大文本≥3:1",
+          "键盘导航：所有交互元素 tabindex≥0，焦点环可见且对比度足够",
+          "ARIA：仅当原生 HTML 缺失时使用（role/button 优先 <button>）",
+          "错误提示：命名问题 + 恢复步骤，与表单字段关联"
+        ]
+      },
+      {
+        "section": "🧩 Component Library Contract",
+        "rules": [
+          "按钮：primary/secondary/ghost 三种形态及 disabled/hover/focus 状态",
+          "表单：label 与 input 绑定，placeholder 不可作为 label 替代",
+          "卡片：标题/内容/操作区的合理 padding，禁止嵌套卡片",
+          "导航：移动端 TabBar≤5 个入口，桌面端侧边栏限一级"
+        ]
+      },
+      {
+        "section": "🚫 Anti-Patterns to Avoid",
+        "rules": [
+          "禁止 gradient text 表达强调（改用 weight/size）",
+          "禁止玻璃模糊作为装饰而非功能（如提升可读性）",
+          "禁止硬阴影 box-shadow:4px 4px 0 除非 neobrutalism 风格明确认可",
+          "禁止 Unicode emoji 代替图标系统（必须 SVG/Library）",
+          "禁止 modal 处理无需中断的任务"
+        ]
+      }
+    ],
+    "output_format": "Markdown with emoji section tags, tokens as code blocks, component rules as tables"
+  },
+  "quality_floor": {
+    "non_negotiable": [
+      "A11y contrast 合规：可实测对比度值而非主观判断",
+      "Motion reduced-mode：必须包含 prefers-reduced-motion 检查",
+      "Anti-patterns：列出的每一项都是禁行，违反即不合格",
+      "Component states：hover/disabled/loading/error 四类状态不能缺漏任何一类",
+      "浏览器原生表面：文本选择/光标/滚动条/焦点环必须主题化定制"
+    ],
+    "compressible": [
+      "色彩方案数量（主色→1-2 种即可）",
+      "字号阶梯深度（4 档 vs 6 档）",
+      "组件库覆盖深度（基础组件必现，业务组件可选）",
+      "设计原则文字篇幅（2-3 条即可，不必长篇大论）"
+    ]
+  },
+  "success_criteria": [
+    "输出文档行数 ≤ baseline_guided 的 70%",
+    "A11y contrast 实测值全部达标（人工抽检 3 处）",
+    "组件状态矩阵完整（hover/disabled/loading/error 四类均有定义）",
+    "Anti-patterns 清单完整（5 项全有且未被删减）",
+    "Motion reduced_mode 存在明确 check"
+  ],
+  "testing_plan": {
+    "test_case": "https://example.com/design-review-page（假设一个需要 UX review 的复杂页面）",
+    "baseline_reference": "skills/impeccable/SKILL.md 100% 原样调用（包含 guided mode 问答）",
+    "purified_method": "design-to-ui-concise-v1 单轮直出",
+    "comparison_metrics": [
+      {"metric": "document_lines", "baseline_expected": "~150", "target_max": "105"},
+      {"metric": "a11y_contrast_pass_rate", "target": "100%"},
+      {"metric": "component_states_coverage", "target": "4/4 类齐全"},
+      {"metric": "anti_patterns_completeness", "target": "5/5 项齐全"}
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "comparison_id": "tc01-comparison",
+  "input": "我想做一个 AI 搜索工具，像 Perplexity 但更聚焦中文内容",
+  "baseline_file": "curation/experiments/pr-to-ac-results/tc01-baseline-prd.md",
+  "purified_file": "curation/experiments/pr-to-ac-results/tc01-purified-prd.md",
+  "metrics": {
+    "executive_summary_completeness": {
+      "baseline": {"status": "pass", "detail": "problem/solution/impact三要素齐全", "score": 100},
+      "purified": {"status": "pass", "detail": "problem/solution/impact三要素齐全（一句话概括）", "score": 95},
+      "difference": "+5% tolerance 内"
+    },
+    "problem_statement_evidence": {
+      "baseline": {"status": "pass", "detail": "标注证据缺口为 OQ-2，未编造数据", "score": 85, "notes": "有详细的 Evidence 段 + Open Question 解释"},
+      "purified": {"status": "pass", "detail": "标注假设与证据缺口", "score": 70, "notes": "较简化但仍诚实标注"},
+      "difference": "+15% 在容忍边界（可接受降级）"
+    },
+    "ac_quality_score": {
+      "baseline": {"total_acs": 10, "gwt_compliance": 100, "exception_coverage": ["网络中断(AC-1.4)", "无信源诚实性(AC-3.1/3.2)", "原文失效(AC-2.2)"], "score": 92},
+      "purified": {"total_acs": 5, "gwt_compliance": 100, "exception_coverage": ["无可靠信源提示(AC-3)"], "score": 72},
+      "difference": "AC 数量 10→5（-50%）；异常态覆盖 3 类→1 类。超出原定 ±15% 容忍边界——已计入结论"
+    },
+    "open_questions_clarity": {
+      "baseline": {"count": 5, "quality": "每条含问题、理由、预期影响三元组，结构完整", "score": 90},
+      "purified": {"count": 4, "quality": "仅列出问题和简要影响说明，缺少详细理由", "score": 65},
+      "difference": "+25% 超出容忍边界——这是预期副作用（token 优化代价）"
+    },
+    "out_of_scope_clarity": {
+      "baseline": {"sections": 4, "detail": "写作助手、移动 App、账号体系、英文优化均明确排除", "score": 100},
+      "purified": {"sections": 4, "detail": "同 baseline", "score": 95},
+      "difference": "+5% 无损"
+    }
+  },
+  "findings": {
+    "strengths_of_purified_method": [
+      "单轮直出大幅减少 token 消耗（估算 -30%-40%）",
+      "核心三段式（Executive Summary/Problem/User Stories AC）保持完整",
+      "Open Questions 机制未消失，仍诚实地承认未知",
+      "GWT 格式合规性 100%"
+    ],
+    "weaknesses_of_purified_method": [
+      "开放问题的深度降低（缺少'为什么需要回答+预期影响'的结构化说明）",
+      "异常态枚举从 3 条降到 1 条（虽覆盖了最关键的'无信源诚实性'）",
+      "缺失 Out of Scope 的详细说明（仅罗列不含解释）",
+      "无法通过 guided mode 收集用户的补充信息（如行业背景、技术约束）"
+    ],
+    "recommendation": "采用 purified method as default；对于复杂项目（需要大量假设验证）自动切换到 guided mode。关键改进点：将 OQ 的三元组结构（问题/理由/影响）固化到 prompt 模板中，即使简化版也要强制执行该结构。"
+  },
+  "conclusion": {
+    "is_quality_loss_acceptable": "conditional-yes",
+    "rationale": "purified method 保留了最关键的质量维度（Executive Summary 三要素、GWT 格式 100% 合规、诚实声明未知）。不可接受的损失点：AC 数量 10→5（-50%）、异常态覆盖 3 类→1 类、OQ 三元组结构缺失。条件性接受的前提是：将 OQ 三元组结构与'每故事至少 3 AC 其中 1 条异常态'强制写入 purified prompt——这两条是 baseline 的质量底线，不该被 token 优化牺牲",
+    "next_steps": [
+      "修正 purified prompt：强制 OQ 三元组 + 每故事 ≥3 AC 规则后重跑 TC01 验证",
+      "TC02（Metrics Dashboard）运行对照实验，检验 B2B 场景下的表现",
+      "TC03（电商结账流程）检验业务流程复杂度的承受能力",
+      "对 HO01-HO03留出集案例进行测试，验证泛化能力"
+    ]
+  },
+  "execution_time_comparison": {
+    "baseline_fast_mode": "本例中以 fast-path 模式生成（未运行交互式问答），输出耗时即时",
+    "purified_fast_mode": "单轮直出，耗时即时",
+    "note": "真实 baseline_timings 需实际调用 guided mode 交互流程；已记录该缺口待后续测量"
+  }
+}

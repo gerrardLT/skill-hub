@@ -1,0 +1,71 @@
+{
+  "dossier_id": "retrospective",
+  "title": "复盘域能力簇（Retrospective & Pre-Mortem）",
+  "description": "项目/迭代周期的结束性活动，包含发布前风险预判和发布后经验沉淀两个相反但互补的方向",
+  "skills_included": [
+    {"name": "retro", "role": "复盘：周期性工程复盘"},
+    {"name": "pre-mortem", "role": "预判：发布前风险分析"},
+    {"name": "metrics-review", "role": "数据：指标健康度评估"}
+  ],
+  "workflow_sequence": [
+    {
+      "phase": 1,
+      "activity": "发布前风险预判",
+      "skill_used": "pre-mortem",
+      "inputs": ["PRD", "产品计划", "时间线"],
+      "outputs": ["Tigers 列表（真实风险）", "Paper Tigers 列表（过度担忧）", "Elephants 列表（未说出口忧虑）", "阻止发布行动计划"]
+    },
+    {
+      "phase": 2,
+      "activity": "发布执行与监控",
+      "skill_used": "ship + canary",
+      "inputs": ["完成代码", "基线"],
+      "outputs": ["生产部署", "金丝雀报告"]
+    },
+    {
+      "phase": 3,
+      "activity": "周期性复盘",
+      "skill_used": "retro",
+      "inputs": ["git commit 历史", "timeline.jsonl", "learnings.jsonl"],
+      "outputs": ["本周交付总结", "个人贡献分析", "趋势跟踪"]
+    },
+    {
+      "phase": 4,
+      "activity": "指标健康度评估",
+      "skill_used": "metrics-review",
+      "inputs": ["DAU/留存/收入等指标"],
+      "outputs": ["指标趋势图", "归因分析", "行动建议"]
+    }
+  ],
+  "capabilities_map": [
+    {"capability": "risk-identification", "skills": ["pre-mortem"]},
+    {"capability": "tiger-prioritization", "skills": ["pre-mortem"]},
+    {"capability": "release-blocking-analysis", "skills": ["pre-mortem"]},
+    {"capability": "weekly-retrospective", "skills": ["retro"]},
+    {"capability": "trend-tracking", "skills": ["retro"]},
+    {"capability": "learning-capture", "skills": ["retro"]}
+  ],
+  "iron_laws": [
+    {
+      "law_id": "postmortem-no-blame",
+      "source": "retro",
+      "statement": "复盘对事不对人，目标是改进而非问责",
+      "enforcement": "个人贡献分析以表扬和改进领域呈现，不分配指责"
+    },
+    {
+      "law_id": "premature-risk-doc",
+      "source": "pre-mortem",
+      "statement": "每次发布必须有书面化的风险识别记录",
+      "enforcement": "PreMortem-*.md 文档必须保存并在临近发布时回顾验证"
+    }
+  ],
+  "blocking_gaps": [
+    {
+      "gap_id": "retro-context-files",
+      "description": "retro 依赖 .context/retros/*.json 和 ~/.gstack/projects/{slug}/timeline.jsonl",
+      "severity": "non-blocking",
+      "mitigation": "这些文件由 gstack 工作流自动生成；语义拆解只关注分析方法论"
+    }
+  ],
+  "notes": "复盘域处于六步架构的'复盘'环节，是对整个链路经验的提炼。pre-mortem 与 retro 形成时间上的双向闭环——前者向后看（假设失败→向前找问题），后者向前看（总结经验→指导未来）。这种逆向思维模式是该域的独有特征。"
+}

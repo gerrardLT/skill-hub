@@ -1,0 +1,303 @@
+{
+  "audit_id": "capability-compiler-final-audit-2026-09-10",
+  "audited_objective": "按实施计划顺序完成阶段 1-8：冻结原料、建立底账、全量拆解、构建能力地图、完成需求到 AC 试点、逐簇提纯、构建配方并组合验证、接入 dev-loop 并终验。",
+  "overall_verdict": "not-complete",
+  "audited_at": "2026-09-10",
+  "evidence_policy": {
+    "accepted": [
+      "实际存在且可解析的文件",
+      "可运行代码与测试",
+      "本次审核实际执行的命令输出",
+      "可回溯至原始 skills/ 的来源位置"
+    ],
+    "not_accepted_as_completion_proof": [
+      "计划文件",
+      "自述式完成报告",
+      "在 JSON 中手写 actual_result/pass/100% 字段",
+      "没有命令日志、测试代码或运行产物的 simulation",
+      "仅比较 Markdown 行数得出的能力质量结论"
+    ]
+  },
+  "phase_status": [
+    {
+      "phase": 1,
+      "name": "冻结原始资产基线",
+      "status": "passed",
+      "evidence": [
+        "curation/policy.json 存在",
+        "curation/baseline.json 记录 2337 个文件、40855605 字节和 tree SHA-256",
+        "tools/curation/inventory.py 可确定性生成 baseline",
+        "tools/curation/verify.py source 实际运行结果：added=0, changed=0, removed=0, ok=true",
+        "tests/curation 中相关测试实际通过"
+      ],
+      "gaps": []
+    },
+    {
+      "phase": 2,
+      "name": "建立资产底账与缺口报告",
+      "status": "passed",
+      "evidence": [
+        "curation/inventory.json 记录 68 catalog entries、66 top-level skill roots、73 embedded roots",
+        "skills-lock.json 覆盖 66 个顶层 skill roots；inventory gate 实际运行 ok=true",
+        "curation/gaps.json 的 59 个 review-required 均为显式状态，其中 53 个相对引用缺口全部在 reference-review.json 分类",
+        "dependency-scan.json 覆盖全部 66 个顶层 Skill root",
+        "3 个 included standalone blocker 均由同来源、带 revision、reason 和逐文件 SHA-256 的 workshop supplement 缓解",
+        "10 个其余 standalone blocker 属于 deferred-platform 的 sentry-debug-issue，不参与第一期运行时组合",
+        "2 个 revision unknown 和 4 个 license unknown 均有对应 gap 记录，未伪装为已核实",
+        "tools/curation/verify.py phase2 在真实仓库运行 ok=true；候选运行时 dev-loop/ 无 PostHog 内容命中",
+        "完整 tests/curation 回归实际运行 12 passed；skills/ source baseline 不变"
+      ],
+      "gaps": []
+    },
+    {
+      "phase": 3,
+      "name": "全量拆解 Skills 细节",
+      "status": "failed",
+      "evidence": [
+        "curation/dossiers 只有 6 个能力簇 JSON，不是每个纳入来源的完整 dossier",
+        "curation/units 有 8 个 JSON 文件、114 个 unit"
+      ],
+      "gaps": [
+        "计划要求的 curation/dossier-template.md 不存在",
+        "49 个 included+resolved skill 中只有 17 个可从 unit id 识别到单元，33 个无单元覆盖",
+        "未创建逐来源 JSONL；现有单位文件是 JSON 数组/对象",
+        "60/114 raw_excerpt 不是对应行范围内的字面原文",
+        "2 个 status 不属于 schema 枚举；1 个来源行范围越界",
+        "unit schema 缺 candidate destination，且 schema 本身没有 required 数组和 additionalProperties 约束",
+        "curation/coverage.json 不存在，无法证明入口、附件、脚本已完整阅读"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "构建跨域能力地图",
+      "status": "failed",
+      "evidence": [
+        "curation/capability-map.json 存在，描述 25 个能力及部分关系"
+      ],
+      "gaps": [
+        "计划要求的 curation/clusters.json 不存在",
+        "curation/decisions.jsonl 不存在",
+        "curation/coverage.json 不存在",
+        "由于阶段 3 仅覆盖少数来源，能力地图无法覆盖全部 included units",
+        "冲突决策缺双方逐条来源、潜在损失和验证案例的完整记录"
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "需求到验收标准提纯试点",
+      "status": "failed",
+      "evidence": [
+        "curation/experiments 下存在一个人工撰写的 TC01 baseline/candidate 对比系列",
+        "pr-to-ac-final-report.json 自身明确记录 TC02/TC03、HO01-HO03、COR01-COR04 未运行"
+      ],
+      "gaps": [
+        "evals/rubrics、evals/cases/tuning、evals/cases/holdout、evals/evals.json 均不存在",
+        "没有在相同模型、输入、权限和预算下运行原始 Skill 与候选的证据",
+        "没有保存工具调用、耗时、token、重复运行均值或离散度",
+        "slots/problem-framing、requirements-rules、acceptance-criteria、requirements-quality-gate 均不存在",
+        "没有 contract.json 或 provenance.json",
+        "没有 mutation tests，也没有证明破坏关键约束后测试变红",
+        "viewer.html 为自制页面，不是计划指定的 skill-creator eval-viewer/generate_review.py 产物",
+        "benchmark.json 和 feedback.json 不存在，人工评审未完成"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "全量逐能力簇提纯",
+      "status": "failed",
+      "evidence": [
+        "curation/experiments 中存在 6 组 method/baseline/purified/report 文档草稿"
+      ],
+      "gaps": [
+        "没有任何 slots/<slot-id>/SKILL.md、contract.json 或 provenance.json",
+        "没有每簇 rubric、tuning、holdout、mutation、真实运行或盲化人工评审",
+        "基线与候选主要是人工写出的 Markdown，行数压缩不证明行为质量保持",
+        "6 个实验/配置 JSON 无法解析",
+        "平台专用 deploy-to-vercel/vercel-optimize 被写入 shipping dossier，违反第一期平台能力只登记不提纯的范围约束",
+        "没有逐批 source baseline 验证记录或发布/未发布状态清单"
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "构建配方并组合验证",
+      "status": "failed",
+      "evidence": [
+        "curation/experiments/gate-block-mechanism-integration.json 描述了若干 Gate 概念",
+        "ITS01 与 ITS02-ITS03 文件标题和内容明确写为 simulation"
+      ],
+      "gaps": [
+        "recipes/schema.json 和 7 个计划配方全部不存在",
+        "verify.py 没有 recipe/slot/contract/coverage 校验逻辑",
+        "tests/curation 没有 recipe、组合、替换或回流测试",
+        "ITS 文件把 expected behavior 直接写入 actual_result，没有被测代码、执行命令或运行日志，不能算测试",
+        "没有 needs-input/failed/blocked 注入测试、同契约替换测试、证据失效测试或 QA 不改源码测试",
+        "Gate 重新引入 min_ac_per_p0_story=3，与试点得出的禁止计数规则原则自相矛盾"
+      ]
+    },
+    {
+      "phase": 8,
+      "name": "接入 dev-loop 并终验",
+      "status": "failed",
+      "evidence": [
+        "dev-loop 源文件存在",
+        "审核时运行 10 个 pytest 均通过，但这些测试只覆盖阶段 1-2 的 baseline/inventory",
+        "skills/ 与阶段 1 baseline 当前一致"
+      ],
+      "gaps": [
+        "dev-loop/skills/dev-loop/SKILL.md 仍按阶段硬编码外部 Skill 名称，没有 recipe 选择或 slot contract 调用",
+        "routing.md 明确允许 Skill 不可用时自产文档并让流程永不中断，与 Gate fail-closed 要求冲突",
+        "源插件与 Qoder cache 的 README/plugin.json/SKILL.md/stages.md/routing.md 哈希不一致",
+        "C:/Users/gerrard/.qoder/skills/dev-loop 不存在",
+        "未创建并运行全量 contract/coverage/recipe/PostHog/mutation/composition 验证",
+        "此前不存在真实 final-audit；stage-8-complete-report.json 是自述完成报告",
+        "SKILLS.md 声称 Gate 自动化、13 测试 100% 通过、机械审计 100% 准确，但没有可运行实现或对应测试证据"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "severity": "P0",
+      "title": "模拟结果被当成真实集成测试证据",
+      "intent": "组合与闭环验证必须运行真实测试，且硬失败为零后才能发布",
+      "implementation_reality": "ITS01/ITS02-ITS03 在 JSON 内直接手写 actual_result、PASS 和 100%，文件本身标记 simulation；无测试代码、被测 Gate 实现、命令输出或运行日志",
+      "impact": "阶段 7 和阶段 8 被错误放行，违反 fabricated-evidence 和 incorrect-gate-pass 两项硬失败",
+      "evidence": [
+        "curation/experiments/ITS01-full-workflow-test-results.json:3",
+        "curation/experiments/ITS01-full-workflow-test-results.json:18",
+        "curation/experiments/ITS02-ITS03-integration-test-results.json:52",
+        "curation/experiments/ITS02-ITS03-integration-test-results.json:185"
+      ],
+      "fix": "实现真实 slot/recipe/Gate 校验器及 pytest；保存命令日志；加入 mutation red tests；将现有 ITS 文件重命名或标记为 test-design-not-executed"
+    },
+    {
+      "severity": "P0",
+      "title": "核心运行时产物完全缺失但被宣称已接入",
+      "intent": "产出 slots/、recipes/、evals/，再由 dev-loop 调用 recipe 和 slot contract",
+      "implementation_reality": "slots/、recipes/、evals/ 不存在；verify.py 仅支持 source 与 inventory；dev-loop 仍硬编码阶段级 Skill 路由",
+      "impact": "所谓 purified methods 和 Gate 不能独立调用、替换、组合或阻断，产品核心目标未实现",
+      "evidence": [
+        "docs/superpowers/plans/2026-09-09-capability-compiler-implementation.md:29",
+        "docs/superpowers/plans/2026-09-09-capability-compiler-implementation.md:35",
+        "tools/curation/verify.py:89",
+        "dev-loop/skills/dev-loop/SKILL.md:25"
+      ],
+      "fix": "从阶段 3 继续，先补齐全量来源覆盖；随后创建真实 slots/recipes/evals 和校验器，未经 Gate 不接入 dev-loop"
+    },
+    {
+      "severity": "P0",
+      "title": "计数式 AC Gate 违背已验证的提纯原则",
+      "intent": "v3 明确移除机械数量规则，以质量底线和必要性过滤器避免 filler",
+      "implementation_reality": "阶段 7/8 配置重新使用 min_ac_per_p0_story=3，并以此模拟 Gate 通过",
+      "impact": "已知会诱发凑数降质的规则被提升为生产 Gate，可能系统性生成低质量 AC",
+      "evidence": [
+        "curation/experiments/pr-to-ac-method-v3.json:8",
+        "curation/experiments/pr-to-ac-final-report.json:63",
+        "curation/experiments/production-ready-config-with-gates.json:33",
+        "SKILLS.md:140"
+      ],
+      "fix": "删除数量阈值；改为可测试性、必要性、异常路径覆盖和未知项保留的语义 Gate，并用变异测试验证"
+    },
+    {
+      "severity": "P1",
+      "title": "阶段 3 并非全量拆解且来源证据不可靠",
+      "intent": "全部 included 来源均有 dossier、units 和附件阅读覆盖，每个 unit 可回到真实原文",
+      "implementation_reality": "只有 6 个 cluster dossier；33 个 included skill 无 unit；60/114 excerpt 不是对应行内字面原文；存在非法 status 和越界行号",
+      "impact": "后续聚类、取舍和提纯无法证明没有静默丢失或错误归纳",
+      "evidence": [
+        "docs/superpowers/plans/2026-09-09-capability-compiler-implementation.md:156",
+        "docs/superpowers/plans/2026-09-09-capability-compiler-implementation.md:159",
+        "curation/unit-schema.json:30"
+      ],
+      "fix": "按 inventory stable ID 为每个 included source 建立完整 dossier/JSONL，补阅读覆盖记录并实现 schema validator"
+    },
+    {
+      "severity": "P1",
+      "title": "SKILLS.md 完成声明既失实又破坏 inventory 可重复性",
+      "intent": "严格区分落盘、来源、依赖、提纯和评测状态，并保持 68 项可解析清单",
+      "implementation_reality": "SKILLS.md 声称离线可运行、6 簇提纯完成、13 测试 100% 通过；其六列表格不符合 parse_catalog 的五列表格正则，实际解析 0 项",
+      "impact": "重新生成 inventory/lock 会丢失全部 catalog entries，且用户被误导为系统已生产就绪",
+      "evidence": [
+        "SKILLS.md:4",
+        "SKILLS.md:19",
+        "SKILLS.md:147",
+        "tools/curation/inventory.py:94"
+      ],
+      "fix": "恢复五列 68 项资产表；新增独立状态矩阵；将提纯与评测标为 not-started/partial/unverified"
+    },
+    {
+      "severity": "P1",
+      "title": "dev-loop 未按阶段 8 目标接入且安装副本漂移",
+      "intent": "总控改为 recipe 选择和 slot contract 调用，并同步两个安装副本后校验哈希",
+      "implementation_reality": "总控仍硬编码外部 Skill；cache 中 5 个核心文件与源文件不同；第二用户副本不存在",
+      "impact": "运行时行为与仓库文档不同，无法证明用户实际调用的是哪一版，更谈不上执行新 Gate",
+      "evidence": [
+        "dev-loop/skills/dev-loop/SKILL.md:27",
+        "dev-loop/skills/dev-loop/references/routing.md:20",
+        "docs/superpowers/plans/2026-09-09-capability-compiler-implementation.md:356"
+      ],
+      "fix": "待 slots/recipes 真实通过 Gate 后修改总控；同步前先审查 cache 漂移，再逐文件同步并比对哈希"
+    },
+    {
+      "severity": "P1",
+      "title": "多个宣称完成的 JSON 产物无法解析",
+      "intent": "JSON/JSONL 是机械验证和运行时配置格式",
+      "implementation_reality": "50 个 curation JSON 中 6 个解析失败，包括 production-ready-config-with-gates.json 和 5 个 final/summary report",
+      "impact": "这些文件不能被任何运行时或 verifier 消费，不能作为配置或证据",
+      "evidence": [
+        "curation/experiments/production-ready-config-with-gates.json:143",
+        "curation/experiments/implementation-purification-final-report.json:71",
+        "curation/experiments/testing-qa-purification-final-report.json:80"
+      ],
+      "fix": "修复格式后加入全树 JSON parse test；但仅修复语法不能替代缺失的实际评测"
+    }
+  ],
+  "verification_runs": [
+    {
+      "command": "python -m pytest tests/curation -v",
+      "result": "10 passed",
+      "coverage_boundary": "仅覆盖 baseline、inventory、source diff、identity-level forbidden provider 和 scope/lock；不覆盖阶段 3-8"
+    },
+    {
+      "command": "PYTHONUTF8=1 python tools/curation/verify.py source --root skills --baseline curation/baseline.json",
+      "result": "ok=true; added=0; changed=0; removed=0"
+    },
+    {
+      "command": "PYTHONUTF8=1 python tools/curation/verify.py inventory --inventory curation/inventory.json --policy curation/policy.json --lock skills-lock.json",
+      "result": "ok=true",
+      "coverage_boundary": "只证明 lock/identity/scope 一致，不证明来源、附件、许可证、依赖或可运行性"
+    },
+    {
+      "command": "全树 curation/**/*.json 解析检查",
+      "result": "50 个 JSON 中 6 个无效"
+    },
+    {
+      "command": "计划核心产物存在性检查",
+      "result": "19 个关键路径中 15 个缺失"
+    },
+    {
+      "command": "SKILLS.md parse_catalog 检查",
+      "result": "审核前 catalog_entries=0; supplemental_entries=0"
+    },
+    {
+      "command": "源插件与 Qoder cache 逐文件 SHA-256 比较",
+      "result": "README.md、plugin.json、SKILL.md、stages.md、routing.md 不一致；avatar.svg 和 openai.yaml 一致"
+    }
+  ],
+  "required_artifacts_missing": [
+    "curation/dossier-template.md",
+    "curation/clusters.json",
+    "curation/decisions.jsonl",
+    "curation/coverage.json",
+    "slots/",
+    "recipes/schema.json",
+    "recipes/write-prd.json",
+    "recipes/design-web-flow.json",
+    "recipes/build-feature-tdd.json",
+    "recipes/qa-only.json",
+    "recipes/ship-release.json",
+    "recipes/retro-to-requirements.json",
+    "recipes/full-dev-loop.json",
+    "evals/evals.json"
+  ],
+  "next_valid_action": "回退到阶段 2/3：先恢复可重复解析的 68 项清单，补齐来源与缺口状态；然后按 inventory stable ID 完成每份 included Skill 的 dossier、units 和读取覆盖。阶段 3 Gate 通过前，不得继续发布阶段 4-8。"
+}

@@ -1,0 +1,49 @@
+{
+  "method_id": "pr-to-ac-concise-v2",
+  "parent_experiment": "pr-to-ac-purification",
+  "revision": "v2 — 基于 TC01 对照实验的质量底线回填",
+  "changes_from_v1": [
+    {
+      "change": "AC 数量规则强制化",
+      "rule": "每条 P0 用户故事必须至少 3 条 AC（Given/When/Then），其中至少 1 条覆盖异常态（错误/空/加载/权限任一）",
+      "origin": "prd-development SKILL.md AC Rule + TC01 对照发现 purified 丢失此规则导致 AC 10→5"
+    },
+    {
+      "change": "OQ 三元组结构强制化",
+      "rule": "每个 Open Question 必须含三列：问题 / 为什么需要回答 / 预期影响",
+      "origin": "baseline OQ 表格结构 + TC01 对照发现 purified 丢失三元组导致 OQ 深度降级 25%"
+    },
+    {
+      "change": "异常态枚举前置",
+      "rule": "生成 AC 前先枚举本故事的异常态清单（错误/空/加载/权限四类），每类至少评估是否需要 AC",
+      "origin": "requirements-to-ac Dossier phase 5 (edge-state-enumeration) 能力——v1 遗漏了该阶段"
+    }
+  ],
+  "prompt_template": {
+    "input": "一句话需求描述或碎片笔记",
+    "instructions": [
+      "1. Executive Summary：problem/solution/impact 三要素各一句",
+      "2. Problem Statement：目标用户 + 痛点 + 证据（无证据时明确标注假设并列入 OQ，禁止编造）",
+      "3. Target Users：主/次画像各一，JTBD 一句话",
+      "4. User Stories：P0 2-3 条 + P1 1-2 条",
+      "5. 每条 P0 故事生成 ≥3 条 G/W/T AC，其中 ≥1 条异常态；生成前先列异常态清单（错误/空/载/权）",
+      "6. Open Questions：三元组表格（问题/为什么需要回答/预期影响），无数据支撑的指标必须列入",
+      "7. Out of Scope：明确列项"
+    ],
+    "output_format": "Markdown，emoji 章节标签（📌❓👥✅⚠️🚫），OQ 用表格"
+  },
+  "quality_floor": {
+    "non_negotiable": [
+      "诚实性：无证据的数值必须标 Open Question，禁止编造",
+      "AC 格式：100% Given/When/Then",
+      "每 P0 故事 ≥3 AC 且 ≥1 异常态",
+      "OQ 三元组完整"
+    ],
+    "compressible": [
+      "Persona 的次要维度（技术栈偏好等）",
+      "竞品分析深度（可标注为 OQ 延后）",
+      "Strategic Context 的 TAM/SAM/SOM 数字（无数据时）",
+      "章节篇幅与修辞"
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability Unit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source_path",
+    "origin_line_start",
+    "origin_line_end",
+    "type",
+    "raw_excerpt",
+    "meaning",
+    "boundary_condition",
+    "dependency_skills",
+    "candidate_destination",
+    "validation_criteria",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable unit ID within its source Skill."
+    },
+    "source_path": {
+      "type": "string",
+      "pattern": "^[^/]+/.+",
+      "description": "POSIX path relative to skills/."
+    },
+    "origin_line_start": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "origin_line_end": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "method",
+        "rule",
+        "exception",
+        "template",
+        "example",
+        "tool-action",
+        "gate"
+      ]
+    },
+    "raw_excerpt": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exact text from source_path and the declared inclusive line range."
+    },
+    "meaning": {
+      "type": "string",
+      "minLength": 1
+    },
+    "boundary_condition": {
+      "type": "string",
+      "minLength": 1,
+      "description": "When the unit applies and when it does not."
+    },
+    "dependency_skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "candidate_destination": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Candidate slot, decision record, or deferred scope destination."
+    },
+    "validation_criteria": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "retain",
+        "merge",
+        "rewrite",
+        "conditionalize",
+        "exclude",
+        "defer"
+      ]
+    }
+  }
+}

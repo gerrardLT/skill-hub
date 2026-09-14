@@ -1,0 +1,387 @@
+"""Generate exact Phase 3 semantic units for playwright."""
+import json
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+SKILLS_DIR = REPO_ROOT / "skills"
+UNITS_FILE = REPO_ROOT / "curation" / "units" / "playwright.jsonl"
+
+def get_excerpt(rel_path: str, start: int, end: int) -> str:
+    full_path = SKILLS_DIR / rel_path
+    with open(full_path, "r", encoding="utf-8") as f:
+        lines = f.read().splitlines()
+    selected = lines[start - 1 : end]
+    return "\n".join(selected)
+
+units_def = [
+    # File 1: skills/playwright/SKILL.md
+    {
+        "id": "playwright:unit-001",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 7,
+        "origin_line_end": 10,
+        "type": "rule",
+        "meaning": "定义 Playwright 技能的核心原则：通过 playwright-cli 在终端驱动真实浏览器，优先使用随附包装脚本，保持 CLI 优先，严禁主动转向 @playwright/test 测试工程代码",
+        "boundary_condition": "当需要终端轻量探索与快速自动化时强制适用；用户未显式要求编写测试文件时禁止生成测试套件",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:cli-browser-automation",
+        "validation_criteria": "明确 CLI 优先定位，防止在交互式诊断任务中过度设计自动化测试用例",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-002",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 12,
+        "origin_line_end": 32,
+        "type": "gate",
+        "meaning": "执行任何浏览器自动化命令前的强依赖门禁：检测 npx 可用性，并在缺失时向用户提供固定的 Node.js/npm 与 playwright-cli 安装指导",
+        "boundary_condition": "在向终端发送或提议任何自动化命令前必须执行此检查",
+        "dependency_skills": [],
+        "candidate_destination": "environment:runtime-prerequisite-gate",
+        "validation_criteria": "通过 command -v npx 校验，并在缺失时给出规范安装指引以避免命令失败",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-003",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 34,
+        "origin_line_end": 41,
+        "type": "tool-action",
+        "meaning": "配置技能执行脚本路径与 CODEX_HOME 环境变量，解析用户级技能路径与包装脚本位置",
+        "boundary_condition": "在首次执行 playwright CLI 交互前配置环境变量",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:cli-wrapper-configuration",
+        "validation_criteria": "确保 PWCLI 变量指向正确的包装脚本且支持用户级自定义路径",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-004",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 43,
+        "origin_line_end": 62,
+        "type": "method",
+        "meaning": "快速起步标准命令序列：通过包装脚本带头打开网页、拍摄快照、基于引用点击、输入内容并截屏，兼顾全局安装备用方式",
+        "boundary_condition": "适用于快速验证浏览器连通性与基础交互操作",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:browser-quickstart",
+        "validation_criteria": "能够按序执行 open、snapshot、click、type、screenshot 并输出截图文件",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-005",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 63,
+        "origin_line_end": 79,
+        "type": "method",
+        "meaning": "定义核心交互循环五步法（Open -> Snapshot -> Interact -> Re-snapshot -> Capture Artifacts）与极简交互代码骨架",
+        "boundary_condition": "适用于所有终端浏览器自动化会话的基本骨架",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:browser-interaction-loop",
+        "validation_criteria": "严格遵循快照获取引用后交互、页面变化后重新快照的闭环结构",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-006",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 80,
+        "origin_line_end": 90,
+        "type": "rule",
+        "meaning": "强制重新拍摄快照的触发时机：页面导航、点击引起大幅界面变动、弹窗/菜单开关、标签页切换，以及元素引用失效报错时",
+        "boundary_condition": "发生任何 DOM 结构剧烈变动或命令报告元素引用不存在时强制执行",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:stale-reference-guard",
+        "validation_criteria": "有效杜绝 Stale Element Reference 报错，保持短引用与当前 DOM 状态一致",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-007",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 91,
+        "origin_line_end": 103,
+        "type": "method",
+        "meaning": "表单填写与提交推荐模式：打开目标表单、生成快照短引用、按序填充字段、点击提交并获取提交后快照",
+        "boundary_condition": "处理用户注册、登录、信息录入等包含交互输入的表单流程",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:form-submission-pattern",
+        "validation_criteria": "表单各项字段均基于有效短引用顺序填写，并在提交后触发再快照确认结果",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-008",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 104,
+        "origin_line_end": 112,
+        "type": "method",
+        "meaning": "界面交互故障排查模式：采用 --headed 有头模式启动，使用 tracing-start 与 tracing-stop 包裹故障重现步骤",
+        "boundary_condition": "排查难以复现的 UI 偶发缺陷、动画卡顿或交互异常流程",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:trace-recording-pattern",
+        "validation_criteria": "完整包裹可疑交互逻辑并产出包含 DOM 快照、网络事件与时间线的 trace 归档",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-009",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 113,
+        "origin_line_end": 121,
+        "type": "method",
+        "meaning": "多标签页协同操作模式：新建标签页打开网页、列出标签页清单、选中特定索引标签页并重新拍摄快照",
+        "boundary_condition": "涉及第三方 OAuth 弹窗、在新标签页打开的外链校验或多页面对比工作",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:multi-tab-pattern",
+        "validation_criteria": "在切换标签页后必须执行 snapshot，确保短引用与激活标签页精准对齐",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-010",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 122,
+        "origin_line_end": 131,
+        "type": "tool-action",
+        "meaning": "包装脚本无缝执行机制：利用 npx --package @playwright/cli 免全局安装按需拉取运行，在项目中形成规范化调用",
+        "boundary_condition": "开发环境未预装全局 playwright-cli 时优先采用包装器",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:zero-install-cli-runner",
+        "validation_criteria": "无需全局环境侵入即可直接驱动 CLI 执行自动化指令",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-011",
+        "source_path": "playwright/SKILL.md",
+        "origin_line_start": 139,
+        "origin_line_end": 147,
+        "type": "rule",
+        "meaning": "浏览器终端自动化七大约束守则：引用前必快照、失效重拍、显式原语优先、禁止臆造引用、有头直观辅助、工件目录收敛至 output/playwright/、默认 CLI 而非测试套件",
+        "boundary_condition": "在整个 Playwright CLI 会话周期中全局强制遵守",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:automation-guardrails",
+        "validation_criteria": "工件不污染根目录，命令原语清晰可溯，防止生成不可运行的臆测指令",
+        "status": "retain"
+    },
+
+    # File 2: skills/playwright/scripts/playwright_cli.sh
+    {
+        "id": "playwright:unit-012",
+        "source_path": "playwright/scripts/playwright_cli.sh",
+        "origin_line_start": 4,
+        "origin_line_end": 7,
+        "type": "gate",
+        "meaning": "Shell 包装脚本级前置校验：检测 npx 命令在 PATH 中的存在性，缺失时输出错误并以状态码 1 退出",
+        "boundary_condition": "每次脚本调用执行的最初始步骤",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:shell-prerequisite-guard",
+        "validation_criteria": "拦截无 Node/npx 环境的无效执行，防止后续级联语法错误",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-013",
+        "source_path": "playwright/scripts/playwright_cli.sh",
+        "origin_line_start": 9,
+        "origin_line_end": 25,
+        "type": "tool-action",
+        "meaning": "包装脚本核心逻辑：扫描参数中的 --session 标志，自动将环境变量 PLAYWRIGHT_CLI_SESSION 注入命令，并通过 exec 转发执行 npx playwright-cli",
+        "boundary_condition": "包装脚本接收到用户参数时组装并执行终端浏览器命令",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:cli-wrapper-dispatcher",
+        "validation_criteria": "保持透明参数穿透，正确注入持久会话环境并替换当前进程执行",
+        "status": "retain"
+    },
+
+    # File 3: skills/playwright/references/cli.md
+    {
+        "id": "playwright:unit-014",
+        "source_path": "playwright/references/cli.md",
+        "origin_line_start": 19,
+        "origin_line_end": 42,
+        "type": "tool-action",
+        "meaning": "Playwright CLI 核心命令集速查：页面启闭(open/close)、DOM快照(snapshot)、点击交互(click/dblclick/hover/drag)、表单输入(type/press/fill/select/upload/check)、JS求值(eval)、对话框处理(dialog-accept/dismiss)与视口缩放(resize)",
+        "boundary_condition": "执行具体终端页面操纵时查阅标准子命令语法",
+        "dependency_skills": [],
+        "candidate_destination": "reference:cli-core-commands",
+        "validation_criteria": "涵盖常见 DOM 元素操纵的所有终端原语及对应参数格式",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-015",
+        "source_path": "playwright/references/cli.md",
+        "origin_line_start": 44,
+        "origin_line_end": 59,
+        "type": "tool-action",
+        "meaning": "导航与键盘操作命令速查：前进后退与重载(go-back/go-forward/reload)，以及按键按下/释放与组合键处理(press/keydown/keyup)",
+        "boundary_condition": "需要浏览器历史导航控制或模拟复杂键盘输入/快捷键时查阅",
+        "dependency_skills": [],
+        "candidate_destination": "reference:cli-navigation-keyboard",
+        "validation_criteria": "准确模拟用户物理键盘事件与浏览器历史栈导航",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-016",
+        "source_path": "playwright/references/cli.md",
+        "origin_line_start": 61,
+        "origin_line_end": 78,
+        "type": "tool-action",
+        "meaning": "鼠标交互与页面保存命令速查：鼠标精准移动与滚轮(mousemove/mousedown/mouseup/mousewheel)，以及页面/指定元素截图与导出 PDF(screenshot/pdf)",
+        "boundary_condition": "需要像素级交互、滚动触发动态加载或生成多模态视觉验收文件时查阅",
+        "dependency_skills": [],
+        "candidate_destination": "reference:cli-mouse-and-export",
+        "validation_criteria": "支持全页及局部元素截图与矢量 PDF 打印导出",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-017",
+        "source_path": "playwright/references/cli.md",
+        "origin_line_start": 80,
+        "origin_line_end": 100,
+        "type": "tool-action",
+        "meaning": "多标签页管理与开发者工具排障命令速查：标签页开闭与切换(tab-list/new/close/select)，控制台与网络监控(console/network)，以及 Trace 录制与任意代码执行(tracing-start/stop/run-code)",
+        "boundary_condition": "深入分析网络请求瀑布流、排查 JS 运行时异常或执行复杂等待逻辑时查阅",
+        "dependency_skills": [],
+        "candidate_destination": "reference:cli-tabs-and-devtools",
+        "validation_criteria": "完整提供类 Chrome DevTools 的终端诊断操纵能力",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-018",
+        "source_path": "playwright/references/cli.md",
+        "origin_line_start": 102,
+        "origin_line_end": 116,
+        "type": "method",
+        "meaning": "基于命名 Session 的浏览器上下文状态隔离方案：通过命令行 --session 显式声明或通过环境变量 PLAYWRIGHT_CLI_SESSION 全局指定",
+        "boundary_condition": "多项目并行测试、区分不同权限角色会话或保持持久登录态时适用",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:session-isolation-workflow",
+        "validation_criteria": "会话数据、Cookie 与 LocalStorage 在命名空间中相互隔离互不污染",
+        "status": "retain"
+    },
+
+    # File 4: skills/playwright/references/workflows.md
+    {
+        "id": "playwright:unit-019",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 1,
+        "origin_line_end": 6,
+        "type": "rule",
+        "meaning": "工作流基本准则与工件收敛规范：强制要求经常拍摄快照，并在仓库中统一将产物存放在 output/playwright/<label>/ 目录下以保持工作区整洁",
+        "boundary_condition": "在当前代码仓库中执行任何测试工作流时强制遵守",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:artifact-containment-rule",
+        "validation_criteria": "所有测试输出受限于统一的子目录结构中，无散落杂乱产物",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-020",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 7,
+        "origin_line_end": 14,
+        "type": "method",
+        "meaning": "标准交互闭环工作流代码模式：打开网页 -> 拍摄首个快照 -> 基于短引用执行点击 -> 重新拍摄快照更新引用状态",
+        "boundary_condition": "任何点击会引发 DOM 变化的典型交互操作标准流程",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:standard-click-workflow",
+        "validation_criteria": "确保在点击操作之后立刻调用 snapshot，形成无缝状态更新",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-021",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 16,
+        "origin_line_end": 26,
+        "type": "method",
+        "meaning": "有头表单提交与视觉留证全流程：带 --headed 打开表单页，拍摄快照，连续填充账户与密码字段，点击提交，重新拍摄快照并截屏归档",
+        "boundary_condition": "用户认证、信息表单登记等涉及多字段输入的测试验证场景",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:headed-form-workflow",
+        "validation_criteria": "完成包含交互、状态刷新与视觉成果捕获的完整表单验证闭环",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-022",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 28,
+        "origin_line_end": 35,
+        "type": "method",
+        "meaning": "终端无头数据提取工作流：打开页面获取快照后，直接调用 eval 提取 document.title 或基于特定元素短引用提取 DOM textContent",
+        "boundary_condition": "无需下载整个网页或编写解析器时的轻量级数据抓取与文本内容断言",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:data-extraction-workflow",
+        "validation_criteria": "在终端中直接输出 JavaScript 求值结果，快速完成轻量断言",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-023",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 37,
+        "origin_line_end": 53,
+        "type": "method",
+        "meaning": "深度调试与全链路排查工作流：重现后捕获 warning 级控制台日志与网络事件，使用 tracing-start/stop 捕获异常流并附带终态截图",
+        "boundary_condition": "定位前端接口报错、跨域异常或控制台隐蔽 Warning 场景",
+        "dependency_skills": [],
+        "candidate_destination": "quality-assurance:deep-debugging-workflow",
+        "validation_criteria": "综合汇总日志、网络流与可回溯 Trace 压缩包的多维度排障信息",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-024",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 55,
+        "origin_line_end": 70,
+        "type": "method",
+        "meaning": "跨场景多会话隔离工作流：分别指定 --session marketing 与 --session checkout 打开不同页面并独立拍摄快照，或通过环境变量一次性绑定",
+        "boundary_condition": "涉及两个不同业务线或不同用户角色的并行端到端链路验证",
+        "dependency_skills": [],
+        "candidate_destination": "tooling:cross-project-session-workflow",
+        "validation_criteria": "各会话的浏览器状态与缓存互不干扰，支持无缝并行切换",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-025",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 72,
+        "origin_line_end": 89,
+        "type": "template",
+        "meaning": "Playwright CLI 配置文件定义与结构：默认读取当前目录 playwright-cli.json 或通过 --config 指定，定义无头状态(headless)与视口宽高(viewport: 1280x720)",
+        "boundary_condition": "需要统一测试分辨率或固定有头无头模式的测试套件配置",
+        "dependency_skills": [],
+        "candidate_destination": "configuration:browser-cli-config",
+        "validation_criteria": "符合 playwright-cli.json 规范且能正确被 CLI 识别并生效",
+        "status": "retain"
+    },
+    {
+        "id": "playwright:unit-026",
+        "source_path": "playwright/references/workflows.md",
+        "origin_line_start": 91,
+        "origin_line_end": 95,
+        "type": "rule",
+        "meaning": "自动化故障排查三板斧：元素引用报错则重新 snapshot，页面布局错乱则加 --headed 调整窗口尺寸，依赖历史状态则切换至命名 --session",
+        "boundary_condition": "在 CLI 交互过程中遇到报错、界面异常或状态丢失时快速排障",
+        "dependency_skills": [],
+        "candidate_destination": "troubleshooting:cli-browser-heuristics",
+        "validation_criteria": "精准覆盖引用失效、视觉异常与状态依赖三大最常见终端浏览器故障",
+        "status": "retain"
+    }
+]
+
+def main():
+    UNITS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(UNITS_FILE, "w", encoding="utf-8") as f:
+        for u in units_def:
+            excerpt = get_excerpt(u["source_path"], u["origin_line_start"], u["origin_line_end"])
+            record = {
+                "id": u["id"],
+                "source_path": u["source_path"],
+                "origin_line_start": u["origin_line_start"],
+                "origin_line_end": u["origin_line_end"],
+                "type": u["type"],
+                "raw_excerpt": excerpt,
+                "meaning": u["meaning"],
+                "boundary_condition": u["boundary_condition"],
+                "dependency_skills": u["dependency_skills"],
+                "candidate_destination": u["candidate_destination"],
+                "validation_criteria": u["validation_criteria"],
+                "status": u["status"]
+            }
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    print(f"Generated {len(units_def)} units in {UNITS_FILE}")
+
+if __name__ == "__main__":
+    main()

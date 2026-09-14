@@ -1,0 +1,2429 @@
+{
+  "clusters": [
+    {
+      "candidate_responsibility": "Define semantic, keyboard, focus, assistive-technology, visual-input, and error-recovery contracts.",
+      "downstream_dependencies": [
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:accessibility-contracts-and-assistive-validation",
+      "input_boundary": "User tasks, supported browser and assistive technology, interaction states, WCAG scope, and an implementation.",
+      "output_boundary": "Accessibility acceptance criteria, semantics, focus behavior, a test matrix, evidence, and residual risk.",
+      "unit_ids": [
+        "design-taste-frontend:unit-019",
+        "review-animations:unit-021",
+        "ui-ux-pro-max:unit-016",
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-002",
+        "web-accessibility:unit-003",
+        "web-accessibility:unit-004",
+        "web-accessibility:unit-006",
+        "web-accessibility:unit-007",
+        "web-accessibility:unit-008",
+        "web-accessibility:unit-009",
+        "web-accessibility:unit-010",
+        "web-accessibility:unit-011",
+        "web-accessibility:unit-012",
+        "web-accessibility:unit-013",
+        "web-accessibility:unit-015",
+        "web-accessibility:unit-016",
+        "web-accessibility:unit-017",
+        "web-accessibility:unit-018",
+        "web-accessibility:unit-020"
+      ],
+      "upstream_dependencies": [
+        "cluster:interaction-states-forms-and-navigation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Scope agent behavior, control handoffs, graduated autonomy, and evidence required before expanding action rights.",
+      "downstream_dependencies": [
+        "cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-agent-autonomy-and-human-control",
+      "input_boundary": "A task definition, agent capabilities, human roles, failure cost, and observed behavior.",
+      "output_boundary": "An agency contract, control boundary, graduation criteria, and fallback path.",
+      "unit_ids": [
+        "ai-product-strategy:unit-014",
+        "ai-product-strategy:unit-015",
+        "ai-product-strategy:unit-021",
+        "ai-product-strategy:unit-029",
+        "ai-product-strategy:unit-033",
+        "ai-product-strategy:unit-039"
+      ],
+      "upstream_dependencies": [
+        "cluster:ai-model-and-data-architecture"
+      ]
+    },
+    {
+      "candidate_responsibility": "Route an AI opportunity to the appropriate architecture, autonomy, interaction, and safety capability without reimplementing those specialist contracts.",
+      "downstream_dependencies": [
+        "cluster:ai-model-and-data-architecture",
+        "cluster:ai-agent-autonomy-and-human-control",
+        "cluster:ai-interaction-and-probabilistic-ux",
+        "cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-capability-architecture-and-autonomy",
+      "input_boundary": "A customer problem, AI opportunity thesis, quality target, cost constraint, and capability-selection question.",
+      "output_boundary": "A bounded AI architecture choice, specialist handoff map, and explicit unresolved capability risks.",
+      "unit_ids": [
+        "ai-product-strategy:unit-001"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-positioning-and-competitive-power",
+        "cluster:feedback-and-continuous-learning-loop"
+      ]
+    },
+    {
+      "candidate_responsibility": "Design human-agent interaction for latency, uncertainty, personalization, correction, and comprehensible recovery.",
+      "downstream_dependencies": [
+        "cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-interaction-and-probabilistic-ux",
+      "input_boundary": "Probabilistic outputs, user context, interaction latency, correction signals, and accessibility needs.",
+      "output_boundary": "A human-agent interaction contract, uncertainty presentation, recovery path, and UX evidence.",
+      "unit_ids": [
+        "ai-product-strategy:unit-002",
+        "ai-product-strategy:unit-040",
+        "ai-product-strategy:unit-044",
+        "ai-product-strategy:unit-045"
+      ],
+      "upstream_dependencies": [
+        "cluster:ai-model-and-data-architecture"
+      ]
+    },
+    {
+      "candidate_responsibility": "Choose model routing, data sizing and freshness, retrieval preparation, prompt implementation, and evaluation boundaries.",
+      "downstream_dependencies": [
+        "cluster:solution-hypothesis-and-experiment-design"
+      ],
+      "id": "cluster:ai-model-and-data-architecture",
+      "input_boundary": "An AI task, data sources, latency and cost constraints, model options, and quality targets.",
+      "output_boundary": "A model/data architecture, routing rationale, data contract, prompt strategy, and evaluation plan.",
+      "unit_ids": [
+        "ai-product-strategy:unit-016",
+        "ai-product-strategy:unit-017",
+        "ai-product-strategy:unit-027",
+        "ai-product-strategy:unit-031",
+        "ai-product-strategy:unit-041",
+        "ai-product-strategy:unit-042",
+        "ai-product-strategy:unit-043",
+        "ai-product-strategy:unit-049",
+        "ai-product-strategy:unit-050",
+        "ai-product-strategy:unit-051"
+      ],
+      "upstream_dependencies": [
+        "cluster:ai-capability-architecture-and-autonomy"
+      ]
+    },
+    {
+      "candidate_responsibility": "Align product leadership, sponsors, pilot teams, adoption paths, and measurable organizational value for AI work.",
+      "downstream_dependencies": [
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:ai-organizational-adoption-and-leadership",
+      "input_boundary": "An AI initiative, organizational constraints, leadership questions, pilot candidates, and value hypotheses.",
+      "output_boundary": "An adoption plan, leadership decision material, pilot evidence, and ownership model.",
+      "unit_ids": [
+        "ai-product-strategy:unit-036",
+        "ai-product-strategy:unit-052",
+        "ai-product-strategy:unit-053",
+        "ai-product-strategy:unit-058",
+        "ai-product-strategy:unit-059"
+      ],
+      "upstream_dependencies": [
+        "cluster:ai-capability-architecture-and-autonomy"
+      ]
+    },
+    {
+      "candidate_responsibility": "Identify an AI product wedge, defensible application layer, and model-curve-aware opportunity before committing to architecture.",
+      "downstream_dependencies": [
+        "cluster:ai-capability-architecture-and-autonomy"
+      ],
+      "id": "cluster:ai-product-opportunity-and-wedge",
+      "input_boundary": "A validated customer problem, workflow friction, model trajectory, data advantage, and business constraint.",
+      "output_boundary": "An AI opportunity thesis, wedge choice, defensibility hypothesis, and feasibility questions.",
+      "unit_ids": [
+        "ai-product-strategy:unit-004",
+        "ai-product-strategy:unit-005",
+        "ai-product-strategy:unit-006",
+        "ai-product-strategy:unit-010",
+        "ai-product-strategy:unit-012",
+        "ai-product-strategy:unit-013",
+        "ai-product-strategy:unit-034",
+        "ai-product-strategy:unit-048"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-positioning-and-competitive-power"
+      ]
+    },
+    {
+      "candidate_responsibility": "Assess prompt and action risks, preserve human checkpoints, and prevent unsafe autonomy or unsupported safety claims.",
+      "downstream_dependencies": [
+        "cluster:risk-preflight-and-safety-governance"
+      ],
+      "id": "cluster:ai-safety-and-action-governance",
+      "input_boundary": "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level.",
+      "output_boundary": "A safety boundary, red-team scope, human checkpoint, stop condition, and residual risk.",
+      "unit_ids": [
+        "ai-product-strategy:unit-022",
+        "ai-product-strategy:unit-030",
+        "ai-product-strategy:unit-035",
+        "ai-product-strategy:unit-057"
+      ],
+      "upstream_dependencies": [
+        "cluster:ai-agent-autonomy-and-human-control",
+        "cluster:ai-interaction-and-probabilistic-ux"
+      ]
+    },
+    {
+      "candidate_responsibility": "Present architecture candidates as comparable cards, diagrams, rankings, and recommendations.",
+      "downstream_dependencies": [
+        "cluster:architecture-interface-alternative-evaluation",
+        "cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:architecture-candidate-reporting",
+      "input_boundary": "Already discovered architecture candidates with code evidence.",
+      "output_boundary": "A visual candidate report and comparison material, not an implementation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004",
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009",
+        "improve-codebase-architecture:unit-010",
+        "improve-codebase-architecture:unit-011",
+        "improve-codebase-architecture:unit-012"
+      ],
+      "upstream_dependencies": [
+        "cluster:architecture-deepening-discovery"
+      ]
+    },
+    {
+      "candidate_responsibility": "Design module boundaries and interfaces using information hiding, deep modules, seams, and dependency direction.",
+      "downstream_dependencies": [
+        "cluster:architecture-interface-alternative-evaluation",
+        "cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:architecture-deep-module-design",
+      "input_boundary": "A module, its interfaces and dependencies, or evidenced architectural friction.",
+      "output_boundary": "Module boundaries, interface contracts, seams, dependency direction, and testability decisions.",
+      "unit_ids": [
+        "codebase-design:unit-001",
+        "codebase-design:unit-002",
+        "codebase-design:unit-003",
+        "codebase-design:unit-004",
+        "codebase-design:unit-005",
+        "codebase-design:unit-006",
+        "codebase-design:unit-007",
+        "codebase-design:unit-008",
+        "codebase-design:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:architecture-deepening-discovery"
+      ]
+    },
+    {
+      "candidate_responsibility": "Find shallow modules, leaked boundaries, repeated orchestration, and other evidence-backed deepening candidates.",
+      "downstream_dependencies": [
+        "cluster:architecture-candidate-reporting",
+        "cluster:architecture-deep-module-design"
+      ],
+      "id": "cluster:architecture-deepening-discovery",
+      "input_boundary": "A codebase, change hotspots, repeated logic, and maintenance-friction evidence.",
+      "output_boundary": "Scoped architectural candidates, evidence, and a YAGNI-aware recommendation to deepen or leave unchanged.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-001",
+        "improve-codebase-architecture:unit-002",
+        "improve-codebase-architecture:unit-003"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Generate independent interface alternatives and compare hiding, complexity, dependencies, tests, and migration cost.",
+      "downstream_dependencies": [
+        "cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:architecture-interface-alternative-evaluation",
+      "input_boundary": "A bounded module problem, constraints, and an interface-design objective.",
+      "output_boundary": "At least two structured alternatives, tradeoffs, and a recommendation, not execution.",
+      "unit_ids": [
+        "codebase-design:unit-010",
+        "codebase-design:unit-011",
+        "codebase-design:unit-012",
+        "improve-codebase-architecture:unit-006"
+      ],
+      "upstream_dependencies": [
+        "cluster:architecture-deep-module-design",
+        "cluster:architecture-candidate-reporting"
+      ]
+    },
+    {
+      "candidate_responsibility": "Select authorized tools and persist the resulting specification or artifact at the correct lifecycle point.",
+      "downstream_dependencies": [],
+      "id": "cluster:artifact-persistence-and-tool-actions",
+      "input_boundary": "A validated task, tool boundary, output location, and write authorization.",
+      "output_boundary": "A tool action, saved artifact, or explicit no-write outcome.",
+      "unit_ids": [
+        "metrics-dashboard:unit-015",
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013",
+        "pre-mortem:unit-014"
+      ],
+      "upstream_dependencies": [
+        "cluster:workflow-orchestration-and-lifecycle"
+      ]
+    },
+    {
+      "candidate_responsibility": "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates.",
+      "downstream_dependencies": [
+        "cluster:merge-and-deploy-readiness",
+        "cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:baseline-regression-control",
+      "input_boundary": "A trusted historical baseline and a current measurement made under the same contract.",
+      "output_boundary": "A diff, regression decision, and controlled baseline-update decision.",
+      "unit_ids": [
+        "audit-website:unit-007",
+        "canary:unit-002",
+        "canary:unit-008",
+        "qao-method-quick-and-regression-modes"
+      ],
+      "upstream_dependencies": [
+        "cluster:playwright-test-engineering",
+        "cluster:website-audit-remediation",
+        "cluster:web-performance-diagnostics",
+        "cluster:llm-quality-evaluation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Configure browser sessions, wrapper dispatch, CLI settings, and isolated project context after prerequisites pass.",
+      "downstream_dependencies": [
+        "cluster:safe-browser-probing",
+        "cluster:playwright-test-engineering"
+      ],
+      "id": "cluster:browser-session-and-runtime-configuration",
+      "input_boundary": "A validated browser task, session identifier, project path, wrapper contract, and CLI configuration.",
+      "output_boundary": "A configured isolated session and reproducible browser invocation settings.",
+      "unit_ids": [
+        "audit-website:unit-001",
+        "playwright:unit-002",
+        "playwright:unit-003",
+        "playwright:unit-010",
+        "playwright:unit-012",
+        "playwright:unit-025"
+      ],
+      "upstream_dependencies": [
+        "cluster:tool-runtime-readiness"
+      ]
+    },
+    {
+      "candidate_responsibility": "Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants.",
+      "downstream_dependencies": [
+        "cluster:change-packaging-and-versioning"
+      ],
+      "id": "cluster:change-delivery-preflight",
+      "input_boundary": "A reviewed change, repository state, delivery policy, and intended publication boundary.",
+      "output_boundary": "A delivery-ready package or explicit preflight blockers; no merge or deployment action.",
+      "unit_ids": [
+        "ship:unit-001",
+        "ship:unit-002",
+        "ship:unit-003",
+        "ship:unit-007"
+      ],
+      "upstream_dependencies": [
+        "cluster:completion-evidence-gate"
+      ]
+    },
+    {
+      "candidate_responsibility": "Package verified changes into bisectable commits, coherent versions, changelogs, credential checks, and PR metadata.",
+      "downstream_dependencies": [
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:change-packaging-and-versioning",
+      "input_boundary": "Implemented and reviewed changes with fresh verification evidence.",
+      "output_boundary": "A safe, traceable, version-consistent change package and pull-request description.",
+      "unit_ids": [
+        "ship:unit-004",
+        "ship:unit-005",
+        "ship:unit-008"
+      ],
+      "upstream_dependencies": [
+        "cluster:completion-evidence-gate",
+        "cluster:git-destructive-command-guard"
+      ]
+    },
+    {
+      "candidate_responsibility": "Use bounded competitive cases and historical examples to generate hypotheses without treating examples as current evidence.",
+      "downstream_dependencies": [
+        "cluster:strategic-choice-and-differentiation"
+      ],
+      "id": "cluster:competitive-case-library",
+      "input_boundary": "A competitive question, case material, historical context, and applicability boundary.",
+      "output_boundary": "A case-backed hypothesis, analogy limits, and follow-up evidence requirements.",
+      "unit_ids": [
+        "competitive-strategy:unit-045",
+        "competitive-strategy:unit-051",
+        "competitive-strategy:unit-068",
+        "competitive-strategy:unit-069",
+        "competitive-strategy:unit-070",
+        "competitive-strategy:unit-071",
+        "competitive-strategy:unit-072",
+        "competitive-strategy:unit-073",
+        "competitive-strategy:unit-075"
+      ],
+      "upstream_dependencies": [
+        "cluster:source-metadata-and-provenance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Monitor competitors and platform shifts, analyze response options, and keep competitive claims tied to verifiable observations.",
+      "downstream_dependencies": [
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:competitive-response-and-monitoring",
+      "input_boundary": "Competitor releases, market signals, comparable products, and monitoring evidence.",
+      "output_boundary": "A verified competitive intelligence brief, response choice, and follow-up observation plan.",
+      "unit_ids": [
+        "competitive-strategy:unit-012",
+        "competitive-strategy:unit-020",
+        "competitive-strategy:unit-028",
+        "competitive-strategy:unit-042",
+        "competitive-strategy:unit-043",
+        "competitive-strategy:unit-056",
+        "competitive-strategy:unit-096",
+        "competitive-strategy:unit-097",
+        "competitive-strategy:unit-098",
+        "competitive-strategy:unit-105",
+        "competitive-strategy:unit-116",
+        "competitive-strategy:unit-119"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-segmentation-and-demand-intelligence"
+      ]
+    },
+    {
+      "candidate_responsibility": "Require a fresh complete command, output inspection, and exit-code check before any success or completion claim.",
+      "downstream_dependencies": [
+        "cluster:change-packaging-and-versioning",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:completion-evidence-gate",
+      "input_boundary": "A proposed status claim and the command capable of proving it.",
+      "output_boundary": "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report.",
+      "unit_ids": [
+        "audit-website:unit-008",
+        "playwright-best-practices:unit-013",
+        "qao-gate-interactive-evidence-chain",
+        "ship:unit-006",
+        "test-driven-development:unit-014",
+        "verification-before-completion:unit-001",
+        "verification-before-completion:unit-002",
+        "verification-before-completion:unit-003",
+        "verification-before-completion:unit-004",
+        "verification-before-completion:unit-005",
+        "verification-before-completion:unit-006",
+        "verification-before-completion:unit-007",
+        "verification-before-completion:unit-008",
+        "verification-before-completion:unit-009",
+        "verification-before-completion:unit-010",
+        "verification-before-completion:unit-011",
+        "verification-before-completion:unit-012",
+        "verification-before-completion:unit-013",
+        "verification-before-completion:unit-014",
+        "vitest:unit-019"
+      ],
+      "upstream_dependencies": [
+        "cluster:tdd-change-loop",
+        "cluster:vitest-tooling",
+        "cluster:playwright-test-engineering",
+        "cluster:independent-code-review"
+      ]
+    },
+    {
+      "candidate_responsibility": "Create truthful, comprehensible product copy, content data, and assets with explicit provenance.",
+      "downstream_dependencies": [
+        "cluster:interaction-states-forms-and-navigation",
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets",
+      "input_boundary": "Product facts, brand voice, content needs, licensed material, and asset-generation capability.",
+      "output_boundary": "Publishable copy, authentic or traceable assets, alt text, and explicit placeholders where unavoidable.",
+      "unit_ids": [
+        "design-taste-frontend:unit-011",
+        "design-taste-frontend:unit-012",
+        "design-taste-frontend:unit-013",
+        "frontend-design:unit-008",
+        "frontend-design:unit-013",
+        "frontend-design:unit-014",
+        "impeccable:unit-014",
+        "redesign-existing-projects:unit-006"
+      ],
+      "upstream_dependencies": [
+        "cluster:visual-language-and-anti-template-controls"
+      ]
+    },
+    {
+      "candidate_responsibility": "Deduplicate available context, identify missing inputs, and route work to the applicable capability.",
+      "downstream_dependencies": [
+        "cluster:market-positioning-and-competitive-power",
+        "cluster:problem-framing-and-customer-research",
+        "cluster:requirements-and-delivery-contract",
+        "cluster:ui-task-routing-and-governance"
+      ],
+      "id": "cluster:context-intake-and-routing",
+      "input_boundary": "A request, existing artifacts, project context, and known constraints.",
+      "output_boundary": "A routing decision, explicit unknowns, applicable boundaries, and an invocation path.",
+      "unit_ids": [
+        "ai-product-strategy:unit-007",
+        "ai-product-strategy:unit-008",
+        "ai-product-strategy:unit-009",
+        "ai-product-strategy:unit-023",
+        "ai-product-strategy:unit-024",
+        "ai-product-strategy:unit-046",
+        "ai-product-strategy:unit-054",
+        "interview-script:unit-003",
+        "interview-script:unit-004",
+        "interview-script:unit-014",
+        "metrics-dashboard:unit-003",
+        "metrics-dashboard:unit-014",
+        "metrics-dashboard:unit-016",
+        "prd-development:unit-002",
+        "prd-development:unit-004",
+        "pre-mortem:unit-004",
+        "pre-mortem:unit-016",
+        "product-strategy-session:unit-039"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Run cross-cutting UI preflight checks for accessibility, content, interaction states, responsive behavior, and release readiness.",
+      "downstream_dependencies": [
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:cross-domain-ui-preflight-checklists",
+      "input_boundary": "A rendered UI, acceptance criteria, content, supported devices, and release boundary.",
+      "output_boundary": "A checklist result, blocking findings, evidence requirements, and residual risk.",
+      "unit_ids": [
+        "design-taste-frontend:unit-017",
+        "design-taste-frontend:unit-023",
+        "frontend-design:unit-011",
+        "ui-ux-pro-max:unit-010",
+        "ui-ux-pro-max:unit-015",
+        "web-accessibility:unit-005",
+        "web-accessibility:unit-014",
+        "web-accessibility:unit-019"
+      ],
+      "upstream_dependencies": [
+        "cluster:interaction-states-forms-and-navigation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Prepare and conduct non-leading customer interviews with context, probes, notes, and evidence-preserving closure.",
+      "downstream_dependencies": [
+        "cluster:qualitative-evidence-synthesis"
+      ],
+      "id": "cluster:customer-interview-execution",
+      "input_boundary": "A research objective, participant context, consent boundary, and interview script.",
+      "output_boundary": "Interview evidence, direct observations, notes, and explicit follow-up gaps.",
+      "unit_ids": [
+        "discovery-process:unit-041",
+        "interview-script:unit-001",
+        "interview-script:unit-002",
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-011",
+        "interview-script:unit-012",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ],
+      "upstream_dependencies": [
+        "cluster:research-planning-and-governance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Validate metrics, feedback, and experiment analysis for method, representation, aggregation, bias, and reproducibility.",
+      "downstream_dependencies": [
+        "cluster:llm-quality-evaluation",
+        "cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:data-analysis-validation",
+      "input_boundary": "Product metrics, feedback, queries, an experiment design, or experiment results.",
+      "output_boundary": "Method-checked insights, experiment designs or readouts, limitations, and actionable recommendations.",
+      "unit_ids": [
+        "validate-data:unit-001",
+        "validate-data:unit-002",
+        "validate-data:unit-003",
+        "validate-data:unit-004",
+        "validate-data:unit-005",
+        "validate-data:unit-006",
+        "validate-data:unit-007",
+        "validate-data:unit-008",
+        "validate-data:unit-009",
+        "validate-data:unit-010"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Make evidence-backed choices and sequence measurable outcomes, dependencies, and capacity constraints.",
+      "downstream_dependencies": [
+        "cluster:requirements-and-delivery-contract"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping",
+      "input_boundary": "Strategy, candidate initiatives, experiment conclusions, priorities, capacity, and dependencies.",
+      "output_boundary": "A go, pivot, or kill decision; an outcome roadmap; sequencing; and a decision record.",
+      "unit_ids": [
+        "outcome-roadmap:unit-002",
+        "outcome-roadmap:unit-003",
+        "outcome-roadmap:unit-006",
+        "outcome-roadmap:unit-007",
+        "outcome-roadmap:unit-008",
+        "outcome-roadmap:unit-010",
+        "outcome-roadmap:unit-015",
+        "outcome-roadmap:unit-016",
+        "outcome-roadmap:unit-017",
+        "product-strategy-session:unit-025",
+        "product-strategy-session:unit-027",
+        "product-strategy-session:unit-028"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-positioning-and-competitive-power",
+        "cluster:evidence-synthesis-and-opportunity-prioritization",
+        "cluster:results-analysis-and-decision-readout"
+      ]
+    },
+    {
+      "candidate_responsibility": "Observe deployment providers, assess post-deploy health, and produce auditable rollback or revert recovery changes.",
+      "downstream_dependencies": [
+        "cluster:production-canary-monitoring",
+        "cluster:incident-response-coordination"
+      ],
+      "id": "cluster:deployment-observation-and-recovery",
+      "input_boundary": "A merged change, provider status, and post-deploy health signals.",
+      "output_boundary": "Deployment evidence, a failure decision, or a reviewable rollback and recovery pull request.",
+      "unit_ids": [
+        "land-and-deploy:unit-007"
+      ],
+      "upstream_dependencies": [
+        "cluster:merge-and-deploy-readiness"
+      ]
+    },
+    {
+      "candidate_responsibility": "Read product and visual authority and define the audience, surface mode, direction, and design contract.",
+      "downstream_dependencies": [
+        "cluster:design-system-foundation-and-token-extraction",
+        "cluster:visual-language-and-anti-template-controls",
+        "cluster:divergent-prototyping-and-variant-selection"
+      ],
+      "id": "cluster:design-context-and-direction-contract",
+      "input_boundary": "Product facts, a brief, design assets, tokens, components, surface context, and references.",
+      "output_boundary": "A design read, selected direction, constraints, spatial thesis, and auditable direction contract.",
+      "unit_ids": [
+        "design-taste-frontend:unit-002",
+        "design-taste-frontend:unit-003",
+        "frontend-design:unit-002",
+        "frontend-design:unit-003",
+        "frontend-design:unit-012",
+        "impeccable:unit-005",
+        "impeccable:unit-006",
+        "impeccable:unit-012",
+        "impeccable:unit-013",
+        "prototype:unit-004",
+        "prototype:unit-005",
+        "ui-ux-pro-max:unit-007"
+      ],
+      "upstream_dependencies": [
+        "cluster:ui-task-routing-and-governance",
+        "cluster:existing-interface-redesign-and-preservation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Choose or generate an in-project design-system foundation, including component rules, theme decisions, and persistence policy.",
+      "downstream_dependencies": [
+        "cluster:visual-language-and-anti-template-controls",
+        "cluster:responsive-layout-and-spatial-composition",
+        "cluster:frontend-runtime-boundaries-and-dependency-safety"
+      ],
+      "id": "cluster:design-system-foundation-and-token-extraction",
+      "input_boundary": "A UI brief, stack, design references, existing tokens, and project conventions.",
+      "output_boundary": "A selected or generated system foundation, component rules, theme decisions, and persistence contract.",
+      "unit_ids": [
+        "design-taste-frontend:unit-004",
+        "extract-design-system:unit-011",
+        "redesign-existing-projects:unit-002",
+        "redesign-existing-projects:unit-003",
+        "redesign-existing-projects:unit-007",
+        "redesign-existing-projects:unit-008",
+        "ui-ux-pro-max:unit-005",
+        "ui-ux-pro-max:unit-006"
+      ],
+      "upstream_dependencies": [
+        "cluster:design-context-and-direction-contract"
+      ]
+    },
+    {
+      "candidate_responsibility": "Have the implementer inspect specification coverage, quality, scope, and test truth, then fix discovered issues.",
+      "downstream_dependencies": [
+        "cluster:independent-code-review",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:developer-self-check-and-fix",
+      "input_boundary": "Implemented code, its task specification, test output, and change list.",
+      "output_boundary": "A corrected implementation and structured self-review evidence, not an independent verdict.",
+      "unit_ids": [
+        "subagent-driven-development:unit-015",
+        "subagent-driven-development:unit-016",
+        "writing-plans:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:subagent-task-pipeline"
+      ]
+    },
+    {
+      "candidate_responsibility": "Build genuinely different working UI variants in isolation and support fair comparison and promotion.",
+      "downstream_dependencies": [
+        "cluster:existing-interface-redesign-and-preservation",
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:divergent-prototyping-and-variant-selection",
+      "input_boundary": "One UI brief, project tokens, authentic context, and named axes of divergence.",
+      "output_boundary": "Isolated variants, a picker, tradeoffs, a user selection, and a promotion handoff.",
+      "unit_ids": [
+        "prototype:unit-001",
+        "prototype:unit-002",
+        "prototype:unit-003",
+        "prototype:unit-006",
+        "prototype:unit-007",
+        "prototype:unit-010",
+        "prototype:unit-011",
+        "prototype:unit-012",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-015",
+        "prototype:unit-016",
+        "prototype:unit-017",
+        "prototype:unit-018",
+        "prototype:unit-019"
+      ],
+      "upstream_dependencies": [
+        "cluster:design-context-and-direction-contract"
+      ]
+    },
+    {
+      "candidate_responsibility": "Define durable document structure, artifact fields, authorship rules, and output comprehension checks.",
+      "downstream_dependencies": [
+        "cluster:requirements-and-delivery-contract"
+      ],
+      "id": "cluster:document-and-artifact-governance",
+      "input_boundary": "A document or artifact purpose, audience, source evidence, and required fields.",
+      "output_boundary": "A governed artifact contract, readable output, and explicit unknowns.",
+      "unit_ids": [
+        "discovery-process:unit-049",
+        "metrics-dashboard:unit-010",
+        "metrics-dashboard:unit-011",
+        "outcome-roadmap:unit-009",
+        "outcome-roadmap:unit-011",
+        "outcome-roadmap:unit-012",
+        "prd-development:unit-003",
+        "prd-development:unit-019",
+        "prd-development:unit-051",
+        "product-strategy-session:unit-040"
+      ],
+      "upstream_dependencies": [
+        "cluster:source-metadata-and-provenance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Review engineering delivery from fresh repository history, test health, plan completion, and team evidence.",
+      "downstream_dependencies": [
+        "cluster:implementation-planning-and-handoff",
+        "cluster:testing-portfolio-strategy"
+      ],
+      "id": "cluster:engineering-retrospective-and-improvement",
+      "input_boundary": "A time window, Git history, test health, plan state, delivery outcomes, and prior retrospectives.",
+      "output_boundary": "Individual and team feedback, technical-debt signals, trends, and tracked improvement actions.",
+      "unit_ids": [
+        "retro:unit-001",
+        "retro:unit-002",
+        "retro:unit-003",
+        "retro:unit-004",
+        "retro:unit-005",
+        "retro:unit-006",
+        "retro:unit-007",
+        "retro:unit-008",
+        "retro:unit-009",
+        "retro:unit-010"
+      ],
+      "upstream_dependencies": [
+        "cluster:incident-response-coordination",
+        "cluster:data-analysis-validation",
+        "cluster:llm-quality-evaluation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Review real renders against explicit criteria and issue evidence-bounded findings and release dispositions.",
+      "downstream_dependencies": [],
+      "id": "cluster:evidence-based-ui-review-and-release-gates",
+      "input_boundary": "An implementation, desktop and mobile captures, a brief, direction contract, target files, and findings.",
+      "output_boundary": "Prioritized findings, fix or rebuild dispositions, recapture evidence, a verdict, and residual risk.",
+      "unit_ids": [
+        "design-taste-frontend:unit-021",
+        "prototype:unit-008",
+        "review-animations:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:responsive-layout-and-spatial-composition",
+        "cluster:accessibility-contracts-and-assistive-validation",
+        "cluster:purposeful-motion-and-animation-engineering",
+        "cluster:frontend-rendering-and-interaction-performance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Synthesize multi-source evidence into patterns and rank opportunities with methods suited to the data.",
+      "downstream_dependencies": [
+        "cluster:solution-hypothesis-and-experiment-design",
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization",
+      "input_boundary": "Research notes, behavior data, support signals, competitive evidence, and candidate opportunities.",
+      "output_boundary": "Themes, evidence strength, opportunity scores, priorities, rationale, and uncertainty.",
+      "unit_ids": [
+        "competitive-strategy:unit-037",
+        "competitive-strategy:unit-053",
+        "competitive-strategy:unit-062",
+        "competitive-strategy:unit-080",
+        "competitive-strategy:unit-088",
+        "discovery-process:unit-004",
+        "discovery-process:unit-050",
+        "discovery-process:unit-052",
+        "prd-development:unit-031"
+      ],
+      "upstream_dependencies": [
+        "cluster:problem-framing-and-customer-research"
+      ]
+    },
+    {
+      "candidate_responsibility": "Audit an existing interface and preserve product truth, information architecture, SEO, analytics, and behavior.",
+      "downstream_dependencies": [
+        "cluster:design-context-and-direction-contract",
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:existing-interface-redesign-and-preservation",
+      "input_boundary": "An existing UI, brand, tokens, information architecture, content, routes, analytics, and redesign brief.",
+      "output_boundary": "A current-state audit, preservation contract, redesign scope, migration order, and risks.",
+      "unit_ids": [
+        "design-taste-frontend:unit-022",
+        "prototype:unit-009",
+        "redesign-existing-projects:unit-001",
+        "redesign-existing-projects:unit-011"
+      ],
+      "upstream_dependencies": [
+        "cluster:ui-task-routing-and-governance",
+        "cluster:divergent-prototyping-and-variant-selection"
+      ]
+    },
+    {
+      "candidate_responsibility": "Extract and normalize design primitives from an authorized external surface without treating them as project authority or writing project tokens.",
+      "downstream_dependencies": [
+        "cluster:design-system-foundation-and-token-extraction"
+      ],
+      "id": "cluster:external-design-token-extraction-and-normalization",
+      "input_boundary": "An authorized public reference, extraction runtime, and requested analysis mode.",
+      "output_boundary": "Reviewed normalized primitives, raw/normalized evidence, provenance, and explicit write-approval state.",
+      "unit_ids": [
+        "extract-design-system:unit-001",
+        "extract-design-system:unit-002",
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-004",
+        "extract-design-system:unit-005",
+        "extract-design-system:unit-006",
+        "extract-design-system:unit-007",
+        "extract-design-system:unit-008",
+        "extract-design-system:unit-009",
+        "extract-design-system:unit-010"
+      ],
+      "upstream_dependencies": [
+        "cluster:source-metadata-and-provenance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Run explicit collaboration, participation, clarification, and decision protocols across roles.",
+      "downstream_dependencies": [],
+      "id": "cluster:facilitation-and-collaboration-protocols",
+      "input_boundary": "A multi-role task, incomplete context, stakeholder set, and decision boundary.",
+      "output_boundary": "Facilitated inputs, aligned decisions, unresolved questions, and ownership.",
+      "unit_ids": [
+        "discovery-process:unit-002",
+        "discovery-process:unit-005",
+        "discovery-process:unit-006",
+        "discovery-process:unit-043",
+        "discovery-process:unit-044",
+        "prd-development:unit-005",
+        "prd-development:unit-048",
+        "product-strategy-session:unit-002",
+        "product-strategy-session:unit-003",
+        "product-strategy-session:unit-005",
+        "product-strategy-session:unit-006",
+        "product-strategy-session:unit-008",
+        "product-strategy-session:unit-009",
+        "product-strategy-session:unit-034",
+        "product-strategy-session:unit-035",
+        "product-strategy-session:unit-036",
+        "product-strategy-session:unit-037"
+      ],
+      "upstream_dependencies": [
+        "cluster:workflow-orchestration-and-lifecycle"
+      ]
+    },
+    {
+      "candidate_responsibility": "Maintain customer contact, feedback synthesis, metric review, calibration, and the next learning cycle.",
+      "downstream_dependencies": [
+        "cluster:problem-framing-and-customer-research",
+        "cluster:ai-capability-architecture-and-autonomy"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop",
+      "input_boundary": "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.",
+      "output_boundary": "A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input.",
+      "unit_ids": [
+        "ai-product-strategy:unit-003",
+        "ai-product-strategy:unit-018",
+        "ai-product-strategy:unit-019",
+        "ai-product-strategy:unit-020",
+        "ai-product-strategy:unit-037",
+        "analyzing-user-feedback:unit-001",
+        "analyzing-user-feedback:unit-002",
+        "analyzing-user-feedback:unit-003",
+        "analyzing-user-feedback:unit-004",
+        "analyzing-user-feedback:unit-005",
+        "analyzing-user-feedback:unit-009",
+        "analyzing-user-feedback:unit-010",
+        "metrics-dashboard:unit-012",
+        "metrics-dashboard:unit-013"
+      ],
+      "upstream_dependencies": [
+        "cluster:metrics-system-and-observability",
+        "cluster:results-analysis-and-decision-readout"
+      ]
+    },
+    {
+      "candidate_responsibility": "Optimize rendering, interaction, animation, and layout performance against measured runtime behavior.",
+      "downstream_dependencies": [
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:frontend-rendering-and-interaction-performance",
+      "input_boundary": "A rendered frontend, interaction traces, performance measurements, and device constraints.",
+      "output_boundary": "Performance findings, budgets, implementation constraints, and regression evidence.",
+      "unit_ids": [
+        "design-taste-frontend:unit-016",
+        "review-animations:unit-016",
+        "ui-ux-pro-max:unit-018"
+      ],
+      "upstream_dependencies": [
+        "cluster:frontend-runtime-boundaries-and-dependency-safety"
+      ]
+    },
+    {
+      "candidate_responsibility": "Keep frontend dependencies, client-server boundaries, assets, and runtime assumptions safe and explicit.",
+      "downstream_dependencies": [
+        "cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "cluster:frontend-runtime-boundaries-and-dependency-safety",
+      "input_boundary": "A frontend implementation, dependency graph, rendering environment, and integration constraints.",
+      "output_boundary": "A bounded runtime design, dependency decision, and safety evidence.",
+      "unit_ids": [
+        "design-taste-frontend:unit-005",
+        "frontend-design:unit-010",
+        "redesign-existing-projects:unit-009",
+        "redesign-existing-projects:unit-013"
+      ],
+      "upstream_dependencies": [
+        "cluster:design-system-foundation-and-token-extraction"
+      ]
+    },
+    {
+      "candidate_responsibility": "Intercept destructive Git commands before execution and provide a configurable, verifiable local guardrail.",
+      "downstream_dependencies": [
+        "cluster:change-packaging-and-versioning",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:git-destructive-command-guard",
+      "input_boundary": "A command hook environment, dangerous-command policy, and local configuration.",
+      "output_boundary": "An installed and tested command guard; normal release packaging remains out of scope.",
+      "unit_ids": [
+        "ggcc-desc-intercept-overview",
+        "ggcc-gate-step5-verification-test",
+        "ggcc-method-script-execution-loop",
+        "ggcc-method-step1-ask-scope",
+        "ggcc-method-step2-copy-script",
+        "ggcc-method-step4-customization",
+        "ggcc-rule-blocked-patterns-spec",
+        "ggcc-rule-script-pattern-matching",
+        "ggcc-template-step3-settings-injection"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Convert specifications and architecture decisions into file-specific, test-first, executable micro-steps.",
+      "downstream_dependencies": [
+        "cluster:plan-execution-control",
+        "cluster:subagent-task-pipeline",
+        "cluster:tdd-change-loop"
+      ],
+      "id": "cluster:implementation-planning-and-handoff",
+      "input_boundary": "A confirmed specification, architecture boundaries, repository conventions, and test requirements.",
+      "output_boundary": "A placeholder-free implementation plan with exact files, commands, expected results, and an execution handoff.",
+      "unit_ids": [
+        "writing-plans:unit-001",
+        "writing-plans:unit-002",
+        "writing-plans:unit-003",
+        "writing-plans:unit-004",
+        "writing-plans:unit-005",
+        "writing-plans:unit-006",
+        "writing-plans:unit-007",
+        "writing-plans:unit-008",
+        "writing-plans:unit-010"
+      ],
+      "upstream_dependencies": [
+        "cluster:requirements-and-delivery-contract",
+        "cluster:architecture-deep-module-design",
+        "cluster:architecture-interface-alternative-evaluation",
+        "cluster:engineering-retrospective-and-improvement"
+      ]
+    },
+    {
+      "candidate_responsibility": "Coordinate incident acknowledgement, severity, roles, mitigation-first action, communication, recovery, and closure.",
+      "downstream_dependencies": [
+        "cluster:root-cause-investigation",
+        "cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:incident-response-coordination",
+      "input_boundary": "An active production anomaly, impact evidence, alerts, and available mitigation controls.",
+      "output_boundary": "A structured response, mitigation, communications, escalation, recovery evidence, and closure record.",
+      "unit_ids": [
+        "incident-response:unit-001",
+        "incident-response:unit-002",
+        "incident-response:unit-003",
+        "incident-response:unit-004",
+        "incident-response:unit-005",
+        "incident-response:unit-006",
+        "incident-response:unit-007",
+        "incident-response:unit-008",
+        "incident-response:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:production-canary-monitoring",
+        "cluster:deployment-observation-and-recovery"
+      ]
+    },
+    {
+      "candidate_responsibility": "Run diff-aware, quick, or regression black-box QA without modifying product source.",
+      "downstream_dependencies": [
+        "cluster:completion-evidence-gate",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:independent-blackbox-qa",
+      "input_boundary": "An accessible application, change scope, QA mode, and authorized interaction boundary.",
+      "output_boundary": "Report-only defects, screenshots, console evidence, and a health score; never a product-code repair.",
+      "unit_ids": [
+        "qao-desc-report-only-purpose",
+        "qao-method-console-error-hook",
+        "qao-method-diff-aware-mode",
+        "qao-rule-blackbox-identity",
+        "qao-rule-never-fix-bugs-boundary",
+        "qao-rule-twelve-qa-commandments",
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist"
+      ],
+      "upstream_dependencies": [
+        "cluster:testing-portfolio-strategy",
+        "cluster:safe-browser-probing"
+      ]
+    },
+    {
+      "candidate_responsibility": "Independently compare specifications and diffs for correctness, security, performance, architecture, tests, and maintainability.",
+      "downstream_dependencies": [
+        "cluster:completion-evidence-gate",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:independent-code-review",
+      "input_boundary": "A specification, change description, and precise code-diff boundary.",
+      "output_boundary": "Prioritized findings with locations, rationale, remediation, and a merge verdict; no direct repair by default.",
+      "unit_ids": [
+        "cr-desc-review-lens-overview",
+        "cr-method-usage-invocation",
+        "cr-rule-standalone-capabilities",
+        "cr-rule-tips-context-focus",
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist",
+        "requesting-code-review:unit-001",
+        "requesting-code-review:unit-002",
+        "requesting-code-review:unit-003",
+        "requesting-code-review:unit-004",
+        "requesting-code-review:unit-005",
+        "requesting-code-review:unit-006",
+        "requesting-code-review:unit-007",
+        "requesting-code-review:unit-008",
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-011",
+        "requesting-code-review:unit-012",
+        "requesting-code-review:unit-013",
+        "requesting-code-review:unit-014",
+        "requesting-code-review:unit-015",
+        "requesting-code-review:unit-016",
+        "requesting-code-review:unit-017",
+        "requesting-code-review:unit-018",
+        "requesting-code-review:unit-019",
+        "requesting-code-review:unit-020",
+        "subagent-driven-development:unit-017",
+        "subagent-driven-development:unit-018",
+        "subagent-driven-development:unit-019",
+        "subagent-driven-development:unit-020"
+      ],
+      "upstream_dependencies": [
+        "cluster:plan-execution-control",
+        "cluster:subagent-task-pipeline",
+        "cluster:developer-self-check-and-fix"
+      ]
+    },
+    {
+      "candidate_responsibility": "Review an implementation plan independently for completeness, executable boundaries, testability, and hidden scope.",
+      "downstream_dependencies": [
+        "cluster:plan-execution-control"
+      ],
+      "id": "cluster:independent-plan-review",
+      "input_boundary": "A proposed plan, repository constraints, task boundaries, and verification requirements.",
+      "output_boundary": "Plan findings, required corrections, and an independent readiness verdict.",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ],
+      "upstream_dependencies": [
+        "cluster:implementation-planning-and-handoff"
+      ]
+    },
+    {
+      "candidate_responsibility": "Define and implement controls, navigation, forms, loading, empty, error, disabled, and recovery states.",
+      "downstream_dependencies": [
+        "cluster:accessibility-contracts-and-assistive-validation",
+        "cluster:purposeful-motion-and-animation-engineering"
+      ],
+      "id": "cluster:interaction-states-forms-and-navigation",
+      "input_boundary": "User flows, acceptance criteria, a component system, content, state model, and platform behavior.",
+      "output_boundary": "Complete interaction states, recovery behavior, navigation, focus paths, and state feedback.",
+      "unit_ids": [
+        "design-taste-frontend:unit-009",
+        "frontend-design:unit-015",
+        "redesign-existing-projects:unit-005",
+        "ui-ux-pro-max:unit-012",
+        "ui-ux-pro-max:unit-017"
+      ],
+      "upstream_dependencies": [
+        "cluster:responsive-layout-and-spatial-composition",
+        "cluster:content-copy-and-authentic-assets"
+      ]
+    },
+    {
+      "candidate_responsibility": "Evaluate language models with automated metrics, factuality checks, judges, human agreement, statistics, and regressions.",
+      "downstream_dependencies": [
+        "cluster:baseline-regression-control",
+        "cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:llm-quality-evaluation",
+      "input_boundary": "Model outputs, references, criteria, annotations, and trusted historical baselines.",
+      "output_boundary": "Repeatable scores, grounded quality judgments, statistical confidence, benchmarks, and regression signals.",
+      "unit_ids": [
+        "llm-evaluation:unit-001",
+        "llm-evaluation:unit-002",
+        "llm-evaluation:unit-003",
+        "llm-evaluation:unit-004",
+        "llm-evaluation:unit-005",
+        "llm-evaluation:unit-006",
+        "llm-evaluation:unit-007",
+        "llm-evaluation:unit-008",
+        "llm-evaluation:unit-009",
+        "llm-evaluation:unit-010"
+      ],
+      "upstream_dependencies": [
+        "cluster:data-analysis-validation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Define target markets, positioning, alternatives, switching costs, structural power, and durable advantage.",
+      "downstream_dependencies": [
+        "cluster:problem-framing-and-customer-research",
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:market-positioning-and-competitive-power",
+      "input_boundary": "Market questions, customer alternatives, competitive evidence, and business constraints.",
+      "output_boundary": "A supported market choice, positioning, differentiation, power hypotheses, and competitive structure.",
+      "unit_ids": [
+        "competitive-strategy:unit-002",
+        "competitive-strategy:unit-027",
+        "competitive-strategy:unit-029",
+        "competitive-strategy:unit-033",
+        "competitive-strategy:unit-034",
+        "competitive-strategy:unit-035",
+        "competitive-strategy:unit-036",
+        "competitive-strategy:unit-084",
+        "competitive-strategy:unit-086",
+        "competitive-strategy:unit-094",
+        "competitive-strategy:unit-100",
+        "competitive-strategy:unit-101",
+        "competitive-strategy:unit-106",
+        "competitive-strategy:unit-112",
+        "competitive-strategy:unit-113",
+        "product-strategy-session:unit-043",
+        "product-strategy-session:unit-044",
+        "product-strategy-session:unit-045",
+        "product-strategy-session:unit-046",
+        "product-strategy-session:unit-048"
+      ],
+      "upstream_dependencies": [
+        "cluster:context-intake-and-routing"
+      ]
+    },
+    {
+      "candidate_responsibility": "Identify demand-side alternatives, market segments, incumbent signals, and the customer situations that define competition.",
+      "downstream_dependencies": [
+        "cluster:problem-framing-and-customer-research"
+      ],
+      "id": "cluster:market-segmentation-and-demand-intelligence",
+      "input_boundary": "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence.",
+      "output_boundary": "A demand-side map, segment choice, market signal interpretation, and evidence gaps.",
+      "unit_ids": [
+        "competitive-strategy:unit-003",
+        "competitive-strategy:unit-007",
+        "competitive-strategy:unit-008",
+        "competitive-strategy:unit-022",
+        "competitive-strategy:unit-061",
+        "competitive-strategy:unit-063",
+        "competitive-strategy:unit-064",
+        "competitive-strategy:unit-078",
+        "competitive-strategy:unit-079",
+        "competitive-strategy:unit-090",
+        "competitive-strategy:unit-092"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-positioning-and-competitive-power"
+      ]
+    },
+    {
+      "candidate_responsibility": "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs.",
+      "downstream_dependencies": [
+        "cluster:deployment-observation-and-recovery",
+        "cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:merge-and-deploy-readiness",
+      "input_boundary": "A pull request, target branch, CI state, version state, and deployment configuration.",
+      "output_boundary": "A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream.",
+      "unit_ids": [
+        "land-and-deploy:unit-001",
+        "land-and-deploy:unit-002",
+        "land-and-deploy:unit-003",
+        "land-and-deploy:unit-004",
+        "land-and-deploy:unit-005",
+        "land-and-deploy:unit-006"
+      ],
+      "upstream_dependencies": [
+        "cluster:change-packaging-and-versioning",
+        "cluster:independent-code-review",
+        "cluster:completion-evidence-gate"
+      ]
+    },
+    {
+      "candidate_responsibility": "Define outcome, input, secondary, and guardrail metrics with baselines, instrumentation, dashboards, and alerts.",
+      "downstream_dependencies": [
+        "cluster:results-analysis-and-decision-readout",
+        "cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "cluster:metrics-system-and-observability",
+      "input_boundary": "Business goals, user outcomes, risks, data sources, and observable events.",
+      "output_boundary": "A metric hierarchy, definitions, instrumentation plan, dashboard, alerts, and review cadence.",
+      "unit_ids": [
+        "metrics-dashboard:unit-001",
+        "metrics-dashboard:unit-002",
+        "metrics-dashboard:unit-004",
+        "metrics-dashboard:unit-005",
+        "metrics-dashboard:unit-006",
+        "metrics-dashboard:unit-007",
+        "metrics-dashboard:unit-008",
+        "metrics-dashboard:unit-009",
+        "metrics-review:unit-001",
+        "metrics-review:unit-002",
+        "metrics-review:unit-003",
+        "metrics-review:unit-004",
+        "metrics-review:unit-005",
+        "metrics-review:unit-006",
+        "metrics-review:unit-007",
+        "metrics-review:unit-008",
+        "metrics-review:unit-009",
+        "metrics-review:unit-010",
+        "outcome-roadmap:unit-014",
+        "prd-development:unit-012",
+        "prd-development:unit-018",
+        "prd-development:unit-026",
+        "prd-development:unit-033",
+        "prd-development:unit-044",
+        "prd-development:unit-050"
+      ],
+      "upstream_dependencies": [
+        "cluster:requirements-and-delivery-contract",
+        "cluster:solution-hypothesis-and-experiment-design"
+      ]
+    },
+    {
+      "candidate_responsibility": "Select and apply an appropriate prioritization method, score opportunities, and preserve the assumptions behind ranking.",
+      "downstream_dependencies": [
+        "cluster:solution-hypothesis-and-experiment-design"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks",
+      "input_boundary": "Validated problems, opportunities, evidence strength, constraints, and decision criteria.",
+      "output_boundary": "A ranked opportunity set, selected framework, scores, rationale, and uncertainty.",
+      "unit_ids": [
+        "prioritization-frameworks:unit-002",
+        "prioritization-frameworks:unit-003",
+        "prioritization-frameworks:unit-004",
+        "prioritization-frameworks:unit-005",
+        "prioritization-frameworks:unit-006",
+        "prioritization-frameworks:unit-007",
+        "prioritization-frameworks:unit-008",
+        "prioritization-frameworks:unit-009",
+        "prioritization-frameworks:unit-010",
+        "prioritization-frameworks:unit-011",
+        "prioritization-frameworks:unit-012",
+        "prioritization-frameworks:unit-013",
+        "prioritization-frameworks:unit-014",
+        "prioritization-frameworks:unit-015",
+        "prioritization-frameworks:unit-016",
+        "product-strategy-session:unit-023",
+        "product-strategy-session:unit-024"
+      ],
+      "upstream_dependencies": [
+        "cluster:qualitative-evidence-synthesis"
+      ]
+    },
+    {
+      "candidate_responsibility": "Model users, jobs, pain points, and cross-touchpoint journeys without upgrading hypotheses into facts.",
+      "downstream_dependencies": [
+        "cluster:qualitative-evidence-synthesis"
+      ],
+      "id": "cluster:persona-jtbd-and-journey-modeling",
+      "input_boundary": "Interview evidence, behavioral context, user hypotheses, and touchpoint observations.",
+      "output_boundary": "Traceable personas, jobs, journey maps, problem statements, and validation needs.",
+      "unit_ids": [
+        "discovery-process:unit-008",
+        "discovery-process:unit-009",
+        "discovery-process:unit-010",
+        "discovery-process:unit-011",
+        "discovery-process:unit-012",
+        "product-strategy-session:unit-011",
+        "product-strategy-session:unit-012",
+        "product-strategy-session:unit-013",
+        "product-strategy-session:unit-014",
+        "product-strategy-session:unit-015",
+        "product-strategy-session:unit-016",
+        "product-strategy-session:unit-017"
+      ],
+      "upstream_dependencies": [
+        "cluster:customer-interview-execution"
+      ]
+    },
+    {
+      "candidate_responsibility": "Load and review a plan, execute task states with checkpoints, stop on blockers, and hand off branch completion.",
+      "downstream_dependencies": [
+        "cluster:independent-code-review",
+        "cluster:completion-evidence-gate",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:plan-execution-control",
+      "input_boundary": "An executable implementation plan and an isolated work environment.",
+      "output_boundary": "Plan-aligned implementation status with task-level verification and explicit blockers.",
+      "unit_ids": [
+        "executing-plans:unit-001",
+        "executing-plans:unit-002",
+        "executing-plans:unit-003",
+        "executing-plans:unit-004",
+        "executing-plans:unit-005",
+        "executing-plans:unit-006",
+        "executing-plans:unit-007",
+        "executing-plans:unit-008",
+        "executing-plans:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:implementation-planning-and-handoff"
+      ]
+    },
+    {
+      "candidate_responsibility": "Engineer maintainable Playwright browser, API, visual, accessibility, security, and collaboration tests.",
+      "downstream_dependencies": [
+        "cluster:baseline-regression-control",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:playwright-test-engineering",
+      "input_boundary": "Browser behaviors, test environments, risks, data, and automation acceptance goals.",
+      "output_boundary": "Isolated Playwright tests, fixtures, locators, assertions, authentication, CI, and flake controls.",
+      "unit_ids": [
+        "playwright-best-practices:unit-001",
+        "playwright-best-practices:unit-002",
+        "playwright-best-practices:unit-003",
+        "playwright-best-practices:unit-005",
+        "playwright-best-practices:unit-006",
+        "playwright-best-practices:unit-007",
+        "playwright-best-practices:unit-008",
+        "playwright-best-practices:unit-009",
+        "playwright-best-practices:unit-010",
+        "playwright-best-practices:unit-011",
+        "playwright-best-practices:unit-012",
+        "playwright-best-practices:unit-014",
+        "playwright-best-practices:unit-015",
+        "playwright-best-practices:unit-016",
+        "playwright-best-practices:unit-020",
+        "playwright-best-practices:unit-021",
+        "playwright-best-practices:unit-022",
+        "playwright-best-practices:unit-023",
+        "playwright-best-practices:unit-024",
+        "playwright-best-practices:unit-025"
+      ],
+      "upstream_dependencies": [
+        "cluster:testing-portfolio-strategy",
+        "cluster:tool-runtime-readiness",
+        "cluster:safe-browser-probing",
+        "cluster:resilience-and-determinism"
+      ]
+    },
+    {
+      "candidate_responsibility": "Frame customer problems and collect traceable, non-leading qualitative and quantitative evidence.",
+      "downstream_dependencies": [
+        "cluster:evidence-synthesis-and-opportunity-prioritization",
+        "cluster:solution-hypothesis-and-experiment-design"
+      ],
+      "id": "cluster:problem-framing-and-customer-research",
+      "input_boundary": "A problem hypothesis, target users, prior research, access constraints, and a decision to support.",
+      "output_boundary": "A problem statement, research plan, behavioral evidence, personas or jobs, and evidence gaps.",
+      "unit_ids": [
+        "competitive-strategy:unit-054",
+        "competitive-strategy:unit-076",
+        "competitive-strategy:unit-095",
+        "competitive-strategy:unit-102",
+        "competitive-strategy:unit-109",
+        "prd-development:unit-008",
+        "prd-development:unit-009",
+        "prd-development:unit-016",
+        "prd-development:unit-022",
+        "prd-development:unit-023",
+        "prd-development:unit-032",
+        "prd-development:unit-034",
+        "prd-development:unit-040",
+        "prd-development:unit-041",
+        "prd-development:unit-042",
+        "product-strategy-session:unit-033",
+        "product-strategy-session:unit-042"
+      ],
+      "upstream_dependencies": [
+        "cluster:context-intake-and-routing",
+        "cluster:market-positioning-and-competitive-power"
+      ]
+    },
+    {
+      "candidate_responsibility": "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise.",
+      "downstream_dependencies": [
+        "cluster:incident-response-coordination"
+      ],
+      "id": "cluster:production-canary-monitoring",
+      "input_boundary": "A deployed application, safely accessible pages, and a trusted initial baseline.",
+      "output_boundary": "Ongoing health status, differential alerts, evidence, and controlled baseline updates.",
+      "unit_ids": [
+        "canary:unit-001",
+        "canary:unit-003",
+        "canary:unit-004",
+        "canary:unit-005",
+        "canary:unit-006",
+        "canary:unit-007",
+        "land-and-deploy:unit-008",
+        "land-and-deploy:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:deployment-observation-and-recovery",
+        "cluster:baseline-regression-control",
+        "cluster:safe-browser-probing"
+      ]
+    },
+    {
+      "candidate_responsibility": "Use motion for hierarchy, narrative, feedback, and state while controlling timing, interruption, and reduction.",
+      "downstream_dependencies": [
+        "cluster:frontend-rendering-and-interaction-performance",
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering",
+      "input_boundary": "Interaction states, motion intent, frequency, platform capability, and accessibility constraints.",
+      "output_boundary": "A motion specification, implementation pattern, reduced-motion fallback, and performance boundary.",
+      "unit_ids": [
+        "design-taste-frontend:unit-014",
+        "design-taste-frontend:unit-015",
+        "frontend-design:unit-007",
+        "review-animations:unit-003",
+        "review-animations:unit-010",
+        "review-animations:unit-011",
+        "review-animations:unit-012",
+        "review-animations:unit-013",
+        "review-animations:unit-014",
+        "review-animations:unit-015",
+        "review-animations:unit-017",
+        "review-animations:unit-018",
+        "review-animations:unit-019",
+        "review-animations:unit-020",
+        "ui-ux-pro-max:unit-020"
+      ],
+      "upstream_dependencies": [
+        "cluster:interaction-states-forms-and-navigation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Synthesize qualitative evidence into patterns, contradictions, pain priorities, and updated problem statements.",
+      "downstream_dependencies": [
+        "cluster:opportunity-prioritization-and-frameworks"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis",
+      "input_boundary": "Interview notes, direct quotes, affinity material, journey evidence, and known bias.",
+      "output_boundary": "Evidence-backed themes, counterexamples, prioritized pains, and uncertainty.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-006",
+        "analyzing-user-feedback:unit-007",
+        "analyzing-user-feedback:unit-008",
+        "discovery-process:unit-018",
+        "discovery-process:unit-019",
+        "discovery-process:unit-021",
+        "discovery-process:unit-022",
+        "discovery-process:unit-023",
+        "discovery-process:unit-024",
+        "discovery-process:unit-025",
+        "discovery-process:unit-040",
+        "discovery-process:unit-057"
+      ],
+      "upstream_dependencies": [
+        "cluster:customer-interview-execution",
+        "cluster:persona-jtbd-and-journey-modeling"
+      ]
+    },
+    {
+      "candidate_responsibility": "Retain references, historical material, and deferred frameworks without presenting them as current operational guidance.",
+      "downstream_dependencies": [],
+      "id": "cluster:reference-library-and-deferred-material",
+      "input_boundary": "A source reference, historical claim, external framework, or material outside the active execution path.",
+      "output_boundary": "A bounded reference or deferral record with applicability and freshness limits.",
+      "unit_ids": [
+        "ai-product-strategy:unit-038",
+        "competitive-strategy:unit-021",
+        "competitive-strategy:unit-032",
+        "competitive-strategy:unit-085",
+        "competitive-strategy:unit-103",
+        "competitive-strategy:unit-110",
+        "competitive-strategy:unit-111",
+        "competitive-strategy:unit-117",
+        "discovery-process:unit-007",
+        "discovery-process:unit-046",
+        "discovery-process:unit-047",
+        "interview-script:unit-016",
+        "outcome-roadmap:unit-018",
+        "outcome-roadmap:unit-019",
+        "outcome-roadmap:unit-020",
+        "prioritization-frameworks:unit-017",
+        "prioritization-frameworks:unit-018",
+        "prioritization-frameworks:unit-019",
+        "prioritization-frameworks:unit-020",
+        "prioritization-frameworks:unit-021",
+        "prioritization-frameworks:unit-022",
+        "prioritization-frameworks:unit-023"
+      ],
+      "upstream_dependencies": [
+        "cluster:source-metadata-and-provenance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Execute or prepare a reviewable release rollback when post-deploy evidence meets the rollback condition.",
+      "downstream_dependencies": [
+        "cluster:incident-response-coordination"
+      ],
+      "id": "cluster:release-rollback-execution",
+      "input_boundary": "A deployed change, health evidence, provider state, and rollback authorization.",
+      "output_boundary": "A bounded revert or rollback pull request with evidence and recovery status.",
+      "unit_ids": [
+        "land-and-deploy:unit-0010"
+      ],
+      "upstream_dependencies": [
+        "cluster:deployment-observation-and-recovery"
+      ]
+    },
+    {
+      "candidate_responsibility": "Critique real UI renders and animation behavior, prioritize evidence-backed findings, and issue a bounded disposition.",
+      "downstream_dependencies": [
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition",
+      "input_boundary": "Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints.",
+      "output_boundary": "Prioritized findings, remediation hierarchy, verdict, recapture requirements, and residual risk.",
+      "unit_ids": [
+        "impeccable:unit-003",
+        "impeccable:unit-010",
+        "impeccable:unit-015",
+        "redesign-existing-projects:unit-010",
+        "redesign-existing-projects:unit-012",
+        "review-animations:unit-001",
+        "review-animations:unit-002",
+        "review-animations:unit-004",
+        "review-animations:unit-005",
+        "review-animations:unit-006",
+        "review-animations:unit-007",
+        "review-animations:unit-008",
+        "review-animations:unit-022"
+      ],
+      "upstream_dependencies": [
+        "cluster:ui-review-scope-and-evidence-acquisition"
+      ]
+    },
+    {
+      "candidate_responsibility": "Turn validated strategy, problems, and solutions into evolvable requirements and acceptance contracts.",
+      "downstream_dependencies": [
+        "cluster:risk-preflight-and-safety-governance",
+        "cluster:metrics-system-and-observability",
+        "cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:requirements-and-delivery-contract",
+      "input_boundary": "Problem and solution evidence, target users, strategy, metrics, risks, and delivery constraints.",
+      "output_boundary": "A PRD, stories, acceptance criteria, scope, open questions, dependencies, and change history.",
+      "unit_ids": [
+        "discovery-process:unit-033",
+        "discovery-process:unit-034",
+        "prd-development:unit-001",
+        "prd-development:unit-007",
+        "prd-development:unit-013",
+        "prd-development:unit-017",
+        "prd-development:unit-020",
+        "prd-development:unit-027",
+        "prd-development:unit-045",
+        "product-strategy-session:unit-029",
+        "product-strategy-session:unit-030",
+        "product-strategy-session:unit-031"
+      ],
+      "upstream_dependencies": [
+        "cluster:solution-hypothesis-and-experiment-design",
+        "cluster:decision-and-outcome-roadmapping",
+        "cluster:results-analysis-and-decision-readout"
+      ]
+    },
+    {
+      "candidate_responsibility": "Define research context, recruitment, consent, cadence, saturation, and phase handoffs before collecting evidence.",
+      "downstream_dependencies": [
+        "cluster:customer-interview-execution"
+      ],
+      "id": "cluster:research-planning-and-governance",
+      "input_boundary": "A research question, target population, access constraints, ethical boundary, and timebox.",
+      "output_boundary": "A governed research plan, participant protocol, saturation decision, and phase handoff.",
+      "unit_ids": [
+        "discovery-process:unit-013",
+        "discovery-process:unit-014",
+        "discovery-process:unit-015",
+        "discovery-process:unit-016",
+        "discovery-process:unit-017",
+        "discovery-process:unit-020",
+        "discovery-process:unit-037",
+        "discovery-process:unit-038",
+        "discovery-process:unit-039",
+        "discovery-process:unit-042"
+      ],
+      "upstream_dependencies": [
+        "cluster:problem-framing-and-customer-research"
+      ]
+    },
+    {
+      "candidate_responsibility": "Use layered defenses, condition waits, isolated fixtures, stable assertions, and controlled time to prevent flakiness.",
+      "downstream_dependencies": [
+        "cluster:playwright-test-engineering",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:resilience-and-determinism",
+      "input_boundary": "A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests.",
+      "output_boundary": "Defensive validation, deterministic synchronization, and isolation mechanisms.",
+      "unit_ids": [
+        "playwright-best-practices:unit-017",
+        "playwright-best-practices:unit-018",
+        "playwright-best-practices:unit-019",
+        "playwright-best-practices:unit-026",
+        "systematic-debugging:unit-016",
+        "systematic-debugging:unit-017",
+        "systematic-debugging:unit-018",
+        "systematic-debugging:unit-019",
+        "systematic-debugging:unit-020",
+        "systematic-debugging:unit-021",
+        "systematic-debugging:unit-022",
+        "systematic-debugging:unit-023",
+        "vitest:unit-009",
+        "vitest:unit-010",
+        "vitest:unit-011",
+        "vitest:unit-012"
+      ],
+      "upstream_dependencies": [
+        "cluster:root-cause-investigation"
+      ]
+    },
+    {
+      "candidate_responsibility": "Design layout, hierarchy, density, grids, reflow, and content rhythm across supported viewports.",
+      "downstream_dependencies": [
+        "cluster:interaction-states-forms-and-navigation",
+        "cluster:evidence-based-ui-review-and-release-gates"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition",
+      "input_boundary": "A visual direction, content structure, device classes, breakpoints, and existing layout constraints.",
+      "output_boundary": "Desktop and mobile composition, responsive rules, spatial hierarchy, and reflow behavior.",
+      "unit_ids": [
+        "design-taste-frontend:unit-008",
+        "design-taste-frontend:unit-010",
+        "design-taste-frontend:unit-018",
+        "frontend-design:unit-006",
+        "redesign-existing-projects:unit-004",
+        "ui-ux-pro-max:unit-014",
+        "ui-ux-pro-max:unit-019"
+      ],
+      "upstream_dependencies": [
+        "cluster:design-system-foundation-and-token-extraction",
+        "cluster:visual-language-and-anti-template-controls"
+      ]
+    },
+    {
+      "candidate_responsibility": "Interpret results against preset criteria and communicate evidence, limits, disagreements, and recommendations.",
+      "downstream_dependencies": [
+        "cluster:decision-and-outcome-roadmapping",
+        "cluster:requirements-and-delivery-contract",
+        "cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout",
+      "input_boundary": "Experiment or research data, metrics, baselines, bias checks, and decision criteria.",
+      "output_boundary": "An analysis, go/pivot/kill recommendation, stakeholder readout, limitations, and next steps.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-001",
+        "craft-experiment-readout:unit-002",
+        "craft-experiment-readout:unit-003",
+        "craft-experiment-readout:unit-004",
+        "craft-experiment-readout:unit-005",
+        "craft-experiment-readout:unit-006",
+        "craft-experiment-readout:unit-007",
+        "discovery-process:unit-032",
+        "discovery-process:unit-035",
+        "discovery-process:unit-036",
+        "discovery-process:unit-051",
+        "discovery-process:unit-054",
+        "discovery-process:unit-055",
+        "discovery-process:unit-056"
+      ],
+      "upstream_dependencies": [
+        "cluster:solution-hypothesis-and-experiment-design",
+        "cluster:metrics-system-and-observability"
+      ]
+    },
+    {
+      "candidate_responsibility": "Identify failure modes, hard gates, safety boundaries, mitigations, owners, and stop conditions before commitment.",
+      "downstream_dependencies": [
+        "cluster:results-analysis-and-decision-readout"
+      ],
+      "id": "cluster:risk-preflight-and-safety-governance",
+      "input_boundary": "Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions.",
+      "output_boundary": "Risks, owners, triggers, mitigations, hard gates, kill criteria, and residual risk.",
+      "unit_ids": [
+        "ai-product-strategy:unit-056",
+        "competitive-strategy:unit-038",
+        "competitive-strategy:unit-039",
+        "competitive-strategy:unit-044",
+        "competitive-strategy:unit-046",
+        "competitive-strategy:unit-077",
+        "competitive-strategy:unit-118",
+        "prd-development:unit-014",
+        "prd-development:unit-028",
+        "prd-development:unit-029",
+        "prd-development:unit-036",
+        "prd-development:unit-037",
+        "prd-development:unit-038",
+        "prd-development:unit-046",
+        "prd-development:unit-047",
+        "pre-mortem:unit-001",
+        "pre-mortem:unit-002",
+        "pre-mortem:unit-003",
+        "pre-mortem:unit-005",
+        "pre-mortem:unit-006",
+        "pre-mortem:unit-007",
+        "pre-mortem:unit-008",
+        "pre-mortem:unit-009",
+        "pre-mortem:unit-010",
+        "pre-mortem:unit-011",
+        "pre-mortem:unit-012",
+        "pre-mortem:unit-013",
+        "pre-mortem:unit-015",
+        "product-strategy-session:unit-047"
+      ],
+      "upstream_dependencies": [
+        "cluster:requirements-and-delivery-contract",
+        "cluster:ai-capability-architecture-and-autonomy"
+      ]
+    },
+    {
+      "candidate_responsibility": "Reproduce failures, trace data to its source, compare working patterns, form one hypothesis, and test it minimally.",
+      "downstream_dependencies": [
+        "cluster:tdd-change-loop",
+        "cluster:resilience-and-determinism",
+        "cluster:incident-response-coordination"
+      ],
+      "id": "cluster:root-cause-investigation",
+      "input_boundary": "A test failure, production incident, unexpected behavior, build issue, or performance problem.",
+      "output_boundary": "An evidence-backed root cause and a bounded correction path, never a symptom-only guess.",
+      "unit_ids": [
+        "playwright-best-practices:unit-004",
+        "systematic-debugging:unit-001",
+        "systematic-debugging:unit-002",
+        "systematic-debugging:unit-003",
+        "systematic-debugging:unit-004",
+        "systematic-debugging:unit-005",
+        "systematic-debugging:unit-006",
+        "systematic-debugging:unit-007",
+        "systematic-debugging:unit-008",
+        "systematic-debugging:unit-009",
+        "systematic-debugging:unit-010",
+        "systematic-debugging:unit-011",
+        "systematic-debugging:unit-012",
+        "systematic-debugging:unit-013",
+        "systematic-debugging:unit-014",
+        "systematic-debugging:unit-015"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Use constrained browser sessions for navigation, snapshots, interaction, tracing, and extraction with safe references.",
+      "downstream_dependencies": [
+        "cluster:independent-blackbox-qa",
+        "cluster:playwright-test-engineering",
+        "cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:safe-browser-probing",
+      "input_boundary": "A target page, authorized interactions, and a ready browser runtime.",
+      "output_boundary": "Browser observations, screenshots, snapshots, traces, and interaction evidence, not an independent QA verdict.",
+      "unit_ids": [
+        "playwright:unit-001",
+        "playwright:unit-004",
+        "playwright:unit-005",
+        "playwright:unit-006",
+        "playwright:unit-007",
+        "playwright:unit-008",
+        "playwright:unit-009",
+        "playwright:unit-011",
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017",
+        "playwright:unit-018",
+        "playwright:unit-019",
+        "playwright:unit-020",
+        "playwright:unit-021",
+        "playwright:unit-022",
+        "playwright:unit-023",
+        "playwright:unit-024",
+        "playwright:unit-026",
+        "qao-rule-credentials-privacy",
+        "qao-rule-look-not-act-consent",
+        "qao-rule-tab-isolation"
+      ],
+      "upstream_dependencies": [
+        "cluster:tool-runtime-readiness"
+      ]
+    },
+    {
+      "candidate_responsibility": "Generate distinguishable solution hypotheses and design experiments that maximize learning at minimum cost.",
+      "downstream_dependencies": [
+        "cluster:results-analysis-and-decision-readout",
+        "cluster:requirements-and-delivery-contract"
+      ],
+      "id": "cluster:solution-hypothesis-and-experiment-design",
+      "input_boundary": "A framed problem, prioritized opportunity, assumptions, risks, and available experiment conditions.",
+      "output_boundary": "Solution options, falsifiable hypotheses, experiment protocols, preregistered criteria, and limitations.",
+      "unit_ids": [
+        "ai-product-strategy:unit-011",
+        "ai-product-strategy:unit-025",
+        "ai-product-strategy:unit-026",
+        "ai-product-strategy:unit-028",
+        "ai-product-strategy:unit-032",
+        "ai-product-strategy:unit-047",
+        "ai-product-strategy:unit-055",
+        "craft-experiment-design:unit-001",
+        "craft-experiment-design:unit-002",
+        "craft-experiment-design:unit-003",
+        "craft-experiment-design:unit-004",
+        "craft-experiment-design:unit-005",
+        "craft-experiment-design:unit-006",
+        "craft-experiment-design:unit-007",
+        "discovery-process:unit-026",
+        "discovery-process:unit-027",
+        "discovery-process:unit-028",
+        "discovery-process:unit-029",
+        "discovery-process:unit-030",
+        "discovery-process:unit-031",
+        "discovery-process:unit-053",
+        "prd-development:unit-011",
+        "prd-development:unit-025",
+        "prd-development:unit-035",
+        "prd-development:unit-043",
+        "product-strategy-session:unit-018",
+        "product-strategy-session:unit-019",
+        "product-strategy-session:unit-020",
+        "product-strategy-session:unit-021",
+        "product-strategy-session:unit-022",
+        "product-strategy-session:unit-041"
+      ],
+      "upstream_dependencies": [
+        "cluster:problem-framing-and-customer-research",
+        "cluster:evidence-synthesis-and-opportunity-prioritization"
+      ]
+    },
+    {
+      "candidate_responsibility": "Preserve source identity, revision context, licensing or provenance facts, and the boundary between evidence and interpretation.",
+      "downstream_dependencies": [
+        "cluster:reference-library-and-deferred-material"
+      ],
+      "id": "cluster:source-metadata-and-provenance",
+      "input_boundary": "A curated unit, source declaration, citation context, or provenance concern.",
+      "output_boundary": "Traceable source metadata and explicit evidence-status limits.",
+      "unit_ids": [
+        "competitive-strategy:unit-001",
+        "discovery-process:unit-048",
+        "frontend-design:unit-016",
+        "outcome-roadmap:unit-001",
+        "prioritization-frameworks:unit-001"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Choose a coherent competitive position and differentiation axis, then test whether the choice is operationally supportable.",
+      "downstream_dependencies": [
+        "cluster:structural-power-and-moats",
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:strategic-choice-and-differentiation",
+      "input_boundary": "A market position, baseline utility, cost structure, strategic strength, and candidate differentiation.",
+      "output_boundary": "A chosen strategic position, differentiation thesis, tradeoffs, and validation criteria.",
+      "unit_ids": [
+        "competitive-strategy:unit-047",
+        "competitive-strategy:unit-048",
+        "competitive-strategy:unit-087",
+        "competitive-strategy:unit-108",
+        "competitive-strategy:unit-115",
+        "prd-development:unit-010",
+        "prd-development:unit-024",
+        "prd-development:unit-049",
+        "product-strategy-session:unit-010",
+        "product-strategy-session:unit-026"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-segmentation-and-demand-intelligence"
+      ]
+    },
+    {
+      "candidate_responsibility": "Test whether advantage comes from durable structural mechanisms, switching costs, operational asymmetry, or business rules rather than surface features.",
+      "downstream_dependencies": [
+        "cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:structural-power-and-moats",
+      "input_boundary": "A proposed advantage, customer evidence, cost structure, workflow, and imitation scenario.",
+      "output_boundary": "A mechanism-backed moat hypothesis, imitation limits, and residual vulnerability.",
+      "unit_ids": [
+        "competitive-strategy:unit-004",
+        "competitive-strategy:unit-005",
+        "competitive-strategy:unit-006",
+        "competitive-strategy:unit-009",
+        "competitive-strategy:unit-010",
+        "competitive-strategy:unit-011",
+        "competitive-strategy:unit-013",
+        "competitive-strategy:unit-014",
+        "competitive-strategy:unit-015",
+        "competitive-strategy:unit-016",
+        "competitive-strategy:unit-017",
+        "competitive-strategy:unit-018",
+        "competitive-strategy:unit-019",
+        "competitive-strategy:unit-023",
+        "competitive-strategy:unit-024",
+        "competitive-strategy:unit-025",
+        "competitive-strategy:unit-026",
+        "competitive-strategy:unit-030",
+        "competitive-strategy:unit-031",
+        "competitive-strategy:unit-040",
+        "competitive-strategy:unit-041",
+        "competitive-strategy:unit-049",
+        "competitive-strategy:unit-050",
+        "competitive-strategy:unit-052",
+        "competitive-strategy:unit-055",
+        "competitive-strategy:unit-057",
+        "competitive-strategy:unit-058",
+        "competitive-strategy:unit-059",
+        "competitive-strategy:unit-060",
+        "competitive-strategy:unit-065",
+        "competitive-strategy:unit-066",
+        "competitive-strategy:unit-067",
+        "competitive-strategy:unit-074",
+        "competitive-strategy:unit-081",
+        "competitive-strategy:unit-082",
+        "competitive-strategy:unit-083",
+        "competitive-strategy:unit-089",
+        "competitive-strategy:unit-091",
+        "competitive-strategy:unit-093",
+        "competitive-strategy:unit-099",
+        "competitive-strategy:unit-104",
+        "competitive-strategy:unit-107",
+        "competitive-strategy:unit-114"
+      ],
+      "upstream_dependencies": [
+        "cluster:market-segmentation-and-demand-intelligence"
+      ]
+    },
+    {
+      "candidate_responsibility": "Dispatch plan tasks to isolated implementers and sequence status, specification review, and quality review.",
+      "downstream_dependencies": [
+        "cluster:developer-self-check-and-fix",
+        "cluster:independent-code-review",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:subagent-task-pipeline",
+      "input_boundary": "A complete plan, one task context, and an authorized edit scope.",
+      "output_boundary": "Per-task implementations, structured status, review flow, and resolved blockers.",
+      "unit_ids": [
+        "subagent-driven-development:unit-001",
+        "subagent-driven-development:unit-002",
+        "subagent-driven-development:unit-003",
+        "subagent-driven-development:unit-004",
+        "subagent-driven-development:unit-005",
+        "subagent-driven-development:unit-006",
+        "subagent-driven-development:unit-007",
+        "subagent-driven-development:unit-008",
+        "subagent-driven-development:unit-009",
+        "subagent-driven-development:unit-010",
+        "subagent-driven-development:unit-011",
+        "subagent-driven-development:unit-012",
+        "subagent-driven-development:unit-013",
+        "subagent-driven-development:unit-014"
+      ],
+      "upstream_dependencies": [
+        "cluster:implementation-planning-and-handoff"
+      ]
+    },
+    {
+      "candidate_responsibility": "Drive behavior changes through a real red-green-refactor loop and a final fresh verification.",
+      "downstream_dependencies": [
+        "cluster:developer-self-check-and-fix",
+        "cluster:independent-code-review",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:tdd-change-loop",
+      "input_boundary": "A feature, defect, refactor, or other behavior change.",
+      "output_boundary": "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence.",
+      "unit_ids": [
+        "test-driven-development:unit-001",
+        "test-driven-development:unit-002",
+        "test-driven-development:unit-003",
+        "test-driven-development:unit-004",
+        "test-driven-development:unit-005",
+        "test-driven-development:unit-006",
+        "test-driven-development:unit-007",
+        "test-driven-development:unit-008",
+        "test-driven-development:unit-009",
+        "test-driven-development:unit-010",
+        "test-driven-development:unit-011",
+        "test-driven-development:unit-012",
+        "test-driven-development:unit-013",
+        "test-driven-development:unit-015"
+      ],
+      "upstream_dependencies": [
+        "cluster:implementation-planning-and-handoff"
+      ]
+    },
+    {
+      "candidate_responsibility": "Constrain mocks, spies, and test-only interfaces so tests exercise meaningful behavior and complete data shapes.",
+      "downstream_dependencies": [
+        "cluster:vitest-tooling",
+        "cluster:playwright-test-engineering"
+      ],
+      "id": "cluster:test-double-discipline",
+      "input_boundary": "A test design that requires dependency isolation or an existing test double.",
+      "output_boundary": "A minimal, behavior-focused test-double strategy that does not pollute production APIs.",
+      "unit_ids": [
+        "test-driven-development:unit-016",
+        "test-driven-development:unit-017",
+        "test-driven-development:unit-018",
+        "test-driven-development:unit-019",
+        "test-driven-development:unit-020",
+        "test-driven-development:unit-021",
+        "vitest:unit-005",
+        "vitest:unit-006",
+        "vitest:unit-007",
+        "vitest:unit-008",
+        "vitest:unit-014",
+        "vitest:unit-015",
+        "vitest:unit-016"
+      ],
+      "upstream_dependencies": [
+        "cluster:tdd-change-loop",
+        "cluster:testing-portfolio-strategy"
+      ]
+    },
+    {
+      "candidate_responsibility": "Design a layered test portfolio from business risk, feedback speed, maintenance cost, and component type.",
+      "downstream_dependencies": [
+        "cluster:tdd-change-loop",
+        "cluster:vitest-tooling",
+        "cluster:playwright-test-engineering",
+        "cluster:independent-blackbox-qa"
+      ],
+      "id": "cluster:testing-portfolio-strategy",
+      "input_boundary": "System architecture, risks, component types, environments, and data constraints.",
+      "output_boundary": "A test pyramid, coverage priorities, skip boundaries, and an executable test plan.",
+      "unit_ids": [
+        "ts-goal-balance-triangle",
+        "ts-method-component-api-endpoints",
+        "ts-method-component-data-pipelines",
+        "ts-method-component-frontend",
+        "ts-method-component-infrastructure",
+        "ts-model-testing-pyramid",
+        "ts-rule-coverage-focus-areas",
+        "ts-rule-coverage-skip-areas",
+        "ts-template-output-test-plan"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Validate that a requested browser, audit, or test tool is available and its invocation boundary is safe before setup.",
+      "downstream_dependencies": [
+        "cluster:browser-session-and-runtime-configuration",
+        "cluster:safe-browser-probing",
+        "cluster:playwright-test-engineering",
+        "cluster:website-audit-remediation"
+      ],
+      "id": "cluster:tool-runtime-readiness",
+      "input_boundary": "A tool request, project path, shell environment, and declared prerequisite contract.",
+      "output_boundary": "A prerequisite verdict, supported wrapper boundary, or explicit unavailable-tool failure.",
+      "unit_ids": [
+        "playwright:unit-013"
+      ],
+      "upstream_dependencies": []
+    },
+    {
+      "candidate_responsibility": "Define UI review scope, collect the correct rendered evidence, and route findings without confusing inspection with repair.",
+      "downstream_dependencies": [
+        "cluster:rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "cluster:ui-review-scope-and-evidence-acquisition",
+      "input_boundary": "A UI brief, target files, runtime, rendered surfaces, and review criteria.",
+      "output_boundary": "A bounded review set, captures, evidence inventory, and review route.",
+      "unit_ids": [
+        "web-design-guidelines:unit-001",
+        "web-design-guidelines:unit-002",
+        "web-design-guidelines:unit-003",
+        "web-design-guidelines:unit-004"
+      ],
+      "upstream_dependencies": [
+        "cluster:ui-task-routing-and-governance"
+      ]
+    },
+    {
+      "candidate_responsibility": "Classify UI work and establish the applicable playbook, authorization, target files, and write boundaries.",
+      "downstream_dependencies": [
+        "cluster:design-context-and-direction-contract",
+        "cluster:existing-interface-redesign-and-preservation"
+      ],
+      "id": "cluster:ui-task-routing-and-governance",
+      "input_boundary": "A UI request, project state, existing interface, target files, authorization, and design artifacts.",
+      "output_boundary": "A task route, required references, execution mode, tool plan, and boundary statement.",
+      "unit_ids": [
+        "design-taste-frontend:unit-001",
+        "impeccable:unit-001",
+        "impeccable:unit-004",
+        "impeccable:unit-007",
+        "impeccable:unit-008",
+        "impeccable:unit-009",
+        "ui-ux-pro-max:unit-001",
+        "ui-ux-pro-max:unit-002",
+        "ui-ux-pro-max:unit-003",
+        "ui-ux-pro-max:unit-004",
+        "ui-ux-pro-max:unit-008",
+        "ui-ux-pro-max:unit-009"
+      ],
+      "upstream_dependencies": [
+        "cluster:context-intake-and-routing"
+      ]
+    },
+    {
+      "candidate_responsibility": "Establish a distinctive visual language and suppress generic template patterns and unsupported decoration.",
+      "downstream_dependencies": [
+        "cluster:responsive-layout-and-spatial-composition",
+        "cluster:content-copy-and-authentic-assets"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls",
+      "input_boundary": "A direction contract, brand, tokens, audience, surface mode, and content.",
+      "output_boundary": "Typography, color, material, composition, style decisions, and anti-template constraints.",
+      "unit_ids": [
+        "design-taste-frontend:unit-006",
+        "design-taste-frontend:unit-007",
+        "design-taste-frontend:unit-020",
+        "frontend-design:unit-001",
+        "frontend-design:unit-004",
+        "frontend-design:unit-005",
+        "frontend-design:unit-009",
+        "impeccable:unit-002",
+        "impeccable:unit-011",
+        "ui-ux-pro-max:unit-011",
+        "ui-ux-pro-max:unit-013"
+      ],
+      "upstream_dependencies": [
+        "cluster:design-context-and-direction-contract",
+        "cluster:design-system-foundation-and-token-extraction"
+      ]
+    },
+    {
+      "candidate_responsibility": "Apply Vitest configuration, workers, fixtures, mocks, timers, snapshots, type tests, coverage, and CLI controls.",
+      "downstream_dependencies": [
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:vitest-tooling",
+      "input_boundary": "A JavaScript or TypeScript unit or integration test project using Vitest.",
+      "output_boundary": "Runnable Vitest tests and configuration, not the cross-layer portfolio strategy.",
+      "unit_ids": [
+        "vitest:unit-001",
+        "vitest:unit-002",
+        "vitest:unit-003",
+        "vitest:unit-004",
+        "vitest:unit-013",
+        "vitest:unit-017",
+        "vitest:unit-018",
+        "vitest:unit-020"
+      ],
+      "upstream_dependencies": [
+        "cluster:testing-portfolio-strategy",
+        "cluster:test-double-discipline"
+      ]
+    },
+    {
+      "candidate_responsibility": "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations.",
+      "downstream_dependencies": [
+        "cluster:baseline-regression-control",
+        "cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:web-performance-diagnostics",
+      "input_boundary": "A web application, controlled sampling environment, network waterfall, and build information.",
+      "output_boundary": "Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report.",
+      "unit_ids": [
+        "web-perf:unit-001",
+        "web-perf:unit-002",
+        "web-perf:unit-003",
+        "web-perf:unit-004",
+        "web-perf:unit-005",
+        "web-perf:unit-006"
+      ],
+      "upstream_dependencies": [
+        "cluster:tool-runtime-readiness",
+        "cluster:safe-browser-probing"
+      ]
+    },
+    {
+      "candidate_responsibility": "Run broad website audits, map SEO, performance, security, content, and accessibility findings to source, and recheck fixes.",
+      "downstream_dependencies": [
+        "cluster:baseline-regression-control",
+        "cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:website-audit-remediation",
+      "input_boundary": "A scannable site, audit CLI, and an authorized source-edit scope.",
+      "output_boundary": "A categorized report, remediation loop, score targets, and fresh audit evidence.",
+      "unit_ids": [
+        "audit-website:unit-002",
+        "audit-website:unit-003",
+        "audit-website:unit-004",
+        "audit-website:unit-005",
+        "audit-website:unit-006",
+        "audit-website:unit-009",
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015",
+        "audit-website:unit-016",
+        "audit-website:unit-017",
+        "audit-website:unit-018"
+      ],
+      "upstream_dependencies": [
+        "cluster:tool-runtime-readiness"
+      ]
+    },
+    {
+      "candidate_responsibility": "Sequence a capability workflow, route sub-capabilities, and preserve lifecycle state without performing the downstream work itself.",
+      "downstream_dependencies": [
+        "cluster:facilitation-and-collaboration-protocols"
+      ],
+      "id": "cluster:workflow-orchestration-and-lifecycle",
+      "input_boundary": "A request, phase state, available capabilities, and execution constraints.",
+      "output_boundary": "An ordered workflow, routing decision, handoff state, and stop or retry condition.",
+      "unit_ids": [
+        "discovery-process:unit-001",
+        "discovery-process:unit-003",
+        "discovery-process:unit-045",
+        "outcome-roadmap:unit-004",
+        "prd-development:unit-006",
+        "prd-development:unit-015",
+        "prd-development:unit-021",
+        "prd-development:unit-030",
+        "prd-development:unit-039",
+        "product-strategy-session:unit-001",
+        "product-strategy-session:unit-004",
+        "product-strategy-session:unit-007",
+        "product-strategy-session:unit-032",
+        "product-strategy-session:unit-038"
+      ],
+      "upstream_dependencies": []
+    }
+  ],
+  "relationships": [
+    {
+      "cluster_id": "cluster:ai-organizational-adoption-and-leadership",
+      "id": "relationship:ai-leadership-duplicate",
+      "source_unit_id": "ai-product-strategy:unit-058",
+      "target_unit_id": "ai-product-strategy:unit-059",
+      "type": "duplicate"
+    },
+    {
+      "cluster_id": "cluster:baseline-regression-control",
+      "id": "relationship:baseline-before-post-deploy-verification",
+      "source_unit_id": "canary:unit-002",
+      "target_unit_id": "land-and-deploy:unit-008",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:baseline-regression-control",
+      "id": "relationship:baseline-capture-before-update",
+      "source_unit_id": "canary:unit-002",
+      "target_unit_id": "canary:unit-008",
+      "type": "complementary"
+    },
+    {
+      "cluster_id": "cluster:solution-hypothesis-and-experiment-design",
+      "id": "relationship:experiment-design-before-execution",
+      "source_unit_id": "discovery-process:unit-028",
+      "target_unit_id": "discovery-process:unit-029",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:completion-evidence-gate",
+      "id": "relationship:fresh-evidence-before-ship",
+      "source_unit_id": "verification-before-completion:unit-002",
+      "target_unit_id": "ship:unit-006",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:results-analysis-and-decision-readout",
+      "condition": {
+        "source": {
+          "applicability": "Use the decision gate to select GO, PIVOT, or KILL after problem, solution, strategic-fit, and feasibility evidence is reviewed."
+        },
+        "target": {
+          "applicability": "Use this branch only after the decision is GO; skip it for PIVOT or KILL."
+        }
+      },
+      "id": "relationship:go-decision-before-epic-hypotheses",
+      "source_unit_id": "discovery-process:unit-032",
+      "target_unit_id": "discovery-process:unit-033",
+      "type": "conditional-variant"
+    },
+    {
+      "cluster_id": "cluster:requirements-and-delivery-contract",
+      "id": "relationship:go-decision-before-prd",
+      "source_unit_id": "discovery-process:unit-032",
+      "target_unit_id": "discovery-process:unit-034",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:tdd-change-loop",
+      "id": "relationship:iron-law-before-red-test",
+      "source_unit_id": "test-driven-development:unit-003",
+      "target_unit_id": "test-driven-development:unit-005",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:solution-hypothesis-and-experiment-design",
+      "id": "relationship:ost-before-learning-experiment",
+      "source_unit_id": "discovery-process:unit-026",
+      "target_unit_id": "discovery-process:unit-028",
+      "type": "complementary"
+    },
+    {
+      "cluster_id": "cluster:solution-hypothesis-and-experiment-design",
+      "condition": {
+        "source": {
+          "applicability": "Use an opportunity solution tree to expand prioritized pains into opportunities and solution options."
+        },
+        "target": {
+          "applicability": "Use Lean UX Canvas instead when the team explicitly prefers a hypothesis-driven approach."
+        }
+      },
+      "id": "relationship:ost-or-lean-ux",
+      "source_unit_id": "discovery-process:unit-026",
+      "target_unit_id": "discovery-process:unit-027",
+      "type": "conditional-variant"
+    },
+    {
+      "cluster_id": "cluster:competitive-case-library",
+      "id": "relationship:pets-failure-and-timing-contrast",
+      "source_unit_id": "competitive-strategy:unit-069",
+      "target_unit_id": "competitive-strategy:unit-070",
+      "type": "complementary"
+    },
+    {
+      "cluster_id": "cluster:divergent-prototyping-and-variant-selection",
+      "id": "relationship:prototype-directions-and-verification",
+      "source_unit_id": "prototype:unit-006",
+      "target_unit_id": "prototype:unit-008",
+      "type": "complementary"
+    },
+    {
+      "applicability_conditions": {
+        "source": {
+          "execution_mode": "developer-self-check"
+        },
+        "target": {
+          "execution_mode": "independent-qa"
+        }
+      },
+      "cluster_id": "cluster:developer-self-check-and-fix",
+      "design_case": "Route by execution identity before inspection: developer self-check may repair its own work; independent QA records evidence and never repairs the product.",
+      "evidence": "The developer self-check explicitly requires fixing discovered issues before reporting, while independent black-box QA explicitly forbids reading or editing source and remains report-only.",
+      "id": "relationship:self-check-versus-independent-qa",
+      "resolution": "Preserve both capabilities and select exactly one permission contract from the execution identity: developer-self-check may modify and fix; independent-qa is report-only and may not modify.",
+      "resolution_status": "resolved",
+      "source_excerpt": "## Before Reporting Back: Self-Review\n\n    Review your work with fresh eyes. Ask yourself:\n\n    **Completeness:**\n    - Did I fully implement everything in the spec?\n    - Did I miss any requirements?\n    - Are there edge cases I didn't handle?\n\n    **Quality:**\n    - Is this my best work?\n    - Are names clear and accurate (match what things do, not how they work)?\n    - Is the code clean and maintainable?\n\n    **Discipline:**\n    - Did I avoid overbuilding (YAGNI)?\n    - Did I only build what was requested?\n    - Did I follow existing patterns in the codebase?\n\n    **Testing:**\n    - Do tests actually verify behavior (not just mock behavior)?\n    - Did I follow TDD if required?\n    - Are tests comprehensive?\n\n    If you find issues during self-review, fix them now before reporting.",
+      "source_unit_id": "subagent-driven-development:unit-015",
+      "target_excerpt": "11. **Never fix bugs.** Find and document only. Do not read source code, edit files, or suggest fixes in the report. Your job is to report what's broken, not to fix it. Use `/qa` for the test-fix-verify loop.",
+      "target_unit_id": "qao-rule-never-fix-bugs-boundary",
+      "type": "conflict"
+    },
+    {
+      "cluster_id": "cluster:results-analysis-and-decision-readout",
+      "id": "relationship:solution-validation-before-decision",
+      "source_unit_id": "discovery-process:unit-031",
+      "target_unit_id": "discovery-process:unit-032",
+      "type": "strong-dependency"
+    },
+    {
+      "cluster_id": "cluster:tdd-change-loop",
+      "id": "relationship:tdd-cycle-and-completion-evidence",
+      "source_unit_id": "test-driven-development:unit-004",
+      "target_unit_id": "verification-before-completion:unit-002",
+      "type": "complementary"
+    }
+  ],
+  "version": 1
+}

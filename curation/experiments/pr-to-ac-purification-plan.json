@@ -1,0 +1,196 @@
+{
+  "experiment_id": "pr-to-ac-purification",
+  "cluster": "requirements-to-ac",
+  "version": 1,
+  "created_at": "2026-09-09",
+  "overview": {
+    "objective": "验证将 5 技能 +1 补充原料的复杂工作流提纯为单一方法后的质量保持程度",
+    "scope": "Phase 1 (Executive Summary) → Phase 4 (AC Generation) 四阶段流水线",
+    "test_units": [
+      {"unit_id": "U01", "name": "问题定义", "skill": "discovery-process + product-strategy-session"},
+      {"unit_id": "U02", "name": "功能规格", "skill": "prd-development (guided mode)"},
+      {"unit_id": "U03", "name": "优先级收敛", "skill": "prioritization-frameworks"},
+      {"unit_id": "U04", "name": "AC 生成", "skill": "prd-development template section"}
+    ]
+  },
+  "baseline_reference": {
+    "source": "skills/prd-development/SKILL.md 100% 原样调用",
+    "expected_outputs": [
+      "Executive Summary (problem/solution/impact)",
+      "Problem Statement (evidence-backed)",
+      "Target Users & Personas (JTBD)",
+      "Success Metrics (Current→Goal 表格)",
+      "User Stories (at least P0-P1 各 2-3 条)",
+      "Acceptance Criteria (每条 AC≥3 G/W/T, 异常态覆盖≥1 条)",
+      "Out of Scope (明确列项)",
+      "Open Questions (未验证假设标记)"
+    ],
+    "quality_metrics": {
+      "executive_summary_completeness": "三要素齐全计 100%,缺一扣 25%",
+      "problem_statement_evidence": "有用户引语/数据支持计满分，否则扣分",
+      "ac_quality_score": "G/W/T 格式正确率×正常态覆盖×异常态覆盖",
+      "open_questions_clarity": "每个开放问题需有'为什么需要回答+预期影响'解释"
+    }
+  },
+  "purified_method": {
+    "concept": "将四个步骤合并为 single_prompt_method: 'pr_to_ac_concise'",
+    "structure": {
+      "input_requirements": ["一句话问题描述 / 碎片笔记"],
+      "internal_steps": [
+        "step1 问题定义 (discovery-process 核心逻辑内嵌)",
+        "step2 问题陈述 (evidence 搜索模板)",
+        "step3 用户故事草稿 (JTBD 模式)",
+        "step4 AC 生成 (G/W/T 规则强制)"
+      ],
+      "output_contract": {
+        "format": "Markdown with emoji labels",
+        "sections": ["📌 Executive Summary", "❓ Problem Statement", "👥 Target Users", "✅ Acceptance Criteria", "⚠️ Open Questions"]
+      }
+    },
+    "consolidation_rationale": "同一底层能力在多个 step 重复出现（如'证据优先'原则），合并后可减少 token 浪费并提升上下文连贯性"
+  },
+  "evaluation_plan": {
+    "test_suite_a": {
+      "name": "对照测试 - quality_match",
+      "description": "同一输入分别走 baseline_purified_method, 测量输出质量的差异",
+      "test_cases": [
+        {
+          "case_id": "TC01",
+          "input": "我想做一个 AI 搜索工具，像 Perplexity 但更聚焦中文内容",
+          "baseline_output_path": "./tmp/eval/baseline/tc01-prd.json",
+          "purified_output_path": "./tmp/eval/purified/tc01-prd.json",
+          "metrics_to_compare": [
+            {"metric": "executive_summary_completeness", "tolerance": "±10% 分差允许"},
+            {"metric": "ac_quality_score", "tolerance": "±15% 分差允许（单条 AC 数量可略少）"},
+            {"metric": "open_questions_clarity", "tolerance": "qualitative_pass/fail"}
+          ],
+          "success_criteria": "所有 metric 在 tolerance 范围内视为质量无损",
+          "expected_failures": [
+            "purified method 可能压缩 open_questions 数量（token 优化副作用）",
+            "AC 数量从 baseline 的 8-10 条降到 5-7 条（合理性范围）"
+          ]
+        },
+        {
+          "case_id": "TC02", 
+          "input": "我们需要一个仪表盘来监控 SaaS 产品的健康度，包括 DAU/留存/收入等指标",
+          "baseline_output_path": "./tmp/eval/baseline/tc02-prd.json",
+          "purified_output_path": "./tmp/eval/purified/tc02-prd.json",
+          "metrics_to_compare": [
+            {"metric": "problem_statement_evidence", "tolerance": "必须有至少一条用户引语或行业数据"},
+            {"metric": "ac_quality_score", "tolerance": "必须包含错误态/空状态 AC"},
+            {"metric": "success_metrics_completeness", "tolerance": "DAU/留存/收入三个维度缺一不可"}
+          ],
+          "success_criteria": "关键信息点不丢失视为通过",
+          "edge_case_check": "检查 metrics-dashboard 相关指标是否被自动建议（本应依赖 discovery-process）"
+        },
+        {
+          "case_id": "TC03",
+          "input": "帮我为电商网站写一个结账流程的需求文档",
+          "baseline_output_path": "./tmp/eval/baseline/tc03-prd.json",
+          "purified_output_path": "./tmp/eval/purified/tc03-prd.json",
+          "metrics_to_compare": [
+            {"metric": "user_story_coverage", "tolerance": "必须覆盖 Guest/Member两种用户路径"},
+            {"metric": "exception_state_coverage", "tolerance": "库存不足/支付失败/网络错误至少 2 条"},
+            {"metric": "out_of_scope_clarity", "tolerance": "明确排除非目标区域（如退货流程若不在 MVP）"}
+          ],
+          "success_criteria": "业务流程完整性不降级"
+        }
+      ]
+    },
+    "test_suite_b": {
+      "name": "留出集测试 - generalization",
+      "description": "使用基线训练的数据分布外的新场景检验鲁棒性",
+      "held_out_cases": [
+        {
+          "case_id": "HO01",
+          "scenario": "B2B 企业级产品（与 TC01 的 C 端 AI 搜索不同）",
+          "input": "客户想要一个多租户 SaaS 平台，支持角色权限和工作区隔离",
+          "risk_areas": [
+            "权限模型复杂度可能超出简化方法的表达能力",
+            "企业客户特有的合规需求（SOC2/审计日志）可能被遗漏"
+          ]
+        },
+        {
+          "case_id": "HO02",
+          "scenario": "硬件 IoT 产品（纯软件 PRD 方法的泛化边界）",
+          "input": "智能手表的健康追踪应用，需要搭配硬件传感器数据采集",
+          "risk_areas": [
+            "软硬协同的依赖关系难以用纯文本 PRD 表达",
+            "FDA 等监管要求可能需要专门的 regulatory appendix"
+          ]
+        },
+        {
+          "case_id": "HO03",
+          "scenario": "超早期创意验证（与 TC02 的功能细化不同）",
+          "input": "我有个想法但还不清楚具体要做什么，只有一些零散的观察",
+          "risk_areas": [
+            "缺少结构化问题陈述可能导致 AI 过度脑补",
+            "workshop-facilitation 的引导式问答在此场景下更重要"
+          ]
+        }
+      ],
+      "validation_method": "manual_review_required"
+    },
+    "test_suite_c": {
+      "name": "退化测试 - robustness",
+      "description": "极端条件下评估降级表现",
+      "corner_cases": [
+        {
+          "case_id": "COR01",
+          "condition": "Input 仅有一句模糊描述（无额外上下文）",
+          "input_text": "帮我写一个登录功能的需求",
+          "expected_behavior": "触发 open_questions 机制而非强行编造细节",
+          "failure_mode": "AI 幻觉产生虚构的用户画像和指标数值"
+        },
+        {
+          "case_id": "COR02",
+          "condition": "Input 过长且混乱（含大量不相关信息）",
+          "input_text": "[粘贴 2000 字会议纪要加竞品截图文字描述]",
+          "expected_behavior": "自动提取核心问题并标注噪音部分",
+          "failure_mode": "PRD 结构被打乱或关键信息淹没"
+        },
+        {
+          "case_id": "COR03",
+          "condition": "输入为跨语言混合（中英夹杂）",
+          "input_text": "我们要做一个 dashboard for analytics 主要看 GMV 和复购率",
+          "expected_behavior": "统一输出语言（根据用户偏好设定）",
+          "failure_mode": "术语翻译不一致或代码块混排"
+        },
+        {
+          "case_id": "COR04",
+          "condition": "连续两次相似请求（测试会话记忆）",
+          "input_sequence": ["先问电商结账流程", "再问添加优惠券功能"],
+          "expected_behavior": "第二次请求识别出是增量更新而非新建 PRD",
+          "failure_mode": "重复输出基础流程导致冗余"
+        }
+      ],
+      "acceptance_criteria": "退化情况下必须 graceful_degrade 而非崩溃或产生误导性输出"
+    }
+  },
+  "implementation_notes": {
+    "baseline_generation_command": "node scripts/run-skill prd-development --mode guided <input>",
+    "purified_generation_command": "node scripts/pr-to-ac-concise.js <input>",
+    "comparison_tool": "python scripts/compare-prd.py --baseline baseline.json --purified purified.json --metrics executive_summary_completeness,ac_quality_score",
+    "human_review_threshold": "任何 metric 超出 tolerance 范围需人工复核判断是否合理降级",
+    "artifact_storage": "所有测试结果保存至 curation/experiments/pr-to-ac/results/{timestamp}/"
+  },
+  "timeline": {
+    "phase_1_baseline_run": "run 3 test cases through baseline method, expect 2 hours",
+    "phase_2_purified_run": "same inputs through simplified prompt, expect 30 minutes",
+    "phase_3_comparison": "automated metrics + manual review, expect 1 hour",
+    "phase_4_retro": "document findings and decide whether to adopt purified method or iterate",
+    "total_expected_duration": "4 hours across multiple sessions"
+  },
+  "risks_and_assumptions": {
+    "assumptions": [
+      "测试者对 prd-development 原始方法足够熟悉以识别质量下降",
+      "AI 模型输出稳定性可接受（同一 prompt 多次运行结果相近）",
+      "评估指标可量化（G/W/T 数量、section 完整性等客观标准存在）"
+    ],
+    "risks": [
+      {"risk": "Purified method 隐藏了 workshop-facilitation 交互协议", "mitigation": "在 phase 2 保留可选 guided_mode 切换开关"},
+      {"risk": "人工复核主观性强", "mitigation": "提前定义 checklist 标准化评分表"},
+      {"risk": "Token 节省效果不可测", "mitigation": "记录每次调用的 input/output token 数量并比较"}
+    ]
+  }
+}

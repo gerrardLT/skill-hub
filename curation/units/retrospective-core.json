@@ -1,0 +1,151 @@
+{
+  "skill_name": "retro + pre-mortem",
+  "reference_files": ["SKILL.md"],
+  "total_units": 12,
+  "units": [
+    {
+      "id": "skills/retro/SKILL.md:43-49",
+      "type": "gate",
+      "origin_line_start": 43,
+      "origin_line_end": 49,
+      "raw_excerpt": "Analyzes commit history, work patterns,\nand code quality metrics with persistent history and trend tracking.\nTeam-aware: breaks down per-person contributions with praise and growth areas.\nUse when asked to \"weekly retro\", \"what did we ship\", or \"engineering retrospective\".\nProactively suggest at the end of a work week or sprint.",
+      "meaning": "retro 触发门控：分析 git 提交历史、工作模式、代码质量指标，带持续历史跟踪和趋势对比。团队感知能力——按个人拆分贡献、表扬和改进领域。触发词包括 weekly retro/what did we ship/engineering retrospective。在周/迭代末尾主动建议。",
+      "boundary_condition": "周期性的时间属性；非一次活动",
+      "dependency_skills": [],
+      "validation_criteria": "报告包含 trend-tracking（跨周期对比）",
+      "status": "retained"
+    },
+    {
+      "id": "skills/retro/SKILL.md:16-37",
+      "type": "method",
+      "origin_line_start": 16,
+      "origin_line_end": 37,
+      "raw_excerpt": "gbrain:\n  schema: 1\n  context_queries:\n    - id: prior-retros\n      kind: filesystem\n      glob: \".context/retros/*.json\"\n      limit: 5\n      render_as: \"## Prior retros for this project\"\n    - id: recent-timeline\n      kind: filesystem\n      glob: \"~/.gstack/projects/{repo_slug}/timeline.jsonl\"\n      tail: 30\n      render_as: \"## Recent timeline events\"",
+      "meaning": "上下文查询方法：三条 gbrain 查询支撑完整复盘——prior-retros 读取近 5 次本项目的复盘记录形成纵向对比、recent-timeline 读取近 30 条 timeline 事件还原最近的工作流、recent-learnings 读取近 10 条 learnings 捕捉已记录的洞见。",
+      "boundary_condition": ".context/retros/*.json是 repo-local 存储；timeline/learnings 在项目 scoped 目录",
+      "dependency_skills": [],
+      "validation_criteria": "报告引用 prior-retros 的趋势变化数据",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:8-15",
+      "type": "method",
+      "origin_line_start": 8,
+      "origin_line_end": 15,
+      "raw_excerpt": "A pre-mortem is a structured risk-identification exercise that forces teams to think critically about what could go wrong before launch, when there's still time to act. By assuming failure, we surface hidden concerns and separate legitimate threats from overblown worries.",
+      "meaning": "预失败方法论定义：结构化风险识别练习，迫使团队在产品发布前批判性思考什么会出错，此时仍有机会行动。通过假设失败来浮现隐藏的担忧，区分真实威胁与过度放大的焦虑。这是逆向思维的风险管理技术。",
+      "boundary_condition": "时机必须在发布前且有足够时间响应",
+      "dependency_skills": [],
+      "validation_criteria": "输出必须包含 Tigers/Paper Tigers/Elephants 三类分类",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:27-42",
+      "type": "rule",
+      "origin_line_start": 27,
+      "origin_line_end": 42,
+      "raw_excerpt": "**Tigers**: Real problems you personally see that could derail the project... **Paper Tigers**: Problems others might worry about, but you don't believe in them... **Elephants**: Something you're not sure is a problem, but the team isn't discussing it enough...",
+      "meaning": "风险三分法规则：①Tigers 真实问题（证据/经验/逻辑支撑，令人失眠，需立即行动）②Paper Tigers 他人担忧但不可信（表面合理实则过度放大，不值得大量资源投入）③Elephants 不确定是否是问题但团队讨论不足（未被说出口的担忧或未经验证的假设）。每类对应不同处理策略。",
+      "boundary_condition": "默认到 Tiger 当不确定；优先解决而非忽视",
+      "dependency_skills": [],
+      "validation_criteria": "每个 Tiger 必须有明确的 mitigation plan",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:44-53",
+      "type": "rule",
+      "origin_line_start": 44,
+      "origin_line_end": 53,
+      "raw_excerpt": "**Launch-Blocking**: Must be solved before launch\n**Fast-Follow**: Must be solved within 30 days post-launch\n**Track**: Monitor post-launch; solve if it becomes an issue",
+      "meaning": "Tigers 紧急度分级规则：阻止发布（launch-blocking）→ 发布前必须解决；快速跟进（fast-follow）→ 发布后 30 天内解决；跟踪（track）→ 发布后监控，成为问题再解决。为 Tiger 分配不同的 SLA 和资源承诺。",
+      "boundary_condition": "阻止发布 Tiger 数量>0 时禁止上线",
+      "dependency_skills": [],
+      "validation_criteria": "Launch-Blocking Tiger 清单与发布检查表交叉核对",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:55-59",
+      "type": "template",
+      "origin_line_start": 55,
+      "origin_line_end": 59,
+      "raw_excerpt": "For every Launch-Blocking Tiger:\n   - Describe the risk clearly\n   - Suggest a concrete mitigation action\n   - Identify the best owner (function/person)\n   - Set a decision/completion date",
+      "meaning": "阻止发布行动计划模板：四个必需字段——清晰描述风险、具体缓解行动、最佳负责人、决策/完成日期。形成可执行的跟踪项。",
+      "boundary_condition": "仅对 Launch-Blocking Tiger 强制；其他 Tiger 可简化",
+      "dependency_skills": [],
+      "validation_criteria": "Action Plan 表格完整且无空字段",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:61-77",
+      "type": "template",
+      "origin_line_start": 61,
+      "origin_line_end": 77,
+      "raw_excerpt": "Structure Output: Present the analysis as:\n   ```\n   ## Pre-Mortem Analysis: [Product Name]\n   ### Tigers (Real Risks)\n   ### Paper Tigers (Overblown Concerns)\n   ### Elephants (Unspoken Worries)\n   ### Action Plans for Launch-Blocking Tigers\n   ```",
+      "meaning": "输出结构模板：五段式文档框架——标题含产品名称、Tigers/Paper Tigers/Elephants三大章节、阻止发布 Tiger 行动计划专用章节。标准化输出格式便于追踪和回顾。",
+      "boundary_condition": "所有 Tiger 条目必须有对应的 mitigations",
+      "dependency_skills": [],
+      "validation_criteria": "PreMortem-[product]-[date].md文件命名符合规范",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:83-86",
+      "type": "rule",
+      "origin_line_start": 83,
+      "origin_line_end": 86,
+      "raw_excerpt": "- Be honest and constructive—the goal is to improve launch readiness, not assign blame\n- Default to \"Tiger\" if unsure; it's better to address risks early\n- Involve cross-functional perspectives (engineering, design, go-to-market) in your analysis\n- Revisit the pre-mortem 2-3 weeks before launch to verify mitigations are on track",
+      "meaning": "实践准则四条：诚实建设性（目标是提升发布就绪度而非归咎）；不确定时默认 Tiger（早期解决问题优于忽视）；多视角参与（工程/设计/GTM）；临近发布前 2-3 周回顾验证缓解措施进度。",
+      "boundary_condition": "第 4 条是时间锚点：预设至少两次回顾节点",
+      "dependency_skills": [],
+      "validation_criteria": "document 中可见 revisit schedule",
+      "status": "retained"
+    },
+    {
+      "id": "skills/retro/SKILL.md:53-57",
+      "type": "exception",
+      "origin_line_start": 53,
+      "origin_line_end": 57,
+      "raw_excerpt": "\"$_SS\" --skill \"retro\" --model \"claude\" --parent-pid \"$PPID\" \\\n  || echo \"SKILL_START: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\"",
+      "meaning": "降级例外：gstack-skill-start 不可用时打印降级提示并继续用户任务。安全默认值：SESSION_KIND=interactive、跳过遥测、提示升级安装。onboarding/consent 的门控延后到下次健康运行。",
+      "boundary_condition": "不影响核心分析功能（git log/timeline.jsonl 仍可访问）",
+      "dependency_skills": [],
+      "validation_criteria": "降级时仍能生成完整复盘报告",
+      "status": "retained"
+    },
+    {
+      "id": "skills/retro/SKILL.md:47-47",
+      "type": "rule",
+      "origin_line_start": 47,
+      "origin_line_end": 47,
+      "raw_excerpt": "Team-aware: breaks down per-person contributions with praise and growth areas.",
+      "meaning": "团队感知规则：按人拆分贡献并列出表扬和改进领域。关键是建设性——growth areas 是改进机会而非责备。个人维度的反馈机制增强团队的自我认知。",
+      "boundary_condition": "必须以正面和建设性方式呈现；避免制造对立",
+      "dependency_skills": [],
+      "validation_criteria": "review 是否提及具体人员并给出正面反馈",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:18-25",
+      "type": "method",
+      "origin_line_start": 18,
+      "origin_line_end": 25,
+      "raw_excerpt": "Think Step by Step:\n   - Imagine the product launches in 14 days\n   - Now imagine it fails—customers don't adopt it, revenue targets miss, reputation takes a hit\n   - What went wrong?\n   - What did we miss or not execute well?\n   - What were we overconfident about?",
+      "meaning": "步骤思考法：五步引导想象推演→14 天后发布→现在想象失败（无人采用/收入未达/声誉受损）→哪里出错了→我们漏了什么/执行不佳的是什么→我们对什么过于自信。通过心理模拟实现深度风险挖掘。",
+      "boundary_condition": "想象力越具体越好；避免泛泛而谈",
+      "dependency_skills": [],
+      "validation_criteria": "输出体现完整的推演链条",
+      "status": "retained"
+    },
+    {
+      "id": "skills/pre-mortem/SKILL.md:80-80",
+      "type": "rule",
+      "origin_line_start": 80,
+      "origin_line_end": 80,
+      "raw_excerpt": "Save the Output: Save as a markdown document: `PreMortem-[product-name]-[date].md`",
+      "meaning": "保存规则：以 markdown 格式保存到固定命名空间——PreMortem-[产品名]-[日期].md。标准文件名便于检索和版本控制。",
+      "boundary_condition": "必须在输出后立即保存以便后续回顾",
+      "dependency_skills": [],
+      "validation_criteria": "文件存在于项目目录或 gbrain 搜索范围",
+      "status": "retained"
+    }
+  ]
+}

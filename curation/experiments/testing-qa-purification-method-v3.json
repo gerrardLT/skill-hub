@@ -1,0 +1,62 @@
+{
+  "method_id": "testing-qa-concise-v3",
+  "parent_cluster": "testing-qa",
+  "version": "v3 — 质量底线 + 必要性过滤器",
+  "derived_from": [
+    "pr-to-ac-concise-v3 成功经验",
+    "implementation-purification-v3 铁律保留范式",
+    "qa-only SKILL.md 核心定位（NEVER fix anything）",
+    "test-case-generator SKILL.md 质量评分维度"
+  ],
+  "design_philosophy": "Testing & QA 的核心资产是'双重身份'（qa-only:报告角色 vs /qa:修复闭环）与'证据优先文化'。提纯策略：显式区分两种角色的边界（不可混同），压缩测试流程的引导文字，保留健康评分规则等核心算法",
+  "quality_floor": {
+    "non_negotiable": [
+      "qa-only NEVER FIX ANYTHING 铁律原文必须出现",
+      "健康评分 rubric 的 8 类加权公式完整（Console 15%/Links 10%...）",
+      "Repro is everything:每个问题至少一张截图，无例外",
+      "浏览器原生表面检查清单完整（Aside 或 $B）",
+      "Diff-aware 模式七步诊断流程存在",
+      "Regression diffing: baseline.json 对比机制存在"
+    ],
+    "compressible": [
+      "QA 工程师角色说明文字（从两 paragraphs 压缩为 1 句）",
+      "Preamble 中 gstack-skill-start 脚本细节（保留调用命令即可）",
+      "AskUserQuestion 格式失败回退的 prose fallback 详细模板（保留结构化要点即可）",
+      "完成状态协议 DONE/DONE_WITH_CONCERNS/BLOCKED/NEEDS_CONTEXT的定义说明（保留表格即可）",
+      "Telemetry 日志格式的详细字段说明（保留命令示例即可）"
+    ]
+  },
+  "prompt_template": {
+    "input": "目标 URL 或功能描述 + WCAG 目标级别 + 测试范围（快速/全量/回归）",
+    "instructions": [
+      "1. Browser Setup: Aside 就绪检测（ASIDE_READY check）；如不可用则用$B headless fallback",
+      "2. Diff-aware Mode（如无 URL）: git diff main...HEAD → 识别受影响页面 → 探测运行端口 → 逐页测试",
+      "3. Quick Mode (--quick): homepage + top 5 nav → loads? console errors? broken links?",
+      "4. Full Mode: visit every reachable page with per-page checklist (visual scan/interactive elements/forms/navigation/states/console/responsive)",
+      "5. Health Score Calculation: Console(15%) + Links(10%) + Visual(10%) + Functional(20%) + UX(15%) + Performance(10%) + Content(5%) + Accessibility(15%)",
+      "6. Evidence Collection: interactive bugs use screenshot-before-action→action→screenshot-after+diff; static bugs use annotatedScreenshot",
+      "7. Report Format: health score, top 3 issues to fix, console health summary, severity counts table, metadata, baseline.json save",
+      "8. NEVER touch code files—only report findings, screenshots, repro steps"
+    ]
+  },
+  "mechanical_audit_spec": {
+    "line_patterns": {
+      "qa_only_never_fix": "NEVER fix anything|Do not read source code|Find and document only",
+      "health_score_weights": "Console.*15%|Links.*10%|Functional.*20%|Accessibility.*15%",
+      "repro_is_everything": "Every issue needs at least one screenshot|No exceptions",
+      "browser_setup_check": "ASIDE_READY|gstack's own headless browser|$B goto",
+      "seven_diff_aware_steps": "(analyze branch diff|identify affected pages|detect running app|test each page|cross-reference commits|check TODOS\\.md|report findings scoped)"
+    },
+    "verdict": "全部 5 项 pattern 通过 = 提纯成功；任何一项缺失 = 回到 baseline 诊断"
+  },
+  "success_criteria": [
+    "输出文档行数 ≤ baseline 的 55%",
+    "qa-only NEVER FIX ANYTHING 铁律出现 ≥1 次",
+    "健康评分 8 类权重完整（每项含百分比值）",
+    "Repro 证据规则明确（每问题一截图）",
+    "浏览器设置检查步骤存在（Aside+$B fallback）",
+    "Diff-aware 七步流程覆盖完整",
+    "Regression diffing baseline.json 机制存在",
+    "无凑数内容（禁止 '至少 N 个元素' 式计数规则）"
+  ]
+}

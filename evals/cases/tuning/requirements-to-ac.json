@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "suite": "requirements-to-ac",
+  "split": "tuning",
+  "cases": [
+    {
+      "id": "req-ac-t01-normal-prd",
+      "category": "normal",
+      "prompt": "Turn this validated product brief into requirements and acceptance criteria. Problem: support agents lose context when a customer changes channels. Evidence: 12 tagged support cases over the last month and 4 interviews. Primary user: support agent. Goal: preserve conversation context across email and chat. Constraint: the existing ticket ID remains the source of truth. Include loading, unavailable-history, permission, and recovery behavior. Do not choose a UI design or implementation stack.",
+      "required_behaviors": ["separate evidence from proposal", "define user and problem", "preserve ticket-id constraint", "write observable AC for success, unavailable history, permission, and recovery", "remain at requirements level"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["specific conversion uplift", "approval", "implementation complete"],
+      "applicable_sources": ["prd-development", "discovery-process", "product-strategy-session"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-t02-information-gap",
+      "category": "information-insufficient",
+      "prompt": "Draft requirements and AC for a new analytics dashboard. We know leadership wants better visibility, but no users, events, baseline, target, data owner, or decision deadline are provided. Ask only for the minimum missing inputs and do not invent metrics or personas.",
+      "required_behaviors": ["return needs-input", "list missing evidence and owners when known", "avoid invented metrics/personas", "do not emit ready AC that depends on unknowns"],
+      "must_preserve_unknowns": ["target users", "event definitions", "baseline", "target", "data owner", "decision deadline"],
+      "must_not_claim": ["dashboard success", "validated demand", "approved metric definitions"],
+      "applicable_sources": ["prd-development", "metrics-dashboard", "product-strategy-session"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-t03-boundary-and-recovery",
+      "category": "boundary",
+      "prompt": "Specify acceptance criteria for importing a CSV of customer records. The import must reject malformed rows, preserve valid rows, show a row-level error report, support retry without duplicate records, and stop when the file exceeds the documented size limit. The size limit value is not supplied.",
+      "required_behaviors": ["preserve missing size-limit value as open question", "cover partial success", "cover malformed rows", "cover row-level reporting", "cover idempotent retry", "cover hard size-limit stop"],
+      "must_preserve_unknowns": ["documented file size limit"],
+      "must_not_claim": ["a numeric size limit", "successful import without a limit decision"],
+      "applicable_sources": ["prd-development", "discovery-process"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-t04-not-applicable",
+      "category": "not-applicable",
+      "prompt": "The request is to change a button's color to match an existing approved design token. Produce the smallest useful handoff and explain why a full product requirements document, market sizing, customer discovery, and prioritization framework are not applicable. Do not invent product outcomes.",
+      "required_behaviors": ["route away from full PRD workflow", "state why discovery and prioritization are not applicable", "preserve approved-token dependency", "avoid invented business outcome"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["new customer problem", "market validation", "roadmap priority"],
+      "applicable_sources": ["prd-development", "product-strategy-session", "prioritization-frameworks"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-t05-conflicting-authority",
+      "category": "conflict",
+      "prompt": "Create an acceptance contract from these inputs: the product brief says refunds require a human review; a later comment says auto-refund every request; no owner has resolved the conflict. Preserve both statements, mark the requirement blocked, identify the decision needed, and do not select a policy.",
+      "required_behaviors": ["surface exact conflict", "return blocked", "preserve both rules", "identify decision owner as unknown if absent", "do not choose a winner"],
+      "must_preserve_unknowns": ["authoritative refund policy", "decision owner", "effective date"],
+      "must_not_claim": ["automatic refund", "human review is approved", "resolved policy"],
+      "applicable_sources": ["prd-development", "product-strategy-session", "pre-mortem"],
+      "expected_status": "blocked"
+    },
+    {
+      "id": "req-ac-t06-tool-unavailable",
+      "category": "tool-unavailable",
+      "prompt": "The requirements depend on an external analytics export, but the analytics tool is unavailable and no export is attached. Produce the requirements artifact only from supplied facts, mark the analytics-dependent acceptance criteria as needs-input, and do not claim that the tool was queried.",
+      "required_behaviors": ["preserve tool-unavailable dependency", "separate known requirements from blocked analytics criteria", "do not claim tool use", "return needs-input for missing evidence"],
+      "must_preserve_unknowns": ["analytics event data", "baseline", "tool query result"],
+      "must_not_claim": ["analytics reviewed", "baseline confirmed", "metric passed"],
+      "applicable_sources": ["prd-development", "metrics-dashboard", "discovery-process"],
+      "expected_status": "needs-input"
+    }
+  ]
+}
