@@ -50,16 +50,33 @@ def test_executor_stops_on_needs_input(tmp_path: Path) -> None:
     assert len(calls) == 1
 
 
+def released_outputs() -> iter:
+    for name in ("step-1-frame.md", "step-2-rules.md", "step-3-criteria.md", "step-4-gate.md"):
+        yield (ROOT / "evals/runs/composition/requirements-to-acceptance-criteria-v0.2.0" / name).read_text(encoding="utf-8")
+
+
 def test_executor_runs_topological_order_and_records_hashes(tmp_path: Path) -> None:
     root, recipe, input_path = workspace(tmp_path)
+    outputs = released_outputs()
     def worker(prompt: str, timeout: int) -> str:
-        return "Status: passed\nArtifact."
+        return next(outputs)
 
     result = execute_recipe(recipe, input_path, root / "runs/full", workspace_root=root, worker=worker)
 
     assert result["passed"] is True
     assert [step["step_id"] for step in result["steps_run"]] == ["step-1-frame", "step-2-rules", "step-3-criteria", "step-4-gate"]
     assert all(len(step["output_sha256"]) == 64 for step in result["steps_run"])
+    assert all(all(gate["passed"] for gate in step["gates"]) for step in result["steps_run"])
+
+
+def test_executor_rejects_status_pass_when_deterministic_gate_fails(tmp_path: Path) -> None:
+    root, recipe, input_path = workspace(tmp_path)
+
+    result = execute_recipe(recipe, input_path, root / "runs/gate-fail", workspace_root=root, worker=lambda *_: "Status: passed\nUnsupported prose.")
+
+    assert result["status"] == "failed"
+    assert result["steps_run"] == []
+    assert result["errors"] == ["step-1-frame: gate-failed: ['source-traceability']"]
 
 
 def test_executor_rejects_invalid_status(tmp_path: Path) -> None:
@@ -70,6 +87,77 @@ def test_executor_rejects_invalid_status(tmp_path: Path) -> None:
     assert result["status"] == "failed"
     assert result["steps_run"] == []
     assert result["errors"] == ["step-1-frame: invalid-status"]
+
+
+def test_contract_compatible_replacement_runs_without_internal_prompt_coupling(tmp_path: Path) -> None:
+    root, recipe_path, input_path = workspace(tmp_path)
+    replacement = root / "slots/problem-framing-compatible"
+    shutil.copytree(root / "slots/problem-framing", replacement)
+    contract_path = replacement / "contract.json"
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["id"] = "problem-framing-compatible"
+    contract_path.write_text(json.dumps(contract), encoding="utf-8")
+    provenance_path = replacement / "provenance.json"
+    provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+    provenance["id"] = "problem-framing-compatible"
+    provenance_path.write_text(json.dumps(provenance), encoding="utf-8")
+    recipe_data = json.loads(recipe_path.read_text(encoding="utf-8"))
+    recipe_data["steps"][0]["slot"] = "problem-framing-compatible"
+    recipe_data["steps"][0]["ref"] = "problem-framing-compatible@0.2.0"
+    recipe_path.write_text(json.dumps(recipe_data), encoding="utf-8")
+    outputs = released_outputs()
+
+    result = execute_recipe(
+        recipe_path,
+        input_path,
+        root / "runs/replacement",
+        workspace_root=root,
+        worker=lambda *_: next(outputs),
+        require_release_evidence=False,
+    )
+
+    assert result["passed"] is True
+    assert result["steps_run"][0]["slot_id"] == "problem-framing-compatible"
+
+
+def test_upstream_input_change_invalidates_downstream_evidence(tmp_path: Path) -> None:
+    root, recipe, input_path = workspace(tmp_path)
+    run = root / "runs/invalidation"
+    calls: list[str] = []
+    outputs = released_outputs()
+    def first_worker(prompt: str, timeout: int) -> str:
+        calls.append(prompt)
+        return next(outputs)
+    first = execute_recipe(recipe, input_path, run, workspace_root=root, worker=first_worker)
+    assert first["passed"] is True
+    assert len(calls) == 4
+
+    input_data = json.loads(input_path.read_text(encoding="utf-8"))
+    input_data["validated-product-brief"] = "changed brief"
+    input_path.write_text(json.dumps(input_data), encoding="utf-8")
+    calls.clear()
+    outputs = released_outputs()
+    second = execute_recipe(recipe, input_path, run, workspace_root=root, worker=first_worker)
+
+    assert second["passed"] is True
+    assert len(calls) == 4
+    assert all(step["reused"] is False for step in second["steps_run"])
+    assert first["steps_run"][0]["input_sha256"] != second["steps_run"][0]["input_sha256"]
+    assert second["steps_run"][0]["invalidated_previous_evidence"] == "input-or-contract-changed"
+    assert all(step["invalidated_previous_evidence"] == "upstream-reran" for step in second["steps_run"][1:])
+
+
+def test_unchanged_input_reuses_validated_step_evidence(tmp_path: Path) -> None:
+    root, recipe, input_path = workspace(tmp_path)
+    run = root / "runs/reuse"
+    outputs = released_outputs()
+    first = execute_recipe(recipe, input_path, run, workspace_root=root, worker=lambda *_: next(outputs))
+    assert first["passed"] is True
+
+    second = execute_recipe(recipe, input_path, run, workspace_root=root, worker=lambda *_: (_ for _ in ()).throw(AssertionError("worker should not run")))
+
+    assert second["passed"] is True
+    assert all(step["reused"] is True for step in second["steps_run"])
 
 
 def test_executor_requires_named_inputs(tmp_path: Path) -> None:

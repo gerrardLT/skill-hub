@@ -12,6 +12,7 @@ from pathlib import Path, PurePosixPath
 from typing import Callable
 
 from tools.curation.recipe_verify import verify_recipes
+from tools.curation.slot_gate import evaluate_gates
 
 VALID_STATUSES = {"passed", "needs-input", "blocked", "failed"}
 
@@ -110,11 +111,25 @@ def execute_recipe(
     if missing:
         return {"recipe_id": recipe["id"], "passed": False, "status": "needs-input", "steps_run": [], "errors": [f"missing inputs: {missing}"]}
 
+    previous: dict[str, object] = {}
+    previous_result = output_dir / "result.json"
+    if previous_result.is_file():
+        try:
+            previous = json.loads(previous_result.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            previous = {}
+    previous_steps = {
+        item.get("step_id"): item
+        for item in previous.get("steps_run", [])
+        if isinstance(item, dict) and item.get("step_id")
+    }
+
     output_dir.mkdir(parents=True, exist_ok=True)
     artifacts: dict[str, object] = dict(supplied)
     steps_run: list[dict[str, object]] = []
     errors: list[str] = []
     final_status = "passed"
+    upstream_reran = False
     for step in _topological_steps(recipe):
         step_id = step["id"]
         slot_id = step["slot"]
@@ -126,6 +141,37 @@ def execute_recipe(
         contract = json.loads((slot_dir / "contract.json").read_text(encoding="utf-8"))
         skill = (slot_dir / "SKILL.md").read_text(encoding="utf-8")
         input_data = {logical: artifacts[source] for logical, source in step["input_map"].items()}
+        step_input_sha256 = hashlib.sha256(
+            json.dumps(input_data, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()
+        output_path = output_dir / f"{step_id}.md"
+        cached = previous_steps.get(step_id, {})
+        invalidated_previous_evidence = None
+        if cached:
+            if upstream_reran:
+                invalidated_previous_evidence = "upstream-reran"
+            elif cached.get("slot_ref") != step["ref"] or cached.get("input_sha256") != step_input_sha256:
+                invalidated_previous_evidence = "input-or-contract-changed"
+        if (
+            not upstream_reran
+            and cached.get("status") == "passed"
+            and cached.get("slot_ref") == step["ref"]
+            and cached.get("input_sha256") == step_input_sha256
+            and output_path.is_file()
+            and hashlib.sha256(output_path.read_bytes()).hexdigest() == cached.get("output_sha256")
+        ):
+            output = output_path.read_text(encoding="utf-8")
+            gate_results = evaluate_gates(step["gates"], output, input_data)
+            if all(result["passed"] is True for result in gate_results):
+                for artifact in step["output_map"].values():
+                    artifacts[artifact] = output
+                reused = dict(cached)
+                reused["reused"] = True
+                reused["gates"] = gate_results
+                steps_run.append(reused)
+                continue
+
+        upstream_reran = True
         prompt = "\n".join([
             f"You are executing slot: {slot_id}",
             f"Responsibility: {contract['responsibility']}",
@@ -146,7 +192,12 @@ def execute_recipe(
             errors.append(f"{step_id}: invalid-status")
             final_status = "failed"
             break
-        output_path = output_dir / f"{step_id}.md"
+        gate_results = evaluate_gates(step["gates"], output, input_data)
+        failed_gates = [result["gate"] for result in gate_results if result["passed"] is not True]
+        if status == "passed" and failed_gates:
+            errors.append(f"{step_id}: gate-failed: {failed_gates}")
+            final_status = "failed"
+            break
         output_path.write_text(output, encoding="utf-8")
         for _, artifact in step["output_map"].items():
             artifacts[artifact] = output
@@ -155,10 +206,13 @@ def execute_recipe(
             "slot_id": slot_id,
             "slot_ref": step["ref"],
             "status": status,
+            "input_sha256": step_input_sha256,
             "duration_ms": round((time.perf_counter() - started) * 1000, 3),
+            "reused": False,
+            "invalidated_previous_evidence": invalidated_previous_evidence,
             "output_file": output_path.relative_to(workspace).as_posix() if output_path.is_relative_to(workspace) else output_path.as_posix(),
             "output_sha256": hashlib.sha256(output_path.read_bytes()).hexdigest(),
-            "gates": step["gates"],
+            "gates": gate_results,
         })
         final_status = status
         if status != "passed":
