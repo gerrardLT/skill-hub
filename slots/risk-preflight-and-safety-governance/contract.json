@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions.",
+    "output": "Risks, owners, triggers, mitigations, hard gates, kill criteria, and residual risk."
+  },
+  "dependencies": [
+    "cluster:ai-capability-architecture-and-autonomy",
+    "cluster:requirements-and-delivery-contract"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "risk-preflight-and-safety-governance",
+  "inputs": [
+    "Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions."
+  ],
+  "outputs": [
+    "Risks, owners, triggers, mitigations, hard gates, kill criteria, and residual risk."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Identify failure modes, hard gates, safety boundaries, mitigations, owners, and stop conditions before commitment.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

@@ -23,12 +23,15 @@ def iter_files(root: Path) -> Iterable[Path]:
             yield Path(current_root) / filename
 
 
+def normalized_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() not in {".zip", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".icns"}:
+        data = data.replace(b"\r\n", b"\n")
+    return data
+
+
 def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    return hashlib.sha256(normalized_bytes(path)).hexdigest()
 
 
 def build_baseline(root: Path) -> dict[str, object]:
@@ -39,8 +42,9 @@ def build_baseline(root: Path) -> dict[str, object]:
 
     for path in paths:
         relative_path = path.relative_to(root).as_posix()
-        size = path.stat().st_size
-        digest = sha256_file(path)
+        content = normalized_bytes(path)
+        size = len(content)
+        digest = hashlib.sha256(content).hexdigest()
         entry = {"path": relative_path, "bytes": size, "sha256": digest}
         files.append(entry)
         total_bytes += size

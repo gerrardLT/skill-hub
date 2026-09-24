@@ -5,7 +5,11 @@ import hashlib
 import json
 from pathlib import Path, PurePosixPath, PureWindowsPath
 
+from dev_loop_sync_verify import verify_sync
 from inventory import build_baseline
+from recipe_verify import verify_recipes
+from slot_verify import verify as verify_slots
+from phase5_gate import verify_phase5_release
 
 
 def verify_source(root: Path, baseline_path: Path) -> dict[str, object]:
@@ -1144,6 +1148,7 @@ PHASE4_ACTIONS = {
     "conflict-resolution",
     "conflict-tracking",
     "dependency-boundary",
+    "slot-boundary",
 }
 
 
@@ -1481,11 +1486,64 @@ def verify_phase4(
             decision_valid = False
             report["dangling_cluster_references"].append(f"{decision_id}:{legacy_cluster}")
 
-        if action in {"defer", "exclude", "merge", "rewrite", "dependency-boundary"}:
+        if action in {
+            "defer",
+            "exclude",
+            "merge",
+            "rewrite",
+            "dependency-boundary",
+            "slot-boundary",
+        }:
             for field in ("rationale", "potential_loss", "verification_method"):
                 if not nonempty_text(decision.get(field)):
                     decision_valid = False
                     report["invalid_decisions"].append(f"{decision_id}:missing-{field.replace('_', '-')}")
+
+        if action == "slot-boundary":
+            slot_id = decision.get("slot_id")
+            if not _safe_path_component(slot_id):
+                decision_valid = False
+                report["invalid_decisions"].append(f"{decision_id}:invalid-slot-id")
+            declared_clusters = decision.get("source_cluster_ids")
+            if not isinstance(declared_clusters, list) or not declared_clusters:
+                decision_valid = False
+                report["invalid_decisions"].append(
+                    f"{decision_id}:invalid-source-cluster-ids"
+                )
+                declared_clusters = []
+            valid_declared_clusters = set()
+            seen_clusters = set()
+            for source_cluster in declared_clusters:
+                if not nonempty_text(source_cluster):
+                    decision_valid = False
+                    report["invalid_decisions"].append(
+                        f"{decision_id}:invalid-source-cluster-id"
+                    )
+                elif source_cluster in seen_clusters:
+                    decision_valid = False
+                    report["invalid_decisions"].append(
+                        f"{decision_id}:duplicate-source-cluster-id:{source_cluster}"
+                    )
+                elif source_cluster not in cluster_ids:
+                    decision_valid = False
+                    report["dangling_cluster_references"].append(
+                        f"{decision_id}:{source_cluster}"
+                    )
+                else:
+                    valid_declared_clusters.add(source_cluster)
+                if nonempty_text(source_cluster):
+                    seen_clusters.add(source_cluster)
+            actual_clusters = {
+                cluster_id
+                for unit_id in values
+                if nonempty_text(unit_id) and unit_id in unit_ids
+                for cluster_id in memberships.get(unit_id, set())
+            }
+            if valid_declared_clusters != actual_clusters:
+                decision_valid = False
+                report["invalid_decisions"].append(
+                    f"{decision_id}:source-cluster-mismatch"
+                )
 
         overlap_pair = None
         if action in {"merge", "rewrite"}:
@@ -1770,6 +1828,220 @@ def verify_phase4(
     return report
 
 
+PHASE5_PILOT_SLOTS = (
+    "acceptance-criteria",
+    "problem-framing",
+    "requirements-quality-gate",
+    "requirements-rules",
+)
+
+
+def verify_phase5(
+    clusters_path: Path,
+    units_root: Path,
+    decisions_path: Path,
+    coverage_path: Path,
+    slots_root: Path,
+) -> dict[str, object]:
+    report: dict[str, object] = {
+        "gate": "phase-5-pilot-provenance",
+        "ok": False,
+        "pilot_slot_count": 0,
+        "mapped_unit_count": 0,
+        "errors": [],
+        "input_errors": [],
+        "jsonl_errors": [],
+    }
+    clusters_doc = _load_phase4_json(clusters_path, "clusters", report)
+    coverage_doc = _load_phase4_json(coverage_path, "coverage", report)
+    decisions = _load_phase4_jsonl(decisions_path, "decisions", report)
+
+    cluster_by_id: dict[str, dict[str, object]] = {}
+    memberships: dict[str, set[str]] = {}
+    if clusters_doc is not None:
+        clusters = clusters_doc.get("clusters")
+        if not isinstance(clusters, list):
+            report["input_errors"].append("clusters:invalid-clusters")
+        else:
+            for index, cluster in enumerate(clusters, 1):
+                if not isinstance(cluster, dict) or not nonempty_text(cluster.get("id")):
+                    report["input_errors"].append(
+                        f"clusters:cluster:{index}:invalid"
+                    )
+                    continue
+                cluster_id = cluster["id"]
+                if cluster_id in cluster_by_id:
+                    report["errors"].append(f"duplicate cluster id: {cluster_id}")
+                    continue
+                cluster_by_id[cluster_id] = cluster
+                unit_ids = cluster.get("unit_ids")
+                if not isinstance(unit_ids, list):
+                    report["input_errors"].append(
+                        f"clusters:{cluster_id}:invalid-unit-ids"
+                    )
+                    continue
+                for unit_id in unit_ids:
+                    if nonempty_text(unit_id):
+                        memberships.setdefault(unit_id, set()).add(cluster_id)
+
+    units: dict[str, dict[str, object]] = {}
+    try:
+        unit_paths = sorted(units_root.glob("*.jsonl"))
+    except OSError as error:
+        report["input_errors"].append(f"units:{type(error).__name__}")
+        unit_paths = []
+    for path in unit_paths:
+        for unit in _load_phase4_jsonl(path, f"units:{path.stem}", report):
+            unit_id = unit.get("id")
+            if not nonempty_text(unit_id):
+                report["input_errors"].append(f"units:{path.stem}:invalid-id")
+            elif unit_id in units:
+                report["errors"].append(f"duplicate unit id: {unit_id}")
+            else:
+                units[unit_id] = unit
+
+    decision_by_id: dict[str, dict[str, object]] = {}
+    for decision in decisions:
+        decision_id = decision.get("id")
+        if not nonempty_text(decision_id):
+            report["input_errors"].append("decisions:invalid-id")
+        elif decision_id in decision_by_id:
+            report["errors"].append(f"duplicate decision id: {decision_id}")
+        else:
+            decision_by_id[decision_id] = decision
+
+    source_to_slots: dict[str, dict[str, list[str]]] = {}
+    slot_to_sources: dict[str, dict[str, list[str]]] = {}
+    mapped_count = 0
+    valid_slots = 0
+    for slot_id in PHASE5_PILOT_SLOTS:
+        slot_root = slots_root / slot_id
+        contract = _load_phase4_json(
+            slot_root / "contract.json", f"slot:{slot_id}:contract", report
+        )
+        provenance = _load_phase4_json(
+            slot_root / "provenance.json", f"slot:{slot_id}:provenance", report
+        )
+        try:
+            (slot_root / "SKILL.md").read_text(encoding="utf-8")
+        except (OSError, UnicodeError) as error:
+            report["input_errors"].append(
+                f"slot:{slot_id}:skill:{type(error).__name__}"
+            )
+        if contract is None or provenance is None:
+            continue
+        valid_slots += 1
+        if (
+            contract.get("id") != slot_id
+            or provenance.get("id") != slot_id
+            or contract.get("version") != provenance.get("version")
+            or contract.get("status") != provenance.get("status")
+        ):
+            report["errors"].append(f"slot identity mismatch: {slot_id}")
+
+        mappings = provenance.get("unit_mappings")
+        if not isinstance(mappings, list) or not mappings:
+            report["errors"].append(f"invalid unit mappings: {slot_id}")
+            continue
+        mapped_count += len(mappings)
+        seen_units: set[str] = set()
+        actual_clusters: set[str] = set()
+        for index, mapping in enumerate(mappings, 1):
+            if not isinstance(mapping, dict):
+                report["errors"].append(
+                    f"invalid unit mapping: {slot_id}:{index}"
+                )
+                continue
+            unit_id = mapping.get("unit_id")
+            if not nonempty_text(unit_id) or unit_id not in units:
+                report["errors"].append(
+                    f"unknown unit: {slot_id}:{unit_id}"
+                )
+                continue
+            if unit_id in seen_units:
+                report["errors"].append(f"duplicate unit mapping: {slot_id}:{unit_id}")
+            seen_units.add(unit_id)
+            unit = units[unit_id]
+            actual_clusters.update(memberships.get(unit_id, set()))
+            expected_coordinates = (
+                unit.get("source_path"),
+                unit.get("origin_line_start"),
+                unit.get("origin_line_end"),
+            )
+            actual_coordinates = (
+                mapping.get("source_path"),
+                mapping.get("line_start"),
+                mapping.get("line_end"),
+            )
+            if actual_coordinates != expected_coordinates:
+                report["errors"].append(
+                    f"coordinate mismatch: {slot_id}:{unit_id}"
+                )
+            if mapping.get("disposition") != unit.get("status"):
+                report["errors"].append(
+                    f"disposition mismatch: {slot_id}:{unit_id}"
+                )
+
+            decision_ids = mapping.get("decision_ids")
+            if not isinstance(decision_ids, list) or not decision_ids:
+                report["errors"].append(
+                    f"missing decision: {slot_id}:{unit_id}"
+                )
+                decision_ids = []
+            for decision_id in decision_ids:
+                decision = decision_by_id.get(decision_id)
+                if decision is None:
+                    report["errors"].append(
+                        f"unknown decision: {slot_id}:{unit_id}:{decision_id}"
+                    )
+                elif (
+                    decision.get("action") != "slot-boundary"
+                    or decision.get("slot_id") != slot_id
+                    or unit_id not in decision.get("unit_ids", [])
+                ):
+                    report["errors"].append(
+                        f"decision does not bind mapping: {slot_id}:{unit_id}:{decision_id}"
+                    )
+
+            source_path = unit.get("source_path")
+            if not nonempty_text(source_path):
+                report["errors"].append(f"invalid source path: {slot_id}:{unit_id}")
+                continue
+            source = PurePosixPath(source_path).parts[0]
+            source_to_slots.setdefault(source, {}).setdefault(slot_id, []).append(unit_id)
+            slot_to_sources.setdefault(slot_id, {}).setdefault(source, []).append(unit_id)
+
+        declared_clusters = provenance.get("source_clusters")
+        if (
+            not isinstance(declared_clusters, list)
+            or len(declared_clusters) != len(set(declared_clusters))
+            or set(declared_clusters) != actual_clusters
+            or any(cluster_id not in cluster_by_id for cluster_id in declared_clusters)
+        ):
+            report["errors"].append(f"source cluster mismatch: {slot_id}")
+
+    for index in (source_to_slots, slot_to_sources):
+        for outer_value in index.values():
+            for unit_ids in outer_value.values():
+                unit_ids.sort()
+    expected_indexes = {
+        "source_to_slots": source_to_slots,
+        "slot_to_sources": slot_to_sources,
+    }
+    declared_indexes = (
+        coverage_doc.get("slot_mappings") if coverage_doc is not None else None
+    )
+    if declared_indexes != expected_indexes:
+        report["errors"].append("coverage indexes are not symmetric with provenance")
+
+    report["pilot_slot_count"] = valid_slots
+    report["mapped_unit_count"] = mapped_count
+    for key in ("errors", "input_errors", "jsonl_errors"):
+        report[key] = sorted(set(report[key]))
+    report["ok"] = not any(report[key] for key in ("errors", "input_errors", "jsonl_errors"))
+    return report
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Verify curated skill assets")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1801,6 +2073,29 @@ def parse_args() -> argparse.Namespace:
     phase4.add_argument("--units-root", type=Path, required=True)
     phase4.add_argument("--clusters", type=Path, required=True)
     phase4.add_argument("--decisions", type=Path, required=True)
+    phase5 = subparsers.add_parser("phase5")
+    phase5.add_argument("--clusters", type=Path, required=True)
+    phase5.add_argument("--units-root", type=Path, required=True)
+    phase5.add_argument("--decisions", type=Path, required=True)
+    phase5.add_argument("--coverage", type=Path, required=True)
+    phase5.add_argument("--slots-root", type=Path, required=True)
+    phase5_release = subparsers.add_parser("phase5-release")
+    phase5_release.add_argument("--workspace-root", type=Path, default=Path("."))
+    phase6 = subparsers.add_parser("phase6")
+    phase6.add_argument("--clusters", type=Path, required=True)
+    phase6.add_argument("--units-root", type=Path, required=True)
+    phase6.add_argument("--slots-root", type=Path, required=True)
+    phase6.add_argument("--review-queue", type=Path, required=True)
+    phase6.add_argument("--release-status", type=Path, required=True)
+    phase6.add_argument("--inventory", type=Path, required=True)
+    phase7 = subparsers.add_parser("phase7")
+    phase7.add_argument("--recipes-root", type=Path, required=True)
+    phase7.add_argument("--slots-root", type=Path, required=True)
+    phase7.add_argument("--recipe", type=Path)
+    phase8_sync = subparsers.add_parser("phase8-sync")
+    phase8_sync.add_argument("--audit", type=Path, required=True)
+    phase8_sync.add_argument("--workspace-root", type=Path, required=True)
+    phase8_sync.add_argument("--local-install", action="store_true")
     return parser.parse_args()
 
 
@@ -1845,6 +2140,45 @@ def main() -> int:
             args.clusters,
             args.decisions,
         )
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.command == "phase5":
+        report = verify_phase5(
+            args.clusters,
+            args.units_root,
+            args.decisions,
+            args.coverage,
+            args.slots_root,
+        )
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.command == "phase5-release":
+        report = verify_phase5_release(args.workspace_root.resolve())
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.command == "phase6":
+        report = verify_slots(
+            args.clusters,
+            args.units_root,
+            args.slots_root,
+            args.review_queue,
+            args.release_status,
+            args.inventory,
+        )
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.command == "phase7":
+        report = verify_recipes(
+            args.recipes_root,
+            args.slots_root,
+            Path.cwd(),
+            args.recipe,
+        )
+        report["gate"] = "phase-7-recipe-composition"
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.command == "phase8-sync":
+        report = verify_sync(args.audit, args.workspace_root, source_only=not args.local_install)
         print(json.dumps(report, ensure_ascii=False, sort_keys=True))
         return 0 if report["ok"] else 1
     return 2

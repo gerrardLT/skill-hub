@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Implemented code, its task specification, test output, and change list.",
+    "output": "A corrected implementation and structured self-review evidence, not an independent verdict."
+  },
+  "dependencies": [
+    "cluster:subagent-task-pipeline"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "developer-self-check-and-fix",
+  "inputs": [
+    "Implemented code, its task specification, test output, and change list."
+  ],
+  "outputs": [
+    "A corrected implementation and structured self-review evidence, not an independent verdict."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Have the implementer inspect specification coverage, quality, scope, and test truth, then fix discovered issues.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

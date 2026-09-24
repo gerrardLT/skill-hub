@@ -1,0 +1,47 @@
+{
+  "case_id": "req-ac-h06-scanner-unavailable",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "271b578b0742cce4f8b450523a15c86eec9af5cfede32607c8e59a6a2778b681"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "1ece527051be7c5848457b776573639ababd995555aa518c57cb56b571b4b382"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h06-scanner-unavailable",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "271b578b0742cce4f8b450523a15c86eec9af5cfede32607c8e59a6a2778b681"
+      }
+    },
+    "reads": [
+      "skills/discovery-process/SKILL.md",
+      "skills/discovery-process/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h06-scanner-unavailable/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h06-scanner-unavailable/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

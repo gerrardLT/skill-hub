@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A competitive question, case material, historical context, and applicability boundary.",
+    "output": "A case-backed hypothesis, analogy limits, and follow-up evidence requirements."
+  },
+  "dependencies": [
+    "cluster:source-metadata-and-provenance"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "competitive-case-library",
+  "inputs": [
+    "A competitive question, case material, historical context, and applicability boundary."
+  ],
+  "outputs": [
+    "A case-backed hypothesis, analogy limits, and follow-up evidence requirements."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Use bounded competitive cases and historical examples to generate hypotheses without treating examples as current evidence.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

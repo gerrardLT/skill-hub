@@ -1,0 +1,47 @@
+{
+  "case_id": "req-ac-h03-webhook-retry-boundary",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "4b645cd27230bb7740bd9a9dafe4425e11f55fcd6d11c181a5712d5ce2ae6e7f"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "94f6b73413724b6e11800b620b9fe8fdb88205d3b48b3eb1e71b45af4d46b32f"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h03-webhook-retry-boundary",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "4b645cd27230bb7740bd9a9dafe4425e11f55fcd6d11c181a5712d5ce2ae6e7f"
+      }
+    },
+    "reads": [
+      "skills/prd-development/SKILL.md",
+      "skills/prd-development/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h03-webhook-retry-boundary/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h03-webhook-retry-boundary/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

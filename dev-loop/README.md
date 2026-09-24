@@ -1,60 +1,44 @@
 # Dev Loop 研发闭环
 
-六步研发工作流编排器，轻量、原生、极简的 Qoder 插件。
+基于 Capability Compiler 发布契约的六步研发工作流编排器。
 
 ```text
-①需求 → ②设计 → ③实现 → ④验收 → ⑤交付 → ⑥复盘 ─┐
-  ↑                                              │
-  └──────────── 经验回流，开启下一轮 ←────────────┘
+用户意图 -> released recipe -> released slot contract -> 可验证产物
 ```
 
 ## 它是什么
 
-一个专精于**研发闭环总控**的元编排器（`dev-loop`）：
-- **不硬编码具体方法论**：自己不做笨重实现，只负责**路由、传递、把关、记忆**；
-- **直连 Qoder 成熟核心能力**：无缝调度本地已装的成熟插件（`superpowers`、`ui-ux-pro-max`、`product-management`、`playwright` 等），不搞复杂的外部仓库全家桶；
-- **硬 Gate 把关**：每一步必须满足严格的输入/输出验收标准方可进入下一步；
-- **轻量状态记忆**：基于项目本地的 `.workflow/state.md` 进行断点接力与决策追踪；
-- **灵活调用**：可从头到尾跑完整研发全生命周期闭环，也可按需单步独立调用。
+`dev-loop` 只负责路由、传递、Gate、状态和证据生命周期：
 
-## 六步极简路由矩阵
+- 根据完整闭环、接力或单步意图选择 `recipes/` 中的 released recipe；
+- 按 recipe 的步骤、映射和精确版本引用调用 `slots/` 中的 released contract；
+- 保留上游字段、未知项、来源、权限和稳定 ID；
+- 在 `needs-input`、`failed` 或 `blocked` 时停止下游；
+- 在上游改变时使旧证据失效并从受影响步骤重跑；
+- 保持 QA 只报不修，并把复盘输出映射为下一轮需求输入。
 
-| 研发步骤 | 核心调度能力 | 职责定位与核心产出 |
-|---|---|---|
-| **① 需求** | `product-management:PRD生成` | 需求分析、用户痛点与 Given/When/Then 验收标准 → `docs/prd.md` |
-| **② 设计** | `ui-ux-pro-max-skill:ui-ux-pro-max` | 页面信息架构、异常态覆盖（空/载/错/权）与样式系统 → `docs/design.md` |
-| **③ 实现** | `superpowers:writing-plans` + `test-driven-development` | 任务拆解、测试先行与高质量编码实现 → `src/` + 自动化单测 |
-| **④ 验收** | `design-review:design-qa` + `test-case-generator` + `superpowers:verification-before-completion` | 独立运行、浏览器端到端走查与证据校验（只报不修） → `docs/qa-report.md` |
-| **⑤ 交付** | `shipping-artifacts` | 系统架构说明、数据链路、环境变量清单与部署指南 → `docs/` 交付集 + `README.md` |
-| **⑥ 复盘** | `superpowers:systematic-debugging` + `product-management:产品指标复盘` | 真实运行复盘、指标差距归因，输出下一轮需求项 → `docs/retro.md` 回流至 ① |
+它不直接调用原始 `skills/`，不复制 slot 方法，也不提供自产或未验证平替。
 
-> 详细阶段定义与 Gate 准则见 [references/stages.md](skills/dev-loop/references/stages.md)。
+## Recipe 入口
 
-## 常用触发方式
+| 意图 | Recipe |
+|---|---|
+| 需求或 PRD | `recipes/write-prd.json` |
+| Web 流程设计 | `recipes/design-web-flow.json` |
+| TDD 功能实现 | `recipes/build-feature-tdd.json` |
+| 只做 QA | `recipes/qa-only.json` |
+| 发布交付 | `recipes/ship-release.json` |
+| 复盘回流需求 | `recipes/retro-to-requirements.json` |
+| 完整研发闭环 | `recipes/full-dev-loop.json` |
 
-- **全流程闭环**："从 0 开始做一个个人记账小工具" / "按 dev-loop 跑完整流程"；
-- **断点接力推进**："继续上次的项目" / "dev-loop 下一步"（自动读取当前项目的 `.workflow/state.md`）；
-- **单步独立调用**："只帮我把这个需求整理成 PRD" / "只对这个页面做端到端验收走查"。
+只有 recipe 自身、其 release evidence 以及全部依赖 slot 都验证为 released 时才可执行。否则返回 `blocked`；若 recipe 已发布但缺少 contract 要求的必要输入，则返回 `needs-input`。
 
-## 项目状态文件（`.workflow/state.md`）
+详细路由和替换规则见 `skills/dev-loop/references/routing.md`；阶段职责与 Gate 边界见 `skills/dev-loop/references/stages.md`。
 
-运行时自动维护在目标项目根目录下：
-```markdown
-# Dev Loop 状态
-项目：<项目名称>                最近更新：2026-09-08
-当前步：③ 实现（进行中）
+## 状态记录
 
-## 产物索引
-① 需求  docs/prd.md ✅
-② 设计  docs/design.md ✅
-③ 实现  src/ （进行中）
-④ 验收  —
-⑤ 交付  —
-⑥ 复盘  —
+`.workflow/state.md` 记录当前 recipe/version、每个 slot/version、输入哈希、产物和证据路径、四态结果以及失效原因。文件存在或人工撰写 PASS 不能替代实际 Gate 证据。
 
-## 决策记录
-- [2026-09-08] 设计选型确定为沉浸式暗色模式，覆盖空状态与加载态
+## 当前安全行为
 
-## 下一步
-- 完成主流程端到端单测与业务实现
-```
+在 Capability Compiler 尚无 released recipes 或 released slots 时，插件必须明确 `blocked`。这表示路由保护正常工作，不代表流程或能力已经发布。

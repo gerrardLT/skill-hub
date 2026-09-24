@@ -1,0 +1,89 @@
+{
+  "case_id": "req-ac-t01-normal-prd",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "status": "passed",
+  "output": {
+    "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd/full_output.md",
+    "sha256": "db293b6ef025c70ee6df06290b421b4d654d0ff57906149850227103928192a2"
+  },
+  "local_operations": [
+    {
+      "operation": "list_directory",
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd",
+      "result": "failed: directory did not yet exist"
+    },
+    {
+      "operation": "read_file",
+      "path": "skills/prd-development/SKILL.md",
+      "result": "success"
+    },
+    {
+      "operation": "locate_directory",
+      "path": ".",
+      "query": "req-ac-t01-normal-prd",
+      "result": "found existing run directories; contents were not read"
+    },
+    {
+      "operation": "list_directory",
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd",
+      "result": "listed filenames only; file contents were not read"
+    },
+    {
+      "operation": "search_text",
+      "path": "evals excluding evals/runs",
+      "query": "req-ac-t01-normal-prd",
+      "result": "found exact tuning record in evals/cases/tuning/requirements-to-ac.json"
+    },
+    {
+      "operation": "read_file_range",
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "range": "lines 1-60",
+      "result": "success; included the exact tuning record and adjacent records"
+    },
+    {
+      "operation": "read_file",
+      "path": "skills/prd-development/template.md",
+      "result": "success; locally referenced by the original skill"
+    },
+    {
+      "operation": "list_directory",
+      "path": "evals/runs/requirements-to-ac/iteration-1",
+      "result": "success"
+    },
+    {
+      "operation": "create_directory",
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd",
+      "result": "success"
+    },
+    {
+      "operation": "write_file",
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd/full_output.md",
+      "result": "success"
+    },
+    {
+      "operation": "sha256",
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd/full_output.md",
+      "result": "db293b6ef025c70ee6df06290b421b4d654d0ff57906149850227103928192a2"
+    },
+    {
+      "operation": "write_file",
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t01-normal-prd/tool_evidence.json",
+      "result": "success"
+    }
+  ],
+  "constraints": {
+    "candidate_files_read": false,
+    "holdout_files_read": false,
+    "prior_eval_output_contents_read": false,
+    "grades_read": false,
+    "provenance_read": false,
+    "mutations_read": false,
+    "recipes_read": false,
+    "other_skills_read": false,
+    "third_party_scripts_run": false,
+    "run_json_written": false
+  },
+  "failure": null
+}

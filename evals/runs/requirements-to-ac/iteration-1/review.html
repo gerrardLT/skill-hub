@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "requirements-to-ac", "runs": [{"id": "eval-01-req-ac-h01-shift-alarm-handoff-with_skill-run-1", "prompt": "Turn this validated brief into requirements and acceptance criteria. Problem: cold-storage alarms are sometimes acknowledged by the outgoing warehouse supervisor but are not visible to the incoming supervisor. Evidence: 9 incident records from the last six weeks and 3 supervisor interviews. Primary user: warehouse shift supervisor. Goal: preserve alarm acknowledgement context across shift handover. Constraint: the existing alarm ID remains the source of truth. Include success, stale acknowledgement, permission, unavailable-history, and recovery behavior. Do not choose a UI or implementation stack.", "eval_id": 1, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n# 1. Problem Frame\n\nStage status: needs-input\n\n## Classified items\n\n1. `PF-1` \u2014 `fact` \u2014 Cold-storage alarms are sometimes acknowledged by the outgoing warehouse supervisor but are not visible to the incoming supervisor. Source: supplied product input, Problem. Authority: user-supplied validated brief.\n2. `PF-2` \u2014 `fact` \u2014 The evidence base comprises 9 incident records from the last six weeks. Source: supplied product input, Evidence. Authority: user-supplied validated brief.\n3. `PF-3` \u2014 `fact` \u2014 The evidence base also comprises 3 supervisor interviews. Source: supplied product input, Evidence. Authority: user-supplied validated brief.\n4. `PF-4` \u2014 `fact` \u2014 The primary user is the warehouse shift supervisor. Source: supplied product input, Primary user. Authority: user-supplied validated brief.\n5. `PF-5` \u2014 `fact` \u2014 The stated goal is to preserve alarm acknowledgement context across shift handover. Source: supplied product input, Goal. Authority: user-supplied validated brief.\n6. `PF-6` \u2014 `fact` \u2014 The existing alarm ID must remain the source of truth. Source: supplied product input, Constraint. Authority: user-supplied validated brief.\n7. `PF-7` \u2014 `fact` \u2014 Required behavioral coverage includes success, stale acknowledgement, permission, unavailable-history, and recovery behavior. Source: supplied product input. Authority: user-supplied validated brief.\n8. `PF-8` \u2014 `fact` \u2014 No UI or implementation stack may be chosen. Source: supplied product input. Authority: user-supplied validated brief.\n9. `PF-9` \u2014 `assumption` \u2014 Failure to expose prior acknowledgement context may impair an incoming supervisor's continuity of alarm handling. Evidence: inferred from PF-1 and PF-5; no direct impact statement was supplied.\n10. `PF-10` \u2014 `open-question` \u2014 What fields constitute \u201calarm acknowledgement context\u201d is not supplied. Evidence: none supplied.\n11. `PF-11` \u2014 `open-question` \u2014 What makes an acknowledgement stale, and what observable behavior must occur when it is stale, are not supplied. Evidence: none supplied.\n12. `PF-12` \u2014 `open-question` \u2014 Which roles or permissions may view acknowledgement context, and the required denial behavior, are not supplied. Evidence: none supplied.\n13. `PF-13` \u2014 `open-question` \u2014 The required observable behavior when acknowledgement history is unavailable is not supplied. Evidence: none supplied.\n14. `PF-14` \u2014 `open-question` \u2014 The recovery trigger and required observable post-recovery behavior are not supplied. Evidence: none supplied.\n15. `PF-15` \u2014 `open-question` \u2014 Shift-handover boundaries and how an incoming supervisor is identified are not supplied. Evidence: none supplied.\n\n## Target User, Problem, Impact, and Evidence\n\n- Target user: warehouse shift supervisor (PF-4).\n- Problem: acknowledgement context for a cold-storage alarm can fail to remain visible across a supervisor shift handover (PF-1).\n- Intended impact: preserve that context across handover while retaining the existing alarm ID as authoritative (PF-5, PF-6).\n- Evidence: 9 incident records from the last six weeks and 3 supervisor interviews (PF-2, PF-3). Their contents were not supplied, so no additional findings are attributed to them.\n- Conflicts: none supplied.\n- Critical gaps: PF-10 through PF-15 prevent complete, authoritative behavioral requirements and acceptance criteria for all requested paths.\n\n# 2. Requirements and Rules\n\nStage status: needs-input\n\n## Requirements\n\n- `REQ-1` \u2014 The product shall preserve the supplied acknowledgement context for a cold-storage alarm across shift handover so that it is available to the incoming warehouse shift supervisor. Sources: PF-1, PF-4, PF-5. Authority: user-supplied validated brief. Relationship: constrained by RULE-1; context composition remains OPEN-1.\n- `REQ-2` \u2014 The product shall provide behavior for a stale acknowledgement without treating an unspecified stale definition or response as decided. Source: PF-7. Authority: user-supplied validated brief. Relationship: blocked in detail by OPEN-2.\n- `REQ-3` \u2014 The product shall enforce permission-dependent behavior for access to acknowledgement context without assuming which permissions or denial response apply. Source: PF-7. Authority: user-supplied validated brief. Relationship: blocked in detail by OPEN-3.\n- `REQ-4` \u2014 The product shall provide observable behavior when acknowledgement history is unavailable without assuming the required outcome. Source: PF-7. Authority: user-supplied validated brief. Relationship: blocked in detail by OPEN-4.\n- `REQ-5` \u2014 The product shall provide recovery behavior following unavailable acknowledgement history without assuming a trigger or post-recovery outcome. Source: PF-7. Authority: user-supplied validated brief. Relationship: blocked in detail by OPEN-5.\n\n## Rules\n\n- `RULE-1` \u2014 The existing alarm ID remains the source of truth for associating alarm acknowledgement context with an alarm. Source: PF-6. Authority: user-supplied validated brief. Applies to: REQ-1 through REQ-5.\n- `RULE-2` \u2014 Requirements and criteria must not select or prescribe a UI or implementation stack. Source: PF-8. Authority: user-supplied validated brief. Applies to: all records.\n- `RULE-3` \u2014 Success, stale acknowledgement, permission, unavailable-history, and recovery behavior are required coverage classes. Source: PF-7. Authority: user-supplied validated brief. Applies to: REQ-1 through REQ-5 and downstream AC.\n\n## Dependencies\n\n- `DEP-1` \u2014 Testable completion of REQ-1 depends on an authoritative definition of acknowledgement context. Source: PF-10. Authority: unresolved product decision.\n- `DEP-2` \u2014 Testable completion of REQ-2 depends on an authoritative stale-acknowledgement rule and expected response. Source: PF-11. Authority: unresolved product decision.\n- `DEP-3` \u2014 Testable completion of REQ-3 depends on an authoritative permission matrix and denied-access behavior. Source: PF-12. Authority: unresolved product decision.\n- `DEP-4` \u2014 Testable completion of REQ-4 depends on an authoritative unavailable-history outcome. Source: PF-13. Authority: unresolved product decision.\n- `DEP-5` \u2014 Testable completion of REQ-5 depends on an authoritative recovery trigger and post-recovery outcome. Source: PF-14. Authority: unresolved product decision.\n\n## Scope\n\n- `SCOPE-1` \u2014 Included: cold-storage alarm acknowledgement context across warehouse supervisor shift handover. Sources: PF-1, PF-4, PF-5.\n- `SCOPE-2` \u2014 Included: success, stale acknowledgement, permission, unavailable-history, and recovery behavior. Source: PF-7.\n- `SCOPE-3` \u2014 Excluded: choosing a UI or implementation stack. Source: PF-8.\n- `SCOPE-4` \u2014 Preserved constraint: the existing alarm ID is authoritative. Source: PF-6.\n\n## Open Items\n\n- `OPEN-1` \u2014 Define the acknowledgement-context fields required to be preserved. Source: PF-10. Needed for: REQ-1 and complete success criteria.\n- `OPEN-2` \u2014 Define staleness, including any time/event boundary, and the required stale behavior. Source: PF-11. Needed for: REQ-2.\n- `OPEN-3` \u2014 Define authorized and unauthorized actors and the observable denial behavior. Source: PF-12. Needed for: REQ-3.\n- `OPEN-4` \u2014 Define the observable outcome when acknowledgement history is unavailable. Source: PF-13. Needed for: REQ-4.\n- `OPEN-5` \u2014 Define the recovery trigger and required observable outcome after recovery. Source: PF-14. Needed for: REQ-5.\n- `OPEN-6` \u2014 Define the operational boundary of shift handover and identification of the incoming supervisor. Source: PF-15. Needed for: REQ-1.\n\n# 3. Acceptance Criteria\n\nStage status: needs-input\n\n## Criteria that can be stated without inventing product decisions\n\n### AC-1 \u2014 Alarm identity is preserved across handover\n\nMapping: REQ-1, RULE-1, SCOPE-1, SCOPE-4. Class: success and non-regression.\n\n- **Given** a cold-storage alarm identified by an existing alarm ID has acknowledgement context and a warehouse supervisor shift handover occurs,\n- **When** the incoming warehouse shift supervisor accesses the acknowledgement context for that alarm,\n- **Then** the context is associated with that same existing alarm ID,\n- **And** no replacement identifier is treated as the source of truth.\n\nTestability limitation: the criterion can verify identity continuity, but complete context preservation cannot be verified until OPEN-1 and OPEN-6 are resolved.\n\n## Unresolved criteria\n\nNo Given/When/Then criteria are emitted for the following paths because doing so would invent required preconditions or outcomes:\n\n- `AC-GAP-1` \u2014 Complete success behavior for preserved context: OPEN-1 and OPEN-6 unresolved. Affects REQ-1 and RULE-3.\n- `AC-GAP-2` \u2014 Stale acknowledgement behavior: OPEN-2 unresolved. Affects REQ-2 and RULE-3.\n- `AC-GAP-3` \u2014 Permission behavior: OPEN-3 unresolved. Affects REQ-3 and RULE-3.\n- `AC-GAP-4` \u2014 Unavailable-history behavior: OPEN-4 unresolved. Affects REQ-4 and RULE-3.\n- `AC-GAP-5` \u2014 Recovery behavior: OPEN-5 unresolved. Affects REQ-5 and RULE-3.\n\n## Coverage Register\n\n- Success: partial \u2014 AC-1 covers alarm-ID continuity; context completeness and handover boundary remain unresolved.\n- Error/unavailable-history: uncovered \u2014 OPEN-4.\n- Boundary/stale acknowledgement: uncovered \u2014 OPEN-2.\n- Permission: uncovered \u2014 OPEN-3.\n- Recovery: uncovered \u2014 OPEN-5.\n- Non-regression: covered for the existing alarm ID by AC-1 and RULE-1.\n\n# 4. Requirements Quality Gate\n\nQA mode: read-only; findings are reported and no upstream artifact is repaired.\n\n## Verdict\n\nStatus: needs-input\n\n## Findings\n\n- `FIND-1` \u2014 Severity: blocking-for-pass. Violated gate: `applicable-path-coverage`. Location: AC-GAP-2 through AC-GAP-5 and Coverage Register. Evidence: RULE-3 requires stale acknowledgement, permission, unavailable-history, and recovery coverage, while OPEN-2 through OPEN-5 lack authoritative preconditions or outcomes. Consequence: those paths cannot be tested without inventing product decisions.\n- `FIND-2` \u2014 Severity: major. Violated gate: `ac-testability`. Location: AC-1 testability limitation. Evidence: OPEN-1 does not define acknowledgement-context fields and OPEN-6 does not define the handover boundary. Consequence: AC-1 can verify alarm-ID continuity but cannot establish complete success behavior.\n- `FIND-3` \u2014 Severity: major. Violated gate: `unknown-preservation`. Location: PF-10 through PF-15, OPEN-1 through OPEN-6, and AC-GAP-1 through AC-GAP-5. Evidence: the unknowns are explicitly retained rather than converted to defaults. Consequence: a pass is unavailable, but no fabricated rule enters the chain.\n\n## Gate Results\n\n- `artifact-availability`: passed \u2014 all four chain sections are present in this output.\n- `end-to-end-traceability`: passed \u2014 PF IDs trace to REQ/RULE/DEP/SCOPE/OPEN records, and AC-1 maps to REQ-1 and RULE-1.\n- `critical-rule-retention`: passed \u2014 RULE-1 retains the existing alarm ID as source of truth; RULE-3 retains every requested behavior class.\n- `scope-and-authority`: passed \u2014 scope is limited to the supplied cold-storage alarm handover problem; no UI, stack, permission policy, threshold, or recovery policy is selected.\n- `unknown-preservation`: passed \u2014 PF-10 through PF-15 remain OPEN-1 through OPEN-6 and are reported as AC gaps.\n- `ac-testability`: needs-input \u2014 AC-1 is observable for identifier continuity, but complete success and four required behavioral paths lack authoritative expected outcomes.\n- `applicable-path-coverage`: needs-input \u2014 stale acknowledgement, permission, unavailable-history, and recovery criteria cannot be validly authored from supplied evidence.\n- `evidence-backed-verdict`: passed \u2014 this `needs-input` verdict follows directly from FIND-1 through FIND-3 and the cited open items.\n- `read-only-review`: passed \u2014 QA reports gaps and makes no repair.\n\n## Inputs Required for a Passing Chain\n\n1. Authoritative definition of the acknowledgement context to preserve.\n2. Authoritative shift-handover boundary and incoming-supervisor identification rule.\n3. Authoritative stale-acknowledgement definition and expected observable behavior.\n4. Authoritative permission matrix and denied-access behavior.\n5. Authoritative unavailable-history behavior.\n6. Authoritative recovery trigger and expected post-recovery behavior.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": false, "evidence": "Expected passed; parsed needs-input."}, {"text": "required_behaviors: separate supplied evidence from product intent", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the alarm-ID source-of-truth rule", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover shift-handover success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover stale acknowledgement and unavailable history", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover permission and recovery behavior", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid solution design", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a quantified incident reduction", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: design approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: implementation completion", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 1, "failed": 10, "total": 11, "pass_rate": 0.09090909090909091}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 12349, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": ["Gate mismatch present."], "workarounds": []}}}, {"id": "eval-01-req-ac-h01-shift-alarm-handoff-without_skill-run-1", "prompt": "Turn this validated brief into requirements and acceptance criteria. Problem: cold-storage alarms are sometimes acknowledged by the outgoing warehouse supervisor but are not visible to the incoming supervisor. Evidence: 9 incident records from the last six weeks and 3 supervisor interviews. Primary user: warehouse shift supervisor. Goal: preserve alarm acknowledgement context across shift handover. Constraint: the existing alarm ID remains the source of truth. Include success, stale acknowledgement, permission, unavailable-history, and recovery behavior. Do not choose a UI or implementation stack.", "eval_id": 1, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: passed\n\n# Cold-Storage Alarm Acknowledgement Handover Requirements\n\n## 1. Purpose\n\nPreserve the context of cold-storage alarm acknowledgements across warehouse shift handovers so that an incoming warehouse shift supervisor can determine what was acknowledged, by whom, when, and with what operational context. The existing alarm ID remains the source of truth for associating acknowledgement history with an alarm.\n\n## 2. Problem and Evidence\n\n- **Primary user:** Warehouse shift supervisor.\n- **Observed problem:** An outgoing supervisor may acknowledge a cold-storage alarm, but the acknowledgement and its context are not visible to the incoming supervisor.\n- **Evidence:** 9 incident records from the last six weeks and 3 supervisor interviews.\n- **User impact:** The incoming supervisor may lack the context needed to assess the alarm and continue the response safely and consistently.\n- **Goal:** Preserve alarm acknowledgement context across shift handover.\n\n## 3. Scope and Definitions\n\n### In Scope\n\n- Recording acknowledgement context against an existing alarm ID.\n- Making acknowledgement context available to an authorized incoming supervisor.\n- Distinguishing current acknowledgement context from stale context.\n- Enforcing permission checks for recording and retrieving acknowledgement context.\n- Defining behavior when acknowledgement history is unavailable.\n- Recovering access to acknowledgement history after a temporary failure.\n\n### Definitions\n\n- **Alarm:** A cold-storage alarm identified by the existing alarm ID.\n- **Acknowledgement record:** The preserved context for an acknowledgement, including at minimum the alarm ID, acknowledging actor, acknowledgement timestamp, and acknowledgement context supplied during the acknowledgement workflow.\n- **Current acknowledgement:** The acknowledgement record that is valid for the alarm's current occurrence or lifecycle state.\n- **Stale acknowledgement:** A record that exists for the alarm ID but does not apply to the alarm's current occurrence or lifecycle state.\n- **Authorized supervisor:** A user permitted to view and/or record alarm acknowledgement context under existing access policy.\n\n\ud83d\udd35 **Open Question:** What existing alarm lifecycle signal distinguishes a new occurrence, reactivation, or reset under the same alarm ID?\n\n\ud83d\udd35 **Open Question:** Which acknowledgement-context fields are mandatory beyond actor and timestamp, and what retention period applies?\n\n## 4. Outcome and Success Measures\n\n### Intended Outcome\n\nIncoming supervisors can reliably recover the relevant acknowledgement context for an active cold-storage alarm without treating context from an earlier occurrence as current.\n\n### Proposed Measures\n\n- **Primary metric:** Percentage of tested or audited shift handovers involving an acknowledged active alarm in which the incoming authorized supervisor can retrieve the applicable acknowledgement context by alarm ID.\n- **Guardrails:** No acknowledgement context is exposed to unauthorized users; no stale acknowledgement is represented as current; existing alarm IDs are neither replaced nor reinterpreted as a secondary identifier.\n- **Operational measure:** Percentage of temporary history-unavailability events in which history becomes accessible after recovery without requiring the acknowledgement to be recreated.\n\n\ud83d\udd35 **Open Question:** Current baselines, target values, measurement window, and data owner are not provided and must be agreed before launch approval.\n\n## 5. Functional Requirements\n\n### REQ-01 \u2014 Preserve acknowledgement context\n\nThe product shall persist an acknowledgement record when an authorized supervisor acknowledges a cold-storage alarm. The record shall be associated with the existing alarm ID and shall include sufficient identity and time context to support shift handover.\n\n### REQ-02 \u2014 Retrieve context by source-of-truth alarm ID\n\nThe product shall retrieve acknowledgement history using the existing alarm ID as the authoritative association key. It shall not create or require a replacement alarm identifier as the source of truth.\n\n### REQ-03 \u2014 Support cross-shift visibility\n\nThe product shall make the applicable acknowledgement record available to an authorized incoming supervisor independently of the outgoing supervisor's active session or shift status.\n\n### REQ-04 \u2014 Preserve record integrity\n\nThe product shall preserve who acknowledged the alarm, when the acknowledgement occurred, and the recorded acknowledgement context without attributing the action to the incoming supervisor. Any subsequent change shall remain distinguishable from the original acknowledgement.\n\n### REQ-05 \u2014 Identify stale acknowledgement\n\nThe product shall evaluate acknowledgement history against the alarm's current occurrence or lifecycle state. A record that does not apply to the current occurrence shall be identified as stale and shall not be represented as the current acknowledgement.\n\n\ud83d\udd36 **Assumption:** The existing alarm domain provides a reliable lifecycle or occurrence signal while retaining the same alarm ID. If it does not, the stale-detection rule cannot be implemented without an additional approved source-of-truth attribute.\n\n### REQ-06 \u2014 Enforce permissions\n\nThe product shall apply existing authorization policy separately to viewing acknowledgement history and recording an acknowledgement. A denied action shall not disclose protected acknowledgement context or alter existing records.\n\n\ud83d\udd35 **Open Question:** Which roles, sites, or shift assignments grant view and acknowledge permissions, and may those permissions differ?\n\n### REQ-07 \u2014 Handle unavailable history safely\n\nIf acknowledgement history cannot be retrieved, the product shall report that history is unavailable and shall not infer that no acknowledgement exists. Alarm identity and current alarm state, when otherwise available, shall remain distinct from history availability.\n\n### REQ-08 \u2014 Recover after temporary history failure\n\nAfter acknowledgement history becomes available again, the product shall return the persisted record associated with the same alarm ID without requiring a duplicate acknowledgement. Recovery shall not create, overwrite, or silently merge acknowledgement records.\n\n### REQ-09 \u2014 Avoid duplicate effects\n\nRepeated retrieval or recovery attempts shall not modify acknowledgement history. If the same acknowledgement submission is retried because its outcome was uncertain, the product shall avoid creating multiple logically identical acknowledgement records.\n\n### REQ-10 \u2014 Provide auditable outcomes\n\nSuccessful, denied, stale, unavailable, and recovered outcomes shall be distinguishable in operational records sufficiently to investigate handover failures, subject to existing access and retention policy.\n\n## 6. User Stories and Acceptance Criteria\n\n### Story 1 \u2014 Preserve and hand over a successful acknowledgement\n\nAs a warehouse shift supervisor, I want an alarm acknowledgement and its context to persist across shifts so that the incoming supervisor can continue the response with the correct context.\n\n**Acceptance Criteria**\n\n```gherkin\nScenario: Incoming supervisor retrieves a current acknowledgement\n  Given a cold-storage alarm exists with an existing alarm ID\n  And an authorized outgoing supervisor has acknowledged the current alarm occurrence\n  And the acknowledgement record contains the alarm ID, acknowledging actor, timestamp, and recorded context\n  When an authorized incoming supervisor requests acknowledgement history for that alarm ID\n  Then the applicable acknowledgement record is returned\n  And the acknowledging actor and original timestamp are preserved\n  And the record is identified as applicable to the current alarm occurrence\n  And retrieval does not depend on the outgoing supervisor remaining signed in or on shift\n\nScenario: Alarm ID remains authoritative\n  Given an acknowledgement is recorded for a cold-storage alarm\n  When the acknowledgement is stored and later retrieved\n  Then it is associated with the existing alarm ID\n  And no replacement alarm identifier is required as the source of truth\n```\n\n### Story 2 \u2014 Prevent stale context from being treated as current\n\nAs a warehouse shift supervisor, I want prior acknowledgement context to be clearly distinguished from the current alarm occurrence so that I do not rely on obsolete response information.\n\n**Acceptance Criteria**\n\n```gherkin\nScenario: Prior acknowledgement is stale after a new occurrence\n  Given acknowledgement history exists for an earlier occurrence of an alarm ID\n  And the alarm lifecycle indicates a later occurrence for that same alarm ID\n  When an authorized supervisor requests acknowledgement context\n  Then the earlier acknowledgement is identified as stale or historical\n  And it is not represented as acknowledgement of the current occurrence\n  And the current occurrence is not reported as acknowledged unless an applicable acknowledgement exists\n\nScenario: Current and stale records remain distinguishable\n  Given both prior and current acknowledgement records exist for the same alarm ID\n  When an authorized supervisor retrieves acknowledgement history\n  Then each record retains its original actor and timestamp\n  And the product distinguishes which record applies to the current occurrence\n```\n\n### Story 3 \u2014 Enforce permission boundaries\n\nAs a warehouse operation owner, I want acknowledgement context protected by existing permissions so that only authorized personnel can view or change alarm response information.\n\n**Acceptance Criteria**\n\n```gherkin\nScenario: Authorized supervisor can view history\n  Given a supervisor has permission to view acknowledgement history for the alarm\n  When the supervisor requests history by the existing alarm ID\n  Then the request is evaluated under existing access policy\n  And permitted acknowledgement context is returned\n\nScenario: Unauthorized user cannot view history\n  Given a user lacks permission to view acknowledgement history for the alarm\n  When the user requests history by alarm ID\n  Then access is denied\n  And protected acknowledgement context is not disclosed\n  And no acknowledgement record is modified\n\nScenario: Unauthorized user cannot acknowledge\n  Given a user lacks permission to acknowledge the alarm\n  When the user attempts to submit an acknowledgement\n  Then the acknowledgement is rejected\n  And no acknowledgement record is created or changed\n```\n\n### Story 4 \u2014 Handle unavailable history without a false conclusion\n\nAs a warehouse shift supervisor, I want a clear unavailable-history outcome so that I do not mistake a retrieval failure for absence of an acknowledgement.\n\n**Acceptance Criteria**\n\n```gherkin\nScenario: History service or source is unavailable\n  Given an alarm exists and its acknowledgement history cannot currently be retrieved\n  When an authorized supervisor requests acknowledgement history by alarm ID\n  Then the outcome states that history is unavailable\n  And the outcome does not state or imply that the alarm has never been acknowledged\n  And no fabricated, cached-as-current, or empty acknowledgement result is presented as authoritative\n  And the retrieval failure does not alter the alarm or its acknowledgement records\n```\n\n### Story 5 \u2014 Recover history after a temporary failure\n\nAs a warehouse shift supervisor, I want acknowledgement history to recover safely after a temporary failure so that I can resume the handover without duplicating or losing context.\n\n**Acceptance Criteria**\n\n```gherkin\nScenario: Persisted history becomes available again\n  Given a valid acknowledgement was persisted for an alarm ID\n  And a later history request returned an unavailable-history outcome\n  And the history dependency has recovered\n  When an authorized supervisor requests history again for the same alarm ID\n  Then the persisted acknowledgement record is returned\n  And its original actor, timestamp, and context are unchanged\n  And no duplicate acknowledgement is created by the recovery\n\nScenario: Retry after uncertain acknowledgement submission\n  Given an authorized supervisor submitted an acknowledgement\n  And the supervisor could not determine whether the submission succeeded because of a temporary failure\n  When the same logical acknowledgement is retried\n  Then at most one applicable acknowledgement record results from the submissions\n  And the final outcome can be reconciled against the existing alarm ID\n```\n\n## 7. Non-Functional and Data Requirements\n\n- **Consistency:** Once an acknowledgement has been successfully persisted, subsequent authorized retrievals shall not silently omit it because a shift changed.\n- **Traceability:** Each acknowledgement record shall remain traceable to the existing alarm ID, acknowledging actor, and acknowledgement time.\n- **Integrity:** Retrieval, permission denial, and recovery attempts shall not mutate the original acknowledgement record.\n- **Failure semantics:** The states \"no applicable acknowledgement,\" \"stale acknowledgement exists,\" \"access denied,\" and \"history unavailable\" shall be distinguishable.\n- **Auditability:** Operational evidence shall support investigation of whether an acknowledgement was recorded, denied, unavailable, later recovered, or classified as stale.\n\n\ud83d\udd35 **Open Question:** Required availability, recovery-time, consistency-latency, audit-retention, and performance thresholds are not provided.\n\n## 8. Out of Scope\n\n- Selecting or prescribing a user interface, interaction pattern, device form factor, notification channel, or visual design.\n- Selecting an implementation stack, storage technology, protocol, vendor, or system architecture.\n- Replacing the existing alarm ID or introducing another identifier as the alarm source of truth.\n- Redefining cold-storage alarm generation, sensor thresholds, escalation policy, or alarm resolution policy.\n- Defining organization-wide role policy beyond enforcing the permissions supplied by the existing authorization model.\n\n## 9. Dependencies and Risks\n\n- **Dependency:** The existing alarm source must expose the alarm ID and enough lifecycle information to determine whether an acknowledgement applies to the current occurrence.\n- **Dependency:** Existing identity and authorization policy must provide actor identity and permission decisions.\n- **Risk:** Reuse of one alarm ID across occurrences could make stale classification ambiguous. **Mitigation:** Confirm and test the authoritative lifecycle signal before implementation approval.\n- **Risk:** A history outage could be misread as no acknowledgement. **Mitigation:** Require the distinct unavailable-history outcome in Story 4.\n- **Risk:** Retry after an uncertain submission could duplicate context. **Mitigation:** Require idempotent logical acknowledgement behavior and reconciliation by alarm ID.\n- **Risk:** Evidence establishes the problem but not target thresholds. **Mitigation:** Baseline the primary and guardrail measures before setting launch criteria.\n\n## 10. Open Questions Before Launch Approval\n\n1. What authoritative lifecycle signal determines that an acknowledgement is current or stale when the alarm ID is unchanged?\n2. What acknowledgement-context fields are mandatory, optional, and prohibited?\n3. Which roles and scope rules control viewing and recording, and are those permissions independent?\n4. What are the baseline, target, measurement window, and owner for each success measure?\n5. What retention, audit, availability, recovery-time, consistency-latency, and performance requirements apply?\n6. What constitutes the same logical acknowledgement for duplicate prevention after an uncertain submission?\n\nThese questions do not prevent requirements review, but the relevant answers are required before implementation and launch approval."}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: separate supplied evidence from product intent", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the alarm-ID source-of-truth rule", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover shift-handover success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover stale acknowledgement and unavailable history", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover permission and recovery behavior", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid solution design", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a quantified incident reduction", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: design approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: implementation completion", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 9, "total": 11, "pass_rate": 0.18181818181818182}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 15783, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-02-req-ac-h02-finance-export-gaps-with_skill-run-1", "prompt": "Draft requirements and acceptance criteria for a bulk finance export. The request says only that finance needs a downloadable report. Requester roles, permitted account scope, fields, retention policy, legal approval, maximum export size, data owner, and decision date are not supplied. Ask for the minimum blocking inputs and do not invent policy or defaults.", "eval_id": 2, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: blocked\n\n## 1. Problem framing\n\nStage status: needs-input\n\n### Classified items\n\n1. `FACT-1` \u2014 Finance needs a downloadable report. Source: supplied product request. Authority: requester not identified.\n2. `OPEN-QUESTION-1` \u2014 Which requester roles may initiate or download an export? No evidence supplied.\n3. `OPEN-QUESTION-2` \u2014 Which accounts and records may each permitted requester export? No evidence supplied.\n4. `OPEN-QUESTION-3` \u2014 Which fields must, may, or must not appear in the report? No evidence supplied.\n5. `OPEN-QUESTION-4` \u2014 What retention or deletion policy applies to generated export files? No evidence supplied.\n6. `OPEN-QUESTION-5` \u2014 Is legal or compliance approval required, who can grant it, and has it been granted? No evidence supplied.\n7. `OPEN-QUESTION-6` \u2014 What maximum export size or governing limit applies? No evidence supplied.\n8. `OPEN-QUESTION-7` \u2014 Who is the authoritative data owner for scope and field decisions? No evidence supplied.\n9. `OPEN-QUESTION-8` \u2014 By what date must the unresolved product, data, and approval decisions be made? No evidence supplied.\n10. `ASSUMPTION-1` \u2014 None recorded; no missing premise is inferred.\n11. `CONFLICT-1` \u2014 None supplied.\n\n### Target user, problem, impact, and evidence\n\n- Target user: finance is named only as an organizational function; specific actors and requester roles are unknown.\n- Problem: finance states a need for a downloadable report, but the report's authorized use and content are unspecified.\n- Impact: no user or business impact beyond the stated need was supplied.\n- Evidence: only the supplied sentence supports `FACT-1`; no local product policy, approval, ownership, or scope evidence was supplied.\n- Critical gap: authorization, data scope, report content, governance, and operating bounds are unknown. The frame preserves these unknowns without proposing a solution.\n\n## 2. Requirements and rules\n\nStage status: blocked\n\n### Normalized records\n\n- `REQ-1` \u2014 The product must provide finance with a downloadable report. Source: `FACT-1`. Authority: unspecified requester. Relationship: blocked by `OPEN-1` through `OPEN-8`.\n- `SCOPE-1` \u2014 Included scope is limited to the stated need for a finance-facing downloadable report. Source: `FACT-1`.\n- `SCOPE-2` \u2014 Requester roles, permitted accounts, report fields, retention behavior, legal approval, export-size bounds, and any implementation or UI behavior are not authorized scope decisions. Source: `OPEN-QUESTION-1` through `OPEN-QUESTION-7`.\n- `DEP-1` \u2014 An authoritative data owner must be identified before account scope and field rules can be approved. Source: `OPEN-QUESTION-7`; relationship: gates `RULE-2` and `RULE-3`.\n- `DEP-2` \u2014 Required legal or compliance approval and its granting authority must be determined before release requirements can be considered ready. Source: `OPEN-QUESTION-5`.\n- `RULE-1` \u2014 Permitted requester roles are unresolved; no authorization rule can be stated. Source: `OPEN-QUESTION-1`.\n- `RULE-2` \u2014 Permitted account and record scope is unresolved; no data-access boundary can be stated. Source: `OPEN-QUESTION-2`.\n- `RULE-3` \u2014 Included and excluded report fields are unresolved; no report-content contract can be stated. Source: `OPEN-QUESTION-3`.\n- `RULE-4` \u2014 Export retention and deletion obligations are unresolved. Source: `OPEN-QUESTION-4`.\n- `RULE-5` \u2014 Legal or compliance approval requirements are unresolved. Source: `OPEN-QUESTION-5`.\n- `RULE-6` \u2014 Maximum export size and behavior at the governing boundary are unresolved. Source: `OPEN-QUESTION-6`.\n- `OPEN-1` \u2014 Authorized owner: name the data owner empowered to approve account scope and fields.\n- `OPEN-2` \u2014 Authorization: identify requester roles allowed to request and download an export.\n- `OPEN-3` \u2014 Data boundary: identify the accounts and records each permitted role may export.\n- `OPEN-4` \u2014 Data contract: identify required, optional, and prohibited fields.\n- `OPEN-5` \u2014 Governance: state the applicable retention/deletion policy for generated files.\n- `OPEN-6` \u2014 Approval: state whether legal/compliance approval is required, the approving authority, and approval status.\n- `OPEN-7` \u2014 Operating boundary: provide the maximum export size or authoritative rule for determining it, including the required outcome when exceeded.\n- `OPEN-8` \u2014 Decision timing: provide the date by which `OPEN-1` through `OPEN-7` must be decided and the authority accountable for that date.\n\n### Minimum blocking input request\n\nProvide one authoritative decision package containing: (1) the data owner; (2) permitted requester roles; (3) account/record scope per role; (4) required and prohibited fields; (5) applicable export-file retention/deletion policy; (6) legal/compliance approval requirement, approver, and status; (7) maximum export size and required over-limit outcome; and (8) the accountable decision date. These inputs may cite existing authoritative policies instead of restating them. No policy or default is assumed.\n\n## 3. Acceptance criteria\n\nStage status: blocked\n\nNo acceptance criteria are emitted. `REQ-1` lacks the actor authorization, permitted data scope, observable field contract, retention rule, approval authority, and size boundary required to produce safe and meaningful Given/When/Then criteria. Writing success, error, boundary, permission, recovery, or non-regression scenarios would require inventing preconditions or outcomes.\n\n### Traceability and coverage\n\n- `REQ-1` \u2192 no AC; blocked by `OPEN-1` through `OPEN-8`.\n- Success coverage: unresolved; expected downloadable report content and authorized actor are unknown.\n- Error coverage: unresolved; required failure outcomes are not supplied.\n- Boundary coverage: unresolved; maximum size and over-limit outcome are not supplied.\n- Permission coverage: unresolved; roles and account scope are not supplied.\n- Recovery coverage: unresolved; no recovery behavior is supplied.\n- Non-regression coverage: unresolved; no existing behavior or binding rule is supplied.\n- No coverage class is marked `not-applicable` because no supplied evidence supports that conclusion.\n\n## 4. Requirements quality gate\n\nStage status: blocked\n\nQA is read-only and does not repair the upstream artifacts.\n\n### Findings\n\n- `FINDING-1` \u2014 Severity: blocking. Gate: `critical-rule-retention`. Location: requirements `RULE-1` through `RULE-6`. Evidence: authorization, scope, fields, retention, legal approval, and size rules are explicitly unresolved. Consequence: the requirement contract is not ready for acceptance criteria.\n- `FINDING-2` \u2014 Severity: blocking. Gate: `scope-and-authority`. Location: `DEP-1`, `DEP-2`, `OPEN-1`, and `OPEN-6`. Evidence: neither the authoritative data owner nor legal/compliance authority and approval status is supplied. Consequence: scope and approval decisions cannot be treated as authorized.\n- `FINDING-3` \u2014 Severity: blocking. Gate: `ac-testability`. Location: acceptance-criteria stage. Evidence: no AC are emitted because material preconditions and observable outcomes are unknown. Consequence: there is no executable product contract to validate.\n- `FINDING-4` \u2014 Severity: blocking. Gate: `applicable-path-coverage`. Location: acceptance-criteria coverage register. Evidence: success, error, boundary, permission, recovery, and non-regression coverage remain unresolved. Consequence: applicable behavior paths cannot be demonstrated.\n\n### Gate results\n\n- `artifact-availability`: passed \u2014 all four chain-stage artifacts are present in this output.\n- `end-to-end-traceability`: passed \u2014 the supplied request traces to `FACT-1`, `REQ-1`, and the explicit no-AC decision; every unknown traces to its open item.\n- `critical-rule-retention`: blocked \u2014 critical rules are preserved as unknown but lack authoritative decisions.\n- `scope-and-authority`: blocked \u2014 requester authority, data owner, permitted scope, and approval authority are unavailable.\n- `unknown-preservation`: passed \u2014 all eight supplied omissions remain explicit and no defaults are introduced.\n- `ac-testability`: blocked \u2014 safe, meaningful Given/When/Then criteria cannot be produced.\n- `applicable-path-coverage`: blocked \u2014 applicability and expected outcomes cannot be established from supplied evidence.\n- `evidence-backed-verdict`: passed \u2014 the blocked verdict follows from the cited unresolved prerequisites.\n- `read-only-review`: passed \u2014 QA reports findings without altering or filling upstream decisions.\n\n### Unresolved inputs\n\n`OPEN-1` through `OPEN-8` are required. Until the authoritative decision package is supplied, the chain remains blocked and must not be represented as implementation- or QA-ready.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": false, "evidence": "Expected needs-input; parsed blocked."}, {"text": "required_behaviors: return needs-input", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the minimum blocking product and authority inputs", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate known request from unknown policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid ready criteria that depend on missing decisions", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: requester roles", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: permitted account scope", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: export fields", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: retention policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: legal approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: maximum export size", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: data owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: approved export policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: default retention duration", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: authorized requester role", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 1, "failed": 16, "total": 17, "pass_rate": 0.058823529411764705}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 8710, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": ["Gate mismatch present."], "workarounds": []}}}, {"id": "eval-02-req-ac-h02-finance-export-gaps-without_skill-run-1", "prompt": "Draft requirements and acceptance criteria for a bulk finance export. The request says only that finance needs a downloadable report. Requester roles, permitted account scope, fields, retention policy, legal approval, maximum export size, data owner, and decision date are not supplied. Ask for the minimum blocking inputs and do not invent policy or defaults.", "eval_id": 2, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n# Bulk Finance Export \u2014 Requirements Intake\n\n## Confirmed request\n\nFinance needs a downloadable bulk report.\n\n## Why requirements and acceptance criteria cannot yet be finalized\n\nThe request does not identify who may export data, which accounts may be included, what the report contains, or the governance and operating limits for the export. Defining those details without authorization would invent policy and could expose financial data or produce an unusable requirement.\n\n## Minimum blocking inputs\n\nPlease provide an accountable decision-maker or approved source for each item:\n\n1. **Requester roles:** Which authenticated roles may request and download the export?\n2. **Permitted account scope:** Which accounts, entities, tenants, regions, or portfolios may each permitted role export?\n3. **Required fields:** Which exact columns must the report contain, including identifiers, financial values, dates, currencies, and any sensitive or regulated data?\n4. **Retention policy:** How long may generated files and related export records be retained, and when must they be deleted?\n5. **Legal approval:** Is legal, privacy, compliance, or other formal approval required, and who records that approval?\n6. **Maximum export size:** What maximum row count, file size, date range, or other processing limit is approved?\n7. **Data owner:** Who owns the exported dataset and has authority to approve its access, scope, and fields?\n8. **Decision date:** By what date must the unresolved decisions be made?\n\n## Requirements that can be stated without assumptions\n\n- The product shall provide an authorized finance user with a downloadable bulk report.\n- Access rules, account scope, report fields, retention behavior, approval controls, and export limits shall conform to the decisions supplied by the accountable owners above.\n- No policy, role, scope, field set, retention period, approval status, size limit, owner, or deadline is assumed by this draft.\n\n## Provisional acceptance criteria\n\nThese criteria are intentionally limited to what the request supports:\n\n1. **Download availability**\n   - Given a user who is authorized under the approved requester-role and account-scope rules,\n   - when the user requests a bulk finance export,\n   - then the product provides a downloadable report.\n\n2. **Authorization enforcement**\n   - Given the approved requester-role and account-scope rules have been supplied,\n   - when any user requests an export,\n   - then the export is permitted or denied according to those rules and includes no accounts outside the permitted scope.\n\n3. **Approved report content**\n   - Given the approved field list has been supplied,\n   - when an authorized export completes,\n   - then the downloaded report contains the approved fields and does not add unapproved fields.\n\n4. **Approved retention behavior**\n   - Given the approved retention policy has been supplied,\n   - when an export file or export record reaches its retention limit,\n   - then it is handled according to that policy.\n\n5. **Required approval controls**\n   - Given the legal or compliance approval requirement has been supplied,\n   - when an export is requested or released,\n   - then the product enforces and records the approved control where required.\n\n6. **Approved export limits**\n   - Given the approved maximum export size has been supplied,\n   - when a request exceeds that limit,\n   - then the product does not process it as a compliant export and communicates the outcome without silently truncating data.\n\n## Definition-of-ready gate\n\nThis requirement remains blocked from implementation sizing and final acceptance until all eight inputs are documented and approved. Final acceptance criteria must replace the conditional references above with the supplied decisions; unresolved values must not be converted into defaults.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: return needs-input", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the minimum blocking product and authority inputs", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate known request from unknown policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid ready criteria that depend on missing decisions", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: requester roles", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: permitted account scope", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: export fields", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: retention policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: legal approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: maximum export size", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: data owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: approved export policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: default retention duration", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: authorized requester role", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 15, "total": 17, "pass_rate": 0.11764705882352941}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 3850, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-03-req-ac-h03-webhook-retry-boundary-with_skill-run-1", "prompt": "Specify acceptance criteria for batch webhook delivery. Valid events must keep their supplied event IDs, failed destinations may be retried without redelivering successful destinations, every attempt must produce an observable per-destination result, and processing must stop above the documented concurrency cap. The cap value is not supplied. Do not select queueing technology.", "eval_id": 3, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n## 1. Problem framing\n\n### Classified items\n\n1. `FACT-1` (`fact`): The requested product behavior concerns batch webhook delivery. Source: supplied product input. Authority: user-supplied product input.\n2. `FACT-2` (`fact`): Valid events must retain their supplied event IDs. Source: supplied product input. Authority: user-supplied product input.\n3. `FACT-3` (`fact`): Failed destinations may be retried without redelivering successful destinations. Source: supplied product input. Authority: user-supplied product input.\n4. `FACT-4` (`fact`): Every delivery attempt must produce an observable result for each destination attempted. Source: supplied product input. Authority: user-supplied product input.\n5. `FACT-5` (`fact`): Processing must stop above the documented concurrency cap. Source: supplied product input. Authority: user-supplied product input.\n6. `FACT-6` (`fact`): The concurrency-cap value is not supplied. Source: supplied product input. Authority: user-supplied product input.\n7. `FACT-7` (`fact`): Queueing technology must not be selected. Source: supplied product input. Authority: user-supplied product input.\n8. `OPEN-QUESTION-1` (`open-question`): What is the authoritative documented concurrency-cap value? Evidence: none supplied. Decision authority: the owner of the documented concurrency policy.\n\n### Target user, problem, impact, evidence, and gaps\n\n- Target user: not supplied.\n- Problem: batch webhook delivery needs to preserve event identity, isolate retries to failed destinations, expose per-destination attempt results, and enforce a concurrency boundary.\n- Impact: not supplied beyond the required behaviors.\n- Evidence: only the supplied product input; no external or local product evidence was authorized.\n- Conflicts: none supplied.\n- Critical gap: the concurrency-cap value is absent. The known behavior can be framed, but the exact concurrency boundary cannot be converted into an executable threshold test without an authoritative value.\n\n## 2. Requirements and rules\n\n### Requirements\n\n- `REQ-1`: For every valid event processed for batch webhook delivery, the system must retain that event's supplied event ID. Source: `FACT-2`. Authority: user-supplied product input. Relationship: covered by `AC-1`.\n- `REQ-2`: When retrying failed destinations for a batch, the system must not redeliver that retry to destinations that already succeeded. Source: `FACT-3`. Authority: user-supplied product input. Relationships: covered by `AC-2`; constrained by `RULE-1`.\n- `REQ-3`: Every delivery attempt must produce an observable result for each destination included in that attempt. Source: `FACT-4`. Authority: user-supplied product input. Relationships: covered by `AC-3` and `AC-4`.\n- `REQ-4`: Processing must stop when proceeding would place concurrency above the documented cap. Source: `FACT-5`. Authority: user-supplied product input. Relationships: depends on `DEP-1`; unresolved by `OPEN-1`.\n\n### Rules\n\n- `RULE-1`: A destination that succeeded in an earlier attempt is excluded from a retry of failed destinations for that batch. Source: `FACT-3`. Authority: user-supplied product input. Relationship: constrains `REQ-2`.\n- `RULE-2`: Event IDs are supplied inputs and must not be replaced for valid events. Source: `FACT-2`. Authority: user-supplied product input. Relationship: constrains `REQ-1`.\n- `RULE-3`: Queueing technology is outside the authorized decision scope and must not be selected. Source: `FACT-7`. Authority: user-supplied product input.\n\n### Dependencies, scope, and open items\n\n- `DEP-1`: An authoritative documented concurrency-cap value is required to evaluate the boundary in `REQ-4`. Source: `FACT-5`, `FACT-6`, `OPEN-QUESTION-1`.\n- `SCOPE-1` (included): Batch webhook event-ID preservation, destination-specific retry behavior, per-destination attempt observability, and concurrency-cap enforcement. Source: `FACT-1` through `FACT-5`.\n- `SCOPE-2` (excluded): Selection of queueing technology. Source: `FACT-7`.\n- `OPEN-1`: Supply the authoritative documented concurrency-cap value. Source: `FACT-6`, `OPEN-QUESTION-1`. This is unresolved and prevents complete boundary acceptance criteria for `REQ-4`.\n\n## 3. Acceptance criteria\n\n### Numbered criteria\n\n`AC-1` \u2014 Preserve supplied event IDs (`REQ-1`, `RULE-2`; success and non-regression)\n\n- Given a valid event with a supplied event ID and one or more batch webhook destinations,\n- When the event is processed for delivery,\n- Then the event ID observable in the delivery processing outcome for that event equals the supplied event ID.\n\n`AC-2` \u2014 Retry only failed destinations (`REQ-2`, `RULE-1`; recovery and non-regression)\n\n- Given a batch delivery attempt has an observable successful result for at least one destination and an observable failed result for at least one other destination,\n- When the failed destinations are retried,\n- Then a new delivery attempt is observable for each retried failed destination, and no new delivery attempt is observable for any destination that already succeeded.\n\n`AC-3` \u2014 Observe successful per-destination attempt results (`REQ-3`; success)\n\n- Given a batch webhook delivery attempt includes one or more destinations,\n- When a destination attempt succeeds,\n- Then an observable successful result exists for that destination and that attempt.\n\n`AC-4` \u2014 Observe failed per-destination attempt results (`REQ-3`; error)\n\n- Given a batch webhook delivery attempt includes one or more destinations,\n- When a destination attempt fails,\n- Then an observable failed result exists for that destination and that attempt.\n\n### Coverage and unresolved input\n\n- Success: covered by `AC-1` and `AC-3`.\n- Error: covered by `AC-4`.\n- Recovery: covered by `AC-2`.\n- Non-regression: covered by `AC-1` and `AC-2`.\n- Boundary: not fully testable. `REQ-4` is uncovered because the documented concurrency-cap value is not supplied; no numeric threshold is invented.\n- Permission: no permission behavior was supplied, so no permission criterion is asserted and the class is not marked `not-applicable` without evidence.\n- Unresolved input: the authoritative documented concurrency-cap value required for a Given/When/Then boundary criterion for `REQ-4`.\n\n## 4. Requirements quality gate (read-only; no repair)\n\n### Verdict\n\n`needs-input`\n\n### Findings\n\n- `FINDING-1` \u2014 Severity: blocking. Violated gate: `unknown-preservation` / `applicable-path-coverage` / `ac-testability`. Artifact location: `REQ-4`, `DEP-1`, `OPEN-1`, acceptance-criteria boundary coverage. Evidence: the product input requires stopping above a documented concurrency cap but explicitly does not supply its value. Consequence: the exact at-cap and above-cap behavior cannot be tested against an authoritative threshold; `REQ-4` has no valid executable AC.\n\n### Gate results\n\n- `artifact-availability`: passed \u2014 all four chain sections are present in this output.\n- `end-to-end-traceability`: needs-input \u2014 `REQ-1` through `REQ-3` trace to criteria, while `REQ-4` is intentionally uncovered pending `OPEN-1`.\n- `critical-rule-retention`: passed \u2014 event-ID retention, retry isolation, per-destination observability, concurrency stopping, and the prohibition on choosing queueing technology are retained.\n- `scope-and-authority`: passed \u2014 only supplied product behavior is represented; no queueing technology or unsupported product decision is introduced.\n- `unknown-preservation`: passed \u2014 the missing cap value remains explicit in `OPEN-QUESTION-1`, `DEP-1`, and `OPEN-1`.\n- `ac-testability`: needs-input \u2014 `AC-1` through `AC-4` are observable Given/When/Then criteria, but the concurrency boundary cannot be made executable without the cap value.\n- `applicable-path-coverage`: needs-input \u2014 known success, error, recovery, and non-regression paths are covered; required boundary coverage remains incomplete.\n- `evidence-backed-verdict`: passed \u2014 the `needs-input` verdict follows directly from the explicitly absent cap value.\n- `read-only-review`: passed \u2014 QA reports the gap and does not repair requirements, invent a cap, or add an AC using a guessed threshold.\n\n### Required input\n\nProvide the authoritative documented concurrency-cap value. QA makes no repair and selects no queueing technology.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve the missing concurrency cap as an open prerequisite", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover partial destination success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover per-destination results", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover retry without duplicate successful delivery", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover the hard concurrency stop", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid implementation prescription", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: documented concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a numeric concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a queueing implementation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: readiness without the cap decision", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 10, "total": 12, "pass_rate": 0.16666666666666666}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 8260, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-03-req-ac-h03-webhook-retry-boundary-without_skill-run-1", "prompt": "Specify acceptance criteria for batch webhook delivery. Valid events must keep their supplied event IDs, failed destinations may be retried without redelivering successful destinations, every attempt must produce an observable per-destination result, and processing must stop above the documented concurrency cap. The cap value is not supplied. Do not select queueing technology.", "eval_id": 3, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n# Batch Webhook Delivery Acceptance Criteria\n\n## Scope and interpretation\n\nThese criteria cover batch delivery of valid webhook events to one or more destinations, preservation of supplied event IDs, destination-scoped retries, observable attempt results, and enforcement of a documented concurrency cap. They intentionally do not prescribe a queueing technology.\n\n\ud83d\udd36 **Assumption:** A batch identifies a set of valid events and a set of destinations, with each event eligible for delivery to each intended destination.\n\n\ud83d\udd36 **Assumption:** \"Above the documented concurrency cap\" means a request that would require more concurrent processing than the configured/documented cap is rejected before any event-destination delivery attempt starts; it is not partially processed or silently queued.\n\n\ud83d\udd35 **Open Question (blocking final approval):** What numeric concurrency cap must be documented and enforced? Replace `<CAP>` in AC-10 through AC-12 before implementation approval.\n\n## Acceptance criteria\n\n### Event ID preservation\n\n**AC-01 \u2014 Preserve supplied IDs for valid events**\n\n- **Given** a batch contains a valid event with supplied event ID `E1`\n- **When** the event is delivered to any intended destination\n- **Then** the delivered webhook identifies the event as `E1`\n- **And** the system does not replace, regenerate, normalize, or otherwise alter `E1`.\n\n**AC-02 \u2014 Preserve distinct IDs across a batch**\n\n- **Given** a valid batch contains events with supplied IDs `E1` and `E2`\n- **When** the batch is processed\n- **Then** every delivery attempt and per-destination result for the first event references `E1`\n- **And** every delivery attempt and per-destination result for the second event references `E2`\n- **And** neither event is reported under the other event's ID.\n\n### Destination-scoped delivery and retry\n\n**AC-03 \u2014 Record mixed destination outcomes independently**\n\n- **Given** event `E1` is sent to destinations `D1` and `D2`\n- **When** delivery to `D1` succeeds and delivery to `D2` fails\n- **Then** the result for `D1` is recorded as successful\n- **And** the result for `D2` is recorded as failed\n- **And** the failure at `D2` does not change the successful result for `D1`.\n\n**AC-04 \u2014 Retry only failed destinations**\n\n- **Given** event `E1` previously succeeded at `D1` and failed at `D2`\n- **When** the failed delivery is retried\n- **Then** a new attempt is made for `E1` at `D2`\n- **And** no new attempt is made for `E1` at `D1` as part of that retry.\n\n**AC-05 \u2014 Preserve event ID on retry**\n\n- **Given** delivery of event `E1` to destination `D2` failed\n- **When** delivery to `D2` is retried one or more times\n- **Then** every retry uses supplied event ID `E1`\n- **And** no retry creates a replacement event ID.\n\n**AC-06 \u2014 Do not redeliver successful destinations after other retries fail**\n\n- **Given** event `E1` succeeded at `D1` and failed at `D2`\n- **And** one or more retries to `D2` also fail\n- **When** another retry is initiated for the outstanding failure\n- **Then** only `D2` receives the next attempt\n- **And** `D1` receives no duplicate delivery from any of those retries.\n\n### Observable per-destination attempt results\n\n**AC-07 \u2014 Emit a result for every attempt**\n\n- **Given** an event-destination delivery attempt starts\n- **When** that attempt reaches a terminal outcome\n- **Then** exactly one observable result is produced for that attempt\n- **And** the result identifies the supplied event ID, destination, attempt identity or attempt number, and terminal outcome.\n\n**AC-08 \u2014 Represent success and failure observably**\n\n- **Given** attempts are made to multiple destinations\n- **When** one attempt succeeds and another fails\n- **Then** each destination has its own observable result\n- **And** each result distinguishes success from failure\n- **And** a failed result contains sufficient failure information to diagnose or classify the failure without changing the event ID.\n\n**AC-09 \u2014 Emit a separate result for each retry attempt**\n\n- **Given** an initial delivery attempt for event `E1` at `D2` fails\n- **When** `D2` is retried twice\n- **Then** the initial attempt and both retry attempts each produce a distinct observable per-destination result\n- **And** all three results reference `E1` and `D2`\n- **And** results from earlier attempts remain observable rather than being overwritten by the latest result.\n\n### Concurrency boundary\n\n**AC-10 \u2014 Process at or below the cap**\n\n- **Given** the documented concurrency cap is `<CAP>`\n- **And** requested concurrent processing is less than or equal to `<CAP>`\n- **When** the batch is accepted\n- **Then** processing may proceed\n- **And** observed active processing never exceeds `<CAP>`.\n\n**AC-11 \u2014 Stop before processing above the cap**\n\n- **Given** the documented concurrency cap is `<CAP>`\n- **And** a request would require concurrent processing greater than `<CAP>`\n- **When** the request is evaluated\n- **Then** processing is stopped before any event-destination delivery attempt begins\n- **And** no destination receives a webhook from that rejected request\n- **And** the caller receives an observable result indicating that the concurrency cap was exceeded.\n\n**AC-12 \u2014 Enforce the exact boundary without an off-by-one error**\n\n- **Given** the documented concurrency cap is `<CAP>`\n- **When** one request requires exactly `<CAP>` concurrent units and another requires `<CAP> + 1`\n- **Then** the request at `<CAP>` is eligible for processing\n- **And** the request at `<CAP> + 1` is stopped according to AC-11.\n\n**AC-13 \u2014 Cap rejection creates no delivery-attempt results**\n\n- **Given** a request is stopped before processing because it exceeds `<CAP>`\n- **When** observability records are inspected\n- **Then** the cap rejection itself is observable\n- **And** no per-destination delivery-attempt result is reported for that request, because no delivery attempt started.\n\n## Out of scope\n\n- Selection or prescription of queueing technology.\n- Retry schedule, delay, backoff, jitter, and maximum retry count.\n- Destination authentication, payload schema beyond event ID preservation, and invalid-event handling.\n- A numeric cap until the documented `<CAP>` value is supplied.\n\n## Required decision\n\nSupply and document the numeric concurrency cap `<CAP>`. AC-10 through AC-13 become executable without placeholders once that value is provided. Confirm the stated interpretation if \"stop above the cap\" is intended to mean something other than atomic pre-processing rejection (for example, processing only up to the cap while deferring excess work).\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve the missing concurrency cap as an open prerequisite", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover partial destination success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover per-destination results", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover retry without duplicate successful delivery", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover the hard concurrency stop", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid implementation prescription", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: documented concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a numeric concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a queueing implementation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: readiness without the cap decision", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 10, "total": 12, "pass_rate": 0.16666666666666666}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 6593, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-04-req-ac-h04-approved-copy-correction-with_skill-run-1", "prompt": "An approved content ticket authorizes correcting one misspelled word in an existing empty-state message, with no behavior or layout change. Produce the smallest useful handoff and explain why discovery, market analysis, prioritization, and a full PRD are not applicable. Preserve the approved ticket and existing content token as dependencies. Do not invent outcomes.", "eval_id": 4, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: passed\n\n# Smallest useful handoff\n\n## Source and authority\n\n- `SRC-1` \u2014 Product input supplied for this run.\n- `AUTH-1` \u2014 The approved content ticket is the authority for the exact misspelled word, its approved correction, and the affected existing content token. This handoff does not reproduce values that were not supplied.\n\n## Problem frame\n\n1. `FACT-1` \u2014 An approved content ticket authorizes correcting one misspelled word in an existing empty-state message. Evidence: `SRC-1`; authority: `AUTH-1`.\n2. `FACT-2` \u2014 No behavior or layout change is authorized. Evidence: `SRC-1`; authority: `AUTH-1`.\n3. `FACT-3` \u2014 The approved ticket and existing content token must remain dependencies. Evidence: `SRC-1`; authority: `AUTH-1`.\n4. `OPEN-1` \u2014 The ticket identifier, token identifier, misspelled word, and approved spelling are not present in `SRC-1`; they must be read from the approved ticket at execution time and must not be inferred.\n\nTarget-user framing: no target user is identified or needed to restate this bounded correction.\n\nProblem and impact framing: the supplied issue is a single misspelled word in an existing empty-state message. No user, business, or quantitative outcome was supplied, so none is claimed.\n\nConflicts: none supplied.\n\n## Requirements, rules, dependencies, and scope\n\n- `REQ-1` \u2014 Correct exactly the one misspelled word identified by the approved content ticket in the existing empty-state message. Source: `FACT-1`; authority: `AUTH-1`; depends on `DEP-1` and `DEP-2`.\n- `RULE-1` \u2014 The resulting word must exactly match the approved correction in the content ticket. Source: `FACT-1`; authority: `AUTH-1`.\n- `RULE-2` \u2014 Do not change behavior. Source: `FACT-2`; authority: `AUTH-1`.\n- `RULE-3` \u2014 Do not change layout. Source: `FACT-2`; authority: `AUTH-1`.\n- `RULE-4` \u2014 Do not claim or infer outcomes. Source: `SRC-1`; authority: supplied product direction.\n- `DEP-1` \u2014 Approved content ticket, required as the source of the exact correction and authorization. Source: `FACT-3`.\n- `DEP-2` \u2014 Existing content token named by the approved ticket; modify that token rather than creating or substituting another token. Source: `FACT-3` and `AUTH-1`.\n- `SCOPE-1` \u2014 Included: replacement of the single authorized misspelled word in the existing token value. Source: `FACT-1` and `FACT-3`.\n- `SCOPE-2` \u2014 Excluded: any other copy edit, token change, behavior change, layout change, implementation redesign, or outcome claim. Source: `FACT-1`, `FACT-2`, and `RULE-4`.\n- `OPEN-1` \u2014 Execution requires access to `DEP-1` and `DEP-2`; if either dependency is unavailable or does not identify the exact before/after word, implementation must stop rather than guess.\n\n## Acceptance criteria\n\n### `AC-1` \u2014 Authorized spelling correction\n\n**Maps to:** `REQ-1`, `RULE-1`, `DEP-1`, `DEP-2`, `SCOPE-1`\n\n**Given** the approved content ticket identifies the existing content token, the misspelled word, and its approved correction  \n**When** the authorized copy correction is applied  \n**Then** that token's empty-state message contains the approved spelling in place of the identified misspelled word.\n\n### `AC-2` \u2014 Copy-only non-regression\n\n**Maps to:** `REQ-1`, `RULE-2`, `RULE-3`, `SCOPE-2`\n\n**Given** the pre-change implementation and the approved ticket  \n**When** the resulting change is compared with the pre-change implementation  \n**Then** the only product-content difference is the one authorized word replacement, and no behavior or layout difference is present.\n\n## Coverage\n\n- Success: covered by `AC-1`.\n- Non-regression: covered by `AC-2` for behavior, layout, and out-of-scope content.\n- Error: not applicable; the supplied contract authorizes a static copy correction and specifies no error path. Missing dependencies are an execution gate, not invented product error behavior.\n- Boundary: covered by `AC-2`, which limits the change to one authorized word.\n- Permission: not applicable; approval is a prerequisite embodied by `DEP-1`, and no runtime permission behavior was supplied.\n- Recovery: not applicable; no recovery behavior was supplied for this static correction.\n\n## Why larger product work is not applicable\n\n- Discovery is not applicable because the problem and authorized action are already bounded by an approved ticket; new discovery would neither supply authority nor justify expanding scope.\n- Market analysis is not applicable because this is an internal correction to one existing message, with no supplied market question, competitive decision, or positioning choice.\n- Prioritization is not applicable because approval has already selected and authorized this single correction; this handoff does not invent relative value, urgency, or outcomes.\n- A full PRD is not applicable because the change has one requirement, explicit non-regression constraints, and two preserved dependencies. A larger document would add ceremony or unsupported detail rather than decision value.\n\n## Read-only QA gate\n\nVerdict: `passed`.\n\nFindings: none.\n\nPositive evidence:\n\n- Artifact availability: the frame, normalized requirements/rules/dependencies/scope, and acceptance criteria are present in this handoff.\n- End-to-end traceability: `SRC-1` \u2192 `FACT-1..3` \u2192 `REQ-1`/`RULE-1..4`/`DEP-1..2`/`SCOPE-1..2` \u2192 `AC-1..2`.\n- Critical-rule retention: the approved ticket, existing token, one-word limit, and no-behavior/no-layout constraints are retained.\n- Scope and authority: only the ticket-authorized correction is included; absent ticket details remain unresolved rather than invented.\n- Unknown preservation: `OPEN-1` records the unavailable identifiers and exact before/after text as execution-time dependency data.\n- AC testability: both criteria use observable Given/When/Then clauses and can be evaluated by inspecting the authorized token change and comparing product behavior/layout.\n- Applicable-path coverage: success, boundary, and non-regression are covered; unsupported product paths are explicitly marked not applicable with supplied-contract rationale.\n- Read-only review: QA reports the result without repairing or extending upstream records.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: route to a bounded minimal handoff", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: explain why broader product methods are not applicable", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the approval-ticket dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the existing content-token dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid invented product outcomes", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: new user research", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: market validation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: roadmap priority", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: behavior change", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 9, "total": 11, "pass_rate": 0.18181818181818182}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 6141, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-04-req-ac-h04-approved-copy-correction-without_skill-run-1", "prompt": "An approved content ticket authorizes correcting one misspelled word in an existing empty-state message, with no behavior or layout change. Produce the smallest useful handoff and explain why discovery, market analysis, prioritization, and a full PRD are not applicable. Preserve the approved ticket and existing content token as dependencies. Do not invent outcomes.", "eval_id": 4, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: passed\n\n# Copy Correction Handoff\n\n## Scope\nCorrect exactly one misspelled word in the existing empty-state message authorized by the approved content ticket.\n\n## Dependencies\n- The approved content ticket is the source of authorization and the source of truth for the intended spelling.\n- The existing content token is the implementation target and must be preserved; update its value rather than creating, renaming, or replacing the token.\n\n## Acceptance Criteria\n1. Given the approved content ticket and the existing content token, when the correction is implemented, then the token's empty-state message contains the ticket-approved spelling for the single misspelled word.\n2. All other words, punctuation, capitalization, and whitespace in the message remain unchanged unless the approved ticket explicitly includes them in the one-word correction.\n3. The existing content token identifier, location, and references remain unchanged.\n4. Empty-state behavior, rendering logic, layout, styling, spacing, and interaction remain unchanged.\n5. Verification confirms that the implemented word matches the approved ticket and that no changes outside the existing token value are included.\n\n## Verification\n- Compare the final token value directly with the approved ticket.\n- Review the diff and confirm it contains only the authorized one-word correction in the existing content token.\n- Render the existing empty state and confirm the corrected message appears with no behavior or layout change.\n\n## Not Applicable\n- **Discovery:** Not applicable because the approved ticket already defines and authorizes the narrowly bounded correction; there is no unresolved customer problem to investigate.\n- **Market analysis:** Not applicable because correcting a typo in existing copy does not alter positioning, audience, differentiation, or market strategy.\n- **Prioritization:** Not applicable because this handoff covers one already-approved change and contains no competing initiatives or solution options to rank.\n- **Full PRD:** Not applicable because the change has no new behavior, workflow, layout, or product requirements. Scope, dependencies, acceptance criteria, and verification provide the smallest useful execution handoff.\n\n## Constraints\n- Do not infer or claim customer, business, conversion, accessibility, or engagement outcomes.\n- Do not broaden the correction beyond the approved ticket.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: route to a bounded minimal handoff", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: explain why broader product methods are not applicable", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the approval-ticket dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the existing content-token dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid invented product outcomes", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: new user research", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: market validation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: roadmap priority", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: behavior change", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 9, "total": 11, "pass_rate": 0.18181818181818182}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 2409, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-05-req-ac-h05-retention-authority-conflict-with_skill-run-1", "prompt": "Create an acceptance contract from these inputs: the product brief requires audit exports to remain available for 30 days; a later security standard requires deletion after 7 days; no authority ranking, exception, or decision owner is supplied. Preserve both rules, mark the contract blocked, identify the decision needed, and do not choose a retention period.", "eval_id": 5, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: blocked\n\n# Acceptance Contract\n\n## Problem Frame\n\n1. `FACT-1` \u2014 The supplied product brief requires audit exports to remain available for 30 days. Source: product input, clause 1. Supplied authority: product brief; no relative authority ranking supplied.\n2. `FACT-2` \u2014 The supplied later security standard requires deletion after 7 days. Source: product input, clause 2. Supplied authority: later security standard; no relative authority ranking supplied.\n3. `CONFLICT-1` \u2014 `FACT-1` and `FACT-2` impose incompatible retention outcomes for audit exports from day 7 through day 30. Both rules are preserved; neither overrides the other.\n4. `OPEN-1` \u2014 The governing authority or authorized decision owner for resolving `CONFLICT-1` is not supplied.\n5. `OPEN-2` \u2014 No exception or reconciliation rule is supplied that permits both 30-day availability and deletion after 7 days.\n\nTarget-user framing: no target user was supplied.\n\nProblem framing: an acceptance contract cannot establish one executable audit-export retention behavior while the two supplied rules conflict and their authority relationship is unknown.\n\nImpact framing: acceptance criteria for retention, availability, deletion, boundaries, and non-regression would encode an unsupported retention decision.\n\n## Requirements And Rules\n\n- `SCOPE-1` \u2014 Audit-export retention and availability are in scope. Source: `FACT-1`, `FACT-2`.\n- `RULE-1` \u2014 Audit exports must remain available for 30 days. Source: product brief / `FACT-1`. Authority: product brief; ranking unknown.\n- `RULE-2` \u2014 Audit exports must be deleted after 7 days. Source: later security standard / `FACT-2`. Authority: security standard; ranking unknown.\n- `OPEN-1` \u2014 An authorized decision is required to determine which rule governs, or to supply an approved exception or reconciliation rule. Required decision authority: the owner empowered to rank or reconcile the product brief and security standard; that owner is not identified in the input.\n- Relationship: `RULE-1` conflicts with `RULE-2`; both are critical and retained without modification.\n- Hard gate: requirements readiness is blocked until `OPEN-1` is resolved by an identified authorized decision owner.\n\n## Acceptance Criteria\n\nNo Given/When/Then acceptance criteria are issued. The governing retention period is a required precondition, and producing criteria would necessarily choose, weaken, or reinterpret one of the conflicting rules.\n\nUncovered due to the block:\n\n- `RULE-1` \u2014 no valid observable criterion can be asserted without resolving the authority conflict.\n- `RULE-2` \u2014 no valid observable criterion can be asserted without resolving the authority conflict.\n- Success, error, boundary, permission, recovery, and non-regression coverage remain unassessed; none is marked not applicable.\n\n## Decision Needed\n\nIdentify the authorized decision owner and obtain an authoritative ruling that ranks `RULE-1` and `RULE-2`, or supplies an approved exception or reconciliation rule. This contract does not choose a retention period.\n\n## QA Quality Gate \u2014 Report Only\n\n- `FINDING-1` \u2014 Severity: blocking. Gate: `scope-and-authority`. Location: `RULE-1`, `RULE-2`, `OPEN-1`. Evidence: conflicting 30-day availability and 7-day deletion rules are supplied without authority ranking, exception, or decision owner. Consequence: no authoritative retention behavior can be contracted.\n- `FINDING-2` \u2014 Severity: blocking. Gate: `ac-testability`. Location: Acceptance Criteria. Evidence: the retention threshold required for observable Given/When/Then outcomes is unresolved. Consequence: any executable-looking criterion would invent or select a policy.\n- `FINDING-3` \u2014 Severity: blocking. Gate: `applicable-path-coverage`. Location: Acceptance Criteria. Evidence: no authoritative baseline exists for boundary or non-regression behavior. Consequence: coverage cannot be completed or validly classified as not applicable.\n\nGate results:\n\n- `artifact-availability`: passed \u2014 the supplied product input and frozen candidate contracts were available.\n- `end-to-end-traceability`: blocked \u2014 both rules trace to the input, but neither can trace to valid AC before an authority decision.\n- `critical-rule-retention`: passed \u2014 both conflicting rules are retained verbatim in substance.\n- `scope-and-authority`: blocked \u2014 authority ranking and decision owner are absent.\n- `unknown-preservation`: passed \u2014 missing authority, owner, and exception/reconciliation rule remain explicit.\n- `ac-testability`: blocked \u2014 meaningful criteria cannot be produced safely.\n- `applicable-path-coverage`: blocked \u2014 coverage depends on the unresolved governing rule.\n- `evidence-backed-verdict`: passed \u2014 the blocked verdict follows from the supplied conflict and missing authority.\n- `read-only-review`: passed \u2014 QA reports findings and performs no repair.\n\nUnresolved input: an authoritative conflict-resolution decision from an identified owner empowered to rank or reconcile the two supplied rules."}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: blocked.", "passed": true, "evidence": "Expected blocked; parsed blocked."}, {"text": "required_behaviors: surface both conflicting retention rules", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return blocked", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the missing authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the unresolved decision", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid selecting a winner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authoritative retention period", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: exception policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: effective date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 30-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 7-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: resolved retention policy", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 13, "total": 15, "pass_rate": 0.13333333333333333}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 5020, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-05-req-ac-h05-retention-authority-conflict-without_skill-run-1", "prompt": "Create an acceptance contract from these inputs: the product brief requires audit exports to remain available for 30 days; a later security standard requires deletion after 7 days; no authority ranking, exception, or decision owner is supplied. Preserve both rules, mark the contract blocked, identify the decision needed, and do not choose a retention period.", "eval_id": 5, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: blocked\n\n# Acceptance Contract: Audit Export Retention\n\n## Scope\n\nThis contract covers the availability and deletion timing of audit exports.\n\n## Preserved Requirements\n\n- R1 \u2014 Product brief: Audit exports must remain available for 30 days.\n- R2 \u2014 Later security standard: Audit exports must be deleted after 7 days.\n\n## Conflict\n\nR1 requires availability through day 30, while R2 requires deletion after day 7. Both cannot be satisfied for the same audit export under a single retention policy. The inputs provide no authority ranking, exception, or decision owner, so neither rule may override the other.\n\n## Acceptance Criteria\n\n- AC1: The implementation preserves R1 as a binding, unresolved requirement; it does not shorten the stated 30-day availability period.\n- AC2: The implementation preserves R2 as a binding, unresolved requirement; it does not extend the stated 7-day deletion deadline.\n- AC3: The contract and any dependent implementation remain blocked while R1 and R2 apply to the same audit exports without an approved reconciliation.\n- AC4: No retention period is selected, inferred, averaged, or treated as controlling before the required authority decision is recorded.\n- AC5: Resolution evidence identifies the authorized decision owner, the authority or precedence basis, the chosen treatment of both rules, and any approved exception or scope distinction.\n- AC6: Acceptance testing for a concrete retention duration must not proceed until the resolution evidence in AC5 exists.\n\n## Decision Needed\n\nAn authorized governance decision is required to determine which rule has precedence or whether an approved exception or scope distinction reconciles them. The decision must also name the accountable owner and document the authority supporting the resolution.\n\n## Blocking Condition\n\nBlocked pending the documented authority decision. This contract intentionally does not choose a retention period.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: blocked.", "passed": true, "evidence": "Expected blocked; parsed blocked."}, {"text": "required_behaviors: surface both conflicting retention rules", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return blocked", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the missing authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the unresolved decision", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid selecting a winner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authoritative retention period", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: exception policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: effective date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 30-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 7-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: resolved retention policy", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 13, "total": 15, "pass_rate": 0.13333333333333333}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 1933, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-06-req-ac-h06-scanner-unavailable-with_skill-run-1", "prompt": "A release requirement says the settings flow must pass an external accessibility scan, but the scanner is unavailable and no report is attached. Supplied facts also require keyboard completion and visible focus. Produce only what can be supported, mark scan-dependent acceptance as needs-input, and do not claim that a scan ran or passed.", "eval_id": 6, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n# Requirements-to-AC Output\n\n## Supplied source\n\n- `SRC-1` (product input, authority: supplied release requirement and supplied facts): \u201cA release requirement says the settings flow must pass an external accessibility scan, but the scanner is unavailable and no report is attached. Supplied facts also require keyboard completion and visible focus. Produce only what can be supported, mark scan-dependent acceptance as needs-input, and do not claim that a scan ran or passed.\u201d\n\n## Problem frame\n\n1. `FACT-1`: The settings flow is subject to a release requirement to pass an external accessibility scan. Evidence: `SRC-1`.\n2. `FACT-2`: The external scanner is unavailable. Evidence: `SRC-1`.\n3. `FACT-3`: No scan report is attached. Evidence: `SRC-1`.\n4. `FACT-4`: The settings flow is required to support keyboard completion. Evidence: `SRC-1`.\n5. `FACT-5`: The settings flow is required to provide visible focus. Evidence: `SRC-1`.\n6. `OPEN-1`: Whether the settings flow passes the required external accessibility scan is unknown because neither scanner execution nor a report is available. Evidence gap: `SRC-1` explicitly states both are unavailable.\n\nTarget-user framing: The supplied input does not identify a specific user group; it establishes accessibility obligations for users of the settings flow.\n\nProblem and impact framing: Release acceptance includes an external-scan condition that cannot currently be evidenced. Keyboard completion and visible focus remain independently stated, supportable obligations.\n\nConflicts: None supplied.\n\nCritical gap: External scan evidence is missing, so scan-dependent acceptance cannot be decided.\n\n## Requirements and rules\n\n1. `REQ-1`: The settings flow must be completable using a keyboard. Source: `SRC-1`; authority: supplied fact; relates to `FACT-4`.\n2. `REQ-2`: The settings flow must provide visible focus. Source: `SRC-1`; authority: supplied fact; relates to `FACT-5`.\n3. `REQ-3`: The settings flow must pass an external accessibility scan as a release requirement. Source: `SRC-1`; authority: supplied release requirement; relates to `FACT-1`.\n4. `DEP-1`: Acceptance of `REQ-3` depends on availability and execution of the external scanner and on scan evidence sufficient to determine the result. Source: `SRC-1`; relates to `FACT-2`, `FACT-3`, and `OPEN-1`.\n5. `RULE-1`: No claim may be made that an external accessibility scan ran or passed without supporting evidence. Source: `SRC-1`.\n6. `SCOPE-1`: Included scope is the settings flow. Source: `SRC-1`.\n7. `OPEN-1`: Scanner execution and its report/result are required to decide scan-dependent acceptance. Source: `SRC-1`; authority needed: provider or custodian of the external scan evidence.\n\n## Acceptance criteria\n\n### AC-1 \u2014 Keyboard completion\n\n- Maps to: `REQ-1`, `SCOPE-1`\n- Given the settings flow is available\n- When a user proceeds through and completes the settings flow using only keyboard input\n- Then completion is possible without requiring non-keyboard input\n\n### AC-2 \u2014 Visible focus\n\n- Maps to: `REQ-2`, `SCOPE-1`\n- Given the settings flow is available\n- When a user moves keyboard focus through the interactive elements in the flow\n- Then the currently focused interactive element has a visible focus indication\n\n### AC-3 \u2014 External accessibility scan\n\n- Maps to: `REQ-3`, `DEP-1`, `RULE-1`, `OPEN-1`\n- Status: `needs-input`\n- Acceptance cannot be determined from the supplied evidence because the scanner is unavailable and no report is attached.\n- Required input: evidence that the external accessibility scan was executed for the settings flow and its resulting report or pass/fail result.\n- No claim is made that the scan ran or passed.\n\n## Coverage\n\n- Success: Covered for the supplied keyboard-completion and visible-focus requirements by `AC-1` and `AC-2`.\n- Scan-dependent success: `needs-input` under `AC-3`.\n- Error, boundary, permission, recovery, and non-regression: No behaviors, conditions, or evidence for these classes were supplied; they are not marked `not-applicable`, and no criteria are invented.\n- Uncovered requirement: `REQ-3` lacks executable acceptance evidence pending `OPEN-1`.\n\n## QA quality gate (read-only; report only)\n\nOverall verdict: `needs-input`.\n\n### Findings\n\n1. `FIND-1`\n   - Severity: blocking-for-scan-acceptance\n   - Violated gate: `evidence-backed-verdict`\n   - Artifact location: `AC-3`\n   - Evidence: `SRC-1` states that the scanner is unavailable and no report is attached.\n   - Consequence: The external-scan release requirement cannot receive an acceptance pass or fail determination.\n\n2. `FIND-2`\n   - Severity: unresolved-coverage\n   - Violated gate: `applicable-path-coverage`\n   - Artifact location: Coverage register\n   - Evidence: `SRC-1` supplies no error, boundary, permission, recovery, or non-regression behavior.\n   - Consequence: Those path classes cannot be positively covered or evidence-backed as not applicable.\n\n### Gate results\n\n- `artifact-availability`: passed \u2014 the supplied product input and generated chain records are present.\n- `end-to-end-traceability`: passed \u2014 `AC-1` and `AC-2` map to supplied facts through numbered requirements; `AC-3` preserves its dependency and open item.\n- `critical-rule-retention`: passed \u2014 keyboard completion, visible focus, the external-scan release requirement, and the prohibition on unsupported scan claims are retained.\n- `scope-and-authority`: passed \u2014 criteria remain limited to the settings flow and no unsupported authority is introduced.\n- `unknown-preservation`: passed \u2014 unavailable scanner execution and missing report remain explicit in `OPEN-1` and `AC-3`.\n- `ac-testability`: needs-input \u2014 `AC-1` and `AC-2` are observable; scan-dependent `AC-3` cannot be decided without the external evidence.\n- `applicable-path-coverage`: needs-input \u2014 supplied success behaviors are covered, while other path classes lack evidence.\n- `evidence-backed-verdict`: needs-input \u2014 there is no basis to assert that the external scan ran or passed.\n- `read-only-review`: passed \u2014 QA reports findings and does not repair requirements or acceptance criteria.\n\n## Unresolved input\n\nProvide the external accessibility scan execution evidence and attached result/report for the settings flow. Until then, the scan-dependent release acceptance remains `needs-input`.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve known keyboard and focus requirements", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve scanner unavailability", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate supported criteria from scan-dependent criteria", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return needs-input for missing scan evidence", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid claiming tool execution", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan report", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan findings", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan pass status", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: scanner executed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: accessibility scan passed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: release approved", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 11, "total": 13, "pass_rate": 0.15384615384615385}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 6344, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}, {"id": "eval-06-req-ac-h06-scanner-unavailable-without_skill-run-1", "prompt": "A release requirement says the settings flow must pass an external accessibility scan, but the scanner is unavailable and no report is attached. Supplied facts also require keyboard completion and visible focus. Produce only what can be supported, mark scan-dependent acceptance as needs-input, and do not claim that a scan ran or passed.", "eval_id": 6, "outputs": [{"name": "full_output.md", "type": "text", "content": "Status: needs-input\n\n# Acceptance Criteria\n\n## Supported acceptance\n\n### AC-1: Keyboard completion\nGiven a user is in the settings flow,\nWhen the user operates the flow using only a keyboard,\nThen the user can reach, operate, and complete every required step without pointer input.\n\n### AC-2: Visible focus\nGiven a user navigates the settings flow using a keyboard,\nWhen focus moves to any interactive control,\nThen a visible focus indicator identifies the currently focused control.\n\n## Scan-dependent acceptance\n\n### AC-3: External accessibility scan \u2014 needs-input\nGiven the settings flow is available to the required external accessibility scanner,\nWhen the scanner is run against the settings flow,\nThen the result meets the release requirement defined by the scan report or agreed pass threshold.\n\nEvidence required to resolve: the external scanner must be available, the applicable scan scope and pass threshold must be specified, and the resulting report must be attached. No scan execution or passing result is asserted here.\n"}], "grading": {"expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve known keyboard and focus requirements", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve scanner unavailability", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate supported criteria from scan-dependent criteria", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return needs-input for missing scan evidence", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid claiming tool execution", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan report", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan findings", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan pass status", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: scanner executed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: accessibility scan passed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: release approved", "passed": false, "evidence": "Pending blind human semantic review."}], "summary": {"passed": 2, "failed": 11, "total": 13, "pass_rate": 0.15384615384615385}, "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 1036, "transcript_chars": 0}, "user_notes_summary": {"uncertainties": ["Semantic criteria are pending blind human review."], "needs_review": [], "workarounds": []}}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "requirements-to-ac", "skill_path": "slots", "executor_model": "general-purpose-agent/default", "analyzer_model": "not-run", "timestamp": "2026-09-14T06:27:53Z", "evals_run": [1, 2, 3, 4, 5, 6], "runs_per_configuration": 1, "aggregation": "C:/Users/gerrard/.agents/skills/skill-creator/scripts/aggregate_benchmark.py", "metrics_source": "per-run timing.json captured from agent completion notifications", "metrics_verified_at": "2026-09-14T06:27:53Z"}, "runs": [{"eval_id": 1, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.09090909090909091, "passed": 1, "failed": 10, "total": 11, "time_seconds": 126.967, "tokens": 260296, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": false, "evidence": "Expected passed; parsed needs-input."}, {"text": "required_behaviors: separate supplied evidence from product intent", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the alarm-ID source-of-truth rule", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover shift-handover success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover stale acknowledgement and unavailable history", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover permission and recovery behavior", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid solution design", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a quantified incident reduction", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: design approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: implementation completion", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review.", "Gate mismatch present."]}, {"eval_id": 2, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.058823529411764705, "passed": 1, "failed": 16, "total": 17, "time_seconds": 111.39, "tokens": 242450, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": false, "evidence": "Expected needs-input; parsed blocked."}, {"text": "required_behaviors: return needs-input", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the minimum blocking product and authority inputs", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate known request from unknown policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid ready criteria that depend on missing decisions", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: requester roles", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: permitted account scope", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: export fields", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: retention policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: legal approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: maximum export size", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: data owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: approved export policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: default retention duration", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: authorized requester role", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review.", "Gate mismatch present."]}, {"eval_id": 3, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.16666666666666666, "passed": 2, "failed": 10, "total": 12, "time_seconds": 111.363, "tokens": 275054, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve the missing concurrency cap as an open prerequisite", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover partial destination success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover per-destination results", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover retry without duplicate successful delivery", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover the hard concurrency stop", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid implementation prescription", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: documented concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a numeric concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a queueing implementation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: readiness without the cap decision", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 4, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.18181818181818182, "passed": 2, "failed": 9, "total": 11, "time_seconds": 121.179, "tokens": 249227, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: route to a bounded minimal handoff", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: explain why broader product methods are not applicable", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the approval-ticket dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the existing content-token dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid invented product outcomes", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: new user research", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: market validation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: roadmap priority", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: behavior change", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 5, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.13333333333333333, "passed": 2, "failed": 13, "total": 15, "time_seconds": 90.423, "tokens": 192125, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: blocked.", "passed": true, "evidence": "Expected blocked; parsed blocked."}, {"text": "required_behaviors: surface both conflicting retention rules", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return blocked", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the missing authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the unresolved decision", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid selecting a winner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authoritative retention period", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: exception policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: effective date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 30-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 7-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: resolved retention policy", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 6, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.15384615384615385, "passed": 2, "failed": 11, "total": 13, "time_seconds": 113.761, "tokens": 243376, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve known keyboard and focus requirements", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve scanner unavailability", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate supported criteria from scan-dependent criteria", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return needs-input for missing scan evidence", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid claiming tool execution", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan report", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan findings", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan pass status", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: scanner executed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: accessibility scan passed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: release approved", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 1, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.18181818181818182, "passed": 2, "failed": 9, "total": 11, "time_seconds": 102.032, "tokens": 308132, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: separate supplied evidence from product intent", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the alarm-ID source-of-truth rule", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover shift-handover success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover stale acknowledgement and unavailable history", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover permission and recovery behavior", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid solution design", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a quantified incident reduction", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: design approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: implementation completion", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 2, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.11764705882352941, "passed": 2, "failed": 15, "total": 17, "time_seconds": 89.329, "tokens": 244887, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: return needs-input", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the minimum blocking product and authority inputs", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate known request from unknown policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid ready criteria that depend on missing decisions", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: requester roles", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: permitted account scope", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: export fields", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: retention policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: legal approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: maximum export size", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: data owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: approved export policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: default retention duration", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: authorized requester role", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 3, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.16666666666666666, "passed": 2, "failed": 10, "total": 12, "time_seconds": 90.183, "tokens": 345447, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve the missing concurrency cap as an open prerequisite", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover partial destination success", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover per-destination results", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover retry without duplicate successful delivery", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: cover the hard concurrency stop", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid implementation prescription", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: documented concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a numeric concurrency cap", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: a queueing implementation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: readiness without the cap decision", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 4, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.18181818181818182, "passed": 2, "failed": 9, "total": 11, "time_seconds": 84.308, "tokens": 235013, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: passed.", "passed": true, "evidence": "Expected passed; parsed passed."}, {"text": "required_behaviors: route to a bounded minimal handoff", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: explain why broader product methods are not applicable", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the approval-ticket dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the existing content-token dependency", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid invented product outcomes", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: new user research", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: market validation", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: roadmap priority", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: behavior change", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 5, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.13333333333333333, "passed": 2, "failed": 13, "total": 15, "time_seconds": 73.421, "tokens": 159594, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: blocked.", "passed": true, "evidence": "Expected blocked; parsed blocked."}, {"text": "required_behaviors: surface both conflicting retention rules", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return blocked", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve the missing authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: identify the unresolved decision", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid selecting a winner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authoritative retention period", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: authority ranking", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: exception policy", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: decision owner", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: effective date", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 30-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: 7-day approval", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: resolved retention policy", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}, {"eval_id": 6, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.15384615384615385, "passed": 2, "failed": 11, "total": 13, "time_seconds": 58.178, "tokens": 228851, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Run evidence is complete, internally hashed, and offline.", "passed": true, "evidence": "No run validation errors."}, {"text": "Output status matches expected gate: needs-input.", "passed": true, "evidence": "Expected needs-input; parsed needs-input."}, {"text": "required_behaviors: preserve known keyboard and focus requirements", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: preserve scanner unavailability", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: separate supported criteria from scan-dependent criteria", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: return needs-input for missing scan evidence", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "required_behaviors: avoid claiming tool execution", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan report", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan findings", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_preserve_unknowns: scan pass status", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: scanner executed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: accessibility scan passed", "passed": false, "evidence": "Pending blind human semantic review."}, {"text": "must_not_claim: release approved", "passed": false, "evidence": "Pending blind human semantic review."}], "notes": ["Semantic criteria are pending blind human review."]}], "run_summary": {"with_skill": {"pass_rate": {"mean": 0.1309, "stddev": 0.0473, "min": 0.0588, "max": 0.1818}, "time_seconds": {"mean": 112.5138, "stddev": 12.4589, "min": 90.423, "max": 126.967}, "tokens": {"mean": 243754.6667, "stddev": 28109.3523, "min": 192125, "max": 275054}}, "without_skill": {"pass_rate": {"mean": 0.1559, "stddev": 0.0262, "min": 0.1176, "max": 0.1818}, "time_seconds": {"mean": 82.9085, "stddev": 15.254, "min": 58.178, "max": 102.032}, "tokens": {"mean": 253654.0, "stddev": 65238.9867, "min": 159594, "max": 345447}}, "delta": {"pass_rate": "-0.03", "time_seconds": "+29.6", "tokens": "-9899"}}, "notes": ["Pass rates include mechanically proven run evidence and status checks; semantic criteria remain failed pending blind human review.", "Candidate formal holdout has two incorrect gates: h01 expected passed but returned needs-input; h02 expected needs-input but returned blocked.", "One run per configuration does not establish model-output variance; repeated volatile-case runs remain required.", "Token and duration values were verified run-by-run against timing.json captured from agent completion notifications."]}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "case_id": "req-ac-t01-normal-prd",
+  "offline": true,
+  "network_accessed": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "7e2f77e17c9483c0cae12ad6e5e00778ac880046cb8c445c454fefac1a77cc10"
+    }
+  },
+  "skills_invoked": [],
+  "local_reads": [
+    {
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "tool": "Read",
+      "purpose": "Read the exact case prompt and case metadata."
+    },
+    {
+      "path": "skills/prd-development/SKILL.md",
+      "tool": "Read",
+      "purpose": "Read the original skill entry and execute from its requirements-level guidance."
+    }
+  ],
+  "local_commands": [
+    {
+      "tool": "Bash",
+      "command": "ls evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd",
+      "purpose": "Check whether the unique run directory existed.",
+      "result": "Directory did not exist."
+    },
+    {
+      "tool": "Bash",
+      "command": "ls evals && ls evals/runs",
+      "purpose": "Verify the nearest existing output parent.",
+      "result": "evals existed; evals/runs did not exist."
+    },
+    {
+      "tool": "Bash",
+      "command": "mkdir -p evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd; compute SHA-256 of exact JSON prompt with local Python",
+      "purpose": "Create only the requested run directory and compute input_hash offline.",
+      "result": "fc2941e19cd1ae664dfc4b94bb52c893c77179901831d1015c03c597a97cee86"
+    }
+  ],
+  "local_writes": [
+    {
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd/full_output.md",
+      "tool": "Write"
+    },
+    {
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd/tool_evidence.json",
+      "tool": "Write"
+    },
+    {
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t01-normal-prd/run.json",
+      "tool": "Write"
+    }
+  ],
+  "skill_files_read": [
+    "skills/prd-development/SKILL.md"
+  ],
+  "referenced_skill_files_read": [],
+  "notes": "No network tools or additional Skill prompts were read or invoked. No files under skills/ were modified."
+}

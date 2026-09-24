@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "id": "acceptance-criteria",
+  "version": "0.2.0-candidate",
+  "status": "evaluating",
+  "responsibility": "Convert ready requirements into numbered, observable Given/When/Then acceptance criteria without changing product intent.",
+  "inputs": ["Ready numbered requirements and rules", "Dependencies and scope", "Source and authority metadata"],
+  "outputs": ["Status", "Numbered Given/When/Then acceptance criteria", "Requirement traceability", "Applicable-class coverage and unresolved inputs"],
+  "boundaries": {"input": "Requirements whose material preconditions and authority are known.", "output": "Observable acceptance criteria only; no requirement repair or implementation design."},
+  "dependencies": ["requirements-rules"],
+  "permissions": {"default": ["read-local-files", "write-run-output"]},
+  "statuses": ["passed", "failed", "needs-input", "blocked"],
+  "gates": ["requirements-readiness", "given-when-then-structure", "observability", "requirement-traceability", "applicable-success-coverage", "applicable-error-coverage", "applicable-boundary-coverage", "applicable-permission-coverage", "applicable-recovery-coverage", "applicable-non-regression-coverage", "unknown-precondition-stop"],
+  "forbidden_actions": ["invent preconditions, actors, thresholds, permissions, errors, or recovery", "change or repair upstream requirements", "resolve authority conflicts", "prescribe implementation", "mark unsupported coverage not-applicable"],
+  "hard_failures": ["fabricated-fact", "missing-critical-rule", "untestable-acceptance-criteria", "unknown-loss", "scope-or-authority-overreach", "incorrect-gate", "qa-repair-overreach"],
+  "artifact_types": ["acceptance-criteria-set", "requirements-to-ac-traceability", "coverage-register"]
+}

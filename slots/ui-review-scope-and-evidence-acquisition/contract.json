@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A UI brief, target files, runtime, rendered surfaces, and review criteria.",
+    "output": "A bounded review set, captures, evidence inventory, and review route."
+  },
+  "dependencies": [
+    "cluster:ui-task-routing-and-governance"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "ui-review-scope-and-evidence-acquisition",
+  "inputs": [
+    "A UI brief, target files, runtime, rendered surfaces, and review criteria."
+  ],
+  "outputs": [
+    "A bounded review set, captures, evidence inventory, and review route."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Define UI review scope, collect the correct rendered evidence, and route findings without confusing inspection with repair.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

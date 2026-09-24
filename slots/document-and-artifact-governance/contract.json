@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A document or artifact purpose, audience, source evidence, and required fields.",
+    "output": "A governed artifact contract, readable output, and explicit unknowns."
+  },
+  "dependencies": [
+    "cluster:source-metadata-and-provenance"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "document-and-artifact-governance",
+  "inputs": [
+    "A document or artifact purpose, audience, source evidence, and required fields."
+  ],
+  "outputs": [
+    "A governed artifact contract, readable output, and explicit unknowns."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Define durable document structure, artifact fields, authorship rules, and output comprehension checks.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

@@ -1,0 +1,17 @@
+{
+  "eval_id": 3,
+  "eval_name": "req-ac-h03-webhook-retry-boundary",
+  "prompt": "Specify acceptance criteria for batch webhook delivery. Valid events must keep their supplied event IDs, failed destinations may be retried without redelivering successful destinations, every attempt must produce an observable per-destination result, and processing must stop above the documented concurrency cap. The cap value is not supplied. Do not select queueing technology.",
+  "assertions": [
+    "preserve the missing concurrency cap as an open prerequisite",
+    "cover partial destination success",
+    "cover per-destination results",
+    "cover retry without duplicate successful delivery",
+    "cover the hard concurrency stop",
+    "avoid implementation prescription",
+    "documented concurrency cap",
+    "a numeric concurrency cap",
+    "a queueing implementation",
+    "readiness without the cap decision"
+  ]
+}

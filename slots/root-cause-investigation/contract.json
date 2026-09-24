@@ -1,0 +1,48 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A test failure, production incident, unexpected behavior, build issue, or performance problem.",
+    "output": "An evidence-backed root cause and a bounded correction path, never a symptom-only guess."
+  },
+  "dependencies": [],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "root-cause-investigation",
+  "inputs": [
+    "A test failure, production incident, unexpected behavior, build issue, or performance problem."
+  ],
+  "outputs": [
+    "An evidence-backed root cause and a bounded correction path, never a symptom-only guess."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Reproduce failures, trace data to its source, compare working patterns, form one hypothesis, and test it minimally.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

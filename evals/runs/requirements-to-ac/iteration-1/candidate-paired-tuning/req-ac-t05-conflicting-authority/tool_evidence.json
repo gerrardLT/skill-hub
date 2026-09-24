@@ -1,0 +1,126 @@
+{
+  "case_id": "req-ac-t05-conflicting-authority",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "fb632591332b07077506102d74c37a5b18563a87906beaf6723e7ffaf88775a9"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "e50716e7a17c6a666c617be76ef251fe089f56103c5df4ce9887228389782df0"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize heterogeneous agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "schema_version": "1.0",
+    "case_id": "req-ac-t05-conflicting-authority",
+    "mode": "strict-offline",
+    "offline": true,
+    "network": {
+      "accessed": false,
+      "operations": []
+    },
+    "skills": {
+      "edited": false,
+      "candidate_chain": [
+        "problem-framing",
+        "requirements-rules",
+        "acceptance-criteria",
+        "requirements-quality-gate"
+      ],
+      "files_read": [
+        {
+          "path": "slots/problem-framing/SKILL.md",
+          "sha256": "e59e0e87f72ec529c332c74f103574d69d78b78c5b801cc3c0098c337a03ba60"
+        },
+        {
+          "path": "slots/problem-framing/contract.json",
+          "sha256": "f12a26e02ab4a28b30c9e17b75f5373dd5f123d65e00acd4aa925e3ad4185a7f"
+        },
+        {
+          "path": "slots/requirements-rules/SKILL.md",
+          "sha256": "c75fbcf8dc4ee0a15cc64437075c7414f56fe789a16382015f7a79e86bd974be"
+        },
+        {
+          "path": "slots/requirements-rules/contract.json",
+          "sha256": "2a751539a8f86991d6c13c8ba794d27b0d943a7bfd91b79ef9f685ee0c3fc275"
+        },
+        {
+          "path": "slots/acceptance-criteria/SKILL.md",
+          "sha256": "680f7f616ec3b553d4c02a5f18df0ee7bf35445207273d0a073622ec71d6c9bc"
+        },
+        {
+          "path": "slots/acceptance-criteria/contract.json",
+          "sha256": "5cd5278eb8e0f5649093f37189ef6f81c6811372db3b3f42428363e4280372e7"
+        },
+        {
+          "path": "slots/requirements-quality-gate/SKILL.md",
+          "sha256": "d0305f102c8f9d59b9f56dee3997856dd38bb2d2b22e4fb607eb40da36dba877"
+        },
+        {
+          "path": "slots/requirements-quality-gate/contract.json",
+          "sha256": "c073a933506898a030f6f7f1306fa367d063a75942b154710299777a2ec49fa3"
+        }
+      ]
+    },
+    "inputs": [
+      {
+        "path": "evals/cases/tuning/requirements-to-ac.json",
+        "scope": "record req-ac-t05-conflicting-authority only",
+        "sha256": "9bce1b41f2c4134c45ec7f21d7f9a5e33c5b4c20bfd5d919f551686b42e2987f"
+      },
+      {
+        "path": "evals/runs/requirements-to-ac/candidate-freeze.json",
+        "scope": "frozen candidate chain paths and hashes only",
+        "sha256": "618e02eacd064de735f517880a558925c4d17bd66a3f7bb47a1f74ea82201fc6"
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t05-conflicting-authority/full_output.md",
+        "operation": "created",
+        "sha256": "fb632591332b07077506102d74c37a5b18563a87906beaf6723e7ffaf88775a9"
+      },
+      {
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t05-conflicting-authority/tool_evidence.json",
+        "operation": "created",
+        "sha256": null,
+        "hash_note": "Self-hash is intentionally null because embedding a file's own cryptographic hash in that same file has no stable finite representation."
+      }
+    ],
+    "operations": [
+      "Listed local evaluation directories to locate the requested case output path.",
+      "Listed local evaluation and candidate files to locate authorized inputs.",
+      "Read the req-ac-t05-conflicting-authority tuning record from evals/cases/tuning/requirements-to-ac.json.",
+      "Read candidate-freeze.json to identify and verify the frozen candidate chain.",
+      "Read only SKILL.md and contract.json for problem-framing, requirements-rules, acceptance-criteria, and requirements-quality-gate.",
+      "Created the requested case output directory because it did not exist.",
+      "Created full_output.md.",
+      "Computed SHA-256 hashes locally with sha256sum; no script file was run.",
+      "Created tool_evidence.json."
+    ],
+    "prohibited_sources_accessed": {
+      "holdout": false,
+      "eval_results": false,
+      "provenance": false,
+      "mutations": false,
+      "recipes": false,
+      "source_skills": false
+    },
+    "scripts_run": false,
+    "installs_performed": false,
+    "run_json_created": false,
+    "qa_read_only": true,
+    "result": {
+      "status": "blocked",
+      "failure": null
+    }
+  }
+}

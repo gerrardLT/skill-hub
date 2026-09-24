@@ -1,0 +1,53 @@
+{
+  "case_id": "req-ac-h03-webhook-retry-boundary",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "db4b26ddf6b8399e501be02d720868b26c17de42927a2a0ed605817e422e3a03"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "b028eabb81eee26d4c9c8ceb7c82bc15063816ee21b721db0531c9a6cf6e8ec6"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h03-webhook-retry-boundary",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "db4b26ddf6b8399e501be02d720868b26c17de42927a2a0ed605817e422e3a03"
+      }
+    },
+    "reads": [
+      "slots/problem-framing/SKILL.md",
+      "slots/problem-framing/contract.json",
+      "slots/requirements-rules/SKILL.md",
+      "slots/requirements-rules/contract.json",
+      "slots/acceptance-criteria/SKILL.md",
+      "slots/acceptance-criteria/contract.json",
+      "slots/requirements-quality-gate/SKILL.md",
+      "slots/requirements-quality-gate/contract.json"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/candidate-formal-holdout/req-ac-h03-webhook-retry-boundary/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/candidate-formal-holdout/req-ac-h03-webhook-retry-boundary/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

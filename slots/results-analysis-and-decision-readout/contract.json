@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Experiment or research data, metrics, baselines, bias checks, and decision criteria.",
+    "output": "An analysis, go/pivot/kill recommendation, stakeholder readout, limitations, and next steps."
+  },
+  "dependencies": [
+    "cluster:metrics-system-and-observability",
+    "cluster:solution-hypothesis-and-experiment-design"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "results-analysis-and-decision-readout",
+  "inputs": [
+    "Experiment or research data, metrics, baselines, bias checks, and decision criteria."
+  ],
+  "outputs": [
+    "An analysis, go/pivot/kill recommendation, stakeholder readout, limitations, and next steps."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Interpret results against preset criteria and communicate evidence, limits, disagreements, and recommendations.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

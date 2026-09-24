@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "An executable implementation plan and an isolated work environment.",
+    "output": "Plan-aligned implementation status with task-level verification and explicit blockers."
+  },
+  "dependencies": [
+    "cluster:implementation-planning-and-handoff"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "plan-execution-control",
+  "inputs": [
+    "An executable implementation plan and an isolated work environment."
+  ],
+  "outputs": [
+    "Plan-aligned implementation status with task-level verification and explicit blockers."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Load and review a plan, execute task states with checkpoints, stop on blockers, and hand off branch completion.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

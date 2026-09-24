@@ -1,0 +1,56 @@
+{
+  "case_id": "req-ac-t05-conflicting-authority",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "50b2f91582226e4ceaeeaeb6a7ba1d8be9dddd38b7acc9c8b7d06ae3a7f48044"
+    }
+  },
+  "tools": [
+    {
+      "tool": "Read",
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "purpose": "Read the exact case prompt and case metadata",
+      "result": "success"
+    },
+    {
+      "tool": "Read",
+      "path": "skills/pre-mortem/SKILL.md",
+      "purpose": "Read the original source skill instructions",
+      "result": "success"
+    },
+    {
+      "tool": "Bash",
+      "command": "python -c <local SHA-256 calculation>",
+      "purpose": "Calculate input_hash from the exact prompt locally",
+      "result": "success"
+    },
+    {
+      "tool": "Bash",
+      "command": "mkdir -p evals/runs/requirements-to-ac/baseline/req-ac-t05-conflicting-authority",
+      "purpose": "Create the unique run output directory",
+      "result": "success"
+    },
+    {
+      "tool": "Write",
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t05-conflicting-authority/full_output.md",
+      "purpose": "Write the complete task output",
+      "result": "success"
+    },
+    {
+      "tool": "Write",
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t05-conflicting-authority/tool_evidence.json",
+      "purpose": "Write local tool evidence",
+      "result": "success"
+    },
+    {
+      "tool": "Write",
+      "path": "evals/runs/requirements-to-ac/baseline/req-ac-t05-conflicting-authority/run.json",
+      "purpose": "Write run metadata",
+      "result": "success"
+    }
+  ]
+}

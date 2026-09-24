@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence.",
+    "output": "A demand-side map, segment choice, market signal interpretation, and evidence gaps."
+  },
+  "dependencies": [
+    "cluster:market-positioning-and-competitive-power"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "market-segmentation-and-demand-intelligence",
+  "inputs": [
+    "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence."
+  ],
+  "outputs": [
+    "A demand-side map, segment choice, market signal interpretation, and evidence gaps."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Identify demand-side alternatives, market segments, incumbent signals, and the customer situations that define competition.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

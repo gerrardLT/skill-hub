@@ -1,0 +1,47 @@
+{
+  "case_id": "req-ac-h01-shift-alarm-handoff",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "554f5c7f8651592bf1841ec5b0299d13ea1cc2da399797409c688be40772b68b"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "c6634caca0e0e8eb9ed5b2696d6a972447ceb0fbed2f45b8b9bcc9c3b9b3c2e7"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h01-shift-alarm-handoff",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "554f5c7f8651592bf1841ec5b0299d13ea1cc2da399797409c688be40772b68b"
+      }
+    },
+    "reads": [
+      "skills/prd-development/SKILL.md",
+      "skills/prd-development/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h01-shift-alarm-handoff/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h01-shift-alarm-handoff/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

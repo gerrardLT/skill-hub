@@ -1,0 +1,187 @@
+{
+  "id": "requirements-to-acceptance-criteria",
+  "version": "0.2.0",
+  "status": "released",
+  "description": "Turn validated product brief into traceable requirements and testable acceptance criteria through four sequential slots: problem framing, requirements rules, acceptance criteria generation, and quality gate review.",
+  "inputs": [
+    "validated-product-brief",
+    "evidence-sources",
+    "constraints",
+    "authority-metadata"
+  ],
+  "outputs": [
+    "problem-frame-artifact",
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "gate-report"
+  ],
+  "permissions": [
+    "read-local-files",
+    "write-run-output"
+  ],
+  "steps": [
+    {
+      "id": "step-1-frame",
+      "slot": "problem-framing",
+      "ref": "problem-framing@0.2.0",
+      "input_map": {
+        "Supplied product context": "validated-product-brief",
+        "Authorized local evidence": "evidence-sources",
+        "Source and authority metadata": "authority-metadata"
+      },
+      "output_map": {
+        "Solution-free target-user, problem, impact, evidence, and gap frame": "problem-frame-artifact"
+      },
+      "depends_on": [],
+      "gates": [
+        "source-traceability"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    },
+    {
+      "id": "step-2-rules",
+      "slot": "requirements-rules",
+      "ref": "requirements-rules@0.2.0",
+      "input_map": {
+        "Problem frame": "problem-frame-artifact",
+        "Supplied constraints and decisions": "constraints",
+        "Source and authority metadata": "authority-metadata"
+      },
+      "output_map": {
+        "Numbered requirements, rules, dependencies, scope records, and open items": "requirements-artifact"
+      },
+      "depends_on": [
+        "step-1-frame"
+      ],
+      "gates": [
+        "unknown-preservation"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    },
+    {
+      "id": "step-3-criteria",
+      "slot": "acceptance-criteria",
+      "ref": "acceptance-criteria@0.2.0",
+      "input_map": {
+        "Ready numbered requirements and rules": "requirements-artifact",
+        "Dependencies and scope": "requirements-artifact",
+        "Source and authority metadata": "authority-metadata"
+      },
+      "output_map": {
+        "Numbered Given/When/Then acceptance criteria": "acceptance-criteria-artifact"
+      },
+      "depends_on": [
+        "step-2-rules"
+      ],
+      "gates": [
+        "given-when-then-structure",
+        "observability",
+        "applicable-success-coverage"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    },
+    {
+      "id": "step-4-gate",
+      "slot": "requirements-quality-gate",
+      "ref": "requirements-quality-gate@0.2.0",
+      "input_map": {
+        "Problem frame": "problem-frame-artifact",
+        "Requirements and rules": "requirements-artifact",
+        "Acceptance criteria": "acceptance-criteria-artifact",
+        "Declared contracts and evidence": "authority-metadata"
+      },
+      "output_map": {
+        "One status: passed, failed, needs-input, or blocked": "gate-report"
+      },
+      "depends_on": [
+        "step-3-criteria"
+      ],
+      "gates": [
+        "evidence-backed-verdict",
+        "read-only-review"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "step-1-frame",
+      "to": "step-2-rules"
+    },
+    {
+      "from": "step-2-rules",
+      "to": "step-3-criteria"
+    },
+    {
+      "from": "step-3-criteria",
+      "to": "step-4-gate"
+    }
+  ],
+  "gates": [
+    "applicable-success-coverage",
+    "evidence-backed-verdict",
+    "given-when-then-structure",
+    "observability",
+    "read-only-review",
+    "source-traceability",
+    "unknown-preservation"
+  ],
+  "failure_routes": [
+    {
+      "from": "step-1-frame",
+      "to": "step-1-frame",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "step-2-rules",
+      "to": "step-1-frame",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "step-3-criteria",
+      "to": "step-2-rules",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "step-4-gate",
+      "to": "step-2-rules",
+      "on_status": [
+        "failed"
+      ],
+      "action": "invalidate-and-rerun"
+    }
+  ],
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/composition/requirements-to-acceptance-criteria-v0.2.0/result.json",
+        "sha256": "97f236f754bbac3697adb00b1343c8cb3b72b51f01d06613b1c48873fb286593"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/composition/requirements-to-acceptance-criteria-v0.2.0/review.json",
+      "sha256": "368b80b32bc08aa2ad5978f8b298c2a43244f3eba5d6321bf6e506c14638af94"
+    }
+  }
+}

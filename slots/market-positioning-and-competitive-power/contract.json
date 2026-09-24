@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Market questions, customer alternatives, competitive evidence, and business constraints.",
+    "output": "A supported market choice, positioning, differentiation, power hypotheses, and competitive structure."
+  },
+  "dependencies": [
+    "cluster:context-intake-and-routing"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "market-positioning-and-competitive-power",
+  "inputs": [
+    "Market questions, customer alternatives, competitive evidence, and business constraints."
+  ],
+  "outputs": [
+    "A supported market choice, positioning, differentiation, power hypotheses, and competitive structure."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Define target markets, positioning, alternatives, switching costs, structural power, and durable advantage.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

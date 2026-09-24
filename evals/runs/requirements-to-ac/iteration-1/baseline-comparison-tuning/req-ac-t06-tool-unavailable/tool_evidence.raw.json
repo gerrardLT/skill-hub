@@ -1,0 +1,90 @@
+{
+  "case_id": "req-ac-t06-tool-unavailable",
+  "status": "needs-input",
+  "execution_mode": "strict-offline-baseline",
+  "skill": {
+    "name": "discovery-process",
+    "variant": "original",
+    "path": "skills/discovery-process/SKILL.md",
+    "sha256": "259ff492dfa5a5fa3c2d546d5c119e7a9147598ab8330833d538f2365e8e173b"
+  },
+  "inputs_read": [
+    {
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "scope": "req-ac-t06-tool-unavailable tuning record",
+      "operation": "read",
+      "sha256": null
+    },
+    {
+      "path": "skills/discovery-process/SKILL.md",
+      "scope": "original skill",
+      "operation": "read",
+      "sha256": "259ff492dfa5a5fa3c2d546d5c119e7a9147598ab8330833d538f2365e8e173b"
+    },
+    {
+      "path": "skills/discovery-process/template.md",
+      "scope": "locally referenced output template",
+      "operation": "read",
+      "sha256": "f5e3bab0a967d3dae3779eb8157b35f4a4204d9b563074e1ddc486e11839252a"
+    }
+  ],
+  "tool_operations": [
+    {
+      "tool": "Bash",
+      "operation": "list local directories to locate the case and referenced skill files",
+      "network": false
+    },
+    {
+      "tool": "Glob",
+      "operation": "locate the requested case path and tuning record locally",
+      "network": false
+    },
+    {
+      "tool": "Read",
+      "operation": "read the tuning record, original skill, and referenced template",
+      "network": false
+    },
+    {
+      "tool": "Bash",
+      "operation": "compute SHA-256 hashes with sha256sum and create the requested output directory",
+      "network": false
+    },
+    {
+      "tool": "Write",
+      "operation": "write full_output.md and tool_evidence.json",
+      "network": false
+    }
+  ],
+  "external_tool": {
+    "name": "analytics tool",
+    "available": false,
+    "queried": false,
+    "export_attached": false
+  },
+  "network_used": false,
+  "packages_installed": false,
+  "scripts_executed": false,
+  "skills_edited": false,
+  "candidate_read": false,
+  "holdout_read": false,
+  "grades_read": false,
+  "provenance_read": false,
+  "mutations_read": false,
+  "recipes_read": false,
+  "other_skills_read": false,
+  "outputs": [
+    {
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t06-tool-unavailable/full_output.md",
+      "operation": "write",
+      "sha256": "2a25c8efefacafd80bad3f7495ba18b7af3369cecd6fa1b76e66195c05636711"
+    },
+    {
+      "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t06-tool-unavailable/tool_evidence.json",
+      "operation": "write",
+      "sha256": null,
+      "hash_note": "Self-hash omitted because embedding the file's own hash would alter the file."
+    }
+  ],
+  "run_json_written": false,
+  "failure": null
+}

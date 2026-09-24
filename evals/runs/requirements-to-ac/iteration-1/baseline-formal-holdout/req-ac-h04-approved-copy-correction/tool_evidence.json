@@ -1,0 +1,47 @@
+{
+  "case_id": "req-ac-h04-approved-copy-correction",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "1b56e79e7d2cb747194e079af25c9f83183451714a4b61f3ec06a8d55431f46b"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "adecc2bf945d23bb2195d9e16328adb31621cc89d69ae3d35095618cc0544474"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h04-approved-copy-correction",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "1b56e79e7d2cb747194e079af25c9f83183451714a4b61f3ec06a8d55431f46b"
+      }
+    },
+    "reads": [
+      "skills/product-strategy-session/SKILL.md",
+      "skills/product-strategy-session/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h04-approved-copy-correction/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h04-approved-copy-correction/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

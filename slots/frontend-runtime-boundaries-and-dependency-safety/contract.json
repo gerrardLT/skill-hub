@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A frontend implementation, dependency graph, rendering environment, and integration constraints.",
+    "output": "A bounded runtime design, dependency decision, and safety evidence."
+  },
+  "dependencies": [
+    "cluster:design-system-foundation-and-token-extraction"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "frontend-runtime-boundaries-and-dependency-safety",
+  "inputs": [
+    "A frontend implementation, dependency graph, rendering environment, and integration constraints."
+  ],
+  "outputs": [
+    "A bounded runtime design, dependency decision, and safety evidence."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Keep frontend dependencies, client-server boundaries, assets, and runtime assumptions safe and explicit.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

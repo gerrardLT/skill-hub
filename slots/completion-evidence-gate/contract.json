@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A proposed status claim and the command capable of proving it.",
+    "output": "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report."
+  },
+  "dependencies": [
+    "cluster:independent-code-review",
+    "cluster:playwright-test-engineering",
+    "cluster:tdd-change-loop",
+    "cluster:vitest-tooling"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "completion-evidence-gate",
+  "inputs": [
+    "A proposed status claim and the command capable of proving it."
+  ],
+  "outputs": [
+    "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Require a fresh complete command, output inspection, and exit-code check before any success or completion claim.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

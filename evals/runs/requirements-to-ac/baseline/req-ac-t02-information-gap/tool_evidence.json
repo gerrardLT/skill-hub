@@ -1,0 +1,44 @@
+{
+  "case_id": "req-ac-t02-information-gap",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "8732561857aafa21067f673e717a29f1a559af499c1467ce1fbe53bb4b457473"
+    }
+  },
+  "evidence": [
+    {
+      "tool": "Read",
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "purpose": "Read the exact case prompt from the local evaluation case file."
+    },
+    {
+      "tool": "Read",
+      "path": "skills/metrics-dashboard/SKILL.md",
+      "purpose": "Read the original local skill entry point."
+    },
+    {
+      "tool": "Bash",
+      "command": "python -c <local SHA-256 computation>",
+      "purpose": "Compute the exact prompt SHA-256 locally.",
+      "result": "e91c2da91b0a62ad3fef2c82ebeef0d7f98e17ce75127ee648f66ebd2797adc3"
+    },
+    {
+      "tool": "Bash",
+      "command": "mkdir -p evals/runs/requirements-to-ac/baseline/req-ac-t02-information-gap",
+      "purpose": "Create the sole requested output directory."
+    },
+    {
+      "tool": "Write",
+      "paths": [
+        "evals/runs/requirements-to-ac/baseline/req-ac-t02-information-gap/full_output.md",
+        "evals/runs/requirements-to-ac/baseline/req-ac-t02-information-gap/tool_evidence.json",
+        "evals/runs/requirements-to-ac/baseline/req-ac-t02-information-gap/run.json"
+      ],
+      "purpose": "Write the requested run artifacts."
+    }
+  ]
+}

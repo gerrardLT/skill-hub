@@ -1,0 +1,48 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A request, phase state, available capabilities, and execution constraints.",
+    "output": "An ordered workflow, routing decision, handoff state, and stop or retry condition."
+  },
+  "dependencies": [],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "workflow-orchestration-and-lifecycle",
+  "inputs": [
+    "A request, phase state, available capabilities, and execution constraints."
+  ],
+  "outputs": [
+    "An ordered workflow, routing decision, handoff state, and stop or retry condition."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Sequence a capability workflow, route sub-capabilities, and preserve lifecycle state without performing the downstream work itself.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

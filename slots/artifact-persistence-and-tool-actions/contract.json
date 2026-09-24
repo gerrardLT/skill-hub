@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A validated task, tool boundary, output location, and write authorization.",
+    "output": "A tool action, saved artifact, or explicit no-write outcome."
+  },
+  "dependencies": [
+    "cluster:workflow-orchestration-and-lifecycle"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "artifact-persistence-and-tool-actions",
+  "inputs": [
+    "A validated task, tool boundary, output location, and write authorization."
+  ],
+  "outputs": [
+    "A tool action, saved artifact, or explicit no-write outcome."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Select authorized tools and persist the resulting specification or artifact at the correct lifecycle point.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

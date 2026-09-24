@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level.",
+    "output": "A safety boundary, red-team scope, human checkpoint, stop condition, and residual risk."
+  },
+  "dependencies": [
+    "cluster:ai-agent-autonomy-and-human-control",
+    "cluster:ai-interaction-and-probabilistic-ux"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "ai-safety-and-action-governance",
+  "inputs": [
+    "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level."
+  ],
+  "outputs": [
+    "A safety boundary, red-team scope, human checkpoint, stop condition, and residual risk."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Assess prompt and action risks, preserve human checkpoints, and prevent unsafe autonomy or unsupported safety claims.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

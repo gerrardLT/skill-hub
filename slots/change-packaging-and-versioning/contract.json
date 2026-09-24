@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Implemented and reviewed changes with fresh verification evidence.",
+    "output": "A safe, traceable, version-consistent change package and pull-request description."
+  },
+  "dependencies": [
+    "cluster:completion-evidence-gate",
+    "cluster:git-destructive-command-guard"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "change-packaging-and-versioning",
+  "inputs": [
+    "Implemented and reviewed changes with fresh verification evidence."
+  ],
+  "outputs": [
+    "A safe, traceable, version-consistent change package and pull-request description."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Package verified changes into bisectable commits, coherent versions, changelogs, credential checks, and PR metadata.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

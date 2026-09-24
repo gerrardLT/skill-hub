@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "requirements-rules",
+  "version": "0.2.0",
+  "status": "released",
+  "responsibility": "Convert a framed problem and supplied constraints into numbered requirements, rules, dependencies, scope, and open items without writing acceptance criteria.",
+  "inputs": [
+    "Problem frame",
+    "Supplied constraints and decisions",
+    "Source and authority metadata"
+  ],
+  "outputs": [
+    "Status",
+    "Numbered requirements, rules, dependencies, scope records, and open items",
+    "Traceability and conflict register"
+  ],
+  "boundaries": {
+    "input": "An existing problem frame and supplied authoritative constraints.",
+    "output": "Normalized requirement records only; no acceptance criteria or solution design."
+  },
+  "dependencies": [
+    "problem-framing"
+  ],
+  "permissions": {
+    "default": [
+      "read-local-files",
+      "write-run-output"
+    ]
+  },
+  "statuses": [
+    "passed",
+    "failed",
+    "needs-input",
+    "blocked"
+  ],
+  "gates": [
+    "problem-frame-readiness",
+    "critical-rule-retention",
+    "source-traceability",
+    "authority-preservation",
+    "conflict-preservation",
+    "scope-consistency",
+    "unknown-preservation",
+    "ac-exclusion"
+  ],
+  "forbidden_actions": [
+    "write acceptance criteria",
+    "invent constraints, policy, authority, or scope",
+    "resolve supplied conflicts",
+    "override higher authority",
+    "specify unsupported implementation or UI details"
+  ],
+  "hard_failures": [
+    "fabricated-fact",
+    "missing-critical-rule",
+    "untestable-acceptance-criteria",
+    "unknown-loss",
+    "scope-or-authority-overreach",
+    "incorrect-gate",
+    "qa-repair-overreach"
+  ],
+  "artifact_types": [
+    "requirements-register",
+    "rules-register",
+    "dependency-register",
+    "scope-register",
+    "open-item-register"
+  ]
+}

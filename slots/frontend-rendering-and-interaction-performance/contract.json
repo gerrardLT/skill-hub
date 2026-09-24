@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A rendered frontend, interaction traces, performance measurements, and device constraints.",
+    "output": "Performance findings, budgets, implementation constraints, and regression evidence."
+  },
+  "dependencies": [
+    "cluster:frontend-runtime-boundaries-and-dependency-safety"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "frontend-rendering-and-interaction-performance",
+  "inputs": [
+    "A rendered frontend, interaction traces, performance measurements, and device constraints."
+  ],
+  "outputs": [
+    "Performance findings, budgets, implementation constraints, and regression evidence."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Optimize rendering, interaction, animation, and layout performance against measured runtime behavior.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

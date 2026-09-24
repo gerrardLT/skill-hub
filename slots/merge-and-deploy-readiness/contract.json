@@ -1,0 +1,52 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A pull request, target branch, CI state, version state, and deployment configuration.",
+    "output": "A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream."
+  },
+  "dependencies": [
+    "cluster:change-packaging-and-versioning",
+    "cluster:completion-evidence-gate",
+    "cluster:independent-code-review"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "merge-and-deploy-readiness",
+  "inputs": [
+    "A pull request, target branch, CI state, version state, and deployment configuration."
+  ],
+  "outputs": [
+    "A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

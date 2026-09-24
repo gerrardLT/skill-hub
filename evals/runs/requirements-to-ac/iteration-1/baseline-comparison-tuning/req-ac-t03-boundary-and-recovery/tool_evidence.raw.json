@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "case_id": "req-ac-t03-boundary-and-recovery",
+  "evaluation": "strict-offline-baseline",
+  "status": "needs-input",
+  "offline": true,
+  "network_used": false,
+  "network_operations": [],
+  "installs_performed": false,
+  "scripts_executed": false,
+  "skills_invoked": false,
+  "skills_changed": false,
+  "run_json_written": false,
+  "workspace": "D:/project/skills-hub",
+  "allowed_output_directory": "D:/project/skills-hub/evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery",
+  "inputs_read": [
+    {
+      "path": "D:/project/skills-hub/evals/cases/tuning/requirements-to-ac.json",
+      "purpose": "Read the tuning record containing the requested case.",
+      "sha256": "9bce1b41f2c4134c45ec7f21d7f9a5e33c5b4c20bfd5d919f551686b42e2987f"
+    },
+    {
+      "path": "D:/project/skills-hub/skills/prd-development/SKILL.md",
+      "purpose": "Apply the original PRD development skill directly.",
+      "sha256": "3275581e2e2ebe08257dd397d4e598c494b73eeb92e69e00c42fa511698cb09c"
+    },
+    {
+      "path": "D:/project/skills-hub/skills/prd-development/template.md",
+      "purpose": "Read the required template referenced by the original skill Application section.",
+      "sha256": "b2eb1bb44a43b3753f8011a21d0a9ad42268479a857b523a98e864269372135e"
+    }
+  ],
+  "failed_operations": [
+    {
+      "operation": "list requested output directory before creation",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery",
+      "result": "failed",
+      "reason": "Directory did not exist yet."
+    },
+    {
+      "operation": "read locally referenced facilitation source",
+      "path": "D:/project/skills-hub/skills/workshop-facilitation/SKILL.md",
+      "result": "failed",
+      "reason": "File does not exist. This did not block the one-shot artifact because no guided conversation was run."
+    }
+  ],
+  "operations": [
+    "Listed local evaluation and skill paths to locate the requested inputs.",
+    "Read only the tuning suite record, the original prd-development skill, and its locally referenced required template; attempted the missing locally referenced facilitation file.",
+    "Computed SHA-256 hashes locally with sha256sum.",
+    "Created the requested case output directory.",
+    "Wrote full_output.md.",
+    "Verified the original skill and template had no working-tree diff.",
+    "Wrote tool_evidence.json."
+  ],
+  "outputs_written": [
+    {
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery/full_output.md",
+      "sha256": "55e733978737734ffd95df01339237c5348b80e58bcc6777cb2d566b3eaeac61"
+    },
+    {
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery/tool_evidence.json",
+      "sha256": null,
+      "hash_note": "Not self-hashed because embedding its own final hash would change the file."
+    }
+  ],
+  "excluded_sources_read": [],
+  "real_failure": "The referenced file D:/project/skills-hub/skills/workshop-facilitation/SKILL.md was absent. The evaluated product response itself is needs-input because the documented CSV file-size limit was not supplied."
+}

@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints.",
+    "output": "Prioritized findings, remediation hierarchy, verdict, recapture requirements, and residual risk."
+  },
+  "dependencies": [
+    "cluster:ui-review-scope-and-evidence-acquisition"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "rendered-ui-critique-and-release-disposition",
+  "inputs": [
+    "Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints."
+  ],
+  "outputs": [
+    "Prioritized findings, remediation hierarchy, verdict, recapture requirements, and residual risk."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Critique real UI renders and animation behavior, prioritize evidence-backed findings, and issue a bounded disposition.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

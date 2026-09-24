@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "An active production anomaly, impact evidence, alerts, and available mitigation controls.",
+    "output": "A structured response, mitigation, communications, escalation, recovery evidence, and closure record."
+  },
+  "dependencies": [
+    "cluster:deployment-observation-and-recovery",
+    "cluster:production-canary-monitoring"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "incident-response-coordination",
+  "inputs": [
+    "An active production anomaly, impact evidence, alerts, and available mitigation controls."
+  ],
+  "outputs": [
+    "A structured response, mitigation, communications, escalation, recovery evidence, and closure record."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Coordinate incident acknowledgement, severity, roles, mitigation-first action, communication, recovery, and closure.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

@@ -1,0 +1,46 @@
+{
+  "case_id": "req-ac-h02-finance-export-gaps",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "368891436ce6142420e4f1de9b8f08b54b59af04dc72b362aa65520251908595"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "7a5b29f27c0ccfec2abe6b747a966f6d4160667438647b9d1e337e4a7b3476b4"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h02-finance-export-gaps",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "368891436ce6142420e4f1de9b8f08b54b59af04dc72b362aa65520251908595"
+      }
+    },
+    "reads": [
+      "skills/metrics-dashboard/SKILL.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h02-finance-export-gaps/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/baseline-formal-holdout/req-ac-h02-finance-export-gaps/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

@@ -1439,6 +1439,69 @@ def test_phase3_rejects_manifest_without_material_root(tmp_path: Path) -> None:
     assert report["missing_required_supplements"] == []
 
 
+def test_phase6_cli_accepts_complete_final_dispositions() -> None:
+    verified = run_script(
+        VERIFY,
+        "phase6",
+        "--clusters",
+        str(ROOT / "curation" / "clusters.json"),
+        "--units-root",
+        str(ROOT / "curation" / "units"),
+        "--slots-root",
+        str(ROOT / "slots"),
+        "--review-queue",
+        str(ROOT / "curation" / "slot-review-queue.json"),
+        "--release-status",
+        str(ROOT / "curation" / "slot-release-status.json"),
+        "--inventory",
+        str(ROOT / "curation" / "inventory.json"),
+    )
+
+    assert verified.returncode == 0, verified.stderr
+    report = json.loads(verified.stdout)
+    assert report["gate"] == "phase-6-slot-coverage-release"
+    assert report["cluster_count"] == 88
+    assert report["unit_count"] == report["mapped_unit_count"] == 965
+    assert report["ok"] is True
+
+
+def test_phase7_cli_accepts_released_executable_recipe() -> None:
+    verified = run_script(
+        VERIFY,
+        "phase7",
+        "--recipes-root",
+        str(ROOT / "recipes"),
+        "--slots-root",
+        str(ROOT / "slots"),
+    )
+
+    assert verified.returncode == 0, verified.stderr
+    report = json.loads(verified.stdout)
+    assert report["gate"] == "phase-7-recipe-composition"
+    assert report["checked"] == [str(ROOT / "recipes" / "requirements-to-acceptance-criteria.json")]
+    assert report["errors"] == []
+    assert report["ok"] is True
+
+
+def test_phase8_sync_cli_accepts_repository_source_without_local_install() -> None:
+    verified = run_script(
+        VERIFY,
+        "phase8-sync",
+        "--audit",
+        str(ROOT / "curation" / "dev-loop-sync-audit.json"),
+        "--workspace-root",
+        str(ROOT),
+    )
+
+    assert verified.returncode == 0, verified.stderr
+    report = json.loads(verified.stdout)
+    assert report["gate"] == "phase-8-dev-loop-source"
+    assert report["target_count"] == 2
+    assert report["checked_file_count"] == 11
+    assert report["errors"] == []
+    assert report["ok"] is True
+
+
 def test_phase3_rejects_tampered_and_unjustified_excluded_supplements(
     tmp_path: Path,
 ) -> None:

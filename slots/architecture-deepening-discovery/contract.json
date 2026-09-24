@@ -1,0 +1,48 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A codebase, change hotspots, repeated logic, and maintenance-friction evidence.",
+    "output": "Scoped architectural candidates, evidence, and a YAGNI-aware recommendation to deepen or leave unchanged."
+  },
+  "dependencies": [],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "architecture-deepening-discovery",
+  "inputs": [
+    "A codebase, change hotspots, repeated logic, and maintenance-friction evidence."
+  ],
+  "outputs": [
+    "Scoped architectural candidates, evidence, and a YAGNI-aware recommendation to deepen or leave unchanged."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Find shallow modules, leaked boundaries, repeated orchestration, and other evidence-backed deepening candidates.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

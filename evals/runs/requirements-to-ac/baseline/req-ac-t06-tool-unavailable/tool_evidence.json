@@ -1,0 +1,50 @@
+{
+  "case_id": "req-ac-t06-tool-unavailable",
+  "offline": true,
+  "network_accessed": false,
+  "analytics_tool_queried": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "c952c9bade8952e72917e83bcc838578336973ae99f7ee5acbf8fb702b51e9a7"
+    }
+  },
+  "evidence": [
+    {
+      "tool": "Read",
+      "target": "evals/cases/tuning/requirements-to-ac.json",
+      "result": "success",
+      "purpose": "Read the exact case prompt and case metadata from the local evaluation file."
+    },
+    {
+      "tool": "Read",
+      "target": "skills/discovery-process/SKILL.md",
+      "result": "success",
+      "purpose": "Read the original local skill entry point."
+    },
+    {
+      "tool": "Read",
+      "target": "skills/discovery-process/template.md",
+      "result": "success",
+      "purpose": "Read a local reference directly linked from the original skill entry point."
+    },
+    {
+      "tool": "Bash",
+      "target": "local filesystem and Python standard library",
+      "result": "success",
+      "purpose": "Verify output parents, create only the requested run directory, and compute the SHA-256 input hash locally."
+    },
+    {
+      "tool": "Write",
+      "target": "evals/runs/requirements-to-ac/baseline/req-ac-t06-tool-unavailable/",
+      "result": "success",
+      "purpose": "Write the requested run artifacts."
+    }
+  ],
+  "unavailable_dependency": {
+    "tool": "external analytics tool",
+    "status": "unavailable",
+    "export_attached": false,
+    "query_attempted": false
+  }
+}

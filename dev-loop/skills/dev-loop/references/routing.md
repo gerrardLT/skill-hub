@@ -1,25 +1,42 @@
-# 六步研发极简能力映射表
+# Released Recipe 路由表
 
-`dev-loop` 不硬编码具体方法论，直接调度当前环境中成熟的各领域首选技能，并支持同类能力的自然平替。
+`dev-loop` 不直接调度来源 Skill，也不复制 slot 方法。它只把意图路由到 `recipes/` 中验证通过的 released recipe，再按 recipe 的精确引用调用 released slot contract。
 
----
+## 意图映射
 
-## 阶段能力映射矩阵
+| 用户意图 | Recipe 文件 | 缺失或未发布时 |
+|---|---|---|
+| 需求或 PRD | `recipes/write-prd.json` | `blocked` |
+| Web 流程设计 | `recipes/design-web-flow.json` | `blocked` |
+| TDD 功能实现 | `recipes/build-feature-tdd.json` | `blocked` |
+| 只做 QA | `recipes/qa-only.json` | `blocked` |
+| 发布交付 | `recipes/ship-release.json` | `blocked` |
+| 复盘回流需求 | `recipes/retro-to-requirements.json` | `blocked` |
+| 完整研发闭环 | `recipes/full-dev-loop.json` | `blocked` |
 
-| 研发阶段 | 首选核心 Skill | 备选/平替 Skill | 核心交付物 |
-|---|---|---|---|
-| **① 需求** | `product-management:PRD生成` | `pm-output-engine:需求文档撰写` | `docs/prd.md` |
-| **② 设计** | `ui-ux-pro-max-skill:ui-ux-pro-max` | `product-design:flow-web` / `impeccable` | `docs/design.md` |
-| **③ 实现** | `superpowers:writing-plans`<br>`superpowers:test-driven-development` | 叠加 `andrej-karpathy-skills:karpathy-guidelines` | `src/` + 自动化单测 |
-| **④ 验收** | `design-review:design-qa`<br>`superpowers:verification-before-completion` | `test-case-generator`<br>`playwright` (MCP) | `docs/qa-report.md` |
-| **⑤ 交付** | `shipping-artifacts` | `architecture-visualization:architecture-communicator` | `docs/` 交付集 + `README.md` |
-| **⑥ 复盘** | `superpowers:systematic-debugging`<br>`product-management:产品指标复盘` | `product-design:retro` | `docs/retro.md` (回流至①) |
+## 路由验证
 
----
+选择 recipe 后依次验证：
 
-## 调度与降级规则
+1. recipe 文件存在、结构符合 `recipes/schema.json` 且 `status` 为 `released`。
+2. `evidence.composition_runs` 和 `evidence.review` 指向真实存在的发布证据。
+3. 每个 step 的 `slot` 存在，`ref` 精确匹配 contract `version`，contract `status` 为 `released`。
+4. `input_map`、`output_map`、Gate 和权限均落在 slot contract 声明的边界内。
+5. 依赖图无环；输入有外部来源或上游生产者；recipe 输出有步骤生产者。
+6. failure route 完整处理 `needs-input`、`failed`、`blocked`，且采取 fail-closed action。
 
-1. **就地取材**：优先调度当前已就绪的成熟 Skill（superpowers、product-management 等）；
-2. **平替降级**：若首选不可用，自动使用备选平替；
-3. **极简兜底**：若均无对应子 Skill，主编排器按 `stages.md` 标准自产对应文档并标注 `⚠️ 降级执行`，流程永不中断；
-4. **单步开箱**：用户单独说"帮我写 PRD"、"做一下验收走查"时，无需全流程前置要求，直接进入单步执行。
+任一验证失败都返回 `blocked`，并报告具体 recipe、slot、字段或证据缺口。不得把 draft/unreleased artifact 当作可执行资源。
+
+## 替换规则
+
+替换 slot 不是自然平替。仅当候选替换满足以下条件时才允许：
+
+- 同样为 `released`；
+- contract 的输入、输出、Gate 和权限与 recipe 映射兼容；
+- recipe 的 `ref` 已显式更新到该版本；
+- 替换 composition test 与 review evidence 已通过；
+- 旧的下游 evidence 已失效并重跑。
+
+## 当前发布状态
+
+若仓库中没有 released recipe 或其依赖的 released slots，`dev-loop` 必须返回 `blocked`。它可以列出需要完成的 Gate 和证据，但不能自产文档、调用原始 `skills/`、自动降级或继续下游。

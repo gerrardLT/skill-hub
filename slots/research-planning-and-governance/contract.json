@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A research question, target population, access constraints, ethical boundary, and timebox.",
+    "output": "A governed research plan, participant protocol, saturation decision, and phase handoff."
+  },
+  "dependencies": [
+    "cluster:problem-framing-and-customer-research"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "research-planning-and-governance",
+  "inputs": [
+    "A research question, target population, access constraints, ethical boundary, and timebox."
+  ],
+  "outputs": [
+    "A governed research plan, participant protocol, saturation decision, and phase handoff."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Define research context, recruitment, consent, cadence, saturation, and phase handoffs before collecting evidence.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

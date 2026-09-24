@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A validated browser task, session identifier, project path, wrapper contract, and CLI configuration.",
+    "output": "A configured isolated session and reproducible browser invocation settings."
+  },
+  "dependencies": [
+    "cluster:tool-runtime-readiness"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "browser-session-and-runtime-configuration",
+  "inputs": [
+    "A validated browser task, session identifier, project path, wrapper contract, and CLI configuration."
+  ],
+  "outputs": [
+    "A configured isolated session and reproducible browser invocation settings."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Configure browser sessions, wrapper dispatch, CLI settings, and isolated project context after prerequisites pass.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

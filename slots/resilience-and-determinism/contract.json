@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests.",
+    "output": "Defensive validation, deterministic synchronization, and isolation mechanisms."
+  },
+  "dependencies": [
+    "cluster:root-cause-investigation"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "resilience-and-determinism",
+  "inputs": [
+    "A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests."
+  ],
+  "outputs": [
+    "Defensive validation, deterministic synchronization, and isolation mechanisms."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Use layered defenses, condition waits, isolated fixtures, stable assertions, and controlled time to prevent flakiness.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

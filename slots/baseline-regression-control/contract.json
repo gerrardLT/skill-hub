@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A trusted historical baseline and a current measurement made under the same contract.",
+    "output": "A diff, regression decision, and controlled baseline-update decision."
+  },
+  "dependencies": [
+    "cluster:llm-quality-evaluation",
+    "cluster:playwright-test-engineering",
+    "cluster:web-performance-diagnostics",
+    "cluster:website-audit-remediation"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "baseline-regression-control",
+  "inputs": [
+    "A trusted historical baseline and a current measurement made under the same contract."
+  ],
+  "outputs": [
+    "A diff, regression decision, and controlled baseline-update decision."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

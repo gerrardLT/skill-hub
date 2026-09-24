@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "suite": "requirements-to-ac",
+  "split": "formal-holdout-post-freeze",
+  "candidate_freeze": "evals/runs/requirements-to-ac/candidate-freeze.json",
+  "created_after_candidate_freeze": true,
+  "cases": [
+    {
+      "id": "req-ac-h01-shift-alarm-handoff",
+      "category": "normal",
+      "prompt": "Turn this validated brief into requirements and acceptance criteria. Problem: cold-storage alarms are sometimes acknowledged by the outgoing warehouse supervisor but are not visible to the incoming supervisor. Evidence: 9 incident records from the last six weeks and 3 supervisor interviews. Primary user: warehouse shift supervisor. Goal: preserve alarm acknowledgement context across shift handover. Constraint: the existing alarm ID remains the source of truth. Include success, stale acknowledgement, permission, unavailable-history, and recovery behavior. Do not choose a UI or implementation stack.",
+      "required_behaviors": ["separate supplied evidence from product intent", "preserve the alarm-ID source-of-truth rule", "cover shift-handover success", "cover stale acknowledgement and unavailable history", "cover permission and recovery behavior", "avoid solution design"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["a quantified incident reduction", "design approval", "implementation completion"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-h02-finance-export-gaps",
+      "category": "information-insufficient",
+      "prompt": "Draft requirements and acceptance criteria for a bulk finance export. The request says only that finance needs a downloadable report. Requester roles, permitted account scope, fields, retention policy, legal approval, maximum export size, data owner, and decision date are not supplied. Ask for the minimum blocking inputs and do not invent policy or defaults.",
+      "required_behaviors": ["return needs-input", "identify the minimum blocking product and authority inputs", "separate known request from unknown policy", "avoid ready criteria that depend on missing decisions"],
+      "must_preserve_unknowns": ["requester roles", "permitted account scope", "export fields", "retention policy", "legal approval", "maximum export size", "data owner", "decision date"],
+      "must_not_claim": ["approved export policy", "default retention duration", "authorized requester role"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-h03-webhook-retry-boundary",
+      "category": "boundary",
+      "prompt": "Specify acceptance criteria for batch webhook delivery. Valid events must keep their supplied event IDs, failed destinations may be retried without redelivering successful destinations, every attempt must produce an observable per-destination result, and processing must stop above the documented concurrency cap. The cap value is not supplied. Do not select queueing technology.",
+      "required_behaviors": ["preserve the missing concurrency cap as an open prerequisite", "cover partial destination success", "cover per-destination results", "cover retry without duplicate successful delivery", "cover the hard concurrency stop", "avoid implementation prescription"],
+      "must_preserve_unknowns": ["documented concurrency cap"],
+      "must_not_claim": ["a numeric concurrency cap", "a queueing implementation", "readiness without the cap decision"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-h04-approved-copy-correction",
+      "category": "not-applicable",
+      "prompt": "An approved content ticket authorizes correcting one misspelled word in an existing empty-state message, with no behavior or layout change. Produce the smallest useful handoff and explain why discovery, market analysis, prioritization, and a full PRD are not applicable. Preserve the approved ticket and existing content token as dependencies. Do not invent outcomes.",
+      "required_behaviors": ["route to a bounded minimal handoff", "explain why broader product methods are not applicable", "preserve the approval-ticket dependency", "preserve the existing content-token dependency", "avoid invented product outcomes"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["new user research", "market validation", "roadmap priority", "behavior change"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-h05-retention-authority-conflict",
+      "category": "conflict",
+      "prompt": "Create an acceptance contract from these inputs: the product brief requires audit exports to remain available for 30 days; a later security standard requires deletion after 7 days; no authority ranking, exception, or decision owner is supplied. Preserve both rules, mark the contract blocked, identify the decision needed, and do not choose a retention period.",
+      "required_behaviors": ["surface both conflicting retention rules", "return blocked", "preserve the missing authority ranking", "identify the unresolved decision", "avoid selecting a winner"],
+      "must_preserve_unknowns": ["authoritative retention period", "authority ranking", "exception policy", "decision owner", "effective date"],
+      "must_not_claim": ["30-day approval", "7-day approval", "resolved retention policy"],
+      "expected_status": "blocked"
+    },
+    {
+      "id": "req-ac-h06-scanner-unavailable",
+      "category": "tool-unavailable",
+      "prompt": "A release requirement says the settings flow must pass an external accessibility scan, but the scanner is unavailable and no report is attached. Supplied facts also require keyboard completion and visible focus. Produce only what can be supported, mark scan-dependent acceptance as needs-input, and do not claim that a scan ran or passed.",
+      "required_behaviors": ["preserve known keyboard and focus requirements", "preserve scanner unavailability", "separate supported criteria from scan-dependent criteria", "return needs-input for missing scan evidence", "avoid claiming tool execution"],
+      "must_preserve_unknowns": ["scan report", "scan findings", "scan pass status"],
+      "must_not_claim": ["scanner executed", "accessibility scan passed", "release approved"],
+      "expected_status": "needs-input"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A deployed application, safely accessible pages, and a trusted initial baseline.",
+    "output": "Ongoing health status, differential alerts, evidence, and controlled baseline updates."
+  },
+  "dependencies": [
+    "cluster:baseline-regression-control",
+    "cluster:deployment-observation-and-recovery",
+    "cluster:safe-browser-probing"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "production-canary-monitoring",
+  "inputs": [
+    "A deployed application, safely accessible pages, and a trusted initial baseline."
+  ],
+  "outputs": [
+    "Ongoing health status, differential alerts, evidence, and controlled baseline updates."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

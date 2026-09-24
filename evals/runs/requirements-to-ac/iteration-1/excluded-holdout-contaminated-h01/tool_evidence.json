@@ -1,0 +1,39 @@
+{
+  "case_id": "req-ac-h01-shift-alarm-handoff",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "12592b345a327643cb30b2148436cae0afa27f541e1c72c3c9c477a91cd6c62a"
+    }
+  },
+  "reads": [
+    "evals/cases/holdout/requirements-to-ac-formal.json:9-15",
+    "slots/problem-framing/SKILL.md",
+    "slots/problem-framing/contract.json",
+    "slots/requirements-rules/SKILL.md",
+    "slots/requirements-rules/contract.json",
+    "slots/acceptance-criteria/SKILL.md",
+    "slots/acceptance-criteria/contract.json",
+    "slots/requirements-quality-gate/SKILL.md",
+    "slots/requirements-quality-gate/contract.json"
+  ],
+  "writes": [
+    "full_output.md",
+    "tool_evidence.json"
+  ],
+  "failure": {
+    "occurred": true,
+    "events": [
+      {
+        "tool": "Bash",
+        "operation": "jq select requested holdout case",
+        "exit_code": 127,
+        "message": "/usr/bin/bash: line 1: jq: command not found",
+        "impact": "none; the authorized case slice was subsequently read with the local Read tool"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A command hook environment, dangerous-command policy, and local configuration.",
+    "output": "An installed and tested command guard; normal release packaging remains out of scope."
+  },
+  "dependencies": [],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "git-destructive-command-guard",
+  "inputs": [
+    "A command hook environment, dangerous-command policy, and local configuration."
+  ],
+  "outputs": [
+    "An installed and tested command guard; normal release packaging remains out of scope."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Intercept destructive Git commands before execution and provide a configurable, verifiable local guardrail.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

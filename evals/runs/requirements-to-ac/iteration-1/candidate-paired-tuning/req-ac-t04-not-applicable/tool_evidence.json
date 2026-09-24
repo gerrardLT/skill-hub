@@ -1,0 +1,88 @@
+{
+  "case_id": "req-ac-t04-not-applicable",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "c9d15c34ee9b75736833fdb73f03165352e216023262b1de14b9d65bceeaf442"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "8ec0c83bfef5b1ec7cc119329ad7c13c46ddc80c68662b2eb320dfa0f190fc99"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize heterogeneous agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-t04-not-applicable",
+    "offline": true,
+    "network_used": false,
+    "install_used": false,
+    "scripts_used": false,
+    "skills_modified": false,
+    "candidate_modified": false,
+    "run_json_created": false,
+    "output": {
+      "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable/full_output.md",
+      "sha256": "c9d15c34ee9b75736833fdb73f03165352e216023262b1de14b9d65bceeaf442"
+    },
+    "operations": [
+      {
+        "operation": "list",
+        "path": ".",
+        "purpose": "confirm repository root"
+      },
+      {
+        "operation": "list",
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable",
+        "result": "not found before evaluation"
+      },
+      {
+        "operation": "find",
+        "path": "evals/runs/requirements-to-ac/iteration-1 and slots",
+        "purpose": "locate the requested output location and frozen candidate chain"
+      },
+      {
+        "operation": "read",
+        "path": "evals/cases/tuning/requirements-to-ac.json",
+        "scope": "tuning record containing req-ac-t04-not-applicable"
+      },
+      {
+        "operation": "read",
+        "paths": [
+          "slots/problem-framing/SKILL.md",
+          "slots/problem-framing/contract.json",
+          "slots/requirements-rules/SKILL.md",
+          "slots/requirements-rules/contract.json",
+          "slots/acceptance-criteria/SKILL.md",
+          "slots/acceptance-criteria/contract.json",
+          "slots/requirements-quality-gate/SKILL.md",
+          "slots/requirements-quality-gate/contract.json"
+        ]
+      },
+      {
+        "operation": "mkdir",
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable"
+      },
+      {
+        "operation": "write",
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable/full_output.md"
+      },
+      {
+        "operation": "sha256",
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable/full_output.md"
+      },
+      {
+        "operation": "write",
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t04-not-applicable/tool_evidence.json"
+      }
+    ],
+    "prohibited_inputs_read": [],
+    "failure": null
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "case_id": "req-ac-h02-finance-export-gaps",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "1e1e5a570263ced87192cf9cac589e26312a0f3aa15c0897dbc7f4d308eb5c60"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "05b877d09cefe900ef7de0567b1828a1fb4881f60a6bc657793c8d56c056100d"
+    }
+  },
+  "input_isolation": {
+    "prompt_only": true,
+    "case_file_read_by_agent": false,
+    "rubric_read_by_agent": false
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-h02-finance-export-gaps",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "artifacts": {
+      "full_output": {
+        "path": "full_output.md",
+        "sha256": "1e1e5a570263ced87192cf9cac589e26312a0f3aa15c0897dbc7f4d308eb5c60"
+      }
+    },
+    "reads": [
+      "slots/problem-framing/SKILL.md",
+      "slots/problem-framing/contract.json",
+      "slots/requirements-rules/SKILL.md",
+      "slots/requirements-rules/contract.json",
+      "slots/acceptance-criteria/SKILL.md",
+      "slots/acceptance-criteria/contract.json",
+      "slots/requirements-quality-gate/SKILL.md",
+      "slots/requirements-quality-gate/contract.json"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-1/candidate-formal-holdout/req-ac-h02-finance-export-gaps/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-1/candidate-formal-holdout/req-ac-h02-finance-export-gaps/tool_evidence.json"
+    ],
+    "failure": null
+  }
+}

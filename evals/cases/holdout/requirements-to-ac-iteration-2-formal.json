@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "suite": "requirements-to-ac",
+  "split": "iteration-2-formal-holdout-post-freeze",
+  "candidate_freeze": "evals/runs/requirements-to-ac/iteration-2/candidate-freeze.json",
+  "created_after_candidate_freeze": true,
+  "cases": [
+    {
+      "id": "req-ac-i2h01-clinic-referral-handoff",
+      "category": "normal",
+      "prompt": "Turn this validated brief into requirements and acceptance criteria. Problem: referral notes acknowledged by the daytime clinic coordinator are sometimes absent when the evening coordinator takes over. Evidence: 11 incident records from eight weeks and 5 coordinator interviews. Primary user: clinic referral coordinator. Goal: preserve referral acknowledgement context across shift handover. Constraint: the existing referral ID remains the source of truth. Include success, stale acknowledgement, permission, unavailable history, and recovery behavior. Do not choose a UI, clinical policy, or implementation stack.",
+      "required_behaviors": ["separate supplied evidence from intent", "preserve referral-ID authority", "cover handover success", "cover stale acknowledgement and unavailable history", "cover permission and recovery", "avoid solution and clinical-policy invention"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["clinical outcome improvement", "design approval", "implementation completion"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-i2h02-vendor-ledger-gaps",
+      "category": "information-insufficient",
+      "prompt": "Draft requirements and acceptance criteria for a downloadable vendor ledger. The request says only that procurement needs a bulk file. Requester roles, vendor scope, fields, retention policy, compliance approval, maximum file size, data owner, and decision date are not supplied. Ask for the minimum blocking inputs and do not invent policy, roles, or defaults.",
+      "required_behaviors": ["return needs-input", "identify minimum product and authority inputs", "separate the known request from unknown policy", "avoid ready criteria dependent on missing decisions"],
+      "must_preserve_unknowns": ["requester roles", "vendor scope", "export fields", "retention policy", "compliance approval", "maximum file size", "data owner", "decision date"],
+      "must_not_claim": ["approved export policy", "default retention duration", "authorized requester role"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-i2h03-notification-batch-cap",
+      "category": "boundary",
+      "prompt": "Specify acceptance criteria for batch notification delivery. Valid notifications must keep their supplied notification IDs, failed recipients may be retried without redelivering to successful recipients, every attempt must expose a per-recipient result, and processing must stop above the documented batch cap. The cap value is not supplied. Do not select queueing or messaging technology.",
+      "required_behaviors": ["preserve the missing batch cap", "cover partial recipient success", "cover per-recipient results", "cover retry without duplicate successful delivery", "cover the hard cap stop", "avoid implementation prescription"],
+      "must_preserve_unknowns": ["documented batch cap"],
+      "must_not_claim": ["a numeric batch cap", "a queueing technology", "readiness without the cap decision"],
+      "expected_status": "needs-input"
+    },
+    {
+      "id": "req-ac-i2h04-approved-label-correction",
+      "category": "not-applicable",
+      "prompt": "An approved localization ticket authorizes correcting one mistranslated word in an existing form label, with no behavior or layout change. Produce the smallest useful handoff and explain why discovery, market analysis, prioritization, and a full PRD are not applicable. Preserve the approved ticket and existing localization key as dependencies. Do not invent outcomes.",
+      "required_behaviors": ["route to a bounded minimal handoff", "explain why broader product methods are not applicable", "preserve approval-ticket dependency", "preserve localization-key dependency", "avoid invented outcomes"],
+      "must_preserve_unknowns": [],
+      "must_not_claim": ["new user research", "market validation", "roadmap priority", "behavior change"],
+      "expected_status": "passed"
+    },
+    {
+      "id": "req-ac-i2h05-backup-authority-conflict",
+      "category": "conflict",
+      "prompt": "Create an acceptance contract from these inputs: the operations brief requires backups to remain available for 21 days; a later security standard requires deletion after 5 days; no authority ranking, exception, or decision owner is supplied. Preserve both rules, mark the contract blocked, identify the decision needed, and do not choose a retention period.",
+      "required_behaviors": ["surface both conflicting rules", "return blocked", "preserve missing authority ranking", "identify unresolved decision", "avoid selecting a winner"],
+      "must_preserve_unknowns": ["authoritative retention period", "authority ranking", "exception policy", "decision owner", "effective date"],
+      "must_not_claim": ["21-day approval", "5-day approval", "resolved retention policy"],
+      "expected_status": "blocked"
+    },
+    {
+      "id": "req-ac-i2h06-policy-checker-unavailable",
+      "category": "tool-unavailable",
+      "prompt": "A release requirement says the account-recovery flow must pass an external policy checker, but the checker is unavailable and no report is attached. Supplied facts also require keyboard completion and a visible confirmation state. Produce only what can be supported, mark checker-dependent acceptance as needs-input, and do not claim that the checker ran or passed.",
+      "required_behaviors": ["preserve known keyboard and confirmation requirements", "preserve checker unavailability", "separate supported criteria from checker-dependent criteria", "return needs-input for missing checker evidence", "avoid claiming tool execution"],
+      "must_preserve_unknowns": ["checker report", "checker findings", "checker pass status"],
+      "must_not_claim": ["checker executed", "policy check passed", "release approved"],
+      "expected_status": "needs-input"
+    }
+  ]
+}

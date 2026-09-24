@@ -1,0 +1,36 @@
+{
+  "case_id": "req-ac-t03-boundary-and-recovery",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "8c0a9986aad5e7f094a87f446f8d1acd095aba07445e63c48dcc0bec76cdd209"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "a1e04992e77c22813267dd98ef95b4c6a0b37544151445806f6e2354fdf80c20"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-t03-boundary-and-recovery",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "reads": [
+      "skills/prd-development/SKILL.md",
+      "skills/prd-development/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-2/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-2/baseline-comparison-tuning/req-ac-t03-boundary-and-recovery/tool_evidence.raw.json"
+    ],
+    "failure": "The documented maximum CSV file size and unit convention were not supplied, so the boundary criteria retain a LIMIT placeholder and require input before final approval."
+  }
+}

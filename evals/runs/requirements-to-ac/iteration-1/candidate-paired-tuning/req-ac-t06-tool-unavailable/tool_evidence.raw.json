@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "case_id": "req-ac-t06-tool-unavailable",
+  "status": "needs-input",
+  "offline": true,
+  "network": {
+    "used": false,
+    "operations": []
+  },
+  "skills": {
+    "invoked": false,
+    "invocations": [],
+    "candidate_chain_read": [
+      "problem-framing",
+      "requirements-rules",
+      "acceptance-criteria",
+      "requirements-quality-gate"
+    ]
+  },
+  "tool_gap": {
+    "tool": "external analytics tool",
+    "available": false,
+    "queried": false,
+    "export_attached": false,
+    "preserved_unknowns": [
+      "analytics event data",
+      "baseline",
+      "tool query result"
+    ]
+  },
+  "actual_operations": [
+    {
+      "operation": "list",
+      "scope": "evaluation run paths and exact candidate-chain locations"
+    },
+    {
+      "operation": "read",
+      "path": "evals/cases/tuning/requirements-to-ac.json",
+      "purpose": "read the tuning record for req-ac-t06-tool-unavailable"
+    },
+    {
+      "operation": "read",
+      "path": "slots/problem-framing/SKILL.md"
+    },
+    {
+      "operation": "read",
+      "path": "slots/problem-framing/contract.json"
+    },
+    {
+      "operation": "read",
+      "path": "slots/requirements-rules/SKILL.md"
+    },
+    {
+      "operation": "read",
+      "path": "slots/requirements-rules/contract.json"
+    },
+    {
+      "operation": "read",
+      "path": "slots/acceptance-criteria/SKILL.md"
+    },
+    {
+      "operation": "read",
+      "path": "slots/acceptance-criteria/contract.json"
+    },
+    {
+      "operation": "read",
+      "path": "slots/requirements-quality-gate/SKILL.md"
+    },
+    {
+      "operation": "read",
+      "path": "slots/requirements-quality-gate/contract.json"
+    },
+    {
+      "operation": "hash",
+      "algorithm": "sha256",
+      "scope": "permitted input artifacts and full_output.md"
+    },
+    {
+      "operation": "write",
+      "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t06-tool-unavailable/full_output.md"
+    },
+    {
+      "operation": "write",
+      "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t06-tool-unavailable/tool_evidence.json"
+    }
+  ],
+  "artifact_hashes": {
+    "algorithm": "sha256",
+    "inputs": {
+      "evals/cases/tuning/requirements-to-ac.json": "9bce1b41f2c4134c45ec7f21d7f9a5e33c5b4c20bfd5d919f551686b42e2987f",
+      "slots/problem-framing/SKILL.md": "e59e0e87f72ec529c332c74f103574d69d78b78c5b801cc3c0098c337a03ba60",
+      "slots/problem-framing/contract.json": "f12a26e02ab4a28b30c9e17b75f5373dd5f123d65e00acd4aa925e3ad4185a7f",
+      "slots/requirements-rules/SKILL.md": "c75fbcf8dc4ee0a15cc64437075c7414f56fe789a16382015f7a79e86bd974be",
+      "slots/requirements-rules/contract.json": "2a751539a8f86991d6c13c8ba794d27b0d943a7bfd91b79ef9f685ee0c3fc275",
+      "slots/acceptance-criteria/SKILL.md": "680f7f616ec3b553d4c02a5f18df0ee7bf35445207273d0a073622ec71d6c9bc",
+      "slots/acceptance-criteria/contract.json": "5cd5278eb8e0f5649093f37189ef6f81c6811372db3b3f42428363e4280372e7",
+      "slots/requirements-quality-gate/SKILL.md": "d0305f102c8f9d59b9f56dee3997856dd38bb2d2b22e4fb607eb40da36dba877",
+      "slots/requirements-quality-gate/contract.json": "c073a933506898a030f6f7f1306fa367d063a75942b154710299777a2ec49fa3"
+    },
+    "outputs": {
+      "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t06-tool-unavailable/full_output.md": "a915e7e476c1b7820eda84cdb9c1239164f9b1bd64ac7c8b33b0130f54efe00d",
+      "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t06-tool-unavailable/tool_evidence.json": null
+    },
+    "self_hash_note": "tool_evidence.json is not self-hashed because embedding its own digest would change the file."
+  },
+  "prohibited_operations": {
+    "holdout_read": false,
+    "eval_results_read": false,
+    "provenance_read": false,
+    "mutations_read": false,
+    "recipes_read": false,
+    "source_skills_read": false,
+    "candidate_or_skill_edit": false,
+    "scripts_run": false,
+    "install_run": false,
+    "run_json_written": false
+  },
+  "qa": {
+    "read_only": true,
+    "repairs_made": false
+  },
+  "failure": "Analytics-dependent acceptance criteria remain needs-input because the analytics tool is unavailable, no export is attached, and event data, baseline, and query result are absent."
+}

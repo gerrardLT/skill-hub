@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A rendered UI, acceptance criteria, content, supported devices, and release boundary.",
+    "output": "A checklist result, blocking findings, evidence requirements, and residual risk."
+  },
+  "dependencies": [
+    "cluster:interaction-states-forms-and-navigation"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "cross-domain-ui-preflight-checklists",
+  "inputs": [
+    "A rendered UI, acceptance criteria, content, supported devices, and release boundary."
+  ],
+  "outputs": [
+    "A checklist result, blocking findings, evidence requirements, and residual risk."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Run cross-cutting UI preflight checks for accessibility, content, interaction states, responsive behavior, and release readiness.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

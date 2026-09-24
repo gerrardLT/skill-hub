@@ -1,0 +1,12 @@
+{
+  "status": "excluded-configuration-mismatch",
+  "scope": "complete repeated formal holdout batch for h01 and h02",
+  "reason": "The repeated candidate prompts loaded four SKILL.md files but omitted the four contract.json files used by the original formal candidate configuration. The repeated baseline prompts used no source Skill, while the original formal baseline used the case-selected source Skill. The runs therefore do not satisfy the same-model, same-input, same-permissions, same-budget, same-configuration comparison contract.",
+  "disposition": "Preserve every output, raw evidence file, and notification timing file; exclude the complete batch from Gate 5 conclusions; rerun all h01/h02 candidate and baseline repetitions using the exact original configurations.",
+  "additional_evidence_gaps": [
+    "h02 baseline run-2 lacks tool_evidence.raw.json despite the completion summary claiming it was written",
+    "h02 candidate run-2 recorded agent setup errors",
+    "h02 baseline run-3 recorded an unexpected directory read and a setup error"
+  ],
+  "accepted_run_count": 0
+}

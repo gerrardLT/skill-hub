@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A source reference, historical claim, external framework, or material outside the active execution path.",
+    "output": "A bounded reference or deferral record with applicability and freshness limits."
+  },
+  "dependencies": [
+    "cluster:source-metadata-and-provenance"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "reference-library-and-deferred-material",
+  "inputs": [
+    "A source reference, historical claim, external framework, or material outside the active execution path."
+  ],
+  "outputs": [
+    "A bounded reference or deferral record with applicability and freshness limits."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Retain references, historical material, and deferred frameworks without presenting them as current operational guidance.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

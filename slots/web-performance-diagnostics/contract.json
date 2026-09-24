@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A web application, controlled sampling environment, network waterfall, and build information.",
+    "output": "Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report."
+  },
+  "dependencies": [
+    "cluster:safe-browser-probing",
+    "cluster:tool-runtime-readiness"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "web-performance-diagnostics",
+  "inputs": [
+    "A web application, controlled sampling environment, network waterfall, and build information."
+  ],
+  "outputs": [
+    "Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

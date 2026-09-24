@@ -1,0 +1,36 @@
+{
+  "case_id": "req-ac-t06-tool-unavailable",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "289962c3486e1c76ef89ae82ac48c9d7ecad6e0790af709b46c8858a498a18c2"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "8f4d871f3a1eddd4bf3cae78592f0383667a4d29c4b451cb170a0cbde1617fb4"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case_id": "req-ac-t06-tool-unavailable",
+    "offline": true,
+    "network_accessed": false,
+    "skills_modified": false,
+    "reads": [
+      "skills/discovery-process/SKILL.md",
+      "skills/discovery-process/template.md"
+    ],
+    "writes": [
+      "evals/runs/requirements-to-ac/iteration-2/baseline-comparison-tuning/req-ac-t06-tool-unavailable/full_output.md",
+      "evals/runs/requirements-to-ac/iteration-2/baseline-comparison-tuning/req-ac-t06-tool-unavailable/tool_evidence.raw.json"
+    ],
+    "failure": "External analytics tool unavailable and no analytics export attached; analytics-dependent acceptance criteria require input."
+  }
+}

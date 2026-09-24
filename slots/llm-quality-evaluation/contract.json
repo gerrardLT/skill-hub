@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Model outputs, references, criteria, annotations, and trusted historical baselines.",
+    "output": "Repeatable scores, grounded quality judgments, statistical confidence, benchmarks, and regression signals."
+  },
+  "dependencies": [
+    "cluster:data-analysis-validation"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "llm-quality-evaluation",
+  "inputs": [
+    "Model outputs, references, criteria, annotations, and trusted historical baselines."
+  ],
+  "outputs": [
+    "Repeatable scores, grounded quality judgments, statistical confidence, benchmarks, and regression signals."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Evaluate language models with automated metrics, factuality checks, judges, human agreement, statistics, and regressions.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

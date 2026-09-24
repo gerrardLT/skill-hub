@@ -27,22 +27,72 @@
   ],
   "splits": {
     "tuning": "cases/tuning/requirements-to-ac.json",
-    "holdout": "cases/holdout/requirements-to-ac.json"
+    "contaminated_holdout": "cases/holdout/requirements-to-ac.json",
+    "holdout_contamination_record": "cases/holdout/contamination.json",
+    "formal_holdout": "cases/holdout/requirements-to-ac-formal.json"
   },
   "baseline": {
     "required": true,
-    "entry_root": "runs/requirements-to-ac/baseline",
-    "must_record": ["case_id", "source_skill", "full_output", "tool_evidence", "model", "input_hash", "tool_permissions", "budget", "duration_ms", "token_usage", "exit_status", "failure_reason"],
+    "original_entry_root": "runs/requirements-to-ac/baseline",
+    "paired_tuning_entry_root": "runs/requirements-to-ac/iteration-1/baseline-comparison-tuning",
+    "formal_holdout_entry_root": "runs/requirements-to-ac/iteration-1/baseline-formal-holdout",
+    "must_record": [
+      "case_id",
+      "source_skill",
+      "full_output",
+      "tool_evidence",
+      "model",
+      "input_hash",
+      "tool_permissions",
+      "budget",
+      "duration_ms",
+      "token_usage",
+      "exit_status",
+      "failure_reason"
+    ],
     "failure_policy": "Record failed baseline runs as evidence; do not replace, retry selectively, or omit them from the report."
   },
   "candidate": {
     "entry_root": "runs/requirements-to-ac/iteration-1",
-    "not_created": true,
-    "freeze_before_holdout": true
+    "created": true,
+    "freeze": "runs/requirements-to-ac/candidate-freeze.json",
+    "frozen_artifact_count": 12,
+    "freeze_before_formal_holdout": true,
+    "formal_holdout_input_isolation": "prompt-only",
+    "excluded_input_contamination": "runs/requirements-to-ac/iteration-1/excluded-holdout-contaminated-h01/contamination.json"
+  },
+  "evidence": {
+    "paired_tuning_candidate": "runs/requirements-to-ac/iteration-1/candidate-paired-tuning",
+    "paired_tuning_baseline": "runs/requirements-to-ac/iteration-1/baseline-comparison-tuning",
+    "formal_holdout_candidate": "runs/requirements-to-ac/iteration-1/candidate-formal-holdout",
+    "formal_holdout_baseline": "runs/requirements-to-ac/iteration-1/baseline-formal-holdout",
+    "mutation_report": "runs/requirements-to-ac/iteration-1/mutations/report.json",
+    "downstream_handoff": "runs/requirements-to-ac/iteration-1/downstream-handoff/req-ac-h04-approved-copy-correction/verification.json",
+    "benchmark": "runs/requirements-to-ac/iteration-1/benchmark.json",
+    "benchmark_metrics_validation": "runs/requirements-to-ac/iteration-1/benchmark-metrics-validation.json",
+    "viewer": "runs/requirements-to-ac/iteration-1/review.html",
+    "viewer_validation": "runs/requirements-to-ac/iteration-1/viewer-validation.json",
+    "repeated_variance": "runs/requirements-to-ac/iteration-1/repeated-formal-holdout/variance-report.json"
   },
   "scoring": {
-    "automatic": ["hard_failure_scan", "required_case_fields", "status_match", "unknown_preservation", "acceptance_criteria_observability", "source_traceability"],
-    "human": ["evidence-traceability", "problem-and-user-boundary", "requirements-completeness", "acceptance-testability", "uncertainty-and-gates", "scope-and-permission-discipline", "downstream-handoff-quality"],
+    "automatic": [
+      "hard_failure_scan",
+      "required_case_fields",
+      "status_match",
+      "explicit_structured_contains_or_absent_checks",
+      "candidate_freeze_hash_verification",
+      "downstream_id_preservation"
+    ],
+    "human": [
+      "evidence-traceability",
+      "problem-and-user-boundary",
+      "requirements-completeness",
+      "acceptance-testability",
+      "uncertainty-and-gates",
+      "scope-and-permission-discipline",
+      "downstream-handoff-quality"
+    ],
+    "natural_language_semantic_checks": "pending-human-review",
     "holdout_isolation": true
   },
   "mutation_plan": {
@@ -54,7 +104,19 @@
       "replace blocked gate with pass",
       "add unsupported implementation commitment"
     ],
+    "result": "passed",
     "expected": "Each mutation causes the corresponding objective or hard-failure check to fail."
   },
-  "status": "contracts-frozen-baseline-not-run"
+  "gate_5": {
+    "status": "failed",
+    "blocking_findings": [
+      "formal holdout h01 expected passed but candidate returned needs-input",
+      "formal holdout h02 expected needs-input but candidate returned blocked",
+      "blind human semantic review is not complete",
+      "real user feedback.json does not exist",
+      "repeated variance failed: h01 has 0 valid paired runs after runs 2-8; h02 has 2 valid pairs with status_match mean 0.5 for both configurations"
+    ],
+    "release_effect": "Pilot slots remain evaluating and cannot be released."
+  },
+  "status": "gate-5-failed-evidence-in-progress"
 }

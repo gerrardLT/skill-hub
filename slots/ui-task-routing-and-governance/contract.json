@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A UI request, project state, existing interface, target files, authorization, and design artifacts.",
+    "output": "A task route, required references, execution mode, tool plan, and boundary statement."
+  },
+  "dependencies": [
+    "cluster:context-intake-and-routing"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "ui-task-routing-and-governance",
+  "inputs": [
+    "A UI request, project state, existing interface, target files, authorization, and design artifacts."
+  ],
+  "outputs": [
+    "A task route, required references, execution mode, tool plan, and boundary statement."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Classify UI work and establish the applicable playbook, authorization, target files, and write boundaries.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

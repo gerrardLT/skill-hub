@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A scannable site, audit CLI, and an authorized source-edit scope.",
+    "output": "A categorized report, remediation loop, score targets, and fresh audit evidence."
+  },
+  "dependencies": [
+    "cluster:tool-runtime-readiness"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "website-audit-remediation",
+  "inputs": [
+    "A scannable site, audit CLI, and an authorized source-edit scope."
+  ],
+  "outputs": [
+    "A categorized report, remediation loop, score targets, and fresh audit evidence."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Run broad website audits, map SEO, performance, security, content, and accessibility findings to source, and recheck fixes.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

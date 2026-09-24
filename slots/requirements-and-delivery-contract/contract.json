@@ -1,0 +1,52 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "Problem and solution evidence, target users, strategy, metrics, risks, and delivery constraints.",
+    "output": "A PRD, stories, acceptance criteria, scope, open questions, dependencies, and change history."
+  },
+  "dependencies": [
+    "cluster:decision-and-outcome-roadmapping",
+    "cluster:results-analysis-and-decision-readout",
+    "cluster:solution-hypothesis-and-experiment-design"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "requirements-and-delivery-contract",
+  "inputs": [
+    "Problem and solution evidence, target users, strategy, metrics, risks, and delivery constraints."
+  ],
+  "outputs": [
+    "A PRD, stories, acceptance criteria, scope, open questions, dependencies, and change history."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Turn validated strategy, problems, and solutions into evolvable requirements and acceptance contracts.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

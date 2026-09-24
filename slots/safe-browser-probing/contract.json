@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A target page, authorized interactions, and a ready browser runtime.",
+    "output": "Browser observations, screenshots, snapshots, traces, and interaction evidence, not an independent QA verdict."
+  },
+  "dependencies": [
+    "cluster:tool-runtime-readiness"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "safe-browser-probing",
+  "inputs": [
+    "A target page, authorized interactions, and a ready browser runtime."
+  ],
+  "outputs": [
+    "Browser observations, screenshots, snapshots, traces, and interaction evidence, not an independent QA verdict."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Use constrained browser sessions for navigation, snapshots, interaction, tracing, and extraction with safe references.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

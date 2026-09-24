@@ -1,0 +1,118 @@
+{
+  "passed": false,
+  "minimum_pairs": 2,
+  "cases": [
+    {
+      "case_id": "req-ac-h01-shift-alarm-handoff",
+      "expected_status": "passed",
+      "paired_run_count": 0,
+      "included_run_numbers": [],
+      "excluded_pairs": [
+        {
+          "run_number": 2,
+          "reason": "without_skill: agent errors recorded"
+        },
+        {
+          "run_number": 3,
+          "reason": "without_skill: agent errors recorded"
+        },
+        {
+          "run_number": 4,
+          "reason": "without_skill: missing full_output.md"
+        },
+        {
+          "run_number": 5,
+          "reason": "without_skill: status not parseable"
+        },
+        {
+          "run_number": 6,
+          "reason": "without_skill: status not parseable"
+        },
+        {
+          "run_number": 7,
+          "reason": "without_skill: missing full_output.md"
+        },
+        {
+          "run_number": 8,
+          "reason": "without_skill: missing full_output.md"
+        }
+      ],
+      "with_skill": null,
+      "without_skill": null
+    },
+    {
+      "case_id": "req-ac-h02-finance-export-gaps",
+      "expected_status": "needs-input",
+      "paired_run_count": 2,
+      "included_run_numbers": [
+        5,
+        6
+      ],
+      "excluded_pairs": [
+        {
+          "run_number": 2,
+          "reason": "with_skill: agent errors recorded"
+        },
+        {
+          "run_number": 3,
+          "reason": "without_skill: agent errors recorded"
+        },
+        {
+          "run_number": 4,
+          "reason": "without_skill: status not parseable"
+        }
+      ],
+      "with_skill": {
+        "statuses": [
+          "blocked",
+          "needs-input"
+        ],
+        "status_match": {
+          "mean": 0.5,
+          "stddev": 0.7071,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "time_seconds": {
+          "mean": 78.5555,
+          "stddev": 7.5795,
+          "min": 73.196,
+          "max": 83.915
+        },
+        "tokens": {
+          "mean": 122303.0,
+          "stddev": 44383.6784,
+          "min": 90919.0,
+          "max": 153687.0
+        }
+      },
+      "without_skill": {
+        "statuses": [
+          "blocked",
+          "needs-input"
+        ],
+        "status_match": {
+          "mean": 0.5,
+          "stddev": 0.7071,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "time_seconds": {
+          "mean": 52.1225,
+          "stddev": 0.6739,
+          "min": 51.646,
+          "max": 52.599
+        },
+        "tokens": {
+          "mean": 93128.0,
+          "stddev": 20639.0327,
+          "min": 78534.0,
+          "max": 107722.0
+        }
+      }
+    }
+  ],
+  "errors": [
+    "req-ac-h01-shift-alarm-handoff: only 0 valid paired runs; require 2"
+  ]
+}

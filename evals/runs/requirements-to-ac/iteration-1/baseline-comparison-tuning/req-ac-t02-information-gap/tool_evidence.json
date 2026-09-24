@@ -1,0 +1,116 @@
+{
+  "case_id": "req-ac-t02-information-gap",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "ecc83773572bc3bdb95052ddd0e1cf7858d45406cf4afc280abaedb7b9e19091"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "89a6da07f7079294947708f2b6e615a64539ba92ade85790477620f771eb6829"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize heterogeneous agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "case": {
+      "suite": "requirements-to-ac",
+      "split": "tuning",
+      "id": "req-ac-t02-information-gap",
+      "record_path": "evals/cases/tuning/requirements-to-ac.json",
+      "record_sha256": "9bce1b41f2c4134c45ec7f21d7f9a5e33c5b4c20bfd5d919f551686b42e2987f"
+    },
+    "offline": true,
+    "network": {
+      "allowed": false,
+      "used": false,
+      "operations": []
+    },
+    "skills": [
+      {
+        "name": "metrics-dashboard",
+        "mode": "original-direct",
+        "path": "skills/metrics-dashboard/SKILL.md",
+        "sha256": "9933f2f8749c436d3d48129543719899b2d1da5c602ff6a5add1ee48239e33d5"
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap/full_output.md",
+        "sha256": "ecc83773572bc3bdb95052ddd0e1cf7858d45406cf4afc280abaedb7b9e19091"
+      }
+    ],
+    "operations": [
+      {
+        "operation": "list",
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap",
+        "result": "failed: directory did not exist"
+      },
+      {
+        "operation": "list",
+        "path": "skills/metrics-dashboard",
+        "result": "SKILL.md"
+      },
+      {
+        "operation": "list",
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning",
+        "result": "empty"
+      },
+      {
+        "operation": "list",
+        "path": "evals/cases/tuning",
+        "result": "requirements-to-ac.json"
+      },
+      {
+        "operation": "read",
+        "path": "evals/cases/tuning/requirements-to-ac.json",
+        "scope": "full tuning record"
+      },
+      {
+        "operation": "read",
+        "path": "skills/metrics-dashboard/SKILL.md",
+        "scope": "full file"
+      },
+      {
+        "operation": "hash",
+        "algorithm": "sha256",
+        "paths": [
+          "evals/cases/tuning/requirements-to-ac.json",
+          "skills/metrics-dashboard/SKILL.md",
+          "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap/full_output.md"
+        ]
+      },
+      {
+        "operation": "create-directory",
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap"
+      },
+      {
+        "operation": "write",
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap/full_output.md"
+      },
+      {
+        "operation": "write",
+        "path": "evals/runs/requirements-to-ac/iteration-1/baseline-comparison-tuning/req-ac-t02-information-gap/tool_evidence.json"
+      }
+    ],
+    "constraints": {
+      "candidates_read": false,
+      "holdout_read": false,
+      "eval_outputs_or_grades_read": false,
+      "provenance_read": false,
+      "mutations_read": false,
+      "recipes_read": false,
+      "other_skills_read": false,
+      "scripts_run": false,
+      "installs_performed": false,
+      "skills_edited": false,
+      "run_json_written": false
+    }
+  }
+}

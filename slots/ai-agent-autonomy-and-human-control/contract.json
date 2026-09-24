@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A task definition, agent capabilities, human roles, failure cost, and observed behavior.",
+    "output": "An agency contract, control boundary, graduation criteria, and fallback path."
+  },
+  "dependencies": [
+    "cluster:ai-model-and-data-architecture"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "ai-agent-autonomy-and-human-control",
+  "inputs": [
+    "A task definition, agent capabilities, human roles, failure cost, and observed behavior."
+  ],
+  "outputs": [
+    "An agency contract, control boundary, graduation criteria, and fallback path."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Scope agent behavior, control handoffs, graduated autonomy, and evidence required before expanding action rights.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

@@ -1,0 +1,52 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A specification, change description, and precise code-diff boundary.",
+    "output": "Prioritized findings with locations, rationale, remediation, and a merge verdict; no direct repair by default."
+  },
+  "dependencies": [
+    "cluster:developer-self-check-and-fix",
+    "cluster:plan-execution-control",
+    "cluster:subagent-task-pipeline"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "independent-code-review",
+  "inputs": [
+    "A specification, change description, and precise code-diff boundary."
+  ],
+  "outputs": [
+    "Prioritized findings with locations, rationale, remediation, and a merge verdict; no direct repair by default."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Independently compare specifications and diffs for correctness, security, performance, architecture, tests, and maintainability.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

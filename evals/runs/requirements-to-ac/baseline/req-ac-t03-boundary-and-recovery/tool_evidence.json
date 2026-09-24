@@ -1,0 +1,56 @@
+{
+  "case_id": "req-ac-t03-boundary-and-recovery",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "da7c5b0828d04c01ad57eeb6b1c6a5f54dbd0ac5ad41122391f8122faa26a304"
+    }
+  },
+  "evidence": [
+    {
+      "tool": "Bash",
+      "operation": "ls",
+      "path": "D:/project/skills-hub",
+      "result": "Confirmed workspace root and local evals/ and skills/ directories."
+    },
+    {
+      "tool": "Read",
+      "operation": "read-local-file",
+      "path": "D:/project/skills-hub/evals/cases/tuning/requirements-to-ac.json",
+      "result": "Read the exact prompt for case req-ac-t03-boundary-and-recovery."
+    },
+    {
+      "tool": "Read",
+      "operation": "read-local-file",
+      "path": "D:/project/skills-hub/skills/prd-development/SKILL.md",
+      "result": "Read the original source skill locally."
+    },
+    {
+      "tool": "Bash",
+      "operation": "sha256",
+      "path": "D:/project/skills-hub/evals/cases/tuning/requirements-to-ac.json",
+      "result": "Prompt UTF-8 SHA-256: c4218479659b1134e58cb6ee1685aed16ad7e0a8848ae796234263c555143075"
+    },
+    {
+      "tool": "Bash",
+      "operation": "mkdir",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t03-boundary-and-recovery",
+      "result": "Created the requested unique run-output directory."
+    },
+    {
+      "tool": "Write",
+      "operation": "write-run-output",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t03-boundary-and-recovery/full_output.md",
+      "result": "Wrote the complete final output."
+    },
+    {
+      "tool": "Write",
+      "operation": "write-run-output",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t03-boundary-and-recovery/tool_evidence.json",
+      "result": "Wrote local tool evidence."
+    }
+  ]
+}

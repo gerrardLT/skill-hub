@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A problem hypothesis, target users, prior research, access constraints, and a decision to support.",
+    "output": "A problem statement, research plan, behavioral evidence, personas or jobs, and evidence gaps."
+  },
+  "dependencies": [
+    "cluster:context-intake-and-routing",
+    "cluster:market-positioning-and-competitive-power"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "problem-framing-and-customer-research",
+  "inputs": [
+    "A problem hypothesis, target users, prior research, access constraints, and a decision to support."
+  ],
+  "outputs": [
+    "A problem statement, research plan, behavioral evidence, personas or jobs, and evidence gaps."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Frame customer problems and collect traceable, non-leading qualitative and quantitative evidence.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

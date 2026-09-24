@@ -1,0 +1,51 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A bounded module problem, constraints, and an interface-design objective.",
+    "output": "At least two structured alternatives, tradeoffs, and a recommendation, not execution."
+  },
+  "dependencies": [
+    "cluster:architecture-candidate-reporting",
+    "cluster:architecture-deep-module-design"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "architecture-interface-alternative-evaluation",
+  "inputs": [
+    "A bounded module problem, constraints, and an interface-design objective."
+  ],
+  "outputs": [
+    "At least two structured alternatives, tradeoffs, and a recommendation, not execution."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Generate independent interface alternatives and compare hiding, complexity, dependencies, tests, and migration cost.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

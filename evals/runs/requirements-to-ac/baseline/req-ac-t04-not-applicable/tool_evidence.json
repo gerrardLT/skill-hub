@@ -1,0 +1,80 @@
+{
+  "case_id": "req-ac-t04-not-applicable",
+  "mode": "strict-offline",
+  "offline": true,
+  "network_accessed": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "f277082f1e40e1d0e96e4e63a0e3fc7a29d7b63c9aa4061c6804d7e0d06b4854"
+    }
+  },
+  "tools": [
+    {
+      "tool": "Bash",
+      "operation": "pwd && ls",
+      "purpose": "Verify the requested local workspace and inspect its root entries.",
+      "path": "D:/project/skills-hub",
+      "result": "success"
+    },
+    {
+      "tool": "Read",
+      "operation": "read local file",
+      "purpose": "Read the evaluation case and exact prompt.",
+      "path": "D:/project/skills-hub/evals/cases/tuning/requirements-to-ac.json",
+      "result": "success"
+    },
+    {
+      "tool": "Read",
+      "operation": "read local file",
+      "purpose": "Read the sole source skill entry point.",
+      "path": "D:/project/skills-hub/skills/product-strategy-session/SKILL.md",
+      "result": "success"
+    },
+    {
+      "tool": "Bash",
+      "operation": "ls",
+      "purpose": "Inspect the allowed baseline output parent directory.",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline",
+      "result": "success"
+    },
+    {
+      "tool": "Bash",
+      "operation": "python hashlib.sha256",
+      "purpose": "Compute the SHA-256 hash of the exact case prompt locally.",
+      "path": "D:/project/skills-hub",
+      "result": "success"
+    },
+    {
+      "tool": "Bash",
+      "operation": "mkdir -p",
+      "purpose": "Create only the requested run output directory.",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable",
+      "result": "success"
+    },
+    {
+      "tool": "Write",
+      "operation": "write local file",
+      "purpose": "Write the complete final task output.",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable/full_output.md",
+      "result": "success"
+    },
+    {
+      "tool": "Write",
+      "operation": "write local file",
+      "purpose": "Record actual local tool evidence.",
+      "path": "D:/project/skills-hub/evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable/tool_evidence.json",
+      "result": "success"
+    }
+  ],
+  "source_files": [
+    "evals/cases/tuning/requirements-to-ac.json",
+    "skills/product-strategy-session/SKILL.md"
+  ],
+  "skill_references_followed": [],
+  "writes": [
+    "evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable/full_output.md",
+    "evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable/tool_evidence.json",
+    "evals/runs/requirements-to-ac/baseline/req-ac-t04-not-applicable/run.json"
+  ]
+}

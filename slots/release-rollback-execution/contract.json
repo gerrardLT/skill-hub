@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A deployed change, health evidence, provider state, and rollback authorization.",
+    "output": "A bounded revert or rollback pull request with evidence and recovery status."
+  },
+  "dependencies": [
+    "cluster:deployment-observation-and-recovery"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "release-rollback-execution",
+  "inputs": [
+    "A deployed change, health evidence, provider state, and rollback authorization."
+  ],
+  "outputs": [
+    "A bounded revert or rollback pull request with evidence and recovery status."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Execute or prepare a reviewable release rollback when post-deploy evidence meets the rollback condition.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

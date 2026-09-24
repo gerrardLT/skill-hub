@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "id": "problem-framing",
+  "version": "0.2.0-candidate",
+  "status": "evaluating",
+  "responsibility": "Classify supplied facts, evidence, target users, problems, impacts, and gaps without proposing solutions.",
+  "inputs": ["Supplied product context", "Authorized local evidence", "Source and authority metadata"],
+  "outputs": ["Status", "Numbered fact, assumption, open-question, and conflict records", "Solution-free target-user, problem, impact, evidence, and gap frame"],
+  "boundaries": {"input": "Only supplied or authorized local material.", "output": "Classification and framing only; no solution content."},
+  "dependencies": [],
+  "permissions": {"default": ["read-local-files", "write-run-output"]},
+  "statuses": ["passed", "failed", "needs-input", "blocked"],
+  "gates": ["source-traceability", "classification-completeness", "unknown-preservation", "conflict-preservation", "solution-exclusion", "authority-boundary"],
+  "forbidden_actions": ["propose or recommend solutions", "invent facts, evidence, users, impacts, or approvals", "resolve conflicts without authority", "erase or downgrade unknowns", "write outside run output"],
+  "hard_failures": ["fabricated-fact", "missing-critical-rule", "untestable-acceptance-criteria", "unknown-loss", "scope-or-authority-overreach", "incorrect-gate", "qa-repair-overreach"],
+  "artifact_types": ["problem-frame", "classification-register", "gap-register"]
+}

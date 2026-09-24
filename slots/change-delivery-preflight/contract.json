@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A reviewed change, repository state, delivery policy, and intended publication boundary.",
+    "output": "A delivery-ready package or explicit preflight blockers; no merge or deployment action."
+  },
+  "dependencies": [
+    "cluster:completion-evidence-gate"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "change-delivery-preflight",
+  "inputs": [
+    "A reviewed change, repository state, delivery policy, and intended publication boundary."
+  ],
+  "outputs": [
+    "A delivery-ready package or explicit preflight blockers; no merge or deployment action."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

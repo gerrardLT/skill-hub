@@ -1,0 +1,133 @@
+{
+  "case_id": "req-ac-t03-boundary-and-recovery",
+  "offline": true,
+  "network_accessed": false,
+  "skills_modified": false,
+  "artifacts": {
+    "full_output": {
+      "path": "full_output.md",
+      "sha256": "a65b2f053927757dfe53ea5f7f971cd0cae3a8368b28ded033b3e4c97a88b0ec"
+    },
+    "raw_tool_evidence": {
+      "path": "tool_evidence.raw.json",
+      "sha256": "9a7e7eaf9c6316a16cd61a989005c1470142f6922cf9311ef3f0842ef60097a6"
+    }
+  },
+  "normalization": {
+    "reason": "Canonicalize heterogeneous agent evidence without discarding the original artifact.",
+    "source": "agent completion notification plus preserved raw evidence",
+    "agent_completion_status": "completed"
+  },
+  "agent_evidence": {
+    "schema_version": "1.0",
+    "case_id": "req-ac-t03-boundary-and-recovery",
+    "execution_mode": "strict-offline",
+    "offline": true,
+    "network": {
+      "accessed": false,
+      "operations": []
+    },
+    "skills": [
+      {
+        "id": "problem-framing",
+        "skill_path": "slots/problem-framing/SKILL.md",
+        "skill_sha256": "e59e0e87f72ec529c332c74f103574d69d78b78c5b801cc3c0098c337a03ba60",
+        "contract_path": "slots/problem-framing/contract.json",
+        "contract_sha256": "f12a26e02ab4a28b30c9e17b75f5373dd5f123d65e00acd4aa925e3ad4185a7f"
+      },
+      {
+        "id": "requirements-rules",
+        "skill_path": "slots/requirements-rules/SKILL.md",
+        "skill_sha256": "c75fbcf8dc4ee0a15cc64437075c7414f56fe789a16382015f7a79e86bd974be",
+        "contract_path": "slots/requirements-rules/contract.json",
+        "contract_sha256": "2a751539a8f86991d6c13c8ba794d27b0d943a7bfd91b79ef9f685ee0c3fc275"
+      },
+      {
+        "id": "acceptance-criteria",
+        "skill_path": "slots/acceptance-criteria/SKILL.md",
+        "skill_sha256": "680f7f616ec3b553d4c02a5f18df0ee7bf35445207273d0a073622ec71d6c9bc",
+        "contract_path": "slots/acceptance-criteria/contract.json",
+        "contract_sha256": "5cd5278eb8e0f5649093f37189ef6f81c6811372db3b3f42428363e4280372e7"
+      },
+      {
+        "id": "requirements-quality-gate",
+        "skill_path": "slots/requirements-quality-gate/SKILL.md",
+        "skill_sha256": "d0305f102c8f9d59b9f56dee3997856dd38bb2d2b22e4fb607eb40da36dba877",
+        "contract_path": "slots/requirements-quality-gate/contract.json",
+        "contract_sha256": "c073a933506898a030f6f7f1306fa367d063a75942b154710299777a2ec49fa3"
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "evals/cases/tuning/requirements-to-ac.json",
+        "sha256": "9bce1b41f2c4134c45ec7f21d7f9a5e33c5b4c20bfd5d919f551686b42e2987f",
+        "access": "read-selected-record-only",
+        "record_id": "req-ac-t03-boundary-and-recovery"
+      },
+      {
+        "path": "evals/runs/requirements-to-ac/iteration-1/candidate-paired-tuning/req-ac-t03-boundary-and-recovery/full_output.md",
+        "sha256": "a65b2f053927757dfe53ea5f7f971cd0cae3a8368b28ded033b3e4c97a88b0ec",
+        "access": "created"
+      }
+    ],
+    "operations": [
+      {
+        "operation": "select case record with jq",
+        "result": "failed",
+        "detail": "jq was unavailable (exit code 127); no case content was returned"
+      },
+      {
+        "operation": "read skill files from an assumed skills/slots path",
+        "result": "failed",
+        "detail": "Eight reads returned file-not-found; no prohibited content was returned"
+      },
+      {
+        "operation": "list permitted directories",
+        "result": "succeeded",
+        "detail": "Located the four permitted slots at repository-root slots/ paths; provenance filenames were listed but not read"
+      },
+      {
+        "operation": "read requested case record",
+        "result": "succeeded",
+        "detail": "Used scoped content search to return only req-ac-t03-boundary-and-recovery"
+      },
+      {
+        "operation": "read frozen skill and contract artifacts",
+        "result": "succeeded",
+        "detail": "Read only SKILL.md and contract.json for the four authorized slots"
+      },
+      {
+        "operation": "compute artifact hashes",
+        "result": "succeeded",
+        "detail": "Used local git hash-object during path verification and SHA-256 for final evidence; no files changed"
+      },
+      {
+        "operation": "create output directory",
+        "result": "succeeded",
+        "detail": "Created only the requested case run directory"
+      },
+      {
+        "operation": "write full_output.md",
+        "result": "succeeded",
+        "detail": "Created the complete evaluation response"
+      },
+      {
+        "operation": "write tool_evidence.json",
+        "result": "succeeded",
+        "detail": "Created this evidence record"
+      }
+    ],
+    "constraints": {
+      "network_or_install_used": false,
+      "scripts_executed": false,
+      "candidate_or_skill_files_modified": false,
+      "holdout_read": false,
+      "outputs_or_grades_read": false,
+      "provenance_read": false,
+      "mutations_read": false,
+      "recipes_read": false,
+      "source_skills_read": false,
+      "run_json_created": false
+    }
+  }
+}

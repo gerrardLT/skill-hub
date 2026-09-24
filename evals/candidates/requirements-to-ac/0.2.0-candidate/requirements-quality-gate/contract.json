@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "id": "requirements-quality-gate",
+  "version": "0.2.0-candidate",
+  "status": "evaluating",
+  "responsibility": "Perform a read-only evidence-based review of problem framing, requirements, rules, and acceptance criteria.",
+  "inputs": ["Problem frame", "Requirements and rules", "Acceptance criteria", "Declared contracts and evidence"],
+  "outputs": ["One status: passed, failed, needs-input, or blocked", "Findings", "Evidence citations and per-gate results"],
+  "boundaries": {"input": "Read-only review of supplied artifacts and evidence.", "output": "Verdict and findings only; no upstream or product modification."},
+  "dependencies": ["problem-framing", "requirements-rules", "acceptance-criteria"],
+  "permissions": {"default": ["read-local-files", "write-run-output"], "explicitly_denied": ["modify-product-source", "modify-upstream-artifact"]},
+  "statuses": ["passed", "failed", "needs-input", "blocked"],
+  "gates": ["artifact-availability", "end-to-end-traceability", "critical-rule-retention", "scope-and-authority", "unknown-preservation", "ac-testability", "applicable-path-coverage", "evidence-backed-verdict", "read-only-review"],
+  "forbidden_actions": ["modify product source", "modify upstream artifacts", "repair or rewrite requirements or acceptance criteria", "invent missing evidence or decisions", "pass on absence of findings", "resolve authority conflicts", "expand review scope without authorization"],
+  "hard_failures": ["fabricated-fact", "missing-critical-rule", "untestable-acceptance-criteria", "unknown-loss", "scope-or-authority-overreach", "incorrect-gate", "qa-repair-overreach"],
+  "artifact_types": ["requirements-quality-report", "gate-result", "finding-register", "evidence-register"]
+}
