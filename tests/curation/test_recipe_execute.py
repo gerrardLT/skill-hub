@@ -168,3 +168,59 @@ def test_executor_requires_named_inputs(tmp_path: Path) -> None:
 
     assert result["status"] == "needs-input"
     assert result["steps_run"] == []
+
+
+def test_executor_persists_machine_state_and_generated_view(tmp_path: Path) -> None:
+    root, recipe, input_path = workspace(tmp_path)
+    outputs = released_outputs()
+    state_dir = root / ".workflow"
+
+    result = execute_recipe(recipe, input_path, root / "runs/state", workspace_root=root, worker=lambda *_: next(outputs), state_dir=state_dir)
+
+    assert result["passed"] is True
+    state = json.loads((state_dir / "state.json").read_text(encoding="utf-8"))
+    assert state["recipe_ref"] == "requirements-to-acceptance-criteria@0.2.0"
+    assert len(state["steps"]) == 4
+    assert all(step["attempts"] == 1 for step in state["steps"])
+    assert "status: passed" in (state_dir / "state.md").read_text(encoding="utf-8")
+
+
+def routed_recipe(tmp_path: Path, *, action: str = "invalidate-and-rerun", max_attempts: int = 2) -> tuple[Path, Path, Path]:
+    root, recipe_path, input_path = workspace(tmp_path)
+    recipe_data = json.loads(recipe_path.read_text(encoding="utf-8"))
+    recipe_data["retry_policy"] = {"max_attempts": max_attempts, "stop_on_repeated_failure": True}
+    statuses = ["needs-input", "failed", "blocked"]
+    recipe_data["failure_routes"] = [
+        {"from": step["id"], "to": ("step-1-frame" if step["id"] == "step-1-frame" else recipe_data["steps"][index - 1]["id"]), "on_status": statuses, "action": action}
+        for index, step in enumerate(recipe_data["steps"])
+    ]
+    recipe_data["feedback_mappings"] = [{"from_step": "step-2-rules", "to_step": "step-1-frame", "artifact": "requirements-artifact", "target_input": "Supplied product context"}]
+    recipe_path.write_text(json.dumps(recipe_data), encoding="utf-8")
+    return root, recipe_path, input_path
+
+
+def test_stop_route_preserves_failure_and_does_not_run_downstream(tmp_path: Path) -> None:
+    root, recipe, input_path = routed_recipe(tmp_path, action="stop")
+    calls = []
+    result = execute_recipe(recipe, input_path, root / "runs/stop", workspace_root=root, worker=lambda *_: calls.append(1) or "Status: needs-input\nNeed decision.", require_release_evidence=False)
+    assert result["status"] == "needs-input"
+    assert len(calls) == 1
+    assert result["failures"][0]["status"] == "needs-input"
+
+
+def test_record_and_return_preserves_failed_artifact(tmp_path: Path) -> None:
+    root, recipe, input_path = routed_recipe(tmp_path, action="record-and-return")
+    result = execute_recipe(recipe, input_path, root / "runs/record", workspace_root=root, worker=lambda *_: "Status: blocked\nNo authority.", require_release_evidence=False)
+    assert result["status"] == "blocked"
+    assert Path(root / result["failures"][0]["output_file"]).is_file()
+
+
+def test_invalidate_and_rerun_stops_at_retry_budget(tmp_path: Path) -> None:
+    root, recipe, input_path = routed_recipe(tmp_path, max_attempts=2)
+    calls = []
+    result = execute_recipe(recipe, input_path, root / "runs/retry", workspace_root=root, worker=lambda *_: calls.append(1) or "Status: failed\nSame failure.", require_release_evidence=False, state_dir=root / ".workflow")
+    assert result["status"] == "blocked"
+    assert len(calls) == 2
+    assert any("retry-budget-or-repeated-failure" in error for error in result["errors"])
+    state = json.loads((root / ".workflow/state.json").read_text(encoding="utf-8"))
+    assert state["attempts"]["step-1-frame"] == 2

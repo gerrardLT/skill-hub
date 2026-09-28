@@ -1,5 +1,4 @@
-"""Verify recipe structure, slot references, and composition constraints."""
-
+"""Verify released recipes, exact slot/sub-recipe references, and runtime safety."""
 from __future__ import annotations
 
 import argparse
@@ -10,18 +9,23 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+FAILURE_STATUSES = {"needs-input", "failed", "blocked"}
+DANGEROUS_PERMISSIONS = {
+    "write-worktree": "workspace-write",
+    "remote-git": "remote-git",
+    "network": "network",
+    "merge": "merge",
+    "deploy": "deploy",
+}
+
 
 def load_slots(slots_root: Path) -> tuple[dict[str, dict[str, Any]], list[dict[str, str]]]:
-    """Load slot contracts and reject duplicate or invalid identities."""
     slots: dict[str, dict[str, Any]] = {}
     errors: list[dict[str, str]] = []
-    schema_path = slots_root / "schema.json"
-    validator = Draft202012Validator(json.loads(schema_path.read_text(encoding="utf-8")))
+    validator = Draft202012Validator(json.loads((slots_root / "schema.json").read_text(encoding="utf-8")))
     for slot_dir in sorted(slots_root.iterdir()):
-        if not slot_dir.is_dir():
-            continue
         contract_path = slot_dir / "contract.json"
-        if not contract_path.exists():
+        if not slot_dir.is_dir() or not contract_path.exists():
             continue
         try:
             contract = json.loads(contract_path.read_text(encoding="utf-8"))
@@ -40,6 +44,25 @@ def load_slots(slots_root: Path) -> tuple[dict[str, dict[str, Any]], list[dict[s
         else:
             slots[slot_id] = contract
     return slots, errors
+
+
+def load_recipes(paths: list[Path]) -> tuple[dict[str, dict[str, Any]], list[dict[str, str]]]:
+    recipes: dict[str, dict[str, Any]] = {}
+    errors: list[dict[str, str]] = []
+    for path in paths:
+        try:
+            recipe = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append({"code": "parse-error", "message": f"{path.name}: {exc}"})
+            continue
+        recipe_id = recipe.get("id")
+        if not isinstance(recipe_id, str):
+            errors.append({"code": "schema", "message": f"{path.name}: missing recipe id"})
+        elif recipe_id in recipes:
+            errors.append({"code": "duplicate-recipe-id", "message": f"duplicate recipe id: {recipe_id}"})
+        else:
+            recipes[recipe_id] = recipe
+    return recipes, errors
 
 
 def _safe_relative(value: object) -> bool:
@@ -62,243 +85,266 @@ def _validate_evidence_file(path: Path, *, expected_recipe: str | None = None) -
 
 
 def find_cycles(steps: list[dict], edges: list[dict]) -> bool:
-    """Return True if dependency graph has a cycle."""
     graph = {step["id"]: set() for step in steps}
     for edge in edges:
-        graph[edge["from"]].add(edge["to"])
+        if edge.get("from") in graph and edge.get("to") in graph:
+            graph[edge["from"]].add(edge["to"])
 
-    def has_cycle_from(node: str, visited: set, rec_stack: set) -> bool:
-        visited.add(node)
-        rec_stack.add(node)
-        for neighbor in graph.get(node, []):
-            if neighbor not in visited:
-                if has_cycle_from(neighbor, visited, rec_stack):
-                    return True
-            elif neighbor in rec_stack:
+    def visit(node: str, seen: set[str], active: set[str]) -> bool:
+        seen.add(node)
+        active.add(node)
+        for neighbor in graph[node]:
+            if neighbor not in seen and visit(neighbor, seen, active):
                 return True
-        rec_stack.remove(node)
+            if neighbor in active:
+                return True
+        active.remove(node)
         return False
 
-    visited = set()
-    for node in graph:
-        if node not in visited:
-            if has_cycle_from(node, visited, set()):
-                return True
-    return False
+    seen: set[str] = set()
+    return any(node not in seen and visit(node, seen, set()) for node in graph)
 
 
-def verify_recipe(recipe: dict, slots: dict[str, dict], recipe_path: Path, workspace_root: Path) -> list[dict]:
-    """Verify a single recipe and return errors."""
-    errors = []
+def _recipe_cycles(recipes: dict[str, dict[str, Any]]) -> list[str]:
+    graph = {
+        recipe_id: {
+            step["recipe"].rsplit("@", 1)[0]
+            for step in recipe.get("steps", [])
+            if isinstance(step, dict) and isinstance(step.get("recipe"), str)
+        }
+        for recipe_id, recipe in recipes.items()
+    }
+    cycles: set[str] = set()
 
-    # Check required fields
-    for field in ["id", "version", "status", "steps", "inputs", "outputs", "edges", "gates"]:
+    def visit(node: str, trail: tuple[str, ...]) -> None:
+        if node in trail:
+            cycles.add(" -> ".join(trail[trail.index(node):] + (node,)))
+            return
+        for child in graph.get(node, set()):
+            visit(child, trail + (node,))
+
+    for recipe_id in graph:
+        visit(recipe_id, ())
+    return sorted(cycles)
+
+
+def _permissions(contract: dict[str, Any]) -> set[str]:
+    value = contract.get("permissions", {})
+    if isinstance(value, dict):
+        value = value.get("default", [])
+    return set(value if isinstance(value, list) else [])
+
+
+def verify_recipe(
+    recipe: dict,
+    slots: dict[str, dict],
+    recipe_path: Path,
+    workspace_root: Path,
+    recipes: dict[str, dict[str, Any]] | None = None,
+) -> list[dict]:
+    errors: list[dict[str, str]] = []
+    recipes = recipes or {recipe.get("id"): recipe}
+    required = ["id", "version", "status", "steps", "inputs", "outputs", "edges", "gates"]
+    for field in required:
         if field not in recipe:
             errors.append({"code": "schema", "message": f"missing field: {field}"})
-
     if errors:
         return errors
-
-    # Check status
     if recipe["status"] != "released":
         errors.append({"code": "unreleased-recipe", "message": f"recipe status: {recipe['status']}"})
 
-    schema_path = recipe_path.parent / "schema.json"
     try:
-        validator = Draft202012Validator(json.loads(schema_path.read_text(encoding="utf-8")))
+        validator = Draft202012Validator(json.loads((recipe_path.parent / "schema.json").read_text(encoding="utf-8")))
         schema_errors = sorted(validator.iter_errors(recipe), key=lambda item: list(item.absolute_path))
     except (OSError, json.JSONDecodeError) as exc:
-        errors.append({"code": "schema", "message": f"cannot load recipe schema: {exc}"})
-        return errors
-    for error in schema_errors:
-        errors.append({"code": "schema", "message": error.message})
+        return errors + [{"code": "schema", "message": f"cannot load recipe schema: {exc}"}]
+    errors.extend({"code": "schema", "message": error.message} for error in schema_errors)
     if schema_errors:
         return errors
 
-    # Check steps
-    step_ids = {step["id"] for step in recipe["steps"]}
-    if len(step_ids) != len(recipe["steps"]):
+    steps = recipe["steps"]
+    step_by_id = {step["id"]: step for step in steps}
+    if len(step_by_id) != len(steps):
         errors.append({"code": "duplicate-step-id", "message": "step ids must be unique"})
-    artifacts = {}  # artifact -> (step_id, parallel_writes)
+    recipe_permissions = set(recipe["permissions"])
+    artifacts: dict[str, list[str]] = {item: [] for item in recipe["inputs"]}
+    logical_inputs: dict[str, set[str]] = {}
 
-    # Map inputs to recipe inputs
-    for inp in recipe["inputs"]:
-        artifacts[inp] = (None, [])
-
-    for step in recipe["steps"]:
+    for step in steps:
         step_id = step["id"]
-        slot_id = step.get("slot")
-        ref = step.get("ref")
+        step_permissions = set(step["permissions"])
+        if not step_permissions <= recipe_permissions:
+            errors.append({"code": "permission-escalation", "message": f"step {step_id}: permissions exceed recipe"})
 
-        # Check slot exists and is released
-        if slot_id not in slots:
-            errors.append({"code": "missing-slot", "message": f"step {step_id}: slot {slot_id} not found"})
-            continue
-
-        slot = slots[slot_id]
-        if slot.get("status") != "released":
-            errors.append({"code": "unreleased-slot", "message": f"step {step_id}: slot {slot_id} status {slot.get('status')}"})
-
-        # Check exact slot identity and version.
-        expected_ref = f"{slot_id}@{slot.get('version')}"
-        if ref != expected_ref:
-            errors.append({"code": "slot-version-mismatch", "message": f"step {step_id}: ref {ref} != {expected_ref}"})
-
-        # Recipe maps stable machine keys declared by the slot contract.
-        slot_inputs = set(slot.get("inputs", []))
-        slot_outputs = set(slot.get("outputs", []))
-
-        for logical_input in step.get("input_map", {}):
-            if logical_input not in slot_inputs:
-                errors.append({"code": "unknown-slot-input", "message": f"step {step_id}: input key {logical_input} not in slot {slot_id}"})
-
-        for logical_output in step.get("output_map", {}):
-            if logical_output not in slot_outputs:
-                errors.append({"code": "unknown-slot-output", "message": f"step {step_id}: output key {logical_output} not in slot {slot_id}"})
-
-        # Check gates are defined in slot
-        slot_gates = set(slot.get("gates", []))
-        for gate in step.get("gates", []):
-            if gate not in slot_gates:
-                errors.append({"code": "unknown-gate", "message": f"step {step_id}: gate {gate} not in slot {slot_id}"})
-
-        # Check permission escalation
-        permissions = slot.get("permissions", {})
-        defaults = permissions.get("default", []) if isinstance(permissions, dict) else []
-        slot_permissions = set(defaults if isinstance(defaults, list) else [])
-        for perm in step.get("permissions", []):
-            if perm not in slot_permissions:
-                errors.append({"code": "permission-escalation", "message": f"step {step_id}: permission {perm} not in slot {slot_id}"})
-
-        # Check for inline instructions (schema violation)
-        if "instructions" in step:
-            errors.append({"code": "schema", "message": f"step {step_id}: inline instructions forbidden"})
-
-        # Track artifact producers
-        for artifact in step.get("output_map", {}).values():
-            if artifact not in artifacts:
-                artifacts[artifact] = (step_id, [step_id])
+        target: dict[str, Any] | None = None
+        target_name = ""
+        if "recipe" in step:
+            child_id, child_version = step["recipe"].rsplit("@", 1)
+            target = recipes.get(child_id)
+            target_name = f"recipe {child_id}"
+            if target is None:
+                errors.append({"code": "missing-recipe", "message": f"step {step_id}: recipe {child_id} not found"})
+            elif target.get("version") != child_version:
+                errors.append({"code": "recipe-version-mismatch", "message": f"step {step_id}: {step['recipe']} != {child_id}@{target.get('version')}"})
+            elif target.get("status") != "released":
+                errors.append({"code": "unreleased-recipe", "message": f"step {step_id}: recipe {child_id} is not released"})
+            target_permissions = set(target.get("permissions", [])) if target else set()
+        else:
+            slot_id = step["slot"]
+            target = slots.get(slot_id)
+            target_name = f"slot {slot_id}"
+            if target is None:
+                errors.append({"code": "missing-slot", "message": f"step {step_id}: slot {slot_id} not found"})
+                target_permissions = set()
             else:
-                artifacts[artifact][1].append(step_id)
+                if target.get("status") != "released":
+                    errors.append({"code": "unreleased-slot", "message": f"step {step_id}: slot {slot_id} status {target.get('status')}"})
+                expected_ref = f"{slot_id}@{target.get('version')}"
+                if step["ref"] != expected_ref:
+                    errors.append({"code": "slot-version-mismatch", "message": f"step {step_id}: ref {step['ref']} != {expected_ref}"})
+                target_permissions = _permissions(target)
+                adapter = step.get("execution_adapter")
+                execution = target.get("execution")
+                if adapter and (not isinstance(execution, dict) or execution.get("adapter") != adapter):
+                    errors.append({"code": "execution-adapter-mismatch", "message": f"step {step_id}: adapter not allowed by {target_name}"})
 
-    # Check for parallel writes
-    for artifact, (_, writers) in artifacts.items():
-        if len(writers) > 1:
-            # Check if these steps have dependencies that serialize them
-            serialized = False
-            for i, w1 in enumerate(writers):
-                for w2 in writers[i+1:]:
-                    # Check if w1 depends on w2 or vice versa via edges
-                    if any(e["from"] == w1 and e["to"] == w2 or e["from"] == w2 and e["to"] == w1 for e in recipe["edges"]):
-                        serialized = True
-                        break
-            if not serialized:
-                errors.append({"code": "parallel-artifact-write", "message": f"artifact {artifact} written by parallel steps {writers}"})
+        if target is not None:
+            target_inputs = set(target.get("inputs", []))
+            target_outputs = set(target.get("outputs", []))
+            logical_inputs[step_id] = target_inputs
+            for key in step["input_map"]:
+                if key not in target_inputs:
+                    errors.append({"code": "unknown-slot-input" if "slot" in step else "unknown-recipe-input", "message": f"step {step_id}: input key {key} not in {target_name}"})
+            for key in step["output_map"]:
+                if key not in target_outputs:
+                    errors.append({"code": "unknown-slot-output" if "slot" in step else "unknown-recipe-output", "message": f"step {step_id}: output key {key} not in {target_name}"})
+            for gate in step["gates"]:
+                if gate not in set(target.get("gates", [])):
+                    errors.append({"code": "unknown-gate", "message": f"step {step_id}: gate {gate} not in {target_name}"})
+            if not step_permissions <= target_permissions:
+                errors.append({"code": "permission-escalation", "message": f"step {step_id}: permissions exceed {target_name}"})
+            if "slot" in step and isinstance(target.get("execution"), dict):
+                authorization = target["execution"]["authorization"]
+                scopes = set(authorization["scopes"])
+                for permission in step_permissions & DANGEROUS_PERMISSIONS.keys():
+                    if not authorization["required"] or DANGEROUS_PERMISSIONS[permission] not in scopes:
+                        errors.append({"code": "missing-explicit-authorization", "message": f"step {step_id}: {permission} is not authorization-gated"})
 
-    # Check input producers
-    for step in recipe["steps"]:
-        for artifact in step.get("input_map", {}).values():
+        for artifact in set(step["output_map"].values()):
+            artifacts.setdefault(artifact, []).append(step_id)
+
+    for step in steps:
+        for dependency in step.get("depends_on", []):
+            if dependency not in step_by_id:
+                errors.append({"code": "unknown-dependency", "message": f"step {step['id']}: dependency {dependency} not found"})
+        for artifact in step["input_map"].values():
             if artifact not in artifacts:
                 errors.append({"code": "input-without-producer", "message": f"step {step['id']}: input {artifact} has no producer"})
-
-    # Check recipe outputs have producers
     for output in recipe["outputs"]:
         if output not in artifacts:
             errors.append({"code": "output-without-producer", "message": f"recipe output {output} has no producer"})
+    for artifact, writers in artifacts.items():
+        if len(writers) > 1 and not any(
+            a in step_by_id[b].get("depends_on", []) or b in step_by_id[a].get("depends_on", [])
+            for index, a in enumerate(writers) for b in writers[index + 1:]
+        ):
+            errors.append({"code": "parallel-artifact-write", "message": f"artifact {artifact} written by parallel steps {writers}"})
 
-    # Check for cycles (before evidence check)
-    # Build complete edge set from both edges array and depends_on
     all_edges = list(recipe["edges"])
-    for step in recipe["steps"]:
-        for dep in step.get("depends_on", []):
-            all_edges.append({"from": dep, "to": step["id"]})
-
-    if find_cycles(recipe["steps"], all_edges):
+    all_edges.extend({"from": dep, "to": step["id"]} for step in steps for dep in step.get("depends_on", []))
+    if find_cycles(steps, all_edges):
         errors.append({"code": "step-cycle", "message": "dependency cycle detected"})
 
-    # Check failure route endpoints after schema validation.
+    routed: dict[tuple[str, str], int] = {}
     for route in recipe.get("failure_routes", []):
-        if route["from"] not in step_ids or route["to"] not in step_ids:
+        if route["from"] not in step_by_id or route["to"] not in step_by_id:
             errors.append({"code": "invalid-failure-route", "message": f"unknown route endpoint: {route}"})
+        for status in route["on_status"]:
+            key = (route["from"], status)
+            routed[key] = routed.get(key, 0) + 1
+    if recipe.get("retry_policy"):
+        for step_id in step_by_id:
+            for status in FAILURE_STATUSES:
+                count = routed.get((step_id, status), 0)
+                if count == 0:
+                    errors.append({"code": "missing-failure-route", "message": f"step {step_id}: no route for {status}"})
+                elif count > 1:
+                    errors.append({"code": "conflicting-failure-route", "message": f"step {step_id}: multiple routes for {status}"})
 
-    # Check evidence for released recipes.
-    if recipe["status"] == "released" and "evidence" in recipe:
-        evidence = recipe["evidence"]
-        composition_runs = evidence.get("composition_runs", [])
-        review_path = evidence.get("review")
+    for mapping in recipe.get("feedback_mappings", []):
+        source, target = mapping["from_step"], mapping["to_step"]
+        if source not in step_by_id or target not in step_by_id:
+            errors.append({"code": "invalid-feedback-mapping", "message": f"unknown feedback endpoint: {mapping}"})
+        elif mapping["artifact"] not in step_by_id[source]["output_map"].values():
+            errors.append({"code": "invalid-feedback-mapping", "message": f"step {source} does not produce {mapping['artifact']}"})
+        elif mapping.get("target_input") and mapping["target_input"] not in logical_inputs.get(target, set()):
+            target_step = step_by_id[target]
+            target_contract = slots.get(target_step.get("slot"), {})
+            correction_inputs = target_contract.get("execution", {}).get("correction_inputs", []) if isinstance(target_contract, dict) else []
+            if mapping["target_input"] not in correction_inputs:
+                errors.append({"code": "invalid-feedback-mapping", "message": f"step {target} has no input {mapping['target_input']}"})
 
-        evidence_errors = []
-        for run in composition_runs:
-            run_path = run["path"]
-            if not _safe_relative(run_path):
-                evidence_errors.append(f"unsafe evidence path: {run_path}")
-                continue
-            result_file = workspace_root / run_path
-            if not result_file.is_file():
-                evidence_errors.append(f"missing: {result_file.as_posix()}")
-            elif hashlib.sha256(result_file.read_bytes()).hexdigest() != run["sha256"]:
-                evidence_errors.append(f"evidence hash mismatch: {run_path}")
+    evidence = recipe.get("evidence")
+    if recipe["status"] == "released" and isinstance(evidence, dict):
+        evidence_errors: list[str] = []
+        for run in evidence.get("composition_runs", []):
+            relative = run["path"]
+            full = workspace_root / relative if _safe_relative(relative) else None
+            if full is None:
+                evidence_errors.append(f"unsafe evidence path: {relative}")
+            elif not full.is_file():
+                evidence_errors.append(f"missing: {full.as_posix()}")
+            elif hashlib.sha256(full.read_bytes()).hexdigest() != run["sha256"]:
+                evidence_errors.append(f"evidence hash mismatch: {relative}")
             else:
-                problem = _validate_evidence_file(result_file, expected_recipe=recipe["id"])
+                problem = _validate_evidence_file(full, expected_recipe=recipe["id"])
                 if problem:
                     evidence_errors.append(problem)
-
-        review_path = review_path["path"]
-        if not _safe_relative(review_path):
-            evidence_errors.append(f"unsafe review path: {review_path}")
+        review = evidence.get("review", {})
+        relative = review.get("path")
+        full = workspace_root / relative if _safe_relative(relative) else None
+        if full is None:
+            evidence_errors.append(f"unsafe review path: {relative}")
+        elif not full.is_file():
+            evidence_errors.append(f"missing: {full.as_posix()}")
+        elif hashlib.sha256(full.read_bytes()).hexdigest() != review.get("sha256"):
+            evidence_errors.append(f"review hash mismatch: {relative}")
         else:
-            full_review = workspace_root / review_path
-            if not full_review.is_file():
-                evidence_errors.append(f"missing: {full_review.as_posix()}")
-            elif hashlib.sha256(full_review.read_bytes()).hexdigest() != evidence["review"]["sha256"]:
-                evidence_errors.append(f"review hash mismatch: {review_path}")
-            else:
-                problem = _validate_evidence_file(full_review)
-                if problem:
-                    evidence_errors.append(problem)
-
+            problem = _validate_evidence_file(full)
+            if problem:
+                evidence_errors.append(problem)
         if evidence_errors:
             errors.append({"code": "missing-release-evidence", "message": "; ".join(evidence_errors)})
-
     return errors
 
 
 def verify_recipes(recipes_root: Path, slots_root: Path, workspace_root: Path, recipe_file: Path | None = None) -> dict:
-    """Verify all recipes or a single recipe."""
     try:
-        slots, slot_errors = load_slots(slots_root)
+        slots, errors = load_slots(slots_root)
     except (OSError, json.JSONDecodeError) as exc:
-        slots, slot_errors = {}, [{"code": "invalid-slot-contract", "message": str(exc)}]
-
-    if recipe_file:
-        recipes = [recipe_file]
-    else:
-        recipes = sorted(recipes_root.glob("*.json"))
-        recipes = [r for r in recipes if r.stem not in ("schema",)]
-
-    if not recipes:
-        return {
-            "ok": False,
-            "checked": [],
-            "errors": [{"code": "missing-recipe", "message": "no recipes found"}]
-        }
-
-    all_errors = list(slot_errors)
-    for recipe_path in recipes:
+        slots, errors = {}, [{"code": "invalid-slot-contract", "message": str(exc)}]
+    paths = [recipe_file] if recipe_file else [p for p in sorted(recipes_root.glob("*.json")) if p.stem not in {"schema", "catalog"}]
+    if not paths:
+        return {"ok": False, "checked": [], "errors": [{"code": "missing-recipe", "message": "no recipes found"}]}
+    recipes, recipe_errors = load_recipes(paths if not recipe_file else [p for p in sorted(recipes_root.glob("*.json")) if p.stem not in {"schema", "catalog"}])
+    errors.extend(recipe_errors)
+    cycles = _recipe_cycles(recipes)
+    errors.extend({"code": "recipe-cycle", "message": cycle} for cycle in cycles)
+    for path in paths:
         try:
-            recipe = json.loads(recipe_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            all_errors.append({"code": "parse-error", "message": f"{recipe_path.name}: {exc}"})
+            recipe = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
             continue
+        errors.extend(verify_recipe(recipe, slots, path, workspace_root, recipes))
 
-        errors = verify_recipe(recipe, slots, recipe_path, workspace_root)
-        all_errors.extend(errors)
-
-    return {
-        "ok": not all_errors,
-        "checked": [str(r) for r in recipes],
-        "errors": all_errors
-    }
+    phrases: dict[str, str] = {}
+    for recipe_id, recipe in recipes.items():
+        for phrase in recipe.get("routing", {}).get("intents", []):
+            folded = phrase.casefold().strip()
+            if folded in phrases and phrases[folded] != recipe_id:
+                errors.append({"code": "routing-conflict", "message": f"{phrase}: {phrases[folded]} and {recipe_id}"})
+            phrases[folded] = recipe_id
+    return {"ok": not errors, "checked": [str(path) for path in paths], "errors": errors}
 
 
 def main() -> int:
@@ -308,11 +354,9 @@ def main() -> int:
     parser.add_argument("--recipe", type=Path)
     parser.add_argument("--workspace-root", type=Path, default=Path("."))
     args = parser.parse_args()
-
     result = verify_recipes(args.recipes_root, args.slots_root, args.workspace_root, args.recipe)
     print(json.dumps(result, indent=2))
     return 0 if result["ok"] else 1
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

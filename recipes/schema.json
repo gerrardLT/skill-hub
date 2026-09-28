@@ -19,7 +19,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "slot", "ref", "input_map", "output_map", "depends_on", "gates", "permissions"],
+        "required": ["id", "input_map", "output_map", "depends_on", "gates", "permissions"],
         "properties": {
           "id": {"type": "string", "minLength": 1},
           "slot": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
@@ -28,14 +28,27 @@
           "output_map": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
           "depends_on": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "gates": {"$ref": "#/$defs/nonEmptyStrings"},
-          "permissions": {"$ref": "#/$defs/nonEmptyStrings"}
-        }
+          "permissions": {"$ref": "#/$defs/nonEmptyStrings"},
+          "execution_adapter": {"enum": ["artifact", "workspace"]},
+          "recipe": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*@[0-9]+\\.[0-9]+\\.[0-9]+$"}
+        },
+        "oneOf": [
+          {"required": ["slot", "ref"], "not": {"required": ["recipe"]}},
+          {"required": ["recipe"], "not": {"anyOf": [{"required": ["slot"]}, {"required": ["ref"]}]}}
+        ]
       }
     },
     "edges": {"type": "array", "items": {"$ref": "#/$defs/route"}, "uniqueItems": true},
     "gates": {"$ref": "#/$defs/nonEmptyStrings"},
     "failure_routes": {"type": "array", "items": {"$ref": "#/$defs/failureRoute"}},
-    "evidence": {"$ref": "#/$defs/evidence"}
+    "evidence": {"$ref": "#/$defs/evidence"},
+    "routing": {"$ref": "#/$defs/routing"},
+    "retry_policy": {"$ref": "#/$defs/retryPolicy"},
+    "feedback_mappings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/feedbackMapping"},
+      "uniqueItems": true
+    }
   },
   "$defs": {
     "nonEmptyStrings": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
@@ -54,6 +67,36 @@
         "to": {"type": "string", "minLength": 1},
         "on_status": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["needs-input", "failed", "blocked"]}},
         "action": {"enum": ["stop", "record-and-return", "invalidate-and-rerun"]}
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intents", "negative_intents", "priority"],
+      "properties": {
+        "intents": {"$ref": "#/$defs/nonEmptyStrings"},
+        "negative_intents": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "priority": {"type": "integer", "minimum": 0}
+      }
+    },
+    "retryPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_attempts", "stop_on_repeated_failure"],
+      "properties": {
+        "max_attempts": {"type": "integer", "minimum": 1, "maximum": 10},
+        "stop_on_repeated_failure": {"type": "boolean"}
+      }
+    },
+    "feedbackMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_step", "to_step", "artifact"],
+      "properties": {
+        "from_step": {"type": "string", "minLength": 1},
+        "to_step": {"type": "string", "minLength": 1},
+        "artifact": {"type": "string", "minLength": 1},
+        "target_input": {"type": "string", "minLength": 1}
       }
     },
     "evidence": {

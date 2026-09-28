@@ -1,20 +1,20 @@
-# GOAL：Capability Compiler 发布闭环
+# GOAL：Capability Compiler 六步闭环
 
 ## 最终状态：✅ 完成
 
-本文件由 `tools/curation/render_status.py` 从 `curation/gate-report.json` 生成，不接受手写 PASS。
+本文件由 `tools/curation/render_status.py` 从机器 Gate 生成。
 
-- 审计日期：2026-09-24
-- 自动测试：171 passed
+- 审计日期：2026-09-28
+- 自动测试：205 passed, 1 warning
 - 原始 `skills/` 基线：通过
 - Phase 1–8：全部通过
-- Released slots：4
-- Released recipes：1
-- 真实 composition：4/4 steps passed
-- 本机 Qoder 安装同步：可选环境检查，不属于仓库完成 Gate
+- Released slots：10
+- Unreleased slots：82
+- Released recipes：8
+- 自然语言路由、状态恢复、失败回跳和授权 Gate：通过
 
 ## 权威证据
 
 - `curation/gate-report.json`
 - `curation/final-audit.json`
-- `evals/runs/composition/requirements-to-acceptance-criteria-v0.2.0/result.json`
+- `evals/runs/full-dev-loop/`

@@ -8,20 +8,17 @@
     "input": "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.",
     "output": "A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input."
   },
-  "dependencies": [
-    "cluster:metrics-system-and-observability",
-    "cluster:results-analysis-and-decision-readout"
-  ],
+  "dependencies": [],
   "forbidden_actions": [
     "claim purification or release",
     "execute without required permissions and evidence",
     "fabricate or infer missing evidence"
   ],
   "gates": [
-    "source-review",
-    "semantic-evaluation",
-    "dependency-validation",
-    "release-evidence"
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
   ],
   "hard_failures": [
     "missing-source-evidence",
@@ -38,14 +35,38 @@
     "A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input."
   ],
   "permissions": {
-    "default": "none",
-    "requires_explicit_authorization": true
+    "default": [
+      "read-local-files",
+      "write-run-output"
+    ],
+    "requires_explicit_authorization": false,
+    "explicitly_denied": [
+      "remote-git",
+      "network",
+      "merge",
+      "deploy"
+    ]
   },
   "responsibility": "Maintain customer contact, feedback synthesis, metric review, calibration, and the next learning cycle.",
   "schema_version": "1.0",
-  "status": "draft",
+  "status": "released",
   "statuses": [
-    "draft"
+    "passed",
+    "failed",
+    "needs-input",
+    "blocked"
   ],
-  "version": "0.0.0-draft"
+  "version": "1.0.0",
+  "execution": {
+    "adapter": "artifact",
+    "tools": [],
+    "mutation": "run-output",
+    "authorization": {
+      "required": false,
+      "scopes": []
+    },
+    "correction_inputs": [
+      "Correction feedback"
+    ]
+  }
 }

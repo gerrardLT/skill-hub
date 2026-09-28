@@ -1,0 +1,114 @@
+{
+  "version": "1.0.0",
+  "status": "released",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "ship-release",
+  "description": "Prepare a release-ready package; never deploy without explicit authorization.",
+  "inputs": [
+    "change-artifact",
+    "completion-evidence",
+    "qa-verdict",
+    "repository-state",
+    "delivery-policy",
+    "delivery-authorization"
+  ],
+  "outputs": [
+    "release-package"
+  ],
+  "permissions": [
+    "read",
+    "grep",
+    "find",
+    "ls",
+    "bash"
+  ],
+  "steps": [
+    {
+      "id": "preflight",
+      "slot": "change-delivery-preflight",
+      "ref": "change-delivery-preflight@1.0.0",
+      "input_map": {
+        "A reviewed change, repository state, delivery policy, and intended publication boundary.": "repository-state"
+      },
+      "output_map": {
+        "A delivery-ready package or explicit preflight blockers; no merge or deployment action.": "release-package"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash"
+      ],
+      "execution_adapter": "workspace"
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "ship release",
+      "发布交付",
+      "release ready"
+    ],
+    "negative_intents": [
+      "do not release",
+      "不要发布"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/result.json",
+        "sha256": "e2dbb10c2ac6291002aabbd14a7cdd3164b821e353941cfae2c8f89a6ada5ad9"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/review.json",
+      "sha256": "cd351c3f6dd55b05ce1c0d77d35737d32845b02150a4d147ec4d22a46bb2ce5b"
+    }
+  }
+}

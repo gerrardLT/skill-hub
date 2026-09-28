@@ -324,3 +324,65 @@ def test_rejects_failure_route_that_does_not_invalidate_evidence(tmp_path: Path)
     value["failure_routes"][0]["action"] = "continue"
     result, report, _ = run_verify(tmp_path, value)
     assert_rejected(result, report, "schema")
+
+
+def test_legacy_released_recipe_remains_schema_compatible(tmp_path: Path) -> None:
+    value = recipe()
+    assert "routing" not in value
+    assert "retry_policy" not in value
+
+    result, report, _ = run_verify(tmp_path, value)
+
+    assert result.returncode == 0, report
+
+
+def test_rejects_recursive_subrecipe_cycle(tmp_path: Path) -> None:
+    value = recipe()
+    recipes = tmp_path / "recipes"
+    slots = tmp_path / "slots"
+    recipes.mkdir()
+    slots.mkdir()
+    (recipes / "schema.json").write_text((ROOT / "recipes/schema.json").read_text(encoding="utf-8"), encoding="utf-8")
+    (slots / "schema.json").write_text((ROOT / "slots/schema.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_root = tmp_path / "evals/runs/composition/cycle"
+    evidence_root.mkdir(parents=True)
+    result_file = evidence_root / "result.json"
+    result_file.write_text('{"passed": true}\n', encoding="utf-8")
+    review = evidence_root / "review.json"
+    review.write_text('{"verdict": "approved"}\n', encoding="utf-8")
+    evidence = {
+        "composition_runs": [{"path": result_file.relative_to(tmp_path).as_posix(), "sha256": hashlib.sha256(result_file.read_bytes()).hexdigest()}],
+        "review": {"path": review.relative_to(tmp_path).as_posix(), "sha256": hashlib.sha256(review.read_bytes()).hexdigest()},
+    }
+    def composite(recipe_id: str, child: str) -> dict:
+        return {
+            "id": recipe_id, "version": "1.0.0", "status": "released", "description": recipe_id,
+            "inputs": ["request"], "outputs": ["report"], "permissions": ["read"],
+            "steps": [{"id": "child", "recipe": f"{child}@1.0.0", "input_map": {"request": "request"}, "output_map": {"report": "report"}, "depends_on": [], "gates": ["ready"], "permissions": ["read"]}],
+            "edges": [], "gates": ["ready"], "failure_routes": [], "evidence": evidence,
+        }
+    (recipes / "a.json").write_text(json.dumps(composite("a", "b")), encoding="utf-8")
+    (recipes / "b.json").write_text(json.dumps(composite("b", "a")), encoding="utf-8")
+
+    process = subprocess.run([sys.executable, str(VERIFY), "--recipes-root", str(recipes), "--slots-root", str(slots), "--workspace-root", str(tmp_path)], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+    report = json.loads(process.stdout)
+
+    assert_rejected(process, report, "recipe-cycle")
+
+
+def test_retry_policy_requires_unique_failure_routes_for_every_status(tmp_path: Path) -> None:
+    value = recipe()
+    value["retry_policy"] = {"max_attempts": 2, "stop_on_repeated_failure": True}
+
+    result, report, _ = run_verify(tmp_path, value)
+
+    assert_rejected(result, report, "missing-failure-route")
+
+
+def test_recipe_step_cannot_exceed_recipe_permission_boundary(tmp_path: Path) -> None:
+    value = recipe()
+    value["permissions"] = ["test"]
+
+    result, report, _ = run_verify(tmp_path, value)
+
+    assert_rejected(result, report, "permission-escalation")

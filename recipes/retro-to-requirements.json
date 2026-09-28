@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "status": "released",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "retro-to-requirements",
+  "description": "Turn evidence from delivery into the next requirements input.",
+  "inputs": [
+    "expected-outcomes",
+    "actual-results",
+    "delivery-evidence",
+    "decisions",
+    "feedback"
+  ],
+  "outputs": [
+    "next-requirements"
+  ],
+  "permissions": [
+    "read-local-files",
+    "write-run-output"
+  ],
+  "steps": [
+    {
+      "id": "retro",
+      "slot": "feedback-and-continuous-learning-loop",
+      "ref": "feedback-and-continuous-learning-loop@1.0.0",
+      "input_map": {
+        "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.": "actual-results"
+      },
+      "output_map": {
+        "A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input.": "next-requirements"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ],
+      "execution_adapter": "artifact"
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "retro",
+      "to": "retro",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "retro",
+      "to": "retro",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "retro",
+      "to": "retro",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "retrospective",
+      "复盘",
+      "回流需求"
+    ],
+    "negative_intents": [
+      "do not retrospect",
+      "不要复盘"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/retro-to-requirements-v1.0.0/result.json",
+        "sha256": "6e60eaef374c846400e2019024b98381ab23cf4b1838b47d376b02676a8c5815"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/retro-to-requirements-v1.0.0/review.json",
+      "sha256": "0032110dc791411b459829cd2066b3396de4b3d6be2b36fcdfe040f2111b69ff"
+    }
+  }
+}

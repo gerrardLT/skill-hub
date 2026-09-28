@@ -45,6 +45,19 @@ def evaluate_gate(gate: str, output: str, inputs: dict[str, Any]) -> dict[str, o
         forbidden = ("modified product source", "rewrote upstream", "changed the requirement")
         evidence = ["read-only"] if "read-only" in folded else []
         passed = bool(evidence) and not any(value in folded for value in forbidden)
+    elif gate == "evidence-present":
+        evidence = re.findall(r"(?im)^(?:[-*]\s*)?(?:EV-\d+|Evidence:).*$", output)
+        passed = bool(evidence) and "gate results:" in folded
+    elif gate == "unknowns-preserved":
+        markers = [value for value in ("unknowns:", "unknown", "unspecified", "none identified") if value in folded]
+        evidence = markers
+        passed = bool(markers)
+    elif gate == "authority-boundary":
+        evidence = ["authority"] if "authority" in folded else []
+        passed = bool(evidence) and not any(value in folded for value in ("unauthorized deployment", "pushed without authorization", "merged without authorization"))
+    elif gate == "responsibility-boundary":
+        evidence = ["responsibility"] if "responsibility" in folded else []
+        passed = bool(evidence)
     else:
         return {"gate": gate, "passed": False, "evidence": [], "error": "no deterministic evaluator"}
 

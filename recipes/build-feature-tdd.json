@@ -1,0 +1,185 @@
+{
+  "version": "1.0.0",
+  "status": "released",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "build-feature-tdd",
+  "description": "Implement an approved change through TDD and fresh completion evidence.",
+  "inputs": [
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-contract",
+    "repository-context",
+    "execution-authorization"
+  ],
+  "outputs": [
+    "change-artifact",
+    "completion-evidence"
+  ],
+  "permissions": [
+    "read",
+    "grep",
+    "find",
+    "ls",
+    "bash",
+    "edit",
+    "write",
+    "run-tests"
+  ],
+  "steps": [
+    {
+      "id": "implement",
+      "slot": "tdd-change-loop",
+      "ref": "tdd-change-loop@1.0.0",
+      "input_map": {
+        "A feature, defect, refactor, or other behavior change.": "requirements-artifact"
+      },
+      "output_map": {
+        "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence.": "change-artifact"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "edit",
+        "write",
+        "run-tests"
+      ],
+      "execution_adapter": "workspace"
+    },
+    {
+      "id": "complete",
+      "slot": "completion-evidence-gate",
+      "ref": "completion-evidence-gate@1.0.0",
+      "input_map": {
+        "A proposed status claim and the command capable of proving it.": "change-artifact"
+      },
+      "output_map": {
+        "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report.": "completion-evidence"
+      },
+      "depends_on": [
+        "implement"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "run-tests"
+      ],
+      "execution_adapter": "workspace"
+    }
+  ],
+  "edges": [
+    {
+      "from": "implement",
+      "to": "complete"
+    }
+  ],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "complete",
+      "to": "complete",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "complete",
+      "to": "implement",
+      "on_status": [
+        "failed"
+      ],
+      "action": "invalidate-and-rerun"
+    },
+    {
+      "from": "complete",
+      "to": "complete",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [
+    {
+      "from_step": "complete",
+      "to_step": "implement",
+      "artifact": "completion-evidence",
+      "target_input": "Correction feedback"
+    }
+  ],
+  "routing": {
+    "intents": [
+      "build feature tdd",
+      "TDD 实现",
+      "实现功能"
+    ],
+    "negative_intents": [
+      "do not modify code",
+      "不要改代码"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/result.json",
+        "sha256": "10eabcdbda2a5f62bc3ebc94188fd7dd6fd0909e233bacd29b4df853f53adb40"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/review.json",
+      "sha256": "c1633da0fe52d278f168e92f22b868aae2d321b8238d7665ef15421279e93dd4"
+    }
+  }
+}

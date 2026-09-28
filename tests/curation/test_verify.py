@@ -1478,7 +1478,12 @@ def test_phase7_cli_accepts_released_executable_recipe() -> None:
     assert verified.returncode == 0, verified.stderr
     report = json.loads(verified.stdout)
     assert report["gate"] == "phase-7-recipe-composition"
-    assert report["checked"] == [str(ROOT / "recipes" / "requirements-to-acceptance-criteria.json")]
+    expected = sorted(
+        str(path)
+        for path in (ROOT / "recipes").glob("*.json")
+        if path.stem not in {"schema", "catalog"}
+    )
+    assert report["checked"] == expected
     assert report["errors"] == []
     assert report["ok"] is True
 

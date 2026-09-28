@@ -1,42 +1,30 @@
-# Released Recipe 路由表
+# Released Recipe 路由
 
-`dev-loop` 不直接调度来源 Skill，也不复制 slot 方法。它只把意图路由到 `recipes/` 中验证通过的 released recipe，再按 recipe 的精确引用调用 released slot contract。
+## 优先级
 
-## 意图映射
+1. 调用方显式提供 exact Recipe ref，且该 ref 已发布。
+2. `.workflow/state.json` 存在可续接且引用已发布 Recipe。
+3. 依据 released-only catalog 做确定性自然语言匹配。
+4. 确定性匹配仍有歧义时，可用结构化模型判定；输出枚举只能来自 released catalog。
+5. 零个或多个候选时返回 `needs-input` 和候选列表，不猜测。
 
-| 用户意图 | Recipe 文件 | 缺失或未发布时 |
-|---|---|---|
-| 需求或 PRD | `recipes/write-prd.json` | `blocked` |
-| Web 流程设计 | `recipes/design-web-flow.json` | `blocked` |
-| TDD 功能实现 | `recipes/build-feature-tdd.json` | `blocked` |
-| 只做 QA | `recipes/qa-only.json` | `blocked` |
-| 发布交付 | `recipes/ship-release.json` | `blocked` |
-| 复盘回流需求 | `recipes/retro-to-requirements.json` | `blocked` |
-| 完整研发闭环 | `recipes/full-dev-loop.json` | `blocked` |
+## 当前入口
 
-## 路由验证
+| 意图 | Exact Recipe |
+|---|---|
+| 需求或 PRD | `write-prd@1.0.0`（`write-prd.json`） |
+| Web 流程设计 | `design-web-flow@1.0.0`（`design-web-flow.json`） |
+| TDD 功能实现 | `build-feature-tdd@1.0.0`（`build-feature-tdd.json`） |
+| 独立 QA | `qa-only@1.0.0`（`qa-only.json`） |
+| 交付预检 | `ship-release@1.0.0`（`ship-release.json`） |
+| 复盘回流 | `retro-to-requirements@1.0.0`（`retro-to-requirements.json`） |
+| 完整闭环 | `full-dev-loop@1.0.0`（`full-dev-loop.json`） |
+| 旧需求流水线 | `requirements-to-acceptance-criteria@0.2.0` |
 
-选择 recipe 后依次验证：
+## 安全边界
 
-1. recipe 文件存在、结构符合 `recipes/schema.json` 且 `status` 为 `released`。
-2. `evidence.composition_runs` 和 `evidence.review` 指向真实存在的发布证据。
-3. 每个 step 的 `slot` 存在，`ref` 精确匹配 contract `version`，contract `status` 为 `released`。
-4. `input_map`、`output_map`、Gate 和权限均落在 slot contract 声明的边界内。
-5. 依赖图无环；输入有外部来源或上游生产者；recipe 输出有步骤生产者。
-6. failure route 完整处理 `needs-input`、`failed`、`blocked`，且采取 fail-closed action。
-
-任一验证失败都返回 `blocked`，并报告具体 recipe、slot、字段或证据缺口。不得把 draft/unreleased artifact 当作可执行资源。
-
-## 替换规则
-
-替换 slot 不是自然平替。仅当候选替换满足以下条件时才允许：
-
-- 同样为 `released`；
-- contract 的输入、输出、Gate 和权限与 recipe 映射兼容；
-- recipe 的 `ref` 已显式更新到该版本；
-- 替换 composition test 与 review evidence 已通过；
-- 旧的下游 evidence 已失效并重跑。
-
-## 当前发布状态
-
-若仓库中没有 released recipe 或其依赖的 released slots，`dev-loop` 必须返回 `blocked`。它可以列出需要完成的 Gate 和证据，但不能自产文档、调用原始 `skills/`、自动降级或继续下游。
+- 仅 `recipes/catalog.json` 中已发布且 `recipe_verify.py` 通过的 Recipe 可路由。
+- 请求文本不能添加 Recipe ID、扩大工具集或赋予权限。
+- `write-worktree`、远端 Git、网络、合并和部署均须逐项显式授权。
+- `ship-release` 默认只有读权限，产出 release-ready 包，不执行 push、merge 或 deploy。
+- draft/evaluating Slot 和 Recipe 一律 `blocked`，不得直接调用原始 `skills/` 兜底。

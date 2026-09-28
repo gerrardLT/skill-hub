@@ -37,8 +37,23 @@
 
 ## 状态记录
 
-`.workflow/state.md` 记录当前 recipe/version、每个 slot/version、输入哈希、产物和证据路径、四态结果以及失效原因。文件存在或人工撰写 PASS 不能替代实际 Gate 证据。
+`.workflow/state.json` 是机器事实源，记录 recipe/version、step ref、输入哈希、产物、证据、尝试次数、失败指纹及失效历史；`.workflow/state.md` 由 JSON 自动生成，仅供阅读。状态写入使用原子替换；损坏状态保留诊断副本并返回 `blocked`。
 
-## 当前安全行为
+## 当前发布路径
 
-在 Capability Compiler 尚无 released recipes 或 released slots 时，插件必须明确 `blocked`。这表示路由保护正常工作，不代表流程或能力已经发布。
+- `write-prd@1.0.0`
+- `design-web-flow@1.0.0`
+- `build-feature-tdd@1.0.0`
+- `qa-only@1.0.0`
+- `ship-release@1.0.0`
+- `retro-to-requirements@1.0.0`
+- `full-dev-loop@1.0.0`
+- 兼容入口：`requirements-to-acceptance-criteria@0.2.0`
+
+## 安全行为
+
+- 歧义返回 `needs-input`，不猜测。
+- QA 只报不修。
+- 代码写入仅在显式授权的隔离 worktree 中发生。
+- 远端 Git、网络、合并与部署须分别显式授权。
+- `ship-release` 默认只生成 release-ready 包，不 push、merge 或 deploy。

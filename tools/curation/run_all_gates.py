@@ -27,6 +27,7 @@ def run_all(workspace: Path) -> dict[str, object]:
         command("phase6", verify, "phase6", "--clusters", "curation/clusters.json", "--units-root", "curation/units", "--slots-root", "slots", "--review-queue", "curation/slot-review-queue.json", "--release-status", "curation/slot-release-status.json", "--inventory", "curation/inventory.json"),
         command("phase7", verify, "phase7", "--recipes-root", "recipes", "--slots-root", "slots"),
         command("phase8-source", verify, "phase8-sync", "--audit", "curation/dev-loop-sync-audit.json", "--workspace-root", "."),
+        command("runtime", "tools/curation/runtime_gate.py", "--workspace-root", "."),
     ]
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"

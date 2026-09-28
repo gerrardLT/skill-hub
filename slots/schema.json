@@ -58,7 +58,39 @@
     "gates": {"$ref": "#/$defs/nonEmptyStrings"},
     "forbidden_actions": {"$ref": "#/$defs/nonEmptyStrings"},
     "hard_failures": {"$ref": "#/$defs/nonEmptyStrings"},
-    "artifact_types": {"$ref": "#/$defs/nonEmptyStrings"}
+    "artifact_types": {"$ref": "#/$defs/nonEmptyStrings"},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter", "tools", "mutation", "authorization", "correction_inputs"],
+      "properties": {
+        "adapter": {"enum": ["artifact", "workspace"]},
+        "tools": {
+          "type": "array",
+          "items": {"enum": ["read", "grep", "find", "ls", "bash", "edit", "write", "run-tests", "browser-readonly", "remote-git", "network", "merge", "deploy"]},
+          "uniqueItems": true
+        },
+        "mutation": {"enum": ["none", "run-output", "isolated-worktree"]},
+        "authorization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "scopes"],
+          "properties": {
+            "required": {"type": "boolean"},
+            "scopes": {
+              "type": "array",
+              "items": {"enum": ["workspace-write", "remote-git", "network", "merge", "deploy"]},
+              "uniqueItems": true
+            }
+          }
+        },
+        "correction_inputs": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      }
+    }
   },
   "$defs": {
     "nonEmptyStrings": {

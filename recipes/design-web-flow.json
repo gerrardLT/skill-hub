@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "status": "released",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "design-web-flow",
+  "description": "Turn approved requirements into a bounded Web design contract.",
+  "inputs": [
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-authority",
+    "project-context"
+  ],
+  "outputs": [
+    "design-contract"
+  ],
+  "permissions": [
+    "read-local-files",
+    "write-run-output"
+  ],
+  "steps": [
+    {
+      "id": "design",
+      "slot": "design-context-and-direction-contract",
+      "ref": "design-context-and-direction-contract@1.0.0",
+      "input_map": {
+        "Product facts, a brief, design assets, tokens, components, surface context, and references.": "requirements-artifact"
+      },
+      "output_map": {
+        "A design read, selected direction, constraints, spatial thesis, and auditable direction contract.": "design-contract"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ],
+      "execution_adapter": "artifact"
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "design",
+      "to": "design",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "design",
+      "to": "design",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "design",
+      "to": "design",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "design web flow",
+      "web 流程设计",
+      "页面设计"
+    ],
+    "negative_intents": [
+      "do not design",
+      "不要设计"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/design-web-flow-v1.0.0/result.json",
+        "sha256": "d3df97fd4f221c78cec2bf7efc55379409d56a8dea24bf6a39b750d4ec9cdfcd"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/design-web-flow-v1.0.0/review.json",
+      "sha256": "7d212e6d91c03b8a89d7e68fce10f06100d9358d99060b0992588d00bb0e446e"
+    }
+  }
+}

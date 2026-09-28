@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "captured_for": "full-dev-loop-runtime-expansion",
+  "branch": "fix/capability-compiler-gates",
+  "head": "1979516",
+  "released_slots": [
+    "acceptance-criteria@0.2.0",
+    "problem-framing@0.2.0",
+    "requirements-quality-gate@0.2.0",
+    "requirements-rules@0.2.0"
+  ],
+  "released_recipes": [
+    "requirements-to-acceptance-criteria@0.2.0"
+  ],
+  "test_baseline": {
+    "command": "python -m pytest -q",
+    "passed": 175,
+    "warnings": 1
+  },
+  "gate_baseline": {
+    "command": "python tools/curation/run_all_gates.py --output curation/gate-report.json",
+    "passed": true,
+    "gates": [
+      "tests",
+      "source",
+      "phase2",
+      "phase3",
+      "phase4",
+      "phase5-provenance",
+      "phase5-release",
+      "phase6",
+      "phase7",
+      "phase8-source"
+    ]
+  },
+  "invariants": [
+    "skills/ remains immutable",
+    "existing released slot and recipe references remain executable",
+    "unreleased slots are never routed or executed",
+    "all runtime paths fail closed",
+    "remote Git, network, deployment, and workspace mutation require explicit authorization"
+  ]
+}

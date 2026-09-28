@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "stages": [
+    {
+      "stage": "requirements",
+      "recipe_id": "write-prd",
+      "inputs": ["validated-product-brief", "evidence-sources", "constraints", "authority-metadata"],
+      "outputs": ["problem-frame-artifact", "requirements-artifact", "acceptance-criteria-artifact", "requirements-gate-report"],
+      "permissions": ["read-local-files", "write-run-output"],
+      "slots": ["problem-framing", "requirements-rules", "acceptance-criteria", "requirements-quality-gate"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "invalidate-and-rerun:requirements-rules",
+        "blocked": "record-and-return"
+      }
+    },
+    {
+      "stage": "design",
+      "recipe_id": "design-web-flow",
+      "inputs": ["requirements-artifact", "acceptance-criteria-artifact", "design-authority", "project-context"],
+      "outputs": ["design-contract", "interaction-spec", "accessibility-spec", "design-gate-report"],
+      "permissions": ["read-local-files", "write-run-output"],
+      "slots": ["design-context-and-direction-contract", "interaction-states-forms-and-navigation", "accessibility-contracts-and-assistive-validation", "cross-domain-ui-preflight-checklists"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "invalidate-and-rerun:design-context-and-direction-contract",
+        "blocked": "record-and-return"
+      }
+    },
+    {
+      "stage": "implementation",
+      "recipe_id": "build-feature-tdd",
+      "inputs": ["requirements-artifact", "acceptance-criteria-artifact", "design-contract", "repository-context", "execution-authorization"],
+      "outputs": ["implementation-plan", "change-artifact", "self-review", "completion-evidence"],
+      "permissions": ["read-local-files", "write-run-output", "run-tests", "write-worktree"],
+      "slots": ["implementation-planning-and-handoff", "tdd-change-loop", "developer-self-check-and-fix", "completion-evidence-gate"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "invalidate-and-rerun:tdd-change-loop",
+        "blocked": "record-and-return"
+      }
+    },
+    {
+      "stage": "qa",
+      "recipe_id": "qa-only",
+      "inputs": ["requirements-artifact", "acceptance-criteria-artifact", "design-contract", "change-artifact", "qa-authorization"],
+      "outputs": ["blackbox-report", "code-review-report", "regression-report", "qa-verdict"],
+      "permissions": ["read-local-files", "write-run-output", "run-tests", "browser-readonly"],
+      "slots": ["independent-blackbox-qa", "independent-code-review", "baseline-regression-control"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "record-and-return:implementation",
+        "blocked": "record-and-return"
+      }
+    },
+    {
+      "stage": "delivery",
+      "recipe_id": "ship-release",
+      "inputs": ["change-artifact", "completion-evidence", "qa-verdict", "repository-state", "delivery-policy", "delivery-authorization"],
+      "outputs": ["delivery-preflight", "release-package", "deployment-readiness"],
+      "permissions": ["read-local-files", "write-run-output"],
+      "optional_authorized_permissions": ["write-worktree", "remote-git", "network", "merge", "deploy"],
+      "slots": ["change-delivery-preflight", "change-packaging-and-versioning", "merge-and-deploy-readiness"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "record-and-return:qa",
+        "blocked": "record-and-return"
+      },
+      "default_behavior": "release-ready-package-only"
+    },
+    {
+      "stage": "retrospective",
+      "recipe_id": "retro-to-requirements",
+      "inputs": ["expected-outcomes", "actual-results", "delivery-evidence", "decisions", "feedback"],
+      "outputs": ["retrospective-report", "root-cause-report", "decision-readout", "next-requirements"],
+      "permissions": ["read-local-files", "write-run-output"],
+      "slots": ["engineering-retrospective-and-improvement", "root-cause-investigation", "results-analysis-and-decision-readout", "feedback-and-continuous-learning-loop"],
+      "failure_routes": {
+        "needs-input": "stop",
+        "failed": "record-and-return",
+        "blocked": "record-and-return"
+      },
+      "feedback_target": "write-prd.validated-product-brief"
+    }
+  ],
+  "full_recipe": {
+    "recipe_id": "full-dev-loop",
+    "subrecipes": ["write-prd", "design-web-flow", "build-feature-tdd", "qa-only", "ship-release", "retro-to-requirements"],
+    "feedback": "retro-to-requirements.next-requirements -> write-prd.validated-product-brief",
+    "retry_budget": 2
+  }
+}

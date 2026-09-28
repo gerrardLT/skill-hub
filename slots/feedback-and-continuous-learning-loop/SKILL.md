@@ -1,25 +1,35 @@
 # feedback-and-continuous-learning-loop
 
-Status: draft candidate; source-index skeleton only. This file has not been purified, evaluated, or released.
+Status: released 1.0.0
 
-## Candidate Responsibility
+## Responsibility
 
 Maintain customer contact, feedback synthesis, metric review, calibration, and the next learning cycle.
 
-## Source Boundaries
+## Inputs
 
-- Input: Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.
-- Output: A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input.
+Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.
 
-## Required Upstream Dependencies
+## Method
 
-- `cluster:metrics-system-and-observability`
-- `cluster:results-analysis-and-decision-readout`
+1. Classify every supplied statement as evidence, constraint, unknown, conflict, or authorized decision before acting.
+2. Preserve stable IDs, source references, authority boundaries, and unresolved unknowns in every output.
+3. Execute only the declared `retrospective` responsibility; do not absorb upstream or downstream work.
+4. Produce numbered findings or records with direct evidence citations and an explicit per-Gate result.
+5. Return `needs-input` for missing required facts, `blocked` for missing authority or tooling, and `failed` for observed execution or verification failure.
+6. Return `passed` only when all declared Gates have current evidence.
 
-## Source Units
+## Output
 
-See `provenance.json` for the complete unit-by-unit source index and recorded dispositions.
+A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input.
 
-## Fail-Closed Protocol
+## Safety
 
-Do not execute, publish, or claim completion from this skeleton. Stop when required inputs, permissions, dependency contracts, source evidence, evaluation evidence, or release evidence are missing or unresolved. Never fabricate evidence or treat `not-run`, `pending`, or `draft` as a passing gate.
+- Respect the execution adapter and explicit authorization boundary.
+- Never fabricate evidence, silently resolve conflicts, erase unknowns, or treat a stale result as current.
+- Never use remote Git, network, merge, or deployment authority unless the host supplied that exact authorization scope.
+
+## Required Format
+
+First line: `Status: passed|needs-input|blocked|failed`.
+Then include `Evidence:`, numbered records, `Gate Results:`, and `Unknowns:` sections.

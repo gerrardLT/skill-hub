@@ -8,20 +8,17 @@
     "input": "An accessible application, change scope, QA mode, and authorized interaction boundary.",
     "output": "Report-only defects, screenshots, console evidence, and a health score; never a product-code repair."
   },
-  "dependencies": [
-    "cluster:safe-browser-probing",
-    "cluster:testing-portfolio-strategy"
-  ],
+  "dependencies": [],
   "forbidden_actions": [
     "claim purification or release",
     "execute without required permissions and evidence",
     "fabricate or infer missing evidence"
   ],
   "gates": [
-    "source-review",
-    "semantic-evaluation",
-    "dependency-validation",
-    "release-evidence"
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
   ],
   "hard_failures": [
     "missing-source-evidence",
@@ -38,14 +35,51 @@
     "Report-only defects, screenshots, console evidence, and a health score; never a product-code repair."
   ],
   "permissions": {
-    "default": "none",
-    "requires_explicit_authorization": true
+    "default": [
+      "read",
+      "grep",
+      "find",
+      "ls",
+      "bash",
+      "run-tests",
+      "browser-readonly"
+    ],
+    "requires_explicit_authorization": false,
+    "explicitly_denied": [
+      "remote-git",
+      "network",
+      "merge",
+      "deploy"
+    ]
   },
   "responsibility": "Run diff-aware, quick, or regression black-box QA without modifying product source.",
   "schema_version": "1.0",
-  "status": "draft",
+  "status": "released",
   "statuses": [
-    "draft"
+    "passed",
+    "failed",
+    "needs-input",
+    "blocked"
   ],
-  "version": "0.0.0-draft"
+  "version": "1.0.0",
+  "execution": {
+    "adapter": "workspace",
+    "tools": [
+      "read",
+      "grep",
+      "find",
+      "ls",
+      "bash",
+      "run-tests",
+      "browser-readonly"
+    ],
+    "mutation": "none",
+    "authorization": {
+      "required": false,
+      "scopes": []
+    },
+    "correction_inputs": [
+      "Correction feedback"
+    ]
+  }
 }

@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "status": "released",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "write-prd",
+  "description": "Create a traceable PRD and acceptance criteria from a validated brief.",
+  "inputs": [
+    "validated-product-brief",
+    "evidence-sources",
+    "constraints",
+    "authority-metadata"
+  ],
+  "outputs": [
+    "problem-frame-artifact",
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "requirements-gate-report"
+  ],
+  "permissions": [
+    "read-local-files",
+    "write-run-output"
+  ],
+  "steps": [
+    {
+      "id": "requirements",
+      "recipe": "requirements-to-acceptance-criteria@0.2.0",
+      "input_map": {
+        "validated-product-brief": "validated-product-brief",
+        "evidence-sources": "evidence-sources",
+        "constraints": "constraints",
+        "authority-metadata": "authority-metadata"
+      },
+      "output_map": {
+        "problem-frame-artifact": "problem-frame-artifact",
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "gate-report": "requirements-gate-report"
+      },
+      "depends_on": [],
+      "gates": [
+        "source-traceability",
+        "unknown-preservation",
+        "given-when-then-structure",
+        "observability",
+        "applicable-success-coverage",
+        "evidence-backed-verdict",
+        "read-only-review"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "source-traceability",
+    "unknown-preservation",
+    "given-when-then-structure",
+    "observability",
+    "applicable-success-coverage",
+    "evidence-backed-verdict",
+    "read-only-review"
+  ],
+  "failure_routes": [
+    {
+      "from": "requirements",
+      "to": "requirements",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "requirements",
+      "to": "requirements",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "requirements",
+      "to": "requirements",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "write prd",
+      "需求文档",
+      "requirements and acceptance criteria"
+    ],
+    "negative_intents": [
+      "do not write prd",
+      "不要写需求"
+    ],
+    "priority": 90
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/write-prd-v1.0.0/result.json",
+        "sha256": "2f0e4684c3b9726f9fcf43a147b2ade4a16a278bfced8533864b3f1a7d643047"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/write-prd-v1.0.0/review.json",
+      "sha256": "f9b5a5ed2c8c0d9c8cb26156353b17a9d0fa9610b154a2fcc937370fc0cb8a85"
+    }
+  }
+}

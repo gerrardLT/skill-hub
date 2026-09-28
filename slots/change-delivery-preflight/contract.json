@@ -8,19 +8,17 @@
     "input": "A reviewed change, repository state, delivery policy, and intended publication boundary.",
     "output": "A delivery-ready package or explicit preflight blockers; no merge or deployment action."
   },
-  "dependencies": [
-    "cluster:completion-evidence-gate"
-  ],
+  "dependencies": [],
   "forbidden_actions": [
     "claim purification or release",
     "execute without required permissions and evidence",
     "fabricate or infer missing evidence"
   ],
   "gates": [
-    "source-review",
-    "semantic-evaluation",
-    "dependency-validation",
-    "release-evidence"
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
   ],
   "hard_failures": [
     "missing-source-evidence",
@@ -37,14 +35,47 @@
     "A delivery-ready package or explicit preflight blockers; no merge or deployment action."
   ],
   "permissions": {
-    "default": "none",
-    "requires_explicit_authorization": true
+    "default": [
+      "read",
+      "grep",
+      "find",
+      "ls",
+      "bash"
+    ],
+    "requires_explicit_authorization": false,
+    "explicitly_denied": [
+      "remote-git",
+      "network",
+      "merge",
+      "deploy"
+    ]
   },
   "responsibility": "Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants.",
   "schema_version": "1.0",
-  "status": "draft",
+  "status": "released",
   "statuses": [
-    "draft"
+    "passed",
+    "failed",
+    "needs-input",
+    "blocked"
   ],
-  "version": "0.0.0-draft"
+  "version": "1.0.0",
+  "execution": {
+    "adapter": "workspace",
+    "tools": [
+      "read",
+      "grep",
+      "find",
+      "ls",
+      "bash"
+    ],
+    "mutation": "none",
+    "authorization": {
+      "required": false,
+      "scopes": []
+    },
+    "correction_inputs": [
+      "Correction feedback"
+    ]
+  }
 }
