@@ -5,7 +5,7 @@
 本文件由 `tools/curation/render_status.py` 从机器 Gate 生成。
 
 - 审计日期：2026-09-28
-- 自动测试：205 passed, 1 warning
+- 自动测试：206 passed, 1 warning
 - 原始 `skills/` 基线：通过
 - Phase 1–8：全部通过
 - Released slots：10

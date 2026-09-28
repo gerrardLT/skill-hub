@@ -252,7 +252,7 @@ def execute_recipe(
                 child_id = step["recipe"].rsplit("@", 1)[0]
                 child_path = recipe_path.parent / f"{child_id}.json"
                 child_input = output_dir / f"{step_id}-input.json"
-                child_input.write_text(json.dumps({source: artifacts[source] for source in step["input_map"].values()}, ensure_ascii=False, indent=2), encoding="utf-8")
+                child_input.write_text(json.dumps(input_data, ensure_ascii=False, indent=2), encoding="utf-8")
                 child_result = execute_recipe(
                     child_path, child_input, output_dir / step_id,
                     workspace_root=workspace, timeout=timeout, worker=worker,

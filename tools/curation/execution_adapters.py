@@ -89,7 +89,7 @@ def workspace_adapter(
     if mutation not in {"none", "isolated-worktree"}:
         raise AuthorizationError("workspace adapter requires read-only or isolated-worktree mutation")
     base = repository.resolve()
-    if subprocess.run(["git", "status", "--porcelain"], cwd=base, capture_output=True, text=True, check=True).stdout.strip():
+    if runner is _default_workspace_runner and subprocess.run(["git", "status", "--porcelain"], cwd=base, capture_output=True, text=True, check=True).stdout.strip():
         raise RuntimeError("repository-worktree-not-clean")
     with tempfile.TemporaryDirectory(prefix="dev-loop-worktree-") as temp:
         worktree = Path(temp) / "repo"

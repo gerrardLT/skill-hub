@@ -11,7 +11,26 @@
     "validated-product-brief",
     "evidence-sources",
     "constraints",
-    "authority-metadata"
+    "authority-metadata",
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-authority",
+    "project-context",
+    "design-contract",
+    "repository-context",
+    "execution-authorization",
+    "change-artifact",
+    "qa-authorization",
+    "completion-evidence",
+    "qa-verdict",
+    "repository-state",
+    "delivery-policy",
+    "delivery-authorization",
+    "expected-outcomes",
+    "actual-results",
+    "delivery-evidence",
+    "decisions",
+    "feedback"
   ],
   "outputs": [
     "requirements-bundle",
@@ -70,9 +89,9 @@
       "recipe": "design-web-flow@1.0.0",
       "input_map": {
         "requirements-artifact": "requirements-bundle",
-        "acceptance-criteria-artifact": "requirements-bundle",
-        "design-authority": "requirements-bundle",
-        "project-context": "requirements-bundle"
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-authority": "design-authority",
+        "project-context": "project-context"
       },
       "output_map": {
         "design-contract": "design-bundle"
@@ -96,10 +115,10 @@
       "recipe": "build-feature-tdd@1.0.0",
       "input_map": {
         "requirements-artifact": "design-bundle",
-        "acceptance-criteria-artifact": "design-bundle",
-        "design-contract": "design-bundle",
-        "repository-context": "design-bundle",
-        "execution-authorization": "design-bundle"
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "repository-context": "repository-context",
+        "execution-authorization": "execution-authorization"
       },
       "output_map": {
         "change-artifact": "implementation-bundle",
@@ -130,10 +149,10 @@
       "recipe": "qa-only@1.0.0",
       "input_map": {
         "requirements-artifact": "implementation-bundle",
-        "acceptance-criteria-artifact": "implementation-bundle",
-        "design-contract": "implementation-bundle",
-        "change-artifact": "implementation-bundle",
-        "qa-authorization": "implementation-bundle"
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "change-artifact": "change-artifact",
+        "qa-authorization": "qa-authorization"
       },
       "output_map": {
         "qa-verdict": "qa-bundle"
@@ -162,11 +181,11 @@
       "recipe": "ship-release@1.0.0",
       "input_map": {
         "change-artifact": "qa-bundle",
-        "completion-evidence": "qa-bundle",
-        "qa-verdict": "qa-bundle",
-        "repository-state": "qa-bundle",
-        "delivery-policy": "qa-bundle",
-        "delivery-authorization": "qa-bundle"
+        "completion-evidence": "completion-evidence",
+        "qa-verdict": "qa-verdict",
+        "repository-state": "repository-state",
+        "delivery-policy": "delivery-policy",
+        "delivery-authorization": "delivery-authorization"
       },
       "output_map": {
         "release-package": "delivery-bundle"
@@ -193,10 +212,10 @@
       "recipe": "retro-to-requirements@1.0.0",
       "input_map": {
         "expected-outcomes": "delivery-bundle",
-        "actual-results": "delivery-bundle",
-        "delivery-evidence": "delivery-bundle",
-        "decisions": "delivery-bundle",
-        "feedback": "delivery-bundle"
+        "actual-results": "actual-results",
+        "delivery-evidence": "delivery-evidence",
+        "decisions": "decisions",
+        "feedback": "feedback"
       },
       "output_map": {
         "next-requirements": "next-requirements"

@@ -101,14 +101,20 @@ def create(root: Path) -> list[str]:
     previous = None
     for index, (child, output) in enumerate(zip(subrecipes, stage_outputs), 1):
         child_recipe = recipes[child]
-        input_map = {key: (key if index == 1 else stage_outputs[index - 2]) for key in child_recipe["inputs"]}
+        if index == 1:
+            input_map = {key: key for key in child_recipe["inputs"]}
+        else:
+            input_map = {
+                key: (stage_outputs[index - 2] if key == child_recipe["inputs"][0] else key)
+                for key in child_recipe["inputs"]
+            }
         output_map = {key: output for key in child_recipe["outputs"]}
         full_steps.append({"id": child.replace("-", "_"), "recipe": f"{child}@{VERSION}", "input_map": input_map, "output_map": output_map, "depends_on": [previous] if previous else [], "gates": child_recipe["gates"], "permissions": child_recipe["permissions"]})
         previous = child.replace("-", "_")
     all_permissions = sorted({p for child in subrecipes for p in recipes[child]["permissions"]})
     recipes["full-dev-loop"] = {
         **common, "id": "full-dev-loop", "description": "Run requirements, design, implementation, QA, delivery, and retrospective as one fail-closed loop.",
-        "inputs": recipes["write-prd"]["inputs"], "outputs": stage_outputs, "permissions": all_permissions,
+        "inputs": list(dict.fromkeys(key for child in subrecipes for key in recipes[child]["inputs"])), "outputs": stage_outputs, "permissions": all_permissions,
         "steps": full_steps, "edges": [{"from": full_steps[i]["id"], "to": full_steps[i + 1]["id"]} for i in range(len(full_steps) - 1)],
         "gates": sorted({gate for child in subrecipes for gate in recipes[child]["gates"]}),
         "failure_routes": routes([step["id"] for step in full_steps], {"qa_only": "build_feature_tdd", "ship_release": "qa_only"}),
