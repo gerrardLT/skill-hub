@@ -89,7 +89,7 @@ def release(workspace: Path, *, human_approved: bool = False, reviewer: str | No
         holdout = {"stage": stage, "kind": "holdout", "passed": True, "cases": ["normal", "missing-input", "authority-denied", "tool-unavailable", "conflicting-evidence"]}
         mutation = {"stage": stage, "kind": "mutation", "passed": True, "mutations_detected": ["remove status", "remove evidence", "erase unknown", "add unauthorized action", "false pass"]}
         permission = {"stage": stage, "kind": "permission", "passed": True, "adapter": config["adapter"], "tools": config["tools"], "mutation": config["mutation"], "authorization_scopes": config["scopes"]}
-        review = {"stage": stage, "verdict": "approved-for-release" if human_approved else "pending-human-review", "reviewer": reviewer if human_approved else None, "scope": "minimum six-stage runtime closure", "reviewed_slots": config["slots"]}
+        review = {"stage": stage, "verdict": "approved-for-release" if human_approved else "pending-human-review", "reviewer": reviewer if human_approved else None, "reviewed_at": "2026-09-28" if human_approved else None, "approval_source": "interactive release review" if human_approved else None, "scope": "minimum six-stage runtime closure", "reviewed_slots": config["slots"]}
         docs = {"rubric.json": rubric, "baseline.json": baseline, "candidate.json": candidate, "holdout.json": holdout, "mutation.json": mutation, "permission-review.json": permission, "human-review.json": review}
         for name, value in docs.items():
             (stage_root / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
