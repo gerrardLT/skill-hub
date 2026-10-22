@@ -1,0 +1,220 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/qa/SKILL.md:65]",
+    "Skill Invocation During Plan Mode [gstack/qa/SKILL.md:69]",
+    "Model-Specific Behavioral Patch (claude) [gstack/qa/SKILL.md:201]",
+    "Continuous Checkpoint Mode [gstack/qa/SKILL.md:301]",
+    "Step 0: Detect platform and base branch [gstack/qa/SKILL.md:435]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/qa/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/qa/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/qa/SKILL.md:5]",
+  "outputs": [
+    ".gstack/qa-reports/ [gstack/qa/SKILL.md:694]",
+    "├── qa-report-{domain}-{YYYY-MM-DD}.md Structured report [gstack/qa/SKILL.md:695]",
+    "├── screenshots/ [gstack/qa/SKILL.md:696]",
+    "│ ├── initial.jpg Landing page screenshot [gstack/qa/SKILL.md:697]",
+    "│ ├── issue-001-step-1.jpg Per-issue evidence [gstack/qa/SKILL.md:698]",
+    "│ ├── issue-001-result.jpg [gstack/qa/SKILL.md:699]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/qa/SKILL.md:43]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/qa/SKILL.md:48]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/qa/SKILL.md:67]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/qa/SKILL.md:86]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/qa/SKILL.md:110]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/qa/SKILL.md:181]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/qa/SKILL.md:305]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/qa/SKILL.md:428]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/qa/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Systematically QA test a web application and fix bugs found. [gstack/qa/SKILL.md:5]",
+  "root_id": "skill-root:gstack/qa",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/qa/SKILL.md:20]",
+    "re-verifying. Use when asked to \"qa\", \"QA\", \"test this site\", \"find bugs\", [gstack/qa/SKILL.md:28]",
+    "Standard (+ medium), Exhaustive (+ cosmetic). Produces before/after health scores, [gstack/qa/SKILL.md:32]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/qa/SKILL.md:49]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/qa/SKILL.md:50]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/qa/SKILL.md:51]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/qa/SKILL.md:58]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/qa/SKILL.md:59]"
+  ],
+  "skill_path": "gstack/qa/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/qa/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/qa/SKILL.md"
+    },
+    {
+      "line_end": 37,
+      "line_start": 37,
+      "path": "gstack/qa/SKILL.md"
+    },
+    {
+      "line_end": 65,
+      "line_start": 65,
+      "path": "gstack/qa/SKILL.md"
+    },
+    {
+      "line_end": 69,
+      "line_start": 69,
+      "path": "gstack/qa/SKILL.md"
+    }
+  ],
+  "source_sha256": "dd68e0d4d65e51f319199d2c4c1ef15624a2e9d13d7cb45ffca5a5837e727779",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/qa/SKILL.md:83]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/qa/SKILL.md:84]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/qa/SKILL.md:85]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/qa/SKILL.md:86]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/qa/SKILL.md:88]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/qa/SKILL.md:92]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dd68e0d4d65e51f319199d2c4c1ef15624a2e9d13d7cb45ffca5a5837e727779",
+        "content-review:960-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/qa/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1e36d22b188f58d98181a63ba312c317fc8f8bcd15565e3d39824ea4a483d498",
+        "content-review:377-lines"
+      ],
+      "path": "gstack/qa/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:af7fa568ca49316f60ed0919316b914fcd137f7abe2e75e7b296924aaaab0862",
+        "content-review:86-lines"
+      ],
+      "path": "gstack/qa/references/issue-taxonomy.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dbf2907315853ebfe7b4a204baaa6b48858284ed6b3ffd423c4c43ad8d5605aa",
+        "content-review:21-lines"
+      ],
+      "path": "gstack/qa/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2f58c23d56d981befa6b03cece2020cb9d9086be02caee87a125ef682e90c08d",
+        "content-review:320-lines"
+      ],
+      "path": "gstack/qa/sections/qa-patterns.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:989d5adb8b713e89b8088bed530b8417c8a81ed771ee16d012203f2bb8cd5724",
+        "content-review:2-lines"
+      ],
+      "path": "gstack/qa/sections/qa-patterns.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1911a57825530b43d1bb52fb90658b62e2acb88135d612ff9d1d06d1b3b88804",
+        "content-review:190-lines"
+      ],
+      "path": "gstack/qa/sections/test-bootstrap.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:96f3c95ada2d717380b04d2a7f3ae7b1cc97b5d6f5bdad3a164d34a54e03120c",
+        "content-review:2-lines"
+      ],
+      "path": "gstack/qa/sections/test-bootstrap.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fa252c4f41a4e096fd54cf98e88c1cbcf21ca05cc84d5974d09e3408ab166833",
+        "content-review:126-lines"
+      ],
+      "path": "gstack/qa/templates/qa-report-template.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: Write [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: Edit [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: Glob [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: Grep [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: AskUserQuestion [gstack/qa/SKILL.md:1-19]",
+    "Declared tool: WebSearch [gstack/qa/SKILL.md:1-19]",
+    "Local dependency: gstack/qa/sections/test-bootstrap.md [gstack/qa/SKILL.md:489]",
+    "Local dependency: gstack/qa/sections/qa-patterns.md [gstack/qa/SKILL.md:490]"
+  ],
+  "trigger": "Systematically QA test a web application and fix bugs found. (gstack) [gstack/qa/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/qa/SKILL.md:149]",
+    "Self-check before emitting [gstack/qa/SKILL.md:172]",
+    "Context Recovery [gstack/qa/SKILL.md:240]",
+    "Completeness Principle — Boil the Ocean [gstack/qa/SKILL.md:287]",
+    "Confusion Protocol [gstack/qa/SKILL.md:293]",
+    "Claimed Limitations Need Evidence [gstack/qa/SKILL.md:297]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/qa/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/qa/SKILL.md:301]",
+    "Step 0: Detect platform and base branch [gstack/qa/SKILL.md:435]",
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/qa/SKILL.md:534]",
+    "Translate the Aside scripts step by step [gstack/qa/SKILL.md:585]",
+    "Phases 1-6: QA Baseline [gstack/qa/SKILL.md:682]",
+    "Phase 7: Triage [gstack/qa/SKILL.md:710]",
+    "Phase 8: Fix Loop [gstack/qa/SKILL.md:736]",
+    "Phase 9: Final QA [gstack/qa/SKILL.md:878]",
+    "Phase 10: Report [gstack/qa/SKILL.md:888]",
+    "Phase 11: TODOS.md Update [gstack/qa/SKILL.md:917]"
+  ]
+}

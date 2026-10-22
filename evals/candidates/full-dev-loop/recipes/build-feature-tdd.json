@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "status": "evaluating",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "build-feature-tdd",
+  "description": "Implement an approved change through TDD and fresh completion evidence.",
+  "inputs": [
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-contract",
+    "repository-context",
+    "execution-authorization",
+    "Correction feedback"
+  ],
+  "outputs": [
+    "change-artifact",
+    "completion-evidence"
+  ],
+  "permissions": [
+    "read",
+    "grep",
+    "find",
+    "ls",
+    "bash",
+    "edit",
+    "write",
+    "run-tests"
+  ],
+  "steps": [
+    {
+      "id": "implement",
+      "slot": "tdd-change-loop",
+      "ref": "tdd-change-loop@1.0.0",
+      "input_map": {
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "repository-context": "repository-context",
+        "execution-authorization": "execution-authorization",
+        "Correction feedback": "Correction feedback"
+      },
+      "output_map": {
+        "change-artifact": "change-artifact"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "edit",
+        "write",
+        "run-tests"
+      ],
+      "execution_adapter": "workspace"
+    },
+    {
+      "id": "complete",
+      "slot": "completion-evidence-gate",
+      "ref": "completion-evidence-gate@1.0.0",
+      "input_map": {
+        "change-artifact": "change-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "repository-context": "repository-context"
+      },
+      "output_map": {
+        "completion-evidence": "completion-evidence"
+      },
+      "depends_on": [
+        "implement"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "run-tests"
+      ],
+      "execution_adapter": "workspace"
+    }
+  ],
+  "edges": [
+    {
+      "from": "implement",
+      "to": "complete"
+    }
+  ],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "implement",
+      "to": "implement",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "complete",
+      "to": "complete",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "complete",
+      "to": "implement",
+      "on_status": [
+        "failed"
+      ],
+      "action": "invalidate-and-rerun"
+    },
+    {
+      "from": "complete",
+      "to": "complete",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [
+    {
+      "from_step": "complete",
+      "to_step": "implement",
+      "artifact": "completion-evidence",
+      "target_input": "Correction feedback"
+    }
+  ],
+  "routing": {
+    "intents": [
+      "build feature tdd",
+      "TDD 实现",
+      "实现功能"
+    ],
+    "negative_intents": [
+      "do not modify code",
+      "不要改代码"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/result.json",
+        "sha256": "10eabcdbda2a5f62bc3ebc94188fd7dd6fd0909e233bacd29b4df853f53adb40"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/review.json",
+      "sha256": "2517367f43e05cecee9c66985a3595608fe7eb561a873043fa9898dd4e1be59c"
+    }
+  }
+}

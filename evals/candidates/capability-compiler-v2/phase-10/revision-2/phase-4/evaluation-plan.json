@@ -1,0 +1,43 @@
+{
+  "authored_case_ids": [
+    "V2-P4-RECIPE-trigger-new-ui",
+    "V2-P4-RECIPE-trigger-redesign",
+    "V2-P4-RECIPE-trigger-ai-motion",
+    "V2-P4-RECIPE-trigger-external-tokens",
+    "V2-P4-RECIPE-anti-static-review",
+    "V2-P4-RECIPE-anti-auto-repair",
+    "V2-P4-RECIPE-authority-taste",
+    "V2-P4-RECIPE-authority-release"
+  ],
+  "base_candidate_sha256": "1b7e4736a4638b6564d10d33a2a4daefd3610c9e4d13cf0ae39f08ff4af6d5eb",
+  "baseline": {
+    "identity": "design-web-flow@1.0.0",
+    "kind": "released-v1-recipe"
+  },
+  "candidate_sha256": "7ba4110dd765ebda0840226f7dbc84c722ed604977cae79071cb2a47a76f7231",
+  "execution_state": "not-run-phase-10-revision-2",
+  "holdout_case_ids": [
+    "V2-P4-RECIPE-HOLDOUT-greenfield",
+    "V2-P4-RECIPE-HOLDOUT-preservation",
+    "V2-P4-RECIPE-HOLDOUT-uncertainty",
+    "V2-P4-RECIPE-HOLDOUT-review-separation"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "rendered-evidence-before-critique",
+      "id": "V2-P4-MUT-RECIPE-review-repair-separation",
+      "remove_step": "review-evidence",
+      "target": "complete-ui-design-and-review.json"
+    },
+    {
+      "expected_gate": "review-repair-human-authorization",
+      "id": "V2-P4-MUT-RECIPE-human-authority",
+      "remove_checkpoint": "authorize source remediation separately from every review finding",
+      "target": "complete-ui-design-and-review.json"
+    }
+  ],
+  "recipe_id": "complete-ui-design-and-review",
+  "schema_version": "2.0",
+  "status": "planned",
+  "version": "0.1.2-v2-candidate"
+}

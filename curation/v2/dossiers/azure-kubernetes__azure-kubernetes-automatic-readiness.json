@@ -1,0 +1,165 @@
+{
+  "branches": [
+    "Cluster-Connected Mode [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:76]",
+    "Offline Mode [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:123]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]"
+  ],
+  "permissions_side_effects": [
+    "\"Create an AKS cluster\" / \"What are AKS best practices?\" / \"How do I deploy to AKS?\" [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:40]",
+    "3. User approval for file changes: Present every fix as a diff. The user must explicitly accept before you write to any file. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:51]",
+    "safeguard-container-capabilities — remove capabilities.add [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:189]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7"
+      ],
+      "target": "skill-root:azure-kubernetes",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Assess Kubernetes workloads and cluster configuration for AKS Automatic compatibility. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]",
+  "root_id": "skill-root:azure-kubernetes/azure-kubernetes-automatic-readiness",
+  "rules_gates": [
+    "1. Read-only: NEVER modify cluster state. Assessment is read-only. Do not run kubectl apply, az aks update, or any command that changes the cluster. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:49]",
+    "2. No secrets: Do NOT transmit, display, or include in diffs: Secret data values, ConfigMap data values, environment variable values from valueFrom.secretKeyRef, service account tokens, or connection strings. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:50]",
+    "3. User approval for file changes: Present every fix as a diff. The user must explicitly accept before you write to any file. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:51]",
+    "Call the AKS MCP tool — this is the preferred path. Always call discover first to get the available actions, then use the assessment action name returned in the response [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:78]",
+    "excludeNamespaces: [\"kube-system\", \"gatekeeper-system\"], [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:91]",
+    "Required permissions [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:97]",
+    "incompatible Fundamental architecture issue; cannot run on Automatic without redesign Must fix before migration — flag prominently [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:151]",
+    "Always start with the summary [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:158]"
+  ],
+  "skill_path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 11,
+      "line_start": 7,
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md"
+    },
+    {
+      "line_end": 29,
+      "line_start": 29,
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md"
+    },
+    {
+      "line_end": 37,
+      "line_start": 37,
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md"
+    }
+  ],
+  "source_sha256": "bc3ebaf7b6b8148d322e4155e9a490ad01985265deaa4d669ef0dfd1b19d4d43",
+  "stop_conditions": [
+    "\"My pod is crashing\" / \"Debug my AKS cluster\" / \"Why is my deployment failing?\" [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:44]",
+    "Ask the user what they want to assess [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:63]",
+    "↓ fails (tool not found — Azure MCP server not configured) [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:114]",
+    "Readiness and liveness probes → safeguard-probes-configured (warning-only — not blocked at admission; treat as informational) [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:130]",
+    "safeguard-images-no-latest — correct tag is user- and release-specific; ask the user: \"What specific version tag or SHA digest should I pin this image to?\" Do not guess [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:197]",
+    "MCP tool call fails or times out Invalid credentials or subscription context Verify az login, confirm active subscription with az account show; if MCP remains unavailable, continue with offline validation using local or exported manifests and the bundled constraint spec [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:234]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bc3ebaf7b6b8148d322e4155e9a490ad01985265deaa4d669ef0dfd1b19d4d43",
+        "content-review:250-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6197c9fdbc3efcc26ef8984803b8a1bcc464443a7b84420c8800e884602befd0",
+        "content-review:337-lines"
+      ],
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/references/common-fixes.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:51f67a31dab3fcc1bd3b1d82200439451c8f7acf93a4418d423a0c637c874bda",
+        "content-review:504-lines"
+      ],
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/references/constraint-spec-v1.yaml",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:77da9a1a84ba0e48e91c3798772d97791227235b9eeda2fca8cfb9f523eb0737",
+        "content-review:207-lines"
+      ],
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/references/mcp-integration.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:81e555345e5b75c7bb9107e97f8a26206a02510378f05e0c1012d4df828244ce",
+        "content-review:126-lines"
+      ],
+      "path": "azure-kubernetes/azure-kubernetes-automatic-readiness/references/migration-guide-summary.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/constraint-spec-v1.yaml [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:16]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/common-fixes.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:16]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/migration-guide-summary.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:16]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/mcp-integration.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:16]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/constraint-spec-v1.yaml [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:125]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/common-fixes.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:194]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/migration-guide-summary.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:224]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/constraint-spec-v1.yaml [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:244]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/common-fixes.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:245]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/migration-guide-summary.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:246]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-automatic-readiness/references/mcp-integration.md [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:247]"
+  ],
+  "trigger": "\"Assess Kubernetes workloads and cluster configuration for AKS Automatic compatibility. Identifies incompatibilities, generates fixes, and guides migration from AKS Standard to AKS Automatic. WHEN: migrate to AKS Automatic, check AKS Automatic readiness, validate manifests for Automatic, assess clus [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]",
+  "unique_methods": [
+    "AKS Automatic Readiness Assessment [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:10]",
+    "Quick Reference [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:22]",
+    "When to Use This Skill [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:29]",
+    "Routing Rules [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:37]",
+    "Route to azure-kubernetes instead [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:39]",
+    "Route to azure-diagnostics instead [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:43]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:7]"
+  ],
+  "workflow": [
+    "Workflow [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:59]",
+    "Step 1: Determine Scope [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:61]",
+    "Step 2: Run Assessment [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:74]",
+    "Step 3: Present Findings [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:156]",
+    "Step 4: Offer Fixes [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:185]",
+    "Step 5: Recommend Next Steps [azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:214]"
+  ]
+}

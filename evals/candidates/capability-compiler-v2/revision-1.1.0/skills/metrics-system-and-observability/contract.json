@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "metric tree and exact definitions",
+    "baseline, target, and guardrail contract",
+    "instrumentation and dashboard specification",
+    "ownership, gap, and alert recommendation",
+    "one primary metric with exact definition and review cadence"
+  ],
+  "capability_id": "capability:metrics-system-and-observability",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A metric is not operational without exact formula, unit, aggregation, window, dimensions, data source, owner, baseline, target or threshold, bias, and linked decision or action.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "metrics-system-and-observability",
+  "inputs": [
+    "Business goals, user outcomes, risks, data sources, and observable events."
+  ],
+  "outputs": [
+    "metric tree and exact definitions",
+    "baseline, target, and guardrail contract",
+    "instrumentation and dashboard specification",
+    "ownership, gap, and alert recommendation",
+    "one primary metric with exact definition and review cadence"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "exact-formula",
+      "numerator-denominator",
+      "window-dimensions",
+      "baseline-target",
+      "guardrail",
+      "owner",
+      "linked-action"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Define an evidence-linked metric system of outcomes, inputs, secondary and guardrail metrics with baselines, instrumentation contracts, dashboards, and alert recommendations without provider mutation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "production trace taxonomy",
+    "trace-to-category ledger",
+    "counts, confidence, and minority cases",
+    "governed root-cause cohorts"
+  ],
+  "capability_id": "capability:production-trace-classification",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Trace classification describes observed behavior only; it cannot infer root cause, authorize reuse, or expand beyond the approved sample, fields, retention, and deletion boundary.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "production-trace-classification",
+  "inputs": [
+    "Authorized trace scope, provider read access, time window, sampling policy, and data-governance boundary."
+  ],
+  "outputs": [
+    "production trace taxonomy",
+    "trace-to-category ledger",
+    "counts, confidence, and minority cases",
+    "governed root-cause cohorts"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "authorized-sample",
+      "redaction",
+      "taxonomy",
+      "trace-provenance",
+      "confidence",
+      "uncategorized",
+      "no-causality"
+    ],
+    "data_governance": true,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Classify authorized production LLM traces into evidence-backed behavior and failure categories while preserving provenance, uncertainty, minority cases, and governance.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

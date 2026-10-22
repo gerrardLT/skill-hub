@@ -1,0 +1,89 @@
+{
+  "artifact_count": 335,
+  "artifact_manifest": ".specs/capability-compiler-v2/phase-11/artifact-manifest.json",
+  "artifact_tree_sha256": "275a2139cf207ac50105d3e65fd2138b371a3e2dbe0dce4b05ab043cb1cd5fbc",
+  "authority": {
+    "commit_performed": false,
+    "deployment_performed": false,
+    "final_user_release_approval": false,
+    "merge_performed": false,
+    "production_actions": [],
+    "provider_actions": [],
+    "pull_request_performed": false,
+    "push_performed": false,
+    "remote_actions": []
+  },
+  "case": {
+    "blackbox_findings_closed": 2,
+    "browser_screenshots": 12,
+    "id": "benchshare-v1",
+    "independent_code_findings_closed": 6,
+    "product": "BenchShare",
+    "runtime_tree_sha256": "708ea6b7ec0b169bcb7d2a36e77f5d6df9a3ff9a9df2446fee978419e7af7266",
+    "tests": "14 passed",
+    "visual_direction": "municipal-wayfinding"
+  },
+  "delivery": {
+    "backup_restore_rehearsed": true,
+    "fresh_unpack_tests": "14 passed",
+    "package_sha256": "8fb653c637294f2a10edd3f9d540d6dabf74a9d1d1dded71e6ab3c0445cf3309",
+    "package_tree_sha256": "f2944d37e772da78b818a3210fe84fdea536a3be04b6c2f099f4c132840a1566",
+    "patch_rebuild_exact": true,
+    "patch_sha256": "15bf934015d39cdb2f0bb04185216474ba7641ceeec8293727c9c47907040a7f",
+    "reproducible": true
+  },
+  "eligible_for_phase_12": true,
+  "errors": [],
+  "failure_retention": {
+    "browser_failed_or_rejected_iterations": 2,
+    "deleted_failures": 0,
+    "implementation_launch_failures": 1,
+    "invalid_checker_attempts": 1,
+    "package_rejected_iterations": 1,
+    "review_red_runs": 1,
+    "thresholds_lowered": false
+  },
+  "final_user_release_approval": false,
+  "gate": "capability-compiler-v2-phase-11",
+  "gate_ok": true,
+  "limitations": [
+    "Phase 11 validates one local synthetic full-stack case, not market demand or production capacity.",
+    "Deployment, provider observation, remote rollback, and real incident response were not authorized or executed.",
+    "The V2 candidate remains evaluating and unreleased until Phase 12 final human approval."
+  ],
+  "next_required_phase": "Phase 12 final human approval and separately authorized controlled release",
+  "performance": {
+    "claim_boundary": "local-only",
+    "concurrent_approval": {
+      "approved": 1,
+      "attempts": 10,
+      "conflicts": 9,
+      "server_errors": 0
+    },
+    "create_p95_ms": 33.8,
+    "health_p95_ms": 17.893,
+    "list_p95_ms": 19.031
+  },
+  "phase": 11,
+  "phase_11_complete": true,
+  "prior_phase10_tree_sha256": "7fd6640a563789257da77e1015be3f37033a3baf40ecaf9a4b9fa1fde7828d56",
+  "released": false,
+  "residual_risks": [
+    "The case uses synthetic assumptions and does not establish market demand.",
+    "Demo identity selection is not production authentication; local HTTP lacks Secure cookies.",
+    "ThreadingHTTPServer and one-process SQLite are demonstration infrastructure.",
+    "Production target, privacy/retention, real identity, rate limiting, SLO ownership, backup objectives, canary, and provider rollback remain unapproved.",
+    "Remote deployment, production observation, provider rollback, and real incident response were planned or rehearsed locally, not executed."
+  ],
+  "schema_version": "2.0",
+  "status": "passed-local-end-to-end-validation-pending-final-approval",
+  "verification": {
+    "failed_evidence_deleted": 0,
+    "phase11_gate_checks": 10,
+    "pytest_summary": "390 passed, 1 warning in 370.99s (0:06:10)",
+    "remote_actions": 0,
+    "repository_gate_count": 29,
+    "repository_gates_ok": true,
+    "thresholds_lowered": false
+  }
+}

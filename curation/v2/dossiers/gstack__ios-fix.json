@@ -1,0 +1,139 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/ios-fix/SKILL.md:64]",
+    "Skill Invocation During Plan Mode [gstack/ios-fix/SKILL.md:68]",
+    "Model-Specific Behavioral Patch (claude) [gstack/ios-fix/SKILL.md:200]",
+    "Continuous Checkpoint Mode [gstack/ios-fix/SKILL.md:300]",
+    "Failure modes [gstack/ios-fix/SKILL.md:466]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/ios-fix/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/ios-fix/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/ios-fix/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/ios-fix/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "writes the fix, rebuilds, redeploys, and verifies the fix on the real [gstack/ios-fix/SKILL.md:26]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/ios-fix/SKILL.md:42]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/ios-fix/SKILL.md:47]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/ios-fix/SKILL.md:66]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-fix/SKILL.md:85]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/ios-fix/SKILL.md:109]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/ios-fix/SKILL.md:180]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/ios-fix/SKILL.md:304]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/ios-fix/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Autonomous iOS bug fixer. [gstack/ios-fix/SKILL.md:5]",
+  "root_id": "skill-root:gstack/ios-fix",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/ios-fix/SKILL.md:19]",
+    "fixture, so the bug can never recur silently. [gstack/ios-fix/SKILL.md:29]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/ios-fix/SKILL.md:48]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/ios-fix/SKILL.md:49]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/ios-fix/SKILL.md:50]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/ios-fix/SKILL.md:57]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/ios-fix/SKILL.md:58]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/ios-fix/SKILL.md:61]"
+  ],
+  "skill_path": "gstack/ios-fix/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/ios-fix/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/ios-fix/SKILL.md"
+    },
+    {
+      "line_end": 36,
+      "line_start": 36,
+      "path": "gstack/ios-fix/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/ios-fix/SKILL.md"
+    },
+    {
+      "line_end": 68,
+      "line_start": 68,
+      "path": "gstack/ios-fix/SKILL.md"
+    }
+  ],
+  "source_sha256": "0ebbd161bdfe37cbb337875b7c0efce235bcd420f9b20bbbedc4cc14555d56dd",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/ios-fix/SKILL.md:82]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/ios-fix/SKILL.md:83]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/ios-fix/SKILL.md:84]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-fix/SKILL.md:85]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/ios-fix/SKILL.md:87]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/ios-fix/SKILL.md:91]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0ebbd161bdfe37cbb337875b7c0efce235bcd420f9b20bbbedc4cc14555d56dd",
+        "content-review:474-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/ios-fix/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b5621a9b51d17be8f1ff42063d201abeafb2e00586a623f566118912539225bd",
+        "content-review:102-lines"
+      ],
+      "path": "gstack/ios-fix/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: Read [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: Write [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: Edit [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: Grep [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: Glob [gstack/ios-fix/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/ios-fix/SKILL.md:1-18]"
+  ],
+  "trigger": "Autonomous iOS bug fixer. (gstack) [gstack/ios-fix/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/ios-fix/SKILL.md:148]",
+    "Self-check before emitting [gstack/ios-fix/SKILL.md:171]",
+    "Context Recovery [gstack/ios-fix/SKILL.md:239]",
+    "Completeness Principle — Boil the Ocean [gstack/ios-fix/SKILL.md:286]",
+    "Confusion Protocol [gstack/ios-fix/SKILL.md:292]",
+    "Claimed Limitations Need Evidence [gstack/ios-fix/SKILL.md:296]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/ios-fix/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/ios-fix/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/ios-fix/SKILL.md:300]",
+    "Phase 1: Reproduce the bug [gstack/ios-fix/SKILL.md:416]",
+    "Phase 2: Locate root cause [gstack/ios-fix/SKILL.md:428]",
+    "Phase 3: Apply fix [gstack/ios-fix/SKILL.md:438]",
+    "Phase 4: Verify [gstack/ios-fix/SKILL.md:446]",
+    "Phase 5: Add regression test [gstack/ios-fix/SKILL.md:455]"
+  ]
+}

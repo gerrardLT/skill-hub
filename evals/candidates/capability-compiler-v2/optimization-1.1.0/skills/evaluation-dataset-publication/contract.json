@@ -1,0 +1,71 @@
+{
+  "artifact_types": [
+    "versioned provider dataset identity",
+    "publication request and receipt",
+    "local-provider hash and count evidence",
+    "governance, retention, deletion, and failure-cleanup record",
+    "conditional alternative target with its own authorization need"
+  ],
+  "capability_id": "capability:evaluation-dataset-publication",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-provider-write",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Remote dataset publication is one per-action-authorized write to an exact provider target and version; missing rights, redaction, transfer, retention, deletion, visibility, idempotency, or cleanup terms blocks publication.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "evaluation-dataset-publication",
+  "inputs": [
+    "Approved samples, schema, minimization and redaction policy, provider target, retention policy, and authorization."
+  ],
+  "outputs": [
+    "versioned provider dataset identity",
+    "publication request and receipt",
+    "local-provider hash and count evidence",
+    "governance, retention, deletion, and failure-cleanup record",
+    "conditional alternative target with its own authorization need"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "per-action-authorization",
+      "exact-provider-target",
+      "frozen-version",
+      "redaction",
+      "external-transfer",
+      "idempotency",
+      "publication-receipt",
+      "deletion-path"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Publish one frozen versioned evaluation dataset to one exact provider target only under per-action remote-write and data-governance authorization.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

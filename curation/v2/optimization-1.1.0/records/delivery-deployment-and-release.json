@@ -1,0 +1,314 @@
+{
+  "domain": "delivery-deployment-and-release",
+  "skills": {
+    "change-delivery-preflight": {
+      "trigger_signals": [
+        "A verified local change is about to be pushed and someone must check branch, refs, credentials and automation stops first",
+        "Someone asks whether a branch is clean, current with its base and safe to hand to the push step"
+      ],
+      "guidance": [
+        "Check that the credential-redaction pre-push hook is installed, including when core.hooksPath points to a custom or committed hooks directory; report the hooks path and who owns it.",
+        "Check whether other active branches or worktrees already claim the same version slot, and report the collision as advisory information for the packaging step."
+      ],
+      "source_evidence_add": [
+        "ship/SKILL.md:955-985",
+        "gstack/landing-report/SKILL.md:454-493"
+      ],
+      "resolves": {
+        "change-delivery-preflight#F1": "fixed: guidance (redaction hook check honouring core.hooksPath)",
+        "change-delivery-preflight#F2": "fixed: guidance (version slot collision)"
+      }
+    },
+    "change-packaging-and-versioning": {
+      "trigger_signals": [
+        "Verified local changes must be grouped into clean commits with a version bump and changelog before anything is pushed",
+        "A release needs PR text and release notes drafted from evidence, with secrets redacted"
+      ],
+      "guidance": [
+        "Classify version state against the base before any write: fresh (bump needed), already bumped (keep), or inconsistent across version files (repair and report). Never double-bump on a second run.",
+        "Pick the semver level from behavior: any observable change to an existing output, rounding or default is potentially breaking. State the level you chose, the alternative level, and the reason, and ask the owner to confirm when the two differ.",
+        "If the branch holds only WIP commits, soft-reset to the merge base before packaging; never discard non-WIP commits and stop to ask when unsure."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Classify version state against the base and decide the semver level from observable behavior change; state the alternative level when the choice is debatable."
+        }
+      ],
+      "outputs_add": [
+        "semver decision with chosen level, alternative level and reason"
+      ],
+      "source_evidence_add": [
+        "ship/SKILL.md:706-745",
+        "ship/SKILL.md:853-892"
+      ],
+      "resolves": {
+        "change-packaging-and-versioning#F1": "fixed: procedure_insert + guidance (version state classification; breaking-change flag from Phase D loss)",
+        "change-packaging-and-versioning#F2": "fixed: guidance (WIP-only detection, non-WIP preservation)"
+      }
+    },
+    "deployment-environment-setup": {
+      "trigger_signals": [
+        "An application needs local deployment configuration, environment boundaries and a dry-run plan for a chosen provider",
+        "Someone asks which platform adapter, health check and rollback steps a project needs before any provisioning"
+      ],
+      "guidance": [
+        "Detect the platform from repository files (for example fly.toml, vercel.json, netlify.toml, render.yaml, Dockerfile, workflow files) and derive its adapter, URL pattern, status command and health check.",
+        "Never write a realistic-looking connection string, key or token in any file or command. Reference secrets by name through environment variables or the provider's secret store, and show placeholders that cannot be mistaken for real values.",
+        "Required output block: platform, production URL, deploy workflow or trigger, status command, merge method, project type, post-deploy health check, pre-merge hook, deploy trigger, and rollback plan."
+      ],
+      "outputs_add": [
+        "deploy configuration block (platform, URL, workflow, status command, merge method, project type, health check, hooks, rollback) consumed by readiness and trigger Skills"
+      ],
+      "source_evidence_add": [
+        "gstack/setup-deploy/SKILL.md:482-521",
+        "gstack/setup-deploy/SKILL.md:569-608"
+      ],
+      "resolves": {
+        "deployment-environment-setup#F1": "fixed: guidance (file-to-platform detection table and derived commands)",
+        "deployment-environment-setup#F2": "fixed: outputs_add + guidance (required block schema; Phase D loss: no realistic secret values)"
+      }
+    },
+    "deployment-trigger-execution": {
+      "trigger_signals": [
+        "One approved deployment workflow or hook must be triggered with frozen parameters and fresh authorization",
+        "Someone asks for the exact trigger request, run identity and cancellation path for a specific release"
+      ],
+      "guidance": [
+        "First check whether the configured platform deploys automatically on merge (for example Vercel or Netlify). If so no trigger exists: return not-applicable and hand off to deployment-observation.",
+        "Bind the run receipt to the exact head or merge commit SHA and prefer the workflow whose name matches the configured deploy workflow when several match.",
+        "Copy supplied rollback handle, immutable digest, target, authorization identity and run parameters into the proposal; never call a supplied rollback target missing. If mutable tag conflicts with an immutable digest, retain only the verified digest in the proposed action and list the conflict. Report missing full digest or workflow ref as explicit placeholders; do not fabricate them."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "If the platform deploys automatically on merge, return not-applicable and hand off to deployment-observation; otherwise continue."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/land-and-deploy/SKILL.md:796-810",
+        "gstack/land-and-deploy/SKILL.md:832-835"
+      ],
+      "resolves": {
+        "deployment-trigger-execution#F1": "fixed: procedure_insert + guidance (auto-deploy not-applicable path)",
+        "deployment-trigger-execution#F2": "fixed: guidance (receipt bound to head or merge SHA)"
+      }
+    },
+    "edge-worker-deployment": {
+      "trigger_signals": [
+        "One edge worker or serverless function bundle must be deployed with bindings, routes and limits under fresh authorization",
+        "A worker deployment needs an exact preflight covering bindings, compatibility date and rollback version"
+      ],
+      "anti_add": [
+        {
+          "text": "Deploy a static or server-rendered web application project",
+          "route": "web-hosting-deployment"
+        },
+        {
+          "text": "Deploy containers to an existing Kubernetes cluster",
+          "route": "kubernetes-application-deployment"
+        }
+      ],
+      "guidance": [
+        "A successful dry run proves build and packaging only. It does not prove that bindings, routes or remote resources work, so the health handoff must check them against the live environment.",
+        "After any config or binding change, regenerate the generated types with the project's own command instead of hand-editing them, then run the project's typecheck and tests before the dry run."
+      ],
+      "source_evidence_add": [
+        "wrangler/SKILL.md:46-52"
+      ],
+      "resolves": {
+        "edge-worker-deployment#F1": "fixed: guidance (dry run limits; health handoff checks bindings and runtime)",
+        "edge-worker-deployment#F2": "fixed: guidance (type regeneration and typecheck)",
+        "edge-worker-deployment#F3": "fixed: anti_add (web-hosting-deployment, kubernetes-application-deployment)"
+      }
+    },
+    "kubernetes-application-deployment": {
+      "trigger_signals": [
+        "One container image must be rolled out to an existing Kubernetes cluster with validated manifests and a health gate",
+        "Someone asks for the exact dry-run, apply and rollout commands for a release under fresh authorization"
+      ],
+      "anti_add": [
+        {
+          "text": "Deploy an edge worker or serverless bundle",
+          "route": "edge-worker-deployment"
+        },
+        {
+          "text": "Deploy a web application through a hosting provider",
+          "route": "web-hosting-deployment"
+        }
+      ],
+      "guidance": [
+        "When a blocker stops the rollout, still return the exact commands you would run once it clears (context-pinned server dry-run, apply, rollout status and rollback), clearly marked do-not-run until the named blocker is resolved, plus the minimal namespaced Role and RoleBinding needed if RBAC is the blocker.",
+        "Map known deploy failure codes from the platform's failure catalog to a stop or recovery action in the rollout step; an unknown failure stops the rollout and preserves evidence.",
+        "Build an authorization-to-action table linking the exact change ticket, approver, context, namespace, version and execution window. Preserve supplied previous revision and digest in rollback instructions, with verification after rollback. Never expand authorized clusters, namespaces or resource scope."
+      ],
+      "outputs_add": [
+        "conditional command set marked do-not-run until blockers clear"
+      ],
+      "source_evidence_add": [
+        "azure-kubernetes/azure-kubernetes-app-deploy/SKILL.md:10-34"
+      ],
+      "resolves": {
+        "kubernetes-application-deployment#F1": "fixed: guidance (failure code mapping); Phase D loss (blocked case still returns exact conditional commands and Role/RoleBinding) addressed by outputs_add"
+      }
+    },
+    "merge-and-deploy-readiness": {
+      "trigger_signals": [
+        "A pull request is about to be merged or deployed and someone needs a fresh go or no-go from current evidence",
+        "Someone asks whether merge and deployment can proceed separately, and what exactly is still missing"
+      ],
+      "guidance": [
+        "Judge only against the gates the repository policy, the task or the deploy configuration actually require. List any extra check you consider worthwhile as advisory and never let it turn a GO into a NO-GO.",
+        "Give the merge verdict and the deploy verdict separately. When the supplied evidence satisfies every required gate the verdict is GO, stated with the evidence that supports it.",
+        "A first run, or a changed deploy configuration since the last confirmed run, requires a dry-run verdict before deploy readiness can pass."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "Separate required gates (from policy, task or deploy configuration) from advisory checks; only required gates can block."
+        }
+      ],
+      "source_evidence_add": [
+        "land-and-deploy/SKILL.md:665-694"
+      ],
+      "resolves": {
+        "merge-and-deploy-readiness#F1": "fixed: guidance (first-run and changed-config dry-run requirement); Phase D loss (invented requirements) addressed by procedure_insert and guidance"
+      }
+    },
+    "pull-request-comment-response": {
+      "trigger_signals": [
+        "One identified pull request review comment needs a single evidence-backed reply posted under fresh authorization",
+        "Someone asks for the exact reply text and target for a specific review thread"
+      ],
+      "guidance": [
+        "Classify the target first: a line-level review comment is answered as a reply in its thread; a top-level conversation comment is answered as a new conversation comment. Bind the reply target to that class and never post a line-level reply to the wrong endpoint.",
+        "If a reply fails (closed PR, no permission), report the failure and stop; do not retry to a different target.",
+        "Preserve the approved reply body byte-for-byte; do not add links, facts or edits without separate approval. Bind the proposed response and receipt to the exact authorization reference. Determine temporal validity from an explicit evaluation timestamp, never an assumed current date."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Classify the comment as line-level or top-level and bind the reply target and endpoint to that class."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/review/greptile-triage.md:97-111"
+      ],
+      "resolves": {
+        "pull-request-comment-response#F1": "fixed: procedure_insert + guidance (comment type and reply target binding)"
+      }
+    },
+    "remote-git-push": {
+      "trigger_signals": [
+        "One verified local branch must be pushed to one approved remote ref without force",
+        "Someone asks for the exact refspec, expected remote SHA and receipt for a push under fresh authorization"
+      ],
+      "guidance": [
+        "If the task or policy names a credential-redaction or pre-push hook, verify that it is installed and active, including a custom hooks path, and treat a missing one as a blocker unless the owner waives it in writing. If the task names no such hook, list it as an optional check the owner may require; do not add it as a blocker."
+      ],
+      "source_evidence_add": [
+        "ship/SKILL.md:955-963"
+      ],
+      "resolves": {
+        "remote-git-push#F1": "fixed: guidance (named redaction hook check)"
+      }
+    },
+    "remote-pull-request-change": {
+      "trigger_signals": [
+        "One pull request must be created or updated from an already pushed ref with redacted text under fresh authorization",
+        "Someone asks for the exact PR title, body and base for a specific branch"
+      ],
+      "anti_add": [
+        {
+          "text": "Merge the pull request",
+          "route": "remote-pull-request-merge"
+        }
+      ],
+      "guidance": [
+        "On update, regenerate the body from current evidence and remove sections that no longer hold; never carry stale text from an earlier run.",
+        "Scan the title and body for secrets and internal-only detail at the point of sending; if the scan cannot run, refuse to send.",
+        "Use only provider/CLI parameters whose interface is supplied or verified. Unknown flags remain unresolved, not executable examples. Preserve approved description content verbatim using a documented file/body API form."
+      ],
+      "source_evidence_add": [
+        "gstack/ship/sections/pr-body.md:59-67",
+        "gstack/ship/sections/pr-body.md:180-225"
+      ],
+      "resolves": {
+        "remote-pull-request-change#F1": "fixed: guidance (body regenerated from current evidence)",
+        "remote-pull-request-change#F2": "fixed: guidance (scan at sink; refuse if unscannable)"
+      }
+    },
+    "remote-pull-request-merge": {
+      "trigger_signals": [
+        "One identified pull request with a fresh passing readiness result must be merged by one allowed method under fresh authorization",
+        "Someone asks for the exact merge command pinned to a head SHA and the receipt fields to record"
+      ],
+      "anti_add": [
+        {
+          "text": "Create or update the pull request title, body or base",
+          "route": "remote-pull-request-change"
+        }
+      ],
+      "guidance": [
+        "Pin the merge to the head SHA supplied in the task; use it literally in the command. Use a placeholder only when no SHA was supplied, and then say so.",
+        "Treat optional or neutral checks as non-blocking and say so; do not add requirements the repository policy and task did not state.",
+        "Merge queues: entering the queue is an allowed method that returns 'queued' with a pending-result handoff. It is never reported as merged. Direct merge in a queue-protected repository is a blocker.",
+        "List the receipt fields to capture: check run ids, resulting merge commit, PR state and branch-deletion state.",
+        "Treat open/closed state as unknown unless explicitly present in current provider evidence. A heading such as MR state does not establish open state. Refresh that exact state before proposing a ready verdict; maintain SHA guard, merge method and no-branch-deletion authorization.",
+        "A proposed merge receipt includes repository/provider, PR number, exact head and resulting merge SHA, method, executor identity, authorization reference, timestamp, branch retention, and observed provider result. Before execution these are a schema or placeholders, not an invented receipt.",
+        "Begin proposal-only assessments with explicit disclosure: supplied snapshot not independently refreshed, no live provider access, and no merge performed. This disclosure does not negate a conditional readiness recommendation."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "Use the supplied head SHA literally in the merge command and treat optional checks as non-blocking; add no requirement that policy and task did not state."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/land-and-deploy/sections/merge-and-deploy.md:1-145"
+      ],
+      "resolves": {
+        "remote-pull-request-merge#F1": "fixed: guidance (queue entry returns queued); Phase D loss (placeholder SHA, extra requirements) addressed by procedure_insert and guidance"
+      }
+    },
+    "web-hosting-deployment": {
+      "trigger_signals": [
+        "One web application artifact must be deployed through a hosting provider's CLI or API with exact environment and domain controls",
+        "Someone asks for the exact provider deploy command, preview diff and rollback target for a specific project"
+      ],
+      "anti_add": [
+        {
+          "text": "Deploy an edge worker or serverless bundle",
+          "route": "edge-worker-deployment"
+        },
+        {
+          "text": "Deploy containers to an existing Kubernetes cluster",
+          "route": "kubernetes-application-deployment"
+        },
+        {
+          "text": "Push the commit that triggers a Git-integrated provider deployment",
+          "route": "remote-git-push"
+        }
+      ],
+      "guidance": [
+        "Select the method first: linked project with a Git remote (deploy happens on push: hand off to remote-git-push and stop), linked project without a remote (CLI deploy), unlinked project (tarball or CLI deploy with explicit project binding). This Skill covers CLI and API deploys only.",
+        "Tarball or CLI deploys exclude node_modules, .git and .env by default; state the exclusions in the preview.",
+        "Browser-exposed build variables such as VITE_ are not secrets storage. Domain binding or DNS changes need their own exact authority and must not be folded into a deployment proposal implicitly."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Select the deploy method from link and Git remote state; if the provider deploys from Git, hand off to remote-git-push and stop."
+        }
+      ],
+      "source_evidence_add": [
+        "deploy-to-vercel/SKILL.md:53-92",
+        "deploy-to-vercel/SKILL.md:181-220"
+      ],
+      "resolves": {
+        "web-hosting-deployment#F1": "fixed: anti_add + procedure_insert (Git-integrated deploys hand off to remote-git-push)",
+        "web-hosting-deployment#F2": "fixed: guidance (method selection states)"
+      }
+    }
+  }
+}

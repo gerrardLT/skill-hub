@@ -1,0 +1,380 @@
+{
+  "candidate_responsibility": "Run broad website audits, map SEO, performance, security, content, and accessibility findings to source, and recheck fixes.",
+  "canonical_unit_ids": [
+    "audit-website:unit-002",
+    "audit-website:unit-003",
+    "audit-website:unit-004",
+    "audit-website:unit-005",
+    "audit-website:unit-006",
+    "audit-website:unit-009",
+    "audit-website:unit-010",
+    "audit-website:unit-011",
+    "audit-website:unit-012",
+    "audit-website:unit-013",
+    "audit-website:unit-014",
+    "audit-website:unit-015",
+    "audit-website:unit-016",
+    "audit-website:unit-017",
+    "audit-website:unit-018"
+  ],
+  "cluster_id": "cluster:website-audit-remediation",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "audit-website/SKILL.md:18-23",
+    "audit-website/SKILL.md:24-34",
+    "audit-website/SKILL.md:35-49",
+    "audit-website/SKILL.md:50-60",
+    "audit-website/SKILL.md:61-73",
+    "audit-website/references/OUTPUT-FORMAT.md:107-122",
+    "audit-website/references/OUTPUT-FORMAT.md:123-160",
+    "audit-website/references/OUTPUT-FORMAT.md:18-50",
+    "audit-website/references/OUTPUT-FORMAT.md:189-206",
+    "audit-website/references/OUTPUT-FORMAT.md:207-215",
+    "audit-website/references/OUTPUT-FORMAT.md:235-244",
+    "audit-website/references/OUTPUT-FORMAT.md:3-15",
+    "audit-website/references/OUTPUT-FORMAT.md:51-61",
+    "audit-website/references/OUTPUT-FORMAT.md:63-88",
+    "audit-website/references/OUTPUT-FORMAT.md:90-106"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:website-audit-remediation"
+      ],
+      "id": "cluster:website-audit-remediation:fusion:boundary",
+      "rule": "Run broad website audits, map SEO, performance, security, content, and accessibility findings to source, and recheck fixes."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:website-audit-remediation"
+      ],
+      "id": "cluster:website-audit-remediation:fusion:inputs",
+      "rule": "Accept only: A scannable site, audit CLI, and an authorized source-edit scope."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:website-audit-remediation"
+      ],
+      "id": "cluster:website-audit-remediation:fusion:outputs",
+      "rule": "Produce only: A categorized report, remediation loop, score targets, and fresh audit evidence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:website-audit-remediation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A scannable site, audit CLI, and an authorized source-edit scope.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website"
+      ]
+    }
+  ],
+  "output_boundary": "A categorized report, remediation loop, score targets, and fresh audit evidence.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "全网 260+ 条规则在线文档定位标准 URL 规范：通过 https://docs.squirrelscan.com/rules/{rule_category}/{rule_id} 精确查阅规则详情; 执行网站审计核心指令规范：使用 --format llm 紧凑格式，优先审计真实线上地址以反映真实渲染/重定向，支持基于本地缓存无网络重渲染; 扫描覆盖演进三阶段模型（quick 25页快速概览 -> surface 100页模板覆盖 -> full 500页终验），配套刷新控制与 Web Bot Auth 反爬鉴权头配置",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "audit-website/SKILL.md:18-23",
+        "audit-website/SKILL.md:24-34",
+        "audit-website/SKILL.md:35-49",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/SKILL.md:61-73",
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206",
+        "audit-website/references/OUTPUT-FORMAT.md:207-215",
+        "audit-website/references/OUTPUT-FORMAT.md:235-244",
+        "audit-website/references/OUTPUT-FORMAT.md:3-15",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "limitations": "Explicit limits: 需要向用户解释特定规则背景或排障修复方案时查阅; 发起任何站点审计或重新解析历史审计时使用; 根据测试推进阶段动态选择爬取深度与认证参数",
+      "source_id": "audit-website",
+      "strengths": "Provides 15 source-grounded atom(s) for responsibility (method=2, rule=5, template=6, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-002",
+        "audit-website:unit-003",
+        "audit-website:unit-004",
+        "audit-website:unit-005",
+        "audit-website:unit-006",
+        "audit-website:unit-009",
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015",
+        "audit-website:unit-016",
+        "audit-website:unit-017",
+        "audit-website:unit-018"
+      ]
+    },
+    {
+      "approach": "执行网站审计核心指令规范：使用 --format llm 紧凑格式，优先审计真实线上地址以反映真实渲染/重定向，支持基于本地缓存无网络重渲染; 扫描覆盖演进三阶段模型（quick 25页快速概览 -> surface 100页模板覆盖 -> full 500页终验），配套刷新控制与 Web Bot Auth 反爬鉴权头配置; 迭代修复飞轮六步法（呈现报告 -> 提案确认 -> 映射源码 -> 批量修复 -> 二次复测 -> 达标迭代）及批次构建校验强约束",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "audit-website/SKILL.md:24-34",
+        "audit-website/SKILL.md:35-49",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "limitations": "Explicit limits: 发起任何站点审计或重新解析历史审计时使用; 根据测试推进阶段动态选择爬取深度与认证参数; 将审计报告转化为代码修复的全流程必须严格遵循此循环",
+      "source_id": "audit-website",
+      "strengths": "Provides 10 source-grounded atom(s) for method (method=2, template=6, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-003",
+        "audit-website:unit-004",
+        "audit-website:unit-005",
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015",
+        "audit-website:unit-016"
+      ]
+    },
+    {
+      "approach": "需要向用户解释特定规则背景或排障修复方案时查阅; 发起任何站点审计或重新解析历史审计时使用; 根据测试推进阶段动态选择爬取深度与认证参数",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "audit-website/SKILL.md:18-23",
+        "audit-website/SKILL.md:24-34",
+        "audit-website/SKILL.md:35-49",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/SKILL.md:61-73",
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206",
+        "audit-website/references/OUTPUT-FORMAT.md:207-215",
+        "audit-website/references/OUTPUT-FORMAT.md:235-244",
+        "audit-website/references/OUTPUT-FORMAT.md:3-15",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "limitations": "Explicit limits: 需要向用户解释特定规则背景或排障修复方案时查阅; 发起任何站点审计或重新解析历史审计时使用; 根据测试推进阶段动态选择爬取深度与认证参数",
+      "source_id": "audit-website",
+      "strengths": "Provides 15 source-grounded atom(s) for boundary-and-applicability (method=2, rule=5, template=6, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-002",
+        "audit-website:unit-003",
+        "audit-website:unit-004",
+        "audit-website:unit-005",
+        "audit-website:unit-006",
+        "audit-website:unit-009",
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015",
+        "audit-website:unit-016",
+        "audit-website:unit-017",
+        "audit-website:unit-018"
+      ]
+    },
+    {
+      "approach": "报告根节点、站点信息与综合健康分 XML 结构定义：<audit> 根标签、<site> 抓取元数据及 <score> 综合得分与分项子分类; 全站检查摘要统计标签规范：<summary passed='...' warnings='...' failed='...'/>; 缺陷列表分区与按分类分组结构：<issues> 包含多个按分类分组的 <category> 节点及其 errors/warnings 汇总",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "limitations": "Explicit limits: 解析审计元数据与总览健康评级时使用; 获取检查项通过与失败总数统计时使用; 按业务分类检索问题列表时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 6 source-grounded atom(s) for inputs-and-outputs (template=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015"
+      ]
+    },
+    {
+      "approach": "提供统一的规则分类与标识符在线文档路由规范; 明确不同起始分数的治理目标线，严禁对死链进行私自删除; 在兼顾结构化解析精度的同时极大降低 Context 窗口占用",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "audit-website/SKILL.md:18-23",
+        "audit-website/SKILL.md:61-73",
+        "audit-website/references/OUTPUT-FORMAT.md:207-215",
+        "audit-website/references/OUTPUT-FORMAT.md:235-244",
+        "audit-website/references/OUTPUT-FORMAT.md:3-15"
+      ],
+      "limitations": "Explicit limits: 需要向用户解释特定规则背景或排障修复方案时查阅; 制定修复目标与排序缺陷治理优先级时使用; 在 AI Agent 消费审计数据时作为输出解析基准",
+      "source_id": "audit-website",
+      "strengths": "Provides 5 source-grounded atom(s) for gates-and-validation (rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-002",
+        "audit-website:unit-006",
+        "audit-website:unit-009",
+        "audit-website:unit-017",
+        "audit-website:unit-018"
+      ]
+    },
+    {
+      "approach": "执行网站审计核心指令规范：使用 --format llm 紧凑格式，优先审计真实线上地址以反映真实渲染/重定向，支持基于本地缓存无网络重渲染; LLM 格式调用方式与管道串联模式：单步直接输出（squirrel audit --format llm）、两步工作流（audit 后 report）以及直接管道输送给 AI 代理",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "audit-website/SKILL.md:24-34",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206"
+      ],
+      "limitations": "Explicit limits: 发起任何站点审计或重新解析历史审计时使用; 在自动化脚本中编排 squirrel CLI 审计流程时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-003",
+        "audit-website:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "audit-website/SKILL.md:18-23",
+        "audit-website/SKILL.md:24-34",
+        "audit-website/SKILL.md:35-49",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/SKILL.md:61-73",
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206",
+        "audit-website/references/OUTPUT-FORMAT.md:207-215",
+        "audit-website/references/OUTPUT-FORMAT.md:235-244",
+        "audit-website/references/OUTPUT-FORMAT.md:3-15",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 5,
+        "template": 6,
+        "tool-action": 2
+      },
+      "evidence": [
+        "audit-website/SKILL.md:18-23",
+        "audit-website/SKILL.md:24-34",
+        "audit-website/SKILL.md:35-49",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/SKILL.md:61-73",
+        "audit-website/references/OUTPUT-FORMAT.md:107-122",
+        "audit-website/references/OUTPUT-FORMAT.md:123-160",
+        "audit-website/references/OUTPUT-FORMAT.md:18-50",
+        "audit-website/references/OUTPUT-FORMAT.md:189-206",
+        "audit-website/references/OUTPUT-FORMAT.md:207-215",
+        "audit-website/references/OUTPUT-FORMAT.md:235-244",
+        "audit-website/references/OUTPUT-FORMAT.md:3-15",
+        "audit-website/references/OUTPUT-FORMAT.md:51-61",
+        "audit-website/references/OUTPUT-FORMAT.md:63-88",
+        "audit-website/references/OUTPUT-FORMAT.md:90-106"
+      ],
+      "source_id": "audit-website",
+      "unit_ids": [
+        "audit-website:unit-002",
+        "audit-website:unit-003",
+        "audit-website:unit-004",
+        "audit-website:unit-005",
+        "audit-website:unit-006",
+        "audit-website:unit-009",
+        "audit-website:unit-010",
+        "audit-website:unit-011",
+        "audit-website:unit-012",
+        "audit-website:unit-013",
+        "audit-website:unit-014",
+        "audit-website:unit-015",
+        "audit-website:unit-016",
+        "audit-website:unit-017",
+        "audit-website:unit-018"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "audit-website:unit-002",
+    "audit-website:unit-003",
+    "audit-website:unit-004",
+    "audit-website:unit-005",
+    "audit-website:unit-006",
+    "audit-website:unit-009",
+    "audit-website:unit-010",
+    "audit-website:unit-011",
+    "audit-website:unit-012",
+    "audit-website:unit-013",
+    "audit-website:unit-014",
+    "audit-website:unit-015",
+    "audit-website:unit-016",
+    "audit-website:unit-017",
+    "audit-website:unit-018"
+  ]
+}

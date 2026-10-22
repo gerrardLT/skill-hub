@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_ip_rate_limit_eval.py"
+  ],
+  "cwd": "D:/tem_projects/MirrorMind-eval-ip-rate-limit/apps/api",
+  "returncode": 1,
+  "duration_ms": 3333.828,
+  "stdout": "...F........                                                             [100%]\n================================== FAILURES ===================================\n_______________ test_nested_message_path_uses_only_global_limit _______________\n\n    def test_nested_message_path_uses_only_global_limit() -> None:\n        api = client(global_limit=100, conversation_limit=1)\n        path = \"/v2/conversation/a/nested/message\"\n        assert api.post(path).status_code == 200\n>       assert api.post(path).status_code == 200\nE       AssertionError: assert 429 == 200\nE        +  where 429 = <Response [429 Too Many Requests]>.status_code\nE        +    where <Response [429 Too Many Requests]> = post('/v2/conversation/a/nested/message')\nE        +      where post = <starlette.testclient.TestClient object at 0x0000020ADC91CAD0>.post\n\ntests\\test_ip_rate_limit_eval.py:91: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_ip_rate_limit_eval.py::test_nested_message_path_uses_only_global_limit\n1 failed, 11 passed in 1.50s\n",
+  "stderr": "C:\\Users\\gerrard\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pytest_asyncio\\plugin.py:247: PytestDeprecationWarning: The configuration option \"asyncio_default_fixture_loop_scope\" is unset.\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \"function\", \"class\", \"module\", \"package\", \"session\"\n\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\n"
+}

@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution",
+        "evidence-synthesis-and-opportunity-prioritization",
+        "data-analysis-validation"
+      ],
+      "id": "V2-P3-qualitative-evidence-synthesis-trigger-01",
+      "input": "Synthesize these authorized interview notes into traceable themes and counterexamples.",
+      "kind": "should-trigger",
+      "reason": "Code authorized qualitative observations into traceable themes, counterexamples, contradictions, and confidence without ranking solutions."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution",
+        "evidence-synthesis-and-opportunity-prioritization",
+        "data-analysis-validation"
+      ],
+      "id": "V2-P3-qualitative-evidence-synthesis-trigger-02",
+      "input": "Code this feedback corpus while preserving minority evidence and contradictions.",
+      "kind": "should-trigger",
+      "reason": "Code authorized qualitative observations into traceable themes, counterexamples, contradictions, and confidence without ranking solutions."
+    },
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis"
+      ],
+      "id": "V2-P3-qualitative-evidence-synthesis-anti-01",
+      "input": "Turn the synthesized themes into prioritized opportunities.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility evidence-synthesis-and-opportunity-prioritization."
+    },
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis"
+      ],
+      "id": "V2-P3-qualitative-evidence-synthesis-anti-02",
+      "input": "Run the interviews that produce the raw evidence.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility customer-interview-execution."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-qualitative-evidence-synthesis-boundary-01",
+      "input": "Code authorized qualitative observations into traceable themes, counterexamples, contradictions, and confidence without ranking solutions. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-qualitative-evidence-synthesis-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "qualitative-evidence-synthesis"
+}

@@ -1,0 +1,135 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/landing-report/SKILL.md:58]",
+    "Skill Invocation During Plan Mode [gstack/landing-report/SKILL.md:62]",
+    "Model-Specific Behavioral Patch (claude) [gstack/landing-report/SKILL.md:194]",
+    "Continuous Checkpoint Mode [gstack/landing-report/SKILL.md:294]",
+    "Step 1: Detect platform and base branch [gstack/landing-report/SKILL.md:412]",
+    "Plan Mode [gstack/landing-report/SKILL.md:534]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/landing-report/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/landing-report/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/landing-report/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/landing-report/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/landing-report/SKILL.md:36]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/landing-report/SKILL.md:41]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/landing-report/SKILL.md:60]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/landing-report/SKILL.md:79]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/landing-report/SKILL.md:103]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/landing-report/SKILL.md:174]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/landing-report/SKILL.md:298]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/landing-report/SKILL.md:393]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/landing-report/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Read-only queue dashboard for workspace-aware ship. [gstack/landing-report/SKILL.md:5]",
+  "root_id": "skill-root:gstack/landing-report",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/landing-report/SKILL.md:16]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/landing-report/SKILL.md:42]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/landing-report/SKILL.md:43]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/landing-report/SKILL.md:44]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/landing-report/SKILL.md:51]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/landing-report/SKILL.md:52]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/landing-report/SKILL.md:55]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/landing-report/SKILL.md:66]"
+  ],
+  "skill_path": "gstack/landing-report/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/landing-report/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "gstack/landing-report/SKILL.md"
+    },
+    {
+      "line_end": 28,
+      "line_start": 28,
+      "path": "gstack/landing-report/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "gstack/landing-report/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/landing-report/SKILL.md"
+    }
+  ],
+  "source_sha256": "5551e8c2fc8f7ca600ef80de94bb9339f068bbcb595589740c8ff5217133d687",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/landing-report/SKILL.md:76]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/landing-report/SKILL.md:77]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/landing-report/SKILL.md:78]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/landing-report/SKILL.md:79]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/landing-report/SKILL.md:81]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/landing-report/SKILL.md:85]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:5551e8c2fc8f7ca600ef80de94bb9339f068bbcb595589740c8ff5217133d687",
+        "content-review:538-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/landing-report/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d6b78974c2ab3222d5eb6ab76cfc6123a27033bb00e14af8ada63c9f58514107",
+        "content-review:165-lines"
+      ],
+      "path": "gstack/landing-report/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/landing-report/SKILL.md:1-15]",
+    "Declared tool: Read [gstack/landing-report/SKILL.md:1-15]"
+  ],
+  "trigger": "Read-only queue dashboard for workspace-aware ship. (gstack) [gstack/landing-report/SKILL.md:5]",
+  "unique_methods": [
+    "/landing-report — Version Queue Dashboard [gstack/landing-report/SKILL.md:28]",
+    "Handling 5+ options — split, never drop [gstack/landing-report/SKILL.md:142]",
+    "Self-check before emitting [gstack/landing-report/SKILL.md:165]",
+    "Context Recovery [gstack/landing-report/SKILL.md:233]",
+    "Completeness Principle — Boil the Ocean [gstack/landing-report/SKILL.md:280]",
+    "Confusion Protocol [gstack/landing-report/SKILL.md:286]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/landing-report/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/landing-report/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/landing-report/SKILL.md:294]",
+    "Step 1: Detect platform and base branch [gstack/landing-report/SKILL.md:412]",
+    "Step 2: Read current state [gstack/landing-report/SKILL.md:425]",
+    "Step 3: Query the queue [gstack/landing-report/SKILL.md:437]",
+    "Step 4: Render the dashboard [gstack/landing-report/SKILL.md:454]",
+    "Step 5: Suggest next action [gstack/landing-report/SKILL.md:516]"
+  ]
+}

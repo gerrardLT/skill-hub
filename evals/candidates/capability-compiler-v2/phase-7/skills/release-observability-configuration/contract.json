@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "release association receipt",
+    "release, commit, service, and environment map",
+    "propagation and collision evidence",
+    "rollback or deletion record"
+  ],
+  "capability_id": "capability:release-observability-configuration",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-release-observability",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Release observability requires exact immutable release, commit, artifact, service, and environment identities; association does not prove deployment or authorize provider actions beyond the mapping.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "release-observability-configuration",
+  "inputs": [
+    "Release naming, repository, build metadata, provider project, credentials, and authorization."
+  ],
+  "outputs": [
+    "release association receipt",
+    "release, commit, service, and environment map",
+    "propagation and collision evidence",
+    "rollback or deletion record"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "exact-release",
+      "commit-identity",
+      "artifact-digest",
+      "service-environment",
+      "collision-check",
+      "no-deploy",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Configure one provider's release and commit association for exact services and environments under per-action authorization without deploying or changing source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

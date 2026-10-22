@@ -1,0 +1,140 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/sync-gbrain/SKILL.md:60]",
+    "Skill Invocation During Plan Mode [gstack/sync-gbrain/SKILL.md:64]",
+    "Model-Specific Behavioral Patch (claude) [gstack/sync-gbrain/SKILL.md:196]",
+    "Continuous Checkpoint Mode [gstack/sync-gbrain/SKILL.md:296]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/sync-gbrain/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/sync-gbrain/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/sync-gbrain/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/sync-gbrain/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/sync-gbrain/SKILL.md:38]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/sync-gbrain/SKILL.md:43]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/sync-gbrain/SKILL.md:62]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/sync-gbrain/SKILL.md:81]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/sync-gbrain/SKILL.md:105]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/sync-gbrain/SKILL.md:176]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/sync-gbrain/SKILL.md:300]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/sync-gbrain/SKILL.md:395]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/sync-gbrain/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. [gstack/sync-gbrain/SKILL.md:5]",
+  "root_id": "skill-root:gstack/sync-gbrain",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/sync-gbrain/SKILL.md:20]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/sync-gbrain/SKILL.md:44]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/sync-gbrain/SKILL.md:45]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/sync-gbrain/SKILL.md:46]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/sync-gbrain/SKILL.md:53]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/sync-gbrain/SKILL.md:54]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/sync-gbrain/SKILL.md:57]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/sync-gbrain/SKILL.md:68]"
+  ],
+  "skill_path": "gstack/sync-gbrain/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/sync-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/sync-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "gstack/sync-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 60,
+      "line_start": 60,
+      "path": "gstack/sync-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/sync-gbrain/SKILL.md"
+    }
+  ],
+  "source_sha256": "370567ce61e59930313c6eac675c68c6d58e9a5616116813ce20d0a7f40dfa49",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/sync-gbrain/SKILL.md:78]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/sync-gbrain/SKILL.md:79]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/sync-gbrain/SKILL.md:80]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/sync-gbrain/SKILL.md:81]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/sync-gbrain/SKILL.md:83]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/sync-gbrain/SKILL.md:87]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:370567ce61e59930313c6eac675c68c6d58e9a5616116813ce20d0a7f40dfa49",
+        "content-review:873-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/sync-gbrain/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2d422bec70f19aeba6cc803568e8cb80b33f377ce7855c298fb4157b4e775988",
+        "content-review:500-lines"
+      ],
+      "path": "gstack/sync-gbrain/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: Write [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: Edit [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: Glob [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: Grep [gstack/sync-gbrain/SKILL.md:1-19]",
+    "Declared tool: AskUserQuestion [gstack/sync-gbrain/SKILL.md:1-19]"
+  ],
+  "trigger": "Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. (gstack) [gstack/sync-gbrain/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/sync-gbrain/SKILL.md:144]",
+    "Self-check before emitting [gstack/sync-gbrain/SKILL.md:167]",
+    "Context Recovery [gstack/sync-gbrain/SKILL.md:235]",
+    "Completeness Principle — Boil the Ocean [gstack/sync-gbrain/SKILL.md:282]",
+    "Confusion Protocol [gstack/sync-gbrain/SKILL.md:288]",
+    "Claimed Limitations Need Evidence [gstack/sync-gbrain/SKILL.md:292]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/sync-gbrain/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/sync-gbrain/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/sync-gbrain/SKILL.md:296]",
+    "Step 1: State probe [gstack/sync-gbrain/SKILL.md:451]",
+    "Step 1.5: Local engine pre-flight (plan D12) [gstack/sync-gbrain/SKILL.md:505]",
+    "Step 2: Run the orchestrator [gstack/sync-gbrain/SKILL.md:562]",
+    "Step 3: Code-index health check [gstack/sync-gbrain/SKILL.md:579]",
+    "Step 3.5: Call-graph health check (offer --dream) [gstack/sync-gbrain/SKILL.md:614]",
+    "Step 4: Refresh GBrain Search Guidance block in CLAUDE.md [gstack/sync-gbrain/SKILL.md:684]",
+    "Step 5: Verdict block (idempotent doctor output) [gstack/sync-gbrain/SKILL.md:800]"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "artifact_types": [
+    "diagram source",
+    "host render or syntax-validation request",
+    "node-and-edge source map",
+    "unknown and conflict ledger"
+  ],
+  "capability_id": "capability:diagram-and-architecture-artifact-generation",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim Phase 9 evaluation, Phase 10 approval, or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Every node, edge, boundary, protocol, and environment label must trace to approved evidence or be visibly marked unknown; a syntactically valid invented diagram fails.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "diagram-and-architecture-artifact-generation",
+  "inputs": [
+    "Approved source facts, diagram purpose, notation, audience, and output format."
+  ],
+  "outputs": [
+    "diagram source",
+    "host render or syntax-validation request",
+    "node-and-edge source map",
+    "unknown and conflict ledger"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "coverage": [
+      "diagram-scope",
+      "abstraction-level",
+      "node-edge-provenance",
+      "trust-boundary",
+      "host-validation-request",
+      "unknowns"
+    ],
+    "data_governance": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Generate traceable architecture or process diagram source from approved evidence without inventing nodes, edges, trust boundaries, or runtime facts.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,140 @@
+{
+  "schema_version": "2.0",
+  "phase": 9,
+  "status": "completed-with-findings",
+  "reviewed_run_count": 1002,
+  "reviewed_model_identity": {
+    "provider": "router9-qoder",
+    "model": "cx/gpt-5.6-sol",
+    "response_model": "gpt-5.6-sol"
+  },
+  "review_method": "Manual adjudication of protocol calibrations, aggregate metrics, all non-baseline Recipe/router failures, mutation controls, threshold results, and representative paired Skill wins. Deterministic Gate separately recomputes every attempt artifact, hash, receipt, parse, and grade.",
+  "protocol_calibrations": [
+    {
+      "id": "V2-P9-CAL-001",
+      "path": "evals/runs/capability-compiler-v2/phase-9-pilots/routing-readiness-calibration-v1",
+      "finding": "The first Skill prompt measured execution readiness instead of frozen route ownership.",
+      "resolution": "Preserved all 8 attempts, rejected them as production evidence, clarified routing ownership, and froze a new plan hash.",
+      "deleted_failures": 0
+    },
+    {
+      "id": "V2-P9-CAL-002",
+      "path": "evals/runs/capability-compiler-v2/phase-9-pilots/recipe-route-completeness-calibration-v2",
+      "finding": "The first Phase 4 Recipe prompt requested a minimal route although holdouts require the complete intended route.",
+      "resolution": "Preserved all 12 attempts, rejected them as production evidence, clarified complete-route planning, and reran only the affected tasks under a new plan hash.",
+      "deleted_failures": 0
+    },
+    {
+      "id": "V2-P9-CAL-003",
+      "path": "evals/runs/capability-compiler-v2/phase-9-pilots/attempt-manifest-grading-migration-v3",
+      "finding": "Adding grading.json to attempt manifests caused a one-pass deterministic schema-migration mismatch for 990 pre-grading manifests.",
+      "resolution": "Preserved the transition report; reran the deterministic grader without model reruns and obtained zero evidence errors.",
+      "deleted_failures": 0
+    }
+  ],
+  "findings": [
+    {
+      "id": "V2-P9-FINDING-001",
+      "severity": "info",
+      "scope": "atomic-skills",
+      "finding": "Candidate Skills passed all 314 unseen holdouts; declared baselines passed 159 of 314. Paired comparison produced 155 candidate wins, 159 ties, and zero regressions. Every Phase 3–7 candidate cohort scored 100%.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/grading-report.json"
+      ],
+      "disposition": "phase-9-threshold-passed"
+    },
+    {
+      "id": "V2-P9-FINDING-002",
+      "severity": "high",
+      "scope": "phase-8-recipes",
+      "finding": "The Phase 8 Recipe layer fails two holdout assertions: skipping experience-design lacks an explicit approved no-user-facing-surface gate, and stage 15 can verify a renderer but does not clearly prepare a missing approved renderer before returning to the blocked owner.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0985/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0986/grading.json"
+      ],
+      "disposition": "phase-10-revision-required"
+    },
+    {
+      "id": "V2-P9-FINDING-003",
+      "severity": "high",
+      "scope": "phase-8-router",
+      "finding": "The router recognized six governed safety boundaries in its reasons but returned generic intake, readiness, or incident targets instead of the frozen explicit safety targets. Exact safety routing is not sufficiently encoded in the router contract.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0964/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0965/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0966/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0967/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0974/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0975/grading.json"
+      ],
+      "disposition": "phase-10-revision-required"
+    },
+    {
+      "id": "V2-P9-FINDING-004",
+      "severity": "medium",
+      "scope": "phase-8-router-fixtures",
+      "finding": "Two tool-support cases expected the broad stage-15 Recipe, while the router selected the more specific atomic test-runtime-bootstrap or tool-runtime-readiness target. This conflicts with the frozen smallest-sufficient selection order and requires human fixture-versus-router adjudication rather than automatic router widening.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0968/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0976/grading.json"
+      ],
+      "disposition": "phase-10-human-adjudication-required"
+    },
+    {
+      "id": "V2-P9-FINDING-005",
+      "severity": "medium",
+      "scope": "phase-4-specialized-recipe",
+      "finding": "The specialized UI Recipe candidate improved from baseline 0/4 to 3/4 but missed the explicit-human-approval route marker in review separation. The reason preserved human authorization, yet the checkpoint is not a first-class route node and the frozen route assertion cannot verify it structurally.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0950/grading.json"
+      ],
+      "disposition": "phase-10-revision-or-fixture-adjudication-required"
+    },
+    {
+      "id": "V2-P9-FINDING-006",
+      "severity": "medium",
+      "scope": "mutations",
+      "finding": "Frozen Skill mutations were authored for deterministic marker-deletion Gates, not for independently causal behavioral prompts. Results are 5 killed, 144 survived, 14 behavioral-challenge-needed, and 2 invalid-control. These outcomes are diagnostic only and cannot substitute for the already-passing deterministic mutation suites.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/grading-report.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0113/grading.json",
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-0953/grading.json"
+      ],
+      "disposition": "phase-10-mutation-design-review-required"
+    },
+    {
+      "id": "V2-P9-FINDING-007",
+      "severity": "medium",
+      "scope": "phase-8-human-checkpoint-mutation",
+      "finding": "Removing one release-readiness human checkpoint did not cause the behavioral challenge to fail because a generic per-action authorization gate remained. The challenge does not distinguish lifecycle approval from action authorization.",
+      "evidence": [
+        "evals/runs/capability-compiler-v2/phase-9/attempts/run-1000/grading.json"
+      ],
+      "disposition": "phase-10-mutation-design-review-required"
+    }
+  ],
+  "thresholds": {
+    "passed": [
+      "skill_candidate_overall_at_least_0_95",
+      "skill_candidate_each_phase_at_least_0_90",
+      "skill_candidate_not_below_baseline_each_phase",
+      "p4_recipe_candidate_not_below_baseline",
+      "evidence_complete",
+      "zero_actions"
+    ],
+    "failed": [
+      "p4_recipe_candidate_all_holdouts",
+      "p8_router_all",
+      "p8_recipe_all"
+    ]
+  },
+  "open_findings": [
+    "V2-P9-FINDING-002",
+    "V2-P9-FINDING-003",
+    "V2-P9-FINDING-004",
+    "V2-P9-FINDING-005",
+    "V2-P9-FINDING-006",
+    "V2-P9-FINDING-007"
+  ],
+  "release_disposition": "blocked-pending-phase-10-revision-and-human-review"
+}

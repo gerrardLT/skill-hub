@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "source_ref": "992e0d3",
+  "evaluation_head": "3b300baeea5531346d7e17993dd392deef74b731",
+  "files": [
+    {
+      "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/delivery-package/full.patch",
+      "bytes": 11478,
+      "sha256": "b5f88dce3c1ede3ffd78619edfab76dfa5918cdb5f355399defaef69d84f7976"
+    },
+    {
+      "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/delivery-package/incremental-correction.patch",
+      "bytes": 806,
+      "sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d"
+    }
+  ],
+  "checks": [
+    {
+      "argv": [
+        "git",
+        "merge-base",
+        "HEAD",
+        "992e0d3"
+      ],
+      "returncode": 0,
+      "duration_ms": 23.517,
+      "stdout": "992e0d3dab3e4498fbda0f2898319ebd38333540\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "992e0d3",
+        "--",
+        "docs",
+        ".kiro"
+      ],
+      "returncode": 0,
+      "duration_ms": 20.512,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "duration_ms": 23.918,
+      "stdout": "M  apps/api/app/core/rate_limit.py\n",
+      "stderr": ""
+    }
+  ],
+  "remote_actions": [],
+  "merge_performed": false,
+  "deployment_performed": false
+}

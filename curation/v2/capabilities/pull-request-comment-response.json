@@ -1,0 +1,46 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:pull-request-comment-response",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-1241"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Comment identity, verified finding classification, response artifact, evidence links, provider, and current authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Pull Request Comment Response",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Posted response receipt and URL, or explicit no-post outcome and reason."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [],
+  "responsibility": "Post one evidence-backed response to an identified pull-request review comment after explicit per-action authorization without changing source or resolving unrelated threads.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "gstack/review/greptile-triage.md:97-111"
+  ],
+  "source_fragment_ids": [
+    "gstack/review/greptile-triage.md:97-111"
+  ],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

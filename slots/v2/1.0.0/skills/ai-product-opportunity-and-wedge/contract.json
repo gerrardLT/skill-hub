@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "AI opportunity brief",
+    "wedge hypothesis",
+    "non-AI alternative",
+    "data and feedback-loop risks"
+  ],
+  "capability_id": "capability:ai-product-opportunity-and-wedge",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Do not treat probabilistic behavior, novelty, or model availability as proof of user value or product approval.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "ai-product-opportunity-and-wedge",
+  "inputs": [
+    "A validated customer problem, workflow friction, model trajectory, data advantage, and business constraint."
+  ],
+  "outputs": [
+    "AI opportunity brief",
+    "wedge hypothesis",
+    "non-AI alternative",
+    "data and feedback-loop risks"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Assess whether AI creates defensible user value and choose a narrow evidence-backed entry wedge.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

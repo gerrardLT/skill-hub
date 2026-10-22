@@ -1,0 +1,290 @@
+{
+  "candidate_responsibility": "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs.",
+  "canonical_unit_ids": [
+    "land-and-deploy:unit-001",
+    "land-and-deploy:unit-002",
+    "land-and-deploy:unit-003",
+    "land-and-deploy:unit-004",
+    "land-and-deploy:unit-005",
+    "land-and-deploy:unit-006"
+  ],
+  "cluster_id": "cluster:merge-and-deploy-readiness",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "land-and-deploy/SKILL.md:535-560",
+    "land-and-deploy/SKILL.md:638-662",
+    "land-and-deploy/SKILL.md:665-694",
+    "land-and-deploy/SKILL.md:700-720",
+    "land-and-deploy/SKILL.md:723-736",
+    "land-and-deploy/SKILL.md:739-758"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:merge-and-deploy-readiness:fusion:boundary",
+      "rule": "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:merge-and-deploy-readiness:fusion:inputs",
+      "rule": "Accept only: A pull request, target branch, CI state, version state, and deployment configuration."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "cluster:merge-and-deploy-readiness:fusion:outputs",
+      "rule": "Produce only: A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:merge-and-deploy-readiness:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A pull request, target branch, CI state, version state, and deployment configuration.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "land-and-deploy"
+      ]
+    }
+  ],
+  "output_boundary": "A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "代码托管平台与基线目标分支探测门禁：依据远端 URL 与 CLI 状态检测 GitHub 或 GitLab 宿主平台并解析目标基线分支; 发布预检 CLI 鉴权与 PR 状态校验门禁：验证 GitHub CLI 登录态并核查 PR 状态（拒绝已合并、已关闭或无 PR 场景）; 首运行试运行校验与部署配置指纹门禁：基于 land-deploy-confirmed 校验配置变更与首次运行，必要时强制激活试运行导师模式",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Explicit limits: 执行 PR 合并与部署前的信息收集与上下文初始化阶段; 进入部署合并流水线前必须满足的入口门禁; 初次执行或部署配置文件/工作流发生变动时的审定机制",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 6 source-grounded atom(s) for responsibility (gate=5, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-001",
+        "land-and-deploy:unit-002",
+        "land-and-deploy:unit-003",
+        "land-and-deploy:unit-004",
+        "land-and-deploy:unit-005",
+        "land-and-deploy:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "执行 PR 合并与部署前的信息收集与上下文初始化阶段; 进入部署合并流水线前必须满足的入口门禁; 初次执行或部署配置文件/工作流发生变动时的审定机制",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Explicit limits: 执行 PR 合并与部署前的信息收集与上下文初始化阶段; 进入部署合并流水线前必须满足的入口门禁; 初次执行或部署配置文件/工作流发生变动时的审定机制",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 6 source-grounded atom(s) for boundary-and-applicability (gate=5, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-001",
+        "land-and-deploy:unit-002",
+        "land-and-deploy:unit-003",
+        "land-and-deploy:unit-004",
+        "land-and-deploy:unit-005",
+        "land-and-deploy:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "准确识别 GitHub/GitLab 平台及关联 PR 的目标合流分支; 未鉴权或 PR 状态异常时立即挂起并给出明确指引; 首次部署或配置哈希漂移时阻断静默操作，引导用户完成审定",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Explicit limits: 执行 PR 合并与部署前的信息收集与上下文初始化阶段; 进入部署合并流水线前必须满足的入口门禁; 初次执行或部署配置文件/工作流发生变动时的审定机制",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=5, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-001",
+        "land-and-deploy:unit-002",
+        "land-and-deploy:unit-003",
+        "land-and-deploy:unit-004",
+        "land-and-deploy:unit-005",
+        "land-and-deploy:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 5,
+        "rule": 1
+      },
+      "evidence": [
+        "land-and-deploy/SKILL.md:535-560",
+        "land-and-deploy/SKILL.md:638-662",
+        "land-and-deploy/SKILL.md:665-694",
+        "land-and-deploy/SKILL.md:700-720",
+        "land-and-deploy/SKILL.md:723-736",
+        "land-and-deploy/SKILL.md:739-758"
+      ],
+      "source_id": "land-and-deploy",
+      "unit_ids": [
+        "land-and-deploy:unit-001",
+        "land-and-deploy:unit-002",
+        "land-and-deploy:unit-003",
+        "land-and-deploy:unit-004",
+        "land-and-deploy:unit-005",
+        "land-and-deploy:unit-006"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "land-and-deploy:unit-001",
+    "land-and-deploy:unit-002",
+    "land-and-deploy:unit-003",
+    "land-and-deploy:unit-004",
+    "land-and-deploy:unit-005",
+    "land-and-deploy:unit-006"
+  ]
+}

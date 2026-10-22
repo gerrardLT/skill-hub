@@ -1,0 +1,282 @@
+{
+  "recipe_id": "build-feature-tdd",
+  "recipe_version": "1.0.0",
+  "passed": true,
+  "status": "passed",
+  "steps_run": [
+    {
+      "step_id": "implement",
+      "slot_id": "tdd-change-loop",
+      "slot_ref": "tdd-change-loop@1.0.0",
+      "status": "passed",
+      "input_sha256": "6d2474d5998e4e9f746d722a51b1fd2ddf1ab9c7493cc1e9c5ff969e0e701d8d",
+      "duration_ms": 38685.263,
+      "reused": true,
+      "attempt": 8,
+      "invalidated_previous_evidence": "input-or-contract-changed",
+      "output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/implement.md",
+      "output_sha256": "fa2e9207e9d00c0146f87be7e2b76d903fd4b67d6444725ba0cd889873af3650",
+      "raw_output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/implement.raw.md",
+      "raw_output_sha256": "fa2e9207e9d00c0146f87be7e2b76d903fd4b67d6444725ba0cd889873af3650",
+      "gates": [
+        {
+          "gate": "evidence-present",
+          "passed": true,
+          "evidence": [
+            "Evidence:"
+          ]
+        },
+        {
+          "gate": "unknowns-preserved",
+          "passed": true,
+          "evidence": [
+            "unknowns:",
+            "unknown"
+          ]
+        },
+        {
+          "gate": "authority-boundary",
+          "passed": true,
+          "evidence": [
+            "authority"
+          ]
+        },
+        {
+          "gate": "responsibility-boundary",
+          "passed": true,
+          "evidence": [
+            "responsibility"
+          ]
+        }
+      ],
+      "execution": {
+        "adapter": "workspace",
+        "tools": [
+          "read",
+          "edit",
+          "write"
+        ],
+        "authorized_scopes": [
+          "workspace-write"
+        ],
+        "duration_ms": 38262.744,
+        "tool_events": [
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": true
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": true
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": true
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": true
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "read",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_start",
+            "tool": "edit",
+            "is_error": false
+          },
+          {
+            "type": "tool_execution_end",
+            "tool": "edit",
+            "is_error": false
+          }
+        ],
+        "command_results": [
+          {
+            "argv": [
+              "python",
+              "-c",
+              "import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))"
+            ],
+            "returncode": 0,
+            "duration_ms": 3230.175,
+            "stdout": "............                                                             [100%]\n12 passed in 1.31s\n",
+            "stderr": "C:\\Users\\gerrard\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pytest_asyncio\\plugin.py:247: PytestDeprecationWarning: The configuration option \"asyncio_default_fixture_loop_scope\" is unset.\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \"function\", \"class\", \"module\", \"package\", \"session\"\n\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\n"
+          }
+        ],
+        "source_repository": "D:\\tem_projects\\MirrorMind-eval-ip-rate-limit",
+        "source_head": "3b300baeea5531346d7e17993dd392deef74b731",
+        "isolated_head": "3b300baeea5531346d7e17993dd392deef74b731",
+        "baseline_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "git_status": " M apps/api/app/core/rate_limit.py\n",
+        "patch_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\implement-execution\\changes.patch",
+        "patch_sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d",
+        "incremental_patch_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\implement-execution\\incremental.patch",
+        "incremental_patch_sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d",
+        "model_output_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\implement-execution\\model-output.md",
+        "model_output_sha256": "3095e69b271229dde844f6fd438c68fe3e07c21ceb0beddabda4f7b7ceaaff25",
+        "verification_passed": true,
+        "delivered": true,
+        "failed": false
+      }
+    },
+    {
+      "step_id": "complete",
+      "slot_id": "completion-evidence-gate",
+      "slot_ref": "completion-evidence-gate@1.0.0",
+      "status": "passed",
+      "input_sha256": "54b0f6e11e3c9e0fd45c9fe52a46c26bc5e7c8837235f34e6b047fbfeeee2392",
+      "duration_ms": 25938.612,
+      "reused": true,
+      "attempt": 6,
+      "invalidated_previous_evidence": "upstream-reran",
+      "output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/complete.md",
+      "output_sha256": "cf4ff1cb45c1d4f4e022d712c35f1bca570ca1f2f70afa05ab8ef399b1e5ad02",
+      "raw_output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/complete.raw.md",
+      "raw_output_sha256": "cf4ff1cb45c1d4f4e022d712c35f1bca570ca1f2f70afa05ab8ef399b1e5ad02",
+      "gates": [
+        {
+          "gate": "evidence-present",
+          "passed": true,
+          "evidence": [
+            "Evidence:"
+          ]
+        },
+        {
+          "gate": "unknowns-preserved",
+          "passed": true,
+          "evidence": [
+            "unknowns:",
+            "unknown"
+          ]
+        },
+        {
+          "gate": "authority-boundary",
+          "passed": true,
+          "evidence": [
+            "authority"
+          ]
+        },
+        {
+          "gate": "responsibility-boundary",
+          "passed": true,
+          "evidence": [
+            "responsibility"
+          ]
+        }
+      ],
+      "execution": {
+        "adapter": "workspace",
+        "tools": [
+          "read"
+        ],
+        "authorized_scopes": [
+          "workspace-write"
+        ],
+        "duration_ms": 25416.369,
+        "tool_events": [],
+        "command_results": [
+          {
+            "argv": [
+              "python",
+              "-c",
+              "import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))"
+            ],
+            "returncode": 0,
+            "duration_ms": 2966.765,
+            "stdout": "............                                                             [100%]\n12 passed in 1.25s\n",
+            "stderr": "C:\\Users\\gerrard\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pytest_asyncio\\plugin.py:247: PytestDeprecationWarning: The configuration option \"asyncio_default_fixture_loop_scope\" is unset.\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \"function\", \"class\", \"module\", \"package\", \"session\"\n\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\n"
+          }
+        ],
+        "source_repository": "D:\\tem_projects\\MirrorMind-eval-ip-rate-limit",
+        "source_head": "3b300baeea5531346d7e17993dd392deef74b731",
+        "isolated_head": "3b300baeea5531346d7e17993dd392deef74b731",
+        "baseline_patch_sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d",
+        "git_status": "M  apps/api/app/core/rate_limit.py\n",
+        "patch_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\complete-execution\\changes.patch",
+        "patch_sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d",
+        "incremental_patch_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\complete-execution\\incremental.patch",
+        "incremental_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "model_output_file": "D:\\project\\skills-hub\\evals\\runs\\full-dev-loop\\ip-rate-limiting-v1\\run\\build_feature_tdd\\complete-execution\\model-output.md",
+        "model_output_sha256": "009852ac878df9a3771a5c5412143f2892377f566238844a9cec0c00606f20c6",
+        "verification_passed": true,
+        "delivered": false,
+        "failed": false
+      }
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "input_sha256": "48a4eaaa16a8463a13cc05530d40bab7074daeeb0498a811c0a1334cbc08c4a7"
+}

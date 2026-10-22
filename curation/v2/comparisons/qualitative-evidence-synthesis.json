@@ -1,0 +1,475 @@
+{
+  "candidate_responsibility": "Synthesize qualitative evidence into patterns, contradictions, pain priorities, and updated problem statements.",
+  "canonical_unit_ids": [
+    "analyzing-user-feedback:unit-006",
+    "analyzing-user-feedback:unit-007",
+    "analyzing-user-feedback:unit-008",
+    "discovery-process:unit-018",
+    "discovery-process:unit-019",
+    "discovery-process:unit-021",
+    "discovery-process:unit-022",
+    "discovery-process:unit-023",
+    "discovery-process:unit-024",
+    "discovery-process:unit-025",
+    "discovery-process:unit-040",
+    "discovery-process:unit-057"
+  ],
+  "cluster_id": "cluster:qualitative-evidence-synthesis",
+  "decision_references": [
+    "V2-DEC-004"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "analyzing-user-feedback/references/artifacts.md:27-45",
+    "analyzing-user-feedback/references/artifacts.md:46-66",
+    "analyzing-user-feedback/references/artifacts.md:82-101",
+    "discovery-process/SKILL.md:178-207",
+    "discovery-process/SKILL.md:209-213",
+    "discovery-process/SKILL.md:226-239",
+    "discovery-process/SKILL.md:241-245",
+    "discovery-process/SKILL.md:247-253",
+    "discovery-process/SKILL.md:255-258",
+    "discovery-process/SKILL.md:260-265",
+    "discovery-process/SKILL.md:431-438",
+    "discovery-process/examples/sample-lifesciences.md:89-105"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:qualitative-evidence-synthesis"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis:fusion:boundary",
+      "rule": "Synthesize qualitative evidence into patterns, contradictions, pain priorities, and updated problem statements."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:qualitative-evidence-synthesis"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis:fusion:inputs",
+      "rule": "Accept only: Interview notes, direct quotes, affinity material, journey evidence, and known bias."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:qualitative-evidence-synthesis"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis:fusion:outputs",
+      "rule": "Produce only: Evidence-backed themes, counterexamples, prioritized pains, and uncertainty."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-004"
+      ],
+      "id": "cluster:qualitative-evidence-synthesis:policy:data-governance",
+      "rule": "Before processing customer, proprietary, recorded, or externally judged data, require authorization, minimization, redaction, retention, external-transfer boundary, and deletion policy; otherwise return needs-input or blocked."
+    }
+  ],
+  "input_boundary": "Interview notes, direct quotes, affinity material, journey evidence, and known bias.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "analyzing-user-feedback",
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "analyzing-user-feedback"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "analyzing-user-feedback",
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "analyzing-user-feedback",
+        "discovery-process"
+      ]
+    }
+  ],
+  "output_boundary": "Evidence-backed themes, counterexamples, prioritized pains, and uncertainty.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "代表性与影响力二维评估矩阵（Representation × Influence）：结合受众占比（>=10%）与人际号召力划分四大象限，高代表性×高影响力优先行动，低代表性×低影响力理性暂缓并解释原因; 影响深度与广度决策矩阵（Depth × Breadth）：以影响广度为横轴、影响深度为纵轴，右上立即执行，左下果断放弃，模糊象限结合信任资产、战略目标与顾问委员会审慎决策; 用户信任资产库（The Trust Vault）度量与运作体系：将社区信任作为可充值与透支的资产管理，季度轻量调研量化得分，低分期推迟争议发布、前置补齐体验赢点（MEOWs）",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Explicit limits: 海量客诉与建议的优先级定级与过滤裁决; 评估复杂功能改动或争议性需求时的取舍裁决; 重大争议性发布或激进改版前的风险评估与节奏调控",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-006",
+        "analyzing-user-feedback:unit-007",
+        "analyzing-user-feedback:unit-008"
+      ]
+    },
+    {
+      "approach": "代表性与影响力二维评估矩阵（Representation × Influence）：结合受众占比（>=10%）与人际号召力划分四大象限，高代表性×高影响力优先行动，低代表性×低影响力理性暂缓并解释原因; 影响深度与广度决策矩阵（Depth × Breadth）：以影响广度为横轴、影响深度为纵轴，右上立即执行，左下果断放弃，模糊象限结合信任资产、战略目标与顾问委员会审慎决策; 用户信任资产库（The Trust Vault）度量与运作体系：将社区信任作为可充值与透支的资产管理，季度轻量调研量化得分，低分期推迟争议发布、前置补齐体验赢点（MEOWs）",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Explicit limits: 海量客诉与建议的优先级定级与过滤裁决; 评估复杂功能改动或争议性需求时的取舍裁决; 重大争议性发布或激进改版前的风险评估与节奏调控",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-006",
+        "analyzing-user-feedback:unit-007",
+        "analyzing-user-feedback:unit-008"
+      ]
+    },
+    {
+      "approach": "海量客诉与建议的优先级定级与过滤裁决; 评估复杂功能改动或争议性需求时的取舍裁决; 重大争议性发布或激进改版前的风险评估与节奏调控",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Explicit limits: 海量客诉与建议的优先级定级与过滤裁决; 评估复杂功能改动或争议性需求时的取舍裁决; 重大争议性发布或激进改版前的风险评估与节奏调控",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-006",
+        "analyzing-user-feedback:unit-007",
+        "analyzing-user-feedback:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "收集 past behavior 等访谈证据，结构化记录并用 support/analytics/surveys 并行三角验证。; Phase 3 正式输出 recorded sessions 加 detailed notes、按频率排列的 ticket themes 和 quantitative analytics insights。; 把每条 insight/quote 聚类为 themes 并计数，形成 affinity map。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Explicit limits: 不得用 hypothetical leading questions 替代行为证据；样本和周期是 heuristics。; Top 10 与 60% 是来源参数/示例，不是通用 Gate；录音受 consent 与数据治理约束。; 90-120 分钟是 planning heuristic；频率不替代证据质量。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (example=1, gate=1, method=7); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-018",
+        "discovery-process:unit-019",
+        "discovery-process:unit-021",
+        "discovery-process:unit-022",
+        "discovery-process:unit-023",
+        "discovery-process:unit-024",
+        "discovery-process:unit-025",
+        "discovery-process:unit-040",
+        "discovery-process:unit-057"
+      ]
+    },
+    {
+      "approach": "收集 past behavior 等访谈证据，结构化记录并用 support/analytics/surveys 并行三角验证。; Phase 3 正式输出 recorded sessions 加 detailed notes、按频率排列的 ticket themes 和 quantitative analytics insights。; 把每条 insight/quote 聚类为 themes 并计数，形成 affinity map。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Explicit limits: 不得用 hypothetical leading questions 替代行为证据；样本和周期是 heuristics。; Top 10 与 60% 是来源参数/示例，不是通用 Gate；录音受 consent 与数据治理约束。; 90-120 分钟是 planning heuristic；频率不替代证据质量。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 8 source-grounded atom(s) for method (example=1, method=7); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-018",
+        "discovery-process:unit-019",
+        "discovery-process:unit-021",
+        "discovery-process:unit-022",
+        "discovery-process:unit-023",
+        "discovery-process:unit-024",
+        "discovery-process:unit-025",
+        "discovery-process:unit-057"
+      ]
+    },
+    {
+      "approach": "不得用 hypothetical leading questions 替代行为证据；样本和周期是 heuristics。; Top 10 与 60% 是来源参数/示例，不是通用 Gate；录音受 consent 与数据治理约束。; 90-120 分钟是 planning heuristic；频率不替代证据质量。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Explicit limits: 不得用 hypothetical leading questions 替代行为证据；样本和周期是 heuristics。; Top 10 与 60% 是来源参数/示例，不是通用 Gate；录音受 consent 与数据治理约束。; 90-120 分钟是 planning heuristic；频率不替代证据质量。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (example=1, gate=1, method=7); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-018",
+        "discovery-process:unit-019",
+        "discovery-process:unit-021",
+        "discovery-process:unit-022",
+        "discovery-process:unit-023",
+        "discovery-process:unit-024",
+        "discovery-process:unit-025",
+        "discovery-process:unit-040",
+        "discovery-process:unit-057"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "结论可追溯到客户定性证据，并与 analytics/support 互补。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:431-438"
+      ],
+      "limitations": "Explicit limits: 5-10 是来源 heuristic；无法访谈时明确证据缺口。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-040"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3
+      },
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:27-45",
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "analyzing-user-feedback/references/artifacts.md:82-101"
+      ],
+      "source_id": "analyzing-user-feedback",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-006",
+        "analyzing-user-feedback:unit-007",
+        "analyzing-user-feedback:unit-008"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 1,
+        "gate": 1,
+        "method": 7
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:178-207",
+        "discovery-process/SKILL.md:209-213",
+        "discovery-process/SKILL.md:226-239",
+        "discovery-process/SKILL.md:241-245",
+        "discovery-process/SKILL.md:247-253",
+        "discovery-process/SKILL.md:255-258",
+        "discovery-process/SKILL.md:260-265",
+        "discovery-process/SKILL.md:431-438",
+        "discovery-process/examples/sample-lifesciences.md:89-105"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-018",
+        "discovery-process:unit-019",
+        "discovery-process:unit-021",
+        "discovery-process:unit-022",
+        "discovery-process:unit-023",
+        "discovery-process:unit-024",
+        "discovery-process:unit-025",
+        "discovery-process:unit-040",
+        "discovery-process:unit-057"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "analyzing-user-feedback:unit-006",
+    "analyzing-user-feedback:unit-007",
+    "analyzing-user-feedback:unit-008",
+    "discovery-process:unit-018",
+    "discovery-process:unit-019",
+    "discovery-process:unit-021",
+    "discovery-process:unit-022",
+    "discovery-process:unit-023",
+    "discovery-process:unit-024",
+    "discovery-process:unit-025",
+    "discovery-process:unit-040",
+    "discovery-process:unit-057"
+  ]
+}

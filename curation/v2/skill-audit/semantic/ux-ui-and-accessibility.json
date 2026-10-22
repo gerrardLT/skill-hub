@@ -1,0 +1,210 @@
+{
+  "domain": "ux-ui-and-accessibility",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "accessibility-contracts-and-assistive-validation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Every criterion bound to a user task, state and evidence; generic WCAG checklist cannot pass.", "Both holdouts are candidate wins; 32 source refs."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Numeric thresholds from source (4.5:1 normal text, 3:1 large text, 2-4px focus ring) are not stated as defaults.", "evidence": "skills/ui-ux-pro-max/references/quick-reference.md:7-34; slots/v2/1.0.0/skills/accessibility-contracts-and-assistive-validation/SKILL.md:30", "recommendation": "Add WCAG 2.2 AA default thresholds used when the contract does not override them."}
+      ],
+      "lost_source_techniques": ["contrast ratio thresholds", "spec vs APG source-status distinction"]
+    },
+    {
+      "id": "ai-interaction-and-probabilistic-ux",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects decorative confidence theater; correction/undo proportional to consequence."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie; no measured lift.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case requiring uncertainty and correction states."},
+        {"priority": "P2", "dimension": "permission_fit", "issue": "Responsibility is to 'design' interaction, yet permission is authorized-workspace (source write); the procedure never writes source.", "evidence": "slots/v2/1.0.0/skills/ai-interaction-and-probabilistic-ux/contract.json; SKILL.md:28-32", "recommendation": "Reduce to run-output, or add an explicit implementation step."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are two high-level quotes; no concrete AI UX pattern (streaming partials, citation display, regenerate, thumbs feedback) is grounded.", "evidence": "skills/ai-product-strategy/references/guest-insights.md:730-753", "recommendation": "Add a pattern catalog per state."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "content-copy-and-authentic-assets",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Bans lorem ipsum, fake testimonials, invented metrics; covers every UI state."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source density rule (headline <= 8 words, sub-paragraph <= 25 words, one asset or CTA per section) and image-generation-first asset priority are dropped.", "evidence": "skills/design-taste-frontend/SKILL.md:262-332", "recommendation": "Add density defaults for marketing surfaces."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case with fabricated social proof in the brief."}
+      ],
+      "lost_source_techniques": ["section content density limits", "asset sourcing priority order"]
+    },
+    {
+      "id": "cross-domain-ui-preflight-checklists",
+      "scores": {"boundary": 2, "trigger_precision": 1, "procedure": 2, "output_verifiability": 2, "gate_specificity": 2, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "merge",
+      "merge_or_split_target": "evidence-based-ui-review-and-release-gates",
+      "strengths": ["Not-applicable must be justified."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Functionally a subset of evidence-based-ui-review-and-release-gates (criteria vs current evidence, blocker classification, no repair) with a broader domain list; two Skills with the same verdict function confuse routing.", "evidence": "slots/v2/1.0.0/skills/cross-domain-ui-preflight-checklists/SKILL.md:10,28-32; slots/v2/1.0.0/skills/evidence-based-ui-review-and-release-gates/SKILL.md:10,28-32", "recommendation": "Merge as the 'preflight mode' of evidence-based-ui-review-and-release-gates."},
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The concrete source checklists (14-point final pre-flight, canonical pre-delivery checklist) are not reproduced; the Skill only names domains.", "evidence": "skills/design-taste-frontend/SKILL.md:910-980; skills/ui-ux-pro-max/references/pro-rules.md:64-117", "recommendation": "Carry the canonical checklist items into the merged Skill."}
+      ],
+      "lost_source_techniques": ["canonical pre-delivery checklist items"]
+    },
+    {
+      "id": "design-context-and-direction-contract",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Flow and hierarchy before styling; every visual choice traced to authority or human taste decision."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case scoring traceability of choices."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source single-question product-context intake (pre-filled from codebase) is reduced to 'classify facts'.", "evidence": "skills/gstack/design-consultation/SKILL.md:672-711", "recommendation": "Add one consolidated intake question with inferred defaults."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap 0.192 with visual-language-and-anti-template-controls; contract vs implementation split not named in anti-triggers.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger to visual-language for implementing the visual grammar."}
+      ],
+      "lost_source_techniques": ["single consolidated context question pre-filled from codebase"]
+    },
+    {
+      "id": "design-system-foundation-and-token-extraction",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Reuse first; no parallel system or alias maze."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with an existing token set that already covers the need."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source brief-to-official-design-system map (when to use an official package instead of inventing CSS) is absent.", "evidence": "skills/design-taste-frontend/SKILL.md:82-120", "recommendation": "Add 'prefer official system package when brief matches' step."}
+      ],
+      "lost_source_techniques": ["brief to official design-system map", "rendered-system extraction over DESIGN.md claims"]
+    },
+    {
+      "id": "divergent-prototyping-and-variant-selection",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Structural divergence required; human selects; never auto-promote."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source verify-before-present step (every variant renders, interactions respond, console clean) and in-page variant picker are not required.", "evidence": "skills/prototype/SKILL.md:59-73; skills/prototype/PICKER.md:140-197", "recommendation": "Require a clean-console render check per variant before comparison."}
+      ],
+      "lost_source_techniques": ["variant picker harness", "flip through all variants before showing user"]
+    },
+    {
+      "id": "evidence-based-ui-review-and-release-gates",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects stale or self-attested evidence; four-value disposition.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Absorbs cross-domain-ui-preflight-checklists per merge recommendation; also overlaps rendered-ui-critique (0.255) on disposition. Critique should produce findings; this Skill should own the release gate only.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Remove disposition from rendered-ui-critique or make this Skill consume its findings exclusively."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are an em-dash ban and a prototype hand-off; no release-gate technique.", "evidence": "skills/design-taste-frontend/SKILL.md:685-703; skills/prototype/SKILL.md:59-73", "recommendation": "Mark as authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "existing-interface-redesign-and-preservation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Preserve/migrate/replace/remove decisions with owners; SEO and analytics invariants."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source redesign mode detection (greenfield vs redesign-preserve vs overhaul) is called the single biggest source of bad output; the Skill assumes a preserve mode without classifying.", "evidence": "skills/design-taste-frontend/SKILL.md:783-833", "recommendation": "Add mode classification as step 1."}
+      ],
+      "lost_source_techniques": ["redesign mode detection"]
+    },
+    {
+      "id": "external-design-token-extraction-and-normalization",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Observed external values are evidence, not authority; provenance per primitive."],
+      "findings": [
+        {"priority": "P1", "dimension": "permission_fit", "issue": "Named 'external read' in coverage yet step 2 forbids browsing or fetching and the identity is workspace-write; the Skill cannot acquire the capture it needs, and the source tool (npx extract-design-system <url>) is unusable.", "evidence": "slots/v2/1.0.0/skills/external-design-token-extraction-and-normalization/SKILL.md:29,47; skills/extract-design-system/SKILL.md:39-50", "recommendation": "Either declare external-read for one authorized URL via the source tool, or route acquisition explicitly to a capture capability."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."}
+      ],
+      "lost_source_techniques": ["extract-only vs starter files mode", "results are initialization, not pixel-perfect reproduction"]
+    },
+    {
+      "id": "interaction-states-forms-and-navigation",
+      "scores": {"boundary": 2, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Exhaustive state list; preserves user input through failures; happy path alone cannot pass."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Touch target minimums (44pt / 48dp, 8px spacing) and the console-error hook during flow walks are not carried.", "evidence": "skills/ui-ux-pro-max/references/quick-reference.md:35-54; skills/gstack/design-review/SKILL.md:1192-1231", "recommendation": "Add target-size defaults and console error capture in step 5."},
+        {"priority": "P2", "dimension": "boundary", "issue": "Both defines and implements; broad but coherent. Acceptable.", "evidence": "SKILL.md:10", "recommendation": "None required."}
+      ],
+      "lost_source_techniques": ["touch target size minimums"]
+    },
+    {
+      "id": "purposeful-motion-and-animation-engineering",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Interruption, reduced motion with information equivalence, deterministic end state."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Transform/opacity-only rule and motion token guidance are not stated.", "evidence": "skills/ui-ux-pro-max/references/quick-reference.md:134-161", "recommendation": "Add as default implementation rule."}
+      ],
+      "lost_source_techniques": ["animate transform/opacity only"]
+    },
+    {
+      "id": "rendered-ui-critique-and-release-disposition",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One reproducible finding per issue; real renders only."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Issues a release disposition, duplicating evidence-based-ui-review-and-release-gates.", "evidence": "SKILL.md:32; curation/v2/skill-audit/static-scan.json", "recommendation": "Rename to rendered-ui-critique; output findings only and hand off disposition."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source 10-category, ~80-item design audit checklist with high/medium/polish impact is reduced to a one-line list.", "evidence": "skills/gstack/design-review/SKILL.md:1065-1104", "recommendation": "Embed category list and impact scale."}
+      ],
+      "lost_source_techniques": ["10-category design audit checklist", "high/medium/polish impact rating"]
+    },
+    {
+      "id": "responsive-layout-and-spatial-composition",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Intermediate widths, 200% zoom and long content required."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with intermediate-width breakage."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Hard layout rules (hero fits viewport, headline max 2 lines, never disable zoom, 16px body minimum) are dropped.", "evidence": "skills/design-taste-frontend/SKILL.md:234-261; skills/ui-ux-pro-max/references/quick-reference.md:93-113", "recommendation": "Add as default constraints."}
+      ],
+      "lost_source_techniques": ["hero fits initial viewport", "never disable zoom", "16px body minimum"]
+    },
+    {
+      "id": "ui-review-scope-and-evidence-acquisition",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Route-state-viewport-theme-input-motion matrix; capture provenance binding."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source offers test-runner commands from ecosystem markers but never runs a guessed command; the Skill says 'approved local commands' without the offer-not-run rule.", "evidence": "skills/gstack/design-review/SKILL.md:590-629", "recommendation": "State: unknown capture commands are proposed, not executed."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "ui-task-routing-and-governance",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Nine-way UI intent classification; both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.381 with context-intake-and-routing without mutual anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger: non-UI or mixed-domain intake routes to context-intake-and-routing."},
+        {"priority": "P2", "dimension": "permission_fit", "issue": "workspace-write for a Skill that only routes; context-intake-and-routing is read-only for the same job.", "evidence": "slots/v2/1.0.0/skills/ui-task-routing-and-governance/contract.json", "recommendation": "Align to read-only."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "visual-language-and-anti-template-controls",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Named generic patterns to remove; taste alternatives preserved for humans.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source AI-tells list (no neon glow, no pure #000, desaturated accents) and 'defaults not bans, the brief can earn any of them' nuance are partly dropped.", "evidence": "skills/design-taste-frontend/SKILL.md:595-684; skills/impeccable/reference/craft-floor.md:19-44", "recommendation": "Add the tells list with the brief-can-earn-it exception."}
+      ],
+      "lost_source_techniques": ["AI-tell visual pattern list"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["cross-domain-ui-preflight-checklists", "evidence-based-ui-review-and-release-gates", "rendered-ui-critique-and-release-disposition"], "issue": "Three Skills issue UI verdicts or dispositions.", "recommendation": "Critique produces findings; release-gates owns disposition and absorbs preflight."}
+  ]
+}

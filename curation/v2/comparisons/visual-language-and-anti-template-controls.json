@@ -1,0 +1,656 @@
+{
+  "candidate_responsibility": "Establish a distinctive visual language and suppress generic template patterns and unsupported decoration.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-006",
+    "design-taste-frontend:unit-007",
+    "design-taste-frontend:unit-020",
+    "frontend-design:unit-001",
+    "frontend-design:unit-004",
+    "frontend-design:unit-005",
+    "frontend-design:unit-009",
+    "impeccable:unit-002",
+    "impeccable:unit-011",
+    "ui-ux-pro-max:unit-011",
+    "ui-ux-pro-max:unit-013"
+  ],
+  "cluster_id": "cluster:visual-language-and-anti-template-controls",
+  "decision_references": [
+    "V2-DEC-002"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:165-184",
+    "design-taste-frontend/SKILL.md:185-208",
+    "design-taste-frontend/SKILL.md:595-684",
+    "frontend-design/SKILL.md:1-10",
+    "frontend-design/SKILL.md:19-24",
+    "frontend-design/SKILL.md:25-29",
+    "frontend-design/SKILL.md:36-46",
+    "impeccable/SKILL.md:13-14",
+    "impeccable/reference/craft-floor.md:19-44",
+    "ui-ux-pro-max/references/pro-rules.md:37-48",
+    "ui-ux-pro-max/references/pro-rules.md:9-24"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:visual-language-and-anti-template-controls"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls:fusion:boundary",
+      "rule": "Establish a distinctive visual language and suppress generic template patterns and unsupported decoration."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:visual-language-and-anti-template-controls"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls:fusion:inputs",
+      "rule": "Accept only: A direction contract, brand, tokens, audience, surface mode, and content."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:visual-language-and-anti-template-controls"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls:fusion:outputs",
+      "rule": "Produce only: Typography, color, material, composition, style decisions, and anti-template constraints."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-002"
+      ],
+      "id": "cluster:visual-language-and-anti-template-controls:policy:contextual-aesthetics",
+      "rule": "Treat typography, color, card, eyebrow, theme, motion, and other aesthetic prescriptions as context-selected variants. Only accessibility, safety, and performance constraints may be global hard rules."
+    }
+  ],
+  "input_boundary": "A direction contract, brand, tokens, audience, surface mode, and content.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "Typography, color, material, composition, style decisions, and anti-template constraints.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义排版工程偏好与衬线体使用纪律（Serif Discipline）：标题默认 text-4xl md:text-6xl tracking-tighter，正文 65ch；慎用 Inter，推荐 Geist、Outfit、Cabinet Grotesk；强烈禁止将衬线体作为任何项目的默认字体（'富有创意/高级感' 不是使用衬线体的理由，创意品牌应默认现代无衬线）；明确封禁 Fraunces 与 Instrument_Serif 作为默认衬线；仅在简报明确指明或属于纯正出版/复古奢华时方可使用指定衬线池；在标题中使用斜体且包含下延字母（y g j p q）时，必须保留 leading-[1.1] 最小行高与 pb-1/mb-1 留白防截断。; 定义色彩校准与高端消费品配色绝对禁令（Premium-Consumer Palette Ban）：整页最多 1 个主强调色，饱和度 < 80%；严禁无脑使用 AI 紫色/发光霓虹渐变（LILA 规则）；确立全页面单色彩锁（Color Consistency Lock）；严厉封禁在高端消费类简报（炊具、美妆养生、手工奢华等）中默认使用暖米色/黄铜/牛血红/浓缩咖啡色系（封禁十六进制 #f5f1ea, #b08947, #9a2436 等），强制轮替冷淡奢华、深林绿、黑棕对比、钴蓝米白等鲜明替代色系，禁止连续两次交付相同暖调手工作坊调色盘。; 定义 AI 刻板特征禁令全景（AI Tells / Forbidden Patterns）：禁止霓虹外发光；禁止纯黑；禁止无脑 3 等宽特征卡片；禁止虚构人名使用 John Doe/Jane Doe 等通用老套名；禁止空白 SVG 鸡蛋头像；禁止虚构动词堆叠（Elevate, Seamless, Unleash, Next-Gen）；英雄区严禁出现 BETA/V0.6 等无意义版本标签；严禁出现 00/INDEX 等数字标号眉题；中圆点（·）每行最多 1 个；严禁竖向 90 度旋转排版；严禁无意义的十字十字对齐线装饰；严禁假产品界面与假版本页脚；严禁城市时间天气（LIS 14:23）装饰条；严禁提示滚动的指示箭头。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Explicit limits: 适用于所有文本排版层级，严禁在无衬线标题中混入单字不同家族衬线进行强调，斜体降笔截断属于发版阻断缺陷。; 适用于全站调色板决策，除非品牌简报字面显式指定米黄铜配色，否则一律强制启用替代方案。; 这些禁忌是真实评测中大模型最易暴露的机械化特征，除非简报有字面硬性需求，否则全面禁用。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-006",
+        "design-taste-frontend:unit-007",
+        "design-taste-frontend:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于所有文本排版层级，严禁在无衬线标题中混入单字不同家族衬线进行强调，斜体降笔截断属于发版阻断缺陷。; 适用于全站调色板决策，除非品牌简报字面显式指定米黄铜配色，否则一律强制启用替代方案。; 这些禁忌是真实评测中大模型最易暴露的机械化特征，除非简报有字面硬性需求，否则全面禁用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Explicit limits: 适用于所有文本排版层级，严禁在无衬线标题中混入单字不同家族衬线进行强调，斜体降笔截断属于发版阻断缺陷。; 适用于全站调色板决策，除非品牌简报字面显式指定米黄铜配色，否则一律强制启用替代方案。; 这些禁忌是真实评测中大模型最易暴露的机械化特征，除非简报有字面硬性需求，否则全面禁用。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-006",
+        "design-taste-frontend:unit-007",
+        "design-taste-frontend:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验显示字体是否默认为现代无衬线，核验 Fraunces/Instrument_Serif 是否被禁止默认使用，核验斜体下延字符是否保留足够行高与下内边距。; 检查高端消费品页面是否完全避开了被封禁的暖米色/黄铜色十六进制值，检查整页是否维持唯一的强调色方案。; 检查代码与文案中是否排除了序号眉题、假版本号、无脑 3 列卡片与城市天气装饰条等所有特征禁忌。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Explicit limits: 适用于所有文本排版层级，严禁在无衬线标题中混入单字不同家族衬线进行强调，斜体降笔截断属于发版阻断缺陷。; 适用于全站调色板决策，除非品牌简报字面显式指定米黄铜配色，否则一律强制启用替代方案。; 这些禁忌是真实评测中大模型最易暴露的机械化特征，除非简报有字面硬性需求，否则全面禁用。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-006",
+        "design-taste-frontend:unit-007",
+        "design-taste-frontend:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义前端设计的核心定位与角色心态：以高辨识度设计工作室设计总监姿态介入，拒绝模板化或平庸陈词滥调，针对特定需求简报做出果断有主张的配色、字体与版式决策，并在有充分理由时勇于承担美学探索风险。; 排版规范与性格承载：字体承载页面个性，严格限制使用 1–2 个差异清晰的字族；依据《The Elements of Typographic Style》设定字阶、字重、字宽与间距；正文单行严格控制在 80 字符以内，衬线正文适配更长行长与更大行高。; 禁用三大 AI 常见排版套路指征：1. 严禁在标题中机械地单独对单个单词或词组加粗、斜体或换色；2. 严禁标签无脑使用全大写（all-caps）；3. 严禁在正文内容上方堆砌毫无必要的小分类文本标签。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Explicit limits: 当为新项目或重构项目提供视觉设计指引时强制生效。; 制定排版字阶与样式表文本属性时必须遵循。; 排版设计与组件微文案渲染时一律排查此三大指征。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-001",
+        "frontend-design:unit-004",
+        "frontend-design:unit-005",
+        "frontend-design:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "当为新项目或重构项目提供视觉设计指引时强制生效。; 制定排版字阶与样式表文本属性时必须遵循。; 排版设计与组件微文案渲染时一律排查此三大指征。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Explicit limits: 当为新项目或重构项目提供视觉设计指引时强制生效。; 制定排版字阶与样式表文本属性时必须遵循。; 排版设计与组件微文案渲染时一律排查此三大指征。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-001",
+        "frontend-design:unit-004",
+        "frontend-design:unit-005",
+        "frontend-design:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立设计总监视角、拒绝平庸模板与敢于承担有依据的美学风险。; 核验是否限制 1–2 个字族、正文单行少于 80 字符及严格的排版度量衡规范。; 核验是否覆盖单词高亮、全大写标签与冗余分类标签三项禁令。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Explicit limits: 当为新项目或重构项目提供视觉设计指引时强制生效。; 制定排版字阶与样式表文本属性时必须遵循。; 排版设计与组件微文案渲染时一律排查此三大指征。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-001",
+        "frontend-design:unit-004",
+        "frontend-design:unit-005",
+        "frontend-design:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立顶级设计总监心智范式：摒弃安全、胆怯与平庸的常规设计套路，以获奖级设计总监视角追求极致工艺（out-of-distribution craft），融合生产级代码、顶尖创造力、明确的独创视角与对用户深层需求的理解。; 工艺底线绝对拒绝反模式清单：绝对禁止在标题上方添加 kicker/eyebrow 眉题；禁止全页面千篇一律同尺寸卡片堆叠（卡片是懒惰容器）；禁止纯装饰用文字渐变或毛玻璃；禁止非新丑世界中使用 4px 无模糊硬阴影；禁止 Unicode/Emoji 冒充图标；禁止用等宽字体装点伪技术感。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Explicit limits: 贯穿所有设计任务的主导心智，严禁产出毫无辨识度的模板化平庸界面。; 绝对红线禁令，即便大模型默认倾向产出此类元素，也必须在代码生成时严格剔除并改写。",
+      "source_id": "impeccable",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-002",
+        "impeccable:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "贯穿所有设计任务的主导心智，严禁产出毫无辨识度的模板化平庸界面。; 绝对红线禁令，即便大模型默认倾向产出此类元素，也必须在代码生成时严格剔除并改写。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Explicit limits: 贯穿所有设计任务的主导心智，严禁产出毫无辨识度的模板化平庸界面。; 绝对红线禁令，即便大模型默认倾向产出此类元素，也必须在代码生成时严格剔除并改写。",
+      "source_id": "impeccable",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-002",
+        "impeccable:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查设计方案是否体现鲜明的独创视角与生产级代码标准，对平庸模板化套路进行有效防御。; 检查交付代码中是否包含 eyebrow、纯卡片无脑堆叠、伪新丑硬阴影或 Emoji 伪图标；存在任意一项则判定违规。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Explicit limits: 贯穿所有设计任务的主导心智，严禁产出毫无辨识度的模板化平庸界面。; 绝对红线禁令，即便大模型默认倾向产出此类元素，也必须在代码生成时严格剔除并改写。",
+      "source_id": "impeccable",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-002",
+        "impeccable:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义图标与视觉元素的工业级规范：严禁使用 Emoji 作为导航、设置或功能控制图标（必须使用矢量 SVG 或平台矢量图标）；资产必须纯矢量支持主题缩放；根据使用场景区分装饰性（对屏幕阅读器隐藏）与功能性（提供替代文本与状态宣布）；按下状态使用颜色/透明度/阴影渐变且禁止发生导致布局晃动的尺寸位移；触控热区保证 iOS 最小 44pt、Android 最小 48dp 并统一度量与描边粗细。; 定义亮色与暗色模式的对比度与独立测算原则：在亮暗两种主题下正文文本对比度均须达到 ≥4.5:1（大文本与非文本控件边界 ≥3:1）；暗色模式采用去饱和度与调和色阶而非简单颜色反转；分割线与边框在两种模式下均需保持清晰可见；交互状态（按下/聚焦/禁用）在双主题下保持同等辨识度；采用语义色彩令牌驱动，严禁硬编码单个屏幕的十六进制色值；模态遮罩层需测量与实际背景的叠加对比度。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Explicit limits: 适用于所有系统级控件、导航条、工具栏及交互式按钮中的图标设计与资产选型。; 凡支持主题切换或暗色模式的界面均须独立通过两种模式的对比度测算，禁止单一模式推导。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-011",
+        "ui-ux-pro-max:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于所有系统级控件、导航条、工具栏及交互式按钮中的图标设计与资产选型。; 凡支持主题切换或暗色模式的界面均须独立通过两种模式的对比度测算，禁止单一模式推导。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Explicit limits: 适用于所有系统级控件、导航条、工具栏及交互式按钮中的图标设计与资产选型。; 凡支持主题切换或暗色模式的界面均须独立通过两种模式的对比度测算，禁止单一模式推导。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-011",
+        "ui-ux-pro-max:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查界面中是否存在以 Emoji 充当系统功能图标的情况，检查触控热区是否达到 44pt/48dp，矢量图标风格与描边是否一致。; 分别验证亮色与暗色模式下的正文对比度是否均达到 4.5:1，边框与焦点状态在双主题下是否均清晰可辨。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Explicit limits: 适用于所有系统级控件、导航条、工具栏及交互式按钮中的图标设计与资产选型。; 凡支持主题切换或暗色模式的界面均须独立通过两种模式的对比度测算，禁止单一模式推导。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-011",
+        "ui-ux-pro-max:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 3
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:165-184",
+        "design-taste-frontend/SKILL.md:185-208",
+        "design-taste-frontend/SKILL.md:595-684"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-006",
+        "design-taste-frontend:unit-007",
+        "design-taste-frontend:unit-020"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 4
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:1-10",
+        "frontend-design/SKILL.md:19-24",
+        "frontend-design/SKILL.md:25-29",
+        "frontend-design/SKILL.md:36-46"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-001",
+        "frontend-design:unit-004",
+        "frontend-design:unit-005",
+        "frontend-design:unit-009"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "impeccable/SKILL.md:13-14",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "source_id": "impeccable",
+      "unit_ids": [
+        "impeccable:unit-002",
+        "impeccable:unit-011"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 2
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:37-48",
+        "ui-ux-pro-max/references/pro-rules.md:9-24"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-011",
+        "ui-ux-pro-max:unit-013"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-006",
+    "design-taste-frontend:unit-007",
+    "design-taste-frontend:unit-020",
+    "frontend-design:unit-001",
+    "frontend-design:unit-004",
+    "frontend-design:unit-005",
+    "frontend-design:unit-009",
+    "impeccable:unit-002",
+    "impeccable:unit-011",
+    "ui-ux-pro-max:unit-011",
+    "ui-ux-pro-max:unit-013"
+  ]
+}

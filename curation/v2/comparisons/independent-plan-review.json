@@ -1,0 +1,209 @@
+{
+  "candidate_responsibility": "Review an implementation plan independently for completeness, executable boundaries, testability, and hidden scope.",
+  "canonical_unit_ids": [
+    "writing-plans:unit-011"
+  ],
+  "cluster_id": "cluster:independent-plan-review",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "writing-plans/plan-document-reviewer-prompt.md:1-49"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-plan-review"
+      ],
+      "id": "cluster:independent-plan-review:fusion:boundary",
+      "rule": "Review an implementation plan independently for completeness, executable boundaries, testability, and hidden scope."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-plan-review"
+      ],
+      "id": "cluster:independent-plan-review:fusion:inputs",
+      "rule": "Accept only: A proposed plan, repository constraints, task boundaries, and verification requirements."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-plan-review"
+      ],
+      "id": "cluster:independent-plan-review:fusion:outputs",
+      "rule": "Produce only: Plan findings, required corrections, and an independent readiness verdict."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:independent-plan-review:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A proposed plan, repository constraints, task boundaries, and verification requirements.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    }
+  ],
+  "output_boundary": "Plan findings, required corrections, and an independent readiness verdict.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "计划文档独立评审子代理提示词模板：定义评审员角色与四维审查标准（完整性 Completeness、规格对齐 Spec Alignment、任务分解 Task Decomposition、可构建性 Buildability）；仅针对阻碍执行的严重缺陷进行拦截；以标准化格式输出 Approved/Issues 结论与建议清单。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Explicit limits: 当需要通过子代理对编写好的实施计划进行自动化二次独立评审时调用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ]
+    },
+    {
+      "approach": "计划文档独立评审子代理提示词模板：定义评审员角色与四维审查标准（完整性 Completeness、规格对齐 Spec Alignment、任务分解 Task Decomposition、可构建性 Buildability）；仅针对阻碍执行的严重缺陷进行拦截；以标准化格式输出 Approved/Issues 结论与建议清单。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Explicit limits: 当需要通过子代理对编写好的实施计划进行自动化二次独立评审时调用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for method (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ]
+    },
+    {
+      "approach": "当需要通过子代理对编写好的实施计划进行自动化二次独立评审时调用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Explicit limits: 当需要通过子代理对编写好的实施计划进行自动化二次独立评审时调用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ]
+    },
+    {
+      "approach": "计划文档独立评审子代理提示词模板：定义评审员角色与四维审查标准（完整性 Completeness、规格对齐 Spec Alignment、任务分解 Task Decomposition、可构建性 Buildability）；仅针对阻碍执行的严重缺陷进行拦截；以标准化格式输出 Approved/Issues 结论与建议清单。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Explicit limits: 当需要通过子代理对编写好的实施计划进行自动化二次独立评审时调用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "template": 1
+      },
+      "evidence": [
+        "writing-plans/plan-document-reviewer-prompt.md:1-49"
+      ],
+      "source_id": "writing-plans",
+      "unit_ids": [
+        "writing-plans:unit-011"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "writing-plans:unit-011"
+  ]
+}

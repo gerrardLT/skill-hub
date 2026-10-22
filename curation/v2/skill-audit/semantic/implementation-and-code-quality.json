@@ -1,0 +1,148 @@
+{
+  "domain": "implementation-and-code-quality",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "change-scope-freeze",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Separates required change, permitted incidental cleanup, prohibited expansion and unresolved prerequisite.", "Emits scope and stops; no implementation."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source enforces the frozen directory by resolving to an absolute path with trailing slash so sibling prefixes do not match; the Skill's 'allowed files' has no path-normalization rule.", "evidence": "skills/gstack/freeze/SKILL.md:48-76; slots/v2/1.0.0/skills/change-scope-freeze/SKILL.md:28", "recommendation": "Require allowed paths recorded as normalized absolute prefixes with trailing separator."}
+      ],
+      "lost_source_techniques": ["absolute path plus trailing slash to avoid prefix collision"]
+    },
+    {
+      "id": "code-health-assessment",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 1, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 2},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Leave-unchanged rationale is explicit.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source defines a weighted, tool-backed rubric (type check 22%, lint 18%, tests 28%, dead code 13%, ...) with thresholds per score band and a dashboard; the Skill reduces this to qualitative 'signals'. Its gate also says 'aggregate scores alone do not justify remediation', which is fine, but no score is produced at all, so trend comparison is impossible.", "evidence": "skills/gstack/health/SKILL.md:510-549,559-598; SKILL.md:29,36-39", "recommendation": "Produce the weighted category score from deterministic tool exits as one output, alongside cited findings."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Phase 9 mutation needs a behavioral challenge; the current case set cannot detect removal of the leave-unchanged rule.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add a case where remediation cost exceeds evidence and the expected output is leave-unchanged."}
+      ],
+      "lost_source_techniques": ["weighted category rubric with tool exit thresholds", "health dashboard with duration per tool"]
+    },
+    {
+      "id": "defect-remediation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Highest shared correction point; reproduction fails before and passes after.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source requires checking out the exact release revision recorded on the error event, and stopping when stack frames do not match the repository; the Skill assumes the workspace matches.", "evidence": "skills/sentry-debug-issue/SKILL.md:128-141", "recommendation": "Add a revision-match check between evidence and workspace before patching."}
+      ],
+      "lost_source_techniques": ["diff against the release revision on the event"]
+    },
+    {
+      "id": "developer-self-check-and-fix",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 1, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Cannot impersonate independent review."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source's concrete self-review questions (completeness vs spec, YAGNI, naming by intent, tests verify behavior not mocks) and the four-state report (DONE, DONE_WITH_CONCERNS, BLOCKED, NEEDS_CONTEXT) are replaced by a generic category list.", "evidence": "skills/subagent-driven-development/implementer-prompt.md:74-113; SKILL.md:29,36", "recommendation": "Embed the question checklist and require one of the four report states."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie: baseline routing already succeeds; no evidence the Skill improves self-review quality.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Measure in phase D with a seeded-defect patch."}
+      ],
+      "lost_source_techniques": ["self-review question checklist", "DONE_WITH_CONCERNS status"]
+    },
+    {
+      "id": "git-destructive-command-guard",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Safe commands must pass; installation separated."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "No baseline pattern list: the source enumerates concrete destructive forms (push --force, reset --hard, clean -f, branch -D, checkout/restore of uncommitted paths) and the hook wiring; 'declared patterns' leaves the corpus empty by default.", "evidence": "skills/git-guardrails-claude-code/SKILL.md:37-81; skills/gstack/careful/SKILL.md:32-71; SKILL.md:29", "recommendation": "Ship a default destructive-pattern table plus equivalent forms (e.g. -f vs --force, refspec '+')."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Nearest neighbour is workflow-skill-authoring; the real confusable local-git-guard-setup is covered, but no anti-trigger to change-scope-freeze edit restriction.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger for path-scoped edit restriction to change-scope-freeze."}
+      ],
+      "lost_source_techniques": ["default destructive git pattern list", "PreToolUse hook wiring"]
+    },
+    {
+      "id": "isolated-task-implementation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Reads full flow before writing; stops on ambiguity.", "Single writer and isolation are hard gates."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source explicitly legitimizes escalation ('bad work is worse than no work') and lists escalation triggers (multiple valid architectures, code beyond provided context, restructuring). The Skill compresses this into 'stop on ambiguity'.", "evidence": "skills/subagent-driven-development/implementer-prompt.md:57-73; SKILL.md:30", "recommendation": "List the escalation triggers explicitly."}
+      ],
+      "lost_source_techniques": ["explicit escalation trigger list"]
+    },
+    {
+      "id": "local-branch-integration",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Pre-integration recovery ref and exact recovery command.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `pull-request-update`, which does not exist; the correct target is `remote-pull-request-change`.", "evidence": "slots/v2/1.0.0/skills/local-branch-integration/SKILL.md:78", "recommendation": "Replace with remote-pull-request-change."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source auto-resolves only trivially mechanical conflicts (VERSION, CHANGELOG ordering) and stops otherwise; the Skill stops on any conflict, which is safer but loses the classification.", "evidence": "skills/gstack/ship/SKILL.md:674-705", "recommendation": "Keep stop-on-conflict but report whether each conflict is mechanical or semantic."}
+      ],
+      "lost_source_techniques": ["mechanical vs semantic conflict classification"]
+    },
+    {
+      "id": "plan-execution-control",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Explicit state machine with invalidation and evidence hashes.", "Controller does not do specialist work."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source handling of implementer statuses (DONE_WITH_CONCERNS: read concerns before review; NEEDS_CONTEXT: answer then re-dispatch) and the 'never dispatch parallel implementers' rule are not mapped to state transitions.", "evidence": "skills/subagent-driven-development/SKILL.md:104-121,236-267", "recommendation": "Map these statuses to transitions and add a no-parallel-writer invariant."}
+      ],
+      "lost_source_techniques": ["status-specific handling of implementer reports", "no parallel implementation dispatch"]
+    },
+    {
+      "id": "root-cause-investigation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One variable at a time; cause vs trigger vs symptom; sibling-path analysis."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie and mutation needs a behavioral challenge: Phase 9 cannot show the Skill improves investigations.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case: a defect whose last stack frame is a red herring."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source 'Red Flags' self-interrupts ('just try changing X', 'it's probably X') and the backward trace-up-the-call-chain technique are compressed.", "evidence": "skills/systematic-debugging/SKILL.md:215-277; skills/systematic-debugging/root-cause-tracing.md:109-169", "recommendation": "Add a short red-flag list and 'trace backward until the original bad value' rule."}
+      ],
+      "lost_source_techniques": ["red-flag rationalization list", "backward call-chain tracing"]
+    },
+    {
+      "id": "tdd-change-loop",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["RED for the expected reason before code; refactor only while green."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie; no measured lift.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case requiring a test that fails for the right reason."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source rebuttals of 'tests after' and 'already manually tested' are dropped; these are the main failure modes in practice.", "evidence": "skills/test-driven-development/SKILL.md:206-256", "recommendation": "Add a two-line anti-rationalization note."}
+      ],
+      "lost_source_techniques": ["rebuttal of tests-after and manual-testing rationalizations"]
+    },
+    {
+      "id": "ui-remediation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Cannot judge its own recaptures.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source captures a pre-fix state snapshot and screenshot as fixtures and adds a regression test that restores that state; the Skill recaptures only after.", "evidence": "skills/gstack/ios-fix/SKILL.md:416-427,455-465; SKILL.md:31", "recommendation": "Require pre-fix capture and, where state restore exists, a regression fixture."}
+      ],
+      "lost_source_techniques": ["pre-fix state snapshot fixture", "state-restore regression test"]
+    },
+    {
+      "id": "website-audit-remediation",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Deduplicates shared causes; no self-close; separate reassessment."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap 0.286 with ui-remediation; the discriminator (audit-tool findings incl. SEO/content vs rendered UI critique findings) is implicit.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers naming the finding source."}
+      ],
+      "lost_source_techniques": []
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["defect-remediation", "ui-remediation", "website-audit-remediation", "developer-self-check-and-fix"], "issue": "Four repair Skills share the same skeleton; separation is by finding origin and authority, which is sound but stated only partially.", "recommendation": "Add one discriminator line per Skill: confirmed root cause / accepted UI finding / accepted audit finding / own in-scope patch."}
+  ]
+}

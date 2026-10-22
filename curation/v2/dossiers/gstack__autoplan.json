@@ -1,0 +1,264 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/autoplan/SKILL.md:64]",
+    "Skill Invocation During Plan Mode [gstack/autoplan/SKILL.md:68]",
+    "Model-Specific Behavioral Patch (claude) [gstack/autoplan/SKILL.md:200]",
+    "Continuous Checkpoint Mode [gstack/autoplan/SKILL.md:300]",
+    "Step 0: Detect platform and base branch [gstack/autoplan/SKILL.md:434]",
+    "The 6 Decision Principles [gstack/autoplan/SKILL.md:570]"
+  ],
+  "inputs": [
+    "When the design doc check above prints \"No design doc found,\" offer the prerequisite [gstack/autoplan/SKILL.md:475]",
+    "skill before proceeding. [gstack/autoplan/SKILL.md:476]",
+    "Say to the user via AskUserQuestion [gstack/autoplan/SKILL.md:478]",
+    "Options [gstack/autoplan/SKILL.md:485]",
+    "A) Run /office-hours now (we'll pick up the review right after) [gstack/autoplan/SKILL.md:486]",
+    "B) Skip — proceed with standard review [gstack/autoplan/SKILL.md:487]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/autoplan/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/autoplan/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/autoplan/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/autoplan/SKILL.md:42]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/autoplan/SKILL.md:47]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/autoplan/SKILL.md:66]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/autoplan/SKILL.md:85]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/autoplan/SKILL.md:109]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/autoplan/SKILL.md:180]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/autoplan/SKILL.md:304]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/autoplan/SKILL.md:427]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/autoplan/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. [gstack/autoplan/SKILL.md:5]",
+  "root_id": "skill-root:gstack/autoplan",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/autoplan/SKILL.md:20]",
+    "approval gate. One command, fully reviewed plan out. [gstack/autoplan/SKILL.md:28]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/autoplan/SKILL.md:48]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/autoplan/SKILL.md:49]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/autoplan/SKILL.md:50]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/autoplan/SKILL.md:57]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/autoplan/SKILL.md:58]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/autoplan/SKILL.md:61]"
+  ],
+  "skill_path": "gstack/autoplan/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/autoplan/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/autoplan/SKILL.md"
+    },
+    {
+      "line_end": 36,
+      "line_start": 36,
+      "path": "gstack/autoplan/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/autoplan/SKILL.md"
+    },
+    {
+      "line_end": 68,
+      "line_start": 68,
+      "path": "gstack/autoplan/SKILL.md"
+    }
+  ],
+  "source_sha256": "a407a51a569881861eb35ae6b54fa1f380db3bcb60568453f46b615c46a7010f",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/autoplan/SKILL.md:82]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/autoplan/SKILL.md:83]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/autoplan/SKILL.md:84]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/autoplan/SKILL.md:85]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/autoplan/SKILL.md:87]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/autoplan/SKILL.md:91]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a407a51a569881861eb35ae6b54fa1f380db3bcb60568453f46b615c46a7010f",
+        "content-review:1086-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-strategy.md"
+      ],
+      "path": "gstack/autoplan/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6cdcbda95f6e14677c813aeb0b7a9f78f81d2636b4fbda62eccb810a34e79cf3",
+        "content-review:566-lines"
+      ],
+      "path": "gstack/autoplan/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:54f9096742be3bad3e831d7790c08eb93ce45372b188cd6c2073256aff77ef4c",
+        "content-review:120-lines"
+      ],
+      "path": "gstack/autoplan/sections/ceo-phase.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2d876b7f56c0143a1318ab45d6b5efd9cbac6cac73bef4b34d314e0672213862",
+        "content-review:118-lines"
+      ],
+      "path": "gstack/autoplan/sections/ceo-phase.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:16ab2b8e08f1c93ba6fcad048f14aa1c2f4a6be86b88ec33317b7716e54b9c02",
+        "content-review:75-lines"
+      ],
+      "path": "gstack/autoplan/sections/design-phase.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:892e5ac47407420953b30b9d7651c89dbbf46506122571c5ef623dfdc9551267",
+        "content-review:73-lines"
+      ],
+      "path": "gstack/autoplan/sections/design-phase.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7ea7a71c96b13ba937538a82bee951768f2659ccae0761e7ddcfdfe6b87cc7a5",
+        "content-review:102-lines"
+      ],
+      "path": "gstack/autoplan/sections/dx-phase.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:037cb3f013806e50bc6c7cc7ba8b90b94d4a426f6d5750c83f9575e2d48e6dca",
+        "content-review:100-lines"
+      ],
+      "path": "gstack/autoplan/sections/dx-phase.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:90bb3a25dfa659dadbb0f4f143fb93f1eb19ff0bd2fb0872a713faafee7e866e",
+        "content-review:110-lines"
+      ],
+      "path": "gstack/autoplan/sections/eng-phase.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b520f74eacb5c82de5d33138e6c8dc9758dbce8f97ec6ccdb3a6ef375de128ba",
+        "content-review:108-lines"
+      ],
+      "path": "gstack/autoplan/sections/eng-phase.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b10cbcbbc81e21af0a180ea5523e5e1cdf1c2515240c99d2a488c94500fd9c8a",
+        "content-review:39-lines"
+      ],
+      "path": "gstack/autoplan/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6ba27e66bb8f2ec96084dc3712e64bc3b4854e6a92c0a5e26f1eee58c1978642",
+        "content-review:81-lines"
+      ],
+      "path": "gstack/autoplan/sections/tasks-aggregator.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dfa11ca034c30fea176cfda9bbe2e657a3ac070897ac745c79784cba5ea0ab68",
+        "content-review:2-lines"
+      ],
+      "path": "gstack/autoplan/sections/tasks-aggregator.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: Write [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: Edit [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: Glob [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: Grep [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: WebSearch [gstack/autoplan/SKILL.md:1-19]",
+    "Declared tool: AskUserQuestion [gstack/autoplan/SKILL.md:1-19]",
+    "Local dependency: gstack/autoplan/sections/ceo-phase.md [gstack/autoplan/SKILL.md:562]",
+    "Local dependency: gstack/autoplan/sections/design-phase.md [gstack/autoplan/SKILL.md:563]",
+    "Local dependency: gstack/autoplan/sections/eng-phase.md [gstack/autoplan/SKILL.md:564]",
+    "Local dependency: gstack/autoplan/sections/dx-phase.md [gstack/autoplan/SKILL.md:565]",
+    "Local dependency: gstack/autoplan/sections/tasks-aggregator.md [gstack/autoplan/SKILL.md:566]"
+  ],
+  "trigger": "Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. (gstack) [gstack/autoplan/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/autoplan/SKILL.md:148]",
+    "Self-check before emitting [gstack/autoplan/SKILL.md:171]",
+    "Context Recovery [gstack/autoplan/SKILL.md:239]",
+    "Completeness Principle — Boil the Ocean [gstack/autoplan/SKILL.md:286]",
+    "Confusion Protocol [gstack/autoplan/SKILL.md:292]",
+    "Claimed Limitations Need Evidence [gstack/autoplan/SKILL.md:296]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/autoplan/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/autoplan/SKILL.md:300]",
+    "Step 0: Detect platform and base branch [gstack/autoplan/SKILL.md:434]",
+    "Phase 0: Intake + Restore Point [gstack/autoplan/SKILL.md:690]",
+    "Step 1: Capture restore point [gstack/autoplan/SKILL.md:692]",
+    "Step 2: Read context [gstack/autoplan/SKILL.md:719]",
+    "Step 3: Load skill files from disk [gstack/autoplan/SKILL.md:735]",
+    "Phase 0.5: Codex auth + version preflight [gstack/autoplan/SKILL.md:766]",
+    "Phase 1: CEO Review (Strategy & Scope) [gstack/autoplan/SKILL.md:820]",
+    "Phase 2: Design Review (conditional — skip if no UI scope) [gstack/autoplan/SKILL.md:834]",
+    "Phase 2.5: DX Review (conditional — skip if no developer-facing scope) [gstack/autoplan/SKILL.md:844]"
+  ]
+}

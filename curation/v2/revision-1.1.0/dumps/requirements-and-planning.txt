@@ -1,0 +1,67 @@
+## context-intake-and-routing [improve] perm=read-only D=effective
+R: Classify a request, authority, evidence state, lifecycle stage, and next atomic capability without doing downstream work.
+IN: A request, existing artifacts, project context, and known constraints.
+OUT: intake register | routing decision | missing-input list | authority boundary
+  context-intake-and-routing#F1 P1 trigger_precision: Add anti-trigger: UI-only scope routes to ui-task-routing-and-governance; this Skill handles cross-domain or unclassified intake.
+  context-intake-and-routing#F2 P1 source_fidelity: Re-ground in a routing source or mark as authored; add a concrete routing decision table (stage x risk x authority).
+## design-plan-review [improve] perm=read-only D=effective
+R: Independently review a plan for UX scope, flows, states, evidence, accessibility, responsiveness, and unresolved taste decisions.
+IN: Plan, UX scope, existing design system, user flows, constraints, and decision owners.
+OUT: design plan review | missing-state matrix | taste-decision register | amendment recommendations
+  design-plan-review#F1 P1 source_fidelity: Add: when mockups or rendered references exist, review against them; otherwise record 'text-only review' as a confidence limit.
+  design-plan-review#F2 P2 procedure: Rate each area 0-10 with the gap to 10 stated as the amendment.
+## developer-experience-plan-review [improve] perm=read-only D=no-gain
+R: Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes.
+IN: Plan, approved product scope, current developer journey evidence, constraints, and decision owners.
+OUT: DX plan review | developer journey gaps | measurement recommendations | plan amendments
+  developer-experience-plan-review#F1 P1 source_fidelity: Add step 1: identify target developer persona and its expectations before tracing journeys.
+  developer-experience-plan-review#F2 P1 output_verifiability: Require at least time-to-first-success and failure-recovery criteria.
+  developer-experience-plan-review#F3 P2 measured_efficacy: Phase D case with a plan that has a hidden onboarding gap.
+## document-and-artifact-governance [improve] perm=workspace-write D=effective
+R: Define artifact identities, owners, source of truth, lifecycle state, staleness, retention, and invalidation without authoring their content.
+IN: A document or artifact purpose, audience, source evidence, and required fields.
+OUT: artifact registry | ownership matrix | state-transition policy | staleness and retention rules
+  document-and-artifact-governance#F1 P2 source_fidelity: Mark as authored; define a default state set (draft, approved, superseded, stale, retired) and staleness triggers.
+## documentation-authoring [improve] perm=workspace-write D=effective
+R: Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose.
+IN: Approved source facts, audience, documentation type, scope, style, and output path.
+OUT: documentation artifact | source map | validation notes | unresolved-facts register
+  documentation-authoring#F1 P1 source_fidelity: Add a research step: when documenting code, read entry points and trace the documented flow before drafting.
+  documentation-authoring#F2 P2 measured_efficacy: Phase D case requiring type-pure how-to without explanation drift.
+## facilitation-and-collaboration-protocols [improve] perm=workspace-write D=no-gain
+R: Design a bounded collaborative session that elicits evidence, preserves dissent, records decisions, and assigns follow-up authority.
+IN: A multi-role task, incomplete context, stakeholder set, and decision boundary.
+OUT: facilitation plan | role and authority map | decision log template | follow-up register
+  facilitation-and-collaboration-protocols#F1 P1 source_fidelity: Add the protocol as the default for AI-facilitated sessions.
+## implementation-planning-and-handoff [improve] perm=workspace-write D=no-gain
+R: Convert approved requirements and design decisions into dependency-ordered implementation tasks and evidence-bearing handoffs without writing code.
+IN: A confirmed specification, architecture boundaries, repository conventions, and test requirements.
+OUT: implementation plan | requirement-task traceability | dependency graph | verification handoffs
+  implementation-planning-and-handoff#F1 P1 source_fidelity: Require verified file paths, a failing-test-first step and an exact verification command per task.
+  implementation-planning-and-handoff#F2 P1 measured_efficacy: Phase D: score plans on zero-context executability.
+## independent-plan-review [keep] perm=read-only D=no-gain
+R: Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions.
+IN: A proposed plan, repository constraints, task boundaries, and verification requirements.
+OUT: independent plan review | traceability gaps | finding register | review verdict
+  independent-plan-review#F1 P2 trigger_precision: Add anti-trigger: architecture/test-strategy depth review routes to engineering-plan-review.
+## plan-review-decision-synthesis [keep] perm=workspace-write D=effective
+R: Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews.
+IN: Independent review findings, plan version, decision policy, authority, and unresolved questions.
+OUT: review decision matrix | dissent register | proposed amendments | human approval queue
+  plan-review-decision-synthesis#F1 P2 source_fidelity: State that mechanical items carry a recommended resolution with the principle cited; only taste and one-way items go to the human queue.
+## requirements-and-delivery-contract [keep] perm=workspace-write D=effective
+R: Translate approved intent into traceable, observable, testable requirements and acceptance criteria while preserving unknowns and scope.
+IN: Problem and solution evidence, target users, strategy, metrics, risks, and delivery constraints.
+OUT: requirements specification | acceptance criteria | traceability matrix | unknown and conflict register
+  requirements-and-delivery-contract#F1 P2 source_fidelity: Add 'explicit out-of-scope with rationale' to the output contract.
+## risk-preflight-and-safety-governance [improve] perm=read-only D=no-gain
+R: Classify task risk, reversibility, trust boundaries, data sensitivity, authorization, evidence, and required stop or escalation before execution.
+IN: Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions.
+OUT: risk preflight | authority matrix | control checklist | stop and escalation record
+  risk-preflight-and-safety-governance#F1 P2 procedure: Define reversibility tiers and the disposition each tier forces.
+  risk-preflight-and-safety-governance#F2 P2 trigger_precision: Route AI-agent action policy to ai-safety-and-action-governance.
+## workflow-orchestration-and-lifecycle [improve] perm=workspace-write D=no-gain
+R: Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work.
+IN: A request, phase state, available capabilities, and execution constraints.
+OUT: workflow graph | routing decisions | typed handoffs | state and invalidation record
+  workflow-orchestration-and-lifecycle#F1 P1 boundary: Narrow to 'plan a workflow for a request not covered by an existing Recipe' and require reuse of an existing Recipe when one matches.

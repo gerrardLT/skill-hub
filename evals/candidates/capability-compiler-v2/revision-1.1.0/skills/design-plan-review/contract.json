@@ -1,0 +1,55 @@
+{
+  "artifact_types": [
+    "design plan review",
+    "missing-state matrix",
+    "taste-decision register",
+    "amendment recommendations",
+    "per-area 0-10 rating with the gap to 10"
+  ],
+  "capability_id": "capability:design-plan-review",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Review evidence only; do not create design artifacts, mutate the plan, or treat contextual aesthetics as universal law.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "design-plan-review",
+  "inputs": [
+    "Plan, UX scope, existing design system, user flows, constraints, and decision owners."
+  ],
+  "outputs": [
+    "design plan review",
+    "missing-state matrix",
+    "taste-decision register",
+    "amendment recommendations",
+    "per-area 0-10 rating with the gap to 10"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Independently review a plan for UX scope, flows, states, evidence, accessibility, responsiveness, and unresolved taste decisions.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

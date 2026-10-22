@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "implementation plan",
+    "requirement-task traceability",
+    "dependency graph",
+    "verification handoffs"
+  ],
+  "capability_id": "capability:implementation-planning-and-handoff",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Do not plan around unresolved product behavior, invent file paths as facts, or execute source changes.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "implementation-planning-and-handoff",
+  "inputs": [
+    "A confirmed specification, architecture boundaries, repository conventions, and test requirements."
+  ],
+  "outputs": [
+    "implementation plan",
+    "requirement-task traceability",
+    "dependency graph",
+    "verification handoffs"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Convert approved requirements and design decisions into dependency-ordered implementation tasks and evidence-bearing handoffs without writing code.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,85 @@
+{
+  "canonical_unit_ids": [
+    "web-perf:unit-001",
+    "web-perf:unit-002",
+    "web-perf:unit-003",
+    "web-perf:unit-004",
+    "web-perf:unit-005",
+    "web-perf:unit-006"
+  ],
+  "capability_id": "capability:web-performance-diagnostics",
+  "completion_evidence": [
+    "All declared outputs exist and their source citations, hashes, or executable checks are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0086",
+    "V2-FUSION-1012",
+    "V2-FUSION-1013",
+    "V2-FUSION-1014",
+    "V2-FUSION-1015",
+    "V2-FUSION-1016"
+  ],
+  "hard_gates": [
+    "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations.",
+    "Accept only: A web application, controlled sampling environment, network waterfall, and build information.",
+    "Produce only: Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report.",
+    "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+  ],
+  "inputs": [
+    "A web application, controlled sampling environment, network waterfall, and build information."
+  ],
+  "lifecycle_stage_id": "stage:09-performance-reliability",
+  "name": "Web Performance Diagnostics",
+  "non_responsibility": "Does not approve upstream product decisions, expand authority, or perform remote writes beyond its explicit permission identity.",
+  "outputs": [
+    "Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report."
+  ],
+  "owning_phase": 6,
+  "permission_identity": "local-exec",
+  "primary_domain_id": "domain:performance-and-reliability",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=vercel and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:vercel:vercel-optimize",
+      "provider": "vercel",
+      "source_root": "vercel-optimize"
+    }
+  ],
+  "responsibility": "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:vercel-optimize:001:root-responsibility",
+    "v2-root:vercel-optimize:002:2-gate-candidates",
+    "v2-root:vercel-optimize:003:2-1-ask-about-audit-scope-when-needed",
+    "v2-root:vercel-optimize:004:2-3-generate-briefs-and-investigate",
+    "v2-root:vercel-optimize:005:3-verify-recommendations"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [
+    "cluster:web-performance-diagnostics"
+  ],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "vercel-optimize/SKILL.md:124-145",
+    "vercel-optimize/SKILL.md:146-163",
+    "vercel-optimize/SKILL.md:183-216",
+    "vercel-optimize/SKILL.md:230-244",
+    "vercel-optimize/SKILL.md:3-7",
+    "web-perf/SKILL.md:103-110",
+    "web-perf/SKILL.md:119-126",
+    "web-perf/SKILL.md:150-193",
+    "web-perf/SKILL.md:194-200",
+    "web-perf/SKILL.md:33-39",
+    "web-perf/SKILL.md:56-62"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop on missing required input, authority, data-governance boundary, failed evidence check, or incompatible permission identity."
+  ]
+}

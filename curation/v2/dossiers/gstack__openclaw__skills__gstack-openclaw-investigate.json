@@ -1,0 +1,104 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3"
+      ],
+      "target": "skill-root:gstack/openclaw/skills",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Use when asked to debug, fix a bug, investigate an error, or do root cause analysis, and when users report errors, stack traces, unexpected behavior, or say something stopped working. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]",
+  "root_id": "skill-root:gstack/openclaw/skills/gstack-openclaw-investigate",
+  "rules_gates": [
+    "Gather context before forming any hypothesis. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:18]",
+    "1. Collect symptoms: Read the error messages, stack traces, and reproduction steps. If the user hasn't provided enough context, ask ONE question at a time. Don't ask five questions at once. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:20]",
+    "Was this working before? What changed? A regression means the root cause is in the diff. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:28]",
+    "4. Reproduce: Can you trigger the bug deterministically? If not, gather more evidence before proceeding. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:30]",
+    "Before writing ANY fix, verify your hypothesis. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:64]",
+    "2. If the hypothesis is wrong: Search for the error (sanitize sensitive data first). Return to Phase 1. Gather more evidence. Do not guess. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:68]",
+    "Proposing a fix before tracing data flow ... you're guessing. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:81]",
+    "5. If the fix touches >5 files: Flag the blast radius to the user before proceeding. That's large for a bug fix. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:100]"
+  ],
+  "skill_path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md"
+    },
+    {
+      "line_end": 38,
+      "line_start": 38,
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md"
+    }
+  ],
+  "source_sha256": "ab4ef9f9482a1463cdd550333fc76be38ba5e786f901ce2888bee8452d94be20",
+  "stop_conditions": [
+    "2. Read the code: Trace the code path from the symptom back to potential causes. Search for all references, read the logic around the failure point. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:22]",
+    "Integration failure ... Timeout, unexpected response. External API calls, service boundaries. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:48]",
+    "Configuration drift ... Works locally, fails in staging/prod. Env vars, feature flags, DB state. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:50]",
+    "3. 3-strike rule: If 3 hypotheses fail, STOP. Tell the user [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:70]",
+    "Fails without the fix (proves the test is meaningful) [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:95]",
+    "Status: DONE DONEWITHCONCERNS BLOCKED [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:119]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ab4ef9f9482a1463cdd550333fc76be38ba5e786f901ce2888bee8452d94be20",
+        "content-review:135-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Use when asked to debug, fix a bug, investigate an error, or do root cause analysis, and when users report errors, stack traces, unexpected behavior, or say something stopped working. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]",
+  "unique_methods": [
+    "Systematic Debugging [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:6]",
+    "Iron Law [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:8]",
+    "Important Rules [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:125]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Phase 1: Root Cause Investigation [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:16]",
+    "Phase 2: Pattern Analysis [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:38]",
+    "Phase 3: Hypothesis Testing [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:62]",
+    "Phase 4: Implementation [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:86]",
+    "Phase 5: Verification & Report [gstack/openclaw/skills/gstack-openclaw-investigate/SKILL.md:104]"
+  ]
+}

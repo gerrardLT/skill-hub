@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "phase": 5,
+  "status": "passed",
+  "reviewer": "parent-direct-semantic-review",
+  "reviewed_candidate_count": 16,
+  "method": [
+    "Reviewed every responsibility, procedure, hard gate, output, mutation scope, positive trigger, anti-trigger, and holdout against the Phase 2 capability and source provenance.",
+    "Computed pairwise positive-trigger lexical overlap at a 0.22 Jaccard review threshold; no candidate pair crossed the threshold.",
+    "Reviewed AI capability routing, model/data architecture, agency control, and safety as four separate contracts; reviewed architecture discovery, interface alternatives, deep module design, reporting, and diagrams as separate contracts.",
+    "Reviewed authorization, data/API, secrets, CI hardening, frontend runtime, plan review, and threat audit for trust-boundary, secret-value, migration, mutation, and human-authority separation."
+  ],
+  "resolved_findings": [
+    {
+      "id": "V2-P5-REVIEW-001",
+      "finding": "Phase 2 broad workspace-write identities did not distinguish architecture artifacts from authorized product or workflow source mutation.",
+      "resolution": "Only CI hardening and frontend runtime safety use authorized-workspace mutation; eleven architecture/security contracts use run-output, two reviewers use none, and the local security audit writes artifact-output only.",
+      "evidence": ["tools/curation/v2_compile_phase5_skills.py", "tools/curation/v2_phase5_gate.py"]
+    },
+    {
+      "id": "V2-P5-REVIEW-002",
+      "finding": "The initial diagram candidate claimed render or syntax validation despite having no local-exec permission.",
+      "resolution": "It now emits diagram source, structural checks, and an exact host render or syntax-validation request; it cannot claim renderer evidence before host execution.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-5/skills/diagram-and-architecture-artifact-generation/SKILL.md", "evals/candidates/capability-compiler-v2/phase-5/skills/diagram-and-architecture-artifact-generation/contract.json"]
+    },
+    {
+      "id": "V2-P5-REVIEW-003",
+      "finding": "Secret governance could be mistaken for permission to inspect or hash values for evidence.",
+      "resolution": "All candidates prohibit requesting, reading, printing, copying, transforming, hashing, persisting, or transmitting secret values; verification uses names, references, metadata, policy, and behavior only.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-5/skills/secrets-and-environment-governance/SKILL.md", "tools/curation/v2_phase5_gate.py"]
+    },
+    {
+      "id": "V2-P5-REVIEW-004",
+      "finding": "The combined source material risked treating AI capability choice, model/data design, autonomy, and safety as one giant AI architecture workflow.",
+      "resolution": "AI capability routing performs no specialist design; model/data, action rights and human control, user interaction, and safety each retain separate inputs, gates, outputs, and decision owners.",
+      "evidence": ["curation/v2/phase-5/designs.json", "evals/candidates/capability-compiler-v2/phase-5/skills/ai-capability-architecture-and-autonomy/SKILL.md"]
+    }
+  ],
+  "boundary_samples": [
+    {"id": "V2-P5-SAMPLE-AI-ROUTER-MODEL", "left": "ai-capability-architecture-and-autonomy", "right": "ai-model-and-data-architecture", "verdict": "passed", "boundary": "Capability architecture classifies specialist needs and unresolved coupling only; model/data architecture chooses bounded model, prompt, retrieval, governed-data, evaluation, migration, and rollback contracts."},
+    {"id": "V2-P5-SAMPLE-AI-AGENCY-SAFETY", "left": "ai-agent-autonomy-and-human-control", "right": "ai-safety-and-action-governance", "verdict": "passed", "boundary": "Agency defines action rights, graduation, interruption, rollback, revocation, and fallback; safety independently challenges prompt, data, tool, and action abuse paths and cannot approve autonomy."},
+    {"id": "V2-P5-SAMPLE-DISCOVERY-DESIGN", "left": "architecture-deepening-discovery", "right": "architecture-deep-module-design", "verdict": "passed", "boundary": "Discovery cites recurring friction and preserves leave-unchanged options; deep module design begins only from a selected candidate and specifies one boundary, interface, invariants, seams, migration, and tests."},
+    {"id": "V2-P5-SAMPLE-ALTERNATIVES-REPORT", "left": "architecture-interface-alternative-evaluation", "right": "architecture-candidate-reporting", "verdict": "passed", "boundary": "Alternative evaluation generates structurally independent interfaces and tradeoffs; reporting only normalizes already-developed candidates against common evidence and criteria."},
+    {"id": "V2-P5-SAMPLE-DIAGRAM-FACT", "left": "diagram-and-architecture-artifact-generation", "right": "architecture-deepening-discovery", "verdict": "passed", "boundary": "Diagram generation represents approved facts and marks unknowns; it cannot discover architecture facts, run a renderer, or convert syntax validity into factual validity."},
+    {"id": "V2-P5-SAMPLE-AUTH-DATA", "left": "authorization-and-permission-contracts", "right": "data-and-api-contract-design", "verdict": "passed", "boundary": "Authorization owns subject-resource-action-context policy and server enforcement; data/API design owns schemas, invariants, migration, request and response behavior, idempotency, concurrency, compatibility, and authorization hooks."},
+    {"id": "V2-P5-SAMPLE-SECRETS-CI", "left": "secrets-and-environment-governance", "right": "ci-pipeline-security-hardening", "verdict": "passed", "boundary": "Secrets governance defines value-free lifecycle policy across environments; CI hardening may patch only authorized workflow source to enforce least privilege, isolate untrusted input, pin actions, and protect identities and artifacts."},
+    {"id": "V2-P5-SAMPLE-FRONTEND-AUTH", "left": "frontend-runtime-boundaries-and-dependency-safety", "right": "authorization-and-permission-contracts", "verdict": "passed", "boundary": "Frontend runtime safety keeps secrets, server modules, and privileged logic out of clients; authorization defines the server-side policy that remains authoritative even when UI hides actions."},
+    {"id": "V2-P5-SAMPLE-AUDIT-REMEDIATION", "left": "security-audit-and-threat-modeling", "right": "defect-remediation", "verdict": "passed", "boundary": "Threat audit may run approved local non-destructive checks and write evidence artifacts; it never edits source, accesses secrets, performs destructive tests, accepts risk, or executes remediation."},
+    {"id": "V2-P5-SAMPLE-PLAN-THREAT", "left": "engineering-plan-review", "right": "security-audit-and-threat-modeling", "verdict": "passed", "boundary": "Engineering plan review checks proposed architecture, data, security, failure, operability, migration, and test coverage from documents; threat audit assesses supplied actual system evidence and authorized checks."}
+  ],
+  "open_findings": [],
+  "release_claim": "none; all 16 candidates remain evaluating and all evaluation plans remain not-run-phase-9"
+}

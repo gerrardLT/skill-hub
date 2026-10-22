@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "pull-request create or update receipt",
+    "PR identity and URL",
+    "base, head, and metadata evidence",
+    "failure and readiness handoff"
+  ],
+  "capability_id": "capability:remote-pull-request-change",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-pr-change",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "PR-change authorization covers one exact create or update and cannot push, edit source, respond to unrelated comments, enable auto-merge, merge, or deploy.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "remote-pull-request-change",
+  "inputs": [
+    "Verified remote refs, approved base, title and body artifacts, redaction result, provider, and current authorization."
+  ],
+  "outputs": [
+    "pull-request create or update receipt",
+    "PR identity and URL",
+    "base, head, and metadata evidence",
+    "failure and readiness handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "verified-pushed-ref",
+      "exact-base-head",
+      "redaction",
+      "per-action-authorization",
+      "PR-receipt",
+      "no-merge"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Create or update one pull or merge request from one verified pushed ref after redaction and per-action authorization, without merge or deployment.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

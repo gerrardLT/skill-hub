@@ -1,0 +1,66 @@
+## change-scope-freeze [keep] perm=workspace-write D=no-gain
+R: Freeze one authorized change boundary, affected artifacts, non-goals, invariants, owners, and invalidation conditions before implementation begins.
+IN: Authorized scope, protected paths, change identity, and expiry condition.
+OUT: frozen change-scope contract | allowed and prohibited artifact map | invariant and non-goal register | scope invalidation conditions
+  change-scope-freeze#F1 P2 source_fidelity: Require allowed paths recorded as normalized absolute prefixes with trailing separator.
+## code-health-assessment [improve] perm=read-only D=effective
+R: Assess a codebase's maintainability, complexity, duplication, dependency, error-handling, and test-health risks from supplied source without editing it.
+IN: Repository, time window, quality signals, ownership, and exclusions.
+OUT: code-health findings | maintainability evidence map | priority and leave-unchanged rationale | bounded remediation options
+  code-health-assessment#F1 P1 source_fidelity: Produce the weighted category score from deterministic tool exits as one output, alongside cited findings.
+  code-health-assessment#F2 P2 measured_efficacy: Add a case where remediation cost exceeds evidence and the expected output is leave-unchanged.
+## defect-remediation [keep] perm=workspace-write-local-exec D=effective
+R: Apply the smallest authorized source repair for a confirmed root cause and verify the changed behavior plus relevant regressions in one isolated workspace.
+IN: Confirmed finding, reproduction evidence, source workspace, repair authority, and regression contract.
+OUT: minimal source and test patch | before-and-after reproduction evidence | focused and regression command records | rollback and residual-risk note
+  defect-remediation#F1 P2 source_fidelity: Add a revision-match check between evidence and workspace before patching.
+## developer-self-check-and-fix [improve] perm=workspace-write-local-exec D=effective
+R: Self-review one completed authorized change, fix only deterministic defects within its frozen scope, and leave independent review ownership intact.
+IN: Implemented code, its task specification, test output, and change list.
+OUT: self-review checklist | bounded correction patch | updated focused evidence | independent-review handoff
+  developer-self-check-and-fix#F1 P1 source_fidelity: Embed the question checklist and require one of the four report states.
+  developer-self-check-and-fix#F2 P1 measured_efficacy: Measure in phase D with a seeded-defect patch.
+## git-destructive-command-guard [improve] perm=workspace-write-local-exec D=no-gain
+R: Author and validate a repository-scoped guard policy that intercepts declared destructive Git command patterns before execution without installing it silently.
+IN: A command hook environment, dangerous-command policy, and local configuration.
+OUT: guard policy source | allow and block fixture corpus | local validation evidence | separate installation handoff
+  git-destructive-command-guard#F1 P1 source_fidelity: Ship a default destructive-pattern table plus equivalent forms (e.g. -f vs --force, refspec '+').
+  git-destructive-command-guard#F2 P2 trigger_precision: Add anti-trigger for path-scoped edit restriction to change-scope-freeze.
+## isolated-task-implementation [keep] perm=workspace-write-local-exec D=effective
+R: Implement one frozen task in one isolated authorized workspace with a single writer, bounded checks, and a reviewable handoff.
+IN: One approved task, complete task-local context, isolated workspace, edit scope, test command, and escalation boundary.
+OUT: isolated implementation patch | changed-file and scope evidence | focused verification records | review and integration handoff
+  isolated-task-implementation#F1 P2 source_fidelity: List the escalation triggers explicitly.
+## local-branch-integration [improve] perm=workspace-write-local-exec D=no-gain
+R: Integrate an approved local base ref into an isolated change branch while preserving a recoverable pre-integration ref and performing no remote writes.
+IN: Isolated worktree, change branch, approved base reference, clean-state evidence, and local mutation authority.
+OUT: integrated local branch or conflict state | before and after ref evidence | changed-file or conflict report | exact recovery command
+  local-branch-integration#F1 P1 trigger_precision: Replace with remote-pull-request-change.
+  local-branch-integration#F2 P2 source_fidelity: Keep stop-on-conflict but report whether each conflict is mechanical or semantic.
+## plan-execution-control [keep] perm=workspace-write-local-exec D=effective
+R: Advance an approved implementation plan through explicit step states, dependencies, checkpoints, evidence, invalidation, pause, and resume without absorbing specialist work.
+IN: An executable implementation plan and an isolated work environment.
+OUT: plan execution state ledger | step and dependency status | checkpoint and evidence map | invalidation, pause, and resume instructions
+  plan-execution-control#F1 P2 source_fidelity: Map these statuses to transitions and add a no-parallel-writer invariant.
+## root-cause-investigation [improve] perm=workspace-write-local-exec D=effective
+R: Reproduce and trace an observed defect to the highest shared evidence-backed cause without editing product source.
+IN: A test failure, production incident, unexpected behavior, build issue, or performance problem.
+OUT: minimal reproduction | hypothesis and experiment ledger | root-cause evidence chain | affected-surface and remediation handoff
+  root-cause-investigation#F1 P1 measured_efficacy: Phase D case: a defect whose last stack frame is a red herring.
+  root-cause-investigation#F2 P2 source_fidelity: Add a short red-flag list and 'trace backward until the original bad value' rule.
+## tdd-change-loop [improve] perm=workspace-write-local-exec D=no-gain
+R: Implement one authorized behavior change through a preserved RED, minimal GREEN, refactor, and current host-verification loop.
+IN: A feature, defect, refactor, or other behavior change.
+OUT: RED test and failure evidence | minimal GREEN source patch | refactor and regression evidence | reviewable patch handoff
+  tdd-change-loop#F1 P1 measured_efficacy: Phase D case requiring a test that fails for the right reason.
+  tdd-change-loop#F2 P2 source_fidelity: Add a two-line anti-rationalization note.
+## ui-remediation [improve] perm=workspace-write-local-exec D=no-gain
+R: Apply only accepted evidence-backed UI findings to authorized source and recapture the affected states without performing independent review.
+IN: UI findings, source workspace, design system, platform variant, and write authority.
+OUT: bounded UI repair patch | finding-to-change map | focused verification evidence | recapture bundle and independent-review handoff
+  ui-remediation#F1 P2 source_fidelity: Require pre-fix capture and, where state restore exists, a regression fixture.
+## website-audit-remediation [keep] perm=workspace-write-local-exec D=effective
+R: Apply explicitly accepted website audit findings to authorized source, verify affected checks, and preserve a separate reassessment boundary.
+IN: Confirmed audit finding, source mapping, approved repair scope, workspace, and local verification command.
+OUT: bounded website repair patch | finding-to-fix traceability | focused verification records | independent reassessment handoff
+  website-audit-remediation#F1 P2 trigger_precision: Add mutual anti-triggers naming the finding source.

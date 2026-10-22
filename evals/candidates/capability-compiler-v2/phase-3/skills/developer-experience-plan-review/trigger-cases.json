@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "developer-experience-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "design-plan-review",
+        "developer-experience-assessment"
+      ],
+      "id": "V2-P3-developer-experience-plan-review-trigger-01",
+      "input": "Review this SDK plan for onboarding, error, upgrade, and time-to-first-success gaps.",
+      "kind": "should-trigger",
+      "reason": "Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes."
+    },
+    {
+      "expected_skill_id": "developer-experience-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "design-plan-review",
+        "developer-experience-assessment"
+      ],
+      "id": "V2-P3-developer-experience-plan-review-trigger-02",
+      "input": "Apply a developer-experience lens to this CLI implementation plan.",
+      "kind": "should-trigger",
+      "reason": "Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes."
+    },
+    {
+      "expected_skill_id": "developer-experience-assessment",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "developer-experience-plan-review"
+      ],
+      "id": "V2-P3-developer-experience-plan-review-anti-01",
+      "input": "Measure the live repository onboarding experience.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility developer-experience-assessment."
+    },
+    {
+      "expected_skill_id": "defect-remediation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "developer-experience-plan-review"
+      ],
+      "id": "V2-P3-developer-experience-plan-review-anti-02",
+      "input": "Implement the setup and error-message fixes.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility defect-remediation."
+    },
+    {
+      "expected_skill_id": "developer-experience-plan-review",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-developer-experience-plan-review-boundary-01",
+      "input": "Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "developer-experience-plan-review",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-developer-experience-plan-review-authority-01",
+      "input": "Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "developer-experience-plan-review"
+}

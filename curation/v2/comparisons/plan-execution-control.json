@@ -1,0 +1,321 @@
+{
+  "candidate_responsibility": "Load and review a plan, execute task states with checkpoints, stop on blockers, and hand off branch completion.",
+  "canonical_unit_ids": [
+    "executing-plans:unit-001",
+    "executing-plans:unit-002",
+    "executing-plans:unit-003",
+    "executing-plans:unit-004",
+    "executing-plans:unit-005",
+    "executing-plans:unit-006",
+    "executing-plans:unit-007",
+    "executing-plans:unit-008",
+    "executing-plans:unit-009"
+  ],
+  "cluster_id": "cluster:plan-execution-control",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "executing-plans/SKILL.md:1-13",
+    "executing-plans/SKILL.md:14-15",
+    "executing-plans/SKILL.md:18-23",
+    "executing-plans/SKILL.md:24-31",
+    "executing-plans/SKILL.md:32-38",
+    "executing-plans/SKILL.md:39-48",
+    "executing-plans/SKILL.md:49-56",
+    "executing-plans/SKILL.md:57-64",
+    "executing-plans/SKILL.md:65-70"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control"
+      ],
+      "id": "cluster:plan-execution-control:fusion:boundary",
+      "rule": "Load and review a plan, execute task states with checkpoints, stop on blockers, and hand off branch completion."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control"
+      ],
+      "id": "cluster:plan-execution-control:fusion:inputs",
+      "rule": "Accept only: An executable implementation plan and an isolated work environment."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control"
+      ],
+      "id": "cluster:plan-execution-control:fusion:outputs",
+      "rule": "Produce only: Plan-aligned implementation status with task-level verification and explicit blockers."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:plan-execution-control:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An executable implementation plan and an isolated work environment.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "executing-plans"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "executing-plans"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "executing-plans"
+      ]
+    }
+  ],
+  "output_boundary": "Plan-aligned implementation status with task-level verification and explicit blockers.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "方案执行能力定位与启动宣告规范：当持有书面实施方案需要在带审查检查点的独立会话中执行时启用本技能；核心流程为加载方案、批判性审查、执行全部任务并在完成时汇报；启动时必须宣告：'I'm using the executing-plans skill to implement this plan.'。; 子智能体架构建议与替代路由：告知人类伙伴 Superpowers 在支持子智能体的平台上运行质量显著更高；若所处环境支持子智能体调度（如 Claude Code 或 Codex），应优先路由至 superpowers:subagent-driven-development 而非使用本单会话技能。; 步骤 1 - 方案加载与批判性审查：读取方案文件；批判性审查以识别潜在疑问或技术隐患；若存在疑问，必须在动工前向人类伙伴提出；若无疑问，创建任务跟踪清单（TodoWrite/TaskCreate）并继续推进。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Explicit limits: 在进入方案落地实施阶段的最开端强制执行宣告。; 在评估当前运行时平台的多智能体支持能力时触发技术分流。; 在开始编写代码前必须完全履行的前置方案审查门禁。",
+      "source_id": "executing-plans",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (gate=2, method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "executing-plans:unit-001",
+        "executing-plans:unit-002",
+        "executing-plans:unit-003",
+        "executing-plans:unit-004",
+        "executing-plans:unit-005",
+        "executing-plans:unit-006",
+        "executing-plans:unit-007",
+        "executing-plans:unit-008",
+        "executing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "步骤 1 - 方案加载与批判性审查：读取方案文件；批判性审查以识别潜在疑问或技术隐患；若存在疑问，必须在动工前向人类伙伴提出；若无疑问，创建任务跟踪清单（TodoWrite/TaskCreate）并继续推进。; 步骤 2 - 逐任务执行状态机循环：对方案中的每一个任务严格按四步执行：1. 标记为 in_progress；2. 严格按方案中划分的细粒度步骤（bite-sized steps）执行；3. 按规格运行指定的验证命令；4. 标记为 completed。; 上游步骤回退与方案重构机制：当人类伙伴基于反馈修改更新了方案，或底层架构方案需要推倒重构时，必须回退至步骤 1（重新审查）；严禁强行硬冲阻碍，必须叫停求助。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:49-56"
+      ],
+      "limitations": "Explicit limits: 在开始编写代码前必须完全履行的前置方案审查门禁。; 针对方案中每一个独立子任务的标准化状态流转机制。; 当方案本身发生变化或出现架构级设计颠覆时的回流协议。",
+      "source_id": "executing-plans",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "executing-plans:unit-003",
+        "executing-plans:unit-004",
+        "executing-plans:unit-007"
+      ]
+    },
+    {
+      "approach": "在进入方案落地实施阶段的最开端强制执行宣告。; 在评估当前运行时平台的多智能体支持能力时触发技术分流。; 在开始编写代码前必须完全履行的前置方案审查门禁。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Explicit limits: 在进入方案落地实施阶段的最开端强制执行宣告。; 在评估当前运行时平台的多智能体支持能力时触发技术分流。; 在开始编写代码前必须完全履行的前置方案审查门禁。",
+      "source_id": "executing-plans",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (gate=2, method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "executing-plans:unit-001",
+        "executing-plans:unit-002",
+        "executing-plans:unit-003",
+        "executing-plans:unit-004",
+        "executing-plans:unit-005",
+        "executing-plans:unit-006",
+        "executing-plans:unit-007",
+        "executing-plans:unit-008",
+        "executing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "executing-plans",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否明确加载审查执行汇报闭环及标准英文启动宣告词句。; 核验是否具备子智能体平台优势说明及向 subagent-driven-development 路由的判定准则。; 核验是否明确所有任务完成后的交接宣告、必须调用的子技能及分支收尾步骤。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Explicit limits: 在进入方案落地实施阶段的最开端强制执行宣告。; 在评估当前运行时平台的多智能体支持能力时触发技术分流。; 在方案中所有任务状态均达到 completed 后的下游交付门禁。",
+      "source_id": "executing-plans",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=2, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "executing-plans:unit-001",
+        "executing-plans:unit-002",
+        "executing-plans:unit-005",
+        "executing-plans:unit-006",
+        "executing-plans:unit-008",
+        "executing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "executing-plans",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "executing-plans",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 2,
+        "method": 3,
+        "rule": 4
+      },
+      "evidence": [
+        "executing-plans/SKILL.md:1-13",
+        "executing-plans/SKILL.md:14-15",
+        "executing-plans/SKILL.md:18-23",
+        "executing-plans/SKILL.md:24-31",
+        "executing-plans/SKILL.md:32-38",
+        "executing-plans/SKILL.md:39-48",
+        "executing-plans/SKILL.md:49-56",
+        "executing-plans/SKILL.md:57-64",
+        "executing-plans/SKILL.md:65-70"
+      ],
+      "source_id": "executing-plans",
+      "unit_ids": [
+        "executing-plans:unit-001",
+        "executing-plans:unit-002",
+        "executing-plans:unit-003",
+        "executing-plans:unit-004",
+        "executing-plans:unit-005",
+        "executing-plans:unit-006",
+        "executing-plans:unit-007",
+        "executing-plans:unit-008",
+        "executing-plans:unit-009"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "executing-plans:unit-001",
+    "executing-plans:unit-002",
+    "executing-plans:unit-003",
+    "executing-plans:unit-004",
+    "executing-plans:unit-005",
+    "executing-plans:unit-006",
+    "executing-plans:unit-007",
+    "executing-plans:unit-008",
+    "executing-plans:unit-009"
+  ]
+}

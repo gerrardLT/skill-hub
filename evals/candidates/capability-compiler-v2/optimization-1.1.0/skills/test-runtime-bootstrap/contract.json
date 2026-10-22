@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "minimal project test configuration",
+    "one passing real-behavior test",
+    "dependency and lockfile diff",
+    "verification or rollback evidence"
+  ],
+  "capability_id": "capability:test-runtime-bootstrap",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Bootstrap passes only when the project-local runtime and one real-behavior test run successfully; failed setup must restore dependency and configuration files exactly.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "test-runtime-bootstrap",
+  "inputs": [
+    "Project runtime, selected test framework, package policy, workspace authority, install command, and rollback baseline."
+  ],
+  "outputs": [
+    "minimal project test configuration",
+    "one passing real-behavior test",
+    "dependency and lockfile diff",
+    "verification or rollback evidence"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "project-local",
+      "minimal-install",
+      "real-behavior-test",
+      "dependency-diff",
+      "rollback-baseline",
+      "no-global-change"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Install and configure one approved project-local test runtime, prove it with one real-behavior test, and restore dependency files if setup fails.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

@@ -1,0 +1,65 @@
+{
+  "artifact_types": [
+    "requirement-to-implementation matrix",
+    "compliance findings",
+    "extra and missing behavior register",
+    "human-owned disposition recommendation"
+  ],
+  "capability_id": "capability:implementation-spec-compliance-review",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Compliance passes only when every frozen requirement and design obligation has current implementation and verification evidence and no unapproved behavior is silently introduced.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "implementation-spec-compliance-review",
+  "inputs": [
+    "Approved task requirements, implementation diff, source snapshot, and implementer report as an untrusted claim."
+  ],
+  "outputs": [
+    "requirement-to-implementation matrix",
+    "compliance findings",
+    "extra and missing behavior register",
+    "human-owned disposition recommendation"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "frozen-spec",
+      "source-ref",
+      "traceability",
+      "missing-behavior",
+      "extra-behavior",
+      "no-source-edit"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently compare an implementation and its evidence with frozen requirements, design, interfaces, and scope without editing source.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

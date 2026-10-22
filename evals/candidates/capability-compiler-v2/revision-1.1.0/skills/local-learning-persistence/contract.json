@@ -1,0 +1,71 @@
+{
+  "artifact_types": [
+    "persisted local learning identity",
+    "source, evidence-status, and provenance metadata",
+    "retention and deletion path",
+    "read-back, hash, conflict, and rollback evidence",
+    "normalized record in the store's schema, or in a labelled proposed schema"
+  ],
+  "capability_id": "capability:local-learning-persistence",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [
+      "approved-local-system-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "local-system-write",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Local persistence accepts one validated approved record only; secrets, unverified inference, unrelated context, external synchronization, and indefinite retention are blocked.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "local-learning-persistence",
+  "inputs": [
+    "Validated record, project identity, local destination, privacy and retention policy, and local-system write authorization."
+  ],
+  "outputs": [
+    "persisted local learning identity",
+    "source, evidence-status, and provenance metadata",
+    "retention and deletion path",
+    "read-back, hash, conflict, and rollback evidence",
+    "normalized record in the store's schema, or in a labelled proposed schema"
+  ],
+  "permission_identity": "local-system-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "one-validated-record",
+      "local-only",
+      "evidence-status",
+      "provenance",
+      "retention",
+      "deletion",
+      "read-back",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Persist one validated evidence-bounded learning, metric, review outcome, or project-context record to one approved local destination under privacy, retention, deletion, and rollback controls.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

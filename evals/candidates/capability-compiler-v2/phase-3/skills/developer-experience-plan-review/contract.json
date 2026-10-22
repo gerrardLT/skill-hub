@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "DX plan review",
+    "developer journey gaps",
+    "measurement recommendations",
+    "plan amendments"
+  ],
+  "capability_id": "capability:developer-experience-plan-review",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Do not substitute general code quality comments for evidence about a developer-facing journey.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "developer-experience-plan-review",
+  "inputs": [
+    "Plan, approved product scope, current developer journey evidence, constraints, and decision owners."
+  ],
+  "outputs": [
+    "DX plan review",
+    "developer journey gaps",
+    "measurement recommendations",
+    "plan amendments"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Independently review a plan for developer setup, interfaces, feedback loops, errors, documentation, upgrades, and measurable DX outcomes.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

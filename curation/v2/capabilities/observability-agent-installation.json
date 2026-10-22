@@ -1,0 +1,125 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:observability-agent-installation",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0190",
+    "V2-FUSION-0191",
+    "V2-FUSION-0192",
+    "V2-FUSION-0193",
+    "V2-FUSION-0194",
+    "V2-FUSION-0195",
+    "V2-FUSION-0196",
+    "V2-FUSION-0197",
+    "V2-FUSION-0198",
+    "V2-FUSION-0229",
+    "V2-FUSION-0230",
+    "V2-FUSION-0231",
+    "V2-FUSION-0232",
+    "V2-FUSION-0233",
+    "V2-FUSION-0234",
+    "V2-FUSION-0235",
+    "V2-FUSION-0236",
+    "V2-FUSION-0237",
+    "V2-FUSION-0238",
+    "V2-FUSION-0263"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Platform, environment, provider account, credentials, desired instrumentation, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Observability Agent Installation",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Agent installation evidence, configuration, verification command, and rollback steps."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/agent-install",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/agent-install"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/agent-install",
+      "provider": "datadog",
+      "source_root": "linux-ssi/agent-install"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/troubleshoot-ssi"
+    }
+  ],
+  "responsibility": "Install an observability agent using an explicit platform variant and authorized remote change.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-apm/k8s-ssi/agent-install:001:root-responsibility",
+    "v2-root:dd-apm/k8s-ssi/agent-install:002:install-the-datadog-agent-on-kubernetes",
+    "v2-root:dd-apm/k8s-ssi/agent-install:003:phase-0-load-credentials",
+    "v2-root:dd-apm/k8s-ssi/agent-install:004:step-1-check-for-an-existing-agent-installation",
+    "v2-root:dd-apm/k8s-ssi/agent-install:005:step-2-install-the-datadog-operator",
+    "v2-root:dd-apm/k8s-ssi/agent-install:006:step-3-create-the-api-key-secret",
+    "v2-root:dd-apm/k8s-ssi/agent-install:007:step-4-deploy-the-datadogagent-resource",
+    "v2-root:dd-apm/k8s-ssi/agent-install:008:step-5-verify-the-api-key",
+    "v2-root:dd-apm/k8s-ssi/agent-install:009:security-constraints",
+    "v2-root:dd-apm/linux-ssi/agent-install:001:root-responsibility",
+    "v2-root:dd-apm/linux-ssi/agent-install:002:install-datadog-agent-on-linux",
+    "v2-root:dd-apm/linux-ssi/agent-install:003:phase-0-load-credentials",
+    "v2-root:dd-apm/linux-ssi/agent-install:004:phase-1-gather-infrastructure-info",
+    "v2-root:dd-apm/linux-ssi/agent-install:005:phase-2-install-the-datadog-agent-with-ssi",
+    "v2-root:dd-apm/linux-ssi/agent-install:006:phase-3-verify-the-agent-is-running-and-healthy",
+    "v2-root:dd-apm/linux-ssi/agent-install:007:phase-4-discover-services-that-need-restarting",
+    "v2-root:dd-apm/linux-ssi/agent-install:008:command-line-of-the-process",
+    "v2-root:dd-apm/linux-ssi/agent-install:009:parent-process",
+    "v2-root:dd-apm/linux-ssi/agent-install:010:security-constraints",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:014:re-run-install-now-it-will-actually-download-and-extract"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:102-126",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:127-144",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:13-52",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:145-184",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:17-56",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:197-215",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:263-270",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:3-7",
+    "dd-apm/k8s-ssi/agent-install/SKILL.md:88-101",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:117-143",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:12-51",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:144-183",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:218-232",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:233-234",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:237-276",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:275-280",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:29-50",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:3-7",
+    "dd-apm/linux-ssi/agent-install/SKILL.md:51-86",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:370-382"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

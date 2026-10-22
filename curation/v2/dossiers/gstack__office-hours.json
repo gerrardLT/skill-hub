@@ -1,0 +1,221 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/office-hours/SKILL.md:94]",
+    "Skill Invocation During Plan Mode [gstack/office-hours/SKILL.md:98]",
+    "Model-Specific Behavioral Patch (claude) [gstack/office-hours/SKILL.md:230]",
+    "Continuous Checkpoint Mode [gstack/office-hours/SKILL.md:330]",
+    "Phase 2A: Startup Mode — YC Product Diagnostic [gstack/office-hours/SKILL.md:636]",
+    "Phase 2B: Builder Mode — Design Partner [gstack/office-hours/SKILL.md:645]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/office-hours/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/office-hours/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/office-hours/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/office-hours/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/office-hours/SKILL.md:72]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/office-hours/SKILL.md:77]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/office-hours/SKILL.md:96]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/office-hours/SKILL.md:115]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/office-hours/SKILL.md:139]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/office-hours/SKILL.md:210]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/office-hours/SKILL.md:334]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/office-hours/SKILL.md:457]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/office-hours/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "YC Office Hours — two modes. [gstack/office-hours/SKILL.md:5]",
+  "root_id": "skill-root:gstack/office-hours",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/office-hours/SKILL.md:48]",
+    "Proactively invoke this skill (do NOT answer directly) when the user describes [gstack/office-hours/SKILL.md:60]",
+    "a concept before any code is written. [gstack/office-hours/SKILL.md:63]",
+    "Use before /plan-ceo-review or /plan-eng-review. [gstack/office-hours/SKILL.md:64]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/office-hours/SKILL.md:78]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/office-hours/SKILL.md:79]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/office-hours/SKILL.md:80]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/office-hours/SKILL.md:87]"
+  ],
+  "skill_path": "gstack/office-hours/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/office-hours/SKILL.md"
+    },
+    {
+      "line_end": 52,
+      "line_start": 52,
+      "path": "gstack/office-hours/SKILL.md"
+    },
+    {
+      "line_end": 66,
+      "line_start": 66,
+      "path": "gstack/office-hours/SKILL.md"
+    },
+    {
+      "line_end": 94,
+      "line_start": 94,
+      "path": "gstack/office-hours/SKILL.md"
+    },
+    {
+      "line_end": 98,
+      "line_start": 98,
+      "path": "gstack/office-hours/SKILL.md"
+    }
+  ],
+  "source_sha256": "bc1f6501e07754174a1a624e90206d17e11916458b7c4df0a4b877838c4876d2",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/office-hours/SKILL.md:112]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/office-hours/SKILL.md:113]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/office-hours/SKILL.md:114]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/office-hours/SKILL.md:115]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/office-hours/SKILL.md:117]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/office-hours/SKILL.md:121]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bc1f6501e07754174a1a624e90206d17e11916458b7c4df0a4b877838c4876d2",
+        "content-review:1175-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-strategy.md"
+      ],
+      "path": "gstack/office-hours/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8fb5c264535bc91b75ab0c38a11ebd099cb2a15ae0a812cf5a937ece5a1b5c1b",
+        "content-review:343-lines"
+      ],
+      "path": "gstack/office-hours/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bb9b6be9d767079b30d3659fecea35b755e7a799a086db2023be639f06a95163",
+        "content-review:634-lines"
+      ],
+      "path": "gstack/office-hours/sections/design-and-handoff.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:df7400224f4b2a716af304cceeab97b61f8e3294242647fed57bd401dcaedd0b",
+        "content-review:521-lines"
+      ],
+      "path": "gstack/office-hours/sections/design-and-handoff.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fd8f174c7667ac997ebc1ded92ed13304fde2aef0283fe228c1b7aa8f39344b1",
+        "content-review:27-lines"
+      ],
+      "path": "gstack/office-hours/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b5635c91482c2a70fd3c1b710a60afb33c729e598e2ad79061d92d482b27e596",
+        "content-review:160-lines"
+      ],
+      "path": "gstack/office-hours/sections/phase-2a-startup-diagnostic.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b21f9dffbeec8898e0bec66ee771d0507540dced6ea2a46be1a0cd81c422ea7d",
+        "content-review:158-lines"
+      ],
+      "path": "gstack/office-hours/sections/phase-2a-startup-diagnostic.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:03476cec5d6579458c5f35e34d8f033ccde5e355e74b195e211d74e74648af55",
+        "content-review:40-lines"
+      ],
+      "path": "gstack/office-hours/sections/phase-2b-builder-brainstorm.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9e9266711261079644aa56acc1d08c4be9f18badc559247cdff9f35e48816719",
+        "content-review:38-lines"
+      ],
+      "path": "gstack/office-hours/sections/phase-2b-builder-brainstorm.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: Read [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: Grep [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: Glob [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: Write [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: Edit [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: AskUserQuestion [gstack/office-hours/SKILL.md:1-47]",
+    "Declared tool: WebSearch [gstack/office-hours/SKILL.md:1-47]",
+    "Local dependency: gstack/office-hours/sections/phase-2a-startup-diagnostic.md [gstack/office-hours/SKILL.md:631]",
+    "Local dependency: gstack/office-hours/sections/phase-2b-builder-brainstorm.md [gstack/office-hours/SKILL.md:632]",
+    "Local dependency: gstack/office-hours/sections/design-and-handoff.md [gstack/office-hours/SKILL.md:633]",
+    "Local dependency: gstack/office-hours/sections/phase-2a-startup-diagnostic.md [gstack/office-hours/SKILL.md:1136]",
+    "Local dependency: gstack/office-hours/sections/phase-2b-builder-brainstorm.md [gstack/office-hours/SKILL.md:1136]",
+    "Local dependency: gstack/office-hours/sections/design-and-handoff.md [gstack/office-hours/SKILL.md:1136]"
+  ],
+  "trigger": "YC Office Hours — two modes. (gstack) [gstack/office-hours/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/office-hours/SKILL.md:178]",
+    "Self-check before emitting [gstack/office-hours/SKILL.md:201]",
+    "Context Recovery [gstack/office-hours/SKILL.md:269]",
+    "Completeness Principle — Boil the Ocean [gstack/office-hours/SKILL.md:316]",
+    "Confusion Protocol [gstack/office-hours/SKILL.md:322]",
+    "Claimed Limitations Need Evidence [gstack/office-hours/SKILL.md:326]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/office-hours/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/office-hours/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/office-hours/SKILL.md:330]",
+    "Phase 1: Context Gathering [gstack/office-hours/SKILL.md:540]",
+    "Phase 2A: Startup Mode — YC Product Diagnostic [gstack/office-hours/SKILL.md:636]",
+    "Phase 2B: Builder Mode — Design Partner [gstack/office-hours/SKILL.md:645]",
+    "Phase 2.5: Related Design Discovery [gstack/office-hours/SKILL.md:656]",
+    "Phase 2.75: Landscape Awareness [gstack/office-hours/SKILL.md:705]",
+    "Phase 3: Premise Challenge [gstack/office-hours/SKILL.md:749]",
+    "Phase 3.5: Cross-Model Second Opinion (optional) [gstack/office-hours/SKILL.md:771]",
+    "Phase 4: Alternatives Generation (MANDATORY) [gstack/office-hours/SKILL.md:875]",
+    "Phase 4.5: Founder Signal Synthesis [gstack/office-hours/SKILL.md:1087]"
+  ]
+}

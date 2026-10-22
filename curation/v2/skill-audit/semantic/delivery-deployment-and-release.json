@@ -1,0 +1,150 @@
+{
+  "domain": "delivery-deployment-and-release",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "change-delivery-preflight",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Both Phase 9 holdouts are candidate wins.", "Readiness explicitly grants no packaging, push or PR authority."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source checks that the credential-redaction pre-push hook is installed (including custom core.hooksPath); the Skill only says 'secret indicators'.", "evidence": "skills/ship/SKILL.md:955-985; slots/v2/1.0.0/skills/change-delivery-preflight/SKILL.md:29", "recommendation": "Add 'redaction pre-push hook present, honouring core.hooksPath' as a named check."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sibling-worktree and version-queue collision detection from the landing report is dropped.", "evidence": "skills/gstack/landing-report/SKILL.md:454-493", "recommendation": "Add a check for other active branches claiming the same version slot."}
+      ],
+      "lost_source_techniques": ["pre-push redaction hook check", "sibling worktree version-claim collision"]
+    },
+    {
+      "id": "change-packaging-and-versioning",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Bisectable commits and no-push boundary are explicit.", "Both Phase 9 holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Version-state classification before bumping (FRESH vs ALREADY_BUMPED vs needs repair) is absent, so repeated packaging can double-bump the version.", "evidence": "skills/gstack/ship/SKILL.md:706-745; SKILL.md:30", "recommendation": "Require classifying current version state against the base before any version write."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "WIP-commit handling and the anti-footgun rule 'never destroy non-WIP commits; stop and ask when unsure' are dropped.", "evidence": "skills/gstack/ship/SKILL.md:853-892", "recommendation": "Add WIP-only detection and a stop condition before any history rewrite."}
+      ],
+      "lost_source_techniques": ["version bump state classification", "WIP-only branch soft reset with non-WIP preservation"]
+    },
+    {
+      "id": "deployment-environment-setup",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 1, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Local-config-only boundary and teardown plan are explicit."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Platform detection from repository files (fly.toml, vercel.json, netlify.toml, render.yaml, workflows) and per-platform URL/health/status inference are absent; step 2 says 'select from approved constraints' without detection.", "evidence": "skills/gstack/setup-deploy/SKILL.md:482-521; SKILL.md:29", "recommendation": "Add a detection table mapping config files to platform adapters and derived health/status commands."},
+        {"priority": "P1", "dimension": "output_verifiability", "issue": "Output 'local deployment configuration candidate' has no schema; the source defines a fixed deploy-configuration block (platform, production URL, workflow, status command, merge method, health check, hooks).", "evidence": "skills/gstack/setup-deploy/SKILL.md:569-608; SKILL.md:36", "recommendation": "Adopt that block as the required output schema consumed by readiness and trigger Skills."}
+      ],
+      "lost_source_techniques": ["platform detection from config files", "standard deploy configuration block"]
+    },
+    {
+      "id": "deployment-trigger-execution",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One-attempt authorization with receipt, request hash and cancellation path."],
+      "findings": [
+        {"priority": "P1", "dimension": "procedure", "issue": "Auto-deploy-on-merge platforms (Vercel, Netlify) need no trigger; the Skill has no 'not applicable' path and may fabricate a trigger action.", "evidence": "skills/gstack/land-and-deploy/SKILL.md:832-835; SKILL.md:28-31", "recommendation": "Add a first check: if the configured platform deploys automatically, return not-applicable and hand off to deployment-observation."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Run identification by matching the merge commit SHA and preferring the detected deploy workflow name is dropped.", "evidence": "skills/gstack/land-and-deploy/SKILL.md:796-810", "recommendation": "Require the run receipt to bind to the exact head or merge SHA."}
+      ],
+      "lost_source_techniques": ["auto-deploy platforms need no explicit trigger", "match workflow run by merge SHA"]
+    },
+    {
+      "id": "edge-worker-deployment",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Bindings by reference and wildcard-route block are domain-specific."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source warns that a successful dry run proves build and packaging only, not remote resources or runtime behaviour; the Skill treats preview as a gate without stating that limit.", "evidence": "skills/wrangler/SKILL.md:46-52; SKILL.md:29", "recommendation": "State that dry-run success does not validate bindings or runtime and require the health handoff to check them."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Regenerating binding types after config change instead of hand-editing generated declarations is dropped.", "evidence": "skills/wrangler/SKILL.md:46-52", "recommendation": "Add type regeneration and typecheck to the local validation step."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap 0.348 with web-hosting-deployment; neither names the other as an anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers keyed on 'edge runtime/bindings/routes' vs 'static or SSR hosting project'."}
+      ],
+      "lost_source_techniques": ["dry run does not prove remote resources", "regenerate types after binding changes"]
+    },
+    {
+      "id": "kubernetes-application-deployment",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Server-side diff rejection of unexpected namespace, identity or immutable-field changes.", "Readiness failure blocks apply."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "The source's deploy-failure catalog (DS001-DS013) and rollback reference are not mapped to stop conditions.", "evidence": "skills/azure-kubernetes/azure-kubernetes-app-deploy/SKILL.md:10-34", "recommendation": "Map known failure codes to stop and recovery actions in step 3."}
+      ],
+      "lost_source_techniques": ["DS001-DS013 failure catalog"]
+    },
+    {
+      "id": "merge-and-deploy-readiness",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Separate merge and deploy verdicts.", "Rejects stale, self-attested or waived evidence.", "Both Phase 9 holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "First-run dry-run validation keyed on a deploy-config hash is dropped.", "evidence": "skills/land-and-deploy/SKILL.md:665-694", "recommendation": "Flag first run or changed deploy config as requiring a dry-run verdict."}
+      ],
+      "lost_source_techniques": ["first-run confirmation keyed on deploy-config hash"]
+    },
+    {
+      "id": "pull-request-comment-response",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One comment, no thread resolution, no source change."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Line-level review comments and top-level conversation comments use different reply endpoints; the Skill does not distinguish them, so a reply can land on the wrong thread.", "evidence": "skills/gstack/review/greptile-triage.md:97-111; SKILL.md:30", "recommendation": "Require classifying comment type and binding the reply target accordingly."}
+      ],
+      "lost_source_techniques": ["line-level vs top-level reply endpoints"]
+    },
+    {
+      "id": "remote-git-push",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Exact refspec, expected remote SHA, non-force default.", "Both Phase 9 holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Credential redaction pre-push hook check is generalized to 'secret checks'.", "evidence": "skills/gstack/ship/SKILL.md:955-963; SKILL.md:28", "recommendation": "Name the redaction hook check explicitly."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "remote-pull-request-change",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects auto-merge enabling and source changes."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source requires regenerating the PR body from this run's fresh results on update and never reusing stale body content; the Skill does not.", "evidence": "skills/gstack/ship/sections/pr-body.md:59-67", "recommendation": "Add a rule: updates replace the body from current evidence; stale sections are removed."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Redaction must scan both title and body at the sink and refuse when the scan cannot run.", "evidence": "skills/gstack/ship/sections/pr-body.md:180-225", "recommendation": "State scan-at-sink for title and body with refuse-on-scan-failure."}
+      ],
+      "lost_source_techniques": ["regenerate PR body from scratch on update", "redaction scan at sink, refuse if unscannable"]
+    },
+    {
+      "id": "remote-pull-request-merge",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Refresh-before-merge drift block.", "Branch deletion requires separate authority, a deliberate tightening of the source."],
+      "findings": [
+        {"priority": "P1", "dimension": "procedure", "issue": "Merge queues and auto-merge are not addressed: in queue-protected repositories a direct merge fails, and enqueueing is a different action with deferred result.", "evidence": "skills/gstack/land-and-deploy/sections/merge-and-deploy.md:1-145; SKILL.md:30", "recommendation": "Define queue entry as an allowed method returning 'queued' with a pending-result handoff, never a merged claim."}
+      ],
+      "lost_source_techniques": ["auto-merge first, respecting merge queue"]
+    },
+    {
+      "id": "web-hosting-deployment",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Exact project, environment, domain and rollback target."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Git-integrated hosting deploys by commit and push; the Skill does not say that this path must route to change-packaging and remote-git-push instead of being performed here.", "evidence": "skills/deploy-to-vercel/SKILL.md:53-92; SKILL.md:30", "recommendation": "Add: when the provider deploys from Git, return a handoff to remote-git-push; this Skill covers CLI or API deploys only."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Deploy method selection by link/remote state and the tarball fallback are dropped.", "evidence": "skills/deploy-to-vercel/SKILL.md:53-92,181-220", "recommendation": "Add a method-selection step with these states."}
+      ],
+      "lost_source_techniques": ["deploy method selection by link and git state", "tarball deploy fallback"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["web-hosting-deployment", "edge-worker-deployment", "kubernetes-application-deployment"], "issue": "Three deploy Skills share an identical four-step skeleton; separation is justified by different failure modes but neither the shared skeleton nor the discriminator is stated.", "recommendation": "Keep separate; add a one-line discriminator and mutual anti-triggers to each."}
+  ]
+}

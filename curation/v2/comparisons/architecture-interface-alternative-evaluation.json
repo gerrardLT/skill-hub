@@ -1,0 +1,353 @@
+{
+  "candidate_responsibility": "Generate independent interface alternatives and compare hiding, complexity, dependencies, tests, and migration cost.",
+  "canonical_unit_ids": [
+    "codebase-design:unit-010",
+    "codebase-design:unit-011",
+    "codebase-design:unit-012",
+    "improve-codebase-architecture:unit-006"
+  ],
+  "cluster_id": "cluster:architecture-interface-alternative-evaluation",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "codebase-design/DESIGN-IT-TWICE.md:1-18",
+    "codebase-design/DESIGN-IT-TWICE.md:19-39",
+    "codebase-design/DESIGN-IT-TWICE.md:40-44",
+    "improve-codebase-architecture/SKILL.md:62-71"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-interface-alternative-evaluation"
+      ],
+      "id": "cluster:architecture-interface-alternative-evaluation:fusion:boundary",
+      "rule": "Generate independent interface alternatives and compare hiding, complexity, dependencies, tests, and migration cost."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-interface-alternative-evaluation"
+      ],
+      "id": "cluster:architecture-interface-alternative-evaluation:fusion:inputs",
+      "rule": "Accept only: A bounded module problem, constraints, and an interface-design objective."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-interface-alternative-evaluation"
+      ],
+      "id": "cluster:architecture-interface-alternative-evaluation:fusion:outputs",
+      "rule": "Produce only: At least two structured alternatives, tradeoffs, and a recommendation, not execution."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:architecture-interface-alternative-evaluation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A bounded module problem, constraints, and an interface-design objective.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design",
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design",
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design",
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design",
+        "improve-codebase-architecture"
+      ]
+    }
+  ],
+  "output_boundary": "At least two structured alternatives, tradeoffs, and a recommendation, not execution.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "问题空间界定与约束草图具象化（Design It Twice 步骤 1）：基于欧斯特豪特'首个想法极少是最优方案'的前提；派发子智能体前，向用户呈现问题空间说明——列明新接口需满足的硬性约束、依赖归属的分类模式、以及一段粗粒度图解代码草图以锚定约束；严禁在草图中提前提出方案建议，纯粹用于具象化约束。; 3+ 并行子智能体激进发散派发（Design It Twice 步骤 2）：并发派发 3 个以上子智能体，分别赋予截然不同的极端设计诉求——Agent 1 极简接口（1-3 入口最大化杠杆）、Agent 2 极致灵活（支持大量用例扩展）、Agent 3 常见调用优化（让默认场景极度简单）、Agent 4 端口适配体系；注入规范架构词汇与领域词汇；每个智能体输出接口契约、使用范例、隐藏实现、依赖策略与权衡分析五项标准报文。; 顺序呈现对比与鲜明推荐裁决（Design It Twice 步骤 3）：依次逐个呈现各设计方案以便用户消化吸收；在散文中从深度（接口杠杆）、内聚力（变更集中度）及接缝定位三个核心维度进行深度对比；对比后必须给出主观明确的最佳推荐或提出优势融合的混合方案（Hybrid）；严禁只罗列菜单，必须展现专业架构裁决意见。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Explicit limits: 启动多智能体并发接口设计前的引导与问题空间冻结操作。; 通过多子智能体在截然不同的设计约束维度下进行极限探索。; 将多个智能体的发散设计收敛为高确定性决策结论的标准收官流程。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-010",
+        "codebase-design:unit-011",
+        "codebase-design:unit-012"
+      ]
+    },
+    {
+      "approach": "问题空间界定与约束草图具象化（Design It Twice 步骤 1）：基于欧斯特豪特'首个想法极少是最优方案'的前提；派发子智能体前，向用户呈现问题空间说明——列明新接口需满足的硬性约束、依赖归属的分类模式、以及一段粗粒度图解代码草图以锚定约束；严禁在草图中提前提出方案建议，纯粹用于具象化约束。; 3+ 并行子智能体激进发散派发（Design It Twice 步骤 2）：并发派发 3 个以上子智能体，分别赋予截然不同的极端设计诉求——Agent 1 极简接口（1-3 入口最大化杠杆）、Agent 2 极致灵活（支持大量用例扩展）、Agent 3 常见调用优化（让默认场景极度简单）、Agent 4 端口适配体系；注入规范架构词汇与领域词汇；每个智能体输出接口契约、使用范例、隐藏实现、依赖策略与权衡分析五项标准报文。; 顺序呈现对比与鲜明推荐裁决（Design It Twice 步骤 3）：依次逐个呈现各设计方案以便用户消化吸收；在散文中从深度（接口杠杆）、内聚力（变更集中度）及接缝定位三个核心维度进行深度对比；对比后必须给出主观明确的最佳推荐或提出优势融合的混合方案（Hybrid）；严禁只罗列菜单，必须展现专业架构裁决意见。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Explicit limits: 启动多智能体并发接口设计前的引导与问题空间冻结操作。; 通过多子智能体在截然不同的设计约束维度下进行极限探索。; 将多个智能体的发散设计收敛为高确定性决策结论的标准收官流程。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-010",
+        "codebase-design:unit-011",
+        "codebase-design:unit-012"
+      ]
+    },
+    {
+      "approach": "启动多智能体并发接口设计前的引导与问题空间冻结操作。; 通过多子智能体在截然不同的设计约束维度下进行极限探索。; 将多个智能体的发散设计收敛为高确定性决策结论的标准收官流程。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Explicit limits: 启动多智能体并发接口设计前的引导与问题空间冻结操作。; 通过多子智能体在截然不同的设计约束维度下进行极限探索。; 将多个智能体的发散设计收敛为高确定性决策结论的标准收官流程。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-010",
+        "codebase-design:unit-011",
+        "codebase-design:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "候选方案质询推演与领域模型闭环流：用户选定候选方案后调用 grilling 技能推演决策树（约束/依赖/深模块形态/保留测试）；调用 domain-modeling 技能就地同步更新 CONTEXT.md；若用户因承重理由拒绝，主动建议录为 ADR 以防未来重复提议；若需探索候选接口，调用 codebase-design 的 design-it-twice 并行子智能体模式。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Explicit limits: 在用户选定深化目标后触发的深入质询与领域沉淀联动流程。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-006"
+      ]
+    },
+    {
+      "approach": "候选方案质询推演与领域模型闭环流：用户选定候选方案后调用 grilling 技能推演决策树（约束/依赖/深模块形态/保留测试）；调用 domain-modeling 技能就地同步更新 CONTEXT.md；若用户因承重理由拒绝，主动建议录为 ADR 以防未来重复提议；若需探索候选接口，调用 codebase-design 的 design-it-twice 并行子智能体模式。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Explicit limits: 在用户选定深化目标后触发的深入质询与领域沉淀联动流程。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-006"
+      ]
+    },
+    {
+      "approach": "在用户选定深化目标后触发的深入质询与领域沉淀联动流程。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Explicit limits: 在用户选定深化目标后触发的深入质询与领域沉淀联动流程。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3
+      },
+      "evidence": [
+        "codebase-design/DESIGN-IT-TWICE.md:1-18",
+        "codebase-design/DESIGN-IT-TWICE.md:19-39",
+        "codebase-design/DESIGN-IT-TWICE.md:40-44"
+      ],
+      "source_id": "codebase-design",
+      "unit_ids": [
+        "codebase-design:unit-010",
+        "codebase-design:unit-011",
+        "codebase-design:unit-012"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:62-71"
+      ],
+      "source_id": "improve-codebase-architecture",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-006"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "codebase-design:unit-010",
+    "codebase-design:unit-011",
+    "codebase-design:unit-012",
+    "improve-codebase-architecture:unit-006"
+  ]
+}

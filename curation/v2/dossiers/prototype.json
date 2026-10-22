@@ -1,0 +1,113 @@
+{
+  "branches": [
+    "Prototyping Variants [prototype/SKILL.md:7]",
+    "Invocation Variants [prototype/SKILL.md:78]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [prototype/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [prototype/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [prototype/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [prototype/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "A divergence skill. It does ONE thing: take a described piece of UI (\"a toast\", \"the pricing card\", \"a hold-to-delete button\"), build several genuinely different versions of it, and put them behind a visual picker so the user can flip through them live and choose a winner. It does not review existin [prototype/SKILL.md:9]",
+    "5. Clean up after the choice. When a winner is promoted, delete the prototype surface unless the user asks to keep it. [prototype/SKILL.md:23]",
+    "When the user picks: integrate that variant where it belongs, following the project's existing conventions (file layout, naming, token usage), then delete the prototype surface per Hard Rule 5. If the user instead wants another round, keep the harness and run Phase 3 again, diverging around the dire [prototype/SKILL.md:76]",
+    "keep <variant> Promote that variant into the codebase and delete the prototype surface [prototype/SKILL.md:85]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. [prototype/SKILL.md:3]",
+  "root_id": "skill-root:prototype",
+  "rules_gates": [
+    "You are a senior design engineer running a design exploration. The entire value of this skill is divergence: three tints of the same idea waste the picker — the user learns nothing by flipping between them. Each variant must be a direction you could defend shipping on its own, exploring a genuinely [prototype/SKILL.md:13]",
+    "Divergence is not an excuse to drop the craft bar. Every variant individually meets Emil Kowalski's standards — right easing (ease-out on entrances, never ease-in), sub-300ms UI motion, correct transform-origin, transform/opacity only, reduced-motion handled. A sloppy variant doesn't widen the explo [prototype/SKILL.md:15]",
+    "1. Never touch production code during exploration. Everything lives in an isolated prototype surface (see Phase 4). Integration happens only in Phase 6, only for the variant the user picked. [prototype/SKILL.md:19]",
+    "2. Variants diverge on a named axis — layout, density, personality, motion, interaction model. Before building, you must be able to state each variant's axis in a phrase. Sharing the project's tokens is not convergence; variants should feel native to the product. [prototype/SKILL.md:20]",
+    "4. The picker is chrome, not a contestant. Its exact markup, styles, and behavior are specified in [PICKER.md](PICKER.md) — copy them verbatim. Its look is not a design decision and never adapts to the project. [prototype/SKILL.md:22]",
+    "One thing per run. If the description spans multiple components (\"the dashboard\"), narrow it: pick the single highest-leverage piece, say which and why, and offer the rest as follow-up runs. Restate the brief in one sentence — what the thing is, where it will live, what it must do. [prototype/SKILL.md:29]",
+    "Before designing anything, map the ground the variants must stand on [prototype/SKILL.md:33]",
+    "Before writing any code, list the set: a name and an axis for each. Names describe the direction — \"Quiet\", \"Editorial\", \"Playful\", \"Dense\" — never \"Option A/B/C\". If two proposed directions would differ only in accent color or copy, they are one direction; replace one with a real alternative (diffe [prototype/SKILL.md:46]"
+  ],
+  "skill_path": "prototype/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "prototype/SKILL.md"
+    },
+    {
+      "line_end": 7,
+      "line_start": 7,
+      "path": "prototype/SKILL.md"
+    },
+    {
+      "line_end": 11,
+      "line_start": 11,
+      "path": "prototype/SKILL.md"
+    },
+    {
+      "line_end": 17,
+      "line_start": 17,
+      "path": "prototype/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "prototype/SKILL.md"
+    }
+  ],
+  "source_sha256": "2ad8401c4deaddb54947fb65247f790e7b3d8784e35312bcbedbfb1d59cd89ce",
+  "stop_conditions": [
+    "Then present the set and stop — the choice belongs to the user [prototype/SKILL.md:63]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:31a55eec94715cc79942e91e172e539e3031dcd5e2e5ee7c1446cf2caee960a6",
+        "content-review:198-lines"
+      ],
+      "path": "prototype/PICKER.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2ad8401c4deaddb54947fb65247f790e7b3d8784e35312bcbedbfb1d59cd89ce",
+        "content-review:91-lines",
+        "semantic-review-report:curation/v2/reviews/design.md"
+      ],
+      "path": "prototype/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: prototype/PICKER.md [prototype/SKILL.md:22]",
+    "Local dependency: prototype/PICKER.md [prototype/SKILL.md:57]"
+  ],
+  "trigger": "Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Only runs when explicitly invoked; it does not trigger on its own. [prototype/SKILL.md:3]",
+  "unique_methods": [
+    "Prototyping Variants [prototype/SKILL.md:7]",
+    "Operating Posture [prototype/SKILL.md:11]",
+    "Hard Rules [prototype/SKILL.md:17]",
+    "Invocation Variants [prototype/SKILL.md:78]",
+    "Tone [prototype/SKILL.md:88]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [prototype/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [prototype/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Workflow [prototype/SKILL.md:25]",
+    "Phase 1 — Scope [prototype/SKILL.md:27]",
+    "Phase 2 — Recon [prototype/SKILL.md:31]",
+    "Phase 3 — Choose directions [prototype/SKILL.md:42]",
+    "Phase 4 — Build the picker harness [prototype/SKILL.md:50]",
+    "Phase 5 — Verify and hand off [prototype/SKILL.md:59]",
+    "Phase 6 — Promote on selection [prototype/SKILL.md:74]"
+  ]
+}

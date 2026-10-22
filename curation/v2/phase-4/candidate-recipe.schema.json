@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "edges": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "condition": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "condition"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "evaluation_state": {
+      "const": "not-run-phase-9"
+    },
+    "feedback_routes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact": {
+            "type": "string"
+          },
+          "authorization": {
+            "const": "explicit-human-approval"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "artifact",
+          "authorization"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "forbidden_actions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "gates": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "human_checkpoints": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "const": "complete-ui-design-and-review"
+    },
+    "inputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "outputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "steps": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "depends_on": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "gates": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "type": "string"
+          },
+          "mutation_scope": {
+            "enum": [
+              "run-output",
+              "authorized-workspace",
+              "artifact-output"
+            ]
+          },
+          "outputs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "permission_identity": {
+            "type": "string"
+          },
+          "skill_ref": {
+            "type": "string"
+          },
+          "when": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "skill_ref",
+          "when",
+          "depends_on",
+          "permission_identity",
+          "mutation_scope",
+          "outputs",
+          "gates"
+        ],
+        "type": "object"
+      },
+      "minItems": 17,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "description",
+    "inputs",
+    "outputs",
+    "steps",
+    "edges",
+    "human_checkpoints",
+    "feedback_routes",
+    "gates",
+    "forbidden_actions",
+    "evaluation_state"
+  ],
+  "type": "object"
+}

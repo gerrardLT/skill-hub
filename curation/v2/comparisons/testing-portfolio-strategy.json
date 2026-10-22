@@ -1,0 +1,480 @@
+{
+  "candidate_responsibility": "Design a layered test portfolio from business risk, feedback speed, maintenance cost, and component type.",
+  "canonical_unit_ids": [
+    "ts-goal-balance-triangle",
+    "ts-method-component-api-endpoints",
+    "ts-method-component-data-pipelines",
+    "ts-method-component-frontend",
+    "ts-method-component-infrastructure",
+    "ts-model-testing-pyramid",
+    "ts-rule-coverage-focus-areas",
+    "ts-rule-coverage-skip-areas",
+    "ts-template-output-test-plan"
+  ],
+  "cluster_id": "cluster:testing-portfolio-strategy",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "test-case-generator/SKILL.md:19-27",
+    "test-case-generator/SKILL.md:200-208",
+    "test-case-generator/SKILL.md:236-240",
+    "test-case-generator/SKILL.md:242-246",
+    "test-case-generator/SKILL.md:8-10",
+    "testing-strategy/SKILL.md:12-16",
+    "testing-strategy/SKILL.md:20-20",
+    "testing-strategy/SKILL.md:21-21",
+    "testing-strategy/SKILL.md:22-22",
+    "testing-strategy/SKILL.md:23-23",
+    "testing-strategy/SKILL.md:27-27",
+    "testing-strategy/SKILL.md:29-29",
+    "testing-strategy/SKILL.md:33-33",
+    "testing-strategy/SKILL.md:8-8"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy"
+      ],
+      "id": "cluster:testing-portfolio-strategy:fusion:boundary",
+      "rule": "Design a layered test portfolio from business risk, feedback speed, maintenance cost, and component type."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy"
+      ],
+      "id": "cluster:testing-portfolio-strategy:fusion:inputs",
+      "rule": "Accept only: System architecture, risks, component types, environments, and data constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy"
+      ],
+      "id": "cluster:testing-portfolio-strategy:fusion:outputs",
+      "rule": "Produce only: A test pyramid, coverage priorities, skip boundaries, and an executable test plan."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:testing-portfolio-strategy:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "System architecture, risks, component types, environments, and data constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-case-generator"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "testing-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-case-generator",
+        "testing-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A test pyramid, coverage priorities, skip boundaries, and an executable test plan.",
+  "retained_auxiliary_unit_ids": [
+    "skills/test-case-generator/SKILL.md:19-27",
+    "skills/test-case-generator/SKILL.md:200-208",
+    "skills/test-case-generator/SKILL.md:236-240",
+    "skills/test-case-generator/SKILL.md:242-246",
+    "skills/test-case-generator/SKILL.md:8-10"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "核心功能定位：根据需求描述或文档自动生成专业、全面的测试用例。这是验收域上游的用例生产方法。; 质量评分五维规则：覆盖率（需求点覆盖）、可执行性（步骤清晰可重复）、独立性（用例间依赖）、可维护性（命名规范）、完备性（测试类型分布），各占 20% 权重，满分 100。; 评分驱动的改进规则：各维度低于 80 分时的针对性改进动作——覆盖率不足加用例、可执行性不足优化步骤、独立性不足减依赖、完备性不足补类型。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "limitations": "Explicit limits: 输入支持直接文本和 .txt/.docx/.pdf 文档两类; 五维等权；综合评分 90+ 为 A 级（良好）; 80 分为各维度改进触发线",
+      "source_id": "test-case-generator",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (method=1, rule=3, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:19-27",
+        "skills/test-case-generator/SKILL.md:200-208",
+        "skills/test-case-generator/SKILL.md:236-240",
+        "skills/test-case-generator/SKILL.md:242-246",
+        "skills/test-case-generator/SKILL.md:8-10"
+      ]
+    },
+    {
+      "approach": "核心功能定位：根据需求描述或文档自动生成专业、全面的测试用例。这是验收域上游的用例生产方法。; 工具动作清单：7 个脚本各司其职——依赖检测、多格式导出（CSV/Markdown/JSON/XMind/TestLink）、质量评分、测试数据生成、用例评审（去重/批量改优先级）、增量更新（需求 diff）、配置管理。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "limitations": "Explicit limits: 输入支持直接文本和 .txt/.docx/.pdf 文档两类; 依赖 Python 3.7+；文档解析需 python-docx/pdfplumber/openpyxl",
+      "source_id": "test-case-generator",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:19-27",
+        "skills/test-case-generator/SKILL.md:8-10"
+      ]
+    },
+    {
+      "approach": "输入支持直接文本和 .txt/.docx/.pdf 文档两类; 五维等权；综合评分 90+ 为 A 级（良好）; 80 分为各维度改进触发线",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "limitations": "Explicit limits: 输入支持直接文本和 .txt/.docx/.pdf 文档两类; 五维等权；综合评分 90+ 为 A 级（良好）; 80 分为各维度改进触发线",
+      "source_id": "test-case-generator",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (method=1, rule=3, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:19-27",
+        "skills/test-case-generator/SKILL.md:200-208",
+        "skills/test-case-generator/SKILL.md:236-240",
+        "skills/test-case-generator/SKILL.md:242-246",
+        "skills/test-case-generator/SKILL.md:8-10"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-case-generator",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "python scripts/quality_score.py testcases.json 输出各维度分数; 重新评分确认维度分数提升到 80 以上; 检查交付物格式与团队工作流匹配",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246"
+      ],
+      "limitations": "Explicit limits: 五维等权；综合评分 90+ 为 A 级（良好）; 80 分为各维度改进触发线; 格式选择由下游消费者决定而非个人偏好",
+      "source_id": "test-case-generator",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:200-208",
+        "skills/test-case-generator/SKILL.md:236-240",
+        "skills/test-case-generator/SKILL.md:242-246"
+      ]
+    },
+    {
+      "approach": "工具动作清单：7 个脚本各司其职——依赖检测、多格式导出（CSV/Markdown/JSON/XMind/TestLink）、质量评分、测试数据生成、用例评审（去重/批量改优先级）、增量更新（需求 diff）、配置管理。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27"
+      ],
+      "limitations": "Explicit limits: 依赖 Python 3.7+；文档解析需 python-docx/pdfplumber/openpyxl",
+      "source_id": "test-case-generator",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:19-27"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-case-generator",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "测试策略设计的核心目标是平衡覆盖率、执行速度与维护开销三者之间的关系。; API端点组件策略：核心业务逻辑采用单元测试，HTTP网络传输层采用集成测试，消费者对接采用契约测试。; 数据管道组件策略：重点覆盖输入校验、数据转换正确性验证及重复处理下的幂等性测试。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:33-33",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "limitations": "Explicit limits: 适用于所有层级的测试架构与策略设计。; 适用于微服务与Web服务接口的测试规划。; 适用于批处理ETL、流计算及数据流转管道。",
+      "source_id": "testing-strategy",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (method=4, rule=3, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ts-goal-balance-triangle",
+        "ts-method-component-api-endpoints",
+        "ts-method-component-data-pipelines",
+        "ts-method-component-frontend",
+        "ts-method-component-infrastructure",
+        "ts-model-testing-pyramid",
+        "ts-rule-coverage-focus-areas",
+        "ts-rule-coverage-skip-areas",
+        "ts-template-output-test-plan"
+      ]
+    },
+    {
+      "approach": "API端点组件策略：核心业务逻辑采用单元测试，HTTP网络传输层采用集成测试，消费者对接采用契约测试。; 数据管道组件策略：重点覆盖输入校验、数据转换正确性验证及重复处理下的幂等性测试。; 前端组件策略：组合使用组件单元测试、用户交互测试、视觉回归测试及无障碍访问（a11y）合规测试。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:33-33"
+      ],
+      "limitations": "Explicit limits: 适用于微服务与Web服务接口的测试规划。; 适用于批处理ETL、流计算及数据流转管道。; 适用于Web/移动端前端应用与用户界面库。",
+      "source_id": "testing-strategy",
+      "strengths": "Provides 6 source-grounded atom(s) for method (method=4, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ts-method-component-api-endpoints",
+        "ts-method-component-data-pipelines",
+        "ts-method-component-frontend",
+        "ts-method-component-infrastructure",
+        "ts-model-testing-pyramid",
+        "ts-template-output-test-plan"
+      ]
+    },
+    {
+      "approach": "适用于所有层级的测试架构与策略设计。; 适用于微服务与Web服务接口的测试规划。; 适用于批处理ETL、流计算及数据流转管道。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:33-33",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "limitations": "Explicit limits: 适用于所有层级的测试架构与策略设计。; 适用于微服务与Web服务接口的测试规划。; 适用于批处理ETL、流计算及数据流转管道。",
+      "source_id": "testing-strategy",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (method=4, rule=3, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ts-goal-balance-triangle",
+        "ts-method-component-api-endpoints",
+        "ts-method-component-data-pipelines",
+        "ts-method-component-frontend",
+        "ts-method-component-infrastructure",
+        "ts-model-testing-pyramid",
+        "ts-rule-coverage-focus-areas",
+        "ts-rule-coverage-skip-areas",
+        "ts-template-output-test-plan"
+      ]
+    },
+    {
+      "approach": "定义经典三层测试金字塔：底层单元测试（多、快、聚焦）、中间集成测试（适量、中速）、顶层E2E测试（极少、慢、高置信度）。; 生成测试计划的标准交付物格式要求：明确待测区域、所选测试类型、量化覆盖率目标、示例测试用例并指出存量覆盖缺口。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:33-33"
+      ],
+      "limitations": "Explicit limits: 指导测试用例在不同层级之间的比例分配。; 测试策略输出时的终态交付结构规范。",
+      "source_id": "testing-strategy",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ts-model-testing-pyramid",
+        "ts-template-output-test-plan"
+      ]
+    },
+    {
+      "approach": "设计中充分考虑速度、维护成本与覆盖率平衡。; 覆盖范围聚焦于列出的五类高风险与核心价值区域。; 不为列出的琐碎和框架自持代码设计专门的测试用例。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "limitations": "Explicit limits: 适用于所有层级的测试架构与策略设计。; 制定测试用例与测试场景时的优先度筛选原则。; 避免无效测试开销与测试膨胀。",
+      "source_id": "testing-strategy",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ts-goal-balance-triangle",
+        "ts-rule-coverage-focus-areas",
+        "ts-rule-coverage-skip-areas"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:33-33",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "testing-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:33-33",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "testing-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 3,
+        "tool-action": 1
+      },
+      "evidence": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208",
+        "test-case-generator/SKILL.md:236-240",
+        "test-case-generator/SKILL.md:242-246",
+        "test-case-generator/SKILL.md:8-10"
+      ],
+      "source_id": "test-case-generator",
+      "unit_ids": [
+        "skills/test-case-generator/SKILL.md:19-27",
+        "skills/test-case-generator/SKILL.md:200-208",
+        "skills/test-case-generator/SKILL.md:236-240",
+        "skills/test-case-generator/SKILL.md:242-246",
+        "skills/test-case-generator/SKILL.md:8-10"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 4,
+        "rule": 3,
+        "template": 2
+      },
+      "evidence": [
+        "testing-strategy/SKILL.md:12-16",
+        "testing-strategy/SKILL.md:20-20",
+        "testing-strategy/SKILL.md:21-21",
+        "testing-strategy/SKILL.md:22-22",
+        "testing-strategy/SKILL.md:23-23",
+        "testing-strategy/SKILL.md:27-27",
+        "testing-strategy/SKILL.md:29-29",
+        "testing-strategy/SKILL.md:33-33",
+        "testing-strategy/SKILL.md:8-8"
+      ],
+      "source_id": "testing-strategy",
+      "unit_ids": [
+        "ts-goal-balance-triangle",
+        "ts-method-component-api-endpoints",
+        "ts-method-component-data-pipelines",
+        "ts-method-component-frontend",
+        "ts-method-component-infrastructure",
+        "ts-model-testing-pyramid",
+        "ts-rule-coverage-focus-areas",
+        "ts-rule-coverage-skip-areas",
+        "ts-template-output-test-plan"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "skills/test-case-generator/SKILL.md:19-27",
+    "skills/test-case-generator/SKILL.md:200-208",
+    "skills/test-case-generator/SKILL.md:236-240",
+    "skills/test-case-generator/SKILL.md:242-246",
+    "skills/test-case-generator/SKILL.md:8-10",
+    "ts-goal-balance-triangle",
+    "ts-method-component-api-endpoints",
+    "ts-method-component-data-pipelines",
+    "ts-method-component-frontend",
+    "ts-method-component-infrastructure",
+    "ts-model-testing-pyramid",
+    "ts-rule-coverage-focus-areas",
+    "ts-rule-coverage-skip-areas",
+    "ts-template-output-test-plan"
+  ]
+}

@@ -1,0 +1,941 @@
+{
+  "condition": "a selected owner is blocked by a local tool, browser, artifact, memory, auth, or workflow-runtime prerequisite",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:source-metadata-and-provenance",
+        "curation/clusters.json:cluster:reference-library-and-deferred-material"
+      ],
+      "id": "V2-DEPENDENCY-0143",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:source-metadata-and-provenance",
+      "legacy_target_cluster_id": "cluster:reference-library-and-deferred-material",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:source-metadata-and-provenance",
+      "target_capability_id": "capability:reference-library-and-deferred-material"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness",
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration"
+      ],
+      "id": "V2-DEPENDENCY-0161",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:tool-runtime-readiness",
+      "legacy_target_cluster_id": "cluster:browser-session-and-runtime-configuration",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:tool-runtime-readiness",
+      "target_capability_id": "capability:browser-session-and-runtime-configuration"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:workflow-orchestration-and-lifecycle",
+        "curation/clusters.json:cluster:artifact-persistence-and-tool-actions"
+      ],
+      "id": "V2-DEPENDENCY-0177",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:workflow-orchestration-and-lifecycle",
+      "legacy_target_cluster_id": "cluster:artifact-persistence-and-tool-actions",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:workflow-orchestration-and-lifecycle",
+      "target_capability_id": "capability:artifact-persistence-and-tool-actions"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/setup-browser-cookies/SKILL.md:153-192",
+        "gstack/browse/SKILL.md:372-381"
+      ],
+      "id": "V2-DEPENDENCY-0187",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Authenticated browser acquisition is selected only for an authorized protected origin.",
+      "source_capability_id": "capability:browser-authentication-setup",
+      "target_capability_id": "capability:browser-data-acquisition-runtime"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/document-generate/SKILL.md:444-483",
+        "gstack/make-pdf/SKILL.md:234-243"
+      ],
+      "id": "V2-DEPENDENCY-0201",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Approved documentation can be rendered into a validated distributable artifact.",
+      "source_capability_id": "capability:documentation-authoring",
+      "target_capability_id": "capability:document-rendering-and-validation"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/setup-gbrain/SKILL.md:1000-1005",
+        "gstack/autoplan/SKILL.md:690-704"
+      ],
+      "id": "V2-DEPENDENCY-0212",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Project context persistence may use an explicitly initialized local memory runtime.",
+      "source_capability_id": "capability:local-agent-memory-setup",
+      "target_capability_id": "capability:project-context-and-learning-store"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/gstack-upgrade/SKILL.md:116-123",
+        "gstack/autoplan/SKILL.md:434-472"
+      ],
+      "id": "V2-DEPENDENCY-0231",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An upgraded runtime must be rechecked before dependent workflows use it.",
+      "source_capability_id": "capability:workflow-runtime-upgrade",
+      "target_capability_id": "capability:tool-runtime-readiness"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/pair-agent/SKILL.md:402-441",
+        "gstack/pair-agent/SKILL.md:669-680"
+      ],
+      "id": "V2-DEPENDENCY-0235",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A newly provisioned browser pairing should be verified without widening or recreating it.",
+      "source_capability_id": "capability:browser-agent-pairing-provisioning",
+      "target_capability_id": "capability:browser-agent-pairing-verification"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/pair-agent/SKILL.md:669-680",
+        "gstack/browse/SKILL.md:372-381"
+      ],
+      "id": "V2-DEPENDENCY-0236",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Verified paired agents may use the browser acquisition runtime within their granted scope.",
+      "source_capability_id": "capability:browser-agent-pairing-verification",
+      "target_capability_id": "capability:browser-data-acquisition-runtime"
+    }
+  ],
+  "description": "Provide cross-cutting local runtime and artifact support; not a lifecycle approval step.",
+  "execution_state": "not-run-phase-10-revision-2",
+  "exit_contract": "verified runtime support artifact and return to the blocked owner; never lifecycle approval",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract",
+    "a missing runtime never authorizes stage 15 itself to install or upgrade it; select the narrow existing atomic owner and require that owner's exact fresh authorization",
+    "after readiness, setup, upgrade, or rendering evidence is verified, return to the original blocked owner; support evidence never grants lifecycle approval"
+  ],
+  "human_checkpoint": "human authorizes each local-system, credential, external-session, or provider prerequisite action",
+  "id": "stage-15-tool-runtime-support",
+  "mandatory_stage": false,
+  "schema_version": "2.0",
+  "stage_id": "stage:15-tool-runtime-support",
+  "stage_order": 15,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/agent-workflow-runtime-support",
+      "condition": "Select only when the atomic requested outcome matches: Provide bounded session, consent, checkpoint, artifact-pointer, degradation, and host-tool runtime state once for an approved workflow without performing domain steps.",
+      "contract_sha256": "a0d7615cdd5787d0a576c5598c24a1fd49bac9235df11810b1fc39719a66eaf3",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Runtime support may manage session mechanics only; it cannot execute, approve, or mark any domain capability complete from orchestration state.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "agent-workflow-runtime-support",
+      "inputs": [
+        "Session identity, host capabilities, local project, consent state, and runtime configuration."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "workflow runtime state",
+        "consent and capability record",
+        "checkpoint and artifact pointers",
+        "degradation and cleanup notice"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "agent-workflow-runtime-support@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/artifact-persistence-and-tool-actions",
+      "condition": "Select only when the atomic requested outcome matches: Select the already-authorized tool action and persist one validated lifecycle artifact at the declared bounded location without expanding the task.",
+      "contract_sha256": "568570c7b2f5d40145992b2f4c060d29b0aaa6aa289d5e9b3180a635853110d1",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0177"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Persistence authority applies only to the declared artifact and location; it cannot authorize adjacent analysis, product-source edits, external publication, or additional files.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "artifact-persistence-and-tool-actions",
+      "inputs": [
+        "A validated task, tool boundary, output location, and write authorization."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "bounded tool-action record",
+        "persisted lifecycle artifact or no-write outcome",
+        "path and hash evidence",
+        "overwrite or recovery record"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "artifact-persistence-and-tool-actions@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/browser-agent-pairing-provisioning",
+      "condition": "Select only when the atomic requested outcome matches: Provision one scoped expiring browser-agent pairing identity after explicit local-system, credential, and network-exposure authorization, with revocation and cleanup.",
+      "contract_sha256": "73db77cb619f2ed878b37125ed26b0d3c871ee410b416c37576a70a222c76ca1",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Pairing requires per-action authorization for exact agent, origins, actions, transport, exposure, and expiry; wildcard, hidden, reusable, or non-revocable credentials are blocked.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "browser-agent-pairing-provisioning",
+      "inputs": [
+        "Running browser daemon, selected agent, local or remote mode, scope restrictions, credential retention, and explicit authorization."
+      ],
+      "mutation_scope": "external-session-write",
+      "outputs": [
+        "scoped pairing identity",
+        "non-secret local configuration receipt",
+        "expiry and revocation instructions",
+        "network exposure and cleanup evidence"
+      ],
+      "permission_identity": "local-system-write-external-session-authorized-only",
+      "remote_write": true,
+      "skill_ref": "browser-agent-pairing-provisioning@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/browser-agent-pairing-verification",
+      "condition": "Select only when the atomic requested outcome matches: Verify and diagnose an existing browser-agent pairing through approved local checks and read-only external observation without creating credentials or changing configuration.",
+      "contract_sha256": "bc0c28cb4d0705c7705eab6f34438a6219175d7d1193756ae018557da4d7f7ac",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0235"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Verification authority is read-only: it cannot mint or renew credentials, restart the daemon, change config, widen scope, or treat connectivity as data-access authorization.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "browser-agent-pairing-verification",
+      "inputs": [
+        "Pairing identity, browser status, expected scope, target platform, and permitted external read boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "pairing connection verdict",
+        "expected-versus-observed scope",
+        "diagnosis evidence",
+        "bounded re-provisioning recommendation"
+      ],
+      "permission_identity": "local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "browser-agent-pairing-verification@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/browser-authentication-setup",
+      "condition": "Select only when the atomic requested outcome matches: Configure authorized authentication state in one local browser profile for exact origins without exposing values or granting unrelated browsing authority.",
+      "contract_sha256": "2aaba65f79f3091ecfd7cbb1afd04a4e41e49f025889708eab01d409248d3c97",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Authentication setup grants neither page-data authority nor general browsing scope; credential values never enter prompts, logs, hashes, receipts, or artifacts.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "browser-authentication-setup",
+      "inputs": [
+        "Browser profile, target origin, credential authority, local-system write authorization, retention, and deletion policy."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "configured local authentication state",
+        "non-secret validation receipt",
+        "storage and origin boundary",
+        "expiry, cleanup, and rollback instructions"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "browser-authentication-setup@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/browser-data-acquisition-runtime",
+      "condition": "Select only when the atomic requested outcome matches: Acquire only authorized page evidence or structured data through an approved read-only browser session, preserving provenance, limits, and cleanup.",
+      "contract_sha256": "0ff18972c4bd42cc9679f7eb154a3877a168911ca6ebbb7964daf35e518658b3",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0187",
+        "V2-DEPENDENCY-0236"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A valid login does not authorize acquisition or reuse: each origin, field, purpose, action, transfer, retention, and deletion boundary must be explicit, and all acquisition remains read-only.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "browser-data-acquisition-runtime",
+      "inputs": [
+        "Target URL, authentication authority, data-governance boundary, browser runtime, and extraction scope."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "captured evidence or structured data",
+        "route and field provenance",
+        "access and reuse limits",
+        "cleanup and deletion status"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "browser-data-acquisition-runtime@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/browser-session-and-runtime-configuration",
+      "condition": "Select only when the atomic requested outcome matches: Create an isolated ephemeral browser runtime invocation from validated prerequisites without writing persistent auth, pairing, or project source.",
+      "contract_sha256": "d9b6d93c5f5a7f9150d132e3e29789c0c0e0089f4cf38aa6f574bb5268b4bb5d",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0161"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Session configuration is ephemeral runtime state: it cannot persist credentials or system config, pair agents, authorize data access, or perform the browser task itself.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "browser-session-and-runtime-configuration",
+      "inputs": [
+        "A validated browser task, session identifier, project path, wrapper contract, and CLI configuration."
+      ],
+      "mutation_scope": "runtime-session",
+      "outputs": [
+        "ephemeral browser session state",
+        "reproducible wrapper and CLI invocation",
+        "runtime evidence",
+        "cleanup and degradation notice"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "browser-session-and-runtime-configuration@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-5/skills/diagram-and-architecture-artifact-generation",
+      "condition": "Select only when the atomic requested outcome matches: Generate traceable architecture or process diagram source from approved evidence without inventing nodes, edges, trust boundaries, or runtime facts.",
+      "contract_sha256": "6ef240960eb71dda1716bd907a90d255dcebe35eb1933bcf455079d55f345da7",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Every node, edge, boundary, protocol, and environment label must trace to approved evidence or be visibly marked unknown; a syntactically valid invented diagram fails.",
+        "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+      ],
+      "id": "diagram-and-architecture-artifact-generation",
+      "inputs": [
+        "Approved source facts, diagram purpose, notation, audience, and output format."
+      ],
+      "mutation_scope": "run-output",
+      "outputs": [
+        "diagram source",
+        "host render or syntax-validation request",
+        "node-and-edge source map",
+        "unknown and conflict ledger"
+      ],
+      "permission_identity": "workspace-write",
+      "remote_write": false,
+      "skill_ref": "diagram-and-architecture-artifact-generation@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/document-rendering-and-validation",
+      "condition": "Select only when the atomic requested outcome matches: Render one approved document source into a declared local artifact and validate layout, accessibility, links, output integrity, and limitations.",
+      "contract_sha256": "c2ba9c16bfb57c0e15138c23d8ee39f1b7eec975914ca966ffe7fc0d4976ef80",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0201"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A successful renderer exit is insufficient: the declared output must have current hash and inspected layout, links, text, metadata, and accessibility evidence or explicit unsupported limitations.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "document-rendering-and-validation",
+      "inputs": [
+        "Approved document source, renderer, format, template, accessibility target, and output path."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "rendered document artifact",
+        "renderer command evidence",
+        "layout, link, and accessibility validation",
+        "hash and residual-limitations report"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "document-rendering-and-validation@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/local-agent-memory-setup",
+      "condition": "Select only when the atomic requested outcome matches: Initialize one project-isolated local agent memory or indexing runtime under explicit privacy, retention, deletion, and rollback controls.",
+      "contract_sha256": "19ca2323793274c2a42b87db68d94f386309fb13e6bb95f9e35cc3d394b32258",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Local memory setup requires explicit project isolation, privacy, retention, deletion, and rollback; it cannot ingest arbitrary project data or enable external synchronization implicitly.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "local-agent-memory-setup",
+      "inputs": [
+        "Project identity, runtime target, privacy choice, local-system write authorization, and retention policy."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "project-isolated memory runtime",
+        "non-sensitive configuration receipt",
+        "health and isolation evidence",
+        "removal and rollback instructions"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "local-agent-memory-setup@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/local-git-guard-setup",
+      "condition": "Select only when the atomic requested outcome matches: Install or configure one approved repository-local Git guard after classifying the hooks path, with consent, verification, backup, and uninstall instructions.",
+      "contract_sha256": "dbc5400fa10e0e66ba467f919f53b314843e12ac6912cc6a143c9c98f2eb8749",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Never silently enable a guard or modify a committed, shared, custom, or ambiguous hooks directory; explicit consent, backup, verification, and uninstall are mandatory.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "local-git-guard-setup",
+      "inputs": [
+        "Repository Git-dir evidence, hooks-path classification, guard artifact, user consent, and local-system write authorization."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "local guard installation receipt or refusal",
+        "hooks-path classification",
+        "installed verification evidence",
+        "backup, restore, and uninstall instructions"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "local-git-guard-setup@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/mobile-platform-runtime-support",
+      "condition": "Select only when the atomic requested outcome matches: Run and diagnose an approved mobile build or test target in a declared local simulator or device environment without changing project source.",
+      "contract_sha256": "b018c13c80c5edb2da5c6b9b34ad5b65d7c0b0d87664e5771bd4d2629b40de28",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Mobile runtime evidence must name the exact source, platform, toolchain, target, simulator or device, command, exit, duration, and artifacts; missing signing or setup authority blocks rather than prompting for secrets.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "mobile-platform-runtime-support",
+      "inputs": [
+        "Mobile project, platform tools, simulator or device, local authority, and cleanup boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "mobile runtime readiness record",
+        "build or test execution evidence",
+        "device and toolchain manifest",
+        "bounded diagnosis and cleanup status"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "mobile-platform-runtime-support@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/project-context-and-learning-store",
+      "condition": "Select only when the atomic requested outcome matches: Save, restore, search, prune, or reconcile explicitly selected records inside one project-isolated local context store under privacy, retention, provenance, and deletion controls.",
+      "contract_sha256": "c1a96000f0aee740219b86c11a970b8c7e5f1a75cac9438099499c650a3bcc00",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0212"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Context storage is opt-in per record and project; secrets, unrelated sessions, unverified claims, indefinite retention, cross-machine sync, and external services are blocked under this local-only identity.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "project-context-and-learning-store",
+      "inputs": [
+        "Project identity, context artifacts, privacy boundary, retention, synchronization mode, and local-system write authorization when persistence is requested."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "local project context or learning records",
+        "provenance and retention metadata",
+        "search, restore, prune, or reconciliation result",
+        "deletion and conflict evidence"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "project-context-and-learning-store@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/provider-cli-authentication-setup",
+      "condition": "Select only when the atomic requested outcome matches: Install or authenticate one exact provider CLI after explicit local-system, credential, and external-session authorization, preserving non-secret identity, expiry, revocation, and cleanup evidence.",
+      "contract_sha256": "8c2be24ccf908742c65b590c8594868c32ccc6413d24bbf524540ee6cd0c8061",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "CLI authentication is setup authority only: it cannot execute provider mutations, and credential values or recovery codes never enter prompts, logs, hashes, or artifacts.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "provider-cli-authentication-setup",
+      "inputs": [
+        "Provider CLI, version or install source, local-system authority, credential owner, authentication method, and cleanup policy."
+      ],
+      "mutation_scope": "external-session-write",
+      "outputs": [
+        "verified CLI version and non-secret identity",
+        "scope and storage boundary",
+        "expiry and revocation path",
+        "uninstall, cleanup, and failure evidence"
+      ],
+      "permission_identity": "local-system-write-external-session-authorized-only",
+      "remote_write": true,
+      "skill_ref": "provider-cli-authentication-setup@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/reference-library-and-deferred-material",
+      "condition": "Select only when the atomic requested outcome matches: Record source-linked reference or deferred material with applicability, freshness, supersession, and non-operational status without presenting it as current guidance.",
+      "contract_sha256": "7b3e8591b7856e1405cd285c73b1a7a9d6997ff94974a5b69261f30ea427d041",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0143"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Reference retention never makes material current operational guidance; missing date, scope, provenance, applicability, or supersession status blocks adoption claims.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "reference-library-and-deferred-material",
+      "inputs": [
+        "A source reference, historical claim, external framework, or material outside the active execution path."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "reference or deferral record",
+        "provenance and freshness limit",
+        "conflict and supersession links",
+        "owner and revisit condition"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "reference-library-and-deferred-material@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/test-runtime-bootstrap",
+      "condition": "Select only when the atomic requested outcome matches: Install and configure one approved project-local test runtime, prove it with one real-behavior test, and restore dependency files if setup fails.",
+      "contract_sha256": "0ffbfdae776de2fb9e7e00fd5602b2911cccc718bfd0d12e50bc27ac852f16d6",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Bootstrap passes only when the project-local runtime and one real-behavior test run successfully; failed setup must restore dependency and configuration files exactly.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "test-runtime-bootstrap",
+      "inputs": [
+        "Project runtime, selected test framework, package policy, workspace authority, install command, and rollback baseline."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "minimal project test configuration",
+        "one passing real-behavior test",
+        "dependency and lockfile diff",
+        "verification or rollback evidence"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "test-runtime-bootstrap@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/tool-runtime-readiness",
+      "condition": "Select only when the atomic requested outcome matches: Verify one required local tool runtime, version, invocation, capability, and safe failure mode without installing or upgrading it.",
+      "contract_sha256": "6979d280a6f3a16a9bcc393aaa303dd71c86a19f70b6c52628d408cf9925d316",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0231"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "PATH presence is not readiness: the exact executable, version, required capability, invocation, and bounded smoke behavior must be verified without installation or configuration changes.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "tool-runtime-readiness",
+      "inputs": [
+        "A tool request, project path, shell environment, and declared prerequisite contract."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "tool readiness verdict",
+        "executable and version evidence",
+        "bounded smoke command record",
+        "upgrade or bootstrap handoff"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "tool-runtime-readiness@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/workflow-runtime-upgrade",
+      "condition": "Select only when the atomic requested outcome matches: Upgrade one installed workflow runtime under explicit local-system authorization with version detection, backup, compatibility checks, rollback, and no hidden credential or provider changes.",
+      "contract_sha256": "3d67adf5649a33848ff22c0de17f43f464871c18a043ea4bce5ba14ebe0919ba",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A runtime upgrade requires a pinned trusted target, explicit affected paths, compatibility and migration plan, backup, rollback, and current post-upgrade health evidence; unpinned latest upgrades fail closed.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "workflow-runtime-upgrade",
+      "inputs": [
+        "Installed runtime, target version, local-system write authorization, compatibility constraints, and rollback path."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "runtime upgrade receipt",
+        "before and after version evidence",
+        "compatibility and health checks",
+        "backup, rollback, and cleanup record"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "workflow-runtime-upgrade@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/workflow-skill-authoring",
+      "condition": "Select only when the atomic requested outcome matches: Author and locally validate one atomic workflow Skill from an approved capability contract, provenance, fixtures, trigger policy, and package boundary.",
+      "contract_sha256": "defbe3f940304cb77954d2f00afe2278e2d723b2728292daec092fb32f7e1c71",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A candidate Skill must have one atomic responsibility, exact provenance, tested trigger boundaries, least authority, and no release claim; multi-stage orchestration belongs to a Recipe.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "workflow-skill-authoring",
+      "inputs": [
+        "Capability contract, source evidence, runtime target, fixtures, tests, and package boundary."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "atomic workflow Skill candidate",
+        "trigger and anti-trigger fixtures",
+        "provenance and permission contract",
+        "local validation and packaging evidence"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "workflow-skill-authoring@0.1.0-v2-candidate"
+    }
+  ],
+  "support_routes": [
+    {
+      "authorization": "fresh authorized-workspace and local-exec authorization",
+      "condition": "one approved project-local test runtime is missing",
+      "lifecycle_approval": false,
+      "return_to_blocked_owner": true,
+      "target": "test-runtime-bootstrap"
+    },
+    {
+      "authorization": "local-exec only",
+      "condition": "one existing required tool or renderer needs version, invocation, capability, or safe-failure verification",
+      "lifecycle_approval": false,
+      "return_to_blocked_owner": true,
+      "target": "tool-runtime-readiness"
+    },
+    {
+      "authorization": "fresh local-system authorization with backup and rollback",
+      "condition": "one installed workflow runtime needs a pinned upgrade",
+      "lifecycle_approval": false,
+      "return_to_blocked_owner": true,
+      "target": "workflow-runtime-upgrade"
+    },
+    {
+      "authorization": "declared workspace-write-local-exec artifact scope",
+      "condition": "an approved document renderer is ready and one source must be rendered and validated",
+      "lifecycle_approval": false,
+      "return_to_blocked_owner": true,
+      "target": "document-rendering-and-validation"
+    },
+    {
+      "authorization": "none",
+      "condition": "no existing atomic support owner safely covers the missing runtime setup",
+      "lifecycle_approval": false,
+      "return_to_blocked_owner": false,
+      "target": "blocked-no-authorized-runtime-owner"
+    }
+  ],
+  "version": "0.1.2-v2-candidate"
+}

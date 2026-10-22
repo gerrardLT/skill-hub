@@ -1,0 +1,128 @@
+{
+  "branches": [
+    "Model Selection [subagent-driven-development/SKILL.md:89]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [subagent-driven-development/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [subagent-driven-development/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [subagent-driven-development/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [subagent-driven-development/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Implemented install-hook command [subagent-driven-development/SKILL.md:148]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when executing implementation plans with independent tasks in the current session [subagent-driven-development/SKILL.md:3]",
+  "root_id": "skill-root:subagent-driven-development",
+  "rules_gates": [
+    "Why subagents: You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also p [subagent-driven-development/SKILL.md:10]",
+    "Continuous execution: Do not pause to check in with your human partner between tasks. Execute all tasks from the plan without stopping. The only reasons to stop are: BLOCKED status you cannot resolve, ambiguity that genuinely prevents progress, or all tasks complete. \"Should I continue?\" prompts and [subagent-driven-development/SKILL.md:14]",
+    "DONEWITHCONCERNS: The implementer completed the work but flagged doubts. Read the concerns before proceeding. If the concerns are about correctness or scope, address them before review. If they're observations (e.g., \"this file is getting large\"), note them and proceed to review. [subagent-driven-development/SKILL.md:110]",
+    "Never ignore an escalation or force the same model to retry without changes. If the implementer said it's stuck, something needs to change. [subagent-driven-development/SKILL.md:120]",
+    "Implementer: \"Before I begin - should the hook be installed at user or system level?\" [subagent-driven-development/SKILL.md:142]",
+    "Added verify/repair modes [subagent-driven-development/SKILL.md:168]",
+    "Parallel-safe (subagents don't interfere) [subagent-driven-development/SKILL.md:209]",
+    "Subagent can ask questions (before AND during work) [subagent-driven-development/SKILL.md:210]"
+  ],
+  "skill_path": "subagent-driven-development/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "subagent-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "subagent-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "subagent-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 42,
+      "line_start": 42,
+      "path": "subagent-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 89,
+      "line_start": 89,
+      "path": "subagent-driven-development/SKILL.md"
+    }
+  ],
+  "source_sha256": "905a2b9be59b734dbe166525ad31dcaaf712a75926135adee1f554557aba5744",
+  "stop_conditions": [
+    "Continuous execution: Do not pause to check in with your human partner between tasks. Execute all tasks from the plan without stopping. The only reasons to stop are: BLOCKED status you cannot resolve, ambiguity that genuinely prevents progress, or all tasks complete. \"Should I continue?\" prompts and [subagent-driven-development/SKILL.md:14]",
+    "BLOCKED: The implementer cannot complete the task. Assess the blocker [subagent-driven-development/SKILL.md:114]",
+    "If subagent fails task [subagent-driven-development/SKILL.md:263]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:905a2b9be59b734dbe166525ad31dcaaf712a75926135adee1f554557aba5744",
+        "content-review:280-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "subagent-driven-development/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2eeb3bf63fccfbee042812dc94e7032048603f0f8c3827b4b53af9e4cef19b30",
+        "content-review:26-lines"
+      ],
+      "path": "subagent-driven-development/code-quality-reviewer-prompt.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a416193f881e5a712c988fffabfe1d5a97bffcd091eb95577c84fe2136588617",
+        "content-review:114-lines"
+      ],
+      "path": "subagent-driven-development/implementer-prompt.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:631980e472eec5394de8b89b69d432e54fd3f7f523ecf9afa7eb4cda0c9b2baf",
+        "content-review:62-lines"
+      ],
+      "path": "subagent-driven-development/spec-reviewer-prompt.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: subagent-driven-development/implementer-prompt.md [subagent-driven-development/SKILL.md:124]",
+    "Local dependency: subagent-driven-development/spec-reviewer-prompt.md [subagent-driven-development/SKILL.md:125]",
+    "Local dependency: subagent-driven-development/code-quality-reviewer-prompt.md [subagent-driven-development/SKILL.md:126]"
+  ],
+  "trigger": "Use when executing implementation plans with independent tasks in the current session [subagent-driven-development/SKILL.md:3]",
+  "unique_methods": [
+    "Subagent-Driven Development [subagent-driven-development/SKILL.md:6]",
+    "When to Use [subagent-driven-development/SKILL.md:16]",
+    "Model Selection [subagent-driven-development/SKILL.md:89]",
+    "Handling Implementer Status [subagent-driven-development/SKILL.md:104]",
+    "Prompt Templates [subagent-driven-development/SKILL.md:122]",
+    "Advantages [subagent-driven-development/SKILL.md:204]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [subagent-driven-development/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [subagent-driven-development/SKILL.md:3]"
+  ],
+  "workflow": [
+    "The Process [subagent-driven-development/SKILL.md:42]",
+    "Example Workflow [subagent-driven-development/SKILL.md:128]"
+  ]
+}

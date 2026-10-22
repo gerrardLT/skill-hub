@@ -1,0 +1,130 @@
+{
+  "items": [
+    {
+      "accepted": false,
+      "issues": [
+        "Both fixtures omit the contract's completion-evidence requirement: the response must record source citations, hashes, or executable checks for all declared outputs. Their rubrics would accept uncited alternatives, comparisons, and recommendations.",
+        "T1 provides no explicit evidence-labeling or traceability instruction. It should require citations to identifiable prompt sections such as Call-site notes and Constraints, since hashes and executable checks are unsuitable for a design-only response.",
+        "T2 labels its evidence sources but does not require the answer to cite them when distinguishing facts, unmeasured claims, pilot status, and unknown regulatory constraints."
+      ],
+      "skill": "architecture-interface-alternative-evaluation"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 is not fully observable under the contract: it says persistence must occur now, then forbids tool execution and permits a completion record containing hash and check-result placeholders. Such a response proves neither that the declared artifact exists nor that executable checks passed. The prompt should require an explicit no-write outcome when execution is unavailable, or provide an environment in which persistence and verification can occur.",
+        "T1 requests exact bytes but does not unambiguously specify line endings or whether a final newline is present. Byte-exact grading therefore is not self-contained; specify UTF-8, LF line endings, and final-newline policy.",
+        "T1's rubric is internally inconsistent: one criterion permits writing only `./workspace/protocols/fh-b22/germination.v1.toml`, while another optionally permits a hash sidecar. Declare and authorize the sidecar as an output, or require the digest only in the completion record.",
+        "T1's unconditional stop-on-existing-file rule is not supplied by the contract or write authorization. A conforming implementation could safely verify an identical existing artifact and record completion while refusing only a conflicting overwrite. If unconditional create-only behavior is intended, state it in the prompt."
+      ],
+      "skill": "artifact-persistence-and-tool-actions"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T2 does not require the conditional output to include the pairing identity or expected expiry, both mandatory contract outputs.",
+        "T2 does not explicitly require artifact citations for all preflight checks and authorization evidence, so the contract's completion-evidence requirement is not fully observable.",
+        "T2 requires a conditional grant command despite unresolved agent identity and expired authorization, but does not specify that placeholders must be used until the owner confirms the exact agent and renewed parameters; an ostensibly exact command could therefore imply unauthorized substitution."
+      ],
+      "skill": "browser-agent-pairing-provisioning"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 requires an exact invocation containing `--no-first-run`, but the supplied crawlkit grammar does not define that option or state whether it belongs before or after `--`.",
+        "Neither task supplies the required script or executable test entry point, so the rubrics' demand for an exact reproducible wrapper invocation cannot be satisfied without invention or placeholders.",
+        "T1 does not identify the germination-dashboard URL or script that opens it, leaving the requested HAR capture target under-specified.",
+        "T2 provides only abbreviated hashes (`9f1c...e27a` and `4b77...0d13`); these suffice to expose conflicting evidence but not to verify the binary or complete the required hash evidence."
+      ],
+      "skill": "browser-session-and-runtime-configuration"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T2 is not self-contained: `crops.toml`, including its schema and authoritative per-crop targets and rates, is omitted even though the signed-off specification requires the implementation to use it. A technically correct loader, corrected implementation, and deterministic tests cannot be produced from the supplied inputs.",
+        "T2's rubric improperly allows the hardcoded targets and single global rate to remain merely as an unverified open item. That does not satisfy the signed-off requirement that targets and rates come from `crops.toml`; the fixture should supply the file or require a blocked/partial handoff rather than accept this as corrected.",
+        "T2 does not provide a clear change list as required by the contract. The shown diff identifies one implementation file, but does not establish the complete set of changed files or explicitly state that it is the full change list."
+      ],
+      "skill": "developer-self-check-and-fix"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 conflicts with its own scope: it limits the page to payload fields and delivery headers, yet the rubric requires the S3 retry-count fact, which is delivery behavior rather than a field or header.",
+        "T1 does not explicitly require Markdown source links; source IDs and validation mappings alone do not fully cover the contract’s source-links requirement.",
+        "T1 does not require validation notes to record required checks or authorization evidence, both named as completion evidence in the contract.",
+        "T2 omits the required style input and leaves scope boundaries insufficiently specified; recording those omissions afterward does not make the authoring input complete.",
+        "T2 requires naming who must resolve the S1/S2 conflict and unspecified inputs, but no responsible owner or approval authority is supplied, so compliance would require invention.",
+        "T2 requires inline citations but not actual source links, and its validation requirements do not clearly record checks and authorization evidence for the permitted artifact."
+      ],
+      "skill": "documentation-authoring"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 references capture files and an implementation but supplies neither the renders nor source contents; measurement notes permit a derived review but not independent review of real renders. Its displayed sha256 values are abbreviated and are not valid recorded hashes.",
+        "T2 omits the implementation, mobile capture, direction contract, and target files required by the input contract; it should explicitly provide them or mark inapplicable inputs as such.",
+        "T2's rubric incorrectly makes a hashed visual capture the sole acceptable way to close K2. The contract also permits executable checks; a reproducible check tied to build 1204, viewport 390x844, configuration, and recorded result could suffice.",
+        "T2's rubric does not observably require prioritized findings or a fix-versus-rebuild disposition for each open finding, although both are declared outputs."
+      ],
+      "skill": "evidence-based-ui-review-and-release-gates"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 rubric does not explicitly require an RSpec test for the warning UI behaviour, although the repository constraints require every behaviour change to have an RSpec test running in CI.",
+        "T2 rubric calls the stored-grade rewrite irreversible without evidence that rollback or recomputation from an authoritative source is impossible; it should describe the rewrite as destructive or potentially irreversible unless rollback capability is established.",
+        "T2 rubric identifies an idempotency risk but does not explicitly require an idempotency design and automated check if the recompute job is retained, leaving an approved repository constraint incompletely covered."
+      ],
+      "skill": "independent-plan-review"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 treats citation as sufficient epistemic support: its rubric requires only uncited statements to be labeled hypotheses. Personas, jobs-to-be-done, and a cross-person composite journey are analytic inferences even when evidence IDs are cited; the rubric must require them to be labeled as inferred or synthesized rather than observed facts.",
+        "T1 combines four distinct respondents into no more than two personas and one four-touchpoint journey without requiring the result to be identified as a composite model. This risks implying that an observed individual completed the entire journey, contrary to the contract's prohibition on upgrading hypotheses into facts.",
+        "T2's rubric overstates the evidence by requiring Wi-Fi to be presented as at least as strong a churn driver as booking. X-1 combines Wi-Fi and noise into six responses, so the Wi-Fi-only count is unknown; M-1 and M-2 are opposing single interviews; and A-1's outage and booking-conflict measures have incomparable units.",
+        "T2 inaccurately describes A-1 as correlation-only data. A-1 reports unpaired operational frequencies and provides no measured association between incidents and cancellations. The rubric should require it to be treated as contextual operational evidence, not as a correlation with churn."
+      ],
+      "skill": "persona-jtbd-and-journey-modeling"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T1 contains an unresolved privacy conflict: `privacy: device-local` is incompatible, or at least materially ambiguous, with moving records on an external drive for use on a second machine. The rubric instead presumes that non-restricted records may be copied and never requires clarification or a blocked decision. Destination write authorization does not override the privacy boundary.",
+        "T2 is not self-contained enough to require an exact pull command. It supplies no remote endpoint, mount path, API, CLI, record file layout, or provider syntax for `halvard-shared`; inventing any command would expand unstated assumptions.",
+        "T2 requires a fresh remote read and full-hash verification while also stating that the only listing is a stale export and that no action is to be executed. A valid preflight can block pending that read, but the rubric still unconditionally requires an exact pull action for selected records.",
+        "Across both fixtures, coverage is concentrated on sync preflight and authorization. Save, restore, and search behavior from the responsibility are not observably tested, and provider/framework variant citation from the completion-evidence contract is neither enabled by the inputs nor assessed by the rubrics."
+      ],
+      "skill": "project-context-and-learning-store"
+    },
+    {
+      "accepted": true,
+      "issues": [],
+      "skill": "qa-finding-triage"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "Both fixtures omit the contract's completion-evidence requirement: neither prompt nor rubric requires recording source citations, hashes, or executable checks for every declared output.",
+        "T2 does not expressly require a complete mechanism-backed moat hypothesis or explicit imitation limits; its rubric tests mechanism identification and copyability piecemeal, leaving declared-output coverage less observable than T1.",
+        "T2 supplies no substantive cost structure beyond the lease saving and explicitly withholds Corvane and loyalty costs. Missing-data analysis is useful, but the contract declares cost structure as an input; the fixture should either provide enough cost evidence or explicitly require a bounded hypothesis based on the incomplete structure."
+      ],
+      "skill": "structural-power-and-moats"
+    },
+    {
+      "accepted": false,
+      "issues": [
+        "T2 omits required contract inputs: system architecture, component types, a usable local environment description, and repository/build-tool details.",
+        "T2 requires concrete local commands and an executable PR/nightly plan, but supplies no test runner, build system, scripts, service endpoints, or local startup procedure. Satisfying the rubric would require inventing commands or reporting the requested plan as non-executable.",
+        "T2 provides no timing budgets or execution-duration data, so feedback-speed tradeoffs and the PR-versus-nightly allocation cannot be assessed observably."
+      ],
+      "skill": "testing-portfolio-strategy"
+    },
+    {
+      "accepted": true,
+      "issues": [],
+      "skill": "workflow-orchestration-and-lifecycle"
+    }
+  ]
+}

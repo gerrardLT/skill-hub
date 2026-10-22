@@ -1,0 +1,150 @@
+{
+  "domain": "requirements-and-planning",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "context-intake-and-routing",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 2, "output_verifiability": 2, "gate_specificity": 2, "permission_fit": 3, "source_fidelity": 0, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Emits a routing envelope only; refuses to manufacture domain analysis to justify a route."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.381 with ui-task-routing-and-governance and neither names the other as an anti-trigger, so a UI request can be routed by the generic intake or vice versa.", "evidence": "curation/v2/skill-audit/static-scan.json; slots/v2/1.0.0/skills/context-intake-and-routing/SKILL.md:17-18", "recommendation": "Add anti-trigger: UI-only scope routes to ui-task-routing-and-governance; this Skill handles cross-domain or unclassified intake."},
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Cited sources are an AI product checklist and AI strategy questions, unrelated to request intake or routing; the Skill has no source technique behind it.", "evidence": "skills/ai-product-strategy/references/artifacts.md:530-567; skills/ai-product-strategy/SKILL.md:65-79", "recommendation": "Re-ground in a routing source or mark as authored; add a concrete routing decision table (stage x risk x authority)."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "design-plan-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Scope gate first: returns not-applicable when no UI scope exists.", "Separates taste decisions from evidence defects."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source reviews design by generating visual mockups by default when a designer tool is available ('real visuals, not text descriptions'); the Skill reviews text only and never asks for or references visual artifacts.", "evidence": "skills/gstack/plan-design-review/SKILL.md:786-825; SKILL.md:29", "recommendation": "Add: when mockups or rendered references exist, review against them; otherwise record 'text-only review' as a confidence limit."},
+        {"priority": "P2", "dimension": "procedure", "issue": "No scoring dimensions: the source rates each design area and states what a 10 would look like; the Skill only lists areas.", "evidence": "skills/gstack/plan-design-review/SKILL.md:468-507", "recommendation": "Rate each area 0-10 with the gap to 10 stated as the amendment."}
+      ],
+      "lost_source_techniques": ["mockup-first plan review", "per-dimension 0-10 with 'what would make it 10'"]
+    },
+    {
+      "id": "developer-experience-plan-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 1, "gate_specificity": 2, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Journey coverage (setup, first success, debug, upgrade) is right."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source principle 'gather evidence and force decisions before scoring' starts with target-developer persona interrogation; the Skill has no persona step, so expectations and tolerance are undefined.", "evidence": "skills/gstack/plan-devex-review/SKILL.md:796-835; SKILL.md:28-30", "recommendation": "Add step 1: identify target developer persona and its expectations before tracing journeys."},
+        {"priority": "P1", "dimension": "output_verifiability", "issue": "'Measurable DX outcomes' is named but no metric (time-to-first-success, steps to hello world, error-to-fix time) is required.", "evidence": "SKILL.md:30,39", "recommendation": "Require at least time-to-first-success and failure-recovery criteria."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Both holdouts tie; mutation needs a behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case with a plan that has a hidden onboarding gap."}
+      ],
+      "lost_source_techniques": ["developer persona interrogation", "minute-2 abandonment vs minute-5 delight lens"]
+    },
+    {
+      "id": "document-and-artifact-governance",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Clear split: governs identity and lifecycle, never authors content."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are document templates, not governance practices; staleness and invalidation rules are authored without source technique.", "evidence": "skills/discovery-process/template.md:1-39; skills/product-strategy-session/template.md:1-38", "recommendation": "Mark as authored; define a default state set (draft, approved, superseded, stale, retired) and staleness triggers."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "documentation-authoring",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One Diataxis type per document; no unverified present-tense claims."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source's most important step, codebase archaeology before writing (map structure, read entry points, trace flows), is reduced to 'build a source map from approved facts'; for code documentation the Skill does not instruct reading the code.", "evidence": "skills/gstack/document-generate/SKILL.md:489-528; SKILL.md:29", "recommendation": "Add a research step: when documenting code, read entry points and trace the documented flow before drafting."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Mutation needs a behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case requiring type-pure how-to without explanation drift."}
+      ],
+      "lost_source_techniques": ["codebase archaeology before writing"]
+    },
+    {
+      "id": "facilitation-and-collaboration-protocols",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Independent evidence before convergence; no manufactured consensus."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The workshop-facilitation interaction protocol (entry modes guided/context-dump/best-guess, one question per turn, progress labels, pause/resume, numbered recommendations) is the source's facilitation source of truth and is absent.", "evidence": "skills/discovery-process/SKILL.md:73-85; SKILL.md:28-32", "recommendation": "Add the protocol as the default for AI-facilitated sessions."}
+      ],
+      "lost_source_techniques": ["entry modes", "one-question turns with progress labels", "pause/resume handling"]
+    },
+    {
+      "id": "implementation-planning-and-handoff",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Requirement-to-task traceability and risk-first ordering."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source task format (exact files to create/modify with line ranges, failing test first, exact command with expected failure, bite-sized steps for a zero-context engineer) is reduced to 'map tasks to affected areas'; the gate even forbids 'inventing file paths as facts' without requiring verified paths.", "evidence": "skills/writing-plans/SKILL.md:1-20,63-105; SKILL.md:29,46", "recommendation": "Require verified file paths, a failing-test-first step and an exact verification command per task."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie and mutation needs a behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D: score plans on zero-context executability."}
+      ],
+      "lost_source_techniques": ["exact file and line task header", "failing test as step 1", "plan written for a zero-context engineer"]
+    },
+    {
+      "id": "independent-plan-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Generic advice without a demonstrated gap is not a finding."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Anti-triggers cover design review and rewriting, but not engineering-plan-review (0.188), its closest confusable.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger: architecture/test-strategy depth review routes to engineering-plan-review."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "plan-review-decision-synthesis",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Decision classification (mechanical/taste/one-way door) faithful to source.", "Cannot downgrade a blocking dissent."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "The source's six decision principles used to auto-resolve mechanical items are not carried; the Skill classifies but gives no resolution rule for mechanical items.", "evidence": "skills/gstack/autoplan/SKILL.md:570-587", "recommendation": "State that mechanical items carry a recommended resolution with the principle cited; only taste and one-way items go to the human queue."}
+      ],
+      "lost_source_techniques": ["six decision principles"]
+    },
+    {
+      "id": "requirements-and-delivery-contract",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Actor-trigger-condition-response statements with stable IDs.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Out-of-scope list with rationale and dependency section from the PRD source are not required outputs.", "evidence": "skills/prd-development/SKILL.md:471-534", "recommendation": "Add 'explicit out-of-scope with rationale' to the output contract."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "risk-preflight-and-safety-governance",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Prior authorization or tool availability is never current permission."],
+      "findings": [
+        {"priority": "P2", "dimension": "procedure", "issue": "Risk classification has no scale (likelihood x impact or reversibility tiers), so dispositions are not reproducible.", "evidence": "SKILL.md:29-31", "recommendation": "Define reversibility tiers and the disposition each tier forces."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Close to ai-safety-and-action-governance without an anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Route AI-agent action policy to ai-safety-and-action-governance."}
+      ],
+      "lost_source_techniques": ["refuse-and-show-next-safe-window pattern from industrial requirements"]
+    },
+    {
+      "id": "workflow-orchestration-and-lifecycle",
+      "scores": {"boundary": 2, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Never impersonates a selected capability."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Duplicates the role of the released V2 router and composite Recipes (select, sequence, gate, invalidate). An atomic Skill that orchestrates contradicts the decision that workflows live in Recipes.", "evidence": "recipes/v2/1.0.0/router.json; SKILL.md:10,28-32", "recommendation": "Narrow to 'plan a workflow for a request not covered by an existing Recipe' and require reuse of an existing Recipe when one matches."}
+      ],
+      "lost_source_techniques": ["per-task spec review then quality review loop"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["context-intake-and-routing", "ui-task-routing-and-governance", "workflow-orchestration-and-lifecycle"], "issue": "Three routing-shaped Skills plus the V2 router; ownership of 'which capability next' is split four ways.", "recommendation": "Router owns Recipe selection; context-intake owns cross-domain classification; ui-task-routing owns UI-only classification; orchestration only for uncovered workflows."},
+    {"skills": ["independent-plan-review", "design-plan-review", "developer-experience-plan-review", "engineering-plan-review", "executive-plan-review"], "issue": "Five plan reviewers; boundaries are sound but only partially cross-referenced.", "recommendation": "Add a shared reviewer-selection table referenced by all five."}
+  ]
+}

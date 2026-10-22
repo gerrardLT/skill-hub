@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "scoped pairing identity",
+    "non-secret local configuration receipt",
+    "expiry and revocation instructions",
+    "network exposure and cleanup evidence"
+  ],
+  "capability_id": "capability:browser-agent-pairing-provisioning",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "scoped-session-write-with-per-action-authorization",
+    "host_actions": [
+      "approved-local-system-write",
+      "approved-network-exposure",
+      "approved-credential-mint"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "external-session-write",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Pairing requires per-action authorization for exact agent, origins, actions, transport, exposure, and expiry; wildcard, hidden, reusable, or non-revocable credentials are blocked.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "browser-agent-pairing-provisioning",
+  "inputs": [
+    "Running browser daemon, selected agent, local or remote mode, scope restrictions, credential retention, and explicit authorization."
+  ],
+  "outputs": [
+    "scoped pairing identity",
+    "non-secret local configuration receipt",
+    "expiry and revocation instructions",
+    "network exposure and cleanup evidence"
+  ],
+  "permission_identity": "local-system-write-external-session-authorized-only",
+  "policy": {
+    "coverage": [
+      "per-action-authorization",
+      "scoped-agent",
+      "origin-action-scope",
+      "expiry",
+      "revocation",
+      "network-exposure",
+      "no-secret-output"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Provision one scoped expiring browser-agent pairing identity after explicit local-system, credential, and network-exposure authorization, with revocation and cleanup.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

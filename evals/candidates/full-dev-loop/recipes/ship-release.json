@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "status": "evaluating",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "ship-release",
+  "description": "Prepare a release-ready package; never deploy without explicit authorization.",
+  "inputs": [
+    "change-artifact",
+    "completion-evidence",
+    "qa-verdict",
+    "repository-state",
+    "delivery-policy",
+    "delivery-authorization"
+  ],
+  "outputs": [
+    "release-package"
+  ],
+  "permissions": [
+    "read",
+    "grep",
+    "find",
+    "ls",
+    "bash"
+  ],
+  "steps": [
+    {
+      "id": "preflight",
+      "slot": "change-delivery-preflight",
+      "ref": "change-delivery-preflight@1.0.0",
+      "input_map": {
+        "change-artifact": "change-artifact",
+        "completion-evidence": "completion-evidence",
+        "qa-verdict": "qa-verdict",
+        "repository-state": "repository-state",
+        "delivery-policy": "delivery-policy",
+        "delivery-authorization": "delivery-authorization"
+      },
+      "output_map": {
+        "release-package": "release-package"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash"
+      ],
+      "execution_adapter": "workspace"
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "preflight",
+      "to": "preflight",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "ship release",
+      "发布交付",
+      "release ready"
+    ],
+    "negative_intents": [
+      "do not release",
+      "不要发布"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/result.json",
+        "sha256": "e2dbb10c2ac6291002aabbd14a7cdd3164b821e353941cfae2c8f89a6ada5ad9"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/review.json",
+      "sha256": "a00ce94f68bc6e2dcae606494f63fed7e6af6c14c27dff990686e051f76483fd"
+    }
+  }
+}

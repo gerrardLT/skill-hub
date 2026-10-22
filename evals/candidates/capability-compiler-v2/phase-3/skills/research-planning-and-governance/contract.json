@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "research plan",
+    "sampling and method rationale",
+    "data-governance contract",
+    "analysis and stopping plan"
+  ],
+  "capability_id": "capability:research-planning-and-governance",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "No participant contact, collection, recording, external Judge use, or proprietary-data transfer may begin from an incomplete governance contract.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "research-planning-and-governance",
+  "inputs": [
+    "A research question, target population, access constraints, ethical boundary, and timebox."
+  ],
+  "outputs": [
+    "research plan",
+    "sampling and method rationale",
+    "data-governance contract",
+    "analysis and stopping plan"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Design a research plan with decision linkage, method, sampling, consent, minimization, retention, external-transfer, and deletion boundaries.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

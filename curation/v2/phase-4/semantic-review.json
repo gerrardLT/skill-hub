@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.0",
+  "phase": 4,
+  "status": "passed",
+  "reviewer": "parent-direct-semantic-review",
+  "reviewed_candidate_count": 17,
+  "reviewed_recipe_count": 1,
+  "method": [
+    "Reviewed every candidate responsibility, procedure, output, hard gate, mutation scope, trigger, anti-trigger, and neighbor against its Phase 2 capability provenance.",
+    "Computed pairwise lexical overlap across positive trigger corpora; only rendered critique versus evidence-based release gating met the 0.25 review threshold and was manually adjudicated.",
+    "Reviewed the 17-step Recipe graph for conditional reachability, permission and mutation-scope preservation, review/remediation separation, current-render evidence, human checkpoints, feedback invalidation, and absence of remote writes.",
+    "Verified all Skill and Recipe evaluation plans remain planned and not-run-phase-9."
+  ],
+  "resolved_findings": [
+    {
+      "id": "V2-P4-REVIEW-001",
+      "finding": "The first candidate Recipe recorded only broad permission_identity values, so workspace-write steps that were limited to run-output could be reinterpreted as source writers at Recipe level.",
+      "resolution": "Every Recipe step now carries the candidate's exact mutation_scope, and the Gate compares both permission_identity and mutation_scope with the referenced contract.",
+      "evidence": ["tools/curation/v2_compile_phase4_skills.py", "tools/curation/v2_phase4_gate.py", "evals/candidates/capability-compiler-v2/phase-4/recipes/complete-ui-design-and-review.json"]
+    },
+    {
+      "id": "V2-P4-REVIEW-002",
+      "finding": "The Phase 2 external token capability has workspace-write identity but no external-read authority; wording could have implied autonomous website capture.",
+      "resolution": "The candidate accepts only supplied authorized captures or files, explicitly forbids browse/fetch/access-control bypass, writes only a run-output normalization report, and requires a separate design-system Skill for project token writes.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-4/skills/external-design-token-extraction-and-normalization/SKILL.md", "evals/candidates/capability-compiler-v2/phase-4/skills/external-design-token-extraction-and-normalization/contract.json"]
+    },
+    {
+      "id": "V2-P4-REVIEW-003",
+      "finding": "Initial Recipe branches for preservation, external tokens, prototype selection, visual system, authentic content, motion, and AI UX were reachable from route but did not explicitly rejoin the main flow.",
+      "resolution": "Added conditional branch-to-main edges with human approval for token adoption and prototype promotion; Gate verifies acyclicity and reachability.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-4/recipes/complete-ui-design-and-review.json", "tools/curation/v2_phase4_gate.py"]
+    },
+    {
+      "id": "V2-P4-REVIEW-004",
+      "finding": "Accessibility validation wording initially implied it could run tools despite a workspace-write identity with no local-exec host action.",
+      "resolution": "It now evaluates supplied current deterministic-check outputs and manual assistive records; browser/runtime acquisition remains owned by the artifact-only evidence Skill.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-4/skills/accessibility-contracts-and-assistive-validation/SKILL.md", "evals/candidates/capability-compiler-v2/phase-4/skills/ui-review-scope-and-evidence-acquisition/SKILL.md"]
+    }
+  ],
+  "boundary_samples": [
+    {
+      "id": "V2-P4-SAMPLE-DIRECTION-VISUAL-RESPONSIVE",
+      "left": "design-context-and-direction-contract",
+      "right": "visual-language-and-anti-template-controls",
+      "verdict": "passed",
+      "boundary": "Direction establishes evidence-backed user-flow, information hierarchy, spatial thesis, and human-owned choices; visual language implements the approved grammar; responsive composition owns page-level reflow, density, and stress conditions."
+    },
+    {
+      "id": "V2-P4-SAMPLE-TOKEN-EXTRACT-SYSTEM",
+      "left": "external-design-token-extraction-and-normalization",
+      "right": "design-system-foundation-and-token-extraction",
+      "verdict": "passed",
+      "boundary": "External extraction reads only supplied authorized evidence and emits candidate mappings; project-token and component persistence starts only after human approval in the design-system candidate."
+    },
+    {
+      "id": "V2-P4-SAMPLE-RESPONSIVE-INTERACTION-ACCESSIBILITY",
+      "left": "responsive-layout-and-spatial-composition",
+      "right": "interaction-states-forms-and-navigation",
+      "verdict": "passed",
+      "boundary": "Responsive composition owns semantic order, grid, density, and reflow; interaction owns controls, forms, navigation, async and recovery behavior; accessibility specifies and validates task-linked assistive outcomes without implementing either."
+    },
+    {
+      "id": "V2-P4-SAMPLE-CONTENT-VISUAL-ASSETS",
+      "left": "content-copy-and-authentic-assets",
+      "right": "visual-language-and-anti-template-controls",
+      "verdict": "passed",
+      "boundary": "Content owns truthful words, realistic records, licensed assets, and state copy; visual language owns purposeful presentation rules and anti-template controls without inventing product claims or assets."
+    },
+    {
+      "id": "V2-P4-SAMPLE-MOTION-AI-STATE",
+      "left": "purposeful-motion-and-animation-engineering",
+      "right": "ai-interaction-and-probabilistic-ux",
+      "verdict": "passed",
+      "boundary": "Motion communicates approved hierarchy or state with deterministic interruption and reduced motion; AI UX owns probabilistic latency, uncertainty, provenance, correction, and escalation whether animated or static."
+    },
+    {
+      "id": "V2-P4-SAMPLE-PRESERVATION-DIRECTION",
+      "left": "existing-interface-redesign-and-preservation",
+      "right": "design-context-and-direction-contract",
+      "verdict": "passed",
+      "boundary": "Preservation inventories product truth, routes, IA, SEO, analytics, content, behavior, and migration constraints; direction may redesign only within those approved invariants."
+    },
+    {
+      "id": "V2-P4-SAMPLE-SCOPE-CRITIQUE-GATE",
+      "left": "ui-review-scope-and-evidence-acquisition",
+      "right": "rendered-ui-critique-and-release-disposition",
+      "verdict": "passed",
+      "boundary": "Evidence acquisition defines and captures the current route-state-viewport matrix without judgment; rendered critique issues reproducible UI findings; evidence-based release gating maps independent findings to release criteria and human-owned disposition."
+    },
+    {
+      "id": "V2-P4-SAMPLE-PREFLIGHT-REVIEW-REPAIR",
+      "left": "cross-domain-ui-preflight-checklists",
+      "right": "evidence-based-ui-review-and-release-gates",
+      "verdict": "passed",
+      "boundary": "Preflight detects cross-domain omissions using current evidence; release gating consolidates criterion-linked independent findings; neither may mutate source, and accepted repair must route through a separate capability after explicit human authorization."
+    },
+    {
+      "id": "V2-P4-SAMPLE-CRITIQUE-RELEASE-LEXICAL-OVERLAP",
+      "left": "rendered-ui-critique-and-release-disposition",
+      "right": "evidence-based-ui-review-and-release-gates",
+      "verdict": "passed",
+      "boundary": "Both consume current renders, but critique performs specialist visual and interaction diagnosis while release gating aggregates criteria and risk into a bounded recommendation. The former cannot satisfy the latter alone."
+    },
+    {
+      "id": "V2-P4-SAMPLE-RECIPE-HUMAN-AUTHORITY",
+      "left": "complete-ui-design-and-review",
+      "right": "human-design-and-release-owner",
+      "verdict": "passed",
+      "boundary": "The Recipe can conditionally orchestrate contracts and invalidate evidence; humans retain taste selection, prototype promotion, repair approval, risk acceptance, and final release disposition."
+    }
+  ],
+  "open_findings": [],
+  "release_claim": "none; all 17 Skills and the Recipe remain evaluating, with all evaluation plans not-run-phase-9"
+}

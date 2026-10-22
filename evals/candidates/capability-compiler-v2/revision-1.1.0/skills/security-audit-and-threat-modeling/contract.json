@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "threat model and trust-boundary map",
+    "authorized local-check evidence manifest",
+    "reproducible prioritized findings",
+    "remediation options and residual-risk report",
+    "attack-surface census with counts"
+  ],
+  "capability_id": "capability:security-audit-and-threat-modeling",
+  "execution": {
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A security finding requires a cited trust boundary, reproducible evidence, exploit preconditions, impact, and severity rationale; audit permission never implies destructive testing, source repair, credential access, or remote mutation.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "security-audit-and-threat-modeling",
+  "inputs": [
+    "Architecture, code, dependencies, infrastructure evidence, trust boundaries, and test authorization."
+  ],
+  "outputs": [
+    "threat model and trust-boundary map",
+    "authorized local-check evidence manifest",
+    "reproducible prioritized findings",
+    "remediation options and residual-risk report",
+    "attack-surface census with counts"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "trust-boundary",
+      "authorized-local-check",
+      "reproducible-finding",
+      "severity-rationale",
+      "no-remediation",
+      "no-secret-values"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently threat-model and audit supplied architecture, source, dependencies, infrastructure, CI, secrets metadata, AI, and skill supply chain using authorized local checks, without remediation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

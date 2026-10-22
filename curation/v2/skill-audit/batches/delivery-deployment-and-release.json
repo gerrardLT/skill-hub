@@ -1,0 +1,590 @@
+{
+  "brief": ".specs/capability-compiler-v2/skill-audit/reviewer-brief.md",
+  "domain": "delivery-deployment-and-release",
+  "skill_count": 12,
+  "skills": [
+    {
+      "id": "change-delivery-preflight",
+      "path": "slots/v2/1.0.0/skills/change-delivery-preflight/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "change-packaging-and-versioning",
+          "remote-git-push"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 4,
+        "hard_gates": 2,
+        "id": "change-delivery-preflight",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "local-branch-integration",
+            "jaccard": 0.185
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.145
+          },
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.138
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec-external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 9,
+        "source_evidence_refs": 19,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 563
+      }
+    },
+    {
+      "id": "change-packaging-and-versioning",
+      "path": "slots/v2/1.0.0/skills/change-packaging-and-versioning/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "change-delivery-preflight",
+          "remote-git-push"
+        ],
+        "boilerplate_line_ratio": 0.381,
+        "canonical_units": 3,
+        "hard_gates": 2,
+        "id": "change-packaging-and-versioning",
+        "mutation_scope": "authorized-workspace",
+        "nearest_neighbours": [
+          {
+            "id": "release-documentation-maintenance",
+            "jaccard": 0.143
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.122
+          },
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.094
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write-local-exec",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 5,
+        "source_evidence_refs": 8,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 592
+      }
+    },
+    {
+      "id": "deployment-environment-setup",
+      "path": "slots/v2/1.0.0/skills/deployment-environment-setup/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "deployment-trigger-execution",
+          "web-hosting-deployment"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "deployment-environment-setup",
+        "mutation_scope": "authorized-workspace",
+        "nearest_neighbours": [
+          {
+            "id": "web-hosting-deployment",
+            "jaccard": 0.176
+          },
+          {
+            "id": "secrets-and-environment-governance",
+            "jaccard": 0.148
+          },
+          {
+            "id": "workflow-skill-authoring",
+            "jaccard": 0.146
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 12,
+        "source_evidence_refs": 12,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 565
+      }
+    },
+    {
+      "id": "deployment-trigger-execution",
+      "path": "slots/v2/1.0.0/skills/deployment-trigger-execution/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "merge-and-deploy-readiness",
+          "deployment-observation"
+        ],
+        "boilerplate_line_ratio": 0.364,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "deployment-trigger-execution",
+        "mutation_scope": "remote-deployment-trigger",
+        "nearest_neighbours": [
+          {
+            "id": "llm-experiment-execution",
+            "jaccard": 0.245
+          },
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.222
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.212
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 3,
+        "source_evidence_refs": 3,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 666
+      }
+    },
+    {
+      "id": "edge-worker-deployment",
+      "path": "slots/v2/1.0.0/skills/edge-worker-deployment/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "deployment-environment-setup",
+          "deployment-observation"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "edge-worker-deployment",
+        "mutation_scope": "remote-edge-deploy",
+        "nearest_neighbours": [
+          {
+            "id": "web-hosting-deployment",
+            "jaccard": 0.348
+          },
+          {
+            "id": "kubernetes-application-deployment",
+            "jaccard": 0.24
+          },
+          {
+            "id": "deployment-trigger-execution",
+            "jaccard": 0.208
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 2,
+        "source_evidence_refs": 2,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 694
+      }
+    },
+    {
+      "id": "kubernetes-application-deployment",
+      "path": "slots/v2/1.0.0/skills/kubernetes-application-deployment/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "kubernetes-deployment-readiness",
+          "observability-agent-installation"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "kubernetes-application-deployment",
+        "mutation_scope": "remote-kubernetes-deploy",
+        "nearest_neighbours": [
+          {
+            "id": "web-hosting-deployment",
+            "jaccard": 0.319
+          },
+          {
+            "id": "edge-worker-deployment",
+            "jaccard": 0.24
+          },
+          {
+            "id": "deployment-trigger-execution",
+            "jaccard": 0.208
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 9,
+        "source_evidence_refs": 9,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 725
+      }
+    },
+    {
+      "id": "merge-and-deploy-readiness",
+      "path": "slots/v2/1.0.0/skills/merge-and-deploy-readiness/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "remote-pull-request-merge",
+          "deployment-trigger-execution"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 6,
+        "hard_gates": 2,
+        "id": "merge-and-deploy-readiness",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "remote-pull-request-merge",
+            "jaccard": 0.204
+          },
+          {
+            "id": "kubernetes-deployment-readiness",
+            "jaccard": 0.188
+          },
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.154
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec-external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 5,
+        "source_evidence_refs": 11,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 607
+      }
+    },
+    {
+      "id": "pull-request-comment-response",
+      "path": "slots/v2/1.0.0/skills/pull-request-comment-response/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "code-review-evidence-acquisition",
+          "defect-remediation"
+        ],
+        "boilerplate_line_ratio": 0.386,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "pull-request-comment-response",
+        "mutation_scope": "remote-pr-comment",
+        "nearest_neighbours": [
+          {
+            "id": "remote-pull-request-merge",
+            "jaccard": 0.212
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.196
+          },
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.185
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 652
+      }
+    },
+    {
+      "id": "remote-git-push",
+      "path": "slots/v2/1.0.0/skills/remote-git-push/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "change-packaging-and-versioning",
+          "remote-pull-request-change"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "remote-git-push",
+        "mutation_scope": "remote-git-push",
+        "nearest_neighbours": [
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.312
+          },
+          {
+            "id": "remote-pull-request-merge",
+            "jaccard": 0.216
+          },
+          {
+            "id": "deployment-trigger-execution",
+            "jaccard": 0.212
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 663
+      }
+    },
+    {
+      "id": "remote-pull-request-change",
+      "path": "slots/v2/1.0.0/skills/remote-pull-request-change/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "remote-git-push",
+          "remote-pull-request-merge"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "remote-pull-request-change",
+        "mutation_scope": "remote-pr-change",
+        "nearest_neighbours": [
+          {
+            "id": "remote-pull-request-merge",
+            "jaccard": 0.354
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.312
+          },
+          {
+            "id": "deployment-trigger-execution",
+            "jaccard": 0.222
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 2,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived",
+          "high-semantic-overlap"
+        ],
+        "words": 667
+      }
+    },
+    {
+      "id": "remote-pull-request-merge",
+      "path": "slots/v2/1.0.0/skills/remote-pull-request-merge/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "merge-and-deploy-readiness",
+          "deployment-trigger-execution"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "remote-pull-request-merge",
+        "mutation_scope": "remote-pr-merge",
+        "nearest_neighbours": [
+          {
+            "id": "remote-pull-request-change",
+            "jaccard": 0.354
+          },
+          {
+            "id": "remote-git-push",
+            "jaccard": 0.216
+          },
+          {
+            "id": "pull-request-comment-response",
+            "jaccard": 0.212
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived",
+          "high-semantic-overlap"
+        ],
+        "words": 680
+      }
+    },
+    {
+      "id": "web-hosting-deployment",
+      "path": "slots/v2/1.0.0/skills/web-hosting-deployment/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "deployment-environment-setup",
+          "deployment-observation"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "web-hosting-deployment",
+        "mutation_scope": "remote-web-deploy",
+        "nearest_neighbours": [
+          {
+            "id": "edge-worker-deployment",
+            "jaccard": 0.348
+          },
+          {
+            "id": "kubernetes-application-deployment",
+            "jaccard": 0.319
+          },
+          {
+            "id": "deployment-trigger-execution",
+            "jaccard": 0.185
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 15,
+        "source_evidence_refs": 15,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 715
+      }
+    }
+  ]
+}

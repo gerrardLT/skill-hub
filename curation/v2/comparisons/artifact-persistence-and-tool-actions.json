@@ -1,0 +1,459 @@
+{
+  "candidate_responsibility": "Select authorized tools and persist the resulting specification or artifact at the correct lifecycle point.",
+  "canonical_unit_ids": [
+    "metrics-dashboard:unit-015",
+    "outcome-roadmap:unit-005",
+    "outcome-roadmap:unit-013",
+    "pre-mortem:unit-014"
+  ],
+  "cluster_id": "cluster:artifact-persistence-and-tool-actions",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "metrics-dashboard/SKILL.md:81-82",
+    "outcome-roadmap/SKILL.md:18-18",
+    "outcome-roadmap/SKILL.md:53-53",
+    "pre-mortem/SKILL.md:79-80",
+    "pre-mortem/SKILL.md:80-80"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:artifact-persistence-and-tool-actions"
+      ],
+      "id": "cluster:artifact-persistence-and-tool-actions:fusion:boundary",
+      "rule": "Select authorized tools and persist the resulting specification or artifact at the correct lifecycle point."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:artifact-persistence-and-tool-actions"
+      ],
+      "id": "cluster:artifact-persistence-and-tool-actions:fusion:inputs",
+      "rule": "Accept only: A validated task, tool boundary, output location, and write authorization."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:artifact-persistence-and-tool-actions"
+      ],
+      "id": "cluster:artifact-persistence-and-tool-actions:fusion:outputs",
+      "rule": "Produce only: A tool action, saved artifact, or explicit no-write outcome."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:artifact-persistence-and-tool-actions:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A validated task, tool boundary, output location, and write authorization.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "outcome-roadmap",
+        "pre-mortem"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "outcome-roadmap"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "outcome-roadmap",
+        "pre-mortem"
+      ]
+    }
+  ],
+  "output_boundary": "A tool action, saved artifact, or explicit no-write outcome.",
+  "retained_auxiliary_unit_ids": [
+    "skills/pre-mortem/SKILL.md:80-80"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "第七步落盘输出产物：按步骤系统推演，并将指标看板设计规范完整保存为 Markdown 格式文档。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Explicit limits: 必须将看板设计规范整体落盘为独立的 Markdown 文档供工程实施消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-015"
+      ]
+    },
+    {
+      "approach": "第七步落盘输出产物：按步骤系统推演，并将指标看板设计规范完整保存为 Markdown 格式文档。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Explicit limits: 必须将看板设计规范整体落盘为独立的 Markdown 文档供工程实施消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for method (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-015"
+      ]
+    },
+    {
+      "approach": "必须将看板设计规范整体落盘为独立的 Markdown 文档供工程实施消费。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Explicit limits: 必须将看板设计规范整体落盘为独立的 Markdown 文档供工程实施消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "第七步落盘输出产物：按步骤系统推演，并将指标看板设计规范完整保存为 Markdown 格式文档。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Explicit limits: 必须将看板设计规范整体落盘为独立的 Markdown 文档供工程实施消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "提及 strategy documents 或 company objectives 时，条件性使用 web search 理解 broader-goal alignment。; 结果 substantial 时条件性保存为替换了年份占位符的 markdown 文件。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Explicit limits: 来源只定义触发搜索；以下是策展权限 safeguard（非来源原文）：需满足网络与文档访问授权，不访问私有内容，也不把搜索结果当内部权威事实。; 来源定义 substantial 时保存，但未定义阈值、目录、覆盖策略或年份口径；确认目标路径与写入授权是策展权限 safeguard（非来源原文）。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013"
+      ]
+    },
+    {
+      "approach": "提及 strategy documents 或 company objectives 时，条件性使用 web search 理解 broader-goal alignment。; 结果 substantial 时条件性保存为替换了年份占位符的 markdown 文件。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Explicit limits: 来源只定义触发搜索；以下是策展权限 safeguard（非来源原文）：需满足网络与文档访问授权，不访问私有内容，也不把搜索结果当内部权威事实。; 来源定义 substantial 时保存，但未定义阈值、目录、覆盖策略或年份口径；确认目标路径与写入授权是策展权限 safeguard（非来源原文）。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 2 source-grounded atom(s) for method (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013"
+      ]
+    },
+    {
+      "approach": "来源只定义触发搜索；以下是策展权限 safeguard（非来源原文）：需满足网络与文档访问授权，不访问私有内容，也不把搜索结果当内部权威事实。; 来源定义 substantial 时保存，但未定义阈值、目录、覆盖策略或年份口径；确认目标路径与写入授权是策展权限 safeguard（非来源原文）。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Explicit limits: 来源只定义触发搜索；以下是策展权限 safeguard（非来源原文）：需满足网络与文档访问授权，不访问私有内容，也不把搜索结果当内部权威事实。; 来源定义 substantial 时保存，但未定义阈值、目录、覆盖策略或年份口径；确认目标路径与写入授权是策展权限 safeguard（非来源原文）。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "提及 strategy documents 或 company objectives 时，条件性使用 web search 理解 broader-goal alignment。; 结果 substantial 时条件性保存为替换了年份占位符的 markdown 文件。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Explicit limits: 来源只定义触发搜索；以下是策展权限 safeguard（非来源原文）：需满足网络与文档访问授权，不访问私有内容，也不把搜索结果当内部权威事实。; 来源定义 substantial 时保存，但未定义阈值、目录、覆盖策略或年份口径；确认目标路径与写入授权是策展权限 safeguard（非来源原文）。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "第七步落盘输出文件：将分析结果保存为 Markdown 文件，命名格式严格遵循 PreMortem-[product-name]-[date].md。; 保存规则：以 markdown 格式保存到固定命名空间——PreMortem-[产品名]-[日期].md。标准文件名便于检索和版本控制。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80",
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "limitations": "Explicit limits: 必须将结果保存为独立的 Markdown 文档，且符合指定命名模式。; 必须在输出后立即保存以便后续回顾",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-014",
+        "skills/pre-mortem/SKILL.md:80-80"
+      ]
+    },
+    {
+      "approach": "第七步落盘输出文件：将分析结果保存为 Markdown 文件，命名格式严格遵循 PreMortem-[product-name]-[date].md。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80"
+      ],
+      "limitations": "Explicit limits: 必须将结果保存为独立的 Markdown 文档，且符合指定命名模式。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 1 source-grounded atom(s) for method (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-014"
+      ]
+    },
+    {
+      "approach": "必须将结果保存为独立的 Markdown 文档，且符合指定命名模式。; 必须在输出后立即保存以便后续回顾",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80",
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "limitations": "Explicit limits: 必须将结果保存为独立的 Markdown 文档，且符合指定命名模式。; 必须在输出后立即保存以便后续回顾",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-014",
+        "skills/pre-mortem/SKILL.md:80-80"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80",
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "pre-mortem",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "文件存在于项目目录或 gbrain 搜索范围",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "limitations": "Explicit limits: 必须在输出后立即保存以便后续回顾",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/pre-mortem/SKILL.md:80-80"
+      ]
+    },
+    {
+      "approach": "第七步落盘输出文件：将分析结果保存为 Markdown 文件，命名格式严格遵循 PreMortem-[product-name]-[date].md。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80"
+      ],
+      "limitations": "Explicit limits: 必须将结果保存为独立的 Markdown 文档，且符合指定命名模式。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80",
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "pre-mortem",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "tool-action": 1
+      },
+      "evidence": [
+        "metrics-dashboard/SKILL.md:81-82"
+      ],
+      "source_id": "metrics-dashboard",
+      "unit_ids": [
+        "metrics-dashboard:unit-015"
+      ]
+    },
+    {
+      "contribution_types": {
+        "tool-action": 2
+      },
+      "evidence": [
+        "outcome-roadmap/SKILL.md:18-18",
+        "outcome-roadmap/SKILL.md:53-53"
+      ],
+      "source_id": "outcome-roadmap",
+      "unit_ids": [
+        "outcome-roadmap:unit-005",
+        "outcome-roadmap:unit-013"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1,
+        "tool-action": 1
+      },
+      "evidence": [
+        "pre-mortem/SKILL.md:79-80",
+        "pre-mortem/SKILL.md:80-80"
+      ],
+      "source_id": "pre-mortem",
+      "unit_ids": [
+        "pre-mortem:unit-014",
+        "skills/pre-mortem/SKILL.md:80-80"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "metrics-dashboard:unit-015",
+    "outcome-roadmap:unit-005",
+    "outcome-roadmap:unit-013",
+    "pre-mortem:unit-014",
+    "skills/pre-mortem/SKILL.md:80-80"
+  ]
+}

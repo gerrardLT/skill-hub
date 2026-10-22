@@ -1,0 +1,250 @@
+{
+  "candidate_responsibility": "Design human-agent interaction for latency, uncertainty, personalization, correction, and comprehensible recovery.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-002",
+    "ai-product-strategy:unit-040",
+    "ai-product-strategy:unit-044",
+    "ai-product-strategy:unit-045"
+  ],
+  "cluster_id": "cluster:ai-interaction-and-probabilistic-ux",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/SKILL.md:21-24",
+    "ai-product-strategy/references/guest-insights.md:586-593",
+    "ai-product-strategy/references/guest-insights.md:730-739",
+    "ai-product-strategy/references/guest-insights.md:745-753"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-interaction-and-probabilistic-ux"
+      ],
+      "id": "cluster:ai-interaction-and-probabilistic-ux:fusion:boundary",
+      "rule": "Design human-agent interaction for latency, uncertainty, personalization, correction, and comprehensible recovery."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-interaction-and-probabilistic-ux"
+      ],
+      "id": "cluster:ai-interaction-and-probabilistic-ux:fusion:inputs",
+      "rule": "Accept only: Probabilistic outputs, user context, interaction latency, correction signals, and accessibility needs."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-interaction-and-probabilistic-ux"
+      ],
+      "id": "cluster:ai-interaction-and-probabilistic-ux:fusion:outputs",
+      "rule": "Produce only: A human-agent interaction contract, uncertainty presentation, recovery path, and UX evidence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:ai-interaction-and-probabilistic-ux:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Probabilistic outputs, user context, interaction latency, correction signals, and accessibility needs.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A human-agent interaction contract, uncertainty presentation, recovery path, and UX evidence.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "产品体验必须接受 AI 输出的概率性和不完美。; 为编码建议优化 flow：降低延迟，从附近变量、方法和注释推断意图，并提供多行建议。; 依据用户 persona、情境和具体需要个性化 onboarding，降低新用户学习摩擦。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Explicit limits: 用于生成或判断输出；确定性子流程仍可有普通软件保证。; 用于用户输入中的编码辅助；不把多行补全规则强加于所有 AI 产品。; 用于用户引导体验设计；未来能力观点不证明项目已有个性化能力。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (method=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-002",
+        "ai-product-strategy:unit-040",
+        "ai-product-strategy:unit-044",
+        "ai-product-strategy:unit-045"
+      ]
+    },
+    {
+      "approach": "为编码建议优化 flow：降低延迟，从附近变量、方法和注释推断意图，并提供多行建议。; 依据用户 persona、情境和具体需要个性化 onboarding，降低新用户学习摩擦。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739"
+      ],
+      "limitations": "Explicit limits: 用于用户输入中的编码辅助；不把多行补全规则强加于所有 AI 产品。; 用于用户引导体验设计；未来能力观点不证明项目已有个性化能力。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-040",
+        "ai-product-strategy:unit-044"
+      ]
+    },
+    {
+      "approach": "用于生成或判断输出；确定性子流程仍可有普通软件保证。; 用于用户输入中的编码辅助；不把多行补全规则强加于所有 AI 产品。; 用于用户引导体验设计；未来能力观点不证明项目已有个性化能力。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Explicit limits: 用于生成或判断输出；确定性子流程仍可有普通软件保证。; 用于用户输入中的编码辅助；不把多行补全规则强加于所有 AI 产品。; 用于用户引导体验设计；未来能力观点不证明项目已有个性化能力。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (method=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-002",
+        "ai-product-strategy:unit-040",
+        "ai-product-strategy:unit-044",
+        "ai-product-strategy:unit-045"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "存在错误呈现、修订或恢复路径。; 除模型升级外还有具体界面或工具改进，并对应用户学习障碍。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Explicit limits: 用于生成或判断输出；确定性子流程仍可有普通软件保证。; 50/50 是受访者观点，不是资源分配定额。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-002",
+        "ai-product-strategy:unit-045"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 2
+      },
+      "evidence": [
+        "ai-product-strategy/SKILL.md:21-24",
+        "ai-product-strategy/references/guest-insights.md:586-593",
+        "ai-product-strategy/references/guest-insights.md:730-739",
+        "ai-product-strategy/references/guest-insights.md:745-753"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-002",
+        "ai-product-strategy:unit-040",
+        "ai-product-strategy:unit-044",
+        "ai-product-strategy:unit-045"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-002",
+    "ai-product-strategy:unit-040",
+    "ai-product-strategy:unit-044",
+    "ai-product-strategy:unit-045"
+  ]
+}

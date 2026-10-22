@@ -1,0 +1,144 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [audit-website/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [audit-website/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [audit-website/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [audit-website/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Rules carry a level (error, warning, notice) and a rank (1-10): fix errors first, then high-rank warnings. Findings that need a content edit count the same as ones that need a code edit. Broken links usually need a human decision (remove, replace, or keep): flag them rather than guessing. [audit-website/SKILL.md:72]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Audit a website with the squirrelscan CLI and fix the findings in code. [audit-website/SKILL.md:3]",
+  "root_id": "skill-root:audit-website",
+  "rules_gates": [
+    "Requires the squirrel CLI ([squirrelscan.com/download](https://squirrelscan.com/download); verify with squirrel --version). For CLI setup, login, publishing, MCP, and general CLI usage, use the companion squirrelscan skill. [audit-website/SKILL.md:16]",
+    "2. Second pass, deeper coverage: -C surface (one page per URL pattern) for template-level coverage, or -C full for a comprehensive crawl before sign-off. [audit-website/SKILL.md:38]",
+    "2. Propose fixes: list the issues you can fix and confirm with the user before changing anything. [audit-website/SKILL.md:53]",
+    "5. Re-audit (use --refresh after deploys or content changes) and show before/after scores. [audit-website/SKILL.md:56]",
+    "After each batch, verify the project still builds and existing checks pass. [audit-website/SKILL.md:59]",
+    "Verifying regressions [audit-website/SKILL.md:74]",
+    "Done means: all errors fixed; warnings fixed or documented as needing human review; a re-audit confirms the improvement; and the user has seen the before/after score comparison plus a summary of every change made. Re-audit regularly to keep the site healthy. If the user wants to share results, offer [audit-website/SKILL.md:85]"
+  ],
+  "skill_path": "audit-website/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "audit-website/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "audit-website/SKILL.md"
+    },
+    {
+      "line_end": 18,
+      "line_start": 18,
+      "path": "audit-website/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "audit-website/SKILL.md"
+    },
+    {
+      "line_end": 35,
+      "line_start": 35,
+      "path": "audit-website/SKILL.md"
+    }
+  ],
+  "source_sha256": "c50704eb4d4c06b21e7d9ba3eb7debadc042ccd09a628487c3e5785d1ea3c4a7",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f039613f4429e3ae8378b7dc7e9979ec238c8324af5bb21d2abc131ff110e341",
+        "content-review:21-lines"
+      ],
+      "path": "audit-website/README.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c50704eb4d4c06b21e7d9ba3eb7debadc042ccd09a628487c3e5785d1ea3c4a7",
+        "content-review:90-lines",
+        "semantic-review-report:curation/v2/reviews/qa-delivery.md"
+      ],
+      "path": "audit-website/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6f6729b53c499a1b74f46c4a138d2f738f73ea5baed1111c67fec0258c352777",
+        "content-review:7-lines"
+      ],
+      "path": "audit-website/agents/openai.yaml",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:5a5ccd84f57b8a030caf51cc7e57b1b412996ad7db837303a2473f6e4313073c"
+      ],
+      "path": "audit-website/assets/icon-large.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ea7f6275693d96577383d550f97eda5e5fdd70da51b7f770dabf84bb72b7759d",
+        "content-review:42-lines"
+      ],
+      "path": "audit-website/assets/icon-small.svg",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4e508b7a055d04ab588207eb9c69567f88a5002f3e402a2e08c3c19b41a2dc5a",
+        "content-review:251-lines"
+      ],
+      "path": "audit-website/references/OUTPUT-FORMAT.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash(squirrel:) Read Edit Grep Glob [audit-website/SKILL.md:1-10]",
+    "Local dependency: audit-website/references/OUTPUT-FORMAT.md [audit-website/SKILL.md:89]"
+  ],
+  "trigger": "Audit a website with the squirrelscan CLI and fix the findings in code. Runs SEO, performance, security, technical, content, accessibility, and 15 other rule categories (260+ rules), returns an LLM-optimized report, then drives an iterative fix loop, mapping issues to source files, applying fixes, a [audit-website/SKILL.md:3]",
+  "unique_methods": [
+    "Audit a Website and Fix It [audit-website/SKILL.md:12]",
+    "Rule docs [audit-website/SKILL.md:18]",
+    "Running the audit [audit-website/SKILL.md:24]",
+    "Scan progression [audit-website/SKILL.md:35]",
+    "The fix loop [audit-website/SKILL.md:50]",
+    "Score targets [audit-website/SKILL.md:61]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [audit-website/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [audit-website/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [audit-website/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Audit a Website and Fix It [audit-website/SKILL.md:12]",
+    "Rule docs [audit-website/SKILL.md:18]",
+    "Running the audit [audit-website/SKILL.md:24]",
+    "Scan progression [audit-website/SKILL.md:35]",
+    "The fix loop [audit-website/SKILL.md:50]",
+    "Score targets [audit-website/SKILL.md:61]"
+  ]
+}

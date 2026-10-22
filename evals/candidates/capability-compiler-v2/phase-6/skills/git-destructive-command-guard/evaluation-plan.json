@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "git-guardrails-claude-code",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or source-specific behavior."
+  },
+  "candidate": {
+    "contract_sha256": "a6f43230953cad1874447807527e5fe1fb02ca662a75fe781cb863c516739384",
+    "identity": "git-destructive-command-guard@0.1.0-v2-candidate",
+    "skill_sha256": "da2a6056f7d08b0c36ad37bd75e0d906577c6c20ff39e3834a89b315b761835f"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P6-git-destructive-command-guard-holdout-trigger-01",
+    "V2-P6-git-destructive-command-guard-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P6-MUT-git-destructive-command-guard-01",
+      "remove_exact_text": "Guard authoring may create tested repository artifacts but cannot modify Git config, hook paths, aliases, shell startup, or enable interception without separate local-system authorization.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "target and authority traceability",
+    "atomic mutation-scope adherence",
+    "current executable or artifact evidence integrity",
+    "failure and limitation preservation",
+    "review-remediation and setup-action separation",
+    "data credential local-system and remote governance",
+    "determinism reproducibility and cleanup"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "git-destructive-command-guard",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

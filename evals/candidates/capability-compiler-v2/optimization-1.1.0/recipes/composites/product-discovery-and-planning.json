@@ -1,0 +1,131 @@
+{
+  "description": "Govern, research, choose direction, and produce approved requirements and plans without implementation.",
+  "execution_state": "candidate-definition-not-executed",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_downstream_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "resume_only_from_valid_checkpoint": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "stage recipes remain conditional and skip non-applicable atomic steps",
+    "mandatory handoffs preserve identities, authority, completion evidence, gaps, residual risk, and invalidation",
+    "support stage never grants lifecycle approval and always returns to the blocked owner",
+    "every remote or local-system action requires fresh non-cascading authorization"
+  ],
+  "handoffs": [
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-001",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:01-governance-intake",
+      "target_stage_id": "stage:02-discovery-research"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-002",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:02-discovery-research",
+      "target_stage_id": "stage:03-strategy-prioritization"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-003",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:03-strategy-prioritization",
+      "target_stage_id": "stage:04-requirements-planning"
+    }
+  ],
+  "human_checkpoints": [
+    "human confirms authority, data boundary, decision owner, and requested scope",
+    "human approves research purpose, governed data use, and evidence sufficiency",
+    "human selects strategy, priority, and GO/PIVOT/KILL outcome",
+    "human approves behavior, scope, acceptance criteria, plan, and unresolved exclusions"
+  ],
+  "id": "product-discovery-and-planning",
+  "schema_version": "2.0",
+  "stage_steps": [
+    {
+      "condition": "authority, context, risk, data governance, or routing must be bounded",
+      "depends_on": [],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-01-governance-intake@1.1.0-candidate",
+      "stage_id": "stage:01-governance-intake"
+    },
+    {
+      "condition": "validated discovery, research, market, system, or evidence collection is required",
+      "depends_on": [
+        "stage-01-governance-intake"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-02-discovery-research@1.1.0-candidate",
+      "stage_id": "stage:02-discovery-research"
+    },
+    {
+      "condition": "evidence-backed alternatives, prioritization, positioning, or strategic choice is required",
+      "depends_on": [
+        "stage-02-discovery-research"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-03-strategy-prioritization@1.1.0-candidate",
+      "stage_id": "stage:03-strategy-prioritization"
+    },
+    {
+      "condition": "approved direction needs requirements, acceptance, implementation planning, or plan review",
+      "depends_on": [
+        "stage-03-strategy-prioritization"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-04-requirements-planning@1.1.0-candidate",
+      "stage_id": "stage:04-requirements-planning"
+    }
+  ],
+  "status": "evaluating",
+  "support_stage": {
+    "condition": "a selected owner is blocked by a local tool, browser, artifact, memory, auth, or workflow-runtime prerequisite",
+    "mandatory_in_recipe": false,
+    "recipe_ref": "stage-15-tool-runtime-support@1.1.0-candidate",
+    "return_to_blocked_owner": true,
+    "stage_id": "stage:15-tool-runtime-support"
+  },
+  "version": "1.1.0-candidate"
+}

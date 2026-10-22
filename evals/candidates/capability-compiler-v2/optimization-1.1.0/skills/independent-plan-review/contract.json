@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "independent plan review",
+    "traceability gaps",
+    "finding register",
+    "review verdict"
+  ],
+  "capability_id": "capability:independent-plan-review",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "The review must cite the frozen plan; generic best-practice advice without a demonstrated gap is not a finding.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "independent-plan-review",
+  "inputs": [
+    "A proposed plan, repository constraints, task boundaries, and verification requirements."
+  ],
+  "outputs": [
+    "independent plan review",
+    "traceability gaps",
+    "finding register",
+    "review verdict"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

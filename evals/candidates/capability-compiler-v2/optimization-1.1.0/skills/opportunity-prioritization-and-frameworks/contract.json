@@ -1,0 +1,56 @@
+{
+  "artifact_types": [
+    "framework declaration",
+    "scoring table",
+    "sensitivity analysis",
+    "human decision brief",
+    "canonical variant definition and arithmetic for every score"
+  ],
+  "capability_id": "capability:opportunity-prioritization-and-frameworks",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Declare the exact named or custom scoring formula, units and assumptions before computing; do not silently mix incompatible variants. If the user asks you to choose a method, propose and label a suitable formula without implying decision approval.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "opportunity-prioritization-and-frameworks",
+  "inputs": [
+    "Validated problems, opportunities, evidence strength, constraints, and decision criteria."
+  ],
+  "outputs": [
+    "framework declaration",
+    "scoring table",
+    "sensitivity analysis",
+    "human decision brief",
+    "canonical variant definition and arithmetic for every score"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": true
+  },
+  "responsibility": "Apply an explicitly named prioritization framework and exact formula variant to an evidence-bounded opportunity set.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

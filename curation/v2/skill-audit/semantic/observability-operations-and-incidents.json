@@ -1,0 +1,226 @@
+{
+  "domain": "observability-operations-and-incidents",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "ai-observability-configuration",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Prompt, response, tool and retrieved content denied by default."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.386 with log-observability-configuration; neither names the other as an anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers: gen_ai spans and agent traces vs log pipelines."},
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source's canonical gen_ai.* attribute conventions and the SDK-detected vs manual instrumentation split are absent, so the 'governed telemetry schema' has no reference vocabulary.", "evidence": "skills/sentry-setup-ai-monitoring/SKILL.md:12-44,269-308; slots/v2/1.0.0/skills/ai-observability-configuration/SKILL.md:28-29", "recommendation": "Reference OpenTelemetry/Sentry gen_ai semantic conventions as the default schema and detect supported SDKs before manual instrumentation."}
+      ],
+      "lost_source_techniques": ["gen_ai.* semantic conventions", "SDK auto-instrumentation before manual spans"]
+    },
+    {
+      "id": "apm-instrumentation-enablement",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Duplicate auto/manual instrumentation blocks change; overhead budget required."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source 'resolve every context variable before step 0' and 'extend the existing agent resource, never a separate manifest' are not carried.", "evidence": "skills/dd-apm/k8s-ssi/enable-ssi/SKILL.md:12-51,135-174", "recommendation": "Add both as preconditions for the Kubernetes variant."}
+      ],
+      "lost_source_techniques": ["resolve all context variables before acting", "extend existing agent resource"]
+    },
+    {
+      "id": "apm-instrumentation-troubleshooting",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Separates emission, transport, sampling, identity, parsing and query failures."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Provider-side first checks (is the tracer reporting, does APM recognise the service, effective SDK config) and the 'explain why before asking for host access' rule are dropped.", "evidence": "skills/dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:329-360; skills/dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:240-279", "recommendation": "Order checks provider-side first, then host-side with stated rationale."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case."}
+      ],
+      "lost_source_techniques": ["provider-side diagnostic order"]
+    },
+    {
+      "id": "apm-instrumentation-verification",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Known-request evidence required; configuration presence alone insufficient."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "apm-onboarding-summary",
+      "scores": {"boundary": 2, "trigger_precision": 3, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 2},
+      "verdict": "merge",
+      "merge_or_split_target": "apm-instrumentation-verification",
+      "strengths": ["Configured is never verified; seven-state classification."],
+      "findings": [
+        {"priority": "P2", "dimension": "boundary", "issue": "A read-only aggregation of other Skills' outputs with no domain method of its own; the source onboarding summary is itself a live verification report. Separate Skill adds routing surface without capability.", "evidence": "skills/dd-apm/k8s-ssi/onboarding-summary/SKILL.md:3-7; slots/v2/1.0.0/skills/apm-onboarding-summary/SKILL.md:28-31", "recommendation": "Fold the service coverage matrix into apm-instrumentation-verification as its multi-service output."}
+      ],
+      "lost_source_techniques": ["deep links into provider UI per verified service"]
+    },
+    {
+      "id": "canary-baseline-management",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Immutable baselines with supersession continuity."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source captures the baseline before deploy and offers update only after a healthy canary; the Skill does not tie baseline replacement to a healthy-canary condition.", "evidence": "skills/gstack/canary/SKILL.md:548-587,715-725", "recommendation": "Require healthy canary evidence as precondition for supersession."}
+      ],
+      "lost_source_techniques": ["pre-deploy capture; update only after healthy canary"]
+    },
+    {
+      "id": "deployment-observation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Rollback recommendation is not action; every observation bound to query and time."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Platform-specific wait strategies (workflow run polling by merge SHA, auto-deploy propagation wait) are absent, so the start of the observation window is undefined.", "evidence": "skills/gstack/land-and-deploy/SKILL.md:792-831; SKILL.md:28-29", "recommendation": "Define window start as confirmed deploy completion per platform strategy."}
+      ],
+      "lost_source_techniques": ["deploy wait strategy per platform"]
+    },
+    {
+      "id": "error-monitoring-issue-investigation",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Grouping artifact vs symptom vs cause; no resolve/mute/assign."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Issue category handling (error vs performance vs cron-monitor) changes what context means; not stated.", "evidence": "skills/sentry-debug-issue/SKILL.md:72-111", "recommendation": "Add category classification as step 1."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Anti-trigger to root-cause-investigation (local reproduction) is missing.", "evidence": "SKILL.md:17-18", "recommendation": "Add it."}
+      ],
+      "lost_source_techniques": ["issue category determines context"]
+    },
+    {
+      "id": "incident-response-coordination",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 2},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Mitigation first; every action routes to a separately authorized owner."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "No severity scale definition, no communication cadence (internal every 15 minutes) and no status-page templates, all present in the source playbook; 'severity recommendation' is unanchored.", "evidence": "skills/incident-response/SKILL.md:93-117; skills/incident-response/references/incident-playbook.md:136-165", "recommendation": "Embed SEV1-SEV4 definitions, three-audience cadence and update templates."}
+      ],
+      "lost_source_techniques": ["SEV scale", "15-minute internal update cadence", "status page templates"]
+    },
+    {
+      "id": "log-observability-configuration",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Secret and sensitive fields denied by default; volume and cost bounded."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.386 with ai-observability-configuration without anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Pipeline processor patterns (grok parser, remappers) and the troubleshooting table (missing logs, high cost, slow search) are dropped.", "evidence": "skills/dd-logs/SKILL.md:76-103,198-206", "recommendation": "Add exclusion filters as the first cost control and the troubleshooting table."}
+      ],
+      "lost_source_techniques": ["exclusion filters for cost", "grok parsing pipeline"]
+    },
+    {
+      "id": "metrics-system-and-observability",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Exact numerator/denominator/window/owner/linked action required."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with an ambiguous denominator."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "'One metric this feature must move' and weekly/monthly review cadence are cited but not required.", "evidence": "skills/prd-development/SKILL.md:346-392; skills/metrics-review/SKILL.md:275-317", "recommendation": "Require one primary metric and a review cadence."}
+      ],
+      "lost_source_techniques": ["single primary metric", "review cadence"]
+    },
+    {
+      "id": "monitoring-and-alert-configuration",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Burn-rate rationale, missing-data behavior, runbook and dedup required."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie; mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case with an alert lacking an actionable owner."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "observability-agent-installation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Pinned digest, no mutable latest, uninstall path.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Cluster-type decision (self-hosted needs kubelet tlsVerify false; managed omits it) is a known install failure and not stated.", "evidence": "skills/dd-apm/k8s-ssi/agent-install/SKILL.md:145-184", "recommendation": "Add cluster-type variant notes."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "production-canary-monitoring",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Diff classification with persistence tracking; no auto-rollback."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlaps deployment-observation; page-level visual canary vs provider health signals not stated.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers."}
+      ],
+      "lost_source_techniques": ["fresh page reopen per check, 60s cadence default"]
+    },
+    {
+      "id": "production-llm-trace-root-cause-analysis",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Success/failure comparison and first divergent stage required."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source mode selection (error / eval / generic) for finding problematic spans is not carried.", "evidence": "skills/agent-observability-trace-rca/SKILL.md:193-232", "recommendation": "Add the three investigation modes."}
+      ],
+      "lost_source_techniques": ["error/eval/generic investigation modes"]
+    },
+    {
+      "id": "production-trace-classification",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Category criteria defined before reading outcomes; uncategorized preserved."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Single source ref; pass/partial/fail outcome labelling and pass-rate summary from source are not the output form.", "evidence": "skills/agent-observability-eval-pipeline/SKILL.md:207-246", "recommendation": "Adopt yes/partial/no outcome label and pass rate in counts."}
+      ],
+      "lost_source_techniques": ["yes/partial/no outcome labels"]
+    },
+    {
+      "id": "release-observability-configuration",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Association never proves deployment."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source's first step, diagnose which half exists (SDK release tag on events vs CI release creation with commits) before configuring anything, is absent.", "evidence": "skills/sentry-setup-releases/SKILL.md:26-64; SKILL.md:28", "recommendation": "Add a half-present diagnosis step before any change."}
+      ],
+      "lost_source_techniques": ["diagnose which half of release wiring exists first", "suspect-commit path"]
+    },
+    {
+      "id": "release-rollback-execution",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Migration compatibility and predeclared condition required."],
+      "findings": [
+        {"priority": "P1", "dimension": "procedure", "issue": "Rollback method is unspecified; the source's default is a revert commit that redeploys, which needs Git push authority this Skill does not hold. Provider rollback vs revert commit are different actions.", "evidence": "skills/gstack/land-and-deploy/SKILL.md:923-944; SKILL.md:28-31", "recommendation": "Declare method: provider-native rollback here; revert-commit path routes to change-packaging and remote-git-push."}
+      ],
+      "lost_source_techniques": ["revert commit as rollback method"]
+    },
+    {
+      "id": "service-identity-remapping",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Impact preview of monitors and dashboards; collision blocks.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Inferred-entity remaps require peer.service on outbound spans; not stated.", "evidence": "skills/dd-apm/service-remapping/SKILL.md:13-58", "recommendation": "Add as precondition for inferred-entity variant."}
+      ],
+      "lost_source_techniques": []
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["ai-observability-configuration", "log-observability-configuration", "release-observability-configuration", "monitoring-and-alert-configuration"], "issue": "Four provider-config Skills share an identical skeleton; separation is sound but discriminators are missing in two.", "recommendation": "Add mutual anti-triggers keyed on signal type."},
+    {"skills": ["apm-onboarding-summary", "apm-instrumentation-verification"], "issue": "Summary has no independent method.", "recommendation": "Merge."}
+  ]
+}

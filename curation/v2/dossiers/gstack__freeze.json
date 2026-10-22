@@ -1,0 +1,126 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/freeze/SKILL.md:4]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/freeze/SKILL.md:4]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/freeze/SKILL.md:4]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/freeze/SKILL.md:4]"
+  ],
+  "permissions_side_effects": [
+    "again. To remove it, run /unfreeze or end the session.\" [gstack/freeze/SKILL.md:75]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/freeze/SKILL.md:4"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Restrict file edits to a specific directory for the session. [gstack/freeze/SKILL.md:4]",
+  "root_id": "skill-root:gstack/freeze",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/freeze/SKILL.md:26]",
+    "hookSpecificOutput payload with permissionDecision: \"deny\" to block the [gstack/freeze/SKILL.md:82]",
+    "permissionDecision). [gstack/freeze/SKILL.md:84]"
+  ],
+  "skill_path": "gstack/freeze/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 8,
+      "line_start": 4,
+      "path": "gstack/freeze/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "gstack/freeze/SKILL.md"
+    },
+    {
+      "line_end": 38,
+      "line_start": 38,
+      "path": "gstack/freeze/SKILL.md"
+    },
+    {
+      "line_end": 48,
+      "line_start": 48,
+      "path": "gstack/freeze/SKILL.md"
+    },
+    {
+      "line_end": 77,
+      "line_start": 77,
+      "path": "gstack/freeze/SKILL.md"
+    }
+  ],
+  "source_sha256": "b5beb26f22e55ed1cc9956a76bcd6986c4f6a262882e93fe0adbd831257e834f",
+  "stop_conditions": [
+    "a file outside the allowed path will be blocked (not just warned). [gstack/freeze/SKILL.md:41]",
+    "Ask the user which directory to restrict edits to. Use AskUserQuestion [gstack/freeze/SKILL.md:50]",
+    "Question: \"Which directory should I restrict edits to? Files outside this path will be blocked from editing.\" [gstack/freeze/SKILL.md:52]",
+    "outside this directory will be blocked. To change the boundary, run /freeze [gstack/freeze/SKILL.md:74]",
+    "Polarity is fail-closed: a tool payload the hook cannot parse is DENIED, not [gstack/freeze/SKILL.md:86]",
+    "allowed — a boundary that fails open is not a boundary. A payload that parses [gstack/freeze/SKILL.md:87]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b5beb26f22e55ed1cc9956a76bcd6986c4f6a262882e93fe0adbd831257e834f",
+        "content-review:102-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/freeze/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:882819d31dde871bc845a31bd6eb63fd345f297fa8387cbf7e5884f779c8e853",
+        "content-review:97-lines"
+      ],
+      "path": "gstack/freeze/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:97e6013a990911ef544e4e80fc464560286e298d85ffbdf391b860e9910376f4",
+        "content-review:170-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/freeze/bin/check-freeze.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/freeze/SKILL.md:1-25]",
+    "Declared tool: Read [gstack/freeze/SKILL.md:1-25]",
+    "Declared tool: AskUserQuestion [gstack/freeze/SKILL.md:1-25]"
+  ],
+  "trigger": "Restrict file edits to a specific directory for the session. (gstack) [gstack/freeze/SKILL.md:4]",
+  "unique_methods": [
+    "/freeze — Restrict Edits to a Directory [gstack/freeze/SKILL.md:38]",
+    "Setup [gstack/freeze/SKILL.md:48]",
+    "How it works [gstack/freeze/SKILL.md:77]",
+    "Notes [gstack/freeze/SKILL.md:96]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/freeze/SKILL.md:4]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/freeze/SKILL.md:4]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [gstack/freeze/SKILL.md:4]"
+  ],
+  "workflow": [
+    "When to invoke this skill [gstack/freeze/SKILL.md:30]",
+    "/freeze — Restrict Edits to a Directory [gstack/freeze/SKILL.md:38]",
+    "Setup [gstack/freeze/SKILL.md:48]",
+    "How it works [gstack/freeze/SKILL.md:77]",
+    "Notes [gstack/freeze/SKILL.md:96]"
+  ]
+}

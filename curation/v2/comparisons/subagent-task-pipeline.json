@@ -1,0 +1,389 @@
+{
+  "candidate_responsibility": "Dispatch plan tasks to isolated implementers and sequence status, specification review, and quality review.",
+  "canonical_unit_ids": [
+    "subagent-driven-development:unit-001",
+    "subagent-driven-development:unit-002",
+    "subagent-driven-development:unit-003",
+    "subagent-driven-development:unit-004",
+    "subagent-driven-development:unit-005",
+    "subagent-driven-development:unit-006",
+    "subagent-driven-development:unit-007",
+    "subagent-driven-development:unit-008",
+    "subagent-driven-development:unit-009",
+    "subagent-driven-development:unit-010",
+    "subagent-driven-development:unit-011",
+    "subagent-driven-development:unit-012",
+    "subagent-driven-development:unit-013",
+    "subagent-driven-development:unit-014"
+  ],
+  "cluster_id": "cluster:subagent-task-pipeline",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "subagent-driven-development/SKILL.md:1-13",
+    "subagent-driven-development/SKILL.md:1-7",
+    "subagent-driven-development/SKILL.md:104-121",
+    "subagent-driven-development/SKILL.md:128-203",
+    "subagent-driven-development/SKILL.md:14-15",
+    "subagent-driven-development/SKILL.md:16-41",
+    "subagent-driven-development/SKILL.md:204-235",
+    "subagent-driven-development/SKILL.md:236-267",
+    "subagent-driven-development/SKILL.md:268-279",
+    "subagent-driven-development/SKILL.md:42-87",
+    "subagent-driven-development/SKILL.md:89-103",
+    "subagent-driven-development/implementer-prompt.md:1-28",
+    "subagent-driven-development/implementer-prompt.md:29-43",
+    "subagent-driven-development/implementer-prompt.md:44-56",
+    "subagent-driven-development/implementer-prompt.md:57-73"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline"
+      ],
+      "id": "cluster:subagent-task-pipeline:fusion:boundary",
+      "rule": "Dispatch plan tasks to isolated implementers and sequence status, specification review, and quality review."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline"
+      ],
+      "id": "cluster:subagent-task-pipeline:fusion:inputs",
+      "rule": "Accept only: A complete plan, one task context, and an authorized edit scope."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline"
+      ],
+      "id": "cluster:subagent-task-pipeline:fusion:outputs",
+      "rule": "Produce only: Per-task implementations, structured status, review flow, and resolved blockers."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:subagent-task-pipeline:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A complete plan, one task context, and an authorized edit scope.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "subagent-driven-development"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "subagent-driven-development"
+      ]
+    }
+  ],
+  "output_boundary": "Per-task implementations, structured status, review flow, and resolved blockers.",
+  "retained_auxiliary_unit_ids": [
+    "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "子智能体驱动开发核心原则与隔离机制：针对实施方案中的每个任务派发独立新子智能体，并在每个任务完成后执行规格符合度与代码质量两阶段审查；子智能体绝对不继承主会话上下文与历史，由主控精确保障其输入，同时保护主控上下文以专注文档编排与协调。; 全流程连续自主执行契约：主控在任务之间严禁暂停向人类伙伴询问'是否继续'或发送空洞的进度汇报；必须连续执行方案中的所有任务，仅在遭遇无法自愈的 BLOCKED 状态、阻碍实质进展的歧义、或全部任务完成时方可停工求助。; 适用场景决策流与模式对比：当存在实施方案、任务大体独立、且希望在当前会话内推进时启用本技能；相比于 executing-plans（平行会话、需上下文切换），本技能具有同一会话无需切换、每个任务全新上下文防污染、两阶段严格审查以及无需人工中途干预的高速迭代优势。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "limitations": "Explicit limits: 作为多智能体流水线协作体系的基础架构设计约束。; 流水线在子任务之间的流转门禁，严禁无故打扰用户。; 在进入方案执行前进行研发工作流选型的决策分支。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 15 source-grounded atom(s) for responsibility (example=1, gate=3, method=4, rule=6, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks",
+        "subagent-driven-development:unit-001",
+        "subagent-driven-development:unit-002",
+        "subagent-driven-development:unit-003",
+        "subagent-driven-development:unit-004",
+        "subagent-driven-development:unit-005",
+        "subagent-driven-development:unit-006",
+        "subagent-driven-development:unit-007",
+        "subagent-driven-development:unit-008",
+        "subagent-driven-development:unit-009",
+        "subagent-driven-development:unit-010",
+        "subagent-driven-development:unit-011",
+        "subagent-driven-development:unit-012",
+        "subagent-driven-development:unit-013",
+        "subagent-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "任务执行双循环与两阶段审查状态机流程：读取方案提取全部任务并在 TodoWrite 建档 -> 派发实现者 -> 答疑补全上下文 -> 实现测试提交自审 -> 派发规格审查 -> 未通过则实现者整改复审 -> 通过后派发代码质量审查 -> 未通过则整改复审 -> 审查通过标记任务完成 -> 循环直到所有任务结束 -> 全案最终审查 -> 调用 finishing-a-development-branch 收尾。; 真实多任务端到端交付流水线范例：展示包含读取方案建档、Task 1 前置答疑实现通过并审查、Task 2 规格审查发现漏项/多余项触发整改复审、代码质量审查发现魔数触发整改复审、以及所有任务完成后的全案全局终审全流程范例。; 效能增益与多级质量门禁平衡：相比手工开发天然遵循 TDD 且上下文独立无干扰；相比外部会话无需交接且自动设立审查点；主控预先精确构造上下文避免子智能体阅读方案文件的巨大开销；通过自审、规格审查、质量审查三重过滤，以适度的子智能体 Token 开销换取极低的问题修复成本。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43"
+      ],
+      "limitations": "Explicit limits: 驱动每个任务及全方案端到端落地的核心流水线架构图与控制逻辑。; 供主控智能体参考学习多智能体交接、打回整改与收尾的实战标杆。; 指导多智能体流水线设计中的成本效益核算与质量卡点配置。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 6 source-grounded atom(s) for method (example=1, method=4, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks",
+        "subagent-driven-development:unit-004",
+        "subagent-driven-development:unit-007",
+        "subagent-driven-development:unit-008",
+        "subagent-driven-development:unit-011",
+        "subagent-driven-development:unit-012"
+      ]
+    },
+    {
+      "approach": "作为多智能体流水线协作体系的基础架构设计约束。; 流水线在子任务之间的流转门禁，严禁无故打扰用户。; 在进入方案执行前进行研发工作流选型的决策分支。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "limitations": "Explicit limits: 作为多智能体流水线协作体系的基础架构设计约束。; 流水线在子任务之间的流转门禁，严禁无故打扰用户。; 在进入方案执行前进行研发工作流选型的决策分支。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 15 source-grounded atom(s) for boundary-and-applicability (example=1, gate=3, method=4, rule=6, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks",
+        "subagent-driven-development:unit-001",
+        "subagent-driven-development:unit-002",
+        "subagent-driven-development:unit-003",
+        "subagent-driven-development:unit-004",
+        "subagent-driven-development:unit-005",
+        "subagent-driven-development:unit-006",
+        "subagent-driven-development:unit-007",
+        "subagent-driven-development:unit-008",
+        "subagent-driven-development:unit-009",
+        "subagent-driven-development:unit-010",
+        "subagent-driven-development:unit-011",
+        "subagent-driven-development:unit-012",
+        "subagent-driven-development:unit-013",
+        "subagent-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "实现子智能体派发提示词模板与前置答疑机制：包含任务完整文本直接注入（禁止让子智能体读文件）、场景上下文（位置、依赖与架构关系），以及开工前强制核查要求——针对需求、验收标准、实现策略或假设存在疑问必须在开工前主动提出。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:1-28"
+      ],
+      "limitations": "Explicit limits: 主控派发实现子智能体时必须使用的标准提示词封装结构。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-011"
+      ]
+    },
+    {
+      "approach": "核验是否明确独立子智能体派发、上下文彻底隔离、两阶段审查及主控上下文保护机制。; 核验是否明确任务间禁止暂停确认、连续执行及仅允许三类合法停工条件的规定。; 核验是否涵盖决策树判定逻辑及与 executing-plans 的四大关键对比维度。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "limitations": "Explicit limits: 作为多智能体流水线协作体系的基础架构设计约束。; 流水线在子任务之间的流转门禁，严禁无故打扰用户。; 在进入方案执行前进行研发工作流选型的决策分支。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 9 source-grounded atom(s) for gates-and-validation (gate=3, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-001",
+        "subagent-driven-development:unit-002",
+        "subagent-driven-development:unit-003",
+        "subagent-driven-development:unit-005",
+        "subagent-driven-development:unit-006",
+        "subagent-driven-development:unit-009",
+        "subagent-driven-development:unit-010",
+        "subagent-driven-development:unit-013",
+        "subagent-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "example": 1,
+        "gate": 3,
+        "method": 4,
+        "rule": 6,
+        "template": 1
+      },
+      "evidence": [
+        "subagent-driven-development/SKILL.md:1-13",
+        "subagent-driven-development/SKILL.md:1-7",
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:128-203",
+        "subagent-driven-development/SKILL.md:14-15",
+        "subagent-driven-development/SKILL.md:16-41",
+        "subagent-driven-development/SKILL.md:204-235",
+        "subagent-driven-development/SKILL.md:236-267",
+        "subagent-driven-development/SKILL.md:268-279",
+        "subagent-driven-development/SKILL.md:42-87",
+        "subagent-driven-development/SKILL.md:89-103",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/implementer-prompt.md:29-43",
+        "subagent-driven-development/implementer-prompt.md:44-56",
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "source_id": "subagent-driven-development",
+      "unit_ids": [
+        "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks",
+        "subagent-driven-development:unit-001",
+        "subagent-driven-development:unit-002",
+        "subagent-driven-development:unit-003",
+        "subagent-driven-development:unit-004",
+        "subagent-driven-development:unit-005",
+        "subagent-driven-development:unit-006",
+        "subagent-driven-development:unit-007",
+        "subagent-driven-development:unit-008",
+        "subagent-driven-development:unit-009",
+        "subagent-driven-development:unit-010",
+        "subagent-driven-development:unit-011",
+        "subagent-driven-development:unit-012",
+        "subagent-driven-development:unit-013",
+        "subagent-driven-development:unit-014"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "skills/subagent-driven-development/SKILL.md:summary:parallel-tasks",
+    "subagent-driven-development:unit-001",
+    "subagent-driven-development:unit-002",
+    "subagent-driven-development:unit-003",
+    "subagent-driven-development:unit-004",
+    "subagent-driven-development:unit-005",
+    "subagent-driven-development:unit-006",
+    "subagent-driven-development:unit-007",
+    "subagent-driven-development:unit-008",
+    "subagent-driven-development:unit-009",
+    "subagent-driven-development:unit-010",
+    "subagent-driven-development:unit-011",
+    "subagent-driven-development:unit-012",
+    "subagent-driven-development:unit-013",
+    "subagent-driven-development:unit-014"
+  ]
+}

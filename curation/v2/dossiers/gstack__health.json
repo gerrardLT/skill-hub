@@ -1,0 +1,139 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/health/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/health/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/health/SKILL.md:195]",
+    "Continuous Checkpoint Mode [gstack/health/SKILL.md:295]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/health/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/health/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/health/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/health/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/health/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/health/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/health/SKILL.md:61]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/health/SKILL.md:80]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/health/SKILL.md:104]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/health/SKILL.md:175]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/health/SKILL.md:299]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/health/SKILL.md:394]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/health/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Code quality dashboard. [gstack/health/SKILL.md:5]",
+  "root_id": "skill-root:gstack/health",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/health/SKILL.md:19]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/health/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/health/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/health/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/health/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/health/SKILL.md:53]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/health/SKILL.md:56]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/health/SKILL.md:67]"
+  ],
+  "skill_path": "gstack/health/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/health/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/health/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/health/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/health/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/health/SKILL.md"
+    }
+  ],
+  "source_sha256": "168942a678cbba5a65284579814cdeb59eb466cc066c68a0f84142721ffd9796",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/health/SKILL.md:77]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/health/SKILL.md:78]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/health/SKILL.md:79]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/health/SKILL.md:80]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/health/SKILL.md:82]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/health/SKILL.md:86]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:168942a678cbba5a65284579814cdeb59eb466cc066c68a0f84142721ffd9796",
+        "content-review:695-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/health/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:faf103f39b2a3e42192b476ec09778ab9300942ed12ae1f832a9018c4ec19b9d",
+        "content-review:321-lines"
+      ],
+      "path": "gstack/health/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/health/SKILL.md:1-18]",
+    "Declared tool: Read [gstack/health/SKILL.md:1-18]",
+    "Declared tool: Write [gstack/health/SKILL.md:1-18]",
+    "Declared tool: Edit [gstack/health/SKILL.md:1-18]",
+    "Declared tool: Glob [gstack/health/SKILL.md:1-18]",
+    "Declared tool: Grep [gstack/health/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/health/SKILL.md:1-18]"
+  ],
+  "trigger": "Code quality dashboard. (gstack) [gstack/health/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/health/SKILL.md:143]",
+    "Self-check before emitting [gstack/health/SKILL.md:166]",
+    "Context Recovery [gstack/health/SKILL.md:234]",
+    "Completeness Principle — Boil the Ocean [gstack/health/SKILL.md:281]",
+    "Confusion Protocol [gstack/health/SKILL.md:287]",
+    "Claimed Limitations Need Evidence [gstack/health/SKILL.md:291]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/health/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/health/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/health/SKILL.md:295]",
+    "Step 1: Detect Health Stack [gstack/health/SKILL.md:417]",
+    "Step 2: Run Tools [gstack/health/SKILL.md:486]",
+    "Step 3: Score Each Category [gstack/health/SKILL.md:510]",
+    "Step 4: Present Dashboard [gstack/health/SKILL.md:559]",
+    "Step 5: Persist to Health History [gstack/health/SKILL.md:603]",
+    "Step 6: Trend Analysis + Recommendations [gstack/health/SKILL.md:628]"
+  ]
+}

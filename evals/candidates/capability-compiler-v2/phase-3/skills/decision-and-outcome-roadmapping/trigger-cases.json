@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "opportunity-prioritization-and-frameworks",
+        "implementation-planning-and-handoff",
+        "strategic-choice-and-differentiation"
+      ],
+      "id": "V2-P3-decision-and-outcome-roadmapping-trigger-01",
+      "input": "Turn these approved outcomes and assumptions into a decision roadmap with review points.",
+      "kind": "should-trigger",
+      "reason": "Build an outcome- and decision-based roadmap from approved strategy without converting unvalidated features into commitments."
+    },
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "opportunity-prioritization-and-frameworks",
+        "implementation-planning-and-handoff",
+        "strategic-choice-and-differentiation"
+      ],
+      "id": "V2-P3-decision-and-outcome-roadmapping-trigger-02",
+      "input": "Replace this feature calendar with outcome horizons, evidence gates, and options.",
+      "kind": "should-trigger",
+      "reason": "Build an outcome- and decision-based roadmap from approved strategy without converting unvalidated features into commitments."
+    },
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "decision-and-outcome-roadmapping"
+      ],
+      "id": "V2-P3-decision-and-outcome-roadmapping-anti-01",
+      "input": "Rank raw opportunities before strategy is approved.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility opportunity-prioritization-and-frameworks."
+    },
+    {
+      "expected_skill_id": "implementation-planning-and-handoff",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "decision-and-outcome-roadmapping"
+      ],
+      "id": "V2-P3-decision-and-outcome-roadmapping-anti-02",
+      "input": "Break an approved roadmap item into implementation tasks.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility implementation-planning-and-handoff."
+    },
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-decision-and-outcome-roadmapping-boundary-01",
+      "input": "Build an outcome- and decision-based roadmap from approved strategy without converting unvalidated features into commitments. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-decision-and-outcome-roadmapping-authority-01",
+      "input": "Build an outcome- and decision-based roadmap from approved strategy without converting unvalidated features into commitments. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "decision-and-outcome-roadmapping"
+}

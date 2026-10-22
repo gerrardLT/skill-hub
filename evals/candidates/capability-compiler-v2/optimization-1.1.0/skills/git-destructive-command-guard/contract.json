@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "guard policy source",
+    "allow and block fixture corpus",
+    "local validation evidence",
+    "separate installation handoff",
+    "default destructive-pattern table with near-miss pass cases"
+  ],
+  "capability_id": "capability:git-destructive-command-guard",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Guard authoring may create tested repository artifacts but cannot modify Git config, hook paths, aliases, shell startup, or enable interception without separate local-system authorization.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "git-destructive-command-guard",
+  "inputs": [
+    "A command hook environment, dangerous-command policy, and local configuration."
+  ],
+  "outputs": [
+    "guard policy source",
+    "allow and block fixture corpus",
+    "local validation evidence",
+    "separate installation handoff",
+    "default destructive-pattern table with near-miss pass cases"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "destructive-patterns",
+      "safe-command-pass",
+      "repository-artifact",
+      "no-silent-install",
+      "separate-local-setup"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Author and validate a repository-scoped guard policy that intercepts declared destructive Git command patterns before execution without installing it silently.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

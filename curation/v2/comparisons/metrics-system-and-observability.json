@@ -1,0 +1,825 @@
+{
+  "candidate_responsibility": "Define outcome, input, secondary, and guardrail metrics with baselines, instrumentation, dashboards, and alerts.",
+  "canonical_unit_ids": [
+    "metrics-dashboard:unit-001",
+    "metrics-dashboard:unit-002",
+    "metrics-dashboard:unit-004",
+    "metrics-dashboard:unit-005",
+    "metrics-dashboard:unit-006",
+    "metrics-dashboard:unit-007",
+    "metrics-dashboard:unit-008",
+    "metrics-dashboard:unit-009",
+    "metrics-review:unit-001",
+    "metrics-review:unit-002",
+    "metrics-review:unit-003",
+    "metrics-review:unit-004",
+    "metrics-review:unit-005",
+    "metrics-review:unit-006",
+    "metrics-review:unit-007",
+    "metrics-review:unit-008",
+    "metrics-review:unit-009",
+    "metrics-review:unit-010",
+    "outcome-roadmap:unit-014",
+    "prd-development:unit-012",
+    "prd-development:unit-018",
+    "prd-development:unit-026",
+    "prd-development:unit-033",
+    "prd-development:unit-044",
+    "prd-development:unit-050"
+  ],
+  "cluster_id": "cluster:metrics-system-and-observability",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "metrics-dashboard/SKILL.md:1-4",
+    "metrics-dashboard/SKILL.md:16-19",
+    "metrics-dashboard/SKILL.md:20-21",
+    "metrics-dashboard/SKILL.md:22-23",
+    "metrics-dashboard/SKILL.md:24-25",
+    "metrics-dashboard/SKILL.md:26-27",
+    "metrics-dashboard/SKILL.md:28-39",
+    "metrics-dashboard/SKILL.md:6-8",
+    "metrics-review/SKILL.md:111-125",
+    "metrics-review/SKILL.md:126-166",
+    "metrics-review/SKILL.md:19-58",
+    "metrics-review/SKILL.md:190-203",
+    "metrics-review/SKILL.md:235-274",
+    "metrics-review/SKILL.md:275-317",
+    "metrics-review/SKILL.md:355-362",
+    "metrics-review/SKILL.md:380-388",
+    "metrics-review/SKILL.md:61-100",
+    "metrics-review/SKILL.md:89-95",
+    "outcome-roadmap/SKILL.md:55-57",
+    "prd-development/SKILL.md:346-392",
+    "prd-development/SKILL.md:618-632",
+    "prd-development/examples/sample.md:36-60",
+    "prd-development/template.md:382-386",
+    "prd-development/template.md:388-392",
+    "prd-development/template.md:413-418"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:metrics-system-and-observability"
+      ],
+      "id": "cluster:metrics-system-and-observability:fusion:boundary",
+      "rule": "Define outcome, input, secondary, and guardrail metrics with baselines, instrumentation, dashboards, and alerts."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:metrics-system-and-observability"
+      ],
+      "id": "cluster:metrics-system-and-observability:fusion:inputs",
+      "rule": "Accept only: Business goals, user outcomes, risks, data sources, and observable events."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:metrics-system-and-observability"
+      ],
+      "id": "cluster:metrics-system-and-observability:fusion:outputs",
+      "rule": "Produce only: A metric hierarchy, definitions, instrumentation plan, dashboard, alerts, and review cadence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:metrics-system-and-observability:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Business goals, user outcomes, risks, data sources, and observable events.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "outcome-roadmap"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "outcome-roadmap",
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "metrics-review",
+        "outcome-roadmap"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "metrics-dashboard",
+        "metrics-review",
+        "outcome-roadmap",
+        "prd-development"
+      ]
+    }
+  ],
+  "output_boundary": "A metric hierarchy, definitions, instrumentation plan, dashboard, alerts, and review cadence.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义 metrics-dashboard 技能定位与核心能力：定义与设计包含核心指标、数据源、可视化图表选型与告警阈值的产品指标仪表盘；适用于看板创建、KPI 定义、产品分析体系搭建与数据监控规划。; 确立核心设计目标：为产品设计一个综合性度量仪表盘，确保指标正确、图表呈现得当且告警阈值完备。; 明确度量体系核心概念分层：度量指标（Metrics）涵盖所有可测量事物；KPI 为少数长期追踪的关键定量指标；北极星指标（NSM）为单一以客户为中心、且能作为商业成功先导指标的终极 KPI。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Explicit limits: 适用于产品端数据指标看板设计与监控体系规划，不替代底层运维平台监控实施。; 设计产物必须兼具指标选择合理性、可视化匹配度与告警阈值完备性。; 必须严格区分全量指标、核心 KPI 与单一北极星指标；北极星指标必须具备客户为中心和先导指示属性。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 8 source-grounded atom(s) for responsibility (method=2, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-001",
+        "metrics-dashboard:unit-002",
+        "metrics-dashboard:unit-004",
+        "metrics-dashboard:unit-005",
+        "metrics-dashboard:unit-006",
+        "metrics-dashboard:unit-007",
+        "metrics-dashboard:unit-008",
+        "metrics-dashboard:unit-009"
+      ]
+    },
+    {
+      "approach": "执行指标治理与看板优化的五个行动步骤：(1) 对照好指标四标准审计指标；(2) 更新看板确保核心指标均为好指标；(3) 识别并审慎对待虚荣指标；(4) 区分先导与滞后指标；(5) 选定一个核心问题深入挖掘数据。; 第一步确立四层指标框架：组织指标为分层结构——北极星指标（单一核心价值交付指标）、输入指标（3-5 个驱动北极星的先导杠杆）、健康指标（保障整体产品运行的护栏）、商业指标（营收、成本与单位经济效益）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:28-39"
+      ],
+      "limitations": "Explicit limits: 适用于已有看板改造与新看板提纯，必须经历审计、清理虚荣、区分先导与问题下钻五步骤。; 必须包含完整的四层架构；北极星指标必须为单一指标；输入指标数量严格限定在 3-5 个。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-007",
+        "metrics-dashboard:unit-009"
+      ]
+    },
+    {
+      "approach": "适用于产品端数据指标看板设计与监控体系规划，不替代底层运维平台监控实施。; 设计产物必须兼具指标选择合理性、可视化匹配度与告警阈值完备性。; 必须严格区分全量指标、核心 KPI 与单一北极星指标；北极星指标必须具备客户为中心和先导指示属性。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Explicit limits: 适用于产品端数据指标看板设计与监控体系规划，不替代底层运维平台监控实施。; 设计产物必须兼具指标选择合理性、可视化匹配度与告警阈值完备性。; 必须严格区分全量指标、核心 KPI 与单一北极星指标；北极星指标必须具备客户为中心和先导指示属性。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 8 source-grounded atom(s) for boundary-and-applicability (method=2, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-001",
+        "metrics-dashboard:unit-002",
+        "metrics-dashboard:unit-004",
+        "metrics-dashboard:unit-005",
+        "metrics-dashboard:unit-006",
+        "metrics-dashboard:unit-007",
+        "metrics-dashboard:unit-008",
+        "metrics-dashboard:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查是否准确定义看板四核心要素（指标、数据源、图表、告警阈值）及适用场景；缺项则判定不合格。; 验证是否以指标、可视化与告警阈值三位一体作为综合看板设计目标。; 检查是否准确辨析 Metrics、KPIs 与 NSM 的内涵界限，确认北极星指标被赋予单一性与先导价值属性。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Explicit limits: 适用于产品端数据指标看板设计与监控体系规划，不替代底层运维平台监控实施。; 设计产物必须兼具指标选择合理性、可视化匹配度与告警阈值完备性。; 必须严格区分全量指标、核心 KPI 与单一北极星指标；北极星指标必须具备客户为中心和先导指示属性。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-001",
+        "metrics-dashboard:unit-002",
+        "metrics-dashboard:unit-004",
+        "metrics-dashboard:unit-005",
+        "metrics-dashboard:unit-006",
+        "metrics-dashboard:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "产品指标复盘标准工作流：从收集数据、构建层级、分析趋势（当前值、趋势、目标对比、变化率、异常值与分群相关性）到驱动下钻; 指标复盘报告标准化结构与计分卡 Schema：包含2-3句执行摘要、表格化指标计分卡、亮点、隐患、行动建议及上下文局限说明; 指标分析动作转化铁律：指标审查必须输出明确的后续动作分类（深入调查排查、A/B 实验假设、重点投入、阈值监控告警），严禁无动作的纯数字堆砌",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:61-100",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "limitations": "Explicit limits: 组织和开展周期性产品指标审查时的标准流程; 将数据分析结果呈现给团队与利益相关方时的报告模式; 评估指标复盘交付质量与有效性的核心门禁",
+      "source_id": "metrics-review",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (method=3, rule=6, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-review:unit-001",
+        "metrics-review:unit-002",
+        "metrics-review:unit-003",
+        "metrics-review:unit-004",
+        "metrics-review:unit-005",
+        "metrics-review:unit-006",
+        "metrics-review:unit-007",
+        "metrics-review:unit-008",
+        "metrics-review:unit-009",
+        "metrics-review:unit-010"
+      ]
+    },
+    {
+      "approach": "产品指标复盘标准工作流：从收集数据、构建层级、分析趋势（当前值、趋势、目标对比、变化率、异常值与分群相关性）到驱动下钻; 指标复盘报告标准化结构与计分卡 Schema：包含2-3句执行摘要、表格化指标计分卡、亮点、隐患、行动建议及上下文局限说明; OKR 目标制定与指标 Target 设定规程：KR 必须衡量业务结果而非交付产出，结合历史基线、行业基准、趋势轨迹与资源投入设定 Commit 与 Stretch 目标",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:61-100"
+      ],
+      "limitations": "Explicit limits: 组织和开展周期性产品指标审查时的标准流程; 将数据分析结果呈现给团队与利益相关方时的报告模式; 季度业务目标规划与指标打分复盘时的操作准则",
+      "source_id": "metrics-review",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-review:unit-001",
+        "metrics-review:unit-002",
+        "metrics-review:unit-007",
+        "metrics-review:unit-008"
+      ]
+    },
+    {
+      "approach": "组织和开展周期性产品指标审查时的标准流程; 将数据分析结果呈现给团队与利益相关方时的报告模式; 评估指标复盘交付质量与有效性的核心门禁",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:61-100",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "limitations": "Explicit limits: 组织和开展周期性产品指标审查时的标准流程; 将数据分析结果呈现给团队与利益相关方时的报告模式; 评估指标复盘交付质量与有效性的核心门禁",
+      "source_id": "metrics-review",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (method=3, rule=6, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-review:unit-001",
+        "metrics-review:unit-002",
+        "metrics-review:unit-003",
+        "metrics-review:unit-004",
+        "metrics-review:unit-005",
+        "metrics-review:unit-006",
+        "metrics-review:unit-007",
+        "metrics-review:unit-008",
+        "metrics-review:unit-009",
+        "metrics-review:unit-010"
+      ]
+    },
+    {
+      "approach": "指标复盘报告标准化结构与计分卡 Schema：包含2-3句执行摘要、表格化指标计分卡、亮点、隐患、行动建议及上下文局限说明",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "metrics-review/SKILL.md:61-100"
+      ],
+      "limitations": "Explicit limits: 将数据分析结果呈现给团队与利益相关方时的报告模式",
+      "source_id": "metrics-review",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-review:unit-002"
+      ]
+    },
+    {
+      "approach": "每项隐患或异动均能映射到具体的工程或产品动作分类; 指标紧密挂钩核心用户价值与长期留存，而非短视商业指标; 全面覆盖转化率、时间到达、粘性比例、队列留存、NRR 与 NPS/CSAT",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "limitations": "Explicit limits: 评估指标复盘交付质量与有效性的核心门禁; 构建产品指标层级顶层框架时的设计准则; 衡量产品全局健康度与瓶颈定位时的维度分解",
+      "source_id": "metrics-review",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-review:unit-003",
+        "metrics-review:unit-004",
+        "metrics-review:unit-005",
+        "metrics-review:unit-006",
+        "metrics-review:unit-009",
+        "metrics-review:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:61-100",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-review",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:61-100",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-review",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "outcome 必须可测试、可衡量。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Explicit limits: 只写 metric 名称不等于具备 baseline、target、window、instrumentation 或验证证据。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "只写 metric 名称不等于具备 baseline、target、window、instrumentation 或验证证据。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Explicit limits: 只写 metric 名称不等于具备 baseline、target、window、instrumentation 或验证证据。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "每个 outcome 有可观察 metric 或明确待定义项，且说明判定方式。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Explicit limits: 只写 metric 名称不等于具备 baseline、target、window、instrumentation 或验证证据。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义一个 primary outcome metric、secondary metrics 与 guardrails，并给出可测目标。; 缺失成功度量或明确 out-of-scope 时，PRD 不可视为 ready。; 故事拆分前要求 primary metric 直接测量问题、baseline 有状态、并明确副作用 guardrail。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "limitations": "Explicit limits: primary metric 用于聚焦但不能压制安全/非回归 guardrail；未知 baseline 必须显式。; 占位符或泛化语句不满足 Gate，内容必须能支持决策。; 未知 baseline 可作为 Assumption/Open Question 继续，但不能伪装成测量准备完成。",
+      "source_id": "prd-development",
+      "strengths": "Provides 6 source-grounded atom(s) for responsibility (example=1, gate=4, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-012",
+        "prd-development:unit-018",
+        "prd-development:unit-026",
+        "prd-development:unit-033",
+        "prd-development:unit-044",
+        "prd-development:unit-050"
+      ]
+    },
+    {
+      "approach": "示范在 metric 具体值旁内联标记 Assumption，在相关 guardrail 旁记录 owner-bearing Open Question。; 按 metric selection 问题路由业务健康诊断、投资决策和 SaaS 增长指标参考。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386"
+      ],
+      "limitations": "Explicit limits: 示例 metric 值不能复用；核心是 unknown 的位置、原因和责任归属。; 这些是条件性专家输入，不适用于所有产品类型；组件不可用时必须保留 metric selection 或 ROI 证据缺口。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for method (example=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-033",
+        "prd-development:unit-050"
+      ]
+    },
+    {
+      "approach": "primary metric 用于聚焦但不能压制安全/非回归 guardrail；未知 baseline 必须显式。; 占位符或泛化语句不满足 Gate，内容必须能支持决策。; 未知 baseline 可作为 Assumption/Open Question 继续，但不能伪装成测量准备完成。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "limitations": "Explicit limits: primary metric 用于聚焦但不能压制安全/非回归 guardrail；未知 baseline 必须显式。; 占位符或泛化语句不满足 Gate，内容必须能支持决策。; 未知 baseline 可作为 Assumption/Open Question 继续，但不能伪装成测量准备完成。",
+      "source_id": "prd-development",
+      "strengths": "Provides 6 source-grounded atom(s) for boundary-and-applicability (example=1, gate=4, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-012",
+        "prd-development:unit-018",
+        "prd-development:unit-026",
+        "prd-development:unit-033",
+        "prd-development:unit-044",
+        "prd-development:unit-050"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "记录核心结果、baseline、target、timeline、辅助指标与非回归信号。; handoff 前存在可测成功标准和有理由的排除项。; primary metric 与问题直接相关，每个 baseline 有证据状态，至少一个有意义 guardrail。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "limitations": "Explicit limits: primary metric 用于聚焦但不能压制安全/非回归 guardrail；未知 baseline 必须显式。; 占位符或泛化语句不满足 Gate，内容必须能支持决策。; 未知 baseline 可作为 Assumption/Open Question 继续，但不能伪装成测量准备完成。",
+      "source_id": "prd-development",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (gate=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-012",
+        "prd-development:unit-018",
+        "prd-development:unit-026",
+        "prd-development:unit-044"
+      ]
+    },
+    {
+      "approach": "按 metric selection 问题路由业务健康诊断、投资决策和 SaaS 增长指标参考。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prd-development/template.md:382-386"
+      ],
+      "limitations": "Explicit limits: 这些是条件性专家输入，不适用于所有产品类型；组件不可用时必须保留 metric selection 或 ROI 证据缺口。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-050"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 6
+      },
+      "evidence": [
+        "metrics-dashboard/SKILL.md:1-4",
+        "metrics-dashboard/SKILL.md:16-19",
+        "metrics-dashboard/SKILL.md:20-21",
+        "metrics-dashboard/SKILL.md:22-23",
+        "metrics-dashboard/SKILL.md:24-25",
+        "metrics-dashboard/SKILL.md:26-27",
+        "metrics-dashboard/SKILL.md:28-39",
+        "metrics-dashboard/SKILL.md:6-8"
+      ],
+      "source_id": "metrics-dashboard",
+      "unit_ids": [
+        "metrics-dashboard:unit-001",
+        "metrics-dashboard:unit-002",
+        "metrics-dashboard:unit-004",
+        "metrics-dashboard:unit-005",
+        "metrics-dashboard:unit-006",
+        "metrics-dashboard:unit-007",
+        "metrics-dashboard:unit-008",
+        "metrics-dashboard:unit-009"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 6,
+        "template": 1
+      },
+      "evidence": [
+        "metrics-review/SKILL.md:111-125",
+        "metrics-review/SKILL.md:126-166",
+        "metrics-review/SKILL.md:19-58",
+        "metrics-review/SKILL.md:190-203",
+        "metrics-review/SKILL.md:235-274",
+        "metrics-review/SKILL.md:275-317",
+        "metrics-review/SKILL.md:355-362",
+        "metrics-review/SKILL.md:380-388",
+        "metrics-review/SKILL.md:61-100",
+        "metrics-review/SKILL.md:89-95"
+      ],
+      "source_id": "metrics-review",
+      "unit_ids": [
+        "metrics-review:unit-001",
+        "metrics-review:unit-002",
+        "metrics-review:unit-003",
+        "metrics-review:unit-004",
+        "metrics-review:unit-005",
+        "metrics-review:unit-006",
+        "metrics-review:unit-007",
+        "metrics-review:unit-008",
+        "metrics-review:unit-009",
+        "metrics-review:unit-010"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "outcome-roadmap/SKILL.md:55-57"
+      ],
+      "source_id": "outcome-roadmap",
+      "unit_ids": [
+        "outcome-roadmap:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 1,
+        "gate": 4,
+        "tool-action": 1
+      },
+      "evidence": [
+        "prd-development/SKILL.md:346-392",
+        "prd-development/SKILL.md:618-632",
+        "prd-development/examples/sample.md:36-60",
+        "prd-development/template.md:382-386",
+        "prd-development/template.md:388-392",
+        "prd-development/template.md:413-418"
+      ],
+      "source_id": "prd-development",
+      "unit_ids": [
+        "prd-development:unit-012",
+        "prd-development:unit-018",
+        "prd-development:unit-026",
+        "prd-development:unit-033",
+        "prd-development:unit-044",
+        "prd-development:unit-050"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "metrics-dashboard:unit-001",
+    "metrics-dashboard:unit-002",
+    "metrics-dashboard:unit-004",
+    "metrics-dashboard:unit-005",
+    "metrics-dashboard:unit-006",
+    "metrics-dashboard:unit-007",
+    "metrics-dashboard:unit-008",
+    "metrics-dashboard:unit-009",
+    "metrics-review:unit-001",
+    "metrics-review:unit-002",
+    "metrics-review:unit-003",
+    "metrics-review:unit-004",
+    "metrics-review:unit-005",
+    "metrics-review:unit-006",
+    "metrics-review:unit-007",
+    "metrics-review:unit-008",
+    "metrics-review:unit-009",
+    "metrics-review:unit-010",
+    "outcome-roadmap:unit-014",
+    "prd-development:unit-012",
+    "prd-development:unit-018",
+    "prd-development:unit-026",
+    "prd-development:unit-033",
+    "prd-development:unit-044",
+    "prd-development:unit-050"
+  ]
+}

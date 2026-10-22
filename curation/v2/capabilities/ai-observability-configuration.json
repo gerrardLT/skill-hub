@@ -1,0 +1,73 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:ai-observability-configuration",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-004",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0994",
+    "V2-FUSION-0995",
+    "V2-FUSION-0996",
+    "V2-FUSION-0997",
+    "V2-FUSION-0998",
+    "V2-FUSION-0999",
+    "V2-FUSION-1000"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "AI application, traces, sensitive-data policy, provider, evaluation signals, retention, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Ai Observability Configuration",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Monitoring configuration, redaction controls, verification, and residual governance risk."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=sentry and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:sentry:sentry-setup-ai-monitoring",
+      "provider": "sentry",
+      "source_root": "sentry-setup-ai-monitoring"
+    }
+  ],
+  "responsibility": "Configure AI or LLM monitoring with explicit data-governance and provider boundaries.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:sentry-setup-ai-monitoring:001:root-responsibility",
+    "v2-root:sentry-setup-ai-monitoring:002:setup-sentry-ai-agent-monitoring",
+    "v2-root:sentry-setup-ai-monitoring:003:sampling-check",
+    "v2-root:sentry-setup-ai-monitoring:004:node-js-auto-enabled-integrations",
+    "v2-root:sentry-setup-ai-monitoring:005:langchain-langgraph-auto-enabled",
+    "v2-root:sentry-setup-ai-monitoring:006:manual-instrumentation",
+    "v2-root:sentry-setup-ai-monitoring:007:troubleshooting"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "sentry-setup-ai-monitoring/SKILL.md:119-150",
+    "sentry-setup-ai-monitoring/SKILL.md:12-44",
+    "sentry-setup-ai-monitoring/SKILL.md:167-185",
+    "sentry-setup-ai-monitoring/SKILL.md:269-308",
+    "sentry-setup-ai-monitoring/SKILL.md:3-7",
+    "sentry-setup-ai-monitoring/SKILL.md:480-491",
+    "sentry-setup-ai-monitoring/SKILL.md:56-60"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

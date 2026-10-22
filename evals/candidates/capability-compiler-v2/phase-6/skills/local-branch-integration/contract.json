@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "integrated local branch or conflict state",
+    "before and after ref evidence",
+    "changed-file or conflict report",
+    "exact recovery command"
+  ],
+  "capability_id": "capability:local-branch-integration",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-local-git",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Local integration requires an approved local base ref, clean isolated change branch, recoverable pre-integration identity, and zero fetch, push, force, remote merge, or branch deletion.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "local-branch-integration",
+  "inputs": [
+    "Isolated worktree, change branch, approved base reference, clean-state evidence, and local mutation authority."
+  ],
+  "outputs": [
+    "integrated local branch or conflict state",
+    "before and after ref evidence",
+    "changed-file or conflict report",
+    "exact recovery command"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "local-only",
+      "clean-worktree",
+      "pre-integration-ref",
+      "conflict-preservation",
+      "recovery-command",
+      "no-remote-write"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Integrate an approved local base ref into an isolated change branch while preserving a recoverable pre-integration ref and performing no remote writes.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

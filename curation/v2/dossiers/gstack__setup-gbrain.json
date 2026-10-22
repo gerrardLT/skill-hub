@@ -1,0 +1,248 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/setup-gbrain/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/setup-gbrain/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/setup-gbrain/SKILL.md:195]",
+    "Continuous Checkpoint Mode [gstack/setup-gbrain/SKILL.md:295]",
+    "Step 2: Pick a path (AskUserQuestion) [gstack/setup-gbrain/SKILL.md:535]",
+    "Path 4 (Remote MCP — HTTP transport with bearer) [gstack/setup-gbrain/SKILL.md:630]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/setup-gbrain/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/setup-gbrain/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/setup-gbrain/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/setup-gbrain/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "description: \"Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remote trust policy. (gstack)\" [gstack/setup-gbrain/SKILL.md:5]",
+    "install gbrain [gstack/setup-gbrain/SKILL.md:8]",
+    "gbrain\", \"install gbrain\", \"configure gbrain for this machine\". [gstack/setup-gbrain/SKILL.md:29]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/setup-gbrain/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/setup-gbrain/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/setup-gbrain/SKILL.md:61]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/setup-gbrain/SKILL.md:80]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/setup-gbrain/SKILL.md:104]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/setup-gbrain/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remote trust policy. [gstack/setup-gbrain/SKILL.md:5]",
+  "root_id": "skill-root:gstack/setup-gbrain",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/setup-gbrain/SKILL.md:21]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/setup-gbrain/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/setup-gbrain/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/setup-gbrain/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/setup-gbrain/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/setup-gbrain/SKILL.md:53]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/setup-gbrain/SKILL.md:56]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/setup-gbrain/SKILL.md:67]"
+  ],
+  "skill_path": "gstack/setup-gbrain/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/setup-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "gstack/setup-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/setup-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/setup-gbrain/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/setup-gbrain/SKILL.md"
+    }
+  ],
+  "source_sha256": "1df6adeb04ade5f6d9f7bbc00a2d7586eeddadfe811384395a0ad52144866069",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/setup-gbrain/SKILL.md:77]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/setup-gbrain/SKILL.md:78]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/setup-gbrain/SKILL.md:79]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/setup-gbrain/SKILL.md:80]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/setup-gbrain/SKILL.md:82]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/setup-gbrain/SKILL.md:86]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1df6adeb04ade5f6d9f7bbc00a2d7586eeddadfe811384395a0ad52144866069",
+        "content-review:1068-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/setup-gbrain/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:811b8d6c3cb31ffdfd3c24bf012fa183b15334d2007b84b7e896493cf6bcbefe",
+        "content-review:682-lines"
+      ],
+      "path": "gstack/setup-gbrain/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:56b3d8249ffed3701eed9c82e07a99b33579e31cd15c11e69d102ecd93cd7cb0",
+        "content-review:307-lines"
+      ],
+      "path": "gstack/setup-gbrain/memory.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2177383646b03e840c720d49781b5a181e18d29f57a29de3c0de74b17f507e4b",
+        "content-review:271-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/brain-init.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6b410f5a6b030b4ec3f7244a220c77fd808ab0f26de0add5289f38098aff94a4",
+        "content-review:269-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/brain-init.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c5c948339af83f3d14a663848500efa0267385b0f2ddbe7bad588fce0fbd5d9a",
+        "content-review:80-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/claude-md-persist.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e3adb28d90f4f8592bfce913d8d96978803371072816404648cc1f604b2ab194",
+        "content-review:78-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/claude-md-persist.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ce1a9f7048cb72bb48b8e6348d9a57942e21ca96c1acc2e6a55ca00c219ab22f",
+        "content-review:72-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/engine-remediation.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c971204b86b2404f5672874abcf41aaeae5283613ad60b928faa80063645077e",
+        "content-review:70-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/engine-remediation.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:08961a5c8ea0b28c2c847884244f151526f53bdc0c19f910deb266e6fd2bef11",
+        "content-review:33-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8ae1333226cc8a5ddf682b6bd6e552dc09bfbf29bcf98352cc9f8472b1092db0",
+        "content-review:67-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/transcript-gate.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b3c0de20f4418477f18863859ba783990cb2f6fcca10ebf630811b328d9a4b6c",
+        "content-review:65-lines"
+      ],
+      "path": "gstack/setup-gbrain/sections/transcript-gate.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: Read [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: Write [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: Edit [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: Glob [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: Grep [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Declared tool: AskUserQuestion [gstack/setup-gbrain/SKILL.md:1-20]",
+    "Local dependency: gstack/setup-gbrain/sections/engine-remediation.md [gstack/setup-gbrain/SKILL.md:438]",
+    "Local dependency: gstack/setup-gbrain/sections/brain-init.md [gstack/setup-gbrain/SKILL.md:439]",
+    "Local dependency: gstack/setup-gbrain/sections/transcript-gate.md [gstack/setup-gbrain/SKILL.md:440]",
+    "Local dependency: gstack/setup-gbrain/sections/claude-md-persist.md [gstack/setup-gbrain/SKILL.md:441]"
+  ],
+  "trigger": "\"Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remote trust policy. (gstack)\" [gstack/setup-gbrain/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/setup-gbrain/SKILL.md:143]",
+    "Self-check before emitting [gstack/setup-gbrain/SKILL.md:166]",
+    "Context Recovery [gstack/setup-gbrain/SKILL.md:234]",
+    "Completeness Principle — Boil the Ocean [gstack/setup-gbrain/SKILL.md:281]",
+    "Confusion Protocol [gstack/setup-gbrain/SKILL.md:287]",
+    "Claimed Limitations Need Evidence [gstack/setup-gbrain/SKILL.md:291]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/setup-gbrain/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/setup-gbrain/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/setup-gbrain/SKILL.md:295]",
+    "Step 1: Detect current state [gstack/setup-gbrain/SKILL.md:445]",
+    "Step 1.5: Broken-local-engine remediation (plan D4) [gstack/setup-gbrain/SKILL.md:474]",
+    "Step 1.7: Code-intelligence provider choice (Step 0 of indexing) [gstack/setup-gbrain/SKILL.md:490]",
+    "Step 2: Pick a path (AskUserQuestion) [gstack/setup-gbrain/SKILL.md:535]",
+    "Step 3: Install gbrain CLI (if missing) [gstack/setup-gbrain/SKILL.md:573]",
+    "Step 4: Initialize the brain [gstack/setup-gbrain/SKILL.md:593]",
+    "Step 5: Verify gbrain doctor [gstack/setup-gbrain/SKILL.md:604]",
+    "Step 5a: Register gbrain as Claude Code MCP (D18) [gstack/setup-gbrain/SKILL.md:623]",
+    "Step 6: Per-remote policy (D3 triad, gated repo-import) [gstack/setup-gbrain/SKILL.md:681]"
+  ]
+}

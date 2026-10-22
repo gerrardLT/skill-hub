@@ -1,0 +1,107 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [writing-plans/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [writing-plans/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [writing-plans/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [writing-plans/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "\"Write the failing test\" - step [writing-plans/SKILL.md:39]",
+    "[ ] Step 1: Write the failing test [writing-plans/SKILL.md:73]",
+    "git commit -m \"feat: add specific feature\" [writing-plans/SKILL.md:102]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when you have a spec or requirements for a multi-step task, before touching code [writing-plans/SKILL.md:3]",
+  "root_id": "skill-root:writing-plans",
+  "rules_gates": [
+    "description: Use when you have a spec or requirements for a multi-step task, before touching code [writing-plans/SKILL.md:3]",
+    "Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well. [writing-plans/SKILL.md:12]",
+    "Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in. [writing-plans/SKILL.md:27]",
+    "In existing codebases, follow established patterns. If the codebase uses large files, don't unilaterally restructure - but if a file you're modifying has grown unwieldy, including a split in the plan is reasonable. [writing-plans/SKILL.md:32]",
+    "Every plan MUST start with this header [writing-plans/SKILL.md:47]",
+    "> For agentic workers: REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (- [ ]) syntax for tracking. [writing-plans/SKILL.md:52]",
+    "[ ] Step 2: Run test to verify it fails [writing-plans/SKILL.md:81]",
+    "[ ] Step 4: Run test to verify it passes [writing-plans/SKILL.md:93]"
+  ],
+  "skill_path": "writing-plans/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "writing-plans/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "writing-plans/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "writing-plans/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "writing-plans/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "writing-plans/SKILL.md"
+    }
+  ],
+  "source_sha256": "4fd4627d2c02367879c0307d7249270bed633317ff9be82e926a6d57bf5d331b",
+  "stop_conditions": [
+    "\"Write the failing test\" - step [writing-plans/SKILL.md:39]",
+    "\"Run it to make sure it fails\" - step [writing-plans/SKILL.md:40]",
+    "[ ] Step 1: Write the failing test [writing-plans/SKILL.md:73]",
+    "[ ] Step 2: Run test to verify it fails [writing-plans/SKILL.md:81]",
+    "Expected: FAIL with \"function not defined\" [writing-plans/SKILL.md:84]",
+    "Every step must contain the actual content an engineer needs. These are plan failures — never write them [writing-plans/SKILL.md:108]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4fd4627d2c02367879c0307d7249270bed633317ff9be82e926a6d57bf5d331b",
+        "content-review:153-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "writing-plans/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6fce2aa83c63715697e9dd86050c820716100b91efbd9f12bab8477ecc060256",
+        "content-review:50-lines"
+      ],
+      "path": "writing-plans/plan-document-reviewer-prompt.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Use when you have a spec or requirements for a multi-step task, before touching code [writing-plans/SKILL.md:3]",
+  "unique_methods": [
+    "Writing Plans [writing-plans/SKILL.md:6]",
+    "Scope Check [writing-plans/SKILL.md:21]",
+    "File Structure [writing-plans/SKILL.md:25]",
+    "Bite-Sized Task Granularity [writing-plans/SKILL.md:36]",
+    "Plan Document Header [writing-plans/SKILL.md:45]",
+    "Task Structure [writing-plans/SKILL.md:63]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [writing-plans/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [writing-plans/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [writing-plans/SKILL.md:3]"
+  ],
+  "workflow": [
+    "[Feature Name] Implementation Plan [writing-plans/SKILL.md:50]"
+  ]
+}

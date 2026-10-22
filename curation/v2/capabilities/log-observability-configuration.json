@@ -1,0 +1,58 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:log-observability-configuration",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0286",
+    "V2-FUSION-0287",
+    "V2-FUSION-0288",
+    "V2-FUSION-0289",
+    "V2-FUSION-0290"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Log sources, schemas, provider, authorization, retention, redaction, and routing requirements."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Log Observability Configuration",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Log pipeline configuration, validation evidence, governance checks, and rollback."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [],
+  "responsibility": "Configure log collection, parsing, routing, retention, and sensitive-data controls using a provider adapter.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-logs:001:root-responsibility",
+    "v2-root:dd-logs:002:common-processors",
+    "v2-root:dd-logs:003:rehydrate-restore",
+    "v2-root:dd-logs:004:use-datadog-ui-api-for-rehydration-workflows",
+    "v2-root:dd-logs:005:troubleshooting"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-logs/SKILL.md:151-153",
+    "dd-logs/SKILL.md:155-162",
+    "dd-logs/SKILL.md:198-206",
+    "dd-logs/SKILL.md:3-7",
+    "dd-logs/SKILL.md:76-103"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

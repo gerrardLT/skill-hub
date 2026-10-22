@@ -1,0 +1,482 @@
+{
+  "candidate_responsibility": "Constrain mocks, spies, and test-only interfaces so tests exercise meaningful behavior and complete data shapes.",
+  "canonical_unit_ids": [
+    "test-driven-development:unit-016",
+    "test-driven-development:unit-017",
+    "test-driven-development:unit-018",
+    "test-driven-development:unit-019",
+    "test-driven-development:unit-020",
+    "test-driven-development:unit-021",
+    "vitest:unit-005",
+    "vitest:unit-006",
+    "vitest:unit-007",
+    "vitest:unit-008",
+    "vitest:unit-014",
+    "vitest:unit-015",
+    "vitest:unit-016"
+  ],
+  "cluster_id": "cluster:test-double-discipline",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "test-driven-development/testing-anti-patterns.md:1-20",
+    "test-driven-development/testing-anti-patterns.md:118-176",
+    "test-driven-development/testing-anti-patterns.md:177-227",
+    "test-driven-development/testing-anti-patterns.md:21-62",
+    "test-driven-development/testing-anti-patterns.md:228-299",
+    "test-driven-development/testing-anti-patterns.md:63-117",
+    "vitest/references/advanced-vi.md:133-164",
+    "vitest/references/advanced-vi.md:57-77",
+    "vitest/references/advanced-vi.md:81-89",
+    "vitest/references/features-mocking.md:10-33",
+    "vitest/references/features-mocking.md:37-53",
+    "vitest/references/features-mocking.md:64-83",
+    "vitest/references/features-mocking.md:84-94"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:test-double-discipline"
+      ],
+      "id": "cluster:test-double-discipline:fusion:boundary",
+      "rule": "Constrain mocks, spies, and test-only interfaces so tests exercise meaningful behavior and complete data shapes."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:test-double-discipline"
+      ],
+      "id": "cluster:test-double-discipline:fusion:inputs",
+      "rule": "Accept only: A test design that requires dependency isolation or an existing test double."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:test-double-discipline"
+      ],
+      "id": "cluster:test-double-discipline:fusion:outputs",
+      "rule": "Produce only: A minimal, behavior-focused test-double strategy that does not pollute production APIs."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:test-double-discipline:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A test design that requires dependency isolation or an existing test double.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-driven-development"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-driven-development",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-driven-development",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-driven-development",
+        "vitest"
+      ]
+    }
+  ],
+  "output_boundary": "A minimal, behavior-focused test-double strategy that does not pollute production APIs.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "测试反模式总纲与三大铁律：测试必须验证真实行为而非 Mock 行为，Mock 是隔离手段而非被测对象。三大铁律：1. 绝对不要测试 Mock 行为；2. 绝对不要在生产类中添加仅供测试使用的方法；3. 绝对不要在不理解依赖关系的情况下进行 Mock。; 反模式 1：测试 Mock 自身行为（Testing Mock Behavior）：断言侧边栏 Mock 是否渲染等同于验证 Mock 工具本身工作而非业务组件工作；判定门禁：在断言 Mock 元素前自问是在测真实行为还是 Mock 存在；若测 Mock 存在必须删除断言或解除 Mock。; 反模式 2：生产类中夹带测试专用方法（Test-Only Methods in Production）：在生产 Session 类中增加仅供测试调用的 destroy() 会污染生产 API、引发误调隐患；解决方案：生命周期清理逻辑下沉至 test-utils 辅助工具；门禁：增加方法前核验是否仅由测试使用及类是否拥有该生命周期。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Explicit limits: 编写测试、添加 Mock 或涉及测试辅助设施时强制加载遵循。; 在对 Mock 对象或被桩化的 DOM 节点进行断言前适用。; 向生产类、服务或领域模型添加方法时适用。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 6 source-grounded atom(s) for responsibility (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-016",
+        "test-driven-development:unit-017",
+        "test-driven-development:unit-018",
+        "test-driven-development:unit-019",
+        "test-driven-development:unit-020",
+        "test-driven-development:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "编写测试、添加 Mock 或涉及测试辅助设施时强制加载遵循。; 在对 Mock 对象或被桩化的 DOM 节点进行断言前适用。; 向生产类、服务或领域模型添加方法时适用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Explicit limits: 编写测试、添加 Mock 或涉及测试辅助设施时强制加载遵循。; 在对 Mock 对象或被桩化的 DOM 节点进行断言前适用。; 向生产类、服务或领域模型添加方法时适用。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 6 source-grounded atom(s) for boundary-and-applicability (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-016",
+        "test-driven-development:unit-017",
+        "test-driven-development:unit-018",
+        "test-driven-development:unit-019",
+        "test-driven-development:unit-020",
+        "test-driven-development:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立测试真实行为原则以及不得测试 Mock、不得污染生产类、不得盲目 Mock 三大铁律。; 核验是否剖析断言 Mock 的危害、给出测试真实行为方案并设立门禁自问函数。; 核验是否明确生产类禁止混入测试方法，以及将测试清理外置到测试工具函数的修正方案。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Explicit limits: 编写测试、添加 Mock 或涉及测试辅助设施时强制加载遵循。; 在对 Mock 对象或被桩化的 DOM 节点进行断言前适用。; 向生产类、服务或领域模型添加方法时适用。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-016",
+        "test-driven-development:unit-017",
+        "test-driven-development:unit-018",
+        "test-driven-development:unit-019",
+        "test-driven-development:unit-020",
+        "test-driven-development:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "Mock 函数创建与返回值控制方法：使用 vi.fn() 创建函数并链式配置返回值、Promise 解决值与实现函数; 对象方法间谍监听与覆盖方法：使用 vi.spyOn() 监听已有对象方法并在测试完成后通过 mockRestore 还原; 声明式条件 Mocking 方法：使用 v5 的 vi.when().calledWith().thenResolve() 按参数精确定义不同响应",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Explicit limits: 单元测试中隔离依赖组件与回调验证; 需要监控真实对象行为或临时重写特定方法且需干净恢复; 复杂分流调用而无需手写易错的 if-else mockImplementation",
+      "source_id": "vitest",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (method=6, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-005",
+        "vitest:unit-006",
+        "vitest:unit-007",
+        "vitest:unit-008",
+        "vitest:unit-014",
+        "vitest:unit-015",
+        "vitest:unit-016"
+      ]
+    },
+    {
+      "approach": "Mock 函数创建与返回值控制方法：使用 vi.fn() 创建函数并链式配置返回值、Promise 解决值与实现函数; 对象方法间谍监听与覆盖方法：使用 vi.spyOn() 监听已有对象方法并在测试完成后通过 mockRestore 还原; 声明式条件 Mocking 方法：使用 v5 的 vi.when().calledWith().thenResolve() 按参数精确定义不同响应",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83"
+      ],
+      "limitations": "Explicit limits: 单元测试中隔离依赖组件与回调验证; 需要监控真实对象行为或临时重写特定方法且需干净恢复; 复杂分流调用而无需手写易错的 if-else mockImplementation",
+      "source_id": "vitest",
+      "strengths": "Provides 6 source-grounded atom(s) for method (method=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-005",
+        "vitest:unit-006",
+        "vitest:unit-007",
+        "vitest:unit-014",
+        "vitest:unit-015",
+        "vitest:unit-016"
+      ]
+    },
+    {
+      "approach": "单元测试中隔离依赖组件与回调验证; 需要监控真实对象行为或临时重写特定方法且需干净恢复; 复杂分流调用而无需手写易错的 if-else mockImplementation",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Explicit limits: 单元测试中隔离依赖组件与回调验证; 需要监控真实对象行为或临时重写特定方法且需干净恢复; 复杂分流调用而无需手写易错的 if-else mockImplementation",
+      "source_id": "vitest",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (method=6, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-005",
+        "vitest:unit-006",
+        "vitest:unit-007",
+        "vitest:unit-008",
+        "vitest:unit-014",
+        "vitest:unit-015",
+        "vitest:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "测试用例块退出后被 using 声明的对象自动释放与还原",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Explicit limits: Node 24+ 及 TypeScript 5.2+ 运行环境中的局部 Mocking",
+      "source_id": "vitest",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 6
+      },
+      "evidence": [
+        "test-driven-development/testing-anti-patterns.md:1-20",
+        "test-driven-development/testing-anti-patterns.md:118-176",
+        "test-driven-development/testing-anti-patterns.md:177-227",
+        "test-driven-development/testing-anti-patterns.md:21-62",
+        "test-driven-development/testing-anti-patterns.md:228-299",
+        "test-driven-development/testing-anti-patterns.md:63-117"
+      ],
+      "source_id": "test-driven-development",
+      "unit_ids": [
+        "test-driven-development:unit-016",
+        "test-driven-development:unit-017",
+        "test-driven-development:unit-018",
+        "test-driven-development:unit-019",
+        "test-driven-development:unit-020",
+        "test-driven-development:unit-021"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 6,
+        "rule": 1
+      },
+      "evidence": [
+        "vitest/references/advanced-vi.md:133-164",
+        "vitest/references/advanced-vi.md:57-77",
+        "vitest/references/advanced-vi.md:81-89",
+        "vitest/references/features-mocking.md:10-33",
+        "vitest/references/features-mocking.md:37-53",
+        "vitest/references/features-mocking.md:64-83",
+        "vitest/references/features-mocking.md:84-94"
+      ],
+      "source_id": "vitest",
+      "unit_ids": [
+        "vitest:unit-005",
+        "vitest:unit-006",
+        "vitest:unit-007",
+        "vitest:unit-008",
+        "vitest:unit-014",
+        "vitest:unit-015",
+        "vitest:unit-016"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "test-driven-development:unit-016",
+    "test-driven-development:unit-017",
+    "test-driven-development:unit-018",
+    "test-driven-development:unit-019",
+    "test-driven-development:unit-020",
+    "test-driven-development:unit-021",
+    "vitest:unit-005",
+    "vitest:unit-006",
+    "vitest:unit-007",
+    "vitest:unit-008",
+    "vitest:unit-014",
+    "vitest:unit-015",
+    "vitest:unit-016"
+  ]
+}

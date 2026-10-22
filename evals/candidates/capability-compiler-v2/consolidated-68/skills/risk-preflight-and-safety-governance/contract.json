@@ -1,0 +1,57 @@
+{
+  "artifact_types": [
+    "risk preflight",
+    "authority matrix",
+    "control checklist",
+    "stop and escalation record"
+  ],
+  "capability_id": "capability:risk-preflight-and-safety-governance",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A prior authorization, tool availability, or low technical difficulty must never be treated as current permission for an irreversible or external action.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "risk-preflight-and-safety-governance",
+  "inputs": [
+    "Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions."
+  ],
+  "mode_permissions": {
+    "risk-preflight-and-safety-governance": "read-only"
+  },
+  "modes": [],
+  "outputs": [
+    "risk preflight",
+    "authority matrix",
+    "control checklist",
+    "stop and escalation record"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": true,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Classify task risk, reversibility, trust boundaries, data sensitivity, authorization, evidence, and required stop or escalation before execution.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

@@ -1,0 +1,311 @@
+{
+  "candidate_responsibility": "Convert specifications and architecture decisions into file-specific, test-first, executable micro-steps.",
+  "canonical_unit_ids": [
+    "writing-plans:unit-001",
+    "writing-plans:unit-002",
+    "writing-plans:unit-003",
+    "writing-plans:unit-004",
+    "writing-plans:unit-005",
+    "writing-plans:unit-006",
+    "writing-plans:unit-007",
+    "writing-plans:unit-008",
+    "writing-plans:unit-010"
+  ],
+  "cluster_id": "cluster:implementation-planning-and-handoff",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "writing-plans/SKILL.md:1-20",
+    "writing-plans/SKILL.md:106-115",
+    "writing-plans/SKILL.md:116-121",
+    "writing-plans/SKILL.md:134-152",
+    "writing-plans/SKILL.md:21-24",
+    "writing-plans/SKILL.md:25-35",
+    "writing-plans/SKILL.md:36-44",
+    "writing-plans/SKILL.md:45-62",
+    "writing-plans/SKILL.md:63-105"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:implementation-planning-and-handoff:fusion:boundary",
+      "rule": "Convert specifications and architecture decisions into file-specific, test-first, executable micro-steps."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:implementation-planning-and-handoff:fusion:inputs",
+      "rule": "Accept only: A confirmed specification, architecture boundaries, repository conventions, and test requirements."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff"
+      ],
+      "id": "cluster:implementation-planning-and-handoff:fusion:outputs",
+      "rule": "Produce only: A placeholder-free implementation plan with exact files, commands, expected results, and an execution handoff."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:implementation-planning-and-handoff:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A confirmed specification, architecture boundaries, repository conventions, and test requirements.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    }
+  ],
+  "output_boundary": "A placeholder-free implementation plan with exact files, commands, expected results, and an execution handoff.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义编制实施计划的根本宗旨与角色姿态：假设执行工程师对代码库完全零上下文且测试品味不可测；详尽记录每一步需触及的文件、代码块、测试用例与验证命令；拆分为极小颗粒任务；贯彻 DRY/YAGNI/TDD/高频提交原则；启动时主动声明使用 writing-plans，计划默认保存至 docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md。; 实施计划范围边界检查门禁：如果需求规格横跨多个相互独立的子系统，必须在头脑风暴阶段或此时建议拆解为多个独立的子计划；每个计划必须能够独立产生可运行、可测试的软件产物。; 文件架构映射与拆解原则：在定义任务前，必须映射所有将新建或修改的文件及其职责；每个文件单一职责与清晰边界；优先拆分为专注小文件；共同变更的文件放在一起（按职责拆分而非纯技术分层）；遵循既有代码库既定范式。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:36-44",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Explicit limits: 当具备多步骤任务需求规格且在正式触碰代码前强制适用。; 在进入任务拆分前必须先执行规格子系统范围校验。; 在细化步骤之前规划文件目录与模块职责时适用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (gate=1, method=2, rule=4, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-001",
+        "writing-plans:unit-002",
+        "writing-plans:unit-003",
+        "writing-plans:unit-004",
+        "writing-plans:unit-005",
+        "writing-plans:unit-006",
+        "writing-plans:unit-007",
+        "writing-plans:unit-008",
+        "writing-plans:unit-010"
+      ]
+    },
+    {
+      "approach": "文件架构映射与拆解原则：在定义任务前，必须映射所有将新建或修改的文件及其职责；每个文件单一职责与清晰边界；优先拆分为专注小文件；共同变更的文件放在一起（按职责拆分而非纯技术分层）；遵循既有代码库既定范式。; 计划文档标准头部规范：每个计划文档必须以固定头部开启，包含标题、针对 agentic workers 的推荐子技能声明（subagent-driven-development 或 executing-plans）、一句话 Goal、2-3 句话 Architecture 架构综述及 Tech Stack 关键依赖项。; 任务标准结构模板：以 Task N 形式组织，明确列出 Create/Modify:line-range/Test 文件路径；Step 1 给出失败测试代码块；Step 2 给出测试命令及预期 FAIL 报错；Step 3 给出最小实现代码块；Step 4 给出验证命令及预期 PASS；Step 5 给出原子 git commit 命令。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Explicit limits: 在细化步骤之前规划文件目录与模块职责时适用。; 在生成所有实施计划 Markdown 文档时强制置顶嵌入。; 编写计划中每一个具体组件任务时强制采用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=2, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-003",
+        "writing-plans:unit-005",
+        "writing-plans:unit-006",
+        "writing-plans:unit-010"
+      ]
+    },
+    {
+      "approach": "当具备多步骤任务需求规格且在正式触碰代码前强制适用。; 在进入任务拆分前必须先执行规格子系统范围校验。; 在细化步骤之前规划文件目录与模块职责时适用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:36-44",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Explicit limits: 当具备多步骤任务需求规格且在正式触碰代码前强制适用。; 在进入任务拆分前必须先执行规格子系统范围校验。; 在细化步骤之前规划文件目录与模块职责时适用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (gate=1, method=2, rule=4, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-001",
+        "writing-plans:unit-002",
+        "writing-plans:unit-003",
+        "writing-plans:unit-004",
+        "writing-plans:unit-005",
+        "writing-plans:unit-006",
+        "writing-plans:unit-007",
+        "writing-plans:unit-008",
+        "writing-plans:unit-010"
+      ]
+    },
+    {
+      "approach": "计划文档标准头部规范：每个计划文档必须以固定头部开启，包含标题、针对 agentic workers 的推荐子技能声明（subagent-driven-development 或 executing-plans）、一句话 Goal、2-3 句话 Architecture 架构综述及 Tech Stack 关键依赖项。; 任务标准结构模板：以 Task N 形式组织，明确列出 Create/Modify:line-range/Test 文件路径；Step 1 给出失败测试代码块；Step 2 给出测试命令及预期 FAIL 报错；Step 3 给出最小实现代码块；Step 4 给出验证命令及预期 PASS；Step 5 给出原子 git commit 命令。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Explicit limits: 在生成所有实施计划 Markdown 文档时强制置顶嵌入。; 编写计划中每一个具体组件任务时强制采用。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-005",
+        "writing-plans:unit-006"
+      ]
+    },
+    {
+      "approach": "核验是否包含零上下文假设、详尽文件与测试记录、声明语法及默认落盘路径规范。; 核验是否强制多子系统拆分为独立计划，并确保各子计划独立可测。; 核验是否严格要求 2-5 分钟单操作步骤以及红绿提交标准闭环。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:36-44"
+      ],
+      "limitations": "Explicit limits: 当具备多步骤任务需求规格且在正式触碰代码前强制适用。; 在进入任务拆分前必须先执行规格子系统范围校验。; 在拆解任务内具体执行步骤时严格执行该颗粒度。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 5 source-grounded atom(s) for gates-and-validation (gate=1, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-001",
+        "writing-plans:unit-002",
+        "writing-plans:unit-004",
+        "writing-plans:unit-007",
+        "writing-plans:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:36-44",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:36-44",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1,
+        "method": 2,
+        "rule": 4,
+        "template": 2
+      },
+      "evidence": [
+        "writing-plans/SKILL.md:1-20",
+        "writing-plans/SKILL.md:106-115",
+        "writing-plans/SKILL.md:116-121",
+        "writing-plans/SKILL.md:134-152",
+        "writing-plans/SKILL.md:21-24",
+        "writing-plans/SKILL.md:25-35",
+        "writing-plans/SKILL.md:36-44",
+        "writing-plans/SKILL.md:45-62",
+        "writing-plans/SKILL.md:63-105"
+      ],
+      "source_id": "writing-plans",
+      "unit_ids": [
+        "writing-plans:unit-001",
+        "writing-plans:unit-002",
+        "writing-plans:unit-003",
+        "writing-plans:unit-004",
+        "writing-plans:unit-005",
+        "writing-plans:unit-006",
+        "writing-plans:unit-007",
+        "writing-plans:unit-008",
+        "writing-plans:unit-010"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "writing-plans:unit-001",
+    "writing-plans:unit-002",
+    "writing-plans:unit-003",
+    "writing-plans:unit-004",
+    "writing-plans:unit-005",
+    "writing-plans:unit-006",
+    "writing-plans:unit-007",
+    "writing-plans:unit-008",
+    "writing-plans:unit-010"
+  ]
+}

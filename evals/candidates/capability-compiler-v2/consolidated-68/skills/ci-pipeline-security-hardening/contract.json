@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "CI threat findings",
+    "minimal hardened workflow candidate",
+    "verification and rollback plan",
+    "residual supply-chain risk"
+  ],
+  "capability_id": "capability:ci-pipeline-security-hardening",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Untrusted pull-request code, metadata, artifacts, caches, or user-controlled strings must never execute in a context with secrets, write tokens, deployment identity, or unquoted command construction.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "ci-pipeline-security-hardening",
+  "inputs": [
+    "CI workflow files, repository policy, trust boundaries, permissions, and runner context."
+  ],
+  "mode_permissions": {
+    "ci-pipeline-security-hardening": "workspace-write"
+  },
+  "modes": [],
+  "outputs": [
+    "CI threat findings",
+    "minimal hardened workflow candidate",
+    "verification and rollback plan",
+    "residual supply-chain risk"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "coverage": [
+      "least-privilege",
+      "immutable-pinning",
+      "untrusted-input",
+      "secret-isolation",
+      "OIDC",
+      "artifact-provenance",
+      "rollback"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Audit and minimally harden authorized CI workflow source for least privilege, immutable pinning, untrusted input, secret isolation, provenance, and safe rollback.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

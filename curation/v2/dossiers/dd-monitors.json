@@ -1,0 +1,87 @@
+{
+  "branches": [],
+  "inputs": [
+    "This requires pup in your path. See [Setup Pup](https://github.com/datadog-labs/agent-skills/tree/main?tab=readme-ov-filesetup-pup). [dd-monitors/SKILL.md:19]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-monitors/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-monitors/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-monitors/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "3. Scale if needed [dd-monitors/SKILL.md:126]",
+    "NEVER Delete Monitors Directly [dd-monitors/SKILL.md:132]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Monitor management - list, search, file-based create, and alerting best practices. [dd-monitors/SKILL.md:3]",
+  "root_id": "skill-root:dd-monitors",
+  "rules_gates": [
+    "alwaysApply: \"false\" [dd-monitors/SKILL.md:10]",
+    "2. If a required value is missing, run a discovery command first. [dd-monitors/SKILL.md:26]",
+    "Actionable alerts If no action needed, don't alert [dd-monitors/SKILL.md:76]",
+    "NEVER Delete Monitors Directly [dd-monitors/SKILL.md:132]"
+  ],
+  "skill_path": "dd-monitors/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-monitors/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "dd-monitors/SKILL.md"
+    },
+    {
+      "line_end": 18,
+      "line_start": 18,
+      "path": "dd-monitors/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "dd-monitors/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "dd-monitors/SKILL.md"
+    }
+  ],
+  "source_sha256": "7064ad2d9220313799e1d60b140d33fc33d1c160dc95cf77e1d30a0594618c43",
+  "stop_conditions": [
+    "3. If still ambiguous, ask the user to confirm. [dd-monitors/SKILL.md:27]",
+    "5. Avoid speculative commands likely to fail. [dd-monitors/SKILL.md:29]",
+    "Failure Handling [dd-monitors/SKILL.md:186]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7064ad2d9220313799e1d60b140d33fc33d1c160dc95cf77e1d30a0594618c43",
+        "content-review:200-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-monitors/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Monitor management - list, search, file-based create, and alerting best practices. [dd-monitors/SKILL.md:3]",
+  "unique_methods": [
+    "Datadog Monitors [dd-monitors/SKILL.md:13]",
+    "Prerequisites [dd-monitors/SKILL.md:18]",
+    "Command Execution Order (Token-Efficient) [dd-monitors/SKILL.md:21]",
+    "Quick Start [dd-monitors/SKILL.md:32]",
+    "Common Operations [dd-monitors/SKILL.md:38]",
+    "List Monitors [dd-monitors/SKILL.md:40]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-monitors/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Runbook [dd-monitors/SKILL.md:123]"
+  ]
+}

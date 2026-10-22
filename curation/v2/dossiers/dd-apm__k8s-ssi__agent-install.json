@@ -1,0 +1,117 @@
+{
+  "branches": [],
+  "inputs": [
+    "[ ] Kubernetes v1.20+ — kubectl version [dd-apm/k8s-ssi/agent-install/SKILL.md:59]",
+    "[ ] helm v3+ — helm version [dd-apm/k8s-ssi/agent-install/SKILL.md:60]",
+    "[ ] kubectl configured to target cluster — kubectl config current-context [dd-apm/k8s-ssi/agent-install/SKILL.md:61]",
+    "[ ] pup-cli installed — check with pup --version; if missing, install it now [dd-apm/k8s-ssi/agent-install/SKILL.md:62]",
+    "brew tap datadog-labs/pack && brew install pup [dd-apm/k8s-ssi/agent-install/SKILL.md:65]",
+    "curl -L \"https://github.com/datadog-labs/pup/releases/download/${PUPVERSION}/puplinuxamd64.tar.gz\" tar xz -C /usr/local/bin pup [dd-apm/k8s-ssi/agent-install/SKILL.md:68]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "name: agent-install [dd-apm/k8s-ssi/agent-install/SKILL.md:2]",
+    "description: Install the Datadog Agent on Kubernetes using the Datadog Operator — required before enabling Single Step Instrumentation (SSI), which automatically instruments applications for APM without code changes. Only use if no Datadog Agent is deployed on the cluster yet. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+    "tags: datadog,apm,kubernetes,agent,operator,install [dd-apm/k8s-ssi/agent-install/SKILL.md:8]",
+    "Install the Datadog Agent on Kubernetes [dd-apm/k8s-ssi/agent-install/SKILL.md:13]",
+    "> helm is required for this skill. Install it with [dd-apm/k8s-ssi/agent-install/SKILL.md:28]",
+    "> brew install helm macOS [dd-apm/k8s-ssi/agent-install/SKILL.md:30]",
+    "> or see https://helm.sh/docs/intro/install/ for other platforms [dd-apm/k8s-ssi/agent-install/SKILL.md:31]",
+    "> 1. Datadog API Key — used to authenticate the Agent with your Datadog account. You can find or create one at: https://app.datadoghq.com/organization-settings/api-keys [dd-apm/k8s-ssi/agent-install/SKILL.md:43]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/k8s-ssi/agent-install/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/k8s-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Install the Datadog Agent on Kubernetes using the Datadog Operator — required before enabling Single Step Instrumentation (SSI), which automatically instruments applications for APM without code changes. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/k8s-ssi/agent-install",
+  "rules_gates": [
+    "description: Install the Datadog Agent on Kubernetes using the Datadog Operator — required before enabling Single Step Instrumentation (SSI), which automatically instruments applications for APM without code changes. Only use if no Datadog Agent is deployed on the cluster yet. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+    "alwaysApply: \"false\" [dd-apm/k8s-ssi/agent-install/SKILL.md:9]",
+    "> Before doing anything else: Fully resolve all variables in Context to resolve before acting. Do not begin Step 1 until every variable has a concrete value. [dd-apm/k8s-ssi/agent-install/SKILL.md:15]",
+    "> helm is required for this skill. Install it with [dd-apm/k8s-ssi/agent-install/SKILL.md:28]",
+    "Do not proceed until helm is available. [dd-apm/k8s-ssi/agent-install/SKILL.md:35]",
+    "Wait for the user to run the commands, then re-run the check above before continuing. [dd-apm/k8s-ssi/agent-install/SKILL.md:53]",
+    "Do not skip — proceed only once pup --version succeeds. [dd-apm/k8s-ssi/agent-install/SKILL.md:73]",
+    "Context to resolve before acting [dd-apm/k8s-ssi/agent-install/SKILL.md:77]"
+  ],
+  "skill_path": "dd-apm/k8s-ssi/agent-install/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 17,
+      "line_start": 17,
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 57,
+      "line_start": 57,
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 77,
+      "line_start": 77,
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md"
+    }
+  ],
+  "source_sha256": "17da5ca2425ed8e074b58ee0a62581912a64ce6afdb4cdbd3e1731135916fe6f",
+  "stop_conditions": [
+    "Do not proceed until helm is available. [dd-apm/k8s-ssi/agent-install/SKILL.md:35]",
+    "DDSITE Ask the user. Default: datadoghq.com. Common options: datadoghq.eu, us3.datadoghq.com, us5.datadoghq.com, ap1.datadoghq.com. Full list: https://docs.datadoghq.com/gettingstarted/site/ [dd-apm/k8s-ssi/agent-install/SKILL.md:82]",
+    "echo \"ERROR: Validation failed (HTTP $RESPONSE) — check key and site alignment\" [dd-apm/k8s-ssi/agent-install/SKILL.md:226]",
+    "Automatically proceed to enable-ssi now — do not ask the user for permission. [dd-apm/k8s-ssi/agent-install/SKILL.md:259]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:17da5ca2425ed8e074b58ee0a62581912a64ce6afdb4cdbd3e1731135916fe6f",
+        "content-review:271-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/k8s-ssi/agent-install/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Install the Datadog Agent on Kubernetes using the Datadog Operator — required before enabling Single Step Instrumentation (SSI), which automatically instruments applications for APM without code changes. Only use if no Datadog Agent is deployed on the cluster yet. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]",
+  "unique_methods": [
+    "Install the Datadog Agent on Kubernetes [dd-apm/k8s-ssi/agent-install/SKILL.md:13]",
+    "Prerequisites [dd-apm/k8s-ssi/agent-install/SKILL.md:57]",
+    "Context to resolve before acting [dd-apm/k8s-ssi/agent-install/SKILL.md:77]",
+    "Claude runs [dd-apm/k8s-ssi/agent-install/SKILL.md:90]",
+    "Claude runs [dd-apm/k8s-ssi/agent-install/SKILL.md:104]",
+    "What you need to do in a terminal [dd-apm/k8s-ssi/agent-install/SKILL.md:129]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/k8s-ssi/agent-install/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Phase 0: Load Credentials [dd-apm/k8s-ssi/agent-install/SKILL.md:17]",
+    "Step 1: Check for an Existing Agent Installation [dd-apm/k8s-ssi/agent-install/SKILL.md:88]",
+    "Step 2: Install the Datadog Operator [dd-apm/k8s-ssi/agent-install/SKILL.md:102]",
+    "Step 3: Create the API Key Secret [dd-apm/k8s-ssi/agent-install/SKILL.md:127]",
+    "Step 4: Deploy the DatadogAgent Resource [dd-apm/k8s-ssi/agent-install/SKILL.md:145]",
+    "Step 5: Verify the API Key [dd-apm/k8s-ssi/agent-install/SKILL.md:197]"
+  ]
+}

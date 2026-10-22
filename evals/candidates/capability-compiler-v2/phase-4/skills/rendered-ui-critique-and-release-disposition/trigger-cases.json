@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-review-scope-and-evidence-acquisition",
+        "evidence-based-ui-review-and-release-gates",
+        "ui-remediation",
+        "cross-domain-ui-preflight-checklists"
+      ],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-trigger-01",
+      "input": "Critique these current mobile, tablet, and desktop captures plus interaction traces against the design and accessibility contracts.",
+      "kind": "should-trigger",
+      "reason": "Independently critique current rendered UI and animation behavior, prioritize reproducible findings, and recommend a bounded disposition without source mutation."
+    },
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-review-scope-and-evidence-acquisition",
+        "evidence-based-ui-review-and-release-gates",
+        "ui-remediation",
+        "cross-domain-ui-preflight-checklists"
+      ],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-trigger-02",
+      "input": "Prioritize this rendered UI's visual, spatial, content, responsive, state, and motion defects and state what must be recaptured.",
+      "kind": "should-trigger",
+      "reason": "Independently critique current rendered UI and animation behavior, prioritize reproducible findings, and recommend a bounded disposition without source mutation."
+    },
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-anti-01",
+      "input": "Define which routes, states, viewports, traces, and tools must be captured for review.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to ui-review-scope-and-evidence-acquisition."
+    },
+    {
+      "expected_skill_id": "ui-remediation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-anti-02",
+      "input": "Edit the product source to fix the accepted UI findings.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to ui-remediation."
+    },
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-boundary-01",
+      "input": "Independently critique current rendered UI and animation behavior, prioritize reproducible findings, and recommend a bounded disposition without source mutation. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-rendered-ui-critique-and-release-disposition-authority-01",
+      "input": "Independently critique current rendered UI and animation behavior, prioritize reproducible findings, and recommend a bounded disposition without source mutation. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "rendered-ui-critique-and-release-disposition"
+}

@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "framework declaration",
+    "scoring table",
+    "sensitivity analysis",
+    "human decision brief"
+  ],
+  "capability_id": "capability:opportunity-prioritization-and-frameworks",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Reject any unnamed, hybrid, or partially specified RICE, ICE, Opportunity Score, or custom formula.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "opportunity-prioritization-and-frameworks",
+  "inputs": [
+    "Validated problems, opportunities, evidence strength, constraints, and decision criteria."
+  ],
+  "outputs": [
+    "framework declaration",
+    "scoring table",
+    "sensitivity analysis",
+    "human decision brief"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": true
+  },
+  "responsibility": "Apply an explicitly named prioritization framework and exact formula variant to an evidence-bounded opportunity set.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

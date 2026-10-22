@@ -1,0 +1,280 @@
+{
+  "branches": [
+    "Step 4.8: Stop any stale daemon (unconditional) [gstack/gstack-upgrade/SKILL.md:269]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/gstack-upgrade/SKILL.md:4]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/gstack-upgrade/SKILL.md:4]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/gstack-upgrade/SKILL.md:4]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/gstack-upgrade/SKILL.md:4]"
+  ],
+  "permissions_side_effects": [
+    "Detects global vs vendored install, [gstack/gstack-upgrade/SKILL.md:21]",
+    "Tell user: \"Auto-upgrade enabled. Future updates will install automatically.\" Then proceed to Step 2. [gstack/gstack-upgrade/SKILL.md:57]",
+    "Step 2: Detect install type [gstack/gstack-upgrade/SKILL.md:86]",
+    "echo \"Install type: $INSTALLTYPE at $INSTALLDIR\" [gstack/gstack-upgrade/SKILL.md:111]",
+    "The install type and directory path printed above will be used in all subsequent steps. [gstack/gstack-upgrade/SKILL.md:114]",
+    "Use the install directory from Step 2's output below [gstack/gstack-upgrade/SKILL.md:118]",
+    "Use the install type and directory detected in Step 2 [gstack/gstack-upgrade/SKILL.md:126]",
+    "git fetch origin [gstack/gstack-upgrade/SKILL.md:140]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/gstack-upgrade/SKILL.md:4"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Upgrade gstack to the latest version. [gstack/gstack-upgrade/SKILL.md:4]",
+  "root_id": "skill-root:gstack/gstack-upgrade",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/gstack-upgrade/SKILL.md:15]",
+    "Options: [\"Yes, upgrade now\", \"Always keep me up to date\", \"Not now\", \"Never ask again\"] [gstack/gstack-upgrade/SKILL.md:49]",
+    "If \"Always keep me up to date\" [gstack/gstack-upgrade/SKILL.md:53]",
+    "If \"Not now\": Write snooze state with escalating backoff (first snooze = 24h, second = 48h, third+ = 1 week), then continue with the current skill. Do not mention the upgrade again. [gstack/gstack-upgrade/SKILL.md:59]",
+    "If \"Never ask again\" [gstack/gstack-upgrade/SKILL.md:79]",
+    "those commits. Gate it (2517) [gstack/gstack-upgrade/SKILL.md:149]",
+    "rescue their work first (recommended when local commits exist). Never [gstack/gstack-upgrade/SKILL.md:159]",
+    "abort and let the human inspect, never delete it silently. [gstack/gstack-upgrade/SKILL.md:176]"
+  ],
+  "skill_path": "gstack/gstack-upgrade/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 8,
+      "line_start": 4,
+      "path": "gstack/gstack-upgrade/SKILL.md"
+    },
+    {
+      "line_end": 19,
+      "line_start": 19,
+      "path": "gstack/gstack-upgrade/SKILL.md"
+    },
+    {
+      "line_end": 27,
+      "line_start": 27,
+      "path": "gstack/gstack-upgrade/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/gstack-upgrade/SKILL.md"
+    },
+    {
+      "line_end": 35,
+      "line_start": 35,
+      "path": "gstack/gstack-upgrade/SKILL.md"
+    }
+  ],
+  "source_sha256": "60e5015f7eab5e20575e28996f2131b5f117137780b065ad54fa8a52e6967aea",
+  "stop_conditions": [
+    "Step 1: Ask the user (or auto-upgrade) [gstack/gstack-upgrade/SKILL.md:35]",
+    "If AUTOUPGRADE=true or AUTOUPGRADE=1: Skip AskUserQuestion. Log \"Auto-upgrading gstack v{old} → v{new}...\" and proceed directly to Step 2. If ./setup fails during auto-upgrade, restore from backup (.bak directory) and warn the user: \"Auto-upgrade failed — restored previous version. Run /gstack-upgra [gstack/gstack-upgrade/SKILL.md:45]",
+    "requires the explicit letter; B) Abort the upgrade so the user can [gstack/gstack-upgrade/SKILL.md:158]",
+    "the live install inside it and the failure-restore arm would \"restore\" the [gstack/gstack-upgrade/SKILL.md:174]",
+    "abort and let the human inspect, never delete it silently. [gstack/gstack-upgrade/SKILL.md:176]",
+    "[ -e \"$INSTALLDIR.bak\" ] && { echo \"ERROR: stale backup exists at $INSTALLDIR.bak (from a previous failed upgrade?) — inspect it, salvage/remove it, then re-run.\" >&2; exit 1; } [gstack/gstack-upgrade/SKILL.md:177]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:60e5015f7eab5e20575e28996f2131b5f117137780b065ad54fa8a52e6967aea",
+        "content-review:375-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/gstack-upgrade/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:43ba5720b802da8c600effa9e96e628836bbab4afb3a412cb843a386b42a070e",
+        "content-review:372-lines"
+      ],
+      "path": "gstack/gstack-upgrade/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:63194cc3d1f799779eacfcf4214587e482f291c06bac46b178089d7d6812bfaf",
+        "content-review:21-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v0.15.2.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:21e48be8806eb1f2cfc57175de0d1de0ccf66c2b108f8d2d7f4b9e1306e963c9",
+        "content-review:55-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v0.16.2.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5ae14d304be614c987ac23d7dfa83339dabe53ea6ce301fcafbff32ca708c3c7",
+        "content-review:39-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.0.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0a104b70d41ffc88e2ea3ef4958ebd919d02b161da2d2868fe1f2827ad9e71e9",
+        "content-review:138-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.1.3.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a12cf2815c565489bc50abaf10c0eeeb1f462faf8dd59fc05baed1271e83db0a",
+        "content-review:57-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.17.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ebcba660e56957d5f2e2eb6b7ab5b630a6f5c3b79e4aa36c28c221a4f0b9540a",
+        "content-review:388-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.27.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ade5fa72c0949948c14c2eaa68cb8892066f585763d9b22bbb6a2808cbf25d48",
+        "content-review:103-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.37.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:426733dda614ba89603566b4b3e71f5c481893ebe2e49cfa79a73615fbf19804",
+        "content-review:103-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.38.1.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a783b82eb7e71b497ae24aa397307984beb143391958d1d0a95367d382d31885",
+        "content-review:143-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.40.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d0135d47cfb4a5ec0b715b4d250c250f8b512618a260fce497bdccf8f5bd0ca9",
+        "content-review:64-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.58.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4ce145c35eb84df4a264eefd66bb083af4a301a3f3cd0a42dc03377e6b5f3ef6",
+        "content-review:151-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.65.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2121bf80558154e423f3739d353b501a8b3eb3dd3776db36337ea3bb69c3f1b9",
+        "content-review:74-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.67.0.0.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8643ae5e0badaf5cc6bd4190c8b13d41ca55f83dc2d60c59f52ba01f739f8157",
+        "content-review:29-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/gstack-upgrade/migrations/v1.78.0.0.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/gstack-upgrade/SKILL.md:1-14]",
+    "Declared tool: Read [gstack/gstack-upgrade/SKILL.md:1-14]",
+    "Declared tool: Write [gstack/gstack-upgrade/SKILL.md:1-14]",
+    "Declared tool: AskUserQuestion [gstack/gstack-upgrade/SKILL.md:1-14]"
+  ],
+  "trigger": "Upgrade gstack to the latest version. [gstack/gstack-upgrade/SKILL.md:4]",
+  "unique_methods": [
+    "/gstack-upgrade [gstack/gstack-upgrade/SKILL.md:27]",
+    "Inline upgrade flow [gstack/gstack-upgrade/SKILL.md:31]",
+    "Discard render-footprint dirt (2569): pre-v1.67 gbrain-enabled installs [gstack/gstack-upgrade/SKILL.md:135]",
+    "ran gen:skill-docs:user IN PLACE, leaving generated SKILL.md / sections [gstack/gstack-upgrade/SKILL.md:136]",
+    "files permanently modified. They are regenerable (setup re-renders to [gstack/gstack-upgrade/SKILL.md:137]",
+    "~/.gstack/render), so discarding is lossless. [gstack/gstack-upgrade/SKILL.md:138]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/gstack-upgrade/SKILL.md:4]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/gstack-upgrade/SKILL.md:4]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [gstack/gstack-upgrade/SKILL.md:4]"
+  ],
+  "workflow": [
+    "Step 1: Ask the user (or auto-upgrade) [gstack/gstack-upgrade/SKILL.md:35]",
+    "Step 2: Detect install type [gstack/gstack-upgrade/SKILL.md:86]",
+    "Step 3: Save old version [gstack/gstack-upgrade/SKILL.md:116]",
+    "Step 4: Upgrade [gstack/gstack-upgrade/SKILL.md:124]",
+    "Step 4.5: Handle local vendored copy [gstack/gstack-upgrade/SKILL.md:192]",
+    "Step 4.75: Run version migrations [gstack/gstack-upgrade/SKILL.md:240]",
+    "Step 4.8: Stop any stale daemon (unconditional) [gstack/gstack-upgrade/SKILL.md:269]",
+    "Step 5: Write marker + clear cache [gstack/gstack-upgrade/SKILL.md:313]",
+    "Step 6: Show What's New [gstack/gstack-upgrade/SKILL.md:322]",
+    "Step 7: Continue [gstack/gstack-upgrade/SKILL.md:338]"
+  ]
+}

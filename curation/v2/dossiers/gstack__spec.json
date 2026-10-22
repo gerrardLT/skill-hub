@@ -1,0 +1,171 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/spec/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/spec/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/spec/SKILL.md:195]",
+    "Continuous Checkpoint Mode [gstack/spec/SKILL.md:295]",
+    "8. Schema, API Shapes, and Data Models [gstack/spec/SKILL.md:714]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/spec/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/spec/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/spec/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/spec/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/spec/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/spec/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/spec/SKILL.md:61]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/spec/SKILL.md:80]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/spec/SKILL.md:104]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/spec/SKILL.md:175]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/spec/SKILL.md:299]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/spec/SKILL.md:422]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/spec/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Turn vague intent into a precise, executable spec in five phases. [gstack/spec/SKILL.md:5]",
+  "root_id": "skill-root:gstack/spec",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/spec/SKILL.md:20]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/spec/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/spec/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/spec/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/spec/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/spec/SKILL.md:53]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/spec/SKILL.md:56]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/spec/SKILL.md:67]"
+  ],
+  "skill_path": "gstack/spec/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/spec/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/spec/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/spec/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/spec/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/spec/SKILL.md"
+    }
+  ],
+  "source_sha256": "6dfe7aaaddbefb3e93f5f5fec86d7784a2d15788024d8cf24dc0aab84514156f",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/spec/SKILL.md:77]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/spec/SKILL.md:78]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/spec/SKILL.md:79]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/spec/SKILL.md:80]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/spec/SKILL.md:82]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/spec/SKILL.md:86]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6dfe7aaaddbefb3e93f5f5fec86d7784a2d15788024d8cf24dc0aab84514156f",
+        "content-review:933-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-strategy.md"
+      ],
+      "path": "gstack/spec/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:191a6fb72be25e4851951b0437d73e8a6408cad65ab6594e2487fb79edbb0436",
+        "content-review:498-lines"
+      ],
+      "path": "gstack/spec/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2c12a0a3ff784e59e95d88687c91e173ef486ebcebade563c9640ea480efc67c",
+        "content-review:366-lines"
+      ],
+      "path": "gstack/spec/sections/gate-and-file.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:75051f227a7bba978639f06a22c1f13523ee6614940adbc2301b4ee18271af10",
+        "content-review:314-lines"
+      ],
+      "path": "gstack/spec/sections/gate-and-file.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9be1b18492e74258d33991c62ff13c0dfd3e8ace041cbaf1a1e8ac02afb52474",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/spec/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/spec/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/spec/SKILL.md:1-19]",
+    "Declared tool: Grep [gstack/spec/SKILL.md:1-19]",
+    "Declared tool: Glob [gstack/spec/SKILL.md:1-19]",
+    "Declared tool: AskUserQuestion [gstack/spec/SKILL.md:1-19]",
+    "Local dependency: gstack/spec/sections/gate-and-file.md [gstack/spec/SKILL.md:511]",
+    "Local dependency: gstack/spec/sections/gate-and-file.md [gstack/spec/SKILL.md:928]"
+  ],
+  "trigger": "Turn vague intent into a precise, executable spec in five phases. (gstack) [gstack/spec/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/spec/SKILL.md:143]",
+    "Self-check before emitting [gstack/spec/SKILL.md:166]",
+    "Context Recovery [gstack/spec/SKILL.md:234]",
+    "Completeness Principle — Boil the Ocean [gstack/spec/SKILL.md:281]",
+    "Confusion Protocol [gstack/spec/SKILL.md:287]",
+    "Claimed Limitations Need Evidence [gstack/spec/SKILL.md:291]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/spec/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/spec/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/spec/SKILL.md:295]",
+    "Process (STRICT — do not skip or combine phases) [gstack/spec/SKILL.md:515]",
+    "Phase 1: Understand the \"Why\" (+ optional --dedupe) [gstack/spec/SKILL.md:517]",
+    "Phase 2: Scope and Boundaries [gstack/spec/SKILL.md:569]",
+    "Phase 3: Technical Interrogation (HARD requirement: read code first) [gstack/spec/SKILL.md:581]",
+    "Phase 4: Draft Review [gstack/spec/SKILL.md:616]",
+    "Phases 4.5 and 5: Quality Gate, then File the Spec (sequencing summary) [gstack/spec/SKILL.md:621]",
+    "Implementation Details [gstack/spec/SKILL.md:789]"
+  ]
+}

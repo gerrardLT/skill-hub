@@ -1,0 +1,324 @@
+diff --git a/apps/api/app/core/config.py b/apps/api/app/core/config.py
+index 191cfa2..6433354 100644
+--- a/apps/api/app/core/config.py
++++ b/apps/api/app/core/config.py
+@@ -76,6 +76,9 @@ class Settings(BaseSettings):
+     embedding_dimension: int = Field(default=1024)
+     memory_search_top_k: int = Field(default=5)
+ 
++    rate_limit_conversation_per_hour: int = Field(default=10)
++    rate_limit_global_per_minute: int = Field(default=30)
++
+     auth_jwt_secret: str = Field(default="change-me-in-production")
+     auth_jwt_algorithm: str = Field(default="HS256")
+     auth_jwt_expire_minutes: int = Field(default=10080)  # 7 days
+diff --git a/apps/api/app/core/rate_limit.py b/apps/api/app/core/rate_limit.py
+new file mode 100644
+index 0000000..b017d57
+--- /dev/null
++++ b/apps/api/app/core/rate_limit.py
+@@ -0,0 +1,115 @@
++import math
++import time
++from dataclasses import dataclass
++
++from fastapi import Request
++from fastapi.responses import JSONResponse
++from starlette.middleware.base import BaseHTTPMiddleware
++
++
++@dataclass
++class _Window:
++    count: int
++    ends_at: float
++
++
++@dataclass
++class _Limit:
++    limit: int
++    window: _Window
++    conversation: bool
++
++    @property
++    def remaining(self) -> int:
++        return max(self.limit - self.window.count, 0)
++
++
++def _select(limits: list[_Limit]) -> _Limit:
++    return min(
++        limits,
++        key=lambda item: (
++            item.remaining / item.limit,
++            item.window.ends_at,
++            0 if item.conversation else 1,
++        ),
++    )
++
++
++class RateLimitMiddleware(BaseHTTPMiddleware):
++    def __init__(
++        self,
++        app,
++        *,
++        global_per_minute: int = 30,
++        conversation_per_hour: int = 10,
++        excluded_paths: set[str] | None = None,
++    ) -> None:
++        super().__init__(app)
++        if global_per_minute < 1 or conversation_per_hour < 1:
++            raise ValueError("rate-limit thresholds must be positive")
++        self.global_per_minute = global_per_minute
++        self.conversation_per_hour = conversation_per_hour
++        self.excluded_paths = excluded_paths or {"/healthz", "/metrics"}
++        self.global_windows: dict[str, _Window] = {}
++        self.conversation_windows: dict[str, _Window] = {}
++
++    @staticmethod
++    def _increment(windows: dict[str, _Window], key: str, duration: int, now: float) -> _Window:
++        window = windows.get(key)
++        if window is None or now >= window.ends_at:
++            window = windows[key] = _Window(count=0, ends_at=now + duration)
++        window.count += 1
++        return window
++
++    @staticmethod
++    def _headers(limit: _Limit) -> dict[str, str]:
++        return {
++            "X-RateLimit-Limit": str(limit.limit),
++            "X-RateLimit-Remaining": str(limit.remaining),
++            "X-RateLimit-Reset": str(int(limit.window.ends_at)),
++        }
++
++    async def dispatch(self, request: Request, call_next):
++        if request.url.path in self.excluded_paths:
++            return await call_next(request)
++
++        now = time.time()
++        client_ip = request.client.host
++        global_limit = _Limit(
++            self.global_per_minute,
++            self._increment(self.global_windows, client_ip, 60, now),
++            False,
++        )
++        limits = [global_limit]
++        path = request.url.path.split("/")
++        if (
++            request.method == "POST"
++            and len(path) == 5
++            and path[1:3] == ["v2", "conversation"]
++            and path[3]
++            and path[4] == "message"
++        ):
++            limits.append(
++                _Limit(
++                    self.conversation_per_hour,
++                    self._increment(self.conversation_windows, client_ip, 3600, now),
++                    True,
++                )
++            )
++
++        rejected = [limit for limit in limits if limit.window.count > limit.limit]
++        selected = _select(rejected or limits)
++        headers = self._headers(selected)
++        if rejected:
++            return JSONResponse(
++                status_code=429,
++                content={
++                    "detail": "请求过于频繁，请稍后再试",
++                    "retry_after": math.ceil(max(0, selected.window.ends_at - now)),
++                },
++                headers=headers,
++            )
++
++        response = await call_next(request)
++        response.headers.update(headers)
++        return response
+diff --git a/apps/api/app/main.py b/apps/api/app/main.py
+index 61b5470..2999132 100644
+--- a/apps/api/app/main.py
++++ b/apps/api/app/main.py
+@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
+ from app.api.router import api_router
+ from app.api.v2 import v2_router
+ from app.core.config import get_settings
++from app.core.rate_limit import RateLimitMiddleware
+ 
+ 
+ @asynccontextmanager
+@@ -71,6 +72,11 @@ def create_app() -> FastAPI:
+         ),
+         lifespan=lifespan,
+     )
++    app.add_middleware(
++        RateLimitMiddleware,
++        global_per_minute=settings.rate_limit_global_per_minute,
++        conversation_per_hour=settings.rate_limit_conversation_per_hour,
++    )
+     app.add_middleware(
+         CORSMiddleware,
+         allow_origins=settings.cors_allowed_origins_list,
+diff --git a/apps/api/tests/test_ip_rate_limit_eval.py b/apps/api/tests/test_ip_rate_limit_eval.py
+new file mode 100644
+index 0000000..36d396e
+--- /dev/null
++++ b/apps/api/tests/test_ip_rate_limit_eval.py
+@@ -0,0 +1,159 @@
++from pathlib import Path
++
++from fastapi import FastAPI
++from fastapi.testclient import TestClient
++
++from app.core.config import Settings
++from app.core.rate_limit import RateLimitMiddleware
++
++
++def make_app(*, global_limit: int = 30, conversation_limit: int = 10) -> FastAPI:
++    app = FastAPI()
++    app.add_middleware(
++        RateLimitMiddleware,
++        global_per_minute=global_limit,
++        conversation_per_hour=conversation_limit,
++        excluded_paths={"/healthz", "/metrics"},
++    )
++
++    @app.get("/")
++    def root():
++        return {"ok": True}
++
++    @app.post("/v2/conversation/{session_id}/message")
++    def message(session_id: str):
++        return {"session_id": session_id}
++
++    @app.post("/v2/conversation/{path:path}/message")
++    def nested_message(path: str):
++        return {"path": path}
++
++    @app.get("/healthz")
++    def health():
++        return {"ok": True}
++
++    @app.get("/metrics")
++    def metrics():
++        return {"ok": True}
++
++    return app
++
++
++def client(*, global_limit: int = 30, conversation_limit: int = 10, host: str = "testclient") -> TestClient:
++    return TestClient(make_app(global_limit=global_limit, conversation_limit=conversation_limit), client=(host, 50000))
++
++
++def assert_rate_headers(response) -> None:
++    assert response.headers["X-RateLimit-Limit"]
++    assert response.headers["X-RateLimit-Remaining"]
++    assert response.headers["X-RateLimit-Reset"]
++
++
++def test_global_limit_rejects_request_after_configured_threshold() -> None:
++    api = client(global_limit=2)
++    assert api.get("/").status_code == 200
++    second = api.get("/")
++    assert second.status_code == 200
++    assert_rate_headers(second)
++    rejected = api.get("/")
++    assert rejected.status_code == 429
++    assert rejected.json()["detail"] == "请求过于频繁，请稍后再试"
++    assert rejected.json()["retry_after"] >= 0
++    assert_rate_headers(rejected)
++
++
++def test_conversation_limit_is_separate_and_configurable() -> None:
++    api = client(global_limit=100, conversation_limit=2)
++    path = "/v2/conversation/demo/message"
++    assert api.post(path).status_code == 200
++    assert api.post(path).status_code == 200
++    rejected = api.post(path)
++    assert rejected.status_code == 429
++    assert rejected.json()["detail"] == "请求过于频繁，请稍后再试"
++    assert_rate_headers(rejected)
++
++
++def test_health_and_metrics_are_exempt() -> None:
++    api = client(global_limit=1)
++    assert api.get("/").status_code == 200
++    assert api.get("/").status_code == 429
++    for _ in range(3):
++        for path in ("/healthz", "/metrics"):
++            response = api.get(path)
++            assert response.status_code == 200
++            assert not any(name.lower().startswith("x-ratelimit-") for name in response.headers)
++
++
++def test_nested_message_path_uses_only_global_limit() -> None:
++    api = client(global_limit=100, conversation_limit=1)
++    path = "/v2/conversation/a/nested/message"
++    assert api.post(path).status_code == 200
++    assert api.post(path).status_code == 200
++
++
++def test_x_forwarded_for_does_not_change_identity() -> None:
++    api = client(global_limit=1, host="203.0.113.10")
++    assert api.get("/", headers={"X-Forwarded-For": "198.51.100.1"}).status_code == 200
++    assert api.get("/", headers={"X-Forwarded-For": "198.51.100.2"}).status_code == 429
++
++
++def test_distinct_asgi_hosts_have_independent_state() -> None:
++    app = make_app(global_limit=1)
++    first = TestClient(app, client=("203.0.113.20", 50000))
++    second = TestClient(app, client=("203.0.113.21", 50000))
++    assert first.get("/").status_code == 200
++    assert first.get("/").status_code == 429
++    assert second.get("/").status_code == 200
++
++
++def test_rejected_conversation_attempt_counts_globally() -> None:
++    api = client(global_limit=3, conversation_limit=1)
++    path = "/v2/conversation/demo/message"
++    assert api.post(path).status_code == 200
++    assert api.post(path).status_code == 429
++    assert api.get("/").status_code == 200
++    assert api.get("/").status_code == 429
++
++
++def test_headers_select_tightest_limit_and_retry_metadata(monkeypatch) -> None:
++    monkeypatch.setattr("app.core.rate_limit.time.time", lambda: 1000.0)
++    api = client(global_limit=2, conversation_limit=4)
++    first = api.post("/v2/conversation/demo/message")
++    assert first.headers["X-RateLimit-Limit"] == "2"
++    assert first.headers["X-RateLimit-Remaining"] == "1"
++    assert first.headers["X-RateLimit-Reset"] == "1060"
++    second = api.post("/v2/conversation/demo/message")
++    assert second.status_code == 200
++    rejected = api.post("/v2/conversation/demo/message")
++    assert rejected.status_code == 429
++    assert rejected.json()["retry_after"] == 60
++
++
++def test_fixed_window_recovers_after_expiry(monkeypatch) -> None:
++    now = {"value": 1000.0}
++    monkeypatch.setattr("app.core.rate_limit.time.time", lambda: now["value"])
++    api = client(global_limit=1)
++    assert api.get("/").status_code == 200
++    assert api.get("/").status_code == 429
++    now["value"] = 1060.0
++    assert api.get("/").status_code == 200
++
++
++def test_thresholds_are_configurable_from_environment(monkeypatch) -> None:
++    monkeypatch.setenv("RATE_LIMIT_CONVERSATION_PER_HOUR", "7")
++    monkeypatch.setenv("RATE_LIMIT_GLOBAL_PER_MINUTE", "13")
++    settings = Settings()
++    assert settings.rate_limit_conversation_per_hour == 7
++    assert settings.rate_limit_global_per_minute == 13
++
++
++def test_application_wires_rate_limit_middleware() -> None:
++    source = (Path(__file__).parents[1] / "app/main.py").read_text(encoding="utf-8")
++    assert "RateLimitMiddleware" in source
++    assert "rate_limit_global_per_minute" in source
++    assert "rate_limit_conversation_per_hour" in source
++
++
++def test_mvp_has_no_redis_dependency() -> None:
++    pyproject = (Path(__file__).parents[1] / "pyproject.toml").read_text(encoding="utf-8")
++    assert "redis" not in pyproject.casefold()

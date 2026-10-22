@@ -1,0 +1,180 @@
+{
+  "branches": [
+    "Phase 0: Resolve Inputs & Infer Mode [agent-observability-trace-rca/SKILL.md:132]",
+    "Eval Signal path [agent-observability-trace-rca/SKILL.md:203]",
+    "Error Signal path [agent-observability-trace-rca/SKILL.md:258]",
+    "Generic path [agent-observability-trace-rca/SKILL.md:303]",
+    "Failure Mode Sections (one per top 3–5 modes) [agent-observability-trace-rca/SKILL.md:671]",
+    "Failure Mode N: [Name] [agent-observability-trace-rca/SKILL.md:674]"
+  ],
+  "inputs": [
+    "Input Required Default Description [agent-observability-trace-rca/SKILL.md:60]",
+    "mlapp Yes (or evalname) — The application to analyze. [agent-observability-trace-rca/SKILL.md:62]",
+    "evalname No — One or more evaluators to focus on. Implies Eval Signal mode. Pass a list for multi-eval analysis. [agent-observability-trace-rca/SKILL.md:63]",
+    "timeframe No now-24h How far back to look. [agent-observability-trace-rca/SKILL.md:64]",
+    "mode No inferred Explicit mode override: eval, errors, generic. Skips inference entirely. [agent-observability-trace-rca/SKILL.md:65]",
+    "failurefilter No — Narrowing scope: \"errors\" (routes to Error Signal path), \"high latency\" (post-fetch duration sort), \"low scores on <eval>\" (promotes to evalname), a tool name or span name (@name:<x> query). [agent-observability-trace-rca/SKILL.md:66]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [agent-observability-trace-rca/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [agent-observability-trace-rca/SKILL.md:3]",
+  "outputs": [
+    "Overview cell (notebook Cell 1 / report header) [agent-observability-trace-rca/SKILL.md:564]",
+    "The Overview cell must follow this exact structure. No prose paragraphs. No inline-numbered findings. App description is one sentence maximum. [agent-observability-trace-rca/SKILL.md:566]"
+  ],
+  "permissions_side_effects": [
+    "> \"Neither the Datadog MCP server nor the pup CLI is available. Connect the MCP server (claude mcp add --scope user --transport http datadog-llmo-mcp 'https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=llmobs') or install pup.\" [agent-observability-trace-rca/SKILL.md:16]",
+    "Write the full report following the Output Format below. This is the primary deliverable — output it directly in the chat. [agent-observability-trace-rca/SKILL.md:507]",
+    "Write the notebook payload to /tmp/nbrca{mlapp}.json as a full API envelope: {\"data\": {\"attributes\": {\"name\": \"...\", \"time\": {...}, \"cells\": [...]}, \"type\": \"notebooks\"}} [agent-observability-trace-rca/SKILL.md:533]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Root cause analysis on production LLM traces. [agent-observability-trace-rca/SKILL.md:3]",
+  "root_id": "skill-root:agent-observability-trace-rca",
+  "rules_gates": [
+    "Detection — At the start of every invocation, before taking any action, determine which backend to use [agent-observability-trace-rca/SKILL.md:8]",
+    "backend pup is accepted anywhere in the invocation arguments and is stripped before passing remaining args to the skill logic. [agent-observability-trace-rca/SKILL.md:18]",
+    "pup always outputs JSON. Parse directly — no content-block unwrapping (unlike MCP results, which may wrap JSON in [{\"type\": \"text\", \"text\": \"<json>\"}]). [agent-observability-trace-rca/SKILL.md:22]",
+    "Time flags: pup accepts bare duration strings (1h, 7d, 30m) and RFC3339 timestamps. Do not use now--prefixed strings — strip the prefix when converting from a skill --timeframe argument: now-7d → 7d, now-24h → 24h, now-30d → 30d. [agent-observability-trace-rca/SKILL.md:25]",
+    "Invocation ID: At the very start of each invocation, before any MCP tool call, generate an 8-character hex invocation ID (e.g., 3a9f1c2b). Keep it constant for the entire invocation. [agent-observability-trace-rca/SKILL.md:28]",
+    "The mode is announced (never asked) in the first user-facing output with a one-line override hint. [agent-observability-trace-rca/SKILL.md:42]",
+    "Input Required Default Description [agent-observability-trace-rca/SKILL.md:60]",
+    "Always include @mlapp:\"<mlapp>\" in the query string — the structured mlapp parameter is unreliable and can return spans from other apps. Do not rely on the structured parameter alone. [agent-observability-trace-rca/SKILL.md:105]"
+  ],
+  "skill_path": "agent-observability-trace-rca/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "agent-observability-trace-rca/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "agent-observability-trace-rca/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "agent-observability-trace-rca/SKILL.md"
+    },
+    {
+      "line_end": 44,
+      "line_start": 44,
+      "path": "agent-observability-trace-rca/SKILL.md"
+    },
+    {
+      "line_end": 48,
+      "line_start": 48,
+      "path": "agent-observability-trace-rca/SKILL.md"
+    }
+  ],
+  "source_sha256": "2f0ef728fba1745ba72cb9039d2b784b489e28478d2d7e2c93e60d58e5ecaca2",
+  "stop_conditions": [
+    "description: Root cause analysis on production LLM traces. Diagnoses why an LLM application is failing — works from eval judge verdicts, runtime errors, or structural anomalies depending on what signals are present. Walks the span tree from symptom to root cause. Use when user says \"what's wrong wit [agent-observability-trace-rca/SKILL.md:3]",
+    "6. If neither is available → stop and tell the user [agent-observability-trace-rca/SKILL.md:15]",
+    "If pup returns an auth error, tell the user to run pup auth login and stop. [agent-observability-trace-rca/SKILL.md:23]",
+    "Diagnose why an LLM application is failing by searching production traces and walking the span tree from symptom to root cause. The skill automatically selects the best analysis mode based on available signals [agent-observability-trace-rca/SKILL.md:34]",
+    "Eval Signal LLM judge verdicts and reasoning (pass/fail rates, scoring) Evaluators are configured for the app [agent-observability-trace-rca/SKILL.md:38]",
+    "Why is <mlapp> failing today [agent-observability-trace-rca/SKILL.md:52]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2f0ef728fba1745ba72cb9039d2b784b489e28478d2d7e2c93e60d58e5ecaca2",
+        "content-review:785-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "agent-observability-trace-rca/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "content-review:1-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "agent-observability-trace-rca/evals/__init__.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "content-review:2-lines"
+      ],
+      "path": "agent-observability-trace-rca/evals/data/llm_obs_trace_rca_v1.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:bc6179fefaf922f54be3a4bf4e85031437567d2e97753312c806d43b5cce14f5",
+        "content-review:92-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "agent-observability-trace-rca/evals/evaluator.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:25302fbf6ab16cb6d612bd2c30af0ec33d0146fe69f5f559836a3f86584eeac5",
+        "content-review:7-lines"
+      ],
+      "path": "agent-observability-trace-rca/evals/example_config.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:79eb1b1175aeb8bb8c7e028e1df687c57dff0612c92a6666fabd6659dc160ea7",
+        "content-review:53-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "agent-observability-trace-rca/evals/executor.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4ea0f5143e85a645a8957551848f40fce4ff574a275e49efca0f922829ce6396",
+        "content-review:83-lines"
+      ],
+      "path": "agent-observability-trace-rca/evals/prompts/judge_rubric.txt",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Root cause analysis on production LLM traces. Diagnoses why an LLM application is failing — works from eval judge verdicts, runtime errors, or structural anomalies depending on what signals are present. Walks the span tree from symptom to root cause. Use when user says \"what's wrong with my app\", \"w [agent-observability-trace-rca/SKILL.md:3]",
+  "unique_methods": [
+    "Backend [agent-observability-trace-rca/SKILL.md:6]",
+    "Agent Observability Trace RCA — Root Cause Analysis from Production LLM Traces [agent-observability-trace-rca/SKILL.md:32]",
+    "Available Tools [agent-observability-trace-rca/SKILL.md:70]",
+    "Eval discovery & overview [agent-observability-trace-rca/SKILL.md:72]",
+    "Trace & span exploration [agent-observability-trace-rca/SKILL.md:80]",
+    "Key getllmobsspancontent patterns [agent-observability-trace-rca/SKILL.md:92]"
+  ],
+  "weaknesses_failure_modes": [
+    "Source-specific assumptions must be retested before fusion into a cross-source V2 skill. [agent-observability-trace-rca/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Methodology [agent-observability-trace-rca/SKILL.md:44]",
+    "Analysis Workflow [agent-observability-trace-rca/SKILL.md:126]",
+    "Phase 0: Resolve Inputs & Infer Mode [agent-observability-trace-rca/SKILL.md:132]",
+    "Step 0S — Extract Failure Bucket from Classification Output [agent-observability-trace-rca/SKILL.md:136]",
+    "Phase 1: Find Problematic Spans [agent-observability-trace-rca/SKILL.md:193]",
+    "Step 1a: Eval overview (parallel) [agent-observability-trace-rca/SKILL.md:205]",
+    "Step 1b: Collect failure spans [agent-observability-trace-rca/SKILL.md:226]",
+    "Step 1c: Signal Summary (Eval Signal) [agent-observability-trace-rca/SKILL.md:237]",
+    "Step 1a: Sample error spans [agent-observability-trace-rca/SKILL.md:260]",
+    "Step 1a.5: Soft error scan [agent-observability-trace-rca/SKILL.md:264]"
+  ]
+}

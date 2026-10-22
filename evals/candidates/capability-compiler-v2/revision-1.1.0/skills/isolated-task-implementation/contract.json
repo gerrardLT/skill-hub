@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "isolated implementation patch",
+    "changed-file and scope evidence",
+    "focused verification records",
+    "review and integration handoff"
+  ],
+  "capability_id": "capability:isolated-task-implementation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "One task has one writer and one isolated workspace; missing isolation, dirty-state ambiguity, concurrent ownership, or scope expansion blocks implementation.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "isolated-task-implementation",
+  "inputs": [
+    "One approved task, complete task-local context, isolated workspace, edit scope, test command, and escalation boundary."
+  ],
+  "outputs": [
+    "isolated implementation patch",
+    "changed-file and scope evidence",
+    "focused verification records",
+    "review and integration handoff"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "isolated-workspace",
+      "single-writer",
+      "frozen-task",
+      "minimal-diff",
+      "host-checks",
+      "no-integration"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Implement one frozen task in one isolated authorized workspace with a single writer, bounded checks, and a reviewable handoff.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

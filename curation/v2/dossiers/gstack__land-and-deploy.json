@@ -1,0 +1,224 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/land-and-deploy/SKILL.md:56]",
+    "Skill Invocation During Plan Mode [gstack/land-and-deploy/SKILL.md:60]",
+    "Model-Specific Behavioral Patch (claude) [gstack/land-and-deploy/SKILL.md:192]",
+    "Continuous Checkpoint Mode [gstack/land-and-deploy/SKILL.md:292]",
+    "Step 0: Detect platform and base branch [gstack/land-and-deploy/SKILL.md:535]",
+    "Imply bump level by comparing branch VERSION to base (crude but good enough for drift detection) [gstack/land-and-deploy/SKILL.md:748]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/land-and-deploy/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/land-and-deploy/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/land-and-deploy/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/land-and-deploy/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "name: land-and-deploy [gstack/land-and-deploy/SKILL.md:2]",
+    "description: Land and deploy workflow. (gstack) [gstack/land-and-deploy/SKILL.md:5]",
+    "merge and deploy [gstack/land-and-deploy/SKILL.md:13]",
+    "Merges the PR, waits for CI and deploy, [gstack/land-and-deploy/SKILL.md:23]",
+    "creates the PR. Use when: \"merge\", \"land\", \"deploy\", \"merge and verify\", [gstack/land-and-deploy/SKILL.md:25]",
+    "\"$SS\" --skill \"land-and-deploy\" --model \"claude\" --parent-pid \"$PPID\" \\ [gstack/land-and-deploy/SKILL.md:33]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/land-and-deploy/SKILL.md:34]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/land-and-deploy/SKILL.md:39]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "SKILL.md body is byte-identical in the V2 coverage ledger.",
+      "evidence": [
+        "curation/v2/coverage.json:duplicate_skill_body_groups",
+        "sha256:81ecd31074744cc82a1840a519f0cc97ba4779ec197f874657bb7cf81284772a"
+      ],
+      "target": "skill-root:land-and-deploy",
+      "type": "duplicate"
+    },
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/land-and-deploy/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Land and deploy workflow. [gstack/land-and-deploy/SKILL.md:5]",
+  "root_id": "skill-root:gstack/land-and-deploy",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/land-and-deploy/SKILL.md:17]",
+    "creates the PR. Use when: \"merge\", \"land\", \"deploy\", \"merge and verify\", [gstack/land-and-deploy/SKILL.md:25]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/land-and-deploy/SKILL.md:40]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/land-and-deploy/SKILL.md:41]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/land-and-deploy/SKILL.md:42]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/land-and-deploy/SKILL.md:49]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/land-and-deploy/SKILL.md:50]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/land-and-deploy/SKILL.md:53]"
+  ],
+  "skill_path": "gstack/land-and-deploy/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/land-and-deploy/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "gstack/land-and-deploy/SKILL.md"
+    },
+    {
+      "line_end": 28,
+      "line_start": 28,
+      "path": "gstack/land-and-deploy/SKILL.md"
+    },
+    {
+      "line_end": 56,
+      "line_start": 56,
+      "path": "gstack/land-and-deploy/SKILL.md"
+    },
+    {
+      "line_end": 60,
+      "line_start": 60,
+      "path": "gstack/land-and-deploy/SKILL.md"
+    }
+  ],
+  "source_sha256": "81ecd31074744cc82a1840a519f0cc97ba4779ec197f874657bb7cf81284772a",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/land-and-deploy/SKILL.md:74]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/land-and-deploy/SKILL.md:75]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/land-and-deploy/SKILL.md:76]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/land-and-deploy/SKILL.md:77]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/land-and-deploy/SKILL.md:79]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/land-and-deploy/SKILL.md:83]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:81ecd31074744cc82a1840a519f0cc97ba4779ec197f874657bb7cf81284772a",
+        "content-review:1046-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/land-and-deploy/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f895c1f297b7c6069ff7784ee56e7d59ccda73ddf6e6a8e19e2368a66fa38ede",
+        "content-review:493-lines"
+      ],
+      "path": "gstack/land-and-deploy/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e299311dc083d785f81afb78fb7d6c15f21f635c8447c3733a9ac84b2a3b0720",
+        "content-review:204-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/first-run-validation.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9c6b2f8bc85fc562f4c345364b6d660ccd94ea0aa58cc528e842ac5af73fab93",
+        "content-review:166-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/first-run-validation.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:10f33536134f858de6235e5c2054ac6dfbe4398bbef113902c4e19abbe5e168c",
+        "content-review:27-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a92e721cf5cc86eaf7d28ad8ff09911adb467e535c3ae5dcd5ae44b3db168a34",
+        "content-review:260-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/merge-and-deploy.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ce1e08a8be43c963ac7ebd1297c916693b6299b66d2a6eb3a79879a4ed9b3fbd",
+        "content-review:222-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/merge-and-deploy.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e839be3d5a264789f0fe7c91f3fb764e3a300ed3766484e053d4a3f0db8d99c2",
+        "content-review:254-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/readiness-gate.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:47e3bdb5b7d0ea181c5d792c87d72ccc52f911d745e751c751f301359d893389",
+        "content-review:252-lines"
+      ],
+      "path": "gstack/land-and-deploy/sections/readiness-gate.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/land-and-deploy/SKILL.md:1-16]",
+    "Declared tool: Read [gstack/land-and-deploy/SKILL.md:1-16]",
+    "Declared tool: Write [gstack/land-and-deploy/SKILL.md:1-16]",
+    "Declared tool: Glob [gstack/land-and-deploy/SKILL.md:1-16]",
+    "Declared tool: AskUserQuestion [gstack/land-and-deploy/SKILL.md:1-16]",
+    "Local dependency: gstack/land-and-deploy/sections/first-run-validation.md [gstack/land-and-deploy/SKILL.md:632]",
+    "Local dependency: gstack/land-and-deploy/sections/readiness-gate.md [gstack/land-and-deploy/SKILL.md:633]",
+    "Local dependency: gstack/land-and-deploy/sections/merge-and-deploy.md [gstack/land-and-deploy/SKILL.md:634]"
+  ],
+  "trigger": "Land and deploy workflow. (gstack) [gstack/land-and-deploy/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/land-and-deploy/SKILL.md:140]",
+    "Self-check before emitting [gstack/land-and-deploy/SKILL.md:163]",
+    "Context Recovery [gstack/land-and-deploy/SKILL.md:231]",
+    "Completeness Principle — Boil the Ocean [gstack/land-and-deploy/SKILL.md:278]",
+    "Confusion Protocol [gstack/land-and-deploy/SKILL.md:284]",
+    "Claimed Limitations Need Evidence [gstack/land-and-deploy/SKILL.md:288]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/land-and-deploy/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/land-and-deploy/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/land-and-deploy/SKILL.md:292]",
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/land-and-deploy/SKILL.md:454]",
+    "Translate the Aside scripts step by step [gstack/land-and-deploy/SKILL.md:505]",
+    "Step 0: Detect platform and base branch [gstack/land-and-deploy/SKILL.md:535]",
+    "Step 1: Pre-flight [gstack/land-and-deploy/SKILL.md:638]",
+    "Step 1.5: First-run dry-run validation [gstack/land-and-deploy/SKILL.md:665]",
+    "Step 2: Pre-merge checks [gstack/land-and-deploy/SKILL.md:700]",
+    "Step 3: Wait for CI (if pending) [gstack/land-and-deploy/SKILL.md:723]",
+    "Step 3.4: VERSION drift detection (workspace-aware ship) [gstack/land-and-deploy/SKILL.md:739]",
+    "Step 6: Wait for deploy (if applicable) [gstack/land-and-deploy/SKILL.md:792]"
+  ]
+}

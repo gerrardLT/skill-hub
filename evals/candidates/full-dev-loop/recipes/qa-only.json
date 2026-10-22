@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "status": "evaluating",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "qa-only",
+  "description": "Perform independent report-only QA.",
+  "inputs": [
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-contract",
+    "change-artifact",
+    "qa-authorization"
+  ],
+  "outputs": [
+    "qa-verdict"
+  ],
+  "permissions": [
+    "read",
+    "grep",
+    "find",
+    "ls",
+    "bash",
+    "run-tests",
+    "browser-readonly"
+  ],
+  "steps": [
+    {
+      "id": "qa",
+      "slot": "independent-blackbox-qa",
+      "ref": "independent-blackbox-qa@1.0.0",
+      "input_map": {
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "change-artifact": "change-artifact",
+        "qa-authorization": "qa-authorization"
+      },
+      "output_map": {
+        "qa-verdict": "qa-verdict"
+      },
+      "depends_on": [],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "run-tests",
+        "browser-readonly"
+      ],
+      "execution_adapter": "workspace"
+    }
+  ],
+  "edges": [],
+  "gates": [
+    "evidence-present",
+    "unknowns-preserved",
+    "authority-boundary",
+    "responsibility-boundary"
+  ],
+  "failure_routes": [
+    {
+      "from": "qa",
+      "to": "qa",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "qa",
+      "to": "qa",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "qa",
+      "to": "qa",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [],
+  "routing": {
+    "intents": [
+      "qa only",
+      "只做 QA",
+      "独立验收"
+    ],
+    "negative_intents": [
+      "fix the bugs",
+      "顺手修复"
+    ],
+    "priority": 80
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/qa-only-v1.0.0/result.json",
+        "sha256": "3433608869195f05bb3d2a2d19af4d418a689ece83a10eb573a8e3919b8447e2"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/qa-only-v1.0.0/review.json",
+      "sha256": "215047414820978b5765a75896cb992ff0d2872b6306de2875bde434f117a5fc"
+    }
+  }
+}

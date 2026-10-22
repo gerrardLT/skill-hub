@@ -1,0 +1,213 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/codex/SKILL.md:60]",
+    "Skill Invocation During Plan Mode [gstack/codex/SKILL.md:64]",
+    "Model-Specific Behavioral Patch (claude) [gstack/codex/SKILL.md:196]",
+    "Continuous Checkpoint Mode [gstack/codex/SKILL.md:296]",
+    "Step 0: Detect platform and base branch [gstack/codex/SKILL.md:430]",
+    "Step 0.5: Auth probe + model probe + version check [gstack/codex/SKILL.md:510]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/codex/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/codex/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/codex/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/codex/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/codex/SKILL.md:38]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/codex/SKILL.md:43]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/codex/SKILL.md:62]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/codex/SKILL.md:81]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/codex/SKILL.md:105]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/codex/SKILL.md:176]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/codex/SKILL.md:300]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/codex/SKILL.md:423]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/codex/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "OpenAI Codex CLI wrapper — three modes. [gstack/codex/SKILL.md:5]",
+  "root_id": "skill-root:gstack/codex",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/codex/SKILL.md:18]",
+    "codex review with pass/fail gate. Challenge: adversarial mode that tries to break [gstack/codex/SKILL.md:25]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/codex/SKILL.md:44]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/codex/SKILL.md:45]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/codex/SKILL.md:46]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/codex/SKILL.md:53]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/codex/SKILL.md:54]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/codex/SKILL.md:57]"
+  ],
+  "skill_path": "gstack/codex/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/codex/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "gstack/codex/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "gstack/codex/SKILL.md"
+    },
+    {
+      "line_end": 60,
+      "line_start": 60,
+      "path": "gstack/codex/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/codex/SKILL.md"
+    }
+  ],
+  "source_sha256": "9db0da2e30b54038c6d22be0f8e0974969fa2ece4263a513d343c6f15b46a189",
+  "stop_conditions": [
+    "codex review with pass/fail gate. Challenge: adversarial mode that tries to break [gstack/codex/SKILL.md:25]",
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/codex/SKILL.md:78]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/codex/SKILL.md:79]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/codex/SKILL.md:80]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/codex/SKILL.md:81]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/codex/SKILL.md:83]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9db0da2e30b54038c6d22be0f8e0974969fa2ece4263a513d343c6f15b46a189",
+        "content-review:904-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/codex/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fcdc915af1cd0f1ad07418b32ad3256e145df668cee5d67ad6bf4930ba842002",
+        "content-review:333-lines"
+      ],
+      "path": "gstack/codex/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fb04bb44c95b1cf8eeb9ae492f5a3d74a86a4a216508ab2d055ae34bd2e9f201",
+        "content-review:125-lines"
+      ],
+      "path": "gstack/codex/sections/challenge-mode.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f118dc7323db5dc78572f50f96d0cbb97fd40c3cc22ddee8ba25b5305d998fde",
+        "content-review:123-lines"
+      ],
+      "path": "gstack/codex/sections/challenge-mode.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:cff7e220dc7c12095a5423c05c8b7274722d395de105bc92d694a2104206046b",
+        "content-review:213-lines"
+      ],
+      "path": "gstack/codex/sections/consult-mode.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:085a6c6fc5286332ba0dee0efcdb0510fb1677fd7f546c2e0debb116676c092a",
+        "content-review:211-lines"
+      ],
+      "path": "gstack/codex/sections/consult-mode.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:37c693f78a1ad2bdf1b85b04876d695ec95c7aef0a61d99e9dd2913c1c846a06",
+        "content-review:27-lines"
+      ],
+      "path": "gstack/codex/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8e8ceac032ca7298d22858f4fe07b413c0c009facddfd9b333d1f2b0b083cbbf",
+        "content-review:208-lines"
+      ],
+      "path": "gstack/codex/sections/review-mode.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:868a24e96cb9f7062af16bbdfb577d2224f15ea17e1219091667ec23f153a6ce",
+        "content-review:206-lines"
+      ],
+      "path": "gstack/codex/sections/review-mode.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/codex/SKILL.md:1-17]",
+    "Declared tool: Read [gstack/codex/SKILL.md:1-17]",
+    "Declared tool: Write [gstack/codex/SKILL.md:1-17]",
+    "Declared tool: Glob [gstack/codex/SKILL.md:1-17]",
+    "Declared tool: Grep [gstack/codex/SKILL.md:1-17]",
+    "Declared tool: AskUserQuestion [gstack/codex/SKILL.md:1-17]",
+    "Local dependency: gstack/codex/sections/review-mode.md [gstack/codex/SKILL.md:486]",
+    "Local dependency: gstack/codex/sections/challenge-mode.md [gstack/codex/SKILL.md:487]",
+    "Local dependency: gstack/codex/sections/consult-mode.md [gstack/codex/SKILL.md:488]",
+    "Local dependency: gstack/codex/SKILL.md [gstack/codex/SKILL.md:901]"
+  ],
+  "trigger": "OpenAI Codex CLI wrapper — three modes. (gstack) [gstack/codex/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/codex/SKILL.md:144]",
+    "Self-check before emitting [gstack/codex/SKILL.md:167]",
+    "Context Recovery [gstack/codex/SKILL.md:235]",
+    "Completeness Principle — Boil the Ocean [gstack/codex/SKILL.md:282]",
+    "Confusion Protocol [gstack/codex/SKILL.md:288]",
+    "Claimed Limitations Need Evidence [gstack/codex/SKILL.md:292]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/codex/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/codex/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/codex/SKILL.md:296]",
+    "Step 0: Detect platform and base branch [gstack/codex/SKILL.md:430]",
+    "Step 0.4: Check codex binary [gstack/codex/SKILL.md:492]",
+    "Step 0.5: Auth probe + model probe + version check [gstack/codex/SKILL.md:510]",
+    "Step 0.6: Resolve portable roots [gstack/codex/SKILL.md:567]",
+    "Step 1: Detect mode [gstack/codex/SKILL.md:584]"
+  ]
+}

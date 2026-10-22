@@ -1,0 +1,116 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "pup-cli: check, install, and authenticate [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:32]",
+    "If not found, install it (OS-aware) [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:40]",
+    "brew tap datadog-labs/pack && brew install datadog-labs/pack/pup [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:46]",
+    "1. Install script (with DDAPMINSTRUMENTATIONENABLED=host) installs datadog-apm-inject and language library packages under /opt/datadog-packages/ [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:107]",
+    "ERROR: Empty or missing — SSI was not fully set up. Re-run the install script with DDAPMINSTRUMENTATIONENABLED=host. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:249]",
+    "If process started before /etc/ld.so.preload was written, restart the service. Always confirm with the user before restarting production services. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:272]",
+    "ERROR: Found — SSI silently disabled itself. Remove manual tracer, restart the service. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:304]",
+    "Remove the stale registration first [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:366]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/linux-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Diagnose and fix Single Step Instrumentation (SSI) issues on Linux hosts — SSI automatically instruments applications for APM without code changes. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/linux-ssi/troubleshoot-ssi",
+  "rules_gates": [
+    "alwaysApply: \"false\" [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:9]",
+    "Follow up on failed checks from verify-ssi [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:20]",
+    "Do NOT invoke this skill if [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:23]",
+    "You do NOT need SSH access to start troubleshooting. The pup CLI queries Datadog's backend directly. Start with pup commands immediately using information the user already gave you (hostname, service name, env). Only go to SSH if pup doesn't reveal the cause. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:30]",
+    "Use what the user already provided. Do not ask for missing context upfront — resolve variables lazily, only when a specific step needs them. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:86]",
+    "If the user has already provided DDHOSTNAME and SERVICENAME, go directly to Step 1. Do not ask for ENV or SSH details first. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:98]",
+    "Read this before investigating. It gives you the mental model to reason about novel failures. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:104]",
+    "Process started before SSI was enabled — /etc/ld.so.preload only affects new processes [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:123]"
+  ],
+  "skill_path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md"
+    },
+    {
+      "line_end": 14,
+      "line_start": 14,
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md"
+    },
+    {
+      "line_end": 28,
+      "line_start": 28,
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md"
+    }
+  ],
+  "source_sha256": "d8fa450c01f65328c45cc2b6975ac8f8935c41319c31ed93ca36450cd4df983b",
+  "stop_conditions": [
+    "Diagnose SSI injection failures on Linux [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:19]",
+    "Follow up on failed checks from verify-ssi [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:20]",
+    "ENV Ask the user only when a command requires it Step 1 (service-library-config get), Step 3 [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:92]",
+    "DDSITE Ask the user, or grep \"^site:\" /etc/datadog-agent/datadog.yaml via SSH Only if pup auth check fails [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:93]",
+    "Read this before investigating. It gives you the mental model to reason about novel failures. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:104]",
+    "Known silent failures [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:119]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d8fa450c01f65328c45cc2b6975ac8f8935c41319c31ed93ca36450cd4df983b",
+        "content-review:417-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Diagnose and fix Single Step Instrumentation (SSI) issues on Linux hosts — SSI automatically instruments applications for APM without code changes. Only use if the agent and SSI are configured but traces are missing or instrumentation is not working. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]",
+  "unique_methods": [
+    "Troubleshoot APM SSI on Linux [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:12]",
+    "Triggers [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:14]",
+    "Critical: pup First, SSH Second [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:28]",
+    "pup-cli: check, install, and authenticate [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:32]",
+    "Claude runs [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:34]",
+    "Claude runs [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:42]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Step 1: Triage with pup (no SSH required) [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:138]",
+    "Step 2: State Your Hypotheses [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:186]",
+    "Step 3: Investigate with pup (deeper) [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:208]",
+    "Step 4: Investigate via SSH (if pup didn't reveal the cause) [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:240]",
+    "Step 5: Reflect Before Concluding [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:348]",
+    "Step 6: Fix [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:359]",
+    "Step 7: Verify [dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:393]"
+  ]
+}

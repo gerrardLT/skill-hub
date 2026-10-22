@@ -1,0 +1,447 @@
+{
+  "candidate_responsibility": "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates.",
+  "canonical_unit_ids": [
+    "audit-website:unit-007",
+    "canary:unit-002",
+    "canary:unit-008",
+    "qao-method-quick-and-regression-modes"
+  ],
+  "cluster_id": "cluster:baseline-regression-control",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "audit-website/SKILL.md:74-82",
+    "canary/SKILL.md:548-574",
+    "canary/SKILL.md:715-725",
+    "qa-only/SKILL.md:650-654"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "cluster:baseline-regression-control:fusion:boundary",
+      "rule": "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "cluster:baseline-regression-control:fusion:inputs",
+      "rule": "Accept only: A trusted historical baseline and a current measurement made under the same contract."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "cluster:baseline-regression-control:fusion:outputs",
+      "rule": "Produce only: A diff, regression decision, and controlled baseline-update decision."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:baseline-regression-control:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A trusted historical baseline and a current measurement made under the same contract.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "canary",
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "canary",
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "canary",
+        "qa-only"
+      ]
+    }
+  ],
+  "output_boundary": "A diff, regression decision, and controlled baseline-update decision.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "历史回归对比与退化检验指令：通过 --diff <baseline-id> 或 --regression-since 对比两次审计差异，捕获新增退化缺陷",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Explicit limits: 版本上线前或大规模重构后验证质量退化时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-007"
+      ]
+    },
+    {
+      "approach": "历史回归对比与退化检验指令：通过 --diff <baseline-id> 或 --regression-since 对比两次审计差异，捕获新增退化缺陷",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Explicit limits: 版本上线前或大规模重构后验证质量退化时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for method (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-007"
+      ]
+    },
+    {
+      "approach": "版本上线前或大规模重构后验证质量退化时使用",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Explicit limits: 版本上线前或大规模重构后验证质量退化时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "历史回归对比与退化检验指令：通过 --diff <baseline-id> 或 --regression-since 对比两次审计差异，捕获新增退化缺陷",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Explicit limits: 版本上线前或大规模重构后验证质量退化时使用",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "发布前生产质量基线捕获方法：在部署前注入全局控制台与未捕获异常监听钩子，抓取页面导航计时、文本切片与全页截图，落盘 baseline.json; 生产基线迭代更新规程：当本次发布被确认健康无误后，交互引导用户将最新截图与性能指标更新为新的长期基准指纹",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Explicit limits: 发布前携带 --baseline 参数运行时的基线抓取阶段; 发布健康终验完成后的基线生命周期维护",
+      "source_id": "canary",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-002",
+        "canary:unit-008"
+      ]
+    },
+    {
+      "approach": "发布前生产质量基线捕获方法：在部署前注入全局控制台与未捕获异常监听钩子，抓取页面导航计时、文本切片与全页截图，落盘 baseline.json",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "canary/SKILL.md:548-574"
+      ],
+      "limitations": "Explicit limits: 发布前携带 --baseline 参数运行时的基线抓取阶段",
+      "source_id": "canary",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-002"
+      ]
+    },
+    {
+      "approach": "发布前携带 --baseline 参数运行时的基线抓取阶段; 发布健康终验完成后的基线生命周期维护",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Explicit limits: 发布前携带 --baseline 参数运行时的基线抓取阶段; 发布健康终验完成后的基线生命周期维护",
+      "source_id": "canary",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-002",
+        "canary:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在用户授权下原子更新 baseline.json 与基准截图，保障基线时效性",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Explicit limits: 发布健康终验完成后的基线生命周期维护",
+      "source_id": "canary",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义快速冒烟模式（30秒巡检首页与5大入口）与历史回归模式（对比已有baseline.json输出修复与新增缺陷差分）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Explicit limits: 通过命令行参数或调用意图进行快速验证或质量回归对比。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-method-quick-and-regression-modes"
+      ]
+    },
+    {
+      "approach": "定义快速冒烟模式（30秒巡检首页与5大入口）与历史回归模式（对比已有baseline.json输出修复与新增缺陷差分）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Explicit limits: 通过命令行参数或调用意图进行快速验证或质量回归对比。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-method-quick-and-regression-modes"
+      ]
+    },
+    {
+      "approach": "通过命令行参数或调用意图进行快速验证或质量回归对比。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Explicit limits: 通过命令行参数或调用意图进行快速验证或质量回归对比。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-method-quick-and-regression-modes"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "tool-action": 1
+      },
+      "evidence": [
+        "audit-website/SKILL.md:74-82"
+      ],
+      "source_id": "audit-website",
+      "unit_ids": [
+        "audit-website:unit-007"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "canary/SKILL.md:548-574",
+        "canary/SKILL.md:715-725"
+      ],
+      "source_id": "canary",
+      "unit_ids": [
+        "canary:unit-002",
+        "canary:unit-008"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "qa-only/SKILL.md:650-654"
+      ],
+      "source_id": "qa-only",
+      "unit_ids": [
+        "qao-method-quick-and-regression-modes"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "audit-website:unit-007",
+    "canary:unit-002",
+    "canary:unit-008",
+    "qao-method-quick-and-regression-modes"
+  ]
+}

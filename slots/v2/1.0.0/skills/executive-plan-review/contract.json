@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "executive plan review",
+    "scope challenge",
+    "one-way-door register",
+    "human decision queue"
+  ],
+  "capability_id": "capability:executive-plan-review",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Do not turn an ambitious option into accepted scope or write a CEO plan without explicit human selection and a separate persistence capability.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "executive-plan-review",
+  "inputs": [
+    "Plan, evidence, product context, constraints, and decision owners."
+  ],
+  "outputs": [
+    "executive plan review",
+    "scope challenge",
+    "one-way-door register",
+    "human decision queue"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

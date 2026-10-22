@@ -1,0 +1,88 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [code-review/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [code-review/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [code-review/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [code-review/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [code-review/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Review code changes for security, performance, and correctness. [code-review/SKILL.md:3]",
+  "root_id": "skill-root:code-review",
+  "rules_gates": [
+    "description: Review code changes for security, performance, and correctness. Trigger with a PR URL or diff, \"review this before I merge\", \"is this code safe?\", or when checking a change for N+1 queries, injection risks, missing edge cases, or error handling gaps. [code-review/SKILL.md:3]",
+    "│ STANDALONE (always works) │ [code-review/SKILL.md:29]",
+    "Verify the PR addresses the stated requirements [code-review/SKILL.md:109]"
+  ],
+  "skill_path": "code-review/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "code-review/SKILL.md"
+    },
+    {
+      "line_end": 7,
+      "line_start": 7,
+      "path": "code-review/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "code-review/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "code-review/SKILL.md"
+    },
+    {
+      "line_end": 44,
+      "line_start": 44,
+      "path": "code-review/SKILL.md"
+    }
+  ],
+  "source_sha256": "6303932f1b301c614a6f5a0099cd87a19e1cd1b7cbfa1a1e11e996edbca6426b",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6303932f1b301c614a6f5a0099cd87a19e1cd1b7cbfa1a1e11e996edbca6426b",
+        "content-review:119-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "code-review/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Review code changes for security, performance, and correctness. Trigger with a PR URL or diff, \"review this before I merge\", \"is this code safe?\", or when checking a change for N+1 queries, injection risks, missing edge cases, or error handling gaps. [code-review/SKILL.md:3]",
+  "unique_methods": [
+    "/code-review [code-review/SKILL.md:7]",
+    "How It Works [code-review/SKILL.md:23]",
+    "Review Dimensions [code-review/SKILL.md:44]",
+    "Security [code-review/SKILL.md:46]",
+    "Performance [code-review/SKILL.md:54]",
+    "Correctness [code-review/SKILL.md:62]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [code-review/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [code-review/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [code-review/SKILL.md:3]"
+  ],
+  "workflow": [
+    "/code-review [code-review/SKILL.md:7]",
+    "Usage [code-review/SKILL.md:13]",
+    "How It Works [code-review/SKILL.md:23]",
+    "Review Dimensions [code-review/SKILL.md:44]",
+    "Security [code-review/SKILL.md:46]",
+    "Performance [code-review/SKILL.md:54]"
+  ]
+}

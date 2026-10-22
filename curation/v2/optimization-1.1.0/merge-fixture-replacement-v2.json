@@ -1,0 +1,22 @@
+{
+  "status": "revision-2-pending-independent-review",
+  "owner_decision": "replacement",
+  "original_loss_retained": true,
+  "scope": "Replacement regression only; original pilot result stays loss.",
+  "tasks": [
+    {
+      "id": "T1",
+      "kind": "standard",
+      "prompt": "You support the software group at Kestrel Ridge Observatory (fictional). Repository kestrelridge/telescope-scheduler is hosted on a Gitea provider. Prepare a preflight readiness assessment and the exact proposed merge action for PR #143 (\"Clamp slew requests to dome azimuth limits\"). Do not merge. The duty maintainer will execute after reading your output.\n\nState fetched 2026-10-04 19:05 UTC:\n- Head: fix/azimuth-clamp at 5b7e2d9; base: main at e19a04c; 0 commits behind\n- Required status checks (branch protection): build, unit, sim-slew\n- Checks on 5b7e2d9: build success, unit success, sim-slew success, docs-preview (optional) skipped\n- Reviews: 2 approvals (H. Lindqvist, A. Mensah) on 5b7e2d9; author is P. Rao; 0 change requests\n- Mergeable: true, no conflicts\n- Repo settings: allowed methods are squash and rebase; merge commits disabled\n- Authorization record OPS-774: \"Approve squash merge of telescope-scheduler PR #143 at 5b7e2d9 into main. Keep source branch. M. Duarte, software lead, 2026-10-04 18:50 UTC\"\n- Rollback: revert the squash commit via a revert PR; scheduler reloads limits on restart, no stored data changes\n\nDeliver: a go/no-go verdict with each gate tied to its evidence, the re-checks to run immediately before execution, the exact API call or CLI command pinned to the head SHA, and the fields the merge receipt should capture. Clarified supplied snapshot: PR state is explicitly open; branch protection requires at least 2 non-author approvals. Full head SHA is 5b7e2d90123456789abcdef0123456789abcdef0. OPS-774 binds to this full head SHA. Use that full SHA in the guard; the earlier seven-character head was display shorthand. You have no tools, live API access or permission to fetch. Return a proposal only. Gitea merge endpoint is POST /repos/{owner}/{repo}/pulls/{index}/merge with Do=squash, head_commit_id set to the full SHA, and delete_branch_after_merge=false.",
+      "rubric": [
+        "Maps checks, minimum two non-author approvals, explicit open state, mergeability, method, authorization and rollback to supplied evidence; optional skipped docs-preview is non-blocking; conditional GO requires all fresh re-checks to pass.",
+        "Proposes squash as the method, matching both the repo settings and OPS-774, and does not delete the source branch.",
+        "Gives the specified Gitea endpoint and correctly formed full 40-character head_commit_id guard.",
+        "Requires fresh matching head, green required checks, valid approvals, open/mergeable state and current authorization; explicitly aborts on any failed re-check.",
+        "States plainly that the evidence is a 19:05 UTC snapshot it has not independently verified and that it performs no merge itself.",
+        "Specifies receipt fields such as PR number, merged head SHA, resulting commit SHA on main, method, executor, authorization reference, and timestamp."
+      ]
+    }
+  ],
+  "previous_rejected_draft": "curation/v2/optimization-1.1.0/merge-fixture-replacement.json"
+}

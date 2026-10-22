@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "black-box QA run record",
+    "reproducible numbered findings",
+    "route-state coverage matrix",
+    "blocked tests and residual risk"
+  ],
+  "capability_id": "capability:independent-blackbox-qa",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-artifact-write",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Black-box QA must use public product surfaces and current build evidence; source inspection, implementation knowledge, or self-repair invalidates reviewer independence.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "independent-blackbox-qa",
+  "inputs": [
+    "An accessible application, change scope, QA mode, and authorized interaction boundary."
+  ],
+  "outputs": [
+    "black-box QA run record",
+    "reproducible numbered findings",
+    "route-state coverage matrix",
+    "blocked tests and residual risk"
+  ],
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "public-surfaces",
+      "current-build",
+      "reproducible-steps",
+      "expected-observed",
+      "independence",
+      "no-source-inspection",
+      "no-repair"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently exercise a built product through public user surfaces, record reproducible findings and evidence, and never inspect or repair source.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

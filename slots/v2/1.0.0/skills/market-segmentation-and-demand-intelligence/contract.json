@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "segment model",
+    "demand evidence matrix",
+    "segment attractiveness comparison",
+    "validation backlog"
+  ],
+  "capability_id": "capability:market-segmentation-and-demand-intelligence",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Demographics alone do not constitute a demand segment, and missing market evidence must not become fabricated TAM.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "market-segmentation-and-demand-intelligence",
+  "inputs": [
+    "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence."
+  ],
+  "outputs": [
+    "segment model",
+    "demand evidence matrix",
+    "segment attractiveness comparison",
+    "validation backlog"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Segment demand using evidence-backed differences in job, context, urgency, willingness, constraints, and reachability.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

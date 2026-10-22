@@ -1,0 +1,130 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/diagram/SKILL.md:58]",
+    "Skill Invocation During Plan Mode [gstack/diagram/SKILL.md:62]",
+    "Model-Specific Behavioral Patch (claude) [gstack/diagram/SKILL.md:81]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/diagram/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/diagram/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/diagram/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/diagram/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/diagram/SKILL.md:36]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/diagram/SKILL.md:41]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/diagram/SKILL.md:60]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/diagram/SKILL.md:151]",
+    "Write the mermaid source to <outdir>/<slug>.mmd first (Write tool). ONE [gstack/diagram/SKILL.md:225]",
+    "repo to build the fallback, and stop. Never install Aside for them, and never [gstack/diagram/SKILL.md:264]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/diagram/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on excalidraw.com, and rendered SVG + PNG. [gstack/diagram/SKILL.md:5]",
+  "root_id": "skill-root:gstack/diagram",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/diagram/SKILL.md:19]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/diagram/SKILL.md:42]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/diagram/SKILL.md:43]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/diagram/SKILL.md:44]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/diagram/SKILL.md:51]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/diagram/SKILL.md:52]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/diagram/SKILL.md:55]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/diagram/SKILL.md:66]"
+  ],
+  "skill_path": "gstack/diagram/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/diagram/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/diagram/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "gstack/diagram/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/diagram/SKILL.md"
+    },
+    {
+      "line_end": 62,
+      "line_start": 62,
+      "path": "gstack/diagram/SKILL.md"
+    }
+  ],
+  "source_sha256": "bef0edd873cacb4ae7ceff96eff3f45f5c36f9dcb4b324c28f536d28a359be56",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/diagram/SKILL.md:77]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/diagram/SKILL.md:84]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/diagram/SKILL.md:112]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/diagram/SKILL.md:115]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/diagram/SKILL.md:136]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/diagram/SKILL.md:146]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bef0edd873cacb4ae7ceff96eff3f45f5c36f9dcb4b324c28f536d28a359be56",
+        "content-review:306-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/diagram/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:03bbc0395c7dacb0bc22df86d40d88b980b1b9f2e083bee5d647385edff3a820",
+        "content-review:176-lines"
+      ],
+      "path": "gstack/diagram/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/diagram/SKILL.md:1-18]",
+    "Declared tool: Read [gstack/diagram/SKILL.md:1-18]",
+    "Declared tool: Write [gstack/diagram/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/diagram/SKILL.md:1-18]"
+  ],
+  "trigger": "\"Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on excalidraw.com, and rendered SVG + PNG. (gstack)\" [gstack/diagram/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/diagram/SKILL.md:107]",
+    "Operational Self-Improvement [gstack/diagram/SKILL.md:117]",
+    "Telemetry (run last) [gstack/diagram/SKILL.md:133]",
+    "Plan Status Footer [gstack/diagram/SKILL.md:154]",
+    "/diagram — English in, editable diagram out [gstack/diagram/SKILL.md:158]",
+    "Completion status [gstack/diagram/SKILL.md:300]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/diagram/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/diagram/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Step 1 — Author the diagram [gstack/diagram/SKILL.md:175]",
+    "Step 2 — Stage the render bundle (once per session) [gstack/diagram/SKILL.md:194]",
+    "Step 3 — Render the triplet [gstack/diagram/SKILL.md:223]",
+    "Step 4 — Show and deliver [gstack/diagram/SKILL.md:267]"
+  ]
+}

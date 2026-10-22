@@ -1,0 +1,308 @@
+{
+  "candidate_responsibility": "Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants.",
+  "canonical_unit_ids": [
+    "ship:unit-001",
+    "ship:unit-002",
+    "ship:unit-003",
+    "ship:unit-007"
+  ],
+  "cluster_id": "cluster:change-delivery-preflight",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ship/SKILL.md:12-20",
+    "ship/SKILL.md:26-31",
+    "ship/SKILL.md:28-29",
+    "ship/SKILL.md:316-316",
+    "ship/SKILL.md:36-40",
+    "ship/SKILL.md:5-5",
+    "ship/SKILL.md:502-526",
+    "ship/SKILL.md:570-577",
+    "ship/SKILL.md:674-685",
+    "ship/SKILL.md:955-985"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-delivery-preflight"
+      ],
+      "id": "cluster:change-delivery-preflight:fusion:boundary",
+      "rule": "Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-delivery-preflight"
+      ],
+      "id": "cluster:change-delivery-preflight:fusion:inputs",
+      "rule": "Accept only: A reviewed change, repository state, delivery policy, and intended publication boundary."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-delivery-preflight"
+      ],
+      "id": "cluster:change-delivery-preflight:fusion:outputs",
+      "rule": "Produce only: A delivery-ready package or explicit preflight blockers; no merge or deployment action."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:change-delivery-preflight:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A reviewed change, repository state, delivery policy, and intended publication boundary.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ship"
+      ]
+    }
+  ],
+  "output_boundary": "A delivery-ready package or explicit preflight blockers; no merge or deployment action.",
+  "retained_auxiliary_unit_ids": [
+    "skills/ship/SKILL.md:12-20",
+    "skills/ship/SKILL.md:26-31",
+    "skills/ship/SKILL.md:28-29",
+    "skills/ship/SKILL.md:316-316",
+    "skills/ship/SKILL.md:36-40",
+    "skills/ship/SKILL.md:5-5"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "发布流程预检分支门禁：检查当前分支，如果在基线分支或默认分支则直接中止发布，要求必须从特性分支发起交付; 全自动发布执行与停止规程：定义何时必须停机询问（基线分支、复杂冲突、测试失败、高风险门禁）与何时必须静默自动推进; 测前合并基线分支操作：从远端拉取最新基线分支并静默合并至特性分支，确保测试在最新合并态执行",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ship/SKILL.md:12-20",
+        "ship/SKILL.md:26-31",
+        "ship/SKILL.md:28-29",
+        "ship/SKILL.md:316-316",
+        "ship/SKILL.md:36-40",
+        "ship/SKILL.md:5-5",
+        "ship/SKILL.md:502-526",
+        "ship/SKILL.md:570-577",
+        "ship/SKILL.md:674-685",
+        "ship/SKILL.md:955-985"
+      ],
+      "limitations": "Explicit limits: 执行任何代码合并、测试或推送动作前的绝对入口门禁; 整个自动化交付流水线的中断与交互判定规则; 运行测试套件之前的代码同步步骤",
+      "source_id": "ship",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (exception=1, gate=3, method=2, rule=3, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-001",
+        "ship:unit-002",
+        "ship:unit-003",
+        "ship:unit-007",
+        "skills/ship/SKILL.md:12-20",
+        "skills/ship/SKILL.md:26-31",
+        "skills/ship/SKILL.md:28-29",
+        "skills/ship/SKILL.md:316-316",
+        "skills/ship/SKILL.md:36-40",
+        "skills/ship/SKILL.md:5-5"
+      ]
+    },
+    {
+      "approach": "测前合并基线分支操作：从远端拉取最新基线分支并静默合并至特性分支，确保测试在最新合并态执行; 发布工作流八步法：检测并合并基础分支 → 运行测试 → 审查 diff → 提升 VERSION → 更新 CHANGELOG → 提交 → 推送 → 创建 PR。这是交付域的骨架流程。; ship 工具权限声明：Bash/Read/Write/Edit/Grep/Glob/Agent/AskUserQuestion/WebSearch 九类工具，比 qa-only（五类）更宽——发布需要写操作和多代理协调。触发词四组。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ship/SKILL.md:12-20",
+        "ship/SKILL.md:5-5",
+        "ship/SKILL.md:674-685"
+      ],
+      "limitations": "Explicit limits: 运行测试套件之前的代码同步步骤; 任何一步失败则中止发布；顺序不可颠倒; 权限边界即能力边界：ship 可改文件（VERSION/CHANGELOG）可推送，qa-only 不可",
+      "source_id": "ship",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=2, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-003",
+        "skills/ship/SKILL.md:12-20",
+        "skills/ship/SKILL.md:5-5"
+      ]
+    },
+    {
+      "approach": "执行任何代码合并、测试或推送动作前的绝对入口门禁; 整个自动化交付流水线的中断与交互判定规则; 运行测试套件之前的代码同步步骤",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ship/SKILL.md:12-20",
+        "ship/SKILL.md:26-31",
+        "ship/SKILL.md:28-29",
+        "ship/SKILL.md:316-316",
+        "ship/SKILL.md:36-40",
+        "ship/SKILL.md:5-5",
+        "ship/SKILL.md:502-526",
+        "ship/SKILL.md:570-577",
+        "ship/SKILL.md:674-685",
+        "ship/SKILL.md:955-985"
+      ],
+      "limitations": "Explicit limits: 执行任何代码合并、测试或推送动作前的绝对入口门禁; 整个自动化交付流水线的中断与交互判定规则; 运行测试套件之前的代码同步步骤",
+      "source_id": "ship",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (exception=1, gate=3, method=2, rule=3, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-001",
+        "ship:unit-002",
+        "ship:unit-003",
+        "ship:unit-007",
+        "skills/ship/SKILL.md:12-20",
+        "skills/ship/SKILL.md:26-31",
+        "skills/ship/SKILL.md:28-29",
+        "skills/ship/SKILL.md:316-316",
+        "skills/ship/SKILL.md:36-40",
+        "skills/ship/SKILL.md:5-5"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ship/SKILL.md:12-20",
+        "ship/SKILL.md:26-31",
+        "ship/SKILL.md:28-29",
+        "ship/SKILL.md:316-316",
+        "ship/SKILL.md:36-40",
+        "ship/SKILL.md:5-5",
+        "ship/SKILL.md:502-526",
+        "ship/SKILL.md:570-577",
+        "ship/SKILL.md:674-685",
+        "ship/SKILL.md:955-985"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在 main 或 master 分支上调用 ship 时立即报错并中止流程; 常规操作无需人工交互确认，遇到既定硬阻断时安全挂起; 若存在敏感凭证泄漏风险则立即阻断推送并提醒开发者清除",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ship/SKILL.md:26-31",
+        "ship/SKILL.md:28-29",
+        "ship/SKILL.md:316-316",
+        "ship/SKILL.md:502-526",
+        "ship/SKILL.md:570-577",
+        "ship/SKILL.md:955-985"
+      ],
+      "limitations": "Explicit limits: 执行任何代码合并、测试或推送动作前的绝对入口门禁; 整个自动化交付流水线的中断与交互判定规则; 执行远程仓库推送操作之前的安全屏障",
+      "source_id": "ship",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=3, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-001",
+        "ship:unit-002",
+        "ship:unit-007",
+        "skills/ship/SKILL.md:26-31",
+        "skills/ship/SKILL.md:28-29",
+        "skills/ship/SKILL.md:316-316"
+      ]
+    },
+    {
+      "approach": "ship 工具权限声明：Bash/Read/Write/Edit/Grep/Glob/Agent/AskUserQuestion/WebSearch 九类工具，比 qa-only（五类）更宽——发布需要写操作和多代理协调。触发词四组。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ship/SKILL.md:12-20"
+      ],
+      "limitations": "Explicit limits: 权限边界即能力边界：ship 可改文件（VERSION/CHANGELOG）可推送，qa-only 不可",
+      "source_id": "ship",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/ship/SKILL.md:12-20"
+      ]
+    },
+    {
+      "approach": "降级模式例外：gstack-skill-start 脚本不可用（过期安装）时打印降级提示并继续用户任务，而非阻塞。安全的默认值：SESSION_KIND 按 interactive 处理、跳过遥测、提示用户运行 ./setup。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ship/SKILL.md:36-40"
+      ],
+      "limitations": "Explicit limits: 仅当 SKILL_START_PROTO: 1 缺失时进入降级；onboarding/consent 的门控延后到下次健康运行",
+      "source_id": "ship",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/ship/SKILL.md:36-40"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "exception": 1,
+        "gate": 3,
+        "method": 2,
+        "rule": 3,
+        "tool-action": 1
+      },
+      "evidence": [
+        "ship/SKILL.md:12-20",
+        "ship/SKILL.md:26-31",
+        "ship/SKILL.md:28-29",
+        "ship/SKILL.md:316-316",
+        "ship/SKILL.md:36-40",
+        "ship/SKILL.md:5-5",
+        "ship/SKILL.md:502-526",
+        "ship/SKILL.md:570-577",
+        "ship/SKILL.md:674-685",
+        "ship/SKILL.md:955-985"
+      ],
+      "source_id": "ship",
+      "unit_ids": [
+        "ship:unit-001",
+        "ship:unit-002",
+        "ship:unit-003",
+        "ship:unit-007",
+        "skills/ship/SKILL.md:12-20",
+        "skills/ship/SKILL.md:26-31",
+        "skills/ship/SKILL.md:28-29",
+        "skills/ship/SKILL.md:316-316",
+        "skills/ship/SKILL.md:36-40",
+        "skills/ship/SKILL.md:5-5"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ship:unit-001",
+    "ship:unit-002",
+    "ship:unit-003",
+    "ship:unit-007",
+    "skills/ship/SKILL.md:12-20",
+    "skills/ship/SKILL.md:26-31",
+    "skills/ship/SKILL.md:28-29",
+    "skills/ship/SKILL.md:316-316",
+    "skills/ship/SKILL.md:36-40",
+    "skills/ship/SKILL.md:5-5"
+  ]
+}

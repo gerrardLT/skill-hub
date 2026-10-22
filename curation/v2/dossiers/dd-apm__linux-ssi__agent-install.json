@@ -1,0 +1,120 @@
+{
+  "branches": [],
+  "inputs": [
+    "Per host — check before installing [dd-apm/linux-ssi/agent-install/SKILL.md:89]",
+    "Claude runs [dd-apm/linux-ssi/agent-install/SKILL.md:91]",
+    "ssh -o StrictHostKeyChecking=no -i <SSHKEY> <SSHUSER>@<SSHHOST> \\ [dd-apm/linux-ssi/agent-install/SKILL.md:94]",
+    "\"uname -m && cat /etc/os-release grep -E '^(IDVERSIONIDPRETTYNAME)='\" [dd-apm/linux-ssi/agent-install/SKILL.md:95]",
+    "If architecture is x8664 or aarch64, and the OS is a supported distribution (Ubuntu 16.04+, Debian 9+, RHEL/CentOS 6-9, Amazon Linux 2/2023, SUSE 12+) — proceed. [dd-apm/linux-ssi/agent-install/SKILL.md:98]",
+    "ERROR: Architecture is armv7l (32-bit ARM) or unsupported OS — stop. Datadog Agent 7 and SSI do not support this configuration. [dd-apm/linux-ssi/agent-install/SKILL.md:100]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/linux-ssi/agent-install/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/linux-ssi/agent-install/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/linux-ssi/agent-install/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "name: agent-install [dd-apm/linux-ssi/agent-install/SKILL.md:2]",
+    "description: Install the Datadog Agent on Linux hosts via SSH with Single Step Instrumentation (SSI) enabled — SSI automatically instruments applications for APM without code changes. Only use if no agent is installed yet. [dd-apm/linux-ssi/agent-install/SKILL.md:3]",
+    "tags: datadog,apm,linux,agent,install,ssi,ssh [dd-apm/linux-ssi/agent-install/SKILL.md:8]",
+    "Install Datadog Agent on Linux [dd-apm/linux-ssi/agent-install/SKILL.md:12]",
+    "Install the Datadog Agent on Linux hosts or VMs [dd-apm/linux-ssi/agent-install/SKILL.md:19]",
+    "The target is a Kubernetes cluster — use dd-apm-k8s-agent-install instead [dd-apm/linux-ssi/agent-install/SKILL.md:25]",
+    "3. Do any hosts already have the Datadog Agent installed? If so, skip install for those hosts and go straight to verify-ssi. [dd-apm/linux-ssi/agent-install/SKILL.md:58]",
+    "1. Install the Datadog Agent with SSI on: <host1>, <host2>, ... [dd-apm/linux-ssi/agent-install/SKILL.md:75]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/linux-ssi/agent-install/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/linux-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Install the Datadog Agent on Linux hosts via SSH with Single Step Instrumentation (SSI) enabled — SSI automatically instruments applications for APM without code changes. [dd-apm/linux-ssi/agent-install/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/linux-ssi/agent-install",
+  "rules_gates": [
+    "alwaysApply: \"false\" [dd-apm/linux-ssi/agent-install/SKILL.md:9]",
+    "> Before doing anything else: Fully resolve all variables in Context to resolve before acting. Do not begin Step 1 until every variable has a concrete value. [dd-apm/linux-ssi/agent-install/SKILL.md:14]",
+    "Do NOT invoke this skill if [dd-apm/linux-ssi/agent-install/SKILL.md:23]",
+    "Wait for the user to run the commands, then re-run the check above before continuing. [dd-apm/linux-ssi/agent-install/SKILL.md:47]",
+    "3. Do any hosts already have the Datadog Agent installed? If so, skip install for those hosts and go straight to verify-ssi. [dd-apm/linux-ssi/agent-install/SKILL.md:58]",
+    "Verify SSH works for each host before proceeding [dd-apm/linux-ssi/agent-install/SKILL.md:62]",
+    "ERROR: Connection refused or timeout — resolve connectivity before continuing. [dd-apm/linux-ssi/agent-install/SKILL.md:69]",
+    "Once SSH is confirmed, present a plan to the user before proceeding. For example [dd-apm/linux-ssi/agent-install/SKILL.md:71]"
+  ],
+  "skill_path": "dd-apm/linux-ssi/agent-install/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 29,
+      "line_start": 29,
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md"
+    },
+    {
+      "line_end": 51,
+      "line_start": 51,
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md"
+    }
+  ],
+  "source_sha256": "ae55fd6aaaf96beb421ec97eff666e57b6715912d5c4e36852b840c651f5cfa1",
+  "stop_conditions": [
+    "Ask the user [dd-apm/linux-ssi/agent-install/SKILL.md:55]",
+    "ERROR: Architecture is armv7l (32-bit ARM) or unsupported OS — stop. Datadog Agent 7 and SSI do not support this configuration. [dd-apm/linux-ssi/agent-install/SKILL.md:100]",
+    "DDAPIKEY Check echo $DDAPIKEY first — if set, use it. Otherwise ask the user for their API key from Datadog UI: Organization Settings → API Keys. Never log or print the key. [dd-apm/linux-ssi/agent-install/SKILL.md:108]",
+    "DDSITE Check echo $DDSITE first — if set, use it. Otherwise ask the user. Default: datadoghq.com. Options: datadoghq.com, us3.datadoghq.com, us5.datadoghq.com, datadoghq.eu, ap1.datadoghq.com [dd-apm/linux-ssi/agent-install/SKILL.md:109]",
+    "SSHKEY Ask the user for the path to their SSH private key, or check CLAUDE.md [dd-apm/linux-ssi/agent-install/SKILL.md:110]",
+    "SSHUSER Ask the user for the SSH username. Default: root [dd-apm/linux-ssi/agent-install/SKILL.md:111]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ae55fd6aaaf96beb421ec97eff666e57b6715912d5c4e36852b840c651f5cfa1",
+        "content-review:281-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/linux-ssi/agent-install/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Install the Datadog Agent on Linux hosts via SSH with Single Step Instrumentation (SSI) enabled — SSI automatically instruments applications for APM without code changes. Only use if no agent is installed yet. [dd-apm/linux-ssi/agent-install/SKILL.md:3]",
+  "unique_methods": [
+    "Install Datadog Agent on Linux [dd-apm/linux-ssi/agent-install/SKILL.md:12]",
+    "Triggers [dd-apm/linux-ssi/agent-install/SKILL.md:16]",
+    "Claude runs [dd-apm/linux-ssi/agent-install/SKILL.md:60]",
+    "Prerequisites [dd-apm/linux-ssi/agent-install/SKILL.md:87]",
+    "Claude runs [dd-apm/linux-ssi/agent-install/SKILL.md:91]",
+    "Context to resolve before acting [dd-apm/linux-ssi/agent-install/SKILL.md:104]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/linux-ssi/agent-install/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Phase 0: Load Credentials [dd-apm/linux-ssi/agent-install/SKILL.md:29]",
+    "Phase 1: Gather Infrastructure Info [dd-apm/linux-ssi/agent-install/SKILL.md:51]",
+    "Phase 2: Install the Datadog Agent with SSI [dd-apm/linux-ssi/agent-install/SKILL.md:117]",
+    "Phase 3: Verify the Agent is Running and Healthy [dd-apm/linux-ssi/agent-install/SKILL.md:144]",
+    "Phase 4: Discover Services That Need Restarting [dd-apm/linux-ssi/agent-install/SKILL.md:218]",
+    "Command line of the process [dd-apm/linux-ssi/agent-install/SKILL.md:233]",
+    "Parent process [dd-apm/linux-ssi/agent-install/SKILL.md:237]"
+  ]
+}

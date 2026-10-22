@@ -1,0 +1,595 @@
+{
+  "candidate_responsibility": "Design layout, hierarchy, density, grids, reflow, and content rhythm across supported viewports.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-008",
+    "design-taste-frontend:unit-010",
+    "design-taste-frontend:unit-018",
+    "frontend-design:unit-006",
+    "redesign-existing-projects:unit-004",
+    "ui-ux-pro-max:unit-014",
+    "ui-ux-pro-max:unit-019"
+  ],
+  "cluster_id": "cluster:responsive-layout-and-spatial-composition",
+  "decision_references": [
+    "V2-DEC-002"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:209-218",
+    "design-taste-frontend/SKILL.md:234-261",
+    "design-taste-frontend/SKILL.md:552-570",
+    "frontend-design/SKILL.md:30-31",
+    "redesign-existing-projects/SKILL.md:45-62",
+    "ui-ux-pro-max/references/pro-rules.md:49-62",
+    "ui-ux-pro-max/references/quick-reference.md:93-113"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:responsive-layout-and-spatial-composition"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition:fusion:boundary",
+      "rule": "Design layout, hierarchy, density, grids, reflow, and content rhythm across supported viewports."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:responsive-layout-and-spatial-composition"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition:fusion:inputs",
+      "rule": "Accept only: A visual direction, content structure, device classes, breakpoints, and existing layout constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:responsive-layout-and-spatial-composition"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition:fusion:outputs",
+      "rule": "Produce only: Desktop and mobile composition, responsive rules, spatial hierarchy, and reflow behavior."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-002"
+      ],
+      "id": "cluster:responsive-layout-and-spatial-composition:policy:contextual-aesthetics",
+      "rule": "Treat typography, color, card, eyebrow, theme, motion, and other aesthetic prescriptions as context-selected variants. Only accessibility, safety, and performance constraints may be global hard rules."
+    }
+  ],
+  "input_boundary": "A visual direction, content structure, device classes, breakpoints, and existing layout constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "Desktop and mobile composition, responsive rules, spatial hierarchy, and reflow behavior.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义布局多样化与形体圆角一致性锁定（Shape Consistency Lock）：当 DESIGN_VARIANCE > 4 时强制规避居中英雄区，采用分屏 50/50、左文右图不对称或滚动固定结构；卡片仅在表达真实层级时使用，阴影必须融入背景色调；整页面必须锁定单一圆角尺度（全部锐角 radius 0、全部轻柔 12-16px、或全部胶囊 pill），严禁在方角页面中随意混用全圆按钮或方圆失调。; 定义核心布局硬指标纪律：Hero 首屏自适应（标题 ≤2 行，副文 ≤20 词且 ≤4 行，CTA 必须首屏可见，顶部内边距上限 pt-24，最多 4 个文本元素）；'Used by' 信任 Logo 墙必须置于 Hero 之下而非混在首屏内；桌面端主导航必须单行渲染且高度 ≤80px；**Bento 格子数量法则（Bento Cell Count Rule）**：格子数严格等于内容数，严禁留白空瓦片；**板块布局复用禁令（Section-Layout-Repetition Ban）**：同类布局家族（如 3 栏图文、左右分屏等）在单页至多出现 1 次（8 屏页面至少包含 4 种布局家族）；**Zigzag 轮替上限**：左右图文交错连续最多 2 次；**眉题节制法则（Eyebrow Restraint）**：每 3 屏最多允许 1 个全大写小字眉题（Hero 算 1 个），严禁每屏标号；**Split-Header 禁令**：严禁左侧大标题右侧浮动小说明段落的模板结构。; 定义三大滑块的具体技术分级标准（Dial Definitions 1-10）：DESIGN_VARIANCE（1-3 预测性对称网格，4-7 偏移重叠与交错，8-10 艺术级不对称/大留白，且在 <768px 移动端必须强制单列折叠）；MOTION_INTENSITY（1-3 静态悬停，4-7 流畅 CSS 过渡，8-10 高级编排与 ScrollTrigger）；VISUAL_DENSITY（1-3 艺术画廊巨量留白 py-32/48，4-7 日常应用标准间距，8-10 紧凑数据数字强制采用 font-mono）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Explicit limits: 整页面的交互控件、卡片与输入框必须共享统一的圆角几何约束，严禁混乱混杂。; 属于机械化前置检查项，任何违反上述硬指标的代码均视为交付破损作品。; 高发散度（Level 4-10）布局在移动端断点下必须无条件自动折叠为干净的单列流布局。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-008",
+        "design-taste-frontend:unit-010",
+        "design-taste-frontend:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "整页面的交互控件、卡片与输入框必须共享统一的圆角几何约束，严禁混乱混杂。; 属于机械化前置检查项，任何违反上述硬指标的代码均视为交付破损作品。; 高发散度（Level 4-10）布局在移动端断点下必须无条件自动折叠为干净的单列流布局。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Explicit limits: 整页面的交互控件、卡片与输入框必须共享统一的圆角几何约束，严禁混乱混杂。; 属于机械化前置检查项，任何违反上述硬指标的代码均视为交付破损作品。; 高发散度（Level 4-10）布局在移动端断点下必须无条件自动折叠为干净的单列流布局。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-008",
+        "design-taste-frontend:unit-010",
+        "design-taste-frontend:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验高发散度下的布局是否避免了千篇一律的居中对齐，核验整页按钮与容器的圆角规则是否全局一致。; 统计眉题数量是否 ≤ ceil(sectionCount / 3)，检查 Hero 文本量与顶部边距，核验 Bento 格子无空位且布局家族无重复堆砌。; 核验各级参数是否对应正确的间距与网格类名，移动端在 768px 以下是否正确实现了单列流折叠降级。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Explicit limits: 整页面的交互控件、卡片与输入框必须共享统一的圆角几何约束，严禁混乱混杂。; 属于机械化前置检查项，任何违反上述硬指标的代码均视为交付破损作品。; 高发散度（Level 4-10）布局在移动端断点下必须无条件自动折叠为干净的单列流布局。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-008",
+        "design-taste-frontend:unit-010",
+        "design-taste-frontend:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "视觉结构承载信息原则：边框、轮廓、分割线、编号等结构设施必须编码真实信息而非纯粹装饰；只有内容本身确实是流程步骤或时间线等严格序列时，才允许使用 01/02/03 等编号标记。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Explicit limits: 在向界面添加修饰线、分割线或数字前缀时执行检查。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在向界面添加修饰线、分割线或数字前缀时执行检查。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Explicit limits: 在向界面添加修饰线、分割线或数字前缀时执行检查。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否界定结构元素为信息载体，以及限制编号徽标仅用于真序列内容。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Explicit limits: 在向界面添加修饰线、分割线或数字前缀时执行检查。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立布局（Layout）审查准则：打破居中对称；绝对禁止三等宽卡片陈列（改用锯齿、不对称网格或瀑布流）；移动端使用 min-height: 100dvh 防抖；使用 CSS Grid 替代复杂 flex 百分比计算；容器强制 1200-1440px 最大宽度；卡片底部按钮严格对齐；多列组件保持 Y 轴基线一致；进行 1-2px 光学微调。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Explicit limits: 布局必须具备呼吸感与层级感，杜绝生硬模板化三卡片并排与视口高度跳变。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "布局必须具备呼吸感与层级感，杜绝生硬模板化三卡片并排与视口高度跳变。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Explicit limits: 布局必须具备呼吸感与层级感，杜绝生硬模板化三卡片并排与视口高度跳变。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验布局重构是否消除了三卡片对齐俗套并完成了 100dvh 与底部对齐优化。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Explicit limits: 布局必须具备呼吸感与层级感，杜绝生硬模板化三卡片并排与视口高度跳变。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义布局、安全区避让与间距节奏规范：所有固定头部、底部 TabBar 及悬浮 CTA 栏必须严格遵守顶部/底部安全区（Safe Area），避让刘海、灵动岛、状态栏与底部手势条；在组件、区块与页面间遵循一致的 4/8dp 增量间距系统；在大屏/平板设备上控制长文本行宽避免通栏过宽；根据断点自适应增加水平安全留白；列表与滚动内容必须设置内边距防止被固定底栏遮挡。; 定义核心分类5：布局与响应式自适应（Layout & Responsive - HIGH）细则：采用 Mobile-first 移动优先渐进增强架构；使用系统化断点阶梯（如 375 / 768 / 1024 / 1440）；移动端正文最小 16px 规避 iOS 聚焦自动放大；控制文本行宽（移动端 35-60 字符，桌面 60-75 字符）；移动端严禁水平横向滚动条；移动端优先采用 min-h-dvh 而非 100vh 适配动态视口；多标签/芯片集合（chip collection）在压缩文字前优先折行，并将 +n 溢出汇总做成可操作展开的交互披露，避免粗暴裁切标签内容。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Explicit limits: 适用于所有移动端页面、响应式 Web 与跨设备自适应布局架构。; 适用于多端自适应页面排版、网格布局与紧凑标签集合的伸缩折行机制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-014",
+        "ui-ux-pro-max:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于所有移动端页面、响应式 Web 与跨设备自适应布局架构。; 适用于多端自适应页面排版、网格布局与紧凑标签集合的伸缩折行机制。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Explicit limits: 适用于所有移动端页面、响应式 Web 与跨设备自适应布局架构。; 适用于多端自适应页面排版、网格布局与紧凑标签集合的伸缩折行机制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-014",
+        "ui-ux-pro-max:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查固定定位元素是否正确规避系统安全区，长文本行宽是否得到约束，滚动内容底部是否留有足够的避让内边距。; 验证移动端视口下无横向滚动条，验证标签集合在空间不足时优先折行而非截断，验证移动端视口单位使用了 min-h-dvh。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Explicit limits: 适用于所有移动端页面、响应式 Web 与跨设备自适应布局架构。; 适用于多端自适应页面排版、网格布局与紧凑标签集合的伸缩折行机制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-014",
+        "ui-ux-pro-max:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 3
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:209-218",
+        "design-taste-frontend/SKILL.md:234-261",
+        "design-taste-frontend/SKILL.md:552-570"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-008",
+        "design-taste-frontend:unit-010",
+        "design-taste-frontend:unit-018"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:30-31"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-006"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:45-62"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-004"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 2
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:49-62",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-014",
+        "ui-ux-pro-max:unit-019"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-008",
+    "design-taste-frontend:unit-010",
+    "design-taste-frontend:unit-018",
+    "frontend-design:unit-006",
+    "redesign-existing-projects:unit-004",
+    "ui-ux-pro-max:unit-014",
+    "ui-ux-pro-max:unit-019"
+  ]
+}

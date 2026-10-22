@@ -1,0 +1,595 @@
+{
+  "condition": "a deployed change or production baseline needs read-only observation, canary, alerts, or health evidence",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:baseline-regression-control",
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "V2-DEPENDENCY-0024",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:baseline-regression-control",
+      "legacy_target_cluster_id": "cluster:production-canary-monitoring",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:baseline-regression-control",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:deployment-observation-and-recovery",
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "V2-DEPENDENCY-0047",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:deployment-observation-and-recovery",
+      "legacy_target_cluster_id": "cluster:production-canary-monitoring",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:deployment-observation",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:merge-and-deploy-readiness",
+        "curation/clusters.json:cluster:deployment-observation-and-recovery"
+      ],
+      "id": "V2-DEPENDENCY-0098",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:merge-and-deploy-readiness",
+      "legacy_target_cluster_id": "cluster:deployment-observation-and-recovery",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:merge-and-deploy-readiness",
+      "target_capability_id": "capability:deployment-observation"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:merge-and-deploy-readiness",
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "V2-DEPENDENCY-0099",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:merge-and-deploy-readiness",
+      "legacy_target_cluster_id": "cluster:production-canary-monitoring",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:merge-and-deploy-readiness",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:requirements-and-delivery-contract",
+        "curation/clusters.json:cluster:metrics-system-and-observability"
+      ],
+      "id": "V2-DEPENDENCY-0119",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:requirements-and-delivery-contract",
+      "legacy_target_cluster_id": "cluster:metrics-system-and-observability",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:requirements-and-delivery-contract",
+      "target_capability_id": "capability:metrics-system-and-observability"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing",
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "V2-DEPENDENCY-0135",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:safe-browser-probing",
+      "legacy_target_cluster_id": "cluster:production-canary-monitoring",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:safe-browser-probing",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:solution-hypothesis-and-experiment-design",
+        "curation/clusters.json:cluster:metrics-system-and-observability"
+      ],
+      "id": "V2-DEPENDENCY-0137",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:solution-hypothesis-and-experiment-design",
+      "legacy_target_cluster_id": "cluster:metrics-system-and-observability",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:solution-hypothesis-and-experiment-design",
+      "target_capability_id": "capability:metrics-system-and-observability"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "sentry-setup-ai-monitoring/SKILL.md:119-150",
+        "metrics-dashboard/SKILL.md:1-4"
+      ],
+      "id": "V2-DEPENDENCY-0181",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Configured AI telemetry must feed the production observation contract.",
+      "source_capability_id": "capability:ai-observability-configuration",
+      "target_capability_id": "capability:metrics-system-and-observability"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-apm/SKILL.md:129-135",
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:404-420"
+      ],
+      "id": "V2-DEPENDENCY-0183",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Enabled instrumentation requires an independent telemetry verification pass.",
+      "source_capability_id": "capability:apm-instrumentation-enablement",
+      "target_capability_id": "capability:apm-instrumentation-verification"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "wrangler/SKILL.md:3-7",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0202",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An authorized edge deployment must enter bounded canary observation.",
+      "source_capability_id": "capability:edge-worker-deployment",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:467-504",
+        "agent-observability-eval-pipeline/SKILL.md:559-585"
+      ],
+      "id": "V2-DEPENDENCY-0207",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Only frozen experiment results may enter result analysis.",
+      "source_capability_id": "capability:llm-experiment-execution",
+      "target_capability_id": "capability:evaluation-results-analysis"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "azure-kubernetes/SKILL.md:118-124",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0211",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An authorized Kubernetes deployment must enter bounded canary observation.",
+      "source_capability_id": "capability:kubernetes-application-deployment",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-logs/SKILL.md:151-153",
+        "metrics-dashboard/SKILL.md:1-4"
+      ],
+      "id": "V2-DEPENDENCY-0213",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Configured logs contribute to the production observation contract.",
+      "source_capability_id": "capability:log-observability-configuration",
+      "target_capability_id": "capability:metrics-system-and-observability"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-monitors/SKILL.md:117-131",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0216",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Canary monitoring requires configured signals and alerts.",
+      "source_capability_id": "capability:monitoring-and-alert-configuration",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "sentry-setup-releases/SKILL.md:26-64",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0223",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Canary monitoring requires release identity and observability linkage.",
+      "source_capability_id": "capability:release-observability-configuration",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-apm/service-remapping/SKILL.md:13-52",
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:404-420"
+      ],
+      "id": "V2-DEPENDENCY-0226",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Remapped service identity must be verified in emitted telemetry.",
+      "source_capability_id": "capability:service-identity-remapping",
+      "target_capability_id": "capability:apm-instrumentation-verification"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "deploy-to-vercel/SKILL.md:105-134",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0229",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An authorized web deployment must enter bounded canary observation.",
+      "source_capability_id": "capability:web-hosting-deployment",
+      "target_capability_id": "capability:production-canary-monitoring"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/land-and-deploy/SKILL.md:796-810",
+        "gstack/land-and-deploy/SKILL.md:792-831"
+      ],
+      "id": "V2-DEPENDENCY-0242",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A triggered deployment enters provider observation until terminal state.",
+      "source_capability_id": "capability:deployment-trigger-execution",
+      "target_capability_id": "capability:deployment-observation"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/canary/SKILL.md:548-587",
+        "canary/SKILL.md:21-27"
+      ],
+      "id": "V2-DEPENDENCY-0243",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Production canary compares against an approved baseline when one exists.",
+      "source_capability_id": "capability:canary-baseline-management",
+      "target_capability_id": "capability:production-canary-monitoring"
+    }
+  ],
+  "description": "Observe production behavior, alerts, canaries, and post-deploy health.",
+  "execution_state": "candidate-definition-not-executed",
+  "exit_contract": "current evidence and recommendation without production mutation",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human selects continue, extend, investigate, or separately authorize rollback",
+  "id": "stage-12-observation-canary",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:12-observation-canary",
+  "stage_order": 12,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/apm-instrumentation-verification",
+      "condition": "Select only when the atomic requested outcome matches: Verify from read-only current evidence that APM instrumentation emits correct service, environment, version, trace linkage, sampling, and governed fields, and summarize multi-service onboarding coverage with its evidence and gaps.",
+      "contract_sha256": "b7d4df6cd6008eaf6b5450e7f4ed9bdf19eb1c0552fb325671af161c54bf0b57",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0183",
+        "V2-DEPENDENCY-0226"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Instrumentation verifies only with current known-request evidence carrying the correct service, environment, version, relationships, sampling, and governed fields; configuration presence alone is insufficient.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "apm-instrumentation-verification",
+      "inputs": [
+        "Instrumented environment, expected service identity, provider read access, and observation window."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "APM verification matrix",
+        "current trace evidence",
+        "expected-observed identity and coverage",
+        "gap and troubleshooting handoff",
+        "service coverage matrix with per-row evidence, owner, gap and next action",
+        "stale-evidence register"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "apm-instrumentation-verification@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/canary-baseline-management",
+      "condition": "Select only when the atomic requested outcome matches: Create or update immutable local canary baseline evidence only for explicitly selected production pages, without application or provider mutation.",
+      "contract_sha256": "77367edce55cef182c632fd79e2411d541289ede0515f85cdf9c8802a438df5f",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A canary baseline is an immutable evidence artifact for explicit pages and states; replacing it requires approval and preserves the prior version, reason, and comparison continuity.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "canary-baseline-management",
+      "inputs": [
+        "Approved URL and pages, external read authority, artifact directory, prior baseline, and baseline-write decision."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "versioned canary baseline artifacts",
+        "capture provenance manifest",
+        "threshold and masking policy",
+        "supersession and deletion record",
+        "supersession record and baseline invalidation triggers"
+      ],
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "canary-baseline-management@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/deployment-observation",
+      "condition": "Select only when the atomic requested outcome matches: Observe one deployed change through read-only provider status and production health signals, persist bounded evidence, and recommend continue, investigate, or rollback without recovery execution.",
+      "contract_sha256": "6f74b6f72884f30aa8cae9d2437d041f7b28a4314afdb8a157ba34fdd08671cf",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0098",
+        "V2-DEPENDENCY-0242"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Observation is read-only and cannot mutate production; a rollback recommendation is not rollback authorization or execution.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "deployment-observation",
+      "inputs": [
+        "A deployed change identity, provider read access, observation window, expected signals, and health thresholds."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "deployment observation evidence",
+        "health and guardrail comparison",
+        "anomaly and confidence report",
+        "continue, investigate, or rollback recommendation",
+        "explicit rollback recommendation addressed to an authorized operator, with missing-evidence list"
+      ],
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "deployment-observation@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/evaluation-results-analysis",
+      "condition": "Select only when the atomic requested outcome matches: Analyze frozen experiment results against declared metrics, variance, failure slices, costs, and decision thresholds without rerunning experiments or approving product changes.",
+      "contract_sha256": "0e33e43e78411f2fed6eb7009aeb308abb4029e88be42561c60b83c1deab2c6b",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0207"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Analysis cannot change metrics, thresholds, exclusions, or slices after seeing results without labeling the work exploratory; incomplete or incomparable runs cannot yield a pass claim.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "evaluation-results-analysis",
+      "inputs": [
+        "Experiment results, metric contract, baseline, statistical assumptions, and known data limits."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "experiment comparison",
+        "variance and uncertainty report",
+        "failure-slice and regression analysis",
+        "evidence-bounded human decision readout"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "evaluation-results-analysis@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/metrics-system-and-observability",
+      "condition": "Select only when the atomic requested outcome matches: Define an evidence-linked metric system of outcomes, inputs, secondary and guardrail metrics with baselines, instrumentation contracts, dashboards, and alert recommendations without provider mutation.",
+      "contract_sha256": "973c4af5e5f29bbcd3cefe08de961e12bc92bb189b0f72241f249636cd69c42d",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0119",
+        "V2-DEPENDENCY-0137",
+        "V2-DEPENDENCY-0181",
+        "V2-DEPENDENCY-0213"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A metric is not operational without exact formula, unit, aggregation, window, dimensions, data source, owner, baseline, target or threshold, bias, and linked decision or action.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "metrics-system-and-observability",
+      "inputs": [
+        "Business goals, user outcomes, risks, data sources, and observable events."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "metric tree and exact definitions",
+        "baseline, target, and guardrail contract",
+        "instrumentation and dashboard specification",
+        "ownership, gap, and alert recommendation",
+        "one primary metric with exact definition and review cadence"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "metrics-system-and-observability@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/production-canary-monitoring",
+      "condition": "Select only when the atomic requested outcome matches: Continuously sample approved production pages or signals against immutable baselines, control alert noise, and recommend investigation or rollback without production mutation.",
+      "contract_sha256": "6ad80cb292b68aa6e39348cb5928ce31bf4892b3114d02d65141bdeb99aee8ee",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0024",
+        "V2-DEPENDENCY-0047",
+        "V2-DEPENDENCY-0099",
+        "V2-DEPENDENCY-0135",
+        "V2-DEPENDENCY-0202",
+        "V2-DEPENDENCY-0211",
+        "V2-DEPENDENCY-0216",
+        "V2-DEPENDENCY-0223",
+        "V2-DEPENDENCY-0229",
+        "V2-DEPENDENCY-0243"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Canary monitoring is read-only: immutable baselines cannot be silently updated, and a threshold breach may recommend but never execute promotion, repair, traffic change, or rollback.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "production-canary-monitoring",
+      "inputs": [
+        "A deployed application, safely accessible pages, and a trusted initial baseline."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "production canary samples",
+        "baseline diff and classification",
+        "noise-control and confidence record",
+        "investigation or rollback recommendation"
+      ],
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "production-canary-monitoring@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/production-trace-classification",
+      "condition": "Select only when the atomic requested outcome matches: Classify authorized production LLM traces into evidence-backed behavior and failure categories while preserving provenance, uncertainty, minority cases, and governance.",
+      "contract_sha256": "71dba96e5c29ff5272ab36472c4f4572c427802b27f0fd88fd8078cfc60aee88",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Trace classification describes observed behavior only; it cannot infer root cause, authorize reuse, or expand beyond the approved sample, fields, retention, and deletion boundary.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "production-trace-classification",
+      "inputs": [
+        "Authorized trace scope, provider read access, time window, sampling policy, and data-governance boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "production trace taxonomy",
+        "trace-to-category ledger",
+        "counts, confidence, and minority cases",
+        "governed root-cause cohorts",
+        "outcome labels (yes, partial, no) with pass rate and failure-mode counts"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "production-trace-classification@1.1.0-candidate"
+    }
+  ],
+  "version": "1.1.0-candidate"
+}

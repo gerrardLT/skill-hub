@@ -1,0 +1,69 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:release-observability-configuration",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-1001",
+    "V2-FUSION-1002",
+    "V2-FUSION-1003",
+    "V2-FUSION-1004",
+    "V2-FUSION-1005",
+    "V2-FUSION-1006"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Release naming, repository, build metadata, provider project, credentials, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Release Observability Configuration",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Release configuration, association evidence, verification, and rollback."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=sentry and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:sentry:sentry-setup-releases",
+      "provider": "sentry",
+      "source_root": "sentry-setup-releases"
+    }
+  ],
+  "responsibility": "Configure release and commit association for observability using an explicit provider adapter.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:sentry-setup-releases:001:root-responsibility",
+    "v2-root:sentry-setup-releases:002:set-up-sentry-releases",
+    "v2-root:sentry-setup-releases:003:step-1-establish-which-half-exists-before-configuring-anything",
+    "v2-root:sentry-setup-releases:004:step-2-identify-the-platform",
+    "v2-root:sentry-setup-releases:005:step-3-wire-the-half-that-s-missing",
+    "v2-root:sentry-setup-releases:006:step-4-prove-it-by-shipping-one"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "sentry-setup-releases/SKILL.md:26-64",
+    "sentry-setup-releases/SKILL.md:3-7",
+    "sentry-setup-releases/SKILL.md:6-45",
+    "sentry-setup-releases/SKILL.md:65-72",
+    "sentry-setup-releases/SKILL.md:73-97",
+    "sentry-setup-releases/SKILL.md:98-117"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

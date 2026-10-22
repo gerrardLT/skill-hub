@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "problem-framing-and-customer-research",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis",
+        "solution-hypothesis-and-experiment-design",
+        "requirements-and-delivery-contract"
+      ],
+      "id": "V2-P3-problem-framing-and-customer-research-trigger-01",
+      "input": "Frame the customer problem in these notes without proposing a solution.",
+      "kind": "should-trigger",
+      "reason": "Create a solution-free problem frame by classifying supplied customer evidence, facts, assumptions, conflicts, impacts, and gaps."
+    },
+    {
+      "expected_skill_id": "problem-framing-and-customer-research",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis",
+        "solution-hypothesis-and-experiment-design",
+        "requirements-and-delivery-contract"
+      ],
+      "id": "V2-P3-problem-framing-and-customer-research-trigger-02",
+      "input": "Classify the supplied discovery evidence into facts, assumptions, conflicts, and open questions.",
+      "kind": "should-trigger",
+      "reason": "Create a solution-free problem frame by classifying supplied customer evidence, facts, assumptions, conflicts, impacts, and gaps."
+    },
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "problem-framing-and-customer-research"
+      ],
+      "id": "V2-P3-problem-framing-and-customer-research-anti-01",
+      "input": "Design experiments for a proposed solution hypothesis.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility solution-hypothesis-and-experiment-design."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "problem-framing-and-customer-research"
+      ],
+      "id": "V2-P3-problem-framing-and-customer-research-anti-02",
+      "input": "Synthesize themes across multiple raw interview records.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility qualitative-evidence-synthesis."
+    },
+    {
+      "expected_skill_id": "problem-framing-and-customer-research",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-problem-framing-and-customer-research-boundary-01",
+      "input": "Create a solution-free problem frame by classifying supplied customer evidence, facts, assumptions, conflicts, impacts, and gaps. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "problem-framing-and-customer-research",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-problem-framing-and-customer-research-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "problem-framing-and-customer-research"
+}

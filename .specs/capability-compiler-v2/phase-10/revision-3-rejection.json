@@ -1,0 +1,40 @@
+{
+  "schema_version": "2.0",
+  "phase": 10,
+  "revision": 3,
+  "version": "0.1.3-v2-candidate",
+  "status": "rejected-targeted-threshold-miss",
+  "task_count": 60,
+  "completed_attempts": 60,
+  "strict_parse_count": 60,
+  "evidence_errors": 0,
+  "passed_runs": 59,
+  "failed_runs": 1,
+  "thresholds_passed": false,
+  "candidate_actions_executed": 0,
+  "passed_targeted_groups": {
+    "phase4_recipe_holdouts": "4/4",
+    "phase8_router_authored": "14/14",
+    "phase8_router_holdouts": "8/8",
+    "phase8_recipe_authored": "8/8",
+    "phase8_recipe_holdouts": "6/6",
+    "causal_mutants_detected": "10/10"
+  },
+  "failure": {
+    "id": "P10-R3-FAIL-001",
+    "run_id": "run-0041",
+    "scope": "Phase 4 review-evidence mutation control",
+    "finding": "The complete_route_planning summary sequences begin at rendered-critique. Although the atomic rendered-critique step depends_on review-evidence, the new summary structurally appears to omit current review-evidence before critique and release disposition.",
+    "required_revision": "Begin both complete route planning sequences with review-evidence, then rendered-critique, explicit-human-approval, and the appropriate release or remediation branch. Preserve execution stop at explicit-human-approval."
+  },
+  "preserved_evidence": [
+    "evals/runs/capability-compiler-v2/phase-10/grading-report.json",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0041",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0042"
+  ],
+  "deleted_failures": 0,
+  "thresholds_lowered": false,
+  "phase_11_allowed": false,
+  "final_user_approval": false,
+  "next_state": "awaiting-explicit-authorization-for-bounded-revision-4"
+}

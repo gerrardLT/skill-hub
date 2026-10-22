@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "website assessment evidence manifest",
+    "deduplicated reproducible findings",
+    "route and criterion coverage",
+    "reassessment and residual-risk report"
+  ],
+  "capability_id": "capability:website-audit-assessment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Assessment authority is read-only: no source repair, form submission with consequential state, account change, provider mutation, deployment, or finding closure is permitted.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "website-audit-assessment",
+  "inputs": [
+    "A scannable site, audit CLI, permitted external read scope, and optional frozen baseline."
+  ],
+  "outputs": [
+    "website assessment evidence manifest",
+    "deduplicated reproducible findings",
+    "route and criterion coverage",
+    "reassessment and residual-risk report"
+  ],
+  "permission_identity": "local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "authorized-origins",
+      "read-only-external",
+      "crawl-limit",
+      "criterion-evidence",
+      "reproducible-finding",
+      "no-remediation"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently assess an authorized website using local and read-only external evidence across content, accessibility, SEO, performance, security signals, links, and behavior without remediation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "deduplicated QA finding register",
+    "reproducibility and severity rationale",
+    "ownership and routing map",
+    "blocked and missing-evidence list"
+  ],
+  "capability_id": "capability:qa-finding-triage",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Triage may classify and route findings but cannot repair source, waive risk, close defects without current evidence, or overwrite independent severity ownership.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "qa-finding-triage",
+  "inputs": [
+    "QA findings, evidence, affected surface, release context, and severity policy."
+  ],
+  "mode_permissions": {
+    "qa-finding-triage": "read-only"
+  },
+  "modes": [],
+  "outputs": [
+    "deduplicated QA finding register",
+    "reproducibility and severity rationale",
+    "ownership and routing map",
+    "blocked and missing-evidence list"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "deduplication",
+      "reproducibility",
+      "severity",
+      "ownership",
+      "routing",
+      "no-fix",
+      "no-risk-acceptance"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Triage independently observed QA findings by reproducibility, severity, duplication, scope, ownership, and next capability without source repair.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

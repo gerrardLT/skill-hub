@@ -1,0 +1,354 @@
+{
+  "domain": "tool-runtime-and-artifact-support",
+  "skills": {
+    "agent-workflow-runtime-support": {
+      "trigger_signals": [
+        "A workflow run needs its session identity, consent state, checkpoints and host-tool availability set up once before domain steps start",
+        "Someone asks whether cross-project learnings may be used in this session and where runtime state is stored"
+      ],
+      "guidance": [
+        "Cross-project learning consent has three states: unset, false, true, with project-only as the default. Record the state only when the task or owner addresses it; otherwise write 'not addressed' and stay project-only. Do not invent a consent entry, an owner name or a skill name that the task did not give.",
+        "Step state, dependencies and invalidation belong to plan-execution-control; this Skill owns host and session mechanics only."
+      ],
+      "anti_add": [
+        {
+          "text": "Track step states, dependencies, checkpoints and invalidation of an approved plan",
+          "route": "plan-execution-control"
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/cso/SKILL.md:535-574",
+        "gstack/investigate/SKILL.md:470-509"
+      ],
+      "resolves": {
+        "agent-workflow-runtime-support#F1": "fixed: guidance (cross-project learning consent state, default project-only)",
+        "agent-workflow-runtime-support#F2": "fixed: anti_add + guidance (step state belongs to plan-execution-control)"
+      }
+    },
+    "artifact-persistence-and-tool-actions": {
+      "trigger_signals": [
+        "One validated artifact must be written to a declared workspace path with path containment and a recorded hash",
+        "Someone asks to save a result file without touching any other file or the product source"
+      ],
+      "anti_add": [
+        {
+          "text": "Save a learning or context record into the local learning store",
+          "route": "local-learning-persistence"
+        }
+      ],
+      "resolves": {
+        "artifact-persistence-and-tool-actions#F1": "fixed: anti_add (local-learning-persistence)"
+      },
+      "guidance": [
+        "Order: write the file, compute its hash, then verify the written bytes against that hash. State a byte count or hash only when you computed it from the content given; otherwise leave an explicit placeholder."
+      ]
+    },
+    "browser-agent-pairing-provisioning": {
+      "trigger_signals": [
+        "Another AI agent needs scoped, expiring access to a local browser session and someone must set up the pairing",
+        "Someone asks what a pairing would expose, for how long and how to revoke it"
+      ],
+      "guidance": [
+        "Preview the session-loss consequence before anything runs: pairing can relaunch the browser daemon, and a relaunch kills open tabs, cookies and logged-in sessions. Require explicit consent for a relaunch as a one-way action, and offer a pairing path that does not relaunch when one exists."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "State whether the pairing relaunches the browser daemon and what open tabs, cookies and sessions would be lost; require explicit consent for that loss."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/pair-agent/SKILL.md:402-441",
+        "gstack/pair-agent/SKILL.md:520-559"
+      ],
+      "resolves": {
+        "browser-agent-pairing-provisioning#F1": "fixed: procedure_insert + guidance (daemon relaunch and session loss consent)"
+      }
+    },
+    "browser-agent-pairing-verification": {
+      "trigger_signals": [
+        "An existing browser-agent pairing must be checked for health, expiry and whether its scope matches what was approved",
+        "Someone asks why a paired agent cannot act, or whether a pairing is broader than intended"
+      ],
+      "guidance": [
+        "Diagnosis table: 'tab not owned by your agent' means the agent acted on a tab it did not create and must open its own tab; 'domain not allowed' means the token restricts domains and the pairing needs re-provisioning with the needed origin; an expired token needs renewal through the provisioning Skill.",
+        "After the remote agent is told to connect, confirm the connection from the browser status output and report which agent and scope appear."
+      ],
+      "source_evidence_add": [
+        "gstack/pair-agent/SKILL.md:669-680",
+        "gstack/pair-agent/SKILL.md:713-730"
+      ],
+      "resolves": {
+        "browser-agent-pairing-verification#F1": "fixed: guidance (error-to-diagnosis table)"
+      }
+    },
+    "browser-authentication-setup": {
+      "trigger_signals": [
+        "A browser profile needs logged-in state for one exact origin so later read-only acquisition can proceed",
+        "Someone asks to import or configure authentication for a site without exposing credential values"
+      ],
+      "guidance": [
+        "First check whether the runtime is already attached to the user's real, already authenticated browser. If so, return a no-write outcome stating that no import is needed, and do not copy any cookies."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Check whether the runtime is already attached to the user's authenticated browser; if so return a no-write outcome."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/setup-browser-cookies/SKILL.md:153-192"
+      ],
+      "resolves": {
+        "browser-authentication-setup#F1": "fixed: procedure_insert + guidance (already-authenticated no-write outcome)"
+      }
+    },
+    "browser-data-acquisition-runtime": {
+      "trigger_signals": [
+        "Authorized page evidence or structured fields must be captured read-only through an existing browser session",
+        "Someone asks for data from a logged-in page with provenance, limits and a deletion deadline"
+      ],
+      "authored_content": [
+        "acquisition governance is authored; cited sources describe launching a browser, not governed data capture"
+      ],
+      "guidance": [
+        "If the task invites a consequential action (submitting a form, buying, messaging, changing an account), refuse that part, say why, and continue with the read-only capture that is in scope."
+      ],
+      "resolves": {
+        "browser-data-acquisition-runtime#F1": "deferred-to-eval: not measured in Phase D (task generation failed four times); covered by the Phase R5 fresh holdout if generation succeeds",
+        "browser-data-acquisition-runtime#F2": "fixed: authored_content"
+      }
+    },
+    "browser-session-and-runtime-configuration": {
+      "trigger_signals": [
+        "An isolated, temporary browser session with a wrapper command and output directory must be prepared for a validated task",
+        "Someone asks for the exact invocation and session settings without persisting any login or configuration"
+      ],
+      "guidance": [
+        "Prerequisite: confirm that npx is available (command -v npx); if not, pause and ask for Node.js and npm. Record the config file path that the task names, or 'none named' when it names none; do not claim that a default config file or dependency exists unless the task says so."
+      ],
+      "source_evidence_add": [
+        "playwright/SKILL.md:12-32",
+        "playwright/references/workflows.md:72-89"
+      ],
+      "resolves": {
+        "browser-session-and-runtime-configuration#F1": "fixed: guidance (prerequisite check, config file)"
+      }
+    },
+    "diagram-and-architecture-artifact-generation": {
+      "trigger_signals": [
+        "An architecture or process diagram must be drawn from approved facts without inventing nodes or edges",
+        "Someone asks for diagram source with a source map and a list of unknown or disputed elements"
+      ],
+      "guidance": [
+        "Persist the diagram source file first, then prepare a single render request for the whole set of outputs; a render is never a substitute for the source."
+      ],
+      "source_evidence_add": [
+        "gstack/diagram/SKILL.md:194-262"
+      ],
+      "resolves": {
+        "diagram-and-architecture-artifact-generation#F1": "fixed: guidance (source persisted before any render request)"
+      }
+    },
+    "document-rendering-and-validation": {
+      "trigger_signals": [
+        "An approved document source must be rendered to PDF or HTML and the output checked for layout, links and accessibility",
+        "Someone asks whether a rendered file matches the approved source and release hash"
+      ],
+      "guidance": [
+        "Compare the source hash with the approved value and state the result plainly: when it matches, say it matches and cite the approval; when it does not, say exactly which hash differs. A mismatch between an intermediate file and the release hash is not an integrity failure of the source.",
+        "Separate template defects from author-content defects in the fix list so each goes to its owner."
+      ],
+      "source_evidence_add": [
+        "gstack/make-pdf/SKILL.md:58-95",
+        "gstack/make-pdf/SKILL.md:234-243"
+      ],
+      "resolves": {
+        "document-rendering-and-validation#F1": "fixed: reference fix (artifact-publication replaced by artifact-persistence-and-tool-actions); Phase D loss (hash match not confirmed) addressed by guidance"
+      }
+    },
+    "local-agent-memory-setup": {
+      "trigger_signals": [
+        "A local, project-isolated memory or index runtime must be created with privacy, retention and removal terms",
+        "Someone asks whether a memory store can be set up without any remote sync and how to remove it"
+      ],
+      "guidance": [
+        "Remote or hosted memory backends, including ones that need an access token or a cloud database, are not covered. Return blocked for them and name the local-only alternative.",
+        "Local memory split: local-agent-memory-setup creates the runtime, local-learning-persistence writes one new record, project-context-and-learning-store restores, searches, prunes and reconciles existing records."
+      ],
+      "source_evidence_add": [
+        "gstack/setup-gbrain/SKILL.md:401-440"
+      ],
+      "resolves": {
+        "local-agent-memory-setup#F1": "fixed: guidance (remote or hosted backends blocked)"
+      },
+      "anti_add": [
+        {
+          "text": "Write one new learning or context record",
+          "route": "local-learning-persistence"
+        },
+        {
+          "text": "Restore, search, prune or reconcile stored records",
+          "route": "project-context-and-learning-store"
+        }
+      ]
+    },
+    "local-git-guard-setup": {
+      "trigger_signals": [
+        "An approved Git guard script must be installed into one repository's local hooks after checking who owns the hooks path",
+        "Someone asks whether a guard can be enabled without disturbing committed or shared hooks"
+      ],
+      "guidance": [
+        "Install only the approved hook file at the classified hooks path and, when a backup is needed, back up only the single file it replaces. Create no extra directories or files beyond what the plan lists.",
+        "In the receipt, quote the consent text verbatim and state explicitly what was and was not changed."
+      ],
+      "authored_content": [
+        "installation method is authored; the cited source is a single line about chained installers renaming a team's hooks"
+      ],
+      "resolves": {
+        "local-git-guard-setup#F1": "fixed: authored_content; Phase D loss (extra backup directory, consent not quoted) addressed by guidance"
+      }
+    },
+    "mobile-platform-runtime-support": {
+      "trigger_signals": [
+        "A mobile app must be built and run on an approved simulator or device and the result diagnosed",
+        "Someone asks why a mobile build or test target fails in the local toolchain"
+      ],
+      "guidance": [
+        "Readiness checks before running: iOS, xcodebuild -showsdks and xcrun simctl list for the exact simulator; Android, adb devices and the SDK and build-tools versions. Record the before and after device list.",
+        "Give a concrete check for each step (for example the expected build success line in the log, the artifact type and location) and state every assumption as an assumption; never invent a condition the task did not state."
+      ],
+      "authored_content": [
+        "platform readiness checks are authored; cited sources describe code regeneration and debug-bridge removal, which edit source and are outside this Skill"
+      ],
+      "resolves": {
+        "mobile-platform-runtime-support#F1": "fixed: guidance + authored_content (platform readiness checks); Phase D loss (concrete checks, invented conditions) addressed by guidance"
+      }
+    },
+    "project-context-and-learning-store": {
+      "trigger_signals": [
+        "Saved project context or learnings must be restored, searched, pruned or reconciled inside one project-isolated local store",
+        "Someone asks to recover the state before a change or to clean up stale records with a deletion trail"
+      ],
+      "responsibility": "Restore, search, prune, or reconcile records inside one project-isolated local context store under privacy, retention, provenance, and deletion controls; writes of new records route to local-learning-persistence.",
+      "anti_add": [
+        {
+          "text": "Write one new validated learning or context record",
+          "route": "local-learning-persistence"
+        }
+      ],
+      "guidance": [
+        "Restore-point record: capture the verbatim prior state with timestamp, branch and commit, and add re-run instructions, so a change can be rolled back and reproduced.",
+        "Pruning writes a tombstone with the reason; reconciliation keeps both versions on conflict and never guesses.",
+        "Local memory split: local-agent-memory-setup creates the runtime, local-learning-persistence writes one new record, project-context-and-learning-store restores, searches, prunes and reconciles existing records."
+      ],
+      "source_evidence_add": [
+        "gstack/autoplan/SKILL.md:705-751"
+      ],
+      "resolves": {
+        "project-context-and-learning-store#F1": "fixed: responsibility + anti_add (read and maintain Skill; new writes routed to local-learning-persistence)",
+        "project-context-and-learning-store#F2": "fixed: guidance (restore-point record)"
+      }
+    },
+    "provider-cli-authentication-setup": {
+      "trigger_signals": [
+        "One provider command-line tool must be installed or authenticated with scoped, expiring access",
+        "Someone asks what identity, scope and revocation path a provider CLI login would create"
+      ],
+      "authored_content": [
+        "setup method is authored; the only cited source is a section heading"
+      ],
+      "resolves": {
+        "provider-cli-authentication-setup#F1": "fixed: authored_content"
+      }
+    },
+    "reference-library-and-deferred-material": {
+      "trigger_signals": [
+        "Material that is historical, illustrative or deferred must be recorded with its source and freshness without becoming guidance",
+        "Someone asks to park an external framework or old claim with a revisit condition"
+      ],
+      "authored_content": [
+        "reference and deferral recording is authored; cited sources are arbitrary deferred fragments"
+      ],
+      "contract": {
+        "permission_identity": "read-only",
+        "execution": {
+          "external": "none",
+          "host_actions": [],
+          "model_tools": [
+            "read"
+          ],
+          "mutation_scope": "none",
+          "remote_write": false
+        }
+      },
+      "resolves": {
+        "reference-library-and-deferred-material#F1": "fixed: contract override to read-only, strictly narrower than 1.0.0 local-exec (audit suggested workspace-write run-output, which would add a write tool); records are returned in the reply and persisted by artifact-persistence-and-tool-actions",
+        "reference-library-and-deferred-material#F2": "fixed: authored_content"
+      }
+    },
+    "test-runtime-bootstrap": {
+      "trigger_signals": [
+        "A project has no working test runtime and one approved framework must be installed with a proving test",
+        "Someone asks for the smallest change that lets a project run tests, with a restore path if setup fails"
+      ],
+      "guidance": [
+        "When no framework is selected, propose defaults from project markers (for example manage.py: pytest with Django, package.json: Vitest or Jest, Gemfile: RSpec) as an offer; never run an install on a guess."
+      ],
+      "source_evidence_add": [
+        "gstack/design-review/SKILL.md:590-629",
+        "gstack/design-review/SKILL.md:663-671"
+      ],
+      "resolves": {
+        "test-runtime-bootstrap#F1": "fixed: guidance (marker to framework defaults, offer only)"
+      }
+    },
+    "tool-runtime-readiness": {
+      "trigger_signals": [
+        "A required local tool must be confirmed present, at the right version and able to do what the task needs",
+        "Someone asks whether a tool on the path is actually usable before an owner starts work"
+      ],
+      "resolves": {}
+    },
+    "workflow-runtime-upgrade": {
+      "trigger_signals": [
+        "One installed workflow runtime must be upgraded to a pinned version with backup and rollback",
+        "Someone asks what an upgrade would change and how to verify the new version is actually the one running"
+      ],
+      "guidance": [
+        "After the upgrade, stop any running daemon or background process that was started before it: a running process keeps serving the old binary and will make a health check pass against stale code. Then start fresh and verify the version it reports.",
+        "Handle a local vendored copy of the runtime in the project explicitly: detect it, upgrade or report it separately, and note whether team mode requires the two to match."
+      ],
+      "procedure_insert": [
+        {
+          "after": 2,
+          "text": "Stop any process started before the upgrade and handle a vendored copy, then restart and verify the version the new process reports."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/gstack-upgrade/SKILL.md:192-231",
+        "gstack/gstack-upgrade/SKILL.md:269-308"
+      ],
+      "resolves": {
+        "workflow-runtime-upgrade#F1": "fixed: procedure_insert + guidance (stop stale daemon, vendored copy)"
+      }
+    },
+    "workflow-skill-authoring": {
+      "trigger_signals": [
+        "A capability contract and its evidence must be turned into one atomic Skill package with trigger fixtures",
+        "Someone asks for a candidate Skill with provenance and tests, staged but not released"
+      ],
+      "guidance": [
+        "Naming: lowercase letters, digits and single dashes, at most 32 characters, starting with a letter, no consecutive dashes. Provide 3 to 5 trigger phrases and at least as many near-miss non-trigger cases."
+      ],
+      "source_evidence_add": [
+        "gstack/skillify/SKILL.md:400-439",
+        "gstack/skillify/SKILL.md:460-499"
+      ],
+      "resolves": {
+        "workflow-skill-authoring#F1": "fixed: reference fix (artifact-publication replaced by artifact-persistence-and-tool-actions)",
+        "workflow-skill-authoring#F2": "fixed: guidance (naming and trigger-count rules)"
+      }
+    }
+  }
+}

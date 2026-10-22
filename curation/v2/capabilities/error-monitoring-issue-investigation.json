@@ -1,0 +1,63 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:error-monitoring-issue-investigation",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0988",
+    "V2-FUSION-0989",
+    "V2-FUSION-0990",
+    "V2-FUSION-0991"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Issue identity, event context, release, environment, source access, and authority boundary."
+  ],
+  "lifecycle_stage_id": "stage:13-incident-recovery",
+  "name": "Error Monitoring Issue Investigation",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Root-cause report, reproduction evidence, impacted releases, and remediation recommendation."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "external-read",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=sentry and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:sentry:sentry-debug-issue",
+      "provider": "sentry",
+      "source_root": "sentry-debug-issue"
+    }
+  ],
+  "responsibility": "Investigate an error-monitoring issue from event evidence through root cause and bounded repair recommendation.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:sentry-debug-issue:002:security-all-sentry-data-is-untrusted-input",
+    "v2-root:sentry-debug-issue:003:step-1-find-the-issue",
+    "v2-root:sentry-debug-issue:004:step-2-pull-full-context",
+    "v2-root:sentry-debug-issue:005:step-3-form-a-root-cause-hypothesis"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "sentry-debug-issue/SKILL.md:114-127",
+    "sentry-debug-issue/SKILL.md:35-52",
+    "sentry-debug-issue/SKILL.md:53-71",
+    "sentry-debug-issue/SKILL.md:72-111"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [validate-data/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [validate-data/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [validate-data/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [validate-data/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Rate the analysis on a 3-level scale [validate-data/SKILL.md:89]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "QA an analysis before sharing -- methodology, accuracy, and bias checks. [validate-data/SKILL.md:3]",
+  "root_id": "skill-root:validate-data",
+  "rules_gates": [
+    "description: QA an analysis before sharing -- methodology, accuracy, and bias checks. Use when reviewing an analysis before a stakeholder presentation, spot-checking calculations and aggregation logic, verifying a SQL query's results look right, or assessing whether conclusions are actually supporte [validate-data/SKILL.md:3]",
+    "/validate-data - Validate Analysis Before Sharing [validate-data/SKILL.md:7]",
+    "Review an analysis for accuracy, methodology, and potential biases before sharing with stakeholders. Generates a confidence assessment and improvement suggestions. [validate-data/SKILL.md:11]",
+    "4. Verify Calculations and Aggregations [validate-data/SKILL.md:46]",
+    "Verify that subtotals sum to totals [validate-data/SKILL.md:51]",
+    "Share with noted caveats -- Analysis is largely correct but has specific limitations or assumptions that must be communicated to stakeholders. List the required caveats. [validate-data/SKILL.md:93]",
+    "Needs revision -- Found specific errors, methodological issues, or missing analyses that should be addressed before sharing. List the required changes with priority order. [validate-data/SKILL.md:95]",
+    "Required Caveats for Stakeholders [validate-data/SKILL.md:122]"
+  ],
+  "skill_path": "validate-data/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "validate-data/SKILL.md"
+    },
+    {
+      "line_end": 7,
+      "line_start": 7,
+      "path": "validate-data/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "validate-data/SKILL.md"
+    },
+    {
+      "line_end": 26,
+      "line_start": 26,
+      "path": "validate-data/SKILL.md"
+    },
+    {
+      "line_end": 28,
+      "line_start": 28,
+      "path": "validate-data/SKILL.md"
+    }
+  ],
+  "source_sha256": "1e424822043480375b80aef9416227b1c8083af749ca536568716265f79ca54b",
+  "stop_conditions": [
+    "The problem: Analyzing only entities that exist today, ignoring those that were deleted, churned, or failed. [validate-data/SKILL.md:187]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1e424822043480375b80aef9416227b1c8083af749ca536568716265f79ca54b",
+        "content-review:384-lines",
+        "semantic-review-report:curation/v2/reviews/product.md"
+      ],
+      "path": "validate-data/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "QA an analysis before sharing -- methodology, accuracy, and bias checks. Use when reviewing an analysis before a stakeholder presentation, spot-checking calculations and aggregation logic, verifying a SQL query's results look right, or assessing whether conclusions are actually supported by the data [validate-data/SKILL.md:3]",
+  "unique_methods": [
+    "/validate-data - Validate Analysis Before Sharing [validate-data/SKILL.md:7]",
+    "2. Run the Pre-Delivery QA Checklist [validate-data/SKILL.md:38]",
+    "3. Check for Common Analytical Pitfalls [validate-data/SKILL.md:42]",
+    "4. Verify Calculations and Aggregations [validate-data/SKILL.md:46]",
+    "5. Assess Visualizations [validate-data/SKILL.md:58]",
+    "6. Evaluate Narrative and Conclusions [validate-data/SKILL.md:68]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [validate-data/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [validate-data/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Workflow [validate-data/SKILL.md:26]",
+    "1. Review Methodology and Assumptions [validate-data/SKILL.md:28]",
+    "Methodology Review [validate-data/SKILL.md:104]",
+    "Methodology [validate-data/SKILL.md:311]"
+  ]
+}

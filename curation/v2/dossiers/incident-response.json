@@ -1,0 +1,112 @@
+{
+  "branches": [
+    "Decision-making during an incident [incident-response/SKILL.md:152]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [incident-response/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [incident-response/SKILL.md:3]",
+  "non_trigger": "When NOT to use [incident-response/SKILL.md:25]",
+  "outputs": [
+    "During an active incident: incident channel updates and status page updates as per the framework above. [incident-response/SKILL.md:228]",
+    "After incident close: a brief incident summary feeding into the AAR. [incident-response/SKILL.md:230]"
+  ],
+  "permissions_side_effects": [
+    "Rollback (revert recent deploy) [incident-response/SKILL.md:83]",
+    "Feature flag off (disable the broken feature without deploy) [incident-response/SKILL.md:84]",
+    "Scale up (more capacity to absorb the load) [incident-response/SKILL.md:86]",
+    "5. Investigate. Logs, metrics, recent changes. The four most common causes: a recent deploy, a configuration change, a third-party dependency change, a load spike. [incident-response/SKILL.md:202]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "\"Manage active production incidents through detection, triage, mitigation, communication, and resolution with structured roles and decision-making. [incident-response/SKILL.md:3]",
+  "root_id": "skill-root:incident-response",
+  "rules_gates": [
+    "Required inputs [incident-response/SKILL.md:33]",
+    "SEV-1 (Critical) Major customer-facing functionality broken. Data integrity at risk. Security breach. All-hands. Incident commander. Active war room. Public communication required. [incident-response/SKILL.md:70]",
+    "Stop the bleeding before fixing the cause. [incident-response/SKILL.md:79]",
+    "Acknowledge before you have answers (\"We're aware and investigating\") [incident-response/SKILL.md:113]",
+    "Never speculate publicly about cause [incident-response/SKILL.md:115]",
+    "Premature resolution announcements before verification [incident-response/SKILL.md:165]",
+    "Using \"back up\" before verification [incident-response/SKILL.md:192]",
+    "6. Mitigate. Stop the bleeding. Don't wait for full root cause. [incident-response/SKILL.md:203]"
+  ],
+  "skill_path": "incident-response/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "incident-response/SKILL.md"
+    },
+    {
+      "line_end": 9,
+      "line_start": 9,
+      "path": "incident-response/SKILL.md"
+    },
+    {
+      "line_end": 17,
+      "line_start": 17,
+      "path": "incident-response/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "incident-response/SKILL.md"
+    },
+    {
+      "line_end": 33,
+      "line_start": 33,
+      "path": "incident-response/SKILL.md"
+    }
+  ],
+  "source_sha256": "0a35b35d88f8c3c49a527528f82870b31ce4a593e6e5c2fcfe530441fb7b3e46",
+  "stop_conditions": [
+    "Stop the bleeding before fixing the cause. [incident-response/SKILL.md:79]",
+    "Rollback (revert recent deploy) [incident-response/SKILL.md:83]",
+    "Failover (route to healthy replica or region) [incident-response/SKILL.md:85]",
+    "Mitigation principle: Stop user impact first. Cause analysis second. [incident-response/SKILL.md:91]",
+    "6. Mitigate. Stop the bleeding. Don't wait for full root cause. [incident-response/SKILL.md:203]",
+    "Failure patterns [incident-response/SKILL.md:211]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0a35b35d88f8c3c49a527528f82870b31ce4a593e6e5c2fcfe530441fb7b3e46",
+        "content-review:267-lines",
+        "semantic-review-report:curation/v2/reviews/qa-delivery.md"
+      ],
+      "path": "incident-response/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:52615b122a79dfdf3f57258048f726f1ebe4588b58b2aaad56b169b8ad339c1c",
+        "content-review:281-lines"
+      ],
+      "path": "incident-response/references/incident-playbook.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: incident-response/references/incident-playbook.md [incident-response/SKILL.md:266]"
+  ],
+  "trigger": "\"Manage active production incidents through detection, triage, mitigation, communication, and resolution with structured roles and decision-making. Use this skill whenever the user has an active incident, a production issue, a service outage, a security incident, or needs to plan incident response p [incident-response/SKILL.md:3]",
+  "unique_methods": [
+    "Incident Response [incident-response/SKILL.md:9]",
+    "When to use [incident-response/SKILL.md:17]",
+    "When NOT to use [incident-response/SKILL.md:25]",
+    "Required inputs [incident-response/SKILL.md:33]",
+    "1. Detection [incident-response/SKILL.md:44]",
+    "2. Triage [incident-response/SKILL.md:62]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [incident-response/SKILL.md:3]"
+  ],
+  "workflow": [
+    "The framework: 5 phases [incident-response/SKILL.md:42]",
+    "Workflow [incident-response/SKILL.md:196]"
+  ]
+}

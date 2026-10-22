@@ -1,0 +1,491 @@
+{
+  "candidate_responsibility": "Interpret results against preset criteria and communicate evidence, limits, disagreements, and recommendations.",
+  "canonical_unit_ids": [
+    "craft-experiment-readout:unit-001",
+    "craft-experiment-readout:unit-002",
+    "craft-experiment-readout:unit-003",
+    "craft-experiment-readout:unit-004",
+    "craft-experiment-readout:unit-005",
+    "craft-experiment-readout:unit-006",
+    "craft-experiment-readout:unit-007",
+    "discovery-process:unit-032",
+    "discovery-process:unit-035",
+    "discovery-process:unit-036",
+    "discovery-process:unit-051",
+    "discovery-process:unit-054",
+    "discovery-process:unit-055",
+    "discovery-process:unit-056"
+  ],
+  "cluster_id": "cluster:results-analysis-and-decision-readout",
+  "decision_references": [
+    "V2-DEC-003"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "craft-experiment-readout/SKILL.md:30-39",
+    "craft-experiment-readout/SKILL.md:34-34",
+    "craft-experiment-readout/SKILL.md:35-35",
+    "craft-experiment-readout/SKILL.md:36-36",
+    "craft-experiment-readout/SKILL.md:37-37",
+    "craft-experiment-readout/SKILL.md:40-47",
+    "craft-experiment-readout/SKILL.md:53-56",
+    "discovery-process/SKILL.md:318-333",
+    "discovery-process/SKILL.md:347-353",
+    "discovery-process/SKILL.md:355-360",
+    "discovery-process/examples/sample-lifesciences.md:77-80",
+    "discovery-process/examples/sample-lifesciences.md:81-82",
+    "discovery-process/examples/sample-lifesciences.md:83-85",
+    "discovery-process/examples/sample.md:39-58"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:results-analysis-and-decision-readout"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout:fusion:boundary",
+      "rule": "Interpret results against preset criteria and communicate evidence, limits, disagreements, and recommendations."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:results-analysis-and-decision-readout"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout:fusion:inputs",
+      "rule": "Accept only: Experiment or research data, metrics, baselines, bias checks, and decision criteria."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:results-analysis-and-decision-readout"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout:fusion:outputs",
+      "rule": "Produce only: An analysis, go/pivot/kill recommendation, stakeholder readout, limitations, and next steps."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-003"
+      ],
+      "id": "cluster:results-analysis-and-decision-readout:policy:human-decision",
+      "rule": "Produce evidence-backed recommendations and unknowns; GO, PIVOT, KILL, prioritization adoption, roadmap commitment, and build approval remain human decisions."
+    }
+  ],
+  "input_boundary": "Experiment or research data, metrics, baselines, bias checks, and decision criteria.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "craft-experiment-readout",
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "craft-experiment-readout",
+        "discovery-process"
+      ]
+    }
+  ],
+  "output_boundary": "An analysis, go/pivot/kill recommendation, stakeholder readout, limitations, and next steps.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "实验复盘报告 7 大核心要素结构：包含一句话执行摘要、假设回溯、核心指标结果与双重显著性核验、获胜方诚实判定、分群异质性分析、三元决断建议（Ship/Iterate/Kill）与长远经验萃取; 利益相关方通报模板与沟通规范：包含 1-2 句核心结论 TL;DR、对受众业务的直接影响（Impact）、带责任人与时间表的下一步行动（Next Steps），采用通俗平实语言杜绝统计黑话; 双重显著性判定原则：在呈现关键指标数据时，必须同时明确标出统计显著性（Statistical Significance）与实际商业显著性（Practical Significance），排除统计上显著但实际收益极微弱的变体",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: A/B 测试或在线实验数据回收完成后的收官复盘规程; 向管理层、工程团队或全员发布实验结果通报的标准模版; 审查实验指标收益时的决策准则",
+      "source_id": "craft-experiment-readout",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (method=2, rule=4, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-001",
+        "craft-experiment-readout:unit-002",
+        "craft-experiment-readout:unit-003",
+        "craft-experiment-readout:unit-004",
+        "craft-experiment-readout:unit-005",
+        "craft-experiment-readout:unit-006",
+        "craft-experiment-readout:unit-007"
+      ]
+    },
+    {
+      "approach": "实验复盘报告 7 大核心要素结构：包含一句话执行摘要、假设回溯、核心指标结果与双重显著性核验、获胜方诚实判定、分群异质性分析、三元决断建议（Ship/Iterate/Kill）与长远经验萃取; 利益相关方通报模板与沟通规范：包含 1-2 句核心结论 TL;DR、对受众业务的直接影响（Impact）、带责任人与时间表的下一步行动（Next Steps），采用通俗平实语言杜绝统计黑话; 受众定制化沟通适配规程：针对不同利益相关方（高管侧重商业底线，工程侧重稳定性与架构，全员侧重业务认知）调整复盘通报的侧重点与语言风格，复用成熟模板实现高效沟通",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: A/B 测试或在线实验数据回收完成后的收官复盘规程; 向管理层、工程团队或全员发布实验结果通报的标准模版; 将实验结论分层对齐至跨职能组织的协同实践",
+      "source_id": "craft-experiment-readout",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-001",
+        "craft-experiment-readout:unit-002",
+        "craft-experiment-readout:unit-007"
+      ]
+    },
+    {
+      "approach": "A/B 测试或在线实验数据回收完成后的收官复盘规程; 向管理层、工程团队或全员发布实验结果通报的标准模版; 审查实验指标收益时的决策准则",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: A/B 测试或在线实验数据回收完成后的收官复盘规程; 向管理层、工程团队或全员发布实验结果通报的标准模版; 审查实验指标收益时的决策准则",
+      "source_id": "craft-experiment-readout",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (method=2, rule=4, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-001",
+        "craft-experiment-readout:unit-002",
+        "craft-experiment-readout:unit-003",
+        "craft-experiment-readout:unit-004",
+        "craft-experiment-readout:unit-005",
+        "craft-experiment-readout:unit-006",
+        "craft-experiment-readout:unit-007"
+      ]
+    },
+    {
+      "approach": "利益相关方通报模板与沟通规范：包含 1-2 句核心结论 TL;DR、对受众业务的直接影响（Impact）、带责任人与时间表的下一步行动（Next Steps），采用通俗平实语言杜绝统计黑话",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:40-47"
+      ],
+      "limitations": "Explicit limits: 向管理层、工程团队或全员发布实验结果通报的标准模版",
+      "source_id": "craft-experiment-readout",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-002"
+      ]
+    },
+    {
+      "approach": "综合考量置信区间与工程上线维护成本，杜绝盲信 p 值; 对模糊测试给出客观归因与下一步重测或放弃建议; 按核心维度拆分指标走势，暴露局部抵消或特定群体的异常",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37"
+      ],
+      "limitations": "Explicit limits: 审查实验指标收益时的决策准则; 裁决统计不显著或模糊实验时的职业道德准则; 深入分析实验效果背后的受众结构差异",
+      "source_id": "craft-experiment-readout",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "craft-experiment-readout:unit-003",
+        "craft-experiment-readout:unit-004",
+        "craft-experiment-readout:unit-005",
+        "craft-experiment-readout:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "craft-experiment-readout",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "craft-experiment-readout",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "结合 problem、solution、strategic fit 与 feasibility 作 GO/PIVOT/KILL。; 向关键 stakeholders read out 问题证据、方案证据和 recommendation，形成下一步 alignment。; Phase 6 正式输出三态 decision、条件性 epic/PRD 和 stakeholder alignment。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Explicit limits: GO 必须有四类证据；来源标题 Go/No-Go 的实际枚举包含三态。; 30 分钟是 heuristic；readout 不等同自动获得 buy-in。; epic 与 PRD 只在 GO；未对齐时不得把 readout 写成 buy-in。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (example=4, gate=1, method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-032",
+        "discovery-process:unit-035",
+        "discovery-process:unit-036",
+        "discovery-process:unit-051",
+        "discovery-process:unit-054",
+        "discovery-process:unit-055",
+        "discovery-process:unit-056"
+      ]
+    },
+    {
+      "approach": "向关键 stakeholders read out 问题证据、方案证据和 recommendation，形成下一步 alignment。; Phase 6 正式输出三态 decision、条件性 epic/PRD 和 stakeholder alignment。; 反例展示 solution-first 跳步的后果及恢复 problem-to-experiment 证据链。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Explicit limits: 30 分钟是 heuristic；readout 不等同自动获得 buy-in。; epic 与 PRD 只在 GO；未对齐时不得把 readout 写成 buy-in。; mobile、月份、百分比、样本和 workflow 数均为案例事实。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 6 source-grounded atom(s) for method (example=4, method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-035",
+        "discovery-process:unit-036",
+        "discovery-process:unit-051",
+        "discovery-process:unit-054",
+        "discovery-process:unit-055",
+        "discovery-process:unit-056"
+      ]
+    },
+    {
+      "approach": "GO 必须有四类证据；来源标题 Go/No-Go 的实际枚举包含三态。; 30 分钟是 heuristic；readout 不等同自动获得 buy-in。; epic 与 PRD 只在 GO；未对齐时不得把 readout 写成 buy-in。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Explicit limits: GO 必须有四类证据；来源标题 Go/No-Go 的实际枚举包含三态。; 30 分钟是 heuristic；readout 不等同自动获得 buy-in。; epic 与 PRD 只在 GO；未对齐时不得把 readout 写成 buy-in。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (example=4, gate=1, method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-032",
+        "discovery-process:unit-035",
+        "discovery-process:unit-036",
+        "discovery-process:unit-051",
+        "discovery-process:unit-054",
+        "discovery-process:unit-055",
+        "discovery-process:unit-056"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "逐项引用四类 evidence，并记录 GO、PIVOT 或 KILL 及理由。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333"
+      ],
+      "limitations": "Explicit limits: GO 必须有四类证据；来源标题 Go/No-Go 的实际枚举包含三态。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-032"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 4,
+        "template": 1
+      },
+      "evidence": [
+        "craft-experiment-readout/SKILL.md:30-39",
+        "craft-experiment-readout/SKILL.md:34-34",
+        "craft-experiment-readout/SKILL.md:35-35",
+        "craft-experiment-readout/SKILL.md:36-36",
+        "craft-experiment-readout/SKILL.md:37-37",
+        "craft-experiment-readout/SKILL.md:40-47",
+        "craft-experiment-readout/SKILL.md:53-56"
+      ],
+      "source_id": "craft-experiment-readout",
+      "unit_ids": [
+        "craft-experiment-readout:unit-001",
+        "craft-experiment-readout:unit-002",
+        "craft-experiment-readout:unit-003",
+        "craft-experiment-readout:unit-004",
+        "craft-experiment-readout:unit-005",
+        "craft-experiment-readout:unit-006",
+        "craft-experiment-readout:unit-007"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 4,
+        "gate": 1,
+        "method": 2
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:318-333",
+        "discovery-process/SKILL.md:347-353",
+        "discovery-process/SKILL.md:355-360",
+        "discovery-process/examples/sample-lifesciences.md:77-80",
+        "discovery-process/examples/sample-lifesciences.md:81-82",
+        "discovery-process/examples/sample-lifesciences.md:83-85",
+        "discovery-process/examples/sample.md:39-58"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-032",
+        "discovery-process:unit-035",
+        "discovery-process:unit-036",
+        "discovery-process:unit-051",
+        "discovery-process:unit-054",
+        "discovery-process:unit-055",
+        "discovery-process:unit-056"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "craft-experiment-readout:unit-001",
+    "craft-experiment-readout:unit-002",
+    "craft-experiment-readout:unit-003",
+    "craft-experiment-readout:unit-004",
+    "craft-experiment-readout:unit-005",
+    "craft-experiment-readout:unit-006",
+    "craft-experiment-readout:unit-007",
+    "discovery-process:unit-032",
+    "discovery-process:unit-035",
+    "discovery-process:unit-036",
+    "discovery-process:unit-051",
+    "discovery-process:unit-054",
+    "discovery-process:unit-055",
+    "discovery-process:unit-056"
+  ]
+}

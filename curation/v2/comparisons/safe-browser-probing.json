@@ -1,0 +1,608 @@
+{
+  "candidate_responsibility": "Use constrained browser sessions for navigation, snapshots, interaction, tracing, and extraction with safe references.",
+  "canonical_unit_ids": [
+    "playwright:unit-001",
+    "playwright:unit-004",
+    "playwright:unit-005",
+    "playwright:unit-006",
+    "playwright:unit-007",
+    "playwright:unit-008",
+    "playwright:unit-009",
+    "playwright:unit-011",
+    "playwright:unit-014",
+    "playwright:unit-015",
+    "playwright:unit-016",
+    "playwright:unit-017",
+    "playwright:unit-018",
+    "playwright:unit-019",
+    "playwright:unit-020",
+    "playwright:unit-021",
+    "playwright:unit-022",
+    "playwright:unit-023",
+    "playwright:unit-024",
+    "playwright:unit-026",
+    "qao-rule-credentials-privacy",
+    "qao-rule-look-not-act-consent",
+    "qao-rule-tab-isolation"
+  ],
+  "cluster_id": "cluster:safe-browser-probing",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "playwright/SKILL.md:104-112",
+    "playwright/SKILL.md:113-121",
+    "playwright/SKILL.md:139-147",
+    "playwright/SKILL.md:43-62",
+    "playwright/SKILL.md:63-79",
+    "playwright/SKILL.md:7-10",
+    "playwright/SKILL.md:80-90",
+    "playwright/SKILL.md:91-103",
+    "playwright/references/cli.md:102-116",
+    "playwright/references/cli.md:19-42",
+    "playwright/references/cli.md:44-59",
+    "playwright/references/cli.md:61-78",
+    "playwright/references/cli.md:80-100",
+    "playwright/references/workflows.md:1-6",
+    "playwright/references/workflows.md:16-26",
+    "playwright/references/workflows.md:28-35",
+    "playwright/references/workflows.md:37-53",
+    "playwright/references/workflows.md:55-70",
+    "playwright/references/workflows.md:7-14",
+    "playwright/references/workflows.md:91-95",
+    "qa-only/SKILL.md:471-471",
+    "qa-only/SKILL.md:473-473",
+    "qa-only/SKILL.md:474-474"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing"
+      ],
+      "id": "cluster:safe-browser-probing:fusion:boundary",
+      "rule": "Use constrained browser sessions for navigation, snapshots, interaction, tracing, and extraction with safe references."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing"
+      ],
+      "id": "cluster:safe-browser-probing:fusion:inputs",
+      "rule": "Accept only: A target page, authorized interactions, and a ready browser runtime."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing"
+      ],
+      "id": "cluster:safe-browser-probing:fusion:outputs",
+      "rule": "Produce only: Browser observations, screenshots, snapshots, traces, and interaction evidence, not an independent QA verdict."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:safe-browser-probing:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A target page, authorized interactions, and a ready browser runtime.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright",
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "qa-only"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright",
+        "qa-only"
+      ]
+    }
+  ],
+  "output_boundary": "Browser observations, screenshots, snapshots, traces, and interaction evidence, not an independent QA verdict.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义 Playwright 技能的核心原则：通过 playwright-cli 在终端驱动真实浏览器，优先使用随附包装脚本，保持 CLI 优先，严禁主动转向 @playwright/test 测试工程代码; 快速起步标准命令序列：通过包装脚本带头打开网页、拍摄快照、基于引用点击、输入内容并截屏，兼顾全局安装备用方式; 定义核心交互循环五步法（Open -> Snapshot -> Interact -> Re-snapshot -> Capture Artifacts）与极简交互代码骨架",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "limitations": "Explicit limits: 当需要终端轻量探索与快速自动化时强制适用；用户未显式要求编写测试文件时禁止生成测试套件; 适用于快速验证浏览器连通性与基础交互操作; 适用于所有终端浏览器自动化会话的基本骨架",
+      "source_id": "playwright",
+      "strengths": "Provides 20 source-grounded atom(s) for responsibility (method=11, rule=5, tool-action=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-001",
+        "playwright:unit-004",
+        "playwright:unit-005",
+        "playwright:unit-006",
+        "playwright:unit-007",
+        "playwright:unit-008",
+        "playwright:unit-009",
+        "playwright:unit-011",
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017",
+        "playwright:unit-018",
+        "playwright:unit-019",
+        "playwright:unit-020",
+        "playwright:unit-021",
+        "playwright:unit-022",
+        "playwright:unit-023",
+        "playwright:unit-024",
+        "playwright:unit-026"
+      ]
+    },
+    {
+      "approach": "快速起步标准命令序列：通过包装脚本带头打开网页、拍摄快照、基于引用点击、输入内容并截屏，兼顾全局安装备用方式; 定义核心交互循环五步法（Open -> Snapshot -> Interact -> Re-snapshot -> Capture Artifacts）与极简交互代码骨架; 表单填写与提交推荐模式：打开目标表单、生成快照短引用、按序填充字段、点击提交并获取提交后快照",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14"
+      ],
+      "limitations": "Explicit limits: 适用于快速验证浏览器连通性与基础交互操作; 适用于所有终端浏览器自动化会话的基本骨架; 处理用户注册、登录、信息录入等包含交互输入的表单流程",
+      "source_id": "playwright",
+      "strengths": "Provides 15 source-grounded atom(s) for method (method=11, tool-action=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-004",
+        "playwright:unit-005",
+        "playwright:unit-007",
+        "playwright:unit-008",
+        "playwright:unit-009",
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017",
+        "playwright:unit-018",
+        "playwright:unit-020",
+        "playwright:unit-021",
+        "playwright:unit-022",
+        "playwright:unit-023",
+        "playwright:unit-024"
+      ]
+    },
+    {
+      "approach": "当需要终端轻量探索与快速自动化时强制适用；用户未显式要求编写测试文件时禁止生成测试套件; 适用于快速验证浏览器连通性与基础交互操作; 适用于所有终端浏览器自动化会话的基本骨架",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "limitations": "Explicit limits: 当需要终端轻量探索与快速自动化时强制适用；用户未显式要求编写测试文件时禁止生成测试套件; 适用于快速验证浏览器连通性与基础交互操作; 适用于所有终端浏览器自动化会话的基本骨架",
+      "source_id": "playwright",
+      "strengths": "Provides 20 source-grounded atom(s) for boundary-and-applicability (method=11, rule=5, tool-action=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-001",
+        "playwright:unit-004",
+        "playwright:unit-005",
+        "playwright:unit-006",
+        "playwright:unit-007",
+        "playwright:unit-008",
+        "playwright:unit-009",
+        "playwright:unit-011",
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017",
+        "playwright:unit-018",
+        "playwright:unit-019",
+        "playwright:unit-020",
+        "playwright:unit-021",
+        "playwright:unit-022",
+        "playwright:unit-023",
+        "playwright:unit-024",
+        "playwright:unit-026"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "明确 CLI 优先定位，防止在交互式诊断任务中过度设计自动化测试用例; 有效杜绝 Stale Element Reference 报错，保持短引用与当前 DOM 状态一致; 工件不污染根目录，命令原语清晰可溯，防止生成不可运行的臆测指令",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "limitations": "Explicit limits: 当需要终端轻量探索与快速自动化时强制适用；用户未显式要求编写测试文件时禁止生成测试套件; 发生任何 DOM 结构剧烈变动或命令报告元素引用不存在时强制执行; 在整个 Playwright CLI 会话周期中全局强制遵守",
+      "source_id": "playwright",
+      "strengths": "Provides 5 source-grounded atom(s) for gates-and-validation (rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-001",
+        "playwright:unit-006",
+        "playwright:unit-011",
+        "playwright:unit-019",
+        "playwright:unit-026"
+      ]
+    },
+    {
+      "approach": "Playwright CLI 核心命令集速查：页面启闭(open/close)、DOM快照(snapshot)、点击交互(click/dblclick/hover/drag)、表单输入(type/press/fill/select/upload/check)、JS求值(eval)、对话框处理(dialog-accept/dismiss)与视口缩放(resize); 导航与键盘操作命令速查：前进后退与重载(go-back/go-forward/reload)，以及按键按下/释放与组合键处理(press/keydown/keyup); 鼠标交互与页面保存命令速查：鼠标精准移动与滚轮(mousemove/mousedown/mouseup/mousewheel)，以及页面/指定元素截图与导出 PDF(screenshot/pdf)",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100"
+      ],
+      "limitations": "Explicit limits: 执行具体终端页面操纵时查阅标准子命令语法; 需要浏览器历史导航控制或模拟复杂键盘输入/快捷键时查阅; 需要像素级交互、滚动触发动态加载或生成多模态视觉验收文件时查阅",
+      "source_id": "playwright",
+      "strengths": "Provides 4 source-grounded atom(s) for permissions-and-side-effects (tool-action=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "凭证零接触原则：严禁接收、输入或打印用户的账号密码、动态验证码、Token或Cookie，遇登录墙必须让用户在独立窗口自主完成登录。; 调用即看非动授权原则：非本地环境仅授权查看与导航，执行任何可能变更真实账户数据的操作前必须停步并通过AUQ获得单次显式授权，且严禁触碰登出或删除类链接。; 浏览器标签页隔离规范：仅在自己打开或用户显式指定的标签页中工作，严禁窥探、截屏或关闭用户的其他个人标签页。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Explicit limits: 保护用户敏感安全凭据与会话资产不受大模型推理上下文泄露。; 区分本地安全环境（localhost等）与远端线上环境，防止误伤真实生产数据。; 驱动真实浏览器会话时强制遵守的用户隐私安全红线。",
+      "source_id": "qa-only",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-rule-credentials-privacy",
+        "qao-rule-look-not-act-consent",
+        "qao-rule-tab-isolation"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "保护用户敏感安全凭据与会话资产不受大模型推理上下文泄露。; 区分本地安全环境（localhost等）与远端线上环境，防止误伤真实生产数据。; 驱动真实浏览器会话时强制遵守的用户隐私安全红线。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Explicit limits: 保护用户敏感安全凭据与会话资产不受大模型推理上下文泄露。; 区分本地安全环境（localhost等）与远端线上环境，防止误伤真实生产数据。; 驱动真实浏览器会话时强制遵守的用户隐私安全红线。",
+      "source_id": "qa-only",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-rule-credentials-privacy",
+        "qao-rule-look-not-act-consent",
+        "qao-rule-tab-isolation"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "智能体绝不向表单填入密码/支付信息，绝不打印存储的敏感Cookie/Token。; 非本地环境变更动作触发前必须有明确的用户确认记录，避开注销与删除链接。; 脚本仅操作自身 openTab 的标签页，不泄露用户已有标签页列表。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Explicit limits: 保护用户敏感安全凭据与会话资产不受大模型推理上下文泄露。; 区分本地安全环境（localhost等）与远端线上环境，防止误伤真实生产数据。; 驱动真实浏览器会话时强制遵守的用户隐私安全红线。",
+      "source_id": "qa-only",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-rule-credentials-privacy",
+        "qao-rule-look-not-act-consent",
+        "qao-rule-tab-isolation"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 11,
+        "rule": 5,
+        "tool-action": 4
+      },
+      "evidence": [
+        "playwright/SKILL.md:104-112",
+        "playwright/SKILL.md:113-121",
+        "playwright/SKILL.md:139-147",
+        "playwright/SKILL.md:43-62",
+        "playwright/SKILL.md:63-79",
+        "playwright/SKILL.md:7-10",
+        "playwright/SKILL.md:80-90",
+        "playwright/SKILL.md:91-103",
+        "playwright/references/cli.md:102-116",
+        "playwright/references/cli.md:19-42",
+        "playwright/references/cli.md:44-59",
+        "playwright/references/cli.md:61-78",
+        "playwright/references/cli.md:80-100",
+        "playwright/references/workflows.md:1-6",
+        "playwright/references/workflows.md:16-26",
+        "playwright/references/workflows.md:28-35",
+        "playwright/references/workflows.md:37-53",
+        "playwright/references/workflows.md:55-70",
+        "playwright/references/workflows.md:7-14",
+        "playwright/references/workflows.md:91-95"
+      ],
+      "source_id": "playwright",
+      "unit_ids": [
+        "playwright:unit-001",
+        "playwright:unit-004",
+        "playwright:unit-005",
+        "playwright:unit-006",
+        "playwright:unit-007",
+        "playwright:unit-008",
+        "playwright:unit-009",
+        "playwright:unit-011",
+        "playwright:unit-014",
+        "playwright:unit-015",
+        "playwright:unit-016",
+        "playwright:unit-017",
+        "playwright:unit-018",
+        "playwright:unit-019",
+        "playwright:unit-020",
+        "playwright:unit-021",
+        "playwright:unit-022",
+        "playwright:unit-023",
+        "playwright:unit-024",
+        "playwright:unit-026"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 3
+      },
+      "evidence": [
+        "qa-only/SKILL.md:471-471",
+        "qa-only/SKILL.md:473-473",
+        "qa-only/SKILL.md:474-474"
+      ],
+      "source_id": "qa-only",
+      "unit_ids": [
+        "qao-rule-credentials-privacy",
+        "qao-rule-look-not-act-consent",
+        "qao-rule-tab-isolation"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "playwright:unit-001",
+    "playwright:unit-004",
+    "playwright:unit-005",
+    "playwright:unit-006",
+    "playwright:unit-007",
+    "playwright:unit-008",
+    "playwright:unit-009",
+    "playwright:unit-011",
+    "playwright:unit-014",
+    "playwright:unit-015",
+    "playwright:unit-016",
+    "playwright:unit-017",
+    "playwright:unit-018",
+    "playwright:unit-019",
+    "playwright:unit-020",
+    "playwright:unit-021",
+    "playwright:unit-022",
+    "playwright:unit-023",
+    "playwright:unit-024",
+    "playwright:unit-026",
+    "qao-rule-credentials-privacy",
+    "qao-rule-look-not-act-consent",
+    "qao-rule-tab-isolation"
+  ]
+}

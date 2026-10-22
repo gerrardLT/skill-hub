@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "problem-framing-and-customer-research",
+        "results-analysis-and-decision-readout",
+        "ai-product-opportunity-and-wedge"
+      ],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-trigger-01",
+      "input": "Design the smallest experiment that could falsify this solution hypothesis.",
+      "kind": "should-trigger",
+      "reason": "Turn a validated problem into falsifiable solution hypotheses and proportionate experiments with predeclared evidence and stopping criteria."
+    },
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "problem-framing-and-customer-research",
+        "results-analysis-and-decision-readout",
+        "ai-product-opportunity-and-wedge"
+      ],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-trigger-02",
+      "input": "Compare prototype, concierge, and data experiments for this validated problem.",
+      "kind": "should-trigger",
+      "reason": "Turn a validated problem into falsifiable solution hypotheses and proportionate experiments with predeclared evidence and stopping criteria."
+    },
+    {
+      "expected_skill_id": "problem-framing-and-customer-research",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "solution-hypothesis-and-experiment-design"
+      ],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-anti-01",
+      "input": "Frame whether the customer problem is real from raw notes.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility problem-framing-and-customer-research."
+    },
+    {
+      "expected_skill_id": "results-analysis-and-decision-readout",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "solution-hypothesis-and-experiment-design"
+      ],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-anti-02",
+      "input": "Analyze the completed experiment and make a recommendation.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility results-analysis-and-decision-readout."
+    },
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-boundary-01",
+      "input": "Turn a validated problem into falsifiable solution hypotheses and proportionate experiments with predeclared evidence and stopping criteria. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-solution-hypothesis-and-experiment-design-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "solution-hypothesis-and-experiment-design"
+}

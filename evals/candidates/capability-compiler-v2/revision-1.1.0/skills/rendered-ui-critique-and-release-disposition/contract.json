@@ -1,0 +1,66 @@
+{
+  "artifact_types": [
+    "rendered critique",
+    "prioritized reproducible findings",
+    "remediation hierarchy",
+    "recapture recommendation and release-gate handoff"
+  ],
+  "capability_id": "capability:rendered-ui-critique-and-release-disposition",
+  "execution": {
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-artifact-write",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, merge, deploy, release, cloud mutation, or external-system write",
+    "invent product facts, brand authority, copy claims, customer data, assets, evidence, or approval",
+    "perform an adjacent capability or combine independent review with source repair",
+    "treat static inspection, stale capture, or model self-report as current rendered evidence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Static source review, DOM assertions, or a single ideal screenshot cannot substitute for current rendered evidence across the declared routes, states, viewports, input modes, and motion behavior.",
+    "Review, evidence acquisition, preflight, and preservation audit never imply source remediation or release authority."
+  ],
+  "id": "rendered-ui-critique-and-release-disposition",
+  "inputs": [
+    "Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints."
+  ],
+  "outputs": [
+    "rendered critique",
+    "prioritized reproducible findings",
+    "remediation hierarchy",
+    "recapture recommendation and release-gate handoff"
+  ],
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "real-renders",
+      "multi-viewport",
+      "interaction-traces",
+      "reproducible-findings",
+      "no-source-mutation"
+    ],
+    "human_decision": true,
+    "rendered_evidence": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently critique current rendered UI and animation behavior and prioritize reproducible findings; recommend recapture or hand the findings to the release gate, without issuing the release disposition or mutating source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

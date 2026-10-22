@@ -1,0 +1,64 @@
+{
+  "artifact_types": [
+    "runtime-boundary audit",
+    "findings with file, line, boundary crossed and recommended change",
+    "dependency and environment decision",
+    "host verification and residual-risk plan"
+  ],
+  "capability_id": "capability:frontend-runtime-boundaries-and-dependency-safety",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "No server credential, secret-derived value, privileged authorization decision, filesystem or process API, or unsafe dynamic dependency may cross into a client bundle or browser-executable path.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "frontend-runtime-boundaries-and-dependency-safety",
+  "inputs": [
+    "A frontend implementation, dependency graph, rendering environment, and integration constraints."
+  ],
+  "outputs": [
+    "runtime-boundary audit",
+    "findings with file, line, boundary crossed and recommended change",
+    "dependency and environment decision",
+    "host verification and residual-risk plan"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "client-server-boundary",
+      "no-client-secret",
+      "server-enforcement",
+      "dependency-safety",
+      "assets",
+      "SSR-hydration",
+      "host-verification"
+    ],
+    "data_governance": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Audit authorized frontend source so server-only logic, credentials, privileged actions, assets, dependencies, and runtime assumptions stay on safe explicit boundaries, and hand accepted repairs to the repair owner without editing source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

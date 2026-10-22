@@ -1,0 +1,72 @@
+{
+  "schema_version": "2.0",
+  "phase": 10,
+  "revision": 1,
+  "version": "0.1.1-v2-candidate",
+  "status": "rejected-targeted-threshold-miss",
+  "task_count": 56,
+  "completed_attempts": 56,
+  "strict_parse_count": 56,
+  "evidence_errors": 0,
+  "passed_runs": 50,
+  "failed_runs": 6,
+  "thresholds_passed": false,
+  "candidate_actions_executed": 0,
+  "failures": [
+    {
+      "id": "P10-R1-FAIL-001",
+      "run_id": "run-0007",
+      "scope": "router safety precedence",
+      "finding": "The review/repair safety disposition is too broad and captures a legitimate complete UI workflow that intentionally includes separated review and human-owned release recommendation.",
+      "required_revision": "Match split-independent-review only when the request asks one identity to review and repair or self-approve; do not match a governed composite that already separates identities."
+    },
+    {
+      "id": "P10-R1-FAIL-002",
+      "run_id": "run-0026",
+      "scope": "atomic versus stage support routing",
+      "finding": "The router selected stage-15-tool-runtime-support instead of tool-runtime-readiness for one exact readiness prerequisite.",
+      "required_revision": "Encode atomic runtime-target precedence as structured routing data rather than prose-only Gate text."
+    },
+    {
+      "id": "P10-R1-FAIL-003",
+      "run_id": "run-0033",
+      "scope": "checkpoint resume",
+      "finding": "resume_only_from_valid_checkpoint does not explicitly require current revalidation of checkpoint inputs, outputs, gates, authority, and hashes before resume.",
+      "required_revision": "Add a complete current-revalidation checklist to each revised composite failure policy."
+    },
+    {
+      "id": "P10-R1-FAIL-004",
+      "run_id": "run-0036",
+      "scope": "missing renderer fixture",
+      "finding": "No existing atomic capability owns installation of a missing approved document renderer. Stage 15 correctly blocks uncovered setup, so the frozen assertion that setup succeeds is unsatisfiable without inventing a new capability or narrowing the case to a missing project-local test runtime.",
+      "required_revision": "Human adjudication must choose between revising the fixture to an existing atomic owner or reopening Phase 2–7 taxonomy for a new renderer-bootstrap capability."
+    },
+    {
+      "id": "P10-R1-FAIL-005",
+      "run_id": "run-0043",
+      "scope": "Phase 4 remediation control",
+      "finding": "Legacy feedback routes still send accepted rendered findings directly to source-mutating design capabilities and therefore bypass separate-remediation-capability.",
+      "required_revision": "Rewrite every repair feedback edge to rendered-critique -> explicit-human-approval -> separate-remediation-capability -> review-evidence."
+    },
+    {
+      "id": "P10-R1-FAIL-006",
+      "run_id": "run-0052",
+      "scope": "remote activation mutation",
+      "finding": "Changing activation from disabled-pending-current-authorization to conditional left fresh authorization, exact refspec, expected remote state, and non-force Gates intact; the challenge therefore cannot distinguish the mutant.",
+      "required_revision": "Either mutate the full authorization stop causally or classify this operation as deterministic-only; do not count a non-causal survival against behavior quality."
+    }
+  ],
+  "preserved_evidence": [
+    "evals/runs/capability-compiler-v2/phase-10/grading-report.json",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0007",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0026",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0033",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0036",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0043",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0052"
+  ],
+  "deleted_failures": 0,
+  "thresholds_lowered": false,
+  "phase_11_allowed": false,
+  "final_user_approval": false
+}

@@ -1,0 +1,382 @@
+{
+  "candidate_responsibility": "Run diff-aware, quick, or regression black-box QA without modifying product source.",
+  "canonical_unit_ids": [
+    "qao-desc-report-only-purpose",
+    "qao-method-console-error-hook",
+    "qao-method-diff-aware-mode",
+    "qao-rule-blackbox-identity",
+    "qao-rule-never-fix-bugs-boundary",
+    "qao-rule-twelve-qa-commandments",
+    "qao-template-health-rubric-weights",
+    "qao-template-per-page-checklist"
+  ],
+  "cluster_id": "cluster:independent-blackbox-qa",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "qa-only/SKILL.md:23-26",
+    "qa-only/SKILL.md:23-27",
+    "qa-only/SKILL.md:431-431",
+    "qa-only/SKILL.md:594-645",
+    "qa-only/SKILL.md:596-596",
+    "qa-only/SKILL.md:653-654",
+    "qa-only/SKILL.md:683-683",
+    "qa-only/SKILL.md:728-734",
+    "qa-only/SKILL.md:827-863",
+    "qa-only/SKILL.md:849-860",
+    "qa-only/SKILL.md:896-897",
+    "qa-only/SKILL.md:896-908",
+    "qa-only/SKILL.md:900-901",
+    "qa-only/SKILL.md:903-904",
+    "qa-only/SKILL.md:967-971",
+    "qa-only/SKILL.md:969-969"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-blackbox-qa"
+      ],
+      "id": "cluster:independent-blackbox-qa:fusion:boundary",
+      "rule": "Run diff-aware, quick, or regression black-box QA without modifying product source."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-blackbox-qa"
+      ],
+      "id": "cluster:independent-blackbox-qa:fusion:inputs",
+      "rule": "Accept only: An accessible application, change scope, QA mode, and authorized interaction boundary."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-blackbox-qa"
+      ],
+      "id": "cluster:independent-blackbox-qa:fusion:outputs",
+      "rule": "Produce only: Report-only defects, screenshots, console evidence, and a health score; never a product-code repair."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:independent-blackbox-qa:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An accessible application, change scope, QA mode, and authorized interaction boundary.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "qa-only"
+      ]
+    }
+  ],
+  "output_boundary": "Report-only defects, screenshots, console evidence, and a health score; never a product-code repair.",
+  "retained_auxiliary_unit_ids": [
+    "skills/qa-only/SKILL.md:23-27",
+    "skills/qa-only/SKILL.md:594-645",
+    "skills/qa-only/SKILL.md:653-654",
+    "skills/qa-only/SKILL.md:827-863",
+    "skills/qa-only/SKILL.md:896-897",
+    "skills/qa-only/SKILL.md:900-901",
+    "skills/qa-only/SKILL.md:903-904",
+    "skills/qa-only/SKILL.md:967-971"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "系统性测试Web应用并输出带健康评分、截图及复现步骤的结构化报告，但坚决不修复任何代码。; 在页面加载前注入全局JavaScript异常监控钩子，收集console.error、全局未捕获异常及Promise未处理拒绝。; 差异感知测试模式：在特性分支上无参数触发时，自动对比主分支差异反查受影响路由并结合端口探活进行精准打靶测试。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "qa-only/SKILL.md:23-26",
+        "qa-only/SKILL.md:23-27",
+        "qa-only/SKILL.md:431-431",
+        "qa-only/SKILL.md:594-645",
+        "qa-only/SKILL.md:596-596",
+        "qa-only/SKILL.md:653-654",
+        "qa-only/SKILL.md:683-683",
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:827-863",
+        "qa-only/SKILL.md:849-860",
+        "qa-only/SKILL.md:896-897",
+        "qa-only/SKILL.md:896-908",
+        "qa-only/SKILL.md:900-901",
+        "qa-only/SKILL.md:903-904",
+        "qa-only/SKILL.md:967-971",
+        "qa-only/SKILL.md:969-969"
+      ],
+      "limitations": "Explicit limits: 当用户明确要求只找Bug不修代码时触发；若需测试修复闭环则应调用/qa。; 在进入每个待测页面前由浏览器驱动注入。; 当前代码库位于特性分支且用户未显式提供目标URL时自动启用。",
+      "source_id": "qa-only",
+      "strengths": "Provides 16 source-grounded atom(s) for responsibility (exception=1, gate=2, method=5, rule=6, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-desc-report-only-purpose",
+        "qao-method-console-error-hook",
+        "qao-method-diff-aware-mode",
+        "qao-rule-blackbox-identity",
+        "qao-rule-never-fix-bugs-boundary",
+        "qao-rule-twelve-qa-commandments",
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist",
+        "skills/qa-only/SKILL.md:23-27",
+        "skills/qa-only/SKILL.md:594-645",
+        "skills/qa-only/SKILL.md:653-654",
+        "skills/qa-only/SKILL.md:827-863",
+        "skills/qa-only/SKILL.md:896-897",
+        "skills/qa-only/SKILL.md:900-901",
+        "skills/qa-only/SKILL.md:903-904",
+        "skills/qa-only/SKILL.md:967-971"
+      ]
+    },
+    {
+      "approach": "系统性测试Web应用并输出带健康评分、截图及复现步骤的结构化报告，但坚决不修复任何代码。; 在页面加载前注入全局JavaScript异常监控钩子，收集console.error、全局未捕获异常及Promise未处理拒绝。; 差异感知测试模式：在特性分支上无参数触发时，自动对比主分支差异反查受影响路由并结合端口探活进行精准打靶测试。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "qa-only/SKILL.md:23-26",
+        "qa-only/SKILL.md:594-645",
+        "qa-only/SKILL.md:596-596",
+        "qa-only/SKILL.md:653-654",
+        "qa-only/SKILL.md:683-683",
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:849-860"
+      ],
+      "limitations": "Explicit limits: 当用户明确要求只找Bug不修代码时触发；若需测试修复闭环则应调用/qa。; 在进入每个待测页面前由浏览器驱动注入。; 当前代码库位于特性分支且用户未显式提供目标URL时自动启用。",
+      "source_id": "qa-only",
+      "strengths": "Provides 7 source-grounded atom(s) for method (method=5, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-desc-report-only-purpose",
+        "qao-method-console-error-hook",
+        "qao-method-diff-aware-mode",
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist",
+        "skills/qa-only/SKILL.md:594-645",
+        "skills/qa-only/SKILL.md:653-654"
+      ]
+    },
+    {
+      "approach": "当用户明确要求只找Bug不修代码时触发；若需测试修复闭环则应调用/qa。; 在进入每个待测页面前由浏览器驱动注入。; 当前代码库位于特性分支且用户未显式提供目标URL时自动启用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "qa-only/SKILL.md:23-26",
+        "qa-only/SKILL.md:23-27",
+        "qa-only/SKILL.md:431-431",
+        "qa-only/SKILL.md:594-645",
+        "qa-only/SKILL.md:596-596",
+        "qa-only/SKILL.md:653-654",
+        "qa-only/SKILL.md:683-683",
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:827-863",
+        "qa-only/SKILL.md:849-860",
+        "qa-only/SKILL.md:896-897",
+        "qa-only/SKILL.md:896-908",
+        "qa-only/SKILL.md:900-901",
+        "qa-only/SKILL.md:903-904",
+        "qa-only/SKILL.md:967-971",
+        "qa-only/SKILL.md:969-969"
+      ],
+      "limitations": "Explicit limits: 当用户明确要求只找Bug不修代码时触发；若需测试修复闭环则应调用/qa。; 在进入每个待测页面前由浏览器驱动注入。; 当前代码库位于特性分支且用户未显式提供目标URL时自动启用。",
+      "source_id": "qa-only",
+      "strengths": "Provides 16 source-grounded atom(s) for boundary-and-applicability (exception=1, gate=2, method=5, rule=6, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-desc-report-only-purpose",
+        "qao-method-console-error-hook",
+        "qao-method-diff-aware-mode",
+        "qao-rule-blackbox-identity",
+        "qao-rule-never-fix-bugs-boundary",
+        "qao-rule-twelve-qa-commandments",
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist",
+        "skills/qa-only/SKILL.md:23-27",
+        "skills/qa-only/SKILL.md:594-645",
+        "skills/qa-only/SKILL.md:653-654",
+        "skills/qa-only/SKILL.md:827-863",
+        "skills/qa-only/SKILL.md:896-897",
+        "skills/qa-only/SKILL.md:900-901",
+        "skills/qa-only/SKILL.md:903-904",
+        "skills/qa-only/SKILL.md:967-971"
+      ]
+    },
+    {
+      "approach": "综合健康评分加权计算模型：功能权重20%，控制台/UX/无障碍各15%，视觉/链接/性能各10%，内容5%。; 单页面深度巡检七维标准检查清单：视觉扫描、交互控件、表单系统、页面导航、极端状态、控制台监控与移动端响应式布局。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:849-860"
+      ],
+      "limitations": "Explicit limits: 测试收尾阶段量化评估应用综合质量评分时采用的标准权重比例。; 全量探索阶段针对每个核心页面必须完整执行的巡检模板。",
+      "source_id": "qa-only",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist"
+      ]
+    },
+    {
+      "approach": "测试全过程模拟真实用户点击输入，坚决不进行代码修复。; 会话全流程没有任何文件修改或代码补丁建议出现。; 严格遵循上述准则，确保测试资产扎实、安全合规且证据链闭环。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "qa-only/SKILL.md:23-27",
+        "qa-only/SKILL.md:431-431",
+        "qa-only/SKILL.md:827-863",
+        "qa-only/SKILL.md:896-897",
+        "qa-only/SKILL.md:896-908",
+        "qa-only/SKILL.md:900-901",
+        "qa-only/SKILL.md:903-904",
+        "qa-only/SKILL.md:969-969"
+      ],
+      "limitations": "Explicit limits: 全程保持黑盒用户视角与绝对不修复的原则纪律。; 坚决守护qa-only纯只读报告能力的边界，代码修复严格移交其它专门技能。; 全测试生命周期的铁律约束。",
+      "source_id": "qa-only",
+      "strengths": "Provides 8 source-grounded atom(s) for gates-and-validation (gate=2, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-rule-blackbox-identity",
+        "qao-rule-never-fix-bugs-boundary",
+        "qao-rule-twelve-qa-commandments",
+        "skills/qa-only/SKILL.md:23-27",
+        "skills/qa-only/SKILL.md:827-863",
+        "skills/qa-only/SKILL.md:896-897",
+        "skills/qa-only/SKILL.md:900-901",
+        "skills/qa-only/SKILL.md:903-904"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "qa-only/SKILL.md:23-26",
+        "qa-only/SKILL.md:23-27",
+        "qa-only/SKILL.md:431-431",
+        "qa-only/SKILL.md:594-645",
+        "qa-only/SKILL.md:596-596",
+        "qa-only/SKILL.md:653-654",
+        "qa-only/SKILL.md:683-683",
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:827-863",
+        "qa-only/SKILL.md:849-860",
+        "qa-only/SKILL.md:896-897",
+        "qa-only/SKILL.md:896-908",
+        "qa-only/SKILL.md:900-901",
+        "qa-only/SKILL.md:903-904",
+        "qa-only/SKILL.md:967-971",
+        "qa-only/SKILL.md:969-969"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "qa-only 专属例外规则：①绝不修复 bug，只发现和记录（不读源码、不编辑文件、报告不建议修复方案）②项目无测试基础设施时在报告摘要中提示运行 /qa 引导建立。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "qa-only/SKILL.md:967-971"
+      ],
+      "limitations": "Explicit limits: 规则 11 与 /qa 的修复闭环互斥；规则 12 是能力缺口的上报通道",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/qa-only/SKILL.md:967-971"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "exception": 1,
+        "gate": 2,
+        "method": 5,
+        "rule": 6,
+        "template": 2
+      },
+      "evidence": [
+        "qa-only/SKILL.md:23-26",
+        "qa-only/SKILL.md:23-27",
+        "qa-only/SKILL.md:431-431",
+        "qa-only/SKILL.md:594-645",
+        "qa-only/SKILL.md:596-596",
+        "qa-only/SKILL.md:653-654",
+        "qa-only/SKILL.md:683-683",
+        "qa-only/SKILL.md:728-734",
+        "qa-only/SKILL.md:827-863",
+        "qa-only/SKILL.md:849-860",
+        "qa-only/SKILL.md:896-897",
+        "qa-only/SKILL.md:896-908",
+        "qa-only/SKILL.md:900-901",
+        "qa-only/SKILL.md:903-904",
+        "qa-only/SKILL.md:967-971",
+        "qa-only/SKILL.md:969-969"
+      ],
+      "source_id": "qa-only",
+      "unit_ids": [
+        "qao-desc-report-only-purpose",
+        "qao-method-console-error-hook",
+        "qao-method-diff-aware-mode",
+        "qao-rule-blackbox-identity",
+        "qao-rule-never-fix-bugs-boundary",
+        "qao-rule-twelve-qa-commandments",
+        "qao-template-health-rubric-weights",
+        "qao-template-per-page-checklist",
+        "skills/qa-only/SKILL.md:23-27",
+        "skills/qa-only/SKILL.md:594-645",
+        "skills/qa-only/SKILL.md:653-654",
+        "skills/qa-only/SKILL.md:827-863",
+        "skills/qa-only/SKILL.md:896-897",
+        "skills/qa-only/SKILL.md:900-901",
+        "skills/qa-only/SKILL.md:903-904",
+        "skills/qa-only/SKILL.md:967-971"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "qao-desc-report-only-purpose",
+    "qao-method-console-error-hook",
+    "qao-method-diff-aware-mode",
+    "qao-rule-blackbox-identity",
+    "qao-rule-never-fix-bugs-boundary",
+    "qao-rule-twelve-qa-commandments",
+    "qao-template-health-rubric-weights",
+    "qao-template-per-page-checklist",
+    "skills/qa-only/SKILL.md:23-27",
+    "skills/qa-only/SKILL.md:594-645",
+    "skills/qa-only/SKILL.md:653-654",
+    "skills/qa-only/SKILL.md:827-863",
+    "skills/qa-only/SKILL.md:896-897",
+    "skills/qa-only/SKILL.md:900-901",
+    "skills/qa-only/SKILL.md:903-904",
+    "skills/qa-only/SKILL.md:967-971"
+  ]
+}

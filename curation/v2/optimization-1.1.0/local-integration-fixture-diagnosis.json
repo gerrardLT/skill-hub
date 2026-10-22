@@ -1,0 +1,16 @@
+{
+  "status": "two-review-failures-diagnosed-next-revision-required",
+  "candidate_changed": false,
+  "reason": "The fixture confuses moved branch tips with authorization for an immutable SHA, assumes WIP ownership, and omits merge-tree exit status and fresh clean-state checks. These are fixture authority/evidence defects, not proof of candidate failure.",
+  "next_revision_requirements": [
+    "Keep the existing exact-SHA approval valid unless explicitly revoked; moved branch alone does not authorize a new SHA or automatically revoke old SHA approval.",
+    "Accept exact-approved-SHA integration proposals conditional on verified intent, WIP authority and clean-state checks; blocking for unresolved intent is also acceptable when justified.",
+    "Do not infer Novak owns WIP; identify who supplied stash permission and record whether ownership/authority is actually established.",
+    "State that staged changes require resolving/stashing under valid authority before merge; no unnecessary mutation while other prerequisites are unresolved.",
+    "Treat merge-tree output shape as incomplete without exit status; request or recheck it rather than fabricate clean proof.",
+    "Require fresh status and immutable-ref verification, no remote action and no invented after-ref."
+  ],
+  "evidence": "evals/runs/capability-compiler-v2/optimization-1.1.0/full-fixture-review/local-branch-integration/attempt-2/review.json",
+  "all_rejections_retained": true,
+  "full_review_driver": "stopped at local-branch-integration pending complete fixture repair"
+}

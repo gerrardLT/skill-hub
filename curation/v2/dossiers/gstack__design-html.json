@@ -1,0 +1,206 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/design-html/SKILL.md:64]",
+    "Skill Invocation During Plan Mode [gstack/design-html/SKILL.md:68]",
+    "Model-Specific Behavioral Patch (claude) [gstack/design-html/SKILL.md:200]",
+    "Continuous Checkpoint Mode [gstack/design-html/SKILL.md:300]",
+    "Case B: CEO plan and/or design variants exist, but no approved.json [gstack/design-html/SKILL.md:520]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/design-html/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/design-html/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/design-html/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/design-html/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/design-html/SKILL.md:42]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/design-html/SKILL.md:47]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/design-html/SKILL.md:66]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-html/SKILL.md:85]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/design-html/SKILL.md:109]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/design-html/SKILL.md:180]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/design-html/SKILL.md:304]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/design-html/SKILL.md:399]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/design-html/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Design finalization: generates production-quality Pretext-native HTML/CSS. [gstack/design-html/SKILL.md:5]",
+  "root_id": "skill-root:gstack/design-html",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/design-html/SKILL.md:20]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/design-html/SKILL.md:48]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/design-html/SKILL.md:49]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/design-html/SKILL.md:50]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/design-html/SKILL.md:57]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/design-html/SKILL.md:58]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/design-html/SKILL.md:61]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/design-html/SKILL.md:72]"
+  ],
+  "skill_path": "gstack/design-html/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/design-html/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/design-html/SKILL.md"
+    },
+    {
+      "line_end": 36,
+      "line_start": 36,
+      "path": "gstack/design-html/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/design-html/SKILL.md"
+    },
+    {
+      "line_end": 68,
+      "line_start": 68,
+      "path": "gstack/design-html/SKILL.md"
+    }
+  ],
+  "source_sha256": "29b66c81413d39686f444a524cb18cd2aab27c8c6deacb757f11a4f540e7a3ef",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/design-html/SKILL.md:82]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/design-html/SKILL.md:83]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/design-html/SKILL.md:84]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-html/SKILL.md:85]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/design-html/SKILL.md:87]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/design-html/SKILL.md:91]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:29b66c81413d39686f444a524cb18cd2aab27c8c6deacb757f11a4f540e7a3ef",
+        "content-review:874-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/design-html/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ad404d6392683c7aab318152dd77ea773bf31d311ec6e172ef6ab37de700727b",
+        "content-review:460-lines"
+      ],
+      "path": "gstack/design-html/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:db00be4d927e48ebeff614f761a8d118b294c527fab4596bf48b54a7296503fd",
+        "content-review:87-lines"
+      ],
+      "path": "gstack/design-html/sections/doctrine.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:476b80f37edb2ef0210fbc74c67e3aec22e3d08b51e7e1e93df7dd22caa307d3",
+        "content-review:2-lines"
+      ],
+      "path": "gstack/design-html/sections/doctrine.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:514b3eb6899774b68455d600458ed2b03c4a94beaf32038c18132a7368462647",
+        "content-review:21-lines"
+      ],
+      "path": "gstack/design-html/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0d9dd48e627ab377432deb620a54abf3a9a1598c76db9dbf8d49ef324f74d054",
+        "content-review:156-lines"
+      ],
+      "path": "gstack/design-html/sections/pretext-patterns.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7a50627fdf6e19c3e411f0d7699de99063992fed16d6647a797f8dc1078dd4f2",
+        "content-review:154-lines"
+      ],
+      "path": "gstack/design-html/sections/pretext-patterns.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:c85e755d86d33718e66978d18a2733eb5d11cf44747f58846bd390ed0d6f24e7"
+      ],
+      "path": "gstack/design-html/vendor/pretext.js",
+      "reason": "Vendored implementation is inventoried but not attributed as an authored V2 capability.",
+      "subkind": "vendor"
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Write [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Edit [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Glob [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Grep [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: Agent [gstack/design-html/SKILL.md:1-19]",
+    "Declared tool: AskUserQuestion [gstack/design-html/SKILL.md:1-19]",
+    "Local dependency: gstack/design-html/sections/doctrine.md [gstack/design-html/SKILL.md:422]",
+    "Local dependency: gstack/design-html/sections/pretext-patterns.md [gstack/design-html/SKILL.md:423]",
+    "Local dependency: gstack/design-html/vendor [gstack/design-html/SKILL.md:654]"
+  ],
+  "trigger": "\"Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack)\" [gstack/design-html/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/design-html/SKILL.md:148]",
+    "Self-check before emitting [gstack/design-html/SKILL.md:171]",
+    "Context Recovery [gstack/design-html/SKILL.md:239]",
+    "Completeness Principle — Boil the Ocean [gstack/design-html/SKILL.md:286]",
+    "Confusion Protocol [gstack/design-html/SKILL.md:292]",
+    "Claimed Limitations Need Evidence [gstack/design-html/SKILL.md:296]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/design-html/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/design-html/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/design-html/SKILL.md:300]",
+    "Step 0: Input Detection [gstack/design-html/SKILL.md:467]",
+    "Step 1: Design Analysis [gstack/design-html/SKILL.md:567]",
+    "Step 2: Smart Pretext API Routing [gstack/design-html/SKILL.md:598]",
+    "Step 2.5: Framework Detection [gstack/design-html/SKILL.md:615]",
+    "Step 3: Generate Pretext-Native HTML [gstack/design-html/SKILL.md:638]",
+    "Step 3.5: Live Reload Server [gstack/design-html/SKILL.md:706]",
+    "Step 4: Preview + Refinement Loop [gstack/design-html/SKILL.md:736]",
+    "Step 5: Save & Next Steps [gstack/design-html/SKILL.md:802]",
+    "Next Steps [gstack/design-html/SKILL.md:843]"
+  ]
+}

@@ -1,0 +1,68 @@
+## change-delivery-preflight [improve] perm=local-exec-external-read D=no-gain
+R: Preflight one verified local change for delivery by checking branch and ref identity, merge base, credentials status, automation stops, evidence, documentation, and remote readiness without mutation.
+IN: A reviewed change, repository state, delivery policy, and intended publication boundary.
+OUT: delivery preflight report | branch and ref evidence | credential and automation-stop status | blocker and next-owner register
+  change-delivery-preflight#F1 P2 source_fidelity: Add 'redaction pre-push hook present, honouring core.hooksPath' as a named check.
+  change-delivery-preflight#F2 P2 source_fidelity: Add a check for other active branches claiming the same version slot.
+## change-packaging-and-versioning [revise] perm=workspace-write-local-exec D=negative
+R: Package verified local changes into bisectable commits, coherent version and changelog metadata, credential-safe PR material, and a push handoff without remote writes.
+IN: Implemented and reviewed changes with fresh verification evidence.
+OUT: bisectable local commits | version and changelog updates | redacted PR and release metadata | local packaging evidence and push handoff
+  change-packaging-and-versioning#F1 P1 source_fidelity: Require classifying current version state against the base before any version write.
+  change-packaging-and-versioning#F2 P2 source_fidelity: Add WIP-only detection and a stop condition before any history rewrite.
+## deployment-environment-setup [revise] perm=workspace-write D=mixed
+R: Prepare local deployment configuration, provider choice, environment boundaries, secret references, and dry-run instructions without provisioning or deploying.
+IN: Application, providers, environments, secrets policy, target, and deployment constraints.
+OUT: local deployment configuration candidate | environment and secret-reference contract | dry-run and validation evidence | provider handoff and teardown plan
+  deployment-environment-setup#F1 P1 source_fidelity: Add a detection table mapping config files to platform adapters and derived health/status commands.
+  deployment-environment-setup#F2 P1 output_verifiability: Adopt that block as the required output schema consumed by readiness and trigger Skills.
+## deployment-trigger-execution [improve] perm=remote-write-authorized-only D=effective
+R: Trigger one exact approved deployment workflow or hook with frozen parameters and per-action authorization, without merging code or observing or rolling back the result.
+IN: Release identity, reviewed deployment target, frozen parameters, provider or hook adapter, credentials, and current authorization.
+OUT: deployment trigger receipt | immutable request and artifact identity | run or hook identity | failure, cancellation, and handoff record
+  deployment-trigger-execution#F1 P1 procedure: Add a first check: if the configured platform deploys automatically, return not-applicable and hand off to deployment-observation.
+  deployment-trigger-execution#F2 P2 source_fidelity: Require the run receipt to bind to the exact head or merge SHA.
+## edge-worker-deployment [improve] perm=remote-write-authorized-only D=no-gain
+R: Deploy one immutable edge-worker artifact through one approved provider adapter after build, binding, route, limit, and rollback preflight.
+IN: Worker source, environment bindings, provider account, compatibility target, and authorization.
+OUT: edge deployment receipt | immutable worker and binding manifest | route and environment identity | health handoff and rollback reference
+  edge-worker-deployment#F1 P1 source_fidelity: State that dry-run success does not validate bindings or runtime and require the health handoff to check them.
+  edge-worker-deployment#F2 P2 source_fidelity: Add type regeneration and typecheck to the local validation step.
+  edge-worker-deployment#F3 P2 trigger_precision: Add mutual anti-triggers keyed on 'edge runtime/bindings/routes' vs 'static or SSR hosting project'.
+## kubernetes-application-deployment [revise] perm=remote-write-authorized-only D=negative
+R: Deploy one immutable application version to an existing Kubernetes platform with validated manifests, identity, rollout, health, and rollback controls under per-action authorization.
+IN: Application artifact, existing cluster context, provider adapter, manifests, credentials, and deployment authorization.
+OUT: Kubernetes deployment receipt | applied resource and image identity | rollout and health status | recovery, observation, and rollback handoff
+  kubernetes-application-deployment#F1 P2 source_fidelity: Map known failure codes to stop and recovery actions in step 3.
+## merge-and-deploy-readiness [revise] perm=local-exec-external-read D=negative
+R: Perform a fresh read-only gate over branch, pull request, conflicts, CI, reviews, version drift, deployment preview, rollback, and authorization before merge or deploy.
+IN: A pull request, target branch, CI state, version state, and deployment configuration.
+OUT: merge readiness result | deployment readiness result | fresh PR and artifact evidence | blocker, authorization, and rollback register
+  merge-and-deploy-readiness#F1 P2 source_fidelity: Flag first run or changed deploy config as requiring a dry-run verdict.
+## pull-request-comment-response [improve] perm=remote-write-authorized-only D=effective
+R: Post one evidence-backed response to one identified pull-request review comment under per-action authorization, without changing source or resolving unrelated threads.
+IN: Comment identity, verified finding classification, response artifact, evidence links, provider, and current authorization.
+OUT: provider comment receipt | posted response and evidence links | target PR and thread identity | failure or bounded retry record
+  pull-request-comment-response#F1 P1 source_fidelity: Require classifying comment type and binding the reply target accordingly.
+## remote-git-push [keep] perm=remote-write-authorized-only D=effective
+R: Push one verified local branch to one approved remote ref without force under fresh per-action authorization and exact lease expectations.
+IN: Verified source ref, approved remote and target ref, current authorization, credential boundary, and redaction result.
+OUT: remote push receipt | source and destination ref identity | before and after remote SHA | failure and pull-request handoff
+  remote-git-push#F1 P2 source_fidelity: Name the redaction hook check explicitly.
+## remote-pull-request-change [improve] perm=remote-write-authorized-only D=effective
+R: Create or update one pull or merge request from one verified pushed ref after redaction and per-action authorization, without merge or deployment.
+IN: Verified remote refs, approved base, title and body artifacts, redaction result, provider, and current authorization.
+OUT: pull-request create or update receipt | PR identity and URL | base, head, and metadata evidence | failure and readiness handoff
+  remote-pull-request-change#F1 P1 source_fidelity: Add a rule: updates replace the body from current evidence; stale sections are removed.
+  remote-pull-request-change#F2 P2 source_fidelity: State scan-at-sink for title and body with refuse-on-scan-failure.
+## remote-pull-request-merge [revise] perm=remote-write-authorized-only D=negative
+R: Merge one identified pull request with one allowed repository method after a fresh passing readiness gate and explicit per-action authorization, without deployment.
+IN: Pull request identity, fresh CI and review evidence, mergeability, approved method, current authorization, and rollback plan.
+OUT: pull-request merge receipt | resulting merge commit identity | fresh readiness and provider evidence | failure and separate deployment handoff
+  remote-pull-request-merge#F1 P1 procedure: Define queue entry as an allowed method returning 'queued' with a pending-result handoff, never a merged claim.
+## web-hosting-deployment [improve] perm=remote-write-authorized-only D=effective
+R: Deploy one immutable Web application artifact through one selected hosting provider adapter with exact environment, configuration, health, domain, and rollback controls.
+IN: Build artifact, provider project, environment, secrets boundary, deployment plan, and authorization.
+OUT: hosting deployment receipt | deployment URL and immutable identity | artifact and configuration evidence | observation handoff and rollback reference
+  web-hosting-deployment#F1 P1 boundary: Add: when the provider deploys from Git, return a handoff to remote-git-push; this Skill covers CLI or API deploys only.
+  web-hosting-deployment#F2 P2 source_fidelity: Add a method-selection step with these states.

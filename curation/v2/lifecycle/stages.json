@@ -1,0 +1,165 @@
+{
+  "hard_stage_edges": [
+    {
+      "source": "stage:01-governance-intake",
+      "target": "stage:02-discovery-research"
+    },
+    {
+      "source": "stage:02-discovery-research",
+      "target": "stage:03-strategy-prioritization"
+    },
+    {
+      "source": "stage:03-strategy-prioritization",
+      "target": "stage:04-requirements-planning"
+    },
+    {
+      "source": "stage:04-requirements-planning",
+      "target": "stage:05-experience-design"
+    },
+    {
+      "source": "stage:05-experience-design",
+      "target": "stage:06-architecture-risk-security"
+    },
+    {
+      "source": "stage:06-architecture-risk-security",
+      "target": "stage:07-implementation-integration"
+    },
+    {
+      "source": "stage:07-implementation-integration",
+      "target": "stage:08-verification-quality"
+    },
+    {
+      "source": "stage:08-verification-quality",
+      "target": "stage:09-performance-reliability"
+    },
+    {
+      "source": "stage:09-performance-reliability",
+      "target": "stage:10-release-readiness"
+    },
+    {
+      "source": "stage:10-release-readiness",
+      "target": "stage:11-deployment-change"
+    },
+    {
+      "source": "stage:11-deployment-change",
+      "target": "stage:12-observation-canary"
+    },
+    {
+      "source": "stage:12-observation-canary",
+      "target": "stage:13-incident-recovery"
+    },
+    {
+      "source": "stage:13-incident-recovery",
+      "target": "stage:14-learning-feedback"
+    }
+  ],
+  "schema_version": "2.0",
+  "stages": [
+    {
+      "id": "stage:01-governance-intake",
+      "mandatory": true,
+      "name": "Governance and intake",
+      "order": 1,
+      "responsibility": "Bound authority, context, data governance, and routing before substantive work."
+    },
+    {
+      "id": "stage:02-discovery-research",
+      "mandatory": true,
+      "name": "Discovery and research",
+      "order": 2,
+      "responsibility": "Collect and validate user, market, system, and operational evidence."
+    },
+    {
+      "id": "stage:03-strategy-prioritization",
+      "mandatory": true,
+      "name": "Strategy and prioritization",
+      "order": 3,
+      "responsibility": "Choose evidence-backed direction while preserving human decision authority."
+    },
+    {
+      "id": "stage:04-requirements-planning",
+      "mandatory": true,
+      "name": "Requirements and planning",
+      "order": 4,
+      "responsibility": "Produce traceable requirements, specifications, plans, and handoffs."
+    },
+    {
+      "id": "stage:05-experience-design",
+      "mandatory": true,
+      "name": "Experience design",
+      "order": 5,
+      "responsibility": "Design flows, visual systems, interaction states, accessibility, and prototypes."
+    },
+    {
+      "id": "stage:06-architecture-risk-security",
+      "mandatory": true,
+      "name": "Architecture, risk, and security",
+      "order": 6,
+      "responsibility": "Define technical boundaries, data/API/security contracts, risks, and operational assumptions."
+    },
+    {
+      "id": "stage:07-implementation-integration",
+      "mandatory": true,
+      "name": "Implementation and integration",
+      "order": 7,
+      "responsibility": "Implement, integrate, debug, and self-check bounded source changes."
+    },
+    {
+      "id": "stage:08-verification-quality",
+      "mandatory": true,
+      "name": "Verification and quality",
+      "order": 8,
+      "responsibility": "Run independent review, tests, QA, regression, and evidence gates."
+    },
+    {
+      "id": "stage:09-performance-reliability",
+      "mandatory": true,
+      "name": "Performance and reliability",
+      "order": 9,
+      "responsibility": "Measure and improve performance, resilience, and deployment readiness."
+    },
+    {
+      "id": "stage:10-release-readiness",
+      "mandatory": true,
+      "name": "Release readiness",
+      "order": 10,
+      "responsibility": "Package and preflight a release without executing remote change."
+    },
+    {
+      "id": "stage:11-deployment-change",
+      "mandatory": true,
+      "name": "Deployment change",
+      "order": 11,
+      "responsibility": "Execute explicitly authorized remote deployment or configuration change."
+    },
+    {
+      "id": "stage:12-observation-canary",
+      "mandatory": true,
+      "name": "Observation and canary",
+      "order": 12,
+      "responsibility": "Observe production behavior, alerts, canaries, and post-deploy health."
+    },
+    {
+      "id": "stage:13-incident-recovery",
+      "mandatory": true,
+      "name": "Incident and recovery",
+      "order": 13,
+      "responsibility": "Investigate production failures, coordinate incidents, and execute rollback or recovery."
+    },
+    {
+      "id": "stage:14-learning-feedback",
+      "mandatory": true,
+      "name": "Learning and feedback",
+      "order": 14,
+      "responsibility": "Capture outcomes, retrospectives, decisions, and feedback for a new pass."
+    },
+    {
+      "id": "stage:15-tool-runtime-support",
+      "mandatory": false,
+      "name": "Tool runtime support",
+      "order": 15,
+      "responsibility": "Provide cross-cutting local runtime and artifact support; not a lifecycle approval step."
+    }
+  ],
+  "support_stage": "stage:15-tool-runtime-support"
+}

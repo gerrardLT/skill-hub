@@ -1,0 +1,320 @@
+{
+  "candidate_responsibility": "Design module boundaries and interfaces using information hiding, deep modules, seams, and dependency direction.",
+  "canonical_unit_ids": [
+    "codebase-design:unit-001",
+    "codebase-design:unit-002",
+    "codebase-design:unit-003",
+    "codebase-design:unit-004",
+    "codebase-design:unit-005",
+    "codebase-design:unit-006",
+    "codebase-design:unit-007",
+    "codebase-design:unit-008",
+    "codebase-design:unit-009"
+  ],
+  "cluster_id": "cluster:architecture-deep-module-design",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "codebase-design/DEEPENING.md:1-26",
+    "codebase-design/DEEPENING.md:27-31",
+    "codebase-design/DEEPENING.md:32-37",
+    "codebase-design/SKILL.md:1-10",
+    "codebase-design/SKILL.md:11-29",
+    "codebase-design/SKILL.md:30-59",
+    "codebase-design/SKILL.md:60-66",
+    "codebase-design/SKILL.md:67-97",
+    "codebase-design/SKILL.md:98-110"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deep-module-design"
+      ],
+      "id": "cluster:architecture-deep-module-design:fusion:boundary",
+      "rule": "Design module boundaries and interfaces using information hiding, deep modules, seams, and dependency direction."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deep-module-design"
+      ],
+      "id": "cluster:architecture-deep-module-design:fusion:inputs",
+      "rule": "Accept only: A module, its interfaces and dependencies, or evidenced architectural friction."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deep-module-design"
+      ],
+      "id": "cluster:architecture-deep-module-design:fusion:outputs",
+      "rule": "Produce only: Module boundaries, interface contracts, seams, dependency direction, and testability decisions."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:architecture-deep-module-design:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A module, its interfaces and dependencies, or evidenced architectural friction.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "codebase-design"
+      ]
+    }
+  ],
+  "output_boundary": "Module boundaries, interface contracts, seams, dependency direction, and testability decisions.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "深模块设计使命与三大战略目标：设计深模块（小接口后蕴藏丰富行为、置于清晰接缝处、且完全可通过该接口测试）；在所有代码设计与重构场景贯彻该语言与原则；三大核心价值为调用者的杠杆（leverage）、维护者的内聚（locality）、以及全员的可测试性（testability）。; 架构词汇精确定义规范：模块（Module，带接口与实现的实体，跨尺度通用，禁称 unit/component/service）；接口（Interface，调用者必须知晓的所有知识，包含签名/不变量/时序/错误/配置/性能，禁狭义称为 API/signature）；实现（Implementation，模块内部主体）；深度（Depth，接口杠杆率）；接缝（Seam，不修改即可改变行为的接合位置，禁称 boundary）；适配器（Adapter，在接缝处满足接口的具体角色）；杠杆（Leverage，调用端所得能力）；内聚（Locality，修改/缺陷/验证高度聚集在单处）。; 深浅模块结构模型与接口精简三问自省法：深模块（小接口 + 厚实现，方法少参数简隐藏复杂逻辑）优于浅模块（大接口 + 薄实现，纯粹数据透传）；在设计接口时必须自查三问——我能否减少方法数量？我能否简化调用参数？我能否将更多复杂度封装进内部？",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Explicit limits: 系统模块与接口设计时的最高价值导向与战略基准。; 在系统架构设计与重构沟通过程中对专有名词的强制使用规约。; 设计或审查任何模块接口形态时的启发式自省与结构裁决准则。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (method=3, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-001",
+        "codebase-design:unit-002",
+        "codebase-design:unit-003",
+        "codebase-design:unit-004",
+        "codebase-design:unit-005",
+        "codebase-design:unit-006",
+        "codebase-design:unit-007",
+        "codebase-design:unit-008",
+        "codebase-design:unit-009"
+      ]
+    },
+    {
+      "approach": "深浅模块结构模型与接口精简三问自省法：深模块（小接口 + 厚实现，方法少参数简隐藏复杂逻辑）优于浅模块（大接口 + 薄实现，纯粹数据透传）；在设计接口时必须自查三问——我能否减少方法数量？我能否简化调用参数？我能否将更多复杂度封装进内部？; 四层依赖拓扑分类与深化接缝策略：1. 进程内依赖（In-process，纯计算无 I/O，直接合并测试无需适配器）；2. 本地可替代依赖（Local-substitutable，存在 PGLite 等测试替身，内部接缝在单测运行替身，外部无暴露）；3. 自有远程服务（Remote but owned，六边形端口适配，深模块拥有业务逻辑，通过端口注入 HTTP 生产适配器与内存测试适配器）；4. 真实外部依赖（True external，不可控第三方，端口注入生产客户端与测试 Mock）。; 替代而非分层的测试重塑策略（Replace, don't layer）：一旦深模块接口测试建立，原浅模块上的旧单测即沦为技术负债废料，必须果断删除；在深模块新接口上编写新测试，以接口为唯一测试表面；测试只断言公开接口的可观测结果而非内部状态；测试应能经受内部重构考验，随实现改动而损坏的测试说明其非法穿透了接口。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:30-59"
+      ],
+      "limitations": "Explicit limits: 设计或审查任何模块接口形态时的启发式自省与结构裁决准则。; 在对具体模块进行接缝定位与测试适配架构设计时的分类指南。; 在模块完成深化重构后对历史测试套件进行清扫与重建的测试纪律。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-003",
+        "codebase-design:unit-007",
+        "codebase-design:unit-009"
+      ]
+    },
+    {
+      "approach": "系统模块与接口设计时的最高价值导向与战略基准。; 在系统架构设计与重构沟通过程中对专有名词的强制使用规约。; 设计或审查任何模块接口形态时的启发式自省与结构裁决准则。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Explicit limits: 系统模块与接口设计时的最高价值导向与战略基准。; 在系统架构设计与重构沟通过程中对专有名词的强制使用规约。; 设计或审查任何模块接口形态时的启发式自省与结构裁决准则。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (method=3, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-001",
+        "codebase-design:unit-002",
+        "codebase-design:unit-003",
+        "codebase-design:unit-004",
+        "codebase-design:unit-005",
+        "codebase-design:unit-006",
+        "codebase-design:unit-007",
+        "codebase-design:unit-008",
+        "codebase-design:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否包含深模块定义（小接口大行为）、接缝测试及杠杆/内聚/可测三大价值目标。; 核验是否逐一精准定义 8 大专有名词并严格列举对应的严禁混淆词汇。; 核验是否完整包含接口属性论、删除测试、接口即测试表面、以及两套适配器法则。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Explicit limits: 系统模块与接口设计时的最高价值导向与战略基准。; 在系统架构设计与重构沟通过程中对专有名词的强制使用规约。; 评判模块边界、抽象必要性与测试切片合理性的底层公理。",
+      "source_id": "codebase-design",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "codebase-design:unit-001",
+        "codebase-design:unit-002",
+        "codebase-design:unit-004",
+        "codebase-design:unit-005",
+        "codebase-design:unit-006",
+        "codebase-design:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "codebase-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 6
+      },
+      "evidence": [
+        "codebase-design/DEEPENING.md:1-26",
+        "codebase-design/DEEPENING.md:27-31",
+        "codebase-design/DEEPENING.md:32-37",
+        "codebase-design/SKILL.md:1-10",
+        "codebase-design/SKILL.md:11-29",
+        "codebase-design/SKILL.md:30-59",
+        "codebase-design/SKILL.md:60-66",
+        "codebase-design/SKILL.md:67-97",
+        "codebase-design/SKILL.md:98-110"
+      ],
+      "source_id": "codebase-design",
+      "unit_ids": [
+        "codebase-design:unit-001",
+        "codebase-design:unit-002",
+        "codebase-design:unit-003",
+        "codebase-design:unit-004",
+        "codebase-design:unit-005",
+        "codebase-design:unit-006",
+        "codebase-design:unit-007",
+        "codebase-design:unit-008",
+        "codebase-design:unit-009"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "codebase-design:unit-001",
+    "codebase-design:unit-002",
+    "codebase-design:unit-003",
+    "codebase-design:unit-004",
+    "codebase-design:unit-005",
+    "codebase-design:unit-006",
+    "codebase-design:unit-007",
+    "codebase-design:unit-008",
+    "codebase-design:unit-009"
+  ]
+}

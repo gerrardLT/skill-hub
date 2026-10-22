@@ -1,0 +1,392 @@
+{
+  "domain": "ux-ui-and-accessibility",
+  "skills": {
+    "accessibility-contracts-and-assistive-validation": {
+      "trigger_signals": [
+        "A user-facing task needs an accessibility acceptance contract: semantics, keyboard, focus, assistive technology and error recovery",
+        "Someone asks which accessibility criteria an implementation passes, fails or has not been tested against"
+      ],
+      "guidance": [
+        "Default thresholds when the contract does not override them (WCAG 2.2 AA): text contrast 4.5:1 normal and 3:1 large text and UI components; visible focus indicator on every interactive element; reflow at 320 CSS px and 200% zoom without loss; touch targets at least 24 CSS px (prefer 44); reduced-motion respected.",
+        "Treat specifications as requirements and authoring-practice patterns as implementation guidance to be tested in the target environment, never as proof of conformance."
+      ],
+      "source_evidence_add": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34",
+        "web-accessibility/references/source-index.md:1-32"
+      ],
+      "resolves": {
+        "accessibility-contracts-and-assistive-validation#F1": "fixed: guidance (WCAG 2.2 AA default thresholds)"
+      }
+    },
+    "ai-interaction-and-probabilistic-ux": {
+      "trigger_signals": [
+        "A feature shows generated or probabilistic output and needs loading, uncertainty, correction and failure states designed",
+        "Someone asks how users should correct, undo, retry or escalate when an AI result is wrong"
+      ],
+      "guidance": [
+        "Pattern per state. Latency: streamed partial output or a skeleton with an expected wait and a cancel control. Uncertainty: task-language wording of what is known and unknown, never a decorative confidence percentage. Provenance: inline citations or source links the user can open. Correction: edit in place, undo, regenerate with a changed instruction. Failure: a plain message, the retry path and a human escalation route.",
+        "Model the states deterministic, loading, partial, uncertain, conflicting, unsafe, unavailable and recovered, and give each its visible UI, controls and exit.",
+        "Discriminator: owns how uncertain AI output is shown to and corrected by users; it does not choose models or autonomy levels."
+      ],
+      "contract": {
+        "permission_identity": "workspace-write",
+        "execution": {
+          "adapter": "artifact",
+          "model_tools": [
+            "read",
+            "write"
+          ],
+          "mutation_scope": "run-output",
+          "remote_write": false
+        }
+      },
+      "source_evidence_add": [
+        "ai-product-strategy/references/guest-insights.md:730-753"
+      ],
+      "resolves": {
+        "ai-interaction-and-probabilistic-ux#F1": "deferred-to-eval: Phase R5 fresh holdout requires uncertainty and correction states",
+        "ai-interaction-and-probabilistic-ux#F2": "fixed: contract override (mutation scope reduced from authorized-workspace to run-output; the procedure never writes source)",
+        "ai-interaction-and-probabilistic-ux#F3": "fixed: guidance (pattern catalog per state)"
+      }
+    },
+    "content-copy-and-authentic-assets": {
+      "trigger_signals": [
+        "An interface needs real labels, messages, sample records and licensed images instead of placeholders",
+        "Someone asks for copy for every state (empty, error, loading, success) without inventing claims or testimonials"
+      ],
+      "guidance": [
+        "Density defaults for marketing surfaces: headline at most 8 words, supporting paragraph at most 25 words, and one visual asset or one call to action per section; anything longer needs a stated reason.",
+        "Asset priority: generate or license an authentic image first, then real product screenshots; never fake a screenshot with styled boxes. Record source, license and alt intent for each."
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:262-332"
+      ],
+      "resolves": {
+        "content-copy-and-authentic-assets#F1": "fixed: guidance (density defaults, asset priority)",
+        "content-copy-and-authentic-assets#F2": "deferred-to-eval: Phase R5 fresh holdout includes fabricated social proof in the brief"
+      }
+    },
+    "design-context-and-direction-contract": {
+      "trigger_signals": [
+        "A new or approved-redesign interface needs a design direction tied to product behavior, audience and brand evidence",
+        "Someone asks for user flow, hierarchy, spatial and visual decisions with the authority behind each choice"
+      ],
+      "anti_add": [
+        {
+          "text": "Implement the visual grammar, type, color and anti-template rules",
+          "route": "visual-language-and-anti-template-controls"
+        }
+      ],
+      "guidance": [
+        "Intake in one consolidated question that pre-fills what the codebase and assets already show (product, audience, project type, existing patterns, constraints); ask only for what cannot be inferred.",
+        "Make the spatial thesis concrete: derive a width budget, column structure, padding and density from the supplied content and viewports, with the numbers shown, instead of deferring exact values.",
+        "State the sort order and severity ordering that drive hierarchy (for example critical first), and trace each major choice to product purpose, audience, content or brand authority; untraceable choices are listed as taste decisions for the owner."
+      ],
+      "resolves": {
+        "design-context-and-direction-contract#F1": "deferred-to-eval: Phase R5 fresh holdout scores traceability of choices; Phase D loss (concrete spatial values, sort order) addressed by guidance",
+        "design-context-and-direction-contract#F2": "fixed: guidance (one consolidated intake question with inferred defaults)",
+        "design-context-and-direction-contract#F3": "fixed: anti_add (visual-language-and-anti-template-controls)"
+      }
+    },
+    "design-system-foundation-and-token-extraction": {
+      "trigger_signals": [
+        "A project needs semantic tokens, component contracts and theme rules, or needs to confirm its existing system already covers a new need",
+        "Someone asks for candidate token and theme files with a change table and version"
+      ],
+      "guidance": [
+        "Reuse first: inventory the existing tokens and components and show which required states they already express. Add a token only for a real state the foundation cannot express.",
+        "Prefer the official package when the brief matches a known design system (component library or platform guidelines) rather than inventing CSS for it.",
+        "When approval is still pending, still produce candidate token and theme files labelled pending, with a change table, a version rationale and a checked contrast figure; never persist them as approved and name the approver."
+      ],
+      "outputs_add": [
+        "candidate token and theme files labelled pending approval, with change table and version rationale"
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:82-120",
+        "gstack/design-review/SKILL.md:979-1007"
+      ],
+      "resolves": {
+        "design-system-foundation-and-token-extraction#F1": "deferred-to-eval: Phase R5 fresh holdout has an existing token set that already covers the need; Phase D loss (declined regeneration) addressed by guidance and outputs_add",
+        "design-system-foundation-and-token-extraction#F2": "fixed: guidance (prefer official system package)"
+      }
+    },
+    "divergent-prototyping-and-variant-selection": {
+      "trigger_signals": [
+        "A UI decision is uncertain enough to build two or more genuinely different working variants to compare",
+        "Someone asks for isolated prototypes with equivalent captures and a tradeoff matrix before choosing"
+      ],
+      "guidance": [
+        "Before comparison, render every variant with a clean console: all variants render, every interaction responds, and no console errors. Fix or report a variant that fails this check instead of comparing it.",
+        "Present the set and stop; the choice belongs to the named human owner."
+      ],
+      "source_evidence_add": [
+        "prototype/SKILL.md:59-73"
+      ],
+      "resolves": {
+        "divergent-prototyping-and-variant-selection#F1": "fixed: guidance (clean-console render check per variant)"
+      }
+    },
+    "evidence-based-ui-review-and-release-gates": {
+      "trigger_signals": [
+        "Current rendered evidence and specialist findings exist and someone needs a release recommendation against explicit UI criteria",
+        "Before capture, a UI build needs a bounded cross-domain preflight across accessibility, content, states, responsiveness and motion"
+      ],
+      "responsibility": "Apply explicit UI release criteria to current rendered evidence, or run a bounded cross-domain preflight before capture, aggregate blocking findings, and recommend a bounded release disposition without source repair.",
+      "inputs": [
+        "An implementation, desktop and mobile captures, a brief, direction contract, target files, and findings; in preflight mode, a rendered UI or build, acceptance criteria, content, supported devices, and the release boundary."
+      ],
+      "guidance": [
+        "Preflight mode runs before evidence capture. Select only the applicable domains, state why any domain is not applicable, and mark unchecked, not-applicable-without-rationale and source-inspection-only items as unresolved, never passed.",
+        "Canonical preflight items: text contrast 4.5:1 (3:1 large) and visible focus states; descriptive alt text and accessible names for icon-only controls; keyboard reach and order; touch targets at least 44 by 44 with 8 px spacing; zoom never disabled and body text at least 16 px; no horizontal overflow at 320 px; loading, empty, error and success states present; reduced-motion path; authentic content with no placeholder text; clean console on the primary journey.",
+        "Release mode consumes the findings issued by rendered-ui-critique-and-release-disposition and owns the disposition. Critique produces findings, this Skill decides what blocks release and recommends pass, pass with explicit risk, needs repair, or blocked.",
+        "Boundary: this Skill owns release criteria, blocking-finding aggregation and the disposition recommendation, including the preflight checklists absorbed from the former cross-domain checklist Skill; new finding discovery belongs to rendered-ui-critique-and-release-disposition.",
+        "Preflight checks absorbed from the former checklist Skill: a defect that is deterministic from supplied static source (a missing input label or dialog accessible name, a fixed width that overflows at 360px, a text colour whose contrast ratio you can compute against its background) is a finding, not a risk. Grade findings by severity. Automated scans do not prove keyboard operability; say so and list it as unverified evidence needed.",
+        "Give one clear disposition from the allowed set and state why. When part of the evidence is missing and part is failing, lead with the failing item (blocked or needs-repair) and list the missing evidence underneath instead of mixing two statuses.",
+        "Attribute a finding only to the exact capture or source that states it. Collective capture notes do not prove which individual capture contains the finding.",
+        "Route repair by responsibility and permission identity; do not invent a mandatory named workflow, capability or authority absent from supplied routing material."
+      ],
+      "outputs_add": [
+        "preflight result with blocking-finding register, evidence-gap list and residual-risk summary"
+      ],
+      "authored_content": [
+        "release-gate aggregation method is authored; cited sources are style and prototype hand-off notes"
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:910-980",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "resolves": {
+        "evidence-based-ui-review-and-release-gates#F1": "fixed: guidance (this Skill owns disposition; critique Skill outputs findings only)",
+        "evidence-based-ui-review-and-release-gates#F2": "fixed: authored_content",
+        "cross-domain-ui-preflight-checklists#F1": "fixed: merged as preflight mode (responsibility, inputs, outputs_add, guidance)",
+        "cross-domain-ui-preflight-checklists#F2": "fixed: guidance (canonical preflight items carried over)",
+        "evidence-based-ui-review-and-release-gates#optimization-old-safety": "fixed: evidence-bound unknown/access/arithmetic guidance from old regression adjudication"
+      },
+      "anti_add": [
+        {
+          "text": "Discover and prioritize new UI findings from rendered evidence",
+          "route": "rendered-ui-critique-and-release-disposition"
+        }
+      ]
+    },
+    "existing-interface-redesign-and-preservation": {
+      "trigger_signals": [
+        "An existing product or site is being redesigned and must keep its routes, SEO, analytics and user tasks working",
+        "Someone asks what in the current interface must be preserved, migrated, replaced or removed, and who decides"
+      ],
+      "guidance": [
+        "Step 1 is mode classification: greenfield (no existing behavior to keep), redesign that preserves behavior, or an approved full overhaul. Misclassifying the mode is the largest source of bad redesign output; state the mode and the evidence for it."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Classify the mode (greenfield, redesign that preserves behavior, or approved overhaul) and state the evidence for it."
+        }
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:783-833"
+      ],
+      "resolves": {
+        "existing-interface-redesign-and-preservation#F1": "fixed: procedure_insert + guidance (mode classification)"
+      }
+    },
+    "external-design-token-extraction-and-normalization": {
+      "trigger_signals": [
+        "A supplied capture or file of an authorized external site must be turned into an inventory of design primitives with provenance",
+        "Someone asks which colors, type and spacing a reference uses, with confidence and conflicts, before anything is written to the project"
+      ],
+      "anti_add": [
+        {
+          "text": "Acquire the capture or crawl the external site itself",
+          "route": "browser-data-acquisition-runtime"
+        }
+      ],
+      "guidance": [
+        "This Skill reads only supplied authorized captures or files. It cannot browse or fetch; acquisition of the capture belongs to a browser acquisition capability, and the Coverage tag external-read refers to the external origin of the supplied material, not to live access.",
+        "Extraction is for initialization, not pixel-perfect reproduction: give extract-only output by default and offer starter files only when the owner asks."
+      ],
+      "source_evidence_add": [
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:39-50"
+      ],
+      "resolves": {
+        "external-design-token-extraction-and-normalization#F1": "fixed: anti_add + guidance (acquisition routed explicitly; external-read coverage clarified)",
+        "external-design-token-extraction-and-normalization#F2": "deferred-to-eval: Phase R5 fresh holdout"
+      }
+    },
+    "interaction-states-forms-and-navigation": {
+      "trigger_signals": [
+        "A form, flow or navigation needs every control state and failure recovery defined and implemented",
+        "Someone asks what happens on validation error, timeout, permission denial, refresh or back navigation"
+      ],
+      "guidance": [
+        "Default target size: at least 44 by 44 pt (Apple) or 48 by 48 dp (Material), with at least 8 px between targets; extend the hit area beyond the visible bounds when needed. Never rely on hover alone for a primary action.",
+        "During verification capture console errors for each flow, keyboard order and focus movement, and deep-link, refresh and back behavior."
+      ],
+      "source_evidence_add": [
+        "ui-ux-pro-max/references/quick-reference.md:35-54",
+        "gstack/design-review/SKILL.md:1192-1231"
+      ],
+      "resolves": {
+        "interaction-states-forms-and-navigation#F1": "fixed: guidance (target size defaults, console error capture)",
+        "interaction-states-forms-and-navigation#F2": "declined: the audit itself recorded no change required for this finding"
+      }
+    },
+    "purposeful-motion-and-animation-engineering": {
+      "trigger_signals": [
+        "A transition or animation must communicate hierarchy, causality or feedback and remain safe for reduced-motion users",
+        "Someone asks for interruptible, deterministic motion that does not drop frames"
+      ],
+      "guidance": [
+        "Default implementation rule: animate only transform and opacity, which skip layout and paint. Animating width, height, top, left, padding or margin triggers layout. Set transform directly on the element instead of driving children through a parent CSS variable.",
+        "Choose shared duration tokens by distance and context and verify that feedback stays responsive rather than treating one duration as universal.",
+        "When reduced motion disables transitions, commit final open/closed state synchronously; never wait for transitionend that will not fire. Restore focus after close. For animated mode handle interrupted transitions and ensure entrance start and end values differ. Assess flashing against the three-flashes-per-second safety threshold, including applicable area/luminance conditions; do not approve an unverified 4 Hz flash."
+      ],
+      "source_evidence_add": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161",
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "resolves": {
+        "purposeful-motion-and-animation-engineering#F1": "fixed: guidance (transform and opacity default rule)"
+      }
+    },
+    "rendered-ui-critique-and-release-disposition": {
+      "trigger_signals": [
+        "Current rendered captures and traces exist and someone needs a critique with reproducible, prioritized findings",
+        "A UI review needs blockers separated from improvements, taste choices and evidence gaps"
+      ],
+      "responsibility": "Independently critique current rendered UI and animation behavior and prioritize reproducible findings; recommend recapture or hand the findings to the release gate, without issuing the release disposition or mutating source.",
+      "contract": {
+        "outputs": [
+          "rendered critique",
+          "prioritized reproducible findings",
+          "remediation hierarchy",
+          "recapture recommendation and release-gate handoff"
+        ],
+        "artifact_types": [
+          "rendered critique",
+          "prioritized reproducible findings",
+          "remediation hierarchy",
+          "recapture recommendation and release-gate handoff"
+        ]
+      },
+      "guidance": [
+        "Audit categories: visual hierarchy and composition, typography, color and contrast, spacing and layout, interaction states, responsive reflow, motion, content and copy, accessibility signals, and perceived performance. Rate each finding high, medium or polish impact and give a category.",
+        "The release disposition belongs to evidence-based-ui-review-and-release-gates; this Skill ends with the prioritized findings and a recapture need.",
+        "Boundary: this Skill produces prioritized findings from rendered evidence; applying explicit release criteria and the final disposition recommendation belong to evidence-based-ui-review-and-release-gates."
+      ],
+      "authored_content": [
+        "category list follows the structure of the cited audit checklist, whose other category names were not carried in the cited range"
+      ],
+      "source_evidence_add": [
+        "gstack/design-review/SKILL.md:1008-1047",
+        "gstack/design-review/SKILL.md:1065-1104"
+      ],
+      "resolves": {
+        "rendered-ui-critique-and-release-disposition#F1": "fixed: contract override (outputs now end at recapture and release-gate handoff; disposition removed); the rename to rendered-ui-critique is deferred (structure.json deferred_renames)",
+        "rendered-ui-critique-and-release-disposition#F2": "fixed: guidance (category list, impact scale)"
+      }
+    },
+    "responsive-layout-and-spatial-composition": {
+      "trigger_signals": [
+        "A page or component needs a layout and reflow design across desktop, tablet and mobile widths",
+        "Someone asks for breakpoints, grid, density and what happens at intermediate widths, zoom and long content"
+      ],
+      "guidance": [
+        "Hard rules: the hero fits the initial viewport with a headline of at most two lines; never disable zoom; body text at least 16 px; systematic breakpoints (for example 375, 768, 1024, 1440).",
+        "A control rail taller than the viewport scrolls internally and keeps Apply and Clear controls sticky; manage focus when it opens and closes so the filters stay reachable.",
+        "Give an executable overflow check for each width (document.scrollingElement.scrollWidth equals clientWidth, so no horizontal overflow) and state where each inserted block, such as a promo banner, lands after reflow at every breakpoint."
+      ],
+      "outputs_add": [
+        "per-breakpoint reflow table with overflow check for each tested width"
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:234-261",
+        "ui-ux-pro-max/references/quick-reference.md:93-113"
+      ],
+      "resolves": {
+        "responsive-layout-and-spatial-composition#F1": "deferred-to-eval: Phase R5 fresh holdout includes intermediate-width breakage; Phase D loss (filter reachability, executable check, promo reflow) addressed by guidance and outputs_add",
+        "responsive-layout-and-spatial-composition#F2": "fixed: guidance (hard layout rules)"
+      }
+    },
+    "ui-review-scope-and-evidence-acquisition": {
+      "trigger_signals": [
+        "A UI review needs a scope matrix and provenance-bound captures before anyone judges the design",
+        "Someone asks which routes, states, viewports and input modes must be captured and whether the evidence is complete"
+      ],
+      "guidance": [
+        "Unknown capture commands are proposed, not executed: map project markers to a candidate command and offer it; run only commands already approved.",
+        "Capture dedicated views for state-specific content (for example a discounted price in each viewport), not only the default state.",
+        "When a captured artifact shows a measurable defect, record it as a routed observation with its evidence (for example a computed contrast ratio against the 4.5:1 and 3:1 thresholds) and send it to rendered-ui-critique-and-release-disposition. Do not judge design quality and do not withhold the observation."
+      ],
+      "outputs_add": [
+        "routed observations with evidence, forwarded to critique"
+      ],
+      "source_evidence_add": [
+        "gstack/design-review/SKILL.md:590-629",
+        "web-design-guidelines/SKILL.md:10-20"
+      ],
+      "resolves": {
+        "ui-review-scope-and-evidence-acquisition#F1": "fixed: guidance (unknown commands proposed, not executed); Phase D loss (routed observations, state-specific captures) addressed by guidance and outputs_add"
+      }
+    },
+    "ui-task-routing-and-governance": {
+      "trigger_signals": [
+        "A UI request arrives and someone must classify design, redesign, token import, implementation, preflight, capture, critique, repair or release intent",
+        "A UI task needs its write boundary and the next single UI capability decided before any work"
+      ],
+      "anti_add": [
+        {
+          "text": "Classify a request that is not UI-only or spans several domains",
+          "route": "context-intake-and-routing"
+        },
+        {
+          "text": "Sequence capabilities for a workflow that no Recipe covers",
+          "route": "workflow-orchestration-and-lifecycle"
+        }
+      ],
+      "contract": {
+        "permission_identity": "read-only",
+        "execution": {
+          "external": "none",
+          "host_actions": [],
+          "model_tools": [
+            "read"
+          ],
+          "mutation_scope": "none",
+          "remote_write": false
+        }
+      },
+      "resolves": {
+        "ui-task-routing-and-governance#F1": "fixed: anti_add (context-intake-and-routing)",
+        "ui-task-routing-and-governance#F2": "fixed: contract override (read-only, matching context-intake-and-routing)"
+      },
+      "guidance": [
+        "Routing ownership: this Skill classifies UI-only work; cross-domain requests go to context-intake-and-routing and Recipe selection belongs to the router."
+      ]
+    },
+    "visual-language-and-anti-template-controls": {
+      "trigger_signals": [
+        "An interface needs a deliberate visual language for type, color, shape and emphasis that stays tied to brand evidence",
+        "Someone asks to remove generic template patterns and unsupported decoration from a design"
+      ],
+      "anti_add": [
+        {
+          "text": "Decide the overall design direction, flow and hierarchy",
+          "route": "design-context-and-direction-contract"
+        }
+      ],
+      "guidance": [
+        "Tells to avoid unless the brief earns them: neon or outer glows, pure black (#000000), oversaturated accents, same-size icon-heading-text card grids as page structure, gradient heroes, floating pill clusters, and decorative charts. A brief that asks for one can earn it; otherwise say what replaced it.",
+        "When a color or type value is contested, give provisional roles with the owner named, offer local preparation of the change for review, state the fallback font stack, and give concrete sizes and touch targets. Keep contested values non-final until the owner decides."
+      ],
+      "source_evidence_add": [
+        "design-taste-frontend/SKILL.md:595-684",
+        "impeccable/reference/craft-floor.md:19-44"
+      ],
+      "resolves": {
+        "visual-language-and-anti-template-controls#F1": "fixed: guidance (tells list with brief-can-earn-it exception); Phase D loss (provisional roles, concrete sizes) addressed by guidance"
+      }
+    }
+  }
+}

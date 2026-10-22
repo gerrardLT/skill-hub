@@ -1,0 +1,434 @@
+{
+  "domain": "observability-operations-and-incidents",
+  "skills": {
+    "ai-observability-configuration": {
+      "trigger_signals": [
+        "An LLM or agent application needs its generation spans, token usage and tool calls traced in one provider under a telemetry governance policy",
+        "Someone asks which prompt, response and tool fields may be collected, at what sampling, retention and access"
+      ],
+      "anti_add": [
+        {
+          "text": "Configure log collection, parsing and routing",
+          "route": "log-observability-configuration"
+        },
+        {
+          "text": "Handle release and commit association for services and environments",
+          "route": "release-observability-configuration"
+        },
+        {
+          "text": "Handle monitors and alert routes from approved SLOs",
+          "route": "monitoring-and-alert-configuration"
+        }
+      ],
+      "guidance": [
+        "Default schema: the gen_ai.* span attribute conventions (operation name, system, request and response model, token counts, finish reason, tool name). Record the convention version used.",
+        "Detect a supported SDK or auto-instrumentation first and use it; add manual spans only when no supported SDK is detected, and never run both for the same call.",
+        "Prompt, response, tool, user and retrieved content are denied by default; collect a field only when the governance record names it, with sampling, redaction, retention and access.",
+        "Discriminator by signal type: this Skill handles model calls, prompts, traces and evaluation telemetry."
+      ],
+      "source_evidence_add": [
+        "sentry-setup-ai-monitoring/SKILL.md:12-44",
+        "sentry-setup-ai-monitoring/SKILL.md:269-308"
+      ],
+      "resolves": {
+        "ai-observability-configuration#F1": "fixed: anti_add (log-observability-configuration)",
+        "ai-observability-configuration#F2": "fixed: guidance (gen_ai.* default schema, SDK detection before manual spans)"
+      }
+    },
+    "apm-instrumentation-enablement": {
+      "trigger_signals": [
+        "One service needs APM tracing turned on through one approved instrumentation method after the agent is in place",
+        "Someone asks for the exact change that enables tracing for a service and environment without duplicate instrumentation"
+      ],
+      "guidance": [
+        "Commit to exactly one instrumentation path. When an existing exporter or collector is already in use, reuse it and state why; leave no open alternative. Show the concrete change (for example a task-definition or manifest diff with the sidecar, dependency ordering and memory or cost increase for approval).",
+        "Kubernetes variant preconditions: every context variable resolved before step 0, and the agent resource is extended in place rather than replaced with a second manifest."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "Choose exactly one instrumentation path, reusing an existing exporter where present, and give the concrete change with its resource and cost impact."
+        }
+      ],
+      "source_evidence_add": [
+        "dd-apm/k8s-ssi/enable-ssi/SKILL.md:12-51",
+        "dd-apm/k8s-ssi/enable-ssi/SKILL.md:135-174"
+      ],
+      "resolves": {
+        "apm-instrumentation-enablement#F1": "fixed: guidance (Kubernetes preconditions); Phase D loss (path left open) addressed by procedure_insert"
+      }
+    },
+    "apm-instrumentation-troubleshooting": {
+      "trigger_signals": [
+        "Expected traces, service names or versions are missing, duplicated or wrong in the APM provider",
+        "Someone asks why instrumentation that was enabled is not producing the expected signals"
+      ],
+      "guidance": [
+        "Order checks provider side first (is the tracer reporting, does the provider recognise the service, what SDK configuration is active), then host side. Before asking for host access, say what you will check and why."
+      ],
+      "source_evidence_add": [
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:329-360",
+        "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:240-279"
+      ],
+      "resolves": {
+        "apm-instrumentation-troubleshooting#F1": "fixed: guidance (provider-side first, stated rationale)",
+        "apm-instrumentation-troubleshooting#F2": "deferred-to-eval: Phase R5 fresh holdout"
+      }
+    },
+    "apm-instrumentation-verification": {
+      "trigger_signals": [
+        "Tracing was enabled and someone needs proof from current data that service, environment, version and trace linkage are right",
+        "Several services were onboarded and the owner needs one coverage view of which are verified, partly verified or stale"
+      ],
+      "responsibility": "Verify from read-only current evidence that APM instrumentation emits correct service, environment, version, trace linkage, sampling, and governed fields, and summarize multi-service onboarding coverage with its evidence and gaps.",
+      "guidance": [
+        "Multi-service coverage matrix: classify each service as not planned, blocked, configured but unverified, partially verified, verified, degraded or stale, never upgrading a status from prose. Each row links its status to current evidence, an owner, the gap and the next capability.",
+        "Explain each gap concretely: for example zero root spans on a worker fits a downstream service that receives context, not a fault; an unknown_service source means the service name was never set. Give the fix as a specific check or change with its owner.",
+        "A configured service is not verified, and stale evidence is not current."
+      ],
+      "outputs_add": [
+        "service coverage matrix with per-row evidence, owner, gap and next action",
+        "stale-evidence register"
+      ],
+      "source_evidence_add": [
+        "dd-apm/k8s-ssi/onboarding-summary/SKILL.md:3-7",
+        "dd-apm/linux-ssi/onboarding-summary/SKILL.md:75-85"
+      ],
+      "resolves": {
+        "apm-onboarding-summary#F1": "fixed: merged into this Skill (responsibility, outputs_add, guidance: coverage matrix)"
+      }
+    },
+    "canary-baseline-management": {
+      "trigger_signals": [
+        "Chosen production pages need a frozen baseline capture to compare future canary samples against",
+        "A healthy release should replace the old baseline and the change must be recorded without deleting the old one"
+      ],
+      "guidance": [
+        "Capture a baseline before the deploy; replace it only after a healthy canary, with the prior version kept and linked in an explicit supersession record (old id, new id, reason, approver).",
+        "Define concrete invalidation triggers for each baseline (release changes layout, A/B test active, data-dependent content) and flag measurable shifts the new capture shows, for example a rise in largest contentful paint."
+      ],
+      "outputs_add": [
+        "supersession record and baseline invalidation triggers"
+      ],
+      "source_evidence_add": [
+        "gstack/canary/SKILL.md:548-587",
+        "gstack/canary/SKILL.md:715-725"
+      ],
+      "resolves": {
+        "canary-baseline-management#F1": "fixed: guidance (healthy canary precondition, supersession record); Phase D loss (both supersession and invalidation triggers) addressed by outputs_add"
+      }
+    },
+    "deployment-observation": {
+      "trigger_signals": [
+        "A change has just been deployed and someone needs read-only health evidence against thresholds and a continue, investigate or rollback recommendation",
+        "Someone asks whether the release is healthy and what evidence would justify rolling back"
+      ],
+      "guidance": [
+        "The observation window starts at confirmed deploy completion per platform: a matching workflow run for the merge SHA has succeeded, or an auto-deploy platform has had its propagation wait. Record the start time and how it was confirmed.",
+        "When the identity is read-only, decline to roll back and say so. Still give an explicit rollback recommendation addressed to a named authorized operator, with the trigger condition and the evidence that supports it, and enumerate the evidence still missing.",
+        "Bind every observation to its query, timestamp, environment and release."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Confirm deploy completion for the platform (workflow run for the merge SHA, or propagation wait) and record it as the window start."
+        }
+      ],
+      "outputs_add": [
+        "explicit rollback recommendation addressed to an authorized operator, with missing-evidence list"
+      ],
+      "source_evidence_add": [
+        "gstack/land-and-deploy/SKILL.md:792-831"
+      ],
+      "resolves": {
+        "deployment-observation#F1": "fixed: procedure_insert + guidance (window start at confirmed completion); Phase D loss (explicit rollback recommendation, source binding, missing evidence) addressed by outputs_add"
+      }
+    },
+    "error-monitoring-issue-investigation": {
+      "trigger_signals": [
+        "One error-monitoring issue needs its events, releases and stack traces turned into an evidence-bounded root-cause hypothesis",
+        "Someone asks what caused an alert or a regression in production errors, read-only"
+      ],
+      "anti_add": [
+        {
+          "text": "Reproduce and trace a defect locally from a failing test or incident",
+          "route": "root-cause-investigation"
+        }
+      ],
+      "guidance": [
+        "Step 1: classify the issue (error, performance, or scheduled-job monitor). The category decides what context means: an error needs stack and breadcrumbs, a performance issue needs the trace, a monitor issue needs the missed check-in history."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Classify the issue as error, performance or scheduled-job monitor before pulling context."
+        }
+      ],
+      "source_evidence_add": [
+        "sentry-debug-issue/SKILL.md:53-111"
+      ],
+      "resolves": {
+        "error-monitoring-issue-investigation#F1": "fixed: procedure_insert + guidance (issue category)",
+        "error-monitoring-issue-investigation#F2": "fixed: anti_add (root-cause-investigation)"
+      }
+    },
+    "incident-response-coordination": {
+      "trigger_signals": [
+        "A production incident is active and someone must set severity, roles, timeline, communications and recovery criteria",
+        "Stakeholders need updates and a closure recommendation while separate owners perform the fixes"
+      ],
+      "guidance": [
+        "Severity scale: SEV1 full outage or data loss affecting most users; SEV2 major function degraded for many users; SEV3 limited impact or workaround exists; SEV4 minor or cosmetic. Recommend a level and the evidence for it; the incident lead confirms.",
+        "Communication cadence: internal responders every 15 minutes minimum during an active incident, internal stakeholders at each state change, external status page at detection, identification, mitigation and resolution. Each update states what is known, what is being done, and the next update time.",
+        "Status page templates: initial (investigating reports of <impact>, next update by <time>), identified (cause identified, mitigation in progress), resolved (service restored, follow-up to come)."
+      ],
+      "outputs_add": [
+        "severity recommendation with evidence",
+        "update drafts for each audience with next-update time"
+      ],
+      "source_evidence_add": [
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165"
+      ],
+      "resolves": {
+        "incident-response-coordination#F1": "fixed: guidance + outputs_add (SEV scale, cadence, templates)"
+      }
+    },
+    "log-observability-configuration": {
+      "trigger_signals": [
+        "Logs from exact services need collection, parsing, routing and retention set up in one provider with sensitive fields controlled",
+        "Someone asks for the pipeline, exclusion filters and cost estimate for a log source"
+      ],
+      "anti_add": [
+        {
+          "text": "Configure AI or LLM trace spans and token telemetry",
+          "route": "ai-observability-configuration"
+        },
+        {
+          "text": "Handle release and commit association for services and environments",
+          "route": "release-observability-configuration"
+        },
+        {
+          "text": "Handle monitors and alert routes from approved SLOs",
+          "route": "monitoring-and-alert-configuration"
+        }
+      ],
+      "guidance": [
+        "Cost control order: exclusion filters first (drop debug and health-check noise), then sampling, then shorter retention on low-value indexes. Estimate volume and cost per index before the change.",
+        "Pipeline pattern: a filter selecting the service, a parser (for example grok for a known line format) with sample lines, then remappers for status, service and trace id.",
+        "Troubleshooting map: logs not appearing (check agent and pipeline filters), high cost (add exclusions), slow search (narrow time range and use indexes), missing attributes (check the parser).",
+        "Discriminator by signal type: this Skill handles log collection, parsing, routing and retention."
+      ],
+      "source_evidence_add": [
+        "dd-logs/SKILL.md:76-103",
+        "dd-logs/SKILL.md:198-206"
+      ],
+      "resolves": {
+        "log-observability-configuration#F1": "fixed: anti_add (ai-observability-configuration)",
+        "log-observability-configuration#F2": "deferred-to-eval: Phase R5 fresh holdout",
+        "log-observability-configuration#F3": "fixed: guidance (exclusion filters first, troubleshooting map)"
+      }
+    },
+    "metrics-system-and-observability": {
+      "trigger_signals": [
+        "A feature or service needs a metric tree with exact definitions, baselines, guardrails and owners",
+        "Someone asks which single metric a change must move and how often the team reviews it"
+      ],
+      "guidance": [
+        "Name one primary metric the work must move, with numerator, denominator, unit and window, plus input, secondary and guardrail metrics. When a denominator is ambiguous in the request, state the options, pick one explicitly with the reason, and show how the value changes under the other.",
+        "Set a review cadence: weekly check for health and experiments (15 to 30 minutes), monthly review of the outcome trend; each review names attendees and what is examined."
+      ],
+      "outputs_add": [
+        "one primary metric with exact definition and review cadence"
+      ],
+      "source_evidence_add": [
+        "prd-development/SKILL.md:346-392",
+        "metrics-review/SKILL.md:275-317"
+      ],
+      "resolves": {
+        "metrics-system-and-observability#F1": "deferred-to-eval: Phase R5 fresh holdout has an ambiguous denominator",
+        "metrics-system-and-observability#F2": "fixed: guidance + outputs_add (primary metric, cadence)"
+      }
+    },
+    "monitoring-and-alert-configuration": {
+      "trigger_signals": [
+        "A monitor or alert route must be created or changed from an approved SLO, threshold, window and owner",
+        "Someone asks for the exact alert definition with missing-data behavior, routing and runbook"
+      ],
+      "guidance": [
+        "An alert without an actionable named owner and a runbook is not ready: return the definition as a draft and name who must accept it before creation.",
+        "Preview predicted alert volume from historical data where available and state the noise and cost risk.",
+        "Discriminator by signal type: this Skill handles monitors and alert routes from approved SLOs."
+      ],
+      "resolves": {
+        "monitoring-and-alert-configuration#F1": "deferred-to-eval: Phase R5 fresh holdout has an alert lacking an actionable owner"
+      },
+      "anti_add": [
+        {
+          "text": "Handle model calls, prompts, traces and evaluation telemetry",
+          "route": "ai-observability-configuration"
+        },
+        {
+          "text": "Handle log collection, parsing, routing and retention",
+          "route": "log-observability-configuration"
+        },
+        {
+          "text": "Handle release and commit association for services and environments",
+          "route": "release-observability-configuration"
+        }
+      ]
+    },
+    "observability-agent-installation": {
+      "trigger_signals": [
+        "One observability agent must be installed on exact hosts or a cluster with a pinned artifact and least privilege",
+        "Someone asks for the exact install change, health check and uninstall path for an agent"
+      ],
+      "guidance": [
+        "Cluster-type variant: self-hosted clusters (minikube, kind) need kubelet TLS verification disabled in the agent configuration; managed clusters (GKE, EKS, AKS) omit that setting.",
+        "Health verification requires one healthy agent pod per node, naming every node by architecture (including arm64 nodes) and naming any node that has no pod yet."
+      ],
+      "outputs_add": [
+        "per-node health check list by architecture"
+      ],
+      "source_evidence_add": [
+        "dd-apm/k8s-ssi/agent-install/SKILL.md:13-52",
+        "dd-apm/k8s-ssi/agent-install/SKILL.md:145-184"
+      ],
+      "resolves": {
+        "observability-agent-installation#F1": "fixed: guidance (cluster-type variants); Phase D loss (one healthy pod per node incl. arm64) addressed by outputs_add"
+      }
+    },
+    "production-canary-monitoring": {
+      "trigger_signals": [
+        "Approved production pages need sampling against frozen baselines after a deploy, with noise controlled",
+        "Someone asks whether production pages have changed materially since the baseline and whether to investigate"
+      ],
+      "anti_add": [
+        {
+          "text": "Observe provider status, error rate and latency for a deployed change",
+          "route": "deployment-observation"
+        }
+      ],
+      "guidance": [
+        "Sample on a fixed cadence (default every 60 seconds for the stated duration), reopening each page fresh so no state carries between checks, and classify each diff as material, expected, noisy, unavailable or ambiguous with persistence counts."
+      ],
+      "source_evidence_add": [
+        "gstack/canary/SKILL.md:519-558",
+        "gstack/canary/SKILL.md:625-664"
+      ],
+      "resolves": {
+        "production-canary-monitoring#F1": "deferred-to-eval: Phase R5 fresh holdout",
+        "production-canary-monitoring#F2": "fixed: anti_add (deployment-observation) and guidance (page-level sampling)"
+      }
+    },
+    "production-llm-trace-root-cause-analysis": {
+      "trigger_signals": [
+        "A cohort of failing production LLM traces needs its root cause found across prompt, retrieval, model and tool stages",
+        "Someone asks why an assistant started failing after a release or model change, from governed trace data"
+      ],
+      "guidance": [
+        "Choose the investigation mode first: error mode (spans with exceptions or tool failures), eval mode (spans failing a quality evaluator), or generic mode (unexplained behavior). State the mode and allow a switch at any checkpoint."
+      ],
+      "source_evidence_add": [
+        "agent-observability-trace-rca/SKILL.md:156-232"
+      ],
+      "resolves": {
+        "production-llm-trace-root-cause-analysis#F1": "fixed: guidance (error, eval and generic investigation modes)"
+      }
+    },
+    "production-trace-classification": {
+      "trigger_signals": [
+        "A sample of production LLM traces needs sorting into behavior and failure categories with counts and minority cases",
+        "Someone asks what kinds of failures an assistant has in production before anyone looks for causes"
+      ],
+      "guidance": [
+        "Label each trace with an outcome of yes, partial or no against the stated task, and report the pass rate as yes over classified traces alongside the counts for partial and no, with the failure-mode table."
+      ],
+      "outputs_add": [
+        "outcome labels (yes, partial, no) with pass rate and failure-mode counts"
+      ],
+      "source_evidence_add": [
+        "agent-observability-eval-pipeline/SKILL.md:207-246"
+      ],
+      "resolves": {
+        "production-trace-classification#F1": "deferred-to-eval: Phase R5 fresh holdout",
+        "production-trace-classification#F2": "fixed: guidance + outputs_add (outcome labels, pass rate)"
+      }
+    },
+    "release-observability-configuration": {
+      "trigger_signals": [
+        "A release and its commits must be registered in an observability provider so new errors can be tied to a release",
+        "Someone asks for the exact release identifier, commit range and commands to associate a build with its services"
+      ],
+      "guidance": [
+        "Diagnose which half of release wiring exists before changing anything: the release tag on events in the SDK, or the release created in CI with commits and a deploy. Do only the missing half.",
+        "Derive the release identifier from the supplied full commit SHA or version exactly; never truncate it, and use the same identifier in every command, verification and rollback step. Use the exact commit range between the previous and current release.",
+        "Discriminator by signal type: this Skill handles release and commit association for services and environments."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Diagnose which half of release wiring already exists and plan only the missing half; use the exact, untruncated release identifier throughout."
+        }
+      ],
+      "source_evidence_add": [
+        "sentry-setup-releases/SKILL.md:6-45",
+        "sentry-setup-releases/SKILL.md:26-64"
+      ],
+      "resolves": {
+        "release-observability-configuration#F1": "fixed: procedure_insert + guidance (half-present diagnosis); Phase D loss (truncated SHA) addressed by guidance"
+      },
+      "anti_add": [
+        {
+          "text": "Handle model calls, prompts, traces and evaluation telemetry",
+          "route": "ai-observability-configuration"
+        },
+        {
+          "text": "Handle log collection, parsing, routing and retention",
+          "route": "log-observability-configuration"
+        },
+        {
+          "text": "Handle monitors and alert routes from approved SLOs",
+          "route": "monitoring-and-alert-configuration"
+        }
+      ]
+    },
+    "release-rollback-execution": {
+      "trigger_signals": [
+        "A deployed release met its predeclared rollback condition and one exact provider rollback is authorized",
+        "Someone asks for the exact rollback target, blast radius, health verification and receipt for a release"
+      ],
+      "anti_add": [
+        {
+          "text": "Revert through a new commit and push instead of a provider rollback",
+          "route": "change-packaging-and-versioning"
+        }
+      ],
+      "guidance": [
+        "Method: provider-native rollback to the named previous release. A revert-commit rollback requires packaging and a push, which belong to change-packaging-and-versioning and remote-git-push under their own authorization; do not perform it here.",
+        "Verify after rollback with the same health criteria that triggered it and record before and after release identity."
+      ],
+      "source_evidence_add": [
+        "gstack/land-and-deploy/SKILL.md:923-944"
+      ],
+      "resolves": {
+        "release-rollback-execution#F1": "fixed: anti_add + guidance (provider-native rollback declared; revert-commit routed)"
+      }
+    },
+    "service-identity-remapping": {
+      "trigger_signals": [
+        "A telemetry service name must be renamed in the provider without breaking dashboards, monitors and history",
+        "Someone asks what a service remap would affect before it is applied"
+      ],
+      "guidance": [
+        "Show an impact preview of every monitor and dashboard that references the old name before planning the rule. For an inferred-entity remap, confirm the outbound spans carry peer.service first."
+      ],
+      "source_evidence_add": [
+        "dd-apm/service-remapping/SKILL.md:13-58"
+      ],
+      "resolves": {
+        "service-identity-remapping#F1": "fixed: guidance (peer.service precondition for inferred-entity remaps)"
+      }
+    }
+  }
+}

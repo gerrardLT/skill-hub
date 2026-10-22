@@ -1,0 +1,77 @@
+{
+  "canonical_unit_ids": [
+    "land-and-deploy:unit-001",
+    "land-and-deploy:unit-002",
+    "land-and-deploy:unit-003",
+    "land-and-deploy:unit-004",
+    "land-and-deploy:unit-005",
+    "land-and-deploy:unit-006"
+  ],
+  "capability_id": "capability:merge-and-deploy-readiness",
+  "completion_evidence": [
+    "All declared outputs exist and their source citations, hashes, or executable checks are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0052",
+    "V2-FUSION-0621",
+    "V2-FUSION-0624",
+    "V2-FUSION-0626",
+    "V2-FUSION-0627",
+    "V2-FUSION-0628"
+  ],
+  "hard_gates": [
+    "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs.",
+    "Accept only: A pull request, target branch, CI state, version state, and deployment configuration.",
+    "Produce only: A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream.",
+    "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+  ],
+  "inputs": [
+    "A pull request, target branch, CI state, version state, and deployment configuration."
+  ],
+  "lifecycle_stage_id": "stage:10-release-readiness",
+  "name": "Merge And Deploy Readiness",
+  "non_responsibility": "Does not approve upstream product decisions, expand authority, or perform remote writes beyond its explicit permission identity.",
+  "outputs": [
+    "A merge/deploy authorization or explicit blockers; post-deploy observation remains downstream."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "local-exec-external-read",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [],
+  "responsibility": "Check branch, authentication, pull-request state, conflicts, CI, version drift, and deployment dry runs.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:gstack/land-and-deploy:006:step-0-detect-platform-and-base-branch",
+    "v2-root:gstack/land-and-deploy:009:step-1-pre-flight",
+    "v2-root:gstack/land-and-deploy:011:step-2-pre-merge-checks",
+    "v2-root:gstack/land-and-deploy:012:step-3-wait-for-ci-if-pending",
+    "v2-root:gstack/land-and-deploy:013:step-3-4-version-drift-detection-workspace-aware-ship"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [
+    "cluster:merge-and-deploy-readiness"
+  ],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "gstack/land-and-deploy/SKILL.md:535-574",
+    "gstack/land-and-deploy/SKILL.md:638-664",
+    "gstack/land-and-deploy/SKILL.md:700-722",
+    "gstack/land-and-deploy/SKILL.md:723-738",
+    "gstack/land-and-deploy/SKILL.md:739-747",
+    "land-and-deploy/SKILL.md:535-560",
+    "land-and-deploy/SKILL.md:638-662",
+    "land-and-deploy/SKILL.md:665-694",
+    "land-and-deploy/SKILL.md:700-720",
+    "land-and-deploy/SKILL.md:723-736",
+    "land-and-deploy/SKILL.md:739-758"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop on missing required input, authority, data-governance boundary, failed evidence check, or incompatible permission identity."
+  ]
+}

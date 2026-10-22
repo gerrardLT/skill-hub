@@ -1,0 +1,236 @@
+{
+  "candidate_responsibility": "Define UI review scope, collect the correct rendered evidence, and route findings without confusing inspection with repair.",
+  "canonical_unit_ids": [
+    "web-design-guidelines:unit-001",
+    "web-design-guidelines:unit-002",
+    "web-design-guidelines:unit-003",
+    "web-design-guidelines:unit-004"
+  ],
+  "cluster_id": "cluster:ui-review-scope-and-evidence-acquisition",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "web-design-guidelines/SKILL.md:1-8",
+    "web-design-guidelines/SKILL.md:10-20",
+    "web-design-guidelines/SKILL.md:21-30",
+    "web-design-guidelines/SKILL.md:31-39"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "cluster:ui-review-scope-and-evidence-acquisition:fusion:boundary",
+      "rule": "Define UI review scope, collect the correct rendered evidence, and route findings without confusing inspection with repair."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "cluster:ui-review-scope-and-evidence-acquisition:fusion:inputs",
+      "rule": "Accept only: A UI brief, target files, runtime, rendered surfaces, and review criteria."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "cluster:ui-review-scope-and-evidence-acquisition:fusion:outputs",
+      "rule": "Produce only: A bounded review set, captures, evidence inventory, and review route."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:ui-review-scope-and-evidence-acquisition:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A UI brief, target files, runtime, rendered surfaces, and review criteria.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "web-design-guidelines"
+      ]
+    }
+  ],
+  "output_boundary": "A bounded review set, captures, evidence inventory, and review route.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义 Web 界面规范审查技能的元数据协议，包括技能名称、审查适用场景（UI走查、无障碍合规、设计审计、UX审查、最佳实践校验）以及命令行目标参数提示（<file-or-pattern>）。; 定义 Web 界面审查的核心执行工作流：1. 获取最新规范源；2. 读取指定代码文件或提示用户输入模式；3. 逐项核验规则合规性；4. 采用精简紧凑的 file:line 格式输出审查诊断定位清单。; 规范审查规则的获取源与动作契约：在每次审查前调用 WebFetch 检索远端权威 GitHub 规范 command.md 内容，确保获得最新审查细则与格式说明。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8",
+        "web-design-guidelines/SKILL.md:10-20",
+        "web-design-guidelines/SKILL.md:21-30",
+        "web-design-guidelines/SKILL.md:31-39"
+      ],
+      "limitations": "Explicit limits: 适用于针对指定文件路径或文件模式的前端 UI 代码合规性走查。; 审查执行阶段必须先拉取/确认规范源，随后对目标文件进行扫描并严格以 file:line 格式产出结果。; 规范必须保持新鲜度；离线沙箱环境中当 WebFetch 不可用时需降级至本地缓存规范基线。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=1, method=1, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-001",
+        "web-design-guidelines:unit-002",
+        "web-design-guidelines:unit-003",
+        "web-design-guidelines:unit-004"
+      ]
+    },
+    {
+      "approach": "定义 Web 界面规范审查技能的元数据协议，包括技能名称、审查适用场景（UI走查、无障碍合规、设计审计、UX审查、最佳实践校验）以及命令行目标参数提示（<file-or-pattern>）。; 定义 Web 界面审查的核心执行工作流：1. 获取最新规范源；2. 读取指定代码文件或提示用户输入模式；3. 逐项核验规则合规性；4. 采用精简紧凑的 file:line 格式输出审查诊断定位清单。; 规范审查规则的获取源与动作契约：在每次审查前调用 WebFetch 检索远端权威 GitHub 规范 command.md 内容，确保获得最新审查细则与格式说明。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8",
+        "web-design-guidelines/SKILL.md:10-20",
+        "web-design-guidelines/SKILL.md:21-30"
+      ],
+      "limitations": "Explicit limits: 适用于针对指定文件路径或文件模式的前端 UI 代码合规性走查。; 审查执行阶段必须先拉取/确认规范源，随后对目标文件进行扫描并严格以 file:line 格式产出结果。; 规范必须保持新鲜度；离线沙箱环境中当 WebFetch 不可用时需降级至本地缓存规范基线。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=1, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-001",
+        "web-design-guidelines:unit-002",
+        "web-design-guidelines:unit-003"
+      ]
+    },
+    {
+      "approach": "适用于针对指定文件路径或文件模式的前端 UI 代码合规性走查。; 审查执行阶段必须先拉取/确认规范源，随后对目标文件进行扫描并严格以 file:line 格式产出结果。; 规范必须保持新鲜度；离线沙箱环境中当 WebFetch 不可用时需降级至本地缓存规范基线。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8",
+        "web-design-guidelines/SKILL.md:10-20",
+        "web-design-guidelines/SKILL.md:21-30",
+        "web-design-guidelines/SKILL.md:31-39"
+      ],
+      "limitations": "Explicit limits: 适用于针对指定文件路径或文件模式的前端 UI 代码合规性走查。; 审查执行阶段必须先拉取/确认规范源，随后对目标文件进行扫描并严格以 file:line 格式产出结果。; 规范必须保持新鲜度；离线沙箱环境中当 WebFetch 不可用时需降级至本地缓存规范基线。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=1, method=1, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-001",
+        "web-design-guidelines:unit-002",
+        "web-design-guidelines:unit-003",
+        "web-design-guidelines:unit-004"
+      ]
+    },
+    {
+      "approach": "定义 Web 界面规范审查技能的元数据协议，包括技能名称、审查适用场景（UI走查、无障碍合规、设计审计、UX审查、最佳实践校验）以及命令行目标参数提示（<file-or-pattern>）。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8"
+      ],
+      "limitations": "Explicit limits: 适用于针对指定文件路径或文件模式的前端 UI 代码合规性走查。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-001"
+      ]
+    },
+    {
+      "approach": "核验在无目标参数时是否主动提示用户提供文件，以及有参数时是否正确衔接扫描与紧凑输出。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:31-39"
+      ],
+      "limitations": "Explicit limits: 缺少文件或模式参数时强制触发交互确认，提供有效参数后进入四步合规审查。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-004"
+      ]
+    },
+    {
+      "approach": "规范审查规则的获取源与动作契约：在每次审查前调用 WebFetch 检索远端权威 GitHub 规范 command.md 内容，确保获得最新审查细则与格式说明。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:21-30"
+      ],
+      "limitations": "Explicit limits: 规范必须保持新鲜度；离线沙箱环境中当 WebFetch 不可用时需降级至本地缓存规范基线。",
+      "source_id": "web-design-guidelines",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-design-guidelines:unit-003"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8",
+        "web-design-guidelines/SKILL.md:10-20",
+        "web-design-guidelines/SKILL.md:21-30",
+        "web-design-guidelines/SKILL.md:31-39"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-design-guidelines",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1,
+        "method": 1,
+        "template": 1,
+        "tool-action": 1
+      },
+      "evidence": [
+        "web-design-guidelines/SKILL.md:1-8",
+        "web-design-guidelines/SKILL.md:10-20",
+        "web-design-guidelines/SKILL.md:21-30",
+        "web-design-guidelines/SKILL.md:31-39"
+      ],
+      "source_id": "web-design-guidelines",
+      "unit_ids": [
+        "web-design-guidelines:unit-001",
+        "web-design-guidelines:unit-002",
+        "web-design-guidelines:unit-003",
+        "web-design-guidelines:unit-004"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "web-design-guidelines:unit-001",
+    "web-design-guidelines:unit-002",
+    "web-design-guidelines:unit-003",
+    "web-design-guidelines:unit-004"
+  ]
+}

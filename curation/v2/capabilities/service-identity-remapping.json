@@ -1,0 +1,93 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:service-identity-remapping",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0272",
+    "V2-FUSION-0273",
+    "V2-FUSION-0274",
+    "V2-FUSION-0275",
+    "V2-FUSION-0276",
+    "V2-FUSION-0277",
+    "V2-FUSION-0278",
+    "V2-FUSION-0279",
+    "V2-FUSION-0280",
+    "V2-FUSION-0281",
+    "V2-FUSION-0282",
+    "V2-FUSION-0283",
+    "V2-FUSION-0284",
+    "V2-FUSION-0285"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Current service names, desired taxonomy, provider configuration, downstream dashboards, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Service Identity Remapping",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Remapping plan or applied configuration, affected signals, verification, and rollback."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=datadog and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:datadog:service-remapping",
+      "provider": "datadog",
+      "source_root": "service-remapping"
+    }
+  ],
+  "responsibility": "Remap telemetry service identity through explicit provider configuration and collision checks.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-apm/service-remapping:001:root-responsibility",
+    "v2-root:dd-apm/service-remapping:002:apm-service-remapping",
+    "v2-root:dd-apm/service-remapping:003:how-service-remapping-works-domain-knowledge",
+    "v2-root:dd-apm/service-remapping:005:step-0-discover-current-service-names",
+    "v2-root:dd-apm/service-remapping:006:step-1-build-the-rule",
+    "v2-root:dd-apm/service-remapping:007:1a-check-for-integration-override-names",
+    "v2-root:dd-apm/service-remapping:008:step-2-preview-impact",
+    "v2-root:dd-apm/service-remapping:009:check-for-monitors-referencing-the-old-service-name",
+    "v2-root:dd-apm/service-remapping:010:check-for-dashboards-referencing-the-old-service-name",
+    "v2-root:dd-apm/service-remapping:011:list-existing-service-remapping-rules-that-may-conflict",
+    "v2-root:dd-apm/service-remapping:012:step-3-confirm-the-rule",
+    "v2-root:dd-apm/service-remapping:013:step-4-create-the-rule",
+    "v2-root:dd-apm/service-remapping:014:step-5-verify",
+    "v2-root:dd-apm/service-remapping:015:security-constraints"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-apm/service-remapping/SKILL.md:13-52",
+    "dd-apm/service-remapping/SKILL.md:184-198",
+    "dd-apm/service-remapping/SKILL.md:19-58",
+    "dd-apm/service-remapping/SKILL.md:199-238",
+    "dd-apm/service-remapping/SKILL.md:203-212",
+    "dd-apm/service-remapping/SKILL.md:239-245",
+    "dd-apm/service-remapping/SKILL.md:249-251",
+    "dd-apm/service-remapping/SKILL.md:252-254",
+    "dd-apm/service-remapping/SKILL.md:255-294",
+    "dd-apm/service-remapping/SKILL.md:284-295",
+    "dd-apm/service-remapping/SKILL.md:296-319",
+    "dd-apm/service-remapping/SKILL.md:3-7",
+    "dd-apm/service-remapping/SKILL.md:320-328",
+    "dd-apm/service-remapping/SKILL.md:434-439"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

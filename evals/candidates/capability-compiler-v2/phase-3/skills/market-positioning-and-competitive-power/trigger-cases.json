@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "market-positioning-and-competitive-power",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "structural-power-and-moats",
+        "strategic-choice-and-differentiation",
+        "competitive-case-library"
+      ],
+      "id": "V2-P3-market-positioning-and-competitive-power-trigger-01",
+      "input": "Assess whether this positioning claim is credible and powerful against actual alternatives.",
+      "kind": "should-trigger",
+      "reason": "Evaluate a proposed market position against customer evidence, alternatives, category context, and sources of bargaining or competitive power."
+    },
+    {
+      "expected_skill_id": "market-positioning-and-competitive-power",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "structural-power-and-moats",
+        "strategic-choice-and-differentiation",
+        "competitive-case-library"
+      ],
+      "id": "V2-P3-market-positioning-and-competitive-power-trigger-02",
+      "input": "Map our proposed category position to customer evidence and competitive power.",
+      "kind": "should-trigger",
+      "reason": "Evaluate a proposed market position against customer evidence, alternatives, category context, and sources of bargaining or competitive power."
+    },
+    {
+      "expected_skill_id": "structural-power-and-moats",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-positioning-and-competitive-power"
+      ],
+      "id": "V2-P3-market-positioning-and-competitive-power-anti-01",
+      "input": "Assess whether the business has a durable structural moat.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility structural-power-and-moats."
+    },
+    {
+      "expected_skill_id": "documentation-authoring",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-positioning-and-competitive-power"
+      ],
+      "id": "V2-P3-market-positioning-and-competitive-power-anti-02",
+      "input": "Write the final approved marketing copy.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility documentation-authoring."
+    },
+    {
+      "expected_skill_id": "market-positioning-and-competitive-power",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-market-positioning-and-competitive-power-boundary-01",
+      "input": "Evaluate a proposed market position against customer evidence, alternatives, category context, and sources of bargaining or competitive power. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "market-positioning-and-competitive-power",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-market-positioning-and-competitive-power-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "market-positioning-and-competitive-power"
+}

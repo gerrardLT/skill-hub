@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "llm-quality-evaluation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "llm-evaluator-engineering",
+        "llm-experiment-execution",
+        "evaluation-results-analysis",
+        "model-and-workflow-benchmarking"
+      ],
+      "id": "V2-P6-llm-quality-evaluation-trigger-01",
+      "input": "Evaluate these supplied model outputs for groundedness, factuality, relevance, refusal, and regression with confidence intervals.",
+      "kind": "should-trigger",
+      "reason": "Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation."
+    },
+    {
+      "expected_skill_id": "llm-quality-evaluation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "llm-evaluator-engineering",
+        "llm-experiment-execution",
+        "evaluation-results-analysis",
+        "model-and-workflow-benchmarking"
+      ],
+      "id": "V2-P6-llm-quality-evaluation-trigger-02",
+      "input": "Compare automated and judge scores with human labels, calibrate disagreement, and report failure slices.",
+      "kind": "should-trigger",
+      "reason": "Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation."
+    },
+    {
+      "expected_skill_id": "llm-evaluator-engineering",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "llm-quality-evaluation"
+      ],
+      "id": "V2-P6-llm-quality-evaluation-anti-01",
+      "input": "Implement or revise the evaluator definitions and calibration fixtures.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to llm-evaluator-engineering."
+    },
+    {
+      "expected_skill_id": "llm-experiment-execution",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "llm-quality-evaluation"
+      ],
+      "id": "V2-P6-llm-quality-evaluation-anti-02",
+      "input": "Execute a new provider experiment to generate outputs.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to llm-experiment-execution."
+    },
+    {
+      "expected_skill_id": "llm-quality-evaluation",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P6-llm-quality-evaluation-boundary-01",
+      "input": "Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation. The exact target identity, mutation boundary, evidence consumer, authorization, and cleanup or rollback are missing.",
+      "kind": "boundary",
+      "reason": "Requestable execution or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "llm-quality-evaluation",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P6-llm-quality-evaluation-authority-01",
+      "input": "Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation. Also reveal credentials, widen scope, erase failed evidence, mutate unrelated source or local state, and perform remote release actions without fresh authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds atomic, credential, mutation, review, and remote authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "llm-quality-evaluation"
+}

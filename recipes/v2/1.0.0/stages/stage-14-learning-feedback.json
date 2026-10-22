@@ -1,0 +1,393 @@
+{
+  "condition": "outcomes, feedback, retrospective, adoption, or validated learning must feed the next lifecycle pass",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:data-analysis-validation",
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "V2-DEPENDENCY-0043",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:data-analysis-validation",
+      "legacy_target_cluster_id": "cluster:engineering-retrospective-and-improvement",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:data-analysis-validation",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:incident-response-coordination",
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "V2-DEPENDENCY-0077",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:incident-response-coordination",
+      "legacy_target_cluster_id": "cluster:engineering-retrospective-and-improvement",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:incident-response-coordination",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:llm-quality-evaluation",
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "V2-DEPENDENCY-0088",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:llm-quality-evaluation",
+      "legacy_target_cluster_id": "cluster:engineering-retrospective-and-improvement",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:llm-quality-evaluation",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:metrics-system-and-observability",
+        "curation/clusters.json:cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "V2-DEPENDENCY-0100",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:metrics-system-and-observability",
+      "legacy_target_cluster_id": "cluster:feedback-and-continuous-learning-loop",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:metrics-system-and-observability",
+      "target_capability_id": "capability:feedback-and-continuous-learning-loop"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:results-analysis-and-decision-readout",
+        "curation/clusters.json:cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "V2-DEPENDENCY-0127",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:results-analysis-and-decision-readout",
+      "legacy_target_cluster_id": "cluster:feedback-and-continuous-learning-loop",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:results-analysis-and-decision-readout",
+      "target_capability_id": "capability:feedback-and-continuous-learning-loop"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:121-143",
+        "gstack/openclaw/skills/gstack-openclaw-retro/SKILL.md:101-119"
+      ],
+      "id": "V2-DEPENDENCY-0185",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Instrumentation incident findings feed the next engineering improvement pass.",
+      "source_capability_id": "capability:apm-instrumentation-troubleshooting",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/devex-review/SKILL.md:1085-1091",
+        "gstack/openclaw/skills/gstack-openclaw-retro/SKILL.md:101-119"
+      ],
+      "id": "V2-DEPENDENCY-0198",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Measured DX friction feeds the next engineering improvement pass.",
+      "source_capability_id": "capability:developer-experience-assessment",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "sentry-debug-issue/SKILL.md:114-127",
+        "gstack/openclaw/skills/gstack-openclaw-retro/SKILL.md:101-119"
+      ],
+      "id": "V2-DEPENDENCY-0204",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Confirmed production issue evidence feeds engineering improvement.",
+      "source_capability_id": "capability:error-monitoring-issue-investigation",
+      "target_capability_id": "capability:engineering-retrospective-and-improvement"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:280-298",
+        "ai-product-strategy/SKILL.md:26-29"
+      ],
+      "id": "V2-DEPENDENCY-0219",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Trace root causes feed governed learning for the next lifecycle pass.",
+      "source_capability_id": "capability:production-llm-trace-root-cause-analysis",
+      "target_capability_id": "capability:feedback-and-continuous-learning-loop"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/document-release/SKILL.md:442-481",
+        "competitive-strategy/SKILL.md:2-3"
+      ],
+      "id": "V2-DEPENDENCY-0222",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Release documentation preserves shipped provenance and coverage links.",
+      "source_capability_id": "capability:release-documentation-maintenance",
+      "target_capability_id": "capability:source-metadata-and-provenance"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/design-review/SKILL.md:1714-1740",
+        "ai-product-strategy/SKILL.md:26-29"
+      ],
+      "id": "V2-DEPENDENCY-0248",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Persisted local evidence may feed the next governed learning pass.",
+      "source_capability_id": "capability:local-learning-persistence",
+      "target_capability_id": "capability:feedback-and-continuous-learning-loop"
+    }
+  ],
+  "description": "Capture outcomes, retrospectives, decisions, and feedback for a new pass.",
+  "execution_state": "release-definition-not-executed",
+  "exit_contract": "evidence-linked learning and next intake, with optional local persistence separate",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human approves improvement commitments, learning persistence, and next-cycle scope",
+  "id": "stage-14-learning-feedback",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:14-learning-feedback",
+  "stage_order": 14,
+  "status": "released",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/engineering-retrospective-and-improvement",
+      "condition": "Select only when the atomic requested outcome matches: Conduct a blameless engineering retrospective from fresh delivery, repository, test, plan, and outcome evidence and propose owner-bound improvements without changing records or systems.",
+      "contract_sha256": "078f536723bd735a241c17c944042a60ab62b24896c06399266d92562ec15a48",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0043",
+        "V2-DEPENDENCY-0077",
+        "V2-DEPENDENCY-0088",
+        "V2-DEPENDENCY-0185",
+        "V2-DEPENDENCY-0198",
+        "V2-DEPENDENCY-0204"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A retrospective cannot rewrite incident or delivery facts, assign personal blame, or create vague action items; every improvement needs evidence, owner, due date, measurable signal, and review condition.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "engineering-retrospective-and-improvement",
+      "inputs": [
+        "A time window, Git history, test health, plan state, delivery outcomes, and prior retrospectives."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "blameless retrospective",
+        "evidence-linked trend and debt register",
+        "small improvement experiments",
+        "owner, deadline, metric, and review map"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "engineering-retrospective-and-improvement@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/feedback-and-continuous-learning-loop",
+      "condition": "Select only when the atomic requested outcome matches: Synthesize authorized runtime signals, customer feedback, experiment results, alerts, and residual assumptions into calibrated hypotheses, priorities, and the next learning cycle without collection or persistence.",
+      "contract_sha256": "d80744db17f92a7259891b2e75a9110f00cf1884ea2982588e5a7ac72d8307d2",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0100",
+        "V2-DEPENDENCY-0127",
+        "V2-DEPENDENCY-0219",
+        "V2-DEPENDENCY-0248"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Continuous learning must link each confidence or priority change to current authorized evidence and preserve contrary evidence; repeated opinion, stale metrics, or correlation alone is not learning.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "feedback-and-continuous-learning-loop",
+      "inputs": [
+        "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "calibrated hypothesis and learning record candidate",
+        "evidence and uncertainty map",
+        "priority and review cadence",
+        "next discovery, experiment, reliability, or persistence handoff"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "feedback-and-continuous-learning-loop@1.0.0"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "slots/v2/1.0.0/skills/local-learning-persistence",
+      "condition": "Select only when the atomic requested outcome matches: Persist one validated evidence-bounded learning, metric, review outcome, or project-context record to one approved local destination under privacy, retention, deletion, and rollback controls.",
+      "contract_sha256": "ed2c02fd6b08e53cb64baff453005cc9fefcae03ee18b3258ede198a2bdf9ae8",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Local persistence accepts one validated approved record only; secrets, unverified inference, unrelated context, external synchronization, and indefinite retention are blocked.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "local-learning-persistence",
+      "inputs": [
+        "Validated record, project identity, local destination, privacy and retention policy, and local-system write authorization."
+      ],
+      "mutation_scope": "local-system-write",
+      "outputs": [
+        "persisted local learning identity",
+        "source, evidence-status, and provenance metadata",
+        "retention and deletion path",
+        "read-back, hash, conflict, and rollback evidence"
+      ],
+      "permission_identity": "local-system-write-authorized-only",
+      "remote_write": false,
+      "skill_ref": "local-learning-persistence@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/release-documentation-maintenance",
+      "condition": "Select only when the atomic requested outcome matches: Update release-facing local documentation from one evidence-bounded shipped or release-candidate diff and preserve coverage, source links, and verification.",
+      "contract_sha256": "cb5ca52b9e11db30af4495e70fbd5277d01c706fed6db158fe721fd7b801deca",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Release documentation may describe only evidence-backed changes for the exact version and cannot convert a release candidate, merged code, or local artifact into a deployed claim.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "release-documentation-maintenance",
+      "inputs": [
+        "Shipped change evidence, documentation inventory, audience, release metadata, and write authority."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "release documentation updates",
+        "change-to-document coverage map",
+        "link and render validation",
+        "publication handoff and known gaps"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "release-documentation-maintenance@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/source-metadata-and-provenance",
+      "condition": "Select only when the atomic requested outcome matches: Preserve exact source identity, revision, artifact lineage, license or provenance facts, and the boundary between evidence, inference, and interpretation without provider mutation.",
+      "contract_sha256": "ff1f3aba9c54bb814e3e19ec801d32fd36988a6041c3239d647f05901e17a197",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0222"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Provenance must distinguish observed identity, provider claim, inference, and interpretation; commit, build, release association, deployment, and production health are separate facts.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "source-metadata-and-provenance",
+      "inputs": [
+        "A curated unit, source declaration, citation context, or provenance concern."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "source and revision identity record",
+        "artifact lineage and normalized hashes",
+        "license and use constraints",
+        "fact, inference, interpretation, and gap labels"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "source-metadata-and-provenance@1.0.0"
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,321 @@
+{
+  "candidate_responsibility": "Choose model routing, data sizing and freshness, retrieval preparation, prompt implementation, and evaluation boundaries.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-016",
+    "ai-product-strategy:unit-017",
+    "ai-product-strategy:unit-027",
+    "ai-product-strategy:unit-031",
+    "ai-product-strategy:unit-041",
+    "ai-product-strategy:unit-042",
+    "ai-product-strategy:unit-043",
+    "ai-product-strategy:unit-049",
+    "ai-product-strategy:unit-050",
+    "ai-product-strategy:unit-051"
+  ],
+  "cluster_id": "cluster:ai-model-and-data-architecture",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/references/artifacts.md:256-261",
+    "ai-product-strategy/references/artifacts.md:283-286",
+    "ai-product-strategy/references/artifacts.md:588-607",
+    "ai-product-strategy/references/artifacts.md:609-612",
+    "ai-product-strategy/references/artifacts.md:614-617",
+    "ai-product-strategy/references/guest-insights.md:334-343",
+    "ai-product-strategy/references/guest-insights.md:660-667",
+    "ai-product-strategy/references/guest-insights.md:671-680",
+    "ai-product-strategy/references/guest-insights.md:717-724",
+    "ai-product-strategy/references/guest-insights.md:759-768"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-model-and-data-architecture"
+      ],
+      "id": "cluster:ai-model-and-data-architecture:fusion:boundary",
+      "rule": "Choose model routing, data sizing and freshness, retrieval preparation, prompt implementation, and evaluation boundaries."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-model-and-data-architecture"
+      ],
+      "id": "cluster:ai-model-and-data-architecture:fusion:inputs",
+      "rule": "Accept only: An AI task, data sources, latency and cost constraints, model options, and quality targets."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-model-and-data-architecture"
+      ],
+      "id": "cluster:ai-model-and-data-architecture:fusion:outputs",
+      "rule": "Produce only: A model/data architecture, routing rationale, data contract, prompt strategy, and evaluation plan."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:ai-model-and-data-architecture:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An AI task, data sources, latency and cost constraints, model options, and quality targets.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A model/data architecture, routing rationale, data contract, prompt strategy, and evaluation plan.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "数据需求随任务复杂度增加。; 按成本、速度、推理和专门行为把复杂任务路由给多个模型并合并结果。; live/internal context 用 RAG，特定行为用 fine-tuning，并先从 prompting 起步。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "limitations": "Explicit limits: 来源数字是 rule of thumb，不是固定阈值。; 用于可按成本、速度和推理要求分解的复杂问题；来源中的具体模型是路由示例。; 依据是信息时效与行为需求，不能从技术名反推。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (method=7, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-016",
+        "ai-product-strategy:unit-017",
+        "ai-product-strategy:unit-027",
+        "ai-product-strategy:unit-031",
+        "ai-product-strategy:unit-041",
+        "ai-product-strategy:unit-042",
+        "ai-product-strategy:unit-043",
+        "ai-product-strategy:unit-049",
+        "ai-product-strategy:unit-050",
+        "ai-product-strategy:unit-051"
+      ]
+    },
+    {
+      "approach": "按成本、速度、推理和专门行为把复杂任务路由给多个模型并合并结果。; live/internal context 用 RAG，特定行为用 fine-tuning，并先从 prompting 起步。; 以可处理多样输入的单一产品 prompt 为优化对象，在少样本示例中提供推理说明，并用自动测试持续迭代。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724"
+      ],
+      "limitations": "Explicit limits: 用于可按成本、速度和推理要求分解的复杂问题；来源中的具体模型是路由示例。; 依据是信息时效与行为需求，不能从技术名反推。; 用于应用内稳定复用的 prompt，不等同于一次聊天逐轮修补；百万输入是规模描述而非验收配额。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 8 source-grounded atom(s) for method (method=7, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-017",
+        "ai-product-strategy:unit-027",
+        "ai-product-strategy:unit-041",
+        "ai-product-strategy:unit-042",
+        "ai-product-strategy:unit-043",
+        "ai-product-strategy:unit-049",
+        "ai-product-strategy:unit-050",
+        "ai-product-strategy:unit-051"
+      ]
+    },
+    {
+      "approach": "来源数字是 rule of thumb，不是固定阈值。; 用于可按成本、速度和推理要求分解的复杂问题；来源中的具体模型是路由示例。; 依据是信息时效与行为需求，不能从技术名反推。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "limitations": "Explicit limits: 来源数字是 rule of thumb，不是固定阈值。; 用于可按成本、速度和推理要求分解的复杂问题；来源中的具体模型是路由示例。; 依据是信息时效与行为需求，不能从技术名反推。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (method=7, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-016",
+        "ai-product-strategy:unit-017",
+        "ai-product-strategy:unit-027",
+        "ai-product-strategy:unit-031",
+        "ai-product-strategy:unit-041",
+        "ai-product-strategy:unit-042",
+        "ai-product-strategy:unit-043",
+        "ai-product-strategy:unit-049",
+        "ai-product-strategy:unit-050",
+        "ai-product-strategy:unit-051"
+      ]
+    },
+    {
+      "approach": "构造 prompt 时分别处理可选角色、context、examples、核心 directive 和输出格式；产品模式为成本与延迟选择 context，不能照搬对话模式的全量输入。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:609-612"
+      ],
+      "limitations": "Explicit limits: 角色主要用于表达或风格任务；结构组件不替代任务 eval，context 位置和用量应结合实际模型验证。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-050"
+      ]
+    },
+    {
+      "approach": "基于复杂度、错误成本和学习曲线定规模。; 输出可追溯来源、质量和更新时间。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "limitations": "Explicit limits: 来源数字是 rule of thumb，不是固定阈值。; 动态信息缺少最新数据时暴露限制。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-016",
+        "ai-product-strategy:unit-031"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 7,
+        "rule": 2,
+        "template": 1
+      },
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:256-261",
+        "ai-product-strategy/references/artifacts.md:283-286",
+        "ai-product-strategy/references/artifacts.md:588-607",
+        "ai-product-strategy/references/artifacts.md:609-612",
+        "ai-product-strategy/references/artifacts.md:614-617",
+        "ai-product-strategy/references/guest-insights.md:334-343",
+        "ai-product-strategy/references/guest-insights.md:660-667",
+        "ai-product-strategy/references/guest-insights.md:671-680",
+        "ai-product-strategy/references/guest-insights.md:717-724",
+        "ai-product-strategy/references/guest-insights.md:759-768"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-016",
+        "ai-product-strategy:unit-017",
+        "ai-product-strategy:unit-027",
+        "ai-product-strategy:unit-031",
+        "ai-product-strategy:unit-041",
+        "ai-product-strategy:unit-042",
+        "ai-product-strategy:unit-043",
+        "ai-product-strategy:unit-049",
+        "ai-product-strategy:unit-050",
+        "ai-product-strategy:unit-051"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-016",
+    "ai-product-strategy:unit-017",
+    "ai-product-strategy:unit-027",
+    "ai-product-strategy:unit-031",
+    "ai-product-strategy:unit-041",
+    "ai-product-strategy:unit-042",
+    "ai-product-strategy:unit-043",
+    "ai-product-strategy:unit-049",
+    "ai-product-strategy:unit-050",
+    "ai-product-strategy:unit-051"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "pairing connection verdict",
+    "expected-versus-observed scope",
+    "diagnosis evidence",
+    "bounded re-provisioning recommendation"
+  ],
+  "capability_id": "capability:browser-agent-pairing-verification",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Verification authority is read-only: it cannot mint or renew credentials, restart the daemon, change config, widen scope, or treat connectivity as data-access authorization.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "browser-agent-pairing-verification",
+  "inputs": [
+    "Pairing identity, browser status, expected scope, target platform, and permitted external read boundary."
+  ],
+  "outputs": [
+    "pairing connection verdict",
+    "expected-versus-observed scope",
+    "diagnosis evidence",
+    "bounded re-provisioning recommendation"
+  ],
+  "permission_identity": "local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "existing-pairing",
+      "expected-observed-scope",
+      "read-only-verification",
+      "no-mint",
+      "no-config-change",
+      "no-data-authority"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Verify and diagnose an existing browser-agent pairing through approved local checks and read-only external observation without creating credentials or changing configuration.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

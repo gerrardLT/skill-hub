@@ -1,0 +1,129 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/setup-browser-cookies/SKILL.md:53]",
+    "Skill Invocation During Plan Mode [gstack/setup-browser-cookies/SKILL.md:57]",
+    "Model-Specific Behavioral Patch (claude) [gstack/setup-browser-cookies/SKILL.md:76]",
+    "CDP mode check [gstack/setup-browser-cookies/SKILL.md:157]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/setup-browser-cookies/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/setup-browser-cookies/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/setup-browser-cookies/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/setup-browser-cookies/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "\"login to the site\", or \"authenticate the browser\". [gstack/setup-browser-cookies/SKILL.md:23]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/setup-browser-cookies/SKILL.md:31]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/setup-browser-cookies/SKILL.md:36]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/setup-browser-cookies/SKILL.md:55]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/setup-browser-cookies/SKILL.md:146]",
+    "curl -fsSL \"https://bun.sh/install\" -o \"$tmpfile\" [gstack/setup-browser-cookies/SKILL.md:199]",
+    "echo \"ERROR: bun install script checksum mismatch\" >&2 [gstack/setup-browser-cookies/SKILL.md:208]",
+    "Click trash to remove imported cookies [gstack/setup-browser-cookies/SKILL.md:229]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/setup-browser-cookies/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Import cookies from your real Chromium browser into the headless browse session. [gstack/setup-browser-cookies/SKILL.md:5]",
+  "root_id": "skill-root:gstack/setup-browser-cookies",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/setup-browser-cookies/SKILL.md:15]",
+    "Use before QA testing authenticated pages. Use when asked to \"import cookies\", [gstack/setup-browser-cookies/SKILL.md:22]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/setup-browser-cookies/SKILL.md:37]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/setup-browser-cookies/SKILL.md:38]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/setup-browser-cookies/SKILL.md:39]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/setup-browser-cookies/SKILL.md:46]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/setup-browser-cookies/SKILL.md:47]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/setup-browser-cookies/SKILL.md:50]"
+  ],
+  "skill_path": "gstack/setup-browser-cookies/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/setup-browser-cookies/SKILL.md"
+    },
+    {
+      "line_end": 19,
+      "line_start": 19,
+      "path": "gstack/setup-browser-cookies/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "gstack/setup-browser-cookies/SKILL.md"
+    },
+    {
+      "line_end": 53,
+      "line_start": 53,
+      "path": "gstack/setup-browser-cookies/SKILL.md"
+    },
+    {
+      "line_end": 57,
+      "line_start": 57,
+      "path": "gstack/setup-browser-cookies/SKILL.md"
+    }
+  ],
+  "source_sha256": "ff4a23ffc535ccd23a8d3364ed5140cf30e235889432e32444b65c47b38cdee5",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/setup-browser-cookies/SKILL.md:72]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/setup-browser-cookies/SKILL.md:79]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/setup-browser-cookies/SKILL.md:107]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/setup-browser-cookies/SKILL.md:110]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/setup-browser-cookies/SKILL.md:131]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/setup-browser-cookies/SKILL.md:141]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ff4a23ffc535ccd23a8d3364ed5140cf30e235889432e32444b65c47b38cdee5",
+        "content-review:260-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/setup-browser-cookies/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e0516bb08c8a469c4fddfbc0b156d3fcbe1aef4e0939536430582a96f95c7e97",
+        "content-review:89-lines"
+      ],
+      "path": "gstack/setup-browser-cookies/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/setup-browser-cookies/SKILL.md:1-14]",
+    "Declared tool: Read [gstack/setup-browser-cookies/SKILL.md:1-14]",
+    "Declared tool: AskUserQuestion [gstack/setup-browser-cookies/SKILL.md:1-14]"
+  ],
+  "trigger": "Import cookies from your real Chromium browser into the headless browse session. (gstack) [gstack/setup-browser-cookies/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/setup-browser-cookies/SKILL.md:102]",
+    "Operational Self-Improvement [gstack/setup-browser-cookies/SKILL.md:112]",
+    "Telemetry (run last) [gstack/setup-browser-cookies/SKILL.md:128]",
+    "Plan Status Footer [gstack/setup-browser-cookies/SKILL.md:149]",
+    "Setup Browser Cookies [gstack/setup-browser-cookies/SKILL.md:153]",
+    "CDP mode check [gstack/setup-browser-cookies/SKILL.md:157]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/setup-browser-cookies/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/setup-browser-cookies/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Steps [gstack/setup-browser-cookies/SKILL.md:172]"
+  ]
+}

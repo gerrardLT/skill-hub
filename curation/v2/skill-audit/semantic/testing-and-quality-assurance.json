@@ -1,0 +1,235 @@
+{
+  "domain": "testing-and-quality-assurance",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "baseline-regression-control",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Separates new regression, pre-existing failure, flake and intended change; no threshold moves after results."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are canary page baselines; test-suite regression attribution is authored.", "evidence": "skills/canary/SKILL.md:548-574,715-725", "recommendation": "Mark authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "code-review-evidence-acquisition",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Evidence bound to exact base/head refs; stops before findings."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `provider-review-comment-response`, which does not exist; the owner is `pull-request-comment-response`.", "evidence": "slots/v2/1.0.0/skills/code-review-evidence-acquisition/SKILL.md:76", "recommendation": "Replace the reference."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source fetches the latest base and diffs against the computed merge base to avoid stale-base false positives; the Skill freezes refs but does not require merge-base diffing.", "evidence": "skills/gstack/review/SKILL.md:553-569", "recommendation": "Require merge-base diff against a freshly fetched base (read-only fetch where authorized)."}
+      ],
+      "lost_source_techniques": ["merge-base diff after fresh base fetch", "advisory version-queue collision status"]
+    },
+    {
+      "id": "completion-evidence-gate",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects prose, status text and stale output; never reruns or upgrades a claim."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Anti-trigger 'run the missing tests' routes to baseline-regression-control, which compares baseline vs candidate; producing missing evidence is better owned by the implementing Skill or tdd-change-loop.", "evidence": "slots/v2/1.0.0/skills/completion-evidence-gate/SKILL.md:17", "recommendation": "Route missing-evidence production to the originating owner; reserve baseline-regression-control for comparisons."}
+      ],
+      "lost_source_techniques": ["confidence gate with false-positive filtering before reporting"]
+    },
+    {
+      "id": "developer-experience-assessment",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Real journey with elapsed time; reading docs alone insufficient."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source dogfoods documentation and getting-started through a browser as well as the CLI; the Skill is command-centric.", "evidence": "skills/gstack/devex-review/SKILL.md:662-701", "recommendation": "Include docs navigation and copy-paste of documented snippets in the journey."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "evaluation-dataset-publication",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Idempotent upload; refuses overwrite, public visibility and mutable latest aliases."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "evaluation-results-analysis",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["No metric shopping; post-hoc work labelled exploratory."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap 0.34 with results-analysis-and-decision-readout; model evaluation vs product experiment not stated.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "implementation-spec-compliance-review",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 3, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Implementer report treated as untrusted claim; missing and extra behavior both checked; both holdouts are candidate wins."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "independent-blackbox-qa",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Public surfaces only; numbered reproducible findings with coverage matrix."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source diff-aware mode uses the branch diff to choose what to test. The Skill correctly forbids source inspection, but should accept a change-scope summary from another owner to focus testing.", "evidence": "skills/qa-only/SKILL.md:594-645", "recommendation": "Accept a supplied change-scope list as input without reading source."}
+      ],
+      "lost_source_techniques": ["diff-aware test focus via supplied scope"]
+    },
+    {
+      "id": "independent-code-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Findings require scenario, citation, consequence and contract; style preferences omitted."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `provider-review-comment-response`, which does not exist.", "evidence": "slots/v2/1.0.0/skills/independent-code-review/SKILL.md:79", "recommendation": "Replace with pull-request-comment-response."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie and mutation needs a behavioral challenge, for one of the most frequently used Skills.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case: a diff with one seeded authorization bug among style noise."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source adversarial 'challenge' mode (try to break the change) is distinct from standard review and is not offered.", "evidence": "skills/gstack/codex/SKILL.md:584-621", "recommendation": "Add an optional adversarial pass."}
+      ],
+      "lost_source_techniques": ["adversarial challenge mode"]
+    },
+    {
+      "id": "llm-evaluator-engineering",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Deterministic checks before judges; calibration against labels; both holdouts are candidate wins."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "llm-experiment-execution",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["No post-submit drift; max cost preview; both holdouts are candidate wins."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "llm-quality-evaluation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["External judge blocked without transfer authorization; agreement and contamination checks."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "model-and-workflow-benchmarking",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Warmup, repeats, failed-case retention; leaderboard point estimates fail."],
+      "findings": [
+        {"priority": "P2", "dimension": "boundary", "issue": "Sources mix cross-model skill benchmarking with web performance regression benchmarking; the latter belongs to baseline-regression-control and web-performance-diagnostics.", "evidence": "skills/gstack/benchmark/SKILL.md:240-279", "recommendation": "Scope to model/workflow variants; route app performance regression elsewhere."}
+      ],
+      "lost_source_techniques": ["auth preview before multi-provider benchmark"]
+    },
+    {
+      "id": "playwright-test-engineering",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Role locators, web-first assertions, no sleeps."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.447 with vitest-tooling, the highest in the catalog; neither names the other as an anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers: browser/E2E vs unit/integration in Node."},
+        {"priority": "P2", "dimension": "permission_fit", "issue": "Writes tests only as candidate artifacts; no Skill then applies them to the project except tdd-change-loop, which is not named.", "evidence": "SKILL.md:30-31", "recommendation": "Name tdd-change-loop or isolated-task-implementation as the apply owner."}
+      ],
+      "lost_source_techniques": ["activity-to-reference decision tree"]
+    },
+    {
+      "id": "qa-finding-triage",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Dedupe without losing variants; no risk acceptance."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source tier cutoffs (quick: critical+high, standard: +medium, exhaustive: all) and 'previously skipped finding' dedup are not carried.", "evidence": "skills/gstack/qa/SKILL.md:710-735; skills/gstack/review/SKILL.md:766-805", "recommendation": "Add tier-based disposition recommendation and prior-skip dedup."}
+      ],
+      "lost_source_techniques": ["tier severity cutoffs", "cross-review skipped-finding dedup"]
+    },
+    {
+      "id": "safe-browser-probing",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["One question, allowlisted origins, no generalization into an audit."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "test-case-design-and-export",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 0, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Every case states preconditions, data, action and observable result."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Cited sources are a dependency install message and a description; the source's five-dimension case quality score (coverage, executability, independence, maintainability, completeness, 20% each) is attached to testing-portfolio-strategy instead and absent here, so 'score coverage' is undefined.", "evidence": "skills/test-case-generator/SKILL.md:3-7,108-113,200-208", "recommendation": "Move the quality-score rubric here and require it in the coverage matrix."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."}
+      ],
+      "lost_source_techniques": ["five-dimension test case quality score"]
+    },
+    {
+      "id": "test-double-discipline",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 3, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Real code first; no test-only production API; both holdouts are candidate wins."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "testing-portfolio-strategy",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 1, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Risk mapped to cheapest observing layer; rejects pyramid dogma; both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "permission_fit", "issue": "local-exec identity for a design-only Skill that runs nothing.", "evidence": "slots/v2/1.0.0/skills/testing-portfolio-strategy/contract.json; SKILL.md:28-31", "recommendation": "Reduce to read-only or run-output."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are test-case generator features, which belong to test-case-design-and-export.", "evidence": "skills/test-case-generator/SKILL.md:19-27,200-208", "recommendation": "Reassign sources; mark portfolio method authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "vitest-tooling",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Controlled time, explicit cleanup, snapshots only where meaningful."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Overlap 0.447 with playwright-test-engineering without anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-trigger."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Type testing (.test-d.ts with expectTypeOf) and file:line test selection are not mentioned.", "evidence": "skills/vitest/references/advanced-type-testing.md:10-23; skills/vitest/references/core-cli.md:14-28", "recommendation": "Add as available techniques."}
+      ],
+      "lost_source_techniques": ["type tests via expectTypeOf", "run test by file:line"]
+    },
+    {
+      "id": "website-audit-assessment",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Respects robots and rate limits; deduplicated findings with reassessment requirement."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source baseline diff / regression-since report is the natural reassessment mechanism and is not referenced.", "evidence": "skills/audit-website/references/OUTPUT-FORMAT.md:123-160", "recommendation": "Use baseline diff for reassessment when a prior audit exists."}
+      ],
+      "lost_source_techniques": ["regression-since baseline diff"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["playwright-test-engineering", "vitest-tooling"], "issue": "Highest lexical overlap in the catalog with no mutual anti-trigger.", "recommendation": "Add mutual anti-triggers."},
+    {"skills": ["independent-code-review", "code-review-evidence-acquisition"], "issue": "Both reference a nonexistent provider-review-comment-response.", "recommendation": "Point to pull-request-comment-response."}
+  ]
+}

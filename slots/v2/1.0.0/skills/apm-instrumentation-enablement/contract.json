@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "APM enablement receipt",
+    "instrumentation and service identity",
+    "duplicate and compatibility evidence",
+    "verification and rollback handoff"
+  ],
+  "capability_id": "capability:apm-instrumentation-enablement",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-apm-enablement",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "APM enablement requires a single known instrumentation path, exact service and environment identity, compatibility and overhead checks, governed telemetry, and rollback; duplicate instrumentation blocks change.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "apm-instrumentation-enablement",
+  "inputs": [
+    "Installed agent, service runtime, platform variant, environment, and authorization."
+  ],
+  "outputs": [
+    "APM enablement receipt",
+    "instrumentation and service identity",
+    "duplicate and compatibility evidence",
+    "verification and rollback handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "single-instrumentation-path",
+      "service-environment",
+      "compatibility",
+      "overhead-budget",
+      "telemetry-governance",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Enable one approved APM instrumentation variant for exact services and environments without duplicate agents or manual instrumentation under per-action authorization.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,614 @@
+{
+  "candidate_responsibility": "Create truthful, comprehensible product copy, content data, and assets with explicit provenance.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-011",
+    "design-taste-frontend:unit-012",
+    "design-taste-frontend:unit-013",
+    "frontend-design:unit-008",
+    "frontend-design:unit-013",
+    "frontend-design:unit-014",
+    "impeccable:unit-014",
+    "redesign-existing-projects:unit-006"
+  ],
+  "cluster_id": "cluster:content-copy-and-authentic-assets",
+  "decision_references": [
+    "V2-DEC-002"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:262-297",
+    "design-taste-frontend/SKILL.md:298-332",
+    "design-taste-frontend/SKILL.md:333-350",
+    "frontend-design/SKILL.md:34-35",
+    "frontend-design/SKILL.md:61-66",
+    "frontend-design/SKILL.md:67-68",
+    "impeccable/reference/new-work.md:87-103",
+    "redesign-existing-projects/SKILL.md:77-90"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:content-copy-and-authentic-assets"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets:fusion:boundary",
+      "rule": "Create truthful, comprehensible product copy, content data, and assets with explicit provenance."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:content-copy-and-authentic-assets"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets:fusion:inputs",
+      "rule": "Accept only: Product facts, brand voice, content needs, licensed material, and asset-generation capability."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:content-copy-and-authentic-assets"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets:fusion:outputs",
+      "rule": "Produce only: Publishable copy, authentic or traceable assets, alt text, and explicit placeholders where unavoidable."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-002"
+      ],
+      "id": "cluster:content-copy-and-authentic-assets:policy:contextual-aesthetics",
+      "rule": "Treat typography, color, card, eyebrow, theme, motion, and other aesthetic prescriptions as context-selected variants. Only accessibility, safety, and performance constraints may be global hard rules."
+    }
+  ],
+  "input_boundary": "Product facts, brand voice, content needs, licensed material, and asset-generation capability.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "impeccable"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects"
+      ]
+    }
+  ],
+  "output_boundary": "Publishable copy, authentic or traceable assets, alt text, and explicit placeholders where unavoidable.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义视觉资产优先级与真实性准则：图像资源优先顺序为 AI 生图工具 > 真实摄影（Picsum 语义种子或真实库存） > 显式标注的占位插槽，严禁用纯文本假冒极简主义；社交证明 Logo 墙必须采用 Simple Icons 或 devicon 真实矢量 SVG（严禁纯文字 span 拼凑），且遵循**仅限 Logo 原则（Logo-Only Rule）**，严禁在下方标注行业分类标签；严禁手绘复杂的装饰性 SVG 插画；**严厉封禁使用 div 拼接的虚假产品截图（Div-based fake screenshots are banned）**。; 定义内容密度控制与文案自我审计（Copy Self-Audit）：单板块默认内容形状为短标题（≤8词）+ 短说明段（≤25词）+ 1个视觉资产或 CTA；严禁 20 行规格数据表倾倒，多于 5 项的数据必须采用 2 栏卡片、横向胶囊滑块、分簇或折叠抽屉展示；发版前强制执行**文案自审（Copy Self-Audit）**：逐句通读标题与正文，消除语法不通、代词不明、AI 拟音假诗意或假工匠元叙述，不确定的可爱文案必须替换为朴实功能性短句；严禁捏造未经证实的精确数值（如 92%、4.1x，除非来自真实输入或明确标为 mock）。; 定义评价引用规范与页面级主题单锁定（Page Theme Lock）：引言正文最多 3 行，属性必须包含姓名+职位（可选公司，严禁只有孤立名字），使用真实印刷引号且**正文内严禁任何破折号**；**页面级单主题锁定（Page Theme Lock）**：整页统一保持一种主题（全浅色或全深色），严禁在滚动过程中板块突然发生反差翻转（如暗黑页中间突兀夹杂暖纸黄板块），除非简报明确要求整屏主题滚动切换动效；主题必须在根节点统一声明。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Explicit limits: 严禁使用带有伪代码/终端边框的 div 假截图充当真实产品界面预览，无资产时必须使用显式注释占位符告知用户。; 在声明交付完成前，必须消除所有带有明显大模型语调特征的虚浮词藻与虚假精度伪科学数据。; 严禁在同一页面内部无理由随意交替暗色与亮色板块，破坏阅读沉浸感与用户感知连续性。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-011",
+        "design-taste-frontend:unit-012",
+        "design-taste-frontend:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "严禁使用带有伪代码/终端边框的 div 假截图充当真实产品界面预览，无资产时必须使用显式注释占位符告知用户。; 在声明交付完成前，必须消除所有带有明显大模型语调特征的虚浮词藻与虚假精度伪科学数据。; 严禁在同一页面内部无理由随意交替暗色与亮色板块，破坏阅读沉浸感与用户感知连续性。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Explicit limits: 严禁使用带有伪代码/终端边框的 div 假截图充当真实产品界面预览，无资产时必须使用显式注释占位符告知用户。; 在声明交付完成前，必须消除所有带有明显大模型语调特征的虚浮词藻与虚假精度伪科学数据。; 严禁在同一页面内部无理由随意交替暗色与亮色板块，破坏阅读沉浸感与用户感知连续性。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-011",
+        "design-taste-frontend:unit-012",
+        "design-taste-frontend:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查是否存在 div 拼装的假截图，检查 Logo 墙是否使用真实 SVG 且无附带多余行业说明文字，检查极简页面是否具备必要的高保真图像支撑。; 检查正文文案是否通过通读自审，检查规格参数是否避免了生硬的 10 行以上边框细线堆叠，检查是否存在伪造的精确统计数值。; 检查引言行数与署名格式，核验全页面所有板块的色彩基调是否保持一致，不存在非预期的中途明暗翻转。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Explicit limits: 严禁使用带有伪代码/终端边框的 div 假截图充当真实产品界面预览，无资产时必须使用显式注释占位符告知用户。; 在声明交付完成前，必须消除所有带有明显大模型语调特征的虚浮词藻与虚假精度伪科学数据。; 严禁在同一页面内部无理由随意交替暗色与亮色板块，破坏阅读沉浸感与用户感知连续性。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-011",
+        "design-taste-frontend:unit-012",
+        "design-taste-frontend:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "文案与设计的同等重要性：文案也是塑造模板感或独特性的一环，严禁随意填充千篇一律的占位词，必须以对待视觉细节同等的意图性来推敲文本内容。; 用户视角文案设计准则：文字是降低理解与操作难度的设计内容而非修饰；以用户在简单语言中的理解为核心来命名（管理通知而非配置 webhook）；客观陈述功能而非浮夸推销，清晰易懂远胜过自作聪明。; 主动语态与跨流程词汇闭环：行动号召采用精准主动语态（'Save changes' 而非 'Submit'）；同一动作在全流程中保持术语一致（按钮点 'Publish'，通知吐出 'Published'），构建可信赖的导航路标。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Explicit limits: 撰写占位文本、微文案或产品说明时生效。; 编写界面按钮文本、字段说明及核心业务术语时遵循。; 界面所有交互按钮、表单提交与吐司反馈文案设计时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-008",
+        "frontend-design:unit-013",
+        "frontend-design:unit-014"
+      ]
+    },
+    {
+      "approach": "用户视角文案设计准则：文字是降低理解与操作难度的设计内容而非修饰；以用户在简单语言中的理解为核心来命名（管理通知而非配置 webhook）；客观陈述功能而非浮夸推销，清晰易懂远胜过自作聪明。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:61-66"
+      ],
+      "limitations": "Explicit limits: 编写界面按钮文本、字段说明及核心业务术语时遵循。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-013"
+      ]
+    },
+    {
+      "approach": "撰写占位文本、微文案或产品说明时生效。; 编写界面按钮文本、字段说明及核心业务术语时遵循。; 界面所有交互按钮、表单提交与吐司反馈文案设计时适用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Explicit limits: 撰写占位文本、微文案或产品说明时生效。; 编写界面按钮文本、字段说明及核心业务术语时遵循。; 界面所有交互按钮、表单提交与吐司反馈文案设计时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-008",
+        "frontend-design:unit-013",
+        "frontend-design:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否将文案明确界定为避免设计模板化的核心环节。; 核验是否明确采用主动语态 CTA，以及确保跨流程动词与状态反馈闭环一致。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Explicit limits: 撰写占位文本、微文案或产品说明时生效。; 界面所有交互按钮、表单提交与吐司反馈文案设计时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-008",
+        "frontend-design:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "全力以赴构建实施守则：效果图或首屏构图为最高空间契约；首屏即论点而非空洞 Hero（通过真实交互与机制证明价值）；在深入后续章节前必须先证明首屏（通过截图比对验证）；精心制作真实资产与文案，严禁以通用浏览器组件敷衍。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Explicit limits: 首屏必须包含具体机制与可辨识构图，严禁以模板化通用 Hero 填充；真实资产优先于通用组件占位。",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-014"
+      ]
+    },
+    {
+      "approach": "全力以赴构建实施守则：效果图或首屏构图为最高空间契约；首屏即论点而非空洞 Hero（通过真实交互与机制证明价值）；在深入后续章节前必须先证明首屏（通过截图比对验证）；精心制作真实资产与文案，严禁以通用浏览器组件敷衍。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Explicit limits: 首屏必须包含具体机制与可辨识构图，严禁以模板化通用 Hero 填充；真实资产优先于通用组件占位。",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-014"
+      ]
+    },
+    {
+      "approach": "首屏必须包含具体机制与可辨识构图，严禁以模板化通用 Hero 填充；真实资产优先于通用组件占位。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Explicit limits: 首屏必须包含具体机制与可辨识构图，严禁以模板化通用 Hero 填充；真实资产优先于通用组件占位。",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立内容与文案（Content）审查准则：采用真实多元人名与有机乱序数字（避免虚假整数）；杜绝虚假占位品牌名；全面剔除 AI 虚夸词汇（Elevate, Seamless, Unleash, Next-Gen, Game-changer, Delve, Tapestry 等）；移除成功提示感叹号；错误消息直白陈述；采用主动语态；禁止 Lorem Ipsum；标题采用句子大小写（Sentence case）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Explicit limits: 全站文本必须体现真实、自信、克制与具象的专业质感。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "全站文本必须体现真实、自信、克制与具象的专业质感。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Explicit limits: 全站文本必须体现真实、自信、克制与具象的专业质感。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验文案是否彻底清除了 AI 陈词滥调、感叹号与全大写标头。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Explicit limits: 全站文本必须体现真实、自信、克制与具象的专业质感。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 3
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:262-297",
+        "design-taste-frontend/SKILL.md:298-332",
+        "design-taste-frontend/SKILL.md:333-350"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-011",
+        "design-taste-frontend:unit-012",
+        "design-taste-frontend:unit-013"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 2
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:34-35",
+        "frontend-design/SKILL.md:61-66",
+        "frontend-design/SKILL.md:67-68"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-008",
+        "frontend-design:unit-013",
+        "frontend-design:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "impeccable/reference/new-work.md:87-103"
+      ],
+      "source_id": "impeccable",
+      "unit_ids": [
+        "impeccable:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:77-90"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-006"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-011",
+    "design-taste-frontend:unit-012",
+    "design-taste-frontend:unit-013",
+    "frontend-design:unit-008",
+    "frontend-design:unit-013",
+    "frontend-design:unit-014",
+    "impeccable:unit-014",
+    "redesign-existing-projects:unit-006"
+  ]
+}

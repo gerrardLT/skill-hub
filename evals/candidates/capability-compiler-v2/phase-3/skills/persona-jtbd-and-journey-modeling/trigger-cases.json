@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "persona-jtbd-and-journey-modeling",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-segmentation-and-demand-intelligence",
+        "qualitative-evidence-synthesis",
+        "design-context-and-direction-contract"
+      ],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-trigger-01",
+      "input": "Create an evidence-bounded JTBD and journey from these interview and behavior records.",
+      "kind": "should-trigger",
+      "reason": "Model evidence-bounded actors, jobs, circumstances, desired progress, forces, and cross-touchpoint journeys without inventing persona facts."
+    },
+    {
+      "expected_skill_id": "persona-jtbd-and-journey-modeling",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-segmentation-and-demand-intelligence",
+        "qualitative-evidence-synthesis",
+        "design-context-and-direction-contract"
+      ],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-trigger-02",
+      "input": "Model the actors, triggers, anxieties, workarounds, and touchpoints in this customer journey.",
+      "kind": "should-trigger",
+      "reason": "Model evidence-bounded actors, jobs, circumstances, desired progress, forces, and cross-touchpoint journeys without inventing persona facts."
+    },
+    {
+      "expected_skill_id": "market-segmentation-and-demand-intelligence",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "persona-jtbd-and-journey-modeling"
+      ],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-anti-01",
+      "input": "Segment the whole market and estimate demand attractiveness.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility market-segmentation-and-demand-intelligence."
+    },
+    {
+      "expected_skill_id": "design-context-and-direction-contract",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "persona-jtbd-and-journey-modeling"
+      ],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-anti-02",
+      "input": "Design the interface flow that implements this journey.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility design-context-and-direction-contract."
+    },
+    {
+      "expected_skill_id": "persona-jtbd-and-journey-modeling",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-boundary-01",
+      "input": "Model evidence-bounded actors, jobs, circumstances, desired progress, forces, and cross-touchpoint journeys without inventing persona facts. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "persona-jtbd-and-journey-modeling",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-persona-jtbd-and-journey-modeling-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "persona-jtbd-and-journey-modeling"
+}

@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "gstack",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "c73bec0a89549c9c123aee6cbcfe4478ee758a1acd5311199a2536e07f42c74c",
+    "identity": "deployment-trigger-execution@0.1.0-v2-candidate",
+    "skill_sha256": "e8305786c8953dd9e333dc6cc9870cdf63e315342f5ddff47c700e05c5620fd8"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-deployment-trigger-execution-holdout-trigger-01",
+    "V2-P7-deployment-trigger-execution-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-deployment-trigger-execution-01",
+      "remove_exact_text": "One deployment-trigger authorization covers one exact workflow, environment, immutable artifact, parameter set, and attempt; it authorizes neither merge, configuration change, observation, promotion, nor rollback.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "deployment-trigger-execution",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

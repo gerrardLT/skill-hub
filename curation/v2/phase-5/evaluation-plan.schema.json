@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baseline": {
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "source-skill",
+            "no-capability-baseline"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "identity",
+        "reason"
+      ],
+      "type": "object"
+    },
+    "candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "identity": {
+          "type": "string"
+        },
+        "skill_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity",
+        "skill_sha256",
+        "contract_sha256"
+      ],
+      "type": "object"
+    },
+    "execution_state": {
+      "const": "not-run-phase-9"
+    },
+    "holdout_case_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mutations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_gate": {
+            "const": "required-semantic-marker"
+          },
+          "id": {
+            "pattern": "^V2-P5-MUT-",
+            "type": "string"
+          },
+          "remove_exact_text": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "target": {
+            "const": "SKILL.md"
+          }
+        },
+        "required": [
+          "id",
+          "target",
+          "remove_exact_text",
+          "expected_gate"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "rubric": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "status": {
+      "const": "planned"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "skill_id",
+    "version",
+    "status",
+    "baseline",
+    "candidate",
+    "holdout_case_ids",
+    "mutations",
+    "rubric",
+    "execution_state"
+  ],
+  "type": "object"
+}

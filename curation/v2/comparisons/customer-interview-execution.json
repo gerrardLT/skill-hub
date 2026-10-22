@@ -1,0 +1,491 @@
+{
+  "candidate_responsibility": "Prepare and conduct non-leading customer interviews with context, probes, notes, and evidence-preserving closure.",
+  "canonical_unit_ids": [
+    "discovery-process:unit-041",
+    "interview-script:unit-001",
+    "interview-script:unit-002",
+    "interview-script:unit-005",
+    "interview-script:unit-006",
+    "interview-script:unit-007",
+    "interview-script:unit-008",
+    "interview-script:unit-009",
+    "interview-script:unit-010",
+    "interview-script:unit-011",
+    "interview-script:unit-012",
+    "interview-script:unit-013",
+    "interview-script:unit-015"
+  ],
+  "cluster_id": "cluster:customer-interview-execution",
+  "decision_references": [
+    "V2-DEC-004"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "discovery-process/SKILL.md:442-447",
+    "interview-script/SKILL.md:10-13",
+    "interview-script/SKILL.md:29-34",
+    "interview-script/SKILL.md:35-39",
+    "interview-script/SKILL.md:42-46",
+    "interview-script/SKILL.md:47-51",
+    "interview-script/SKILL.md:52-55",
+    "interview-script/SKILL.md:56-60",
+    "interview-script/SKILL.md:6-8",
+    "interview-script/SKILL.md:61-68",
+    "interview-script/SKILL.md:69-76",
+    "interview-script/SKILL.md:77-82",
+    "interview-script/SKILL.md:85-98"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:customer-interview-execution"
+      ],
+      "id": "cluster:customer-interview-execution:fusion:boundary",
+      "rule": "Prepare and conduct non-leading customer interviews with context, probes, notes, and evidence-preserving closure."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:customer-interview-execution"
+      ],
+      "id": "cluster:customer-interview-execution:fusion:inputs",
+      "rule": "Accept only: A research objective, participant context, consent boundary, and interview script."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:customer-interview-execution"
+      ],
+      "id": "cluster:customer-interview-execution:fusion:outputs",
+      "rule": "Produce only: Interview evidence, direct observations, notes, and explicit follow-up gaps."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:customer-interview-execution:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-004"
+      ],
+      "id": "cluster:customer-interview-execution:policy:data-governance",
+      "rule": "Before processing customer, proprietary, recorded, or externally judged data, require authorization, minimization, redaction, retention, external-transfer boundary, and deletion policy; otherwise return needs-input or blocked."
+    }
+  ],
+  "input_boundary": "A research objective, participant context, consent boundary, and interview script.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "interview-script"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "interview-script"
+      ]
+    }
+  ],
+  "output_boundary": "Interview evidence, direct observations, notes, and explicit follow-up gaps.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "避免 leading hypotheticals，优先询问过去行为。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Explicit limits: 依赖 Skill 未读取、未验证、未执行。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-041"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "依赖 Skill 未读取、未验证、未执行。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Explicit limits: 依赖 Skill 未读取、未验证、未执行。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-041"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "问题聚焦已发生事件、行为和取舍，不要求预测使用意愿。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Explicit limits: 依赖 Skill 未读取、未验证、未执行。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-041"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "制定聚焦于用户生活而非团队创意的结构化访谈脚本，提取真实洞察而非表面观点。; 将客户访谈定位在连续发现的探索阶段，要求 PM 无代理人直面用户，并由 Product Trio（PM、设计师、工程师）协同开展发现。; 开场环节规范（2-3 分钟）：自我介绍并声明目的为学习而非销售、声明无标准答案、征询录音许可并确认可用时长。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:69-76",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Explicit limits: 仅适用于定性发现访谈；必须基于 The Mom Test 原则，禁止直接向用户询问对其创意的意见。; 访谈是多种探索来源之一，不能替代定量分析；发现工作严禁通过中介代理人传递，必须由三人组共同协作。; 开场时长严格控制在 2-3 分钟；录音许可必须为选择性征询；严禁在开场出现销售与方案推介暗示。",
+      "source_id": "interview-script",
+      "strengths": "Provides 12 source-grounded atom(s) for responsibility (method=1, rule=3, template=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-001",
+        "interview-script:unit-002",
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-011",
+        "interview-script:unit-012",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ]
+    },
+    {
+      "approach": "开场环节规范（2-3 分钟）：自我介绍并声明目的为学习而非销售、声明无标准答案、征询录音许可并确认可用时长。; 破冰与背景了解（5 分钟）：询问受访者岗位角色、典型工作日/周安排，以及从事相关活动的时长，建立融洽关系并理解其背景。; 核心探索之现状与过往行为：使用过去时态引导用户讲述上次执行该任务的具体实例、所用工具/方法、耗时及协作人员。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Explicit limits: 开场时长严格控制在 2-3 分钟；录音许可必须为选择性征询；严禁在开场出现销售与方案推介暗示。; 时长限定约 5 分钟；仅采集受访者情境与背景事实，不得在此阶段过早切入具体功能讨论。; 必须使用过去时态询问具体已发生实例；严禁询问“你通常怎么做”等概括性或假设性问题。",
+      "source_id": "interview-script",
+      "strengths": "Provides 9 source-grounded atom(s) for method (method=1, template=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-011",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ]
+    },
+    {
+      "approach": "仅适用于定性发现访谈；必须基于 The Mom Test 原则，禁止直接向用户询问对其创意的意见。; 访谈是多种探索来源之一，不能替代定量分析；发现工作严禁通过中介代理人传递，必须由三人组共同协作。; 开场时长严格控制在 2-3 分钟；录音许可必须为选择性征询；严禁在开场出现销售与方案推介暗示。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:69-76",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Explicit limits: 仅适用于定性发现访谈；必须基于 The Mom Test 原则，禁止直接向用户询问对其创意的意见。; 访谈是多种探索来源之一，不能替代定量分析；发现工作严禁通过中介代理人传递，必须由三人组共同协作。; 开场时长严格控制在 2-3 分钟；录音许可必须为选择性征询；严禁在开场出现销售与方案推介暗示。",
+      "source_id": "interview-script",
+      "strengths": "Provides 12 source-grounded atom(s) for boundary-and-applicability (method=1, rule=3, template=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-001",
+        "interview-script:unit-002",
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-011",
+        "interview-script:unit-012",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ]
+    },
+    {
+      "approach": "开场环节规范（2-3 分钟）：自我介绍并声明目的为学习而非销售、声明无标准答案、征询录音许可并确认可用时长。; 破冰与背景了解（5 分钟）：询问受访者岗位角色、典型工作日/周安排，以及从事相关活动的时长，建立融洽关系并理解其背景。; 核心探索之现状与过往行为：使用过去时态引导用户讲述上次执行该任务的具体实例、所用工具/方法、耗时及协作人员。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Explicit limits: 开场时长严格控制在 2-3 分钟；录音许可必须为选择性征询；严禁在开场出现销售与方案推介暗示。; 时长限定约 5 分钟；仅采集受访者情境与背景事实，不得在此阶段过早切入具体功能讨论。; 必须使用过去时态询问具体已发生实例；严禁询问“你通常怎么做”等概括性或假设性问题。",
+      "source_id": "interview-script",
+      "strengths": "Provides 8 source-grounded atom(s) for inputs-and-outputs (template=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ]
+    },
+    {
+      "approach": "检查访谈脚本提问方向聚焦于受访者过往生活与业务实践；凡包含对产品创意的看法、意见征求或愿景设想者均判定不合格。; 验证访谈设计明确归属探索阶段，标明 Product Trio 角色分工与无代理人直接接触要求；若仅由单人封闭执行或依赖销售客服间接转述则判定不合格。; 检查脚本各模块与执行指导是否明确禁止推销、禁止询问未来预测、禁止将赞美当证据，并标注 80/20 倾听与情绪捕捉原则；缺项即失败。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:69-76"
+      ],
+      "limitations": "Explicit limits: 仅适用于定性发现访谈；必须基于 The Mom Test 原则，禁止直接向用户询问对其创意的意见。; 访谈是多种探索来源之一，不能替代定量分析；发现工作严禁通过中介代理人传递，必须由三人组共同协作。; 访谈全流程强制遵从的质量门禁；任何诱导、辩护、推销或采纳空泛赞美均视为破坏访谈有效性。",
+      "source_id": "interview-script",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-001",
+        "interview-script:unit-002",
+        "interview-script:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:69-76",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:69-76",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:442-447"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-041"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 3,
+        "template": 8
+      },
+      "evidence": [
+        "interview-script/SKILL.md:10-13",
+        "interview-script/SKILL.md:29-34",
+        "interview-script/SKILL.md:35-39",
+        "interview-script/SKILL.md:42-46",
+        "interview-script/SKILL.md:47-51",
+        "interview-script/SKILL.md:52-55",
+        "interview-script/SKILL.md:56-60",
+        "interview-script/SKILL.md:6-8",
+        "interview-script/SKILL.md:61-68",
+        "interview-script/SKILL.md:69-76",
+        "interview-script/SKILL.md:77-82",
+        "interview-script/SKILL.md:85-98"
+      ],
+      "source_id": "interview-script",
+      "unit_ids": [
+        "interview-script:unit-001",
+        "interview-script:unit-002",
+        "interview-script:unit-005",
+        "interview-script:unit-006",
+        "interview-script:unit-007",
+        "interview-script:unit-008",
+        "interview-script:unit-009",
+        "interview-script:unit-010",
+        "interview-script:unit-011",
+        "interview-script:unit-012",
+        "interview-script:unit-013",
+        "interview-script:unit-015"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "discovery-process:unit-041",
+    "interview-script:unit-001",
+    "interview-script:unit-002",
+    "interview-script:unit-005",
+    "interview-script:unit-006",
+    "interview-script:unit-007",
+    "interview-script:unit-008",
+    "interview-script:unit-009",
+    "interview-script:unit-010",
+    "interview-script:unit-011",
+    "interview-script:unit-012",
+    "interview-script:unit-013",
+    "interview-script:unit-015"
+  ]
+}

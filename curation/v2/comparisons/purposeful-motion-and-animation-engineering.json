@@ -1,0 +1,704 @@
+{
+  "candidate_responsibility": "Use motion for hierarchy, narrative, feedback, and state while controlling timing, interruption, and reduction.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-014",
+    "design-taste-frontend:unit-015",
+    "frontend-design:unit-007",
+    "review-animations:unit-003",
+    "review-animations:unit-010",
+    "review-animations:unit-011",
+    "review-animations:unit-012",
+    "review-animations:unit-013",
+    "review-animations:unit-014",
+    "review-animations:unit-015",
+    "review-animations:unit-017",
+    "review-animations:unit-018",
+    "review-animations:unit-019",
+    "review-animations:unit-020",
+    "ui-ux-pro-max:unit-020"
+  ],
+  "cluster_id": "cluster:purposeful-motion-and-animation-engineering",
+  "decision_references": [
+    "V2-DEC-002"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:352-364",
+    "design-taste-frontend/SKILL.md:365-474",
+    "frontend-design/SKILL.md:32-33",
+    "review-animations/SKILL.md:19-42",
+    "review-animations/STANDARDS.md:101-109",
+    "review-animations/STANDARDS.md:130-136",
+    "review-animations/STANDARDS.md:137-144",
+    "review-animations/STANDARDS.md:145-148",
+    "review-animations/STANDARDS.md:149-159",
+    "review-animations/STANDARDS.md:18-38",
+    "review-animations/STANDARDS.md:39-50",
+    "review-animations/STANDARDS.md:51-60",
+    "review-animations/STANDARDS.md:61-76",
+    "review-animations/STANDARDS.md:77-100",
+    "ui-ux-pro-max/references/quick-reference.md:134-161"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:purposeful-motion-and-animation-engineering"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering:fusion:boundary",
+      "rule": "Use motion for hierarchy, narrative, feedback, and state while controlling timing, interruption, and reduction."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:purposeful-motion-and-animation-engineering"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering:fusion:inputs",
+      "rule": "Accept only: Interaction states, motion intent, frequency, platform capability, and accessibility constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:purposeful-motion-and-animation-engineering"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering:fusion:outputs",
+      "rule": "Produce only: A motion specification, implementation pattern, reduced-motion fallback, and performance boundary."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-002"
+      ],
+      "id": "cluster:purposeful-motion-and-animation-engineering:policy:contextual-aesthetics",
+      "rule": "Treat typography, color, card, eyebrow, theme, motion, and other aesthetic prescriptions as context-selected variants. Only accessibility, safety, and performance constraints may be global hard rules."
+    }
+  ],
+  "input_boundary": "Interaction states, motion intent, frequency, platform capability, and accessibility constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "frontend-design",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "frontend-design",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "A motion specification, implementation pattern, reduced-motion fallback, and performance boundary.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义上下文主动性与动效动机准则：拟态磨砂玻璃（Liquid Glass）必须附带 1px 内边框与高光阴影，并在减弱透明度下提供纯色兜底；磁性微交互仅在 MOTION_INTENSITY > 5 时通过 Motion hooks 实现；**动效必须有动机（Motion must be motivated）**：加入任何动效前必须明确回答其沟通意图（层级引导、叙事推进、用户反馈、状态转变），无法一句话说明理由的动效必须移除；水平跑马灯（Marquee）单页面最多允许出现 1 个；声称的动效强度必须在代码中真实完整呈现，严禁半成品。; 提供权威 GSAP 滚动动效实现模板：(1) 真实粘性堆叠（Sticky-Stack）：基于 ScrollTrigger 注册，必须设置 start: 'top top'，pin: true，前一个卡片的缩放与透明度由后一个卡片的进入滚动触发联动，并在组件卸载时调用 ctx.revert() 清理；(2) 横向视差平移（Horizontal-Pan）：在垂直滚动中实现水平轨道平移，必须固定外部包裹层、通过 end: '+=distance' 精确计算滑动跨度、使用 scrub: 1 并响应 prefers-reduced-motion。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364",
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Explicit limits: 动效属于功能传达手段而非单纯为了酷炫，单页面严禁堆叠多个跑马灯或未经验证的复杂动效。; 在实现全屏视差堆叠或横向平移时必须严格遵循此规范骨架，严禁因 start 点设置错误导致未到达顶端即提前触发。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=1, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-014",
+        "design-taste-frontend:unit-015"
+      ]
+    },
+    {
+      "approach": "提供权威 GSAP 滚动动效实现模板：(1) 真实粘性堆叠（Sticky-Stack）：基于 ScrollTrigger 注册，必须设置 start: 'top top'，pin: true，前一个卡片的缩放与透明度由后一个卡片的进入滚动触发联动，并在组件卸载时调用 ctx.revert() 清理；(2) 横向视差平移（Horizontal-Pan）：在垂直滚动中实现水平轨道平移，必须固定外部包裹层、通过 end: '+=distance' 精确计算滑动跨度、使用 scrub: 1 并响应 prefers-reduced-motion。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Explicit limits: 在实现全屏视差堆叠或横向平移时必须严格遵循此规范骨架，严禁因 start 点设置错误导致未到达顶端即提前触发。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for method (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-015"
+      ]
+    },
+    {
+      "approach": "动效属于功能传达手段而非单纯为了酷炫，单页面严禁堆叠多个跑马灯或未经验证的复杂动效。; 在实现全屏视差堆叠或横向平移时必须严格遵循此规范骨架，严禁因 start 点设置错误导致未到达顶端即提前触发。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364",
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Explicit limits: 动效属于功能传达手段而非单纯为了酷炫，单页面严禁堆叠多个跑马灯或未经验证的复杂动效。; 在实现全屏视差堆叠或横向平移时必须严格遵循此规范骨架，严禁因 start 点设置错误导致未到达顶端即提前触发。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=1, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-014",
+        "design-taste-frontend:unit-015"
+      ]
+    },
+    {
+      "approach": "提供权威 GSAP 滚动动效实现模板：(1) 真实粘性堆叠（Sticky-Stack）：基于 ScrollTrigger 注册，必须设置 start: 'top top'，pin: true，前一个卡片的缩放与透明度由后一个卡片的进入滚动触发联动，并在组件卸载时调用 ctx.revert() 清理；(2) 横向视差平移（Horizontal-Pan）：在垂直滚动中实现水平轨道平移，必须固定外部包裹层、通过 end: '+=distance' 精确计算滑动跨度、使用 scrub: 1 并响应 prefers-reduced-motion。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Explicit limits: 在实现全屏视差堆叠或横向平移时必须严格遵循此规范骨架，严禁因 start 点设置错误导致未到达顶端即提前触发。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-015"
+      ]
+    },
+    {
+      "approach": "检查每个动效是否有明确的因果说明，检查页面跑马灯数量是否 ≤1，检查动效是否完全由硬件加速属性驱动。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364"
+      ],
+      "limitations": "Explicit limits: 动效属于功能传达手段而非单纯为了酷炫，单页面严禁堆叠多个跑马灯或未经验证的复杂动效。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364",
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364",
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "动效克制与意图原则：谨慎使用非用户主动触发的动效，全页仅限单一精心编排的转场或亮相时刻；严禁所有卡片均挂载悬浮过渡以及所有段落机械淡入滑入；交互动效应忠实呈现状态变化。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Explicit limits: 页面动效与交互过渡设计时必须遵守。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "页面动效与交互过渡设计时必须遵守。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Explicit limits: 页面动效与交互过渡设计时必须遵守。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否限制非交互动效至单一焦点时刻，严禁全局散落卡片动效。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Explicit limits: 页面动效与交互过渡设计时必须遵守。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立动效审查的十大不可妥协准则：1. 动效有正当理由；2. 频次适度（键盘操作零动效）；3. 响应式缓动（严禁 ease-in）；4. UI 低于 300ms；5. 物理真实原点（严禁 scale(0)）；6. 可中断性；7. 纯 GPU 属性；8. 无障碍适配；9. 非对称时序；10. 调性统一（拿不准时直接删除）。; 确立缓动曲线选择规范与数值基线：入场与退场使用 ease-out；UI 交互绝对禁止 ease-in；内置 CSS 缓动过弱，强制采用强贝塞尔曲线（如 --ease-out: cubic-bezier(0.23, 1, 0.32, 1)）。; 规定细分组件的动效时长预算：按钮按压反馈 100-160ms，工具提示 125-200ms，下拉框 150-250ms，模态框/抽屉 200-500ms；常规 UI 动效严守 300ms 上限。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Explicit limits: diff 中所有动效均需逐条对照十大准则核验，任何违背均构成审查缺陷。; 审查中遇到默认线性或弱 CSS 缓动需替换为标准强贝塞尔曲线。; UI 动画超过 300ms 且无正当理由直接判定违规。",
+      "source_id": "review-animations",
+      "strengths": "Provides 11 source-grounded atom(s) for responsibility (method=5, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-003",
+        "review-animations:unit-010",
+        "review-animations:unit-011",
+        "review-animations:unit-012",
+        "review-animations:unit-013",
+        "review-animations:unit-014",
+        "review-animations:unit-015",
+        "review-animations:unit-017",
+        "review-animations:unit-018",
+        "review-animations:unit-019",
+        "review-animations:unit-020"
+      ]
+    },
+    {
+      "approach": "定义 Spring 物理弹簧配置标准：推荐 Apple 风格（如 duration: 0.5, bounce: 0.2）或传统刚度阻尼参数；弹性系数保持微弱（0.1-0.3）；鼠标交互必须通过 useSpring 进行速度插值。; 规范可中断性交互实现：快速触发组件使用可平滑重定向的 CSS transitions 而非归零重启的 keyframes；优先采用原生 @starting-style 处理纯 CSS 无 JS 入场。; 规范位移百分比与 clip-path 裁切技巧：translate 百分比相对于自身尺寸；灵活应用 clip-path: inset() 实现滚动揭示、长按删除覆盖遮罩与选项卡无缝色彩过渡。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Explicit limits: 常规 UI 避免弹跳，弹簧特性保留给手势拖拽释放与活态微动。; 动态频繁生成的 UI 严禁使用 keyframes 导致连续打断时视觉跳跃。; 浮动抽屉与气泡定位优先使用百分比位移，裁切遮罩优先利用 clip-path。",
+      "source_id": "review-animations",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-013",
+        "review-animations:unit-014",
+        "review-animations:unit-017",
+        "review-animations:unit-018",
+        "review-animations:unit-019"
+      ]
+    },
+    {
+      "approach": "diff 中所有动效均需逐条对照十大准则核验，任何违背均构成审查缺陷。; 审查中遇到默认线性或弱 CSS 缓动需替换为标准强贝塞尔曲线。; UI 动画超过 300ms 且无正当理由直接判定违规。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Explicit limits: diff 中所有动效均需逐条对照十大准则核验，任何违背均构成审查缺陷。; 审查中遇到默认线性或弱 CSS 缓动需替换为标准强贝塞尔曲线。; UI 动画超过 300ms 且无正当理由直接判定违规。",
+      "source_id": "review-animations",
+      "strengths": "Provides 11 source-grounded atom(s) for boundary-and-applicability (method=5, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-003",
+        "review-animations:unit-010",
+        "review-animations:unit-011",
+        "review-animations:unit-012",
+        "review-animations:unit-013",
+        "review-animations:unit-014",
+        "review-animations:unit-015",
+        "review-animations:unit-017",
+        "review-animations:unit-018",
+        "review-animations:unit-019",
+        "review-animations:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否涵盖正当性、频次、缓动、时长、原点、可中断性、GPU、a11y、非对称与调性十项核心规则。; 核验缓动选择顺序与标准 cubic-bezier 常量定义是否完备。; 核验各组件时长是否收敛在指定毫秒预算区间内。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60"
+      ],
+      "limitations": "Explicit limits: diff 中所有动效均需逐条对照十大准则核验，任何违背均构成审查缺陷。; 审查中遇到默认线性或弱 CSS 缓动需替换为标准强贝塞尔曲线。; UI 动画超过 300ms 且无正当理由直接判定违规。",
+      "source_id": "review-animations",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-003",
+        "review-animations:unit-010",
+        "review-animations:unit-011",
+        "review-animations:unit-012",
+        "review-animations:unit-015",
+        "review-animations:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义核心分类7：动效与可中断状态转移（Animation - MEDIUM）细则：动效时长令牌按距离与上下文科学配置；仅对 transform 和 opacity 执行硬件加速动画，严禁动画化 width/height/top/left；每个视图最多激活 1-2 个关键动效；到达时减速，离开时加速；动效必须表达因果逻辑而非单纯装饰；状态切换平滑过渡；页面转场保持空间连续性；推荐物理弹簧曲线；退出动画快于进入动画（~60-70%）；列表/网格项交错进场间隔 30-50ms；所有动画必须可随时被打断且绝不阻塞用户输入；快速连续交互必须安全取消并立即置于终态，禁止依赖 animationend 事件保证逻辑正确性。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Explicit limits: 适用于 Web 及 Native 应用的所有微交互、页面转场、列表进场与组件状态切换动画。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于 Web 及 Native 应用的所有微交互、页面转场、列表进场与组件状态切换动画。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Explicit limits: 适用于 Web 及 Native 应用的所有微交互、页面转场、列表进场与组件状态切换动画。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否仅对 transform/opacity 实施动画，退出动画是否快于进入，高频快速交互是否可随时打断并不依赖 animationend 事件完成状态结算。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Explicit limits: 适用于 Web 及 Native 应用的所有微交互、页面转场、列表进场与组件状态切换动画。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1,
+        "template": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:352-364",
+        "design-taste-frontend/SKILL.md:365-474"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-014",
+        "design-taste-frontend:unit-015"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:32-33"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-007"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 5,
+        "rule": 6
+      },
+      "evidence": [
+        "review-animations/SKILL.md:19-42",
+        "review-animations/STANDARDS.md:101-109",
+        "review-animations/STANDARDS.md:130-136",
+        "review-animations/STANDARDS.md:137-144",
+        "review-animations/STANDARDS.md:145-148",
+        "review-animations/STANDARDS.md:149-159",
+        "review-animations/STANDARDS.md:18-38",
+        "review-animations/STANDARDS.md:39-50",
+        "review-animations/STANDARDS.md:51-60",
+        "review-animations/STANDARDS.md:61-76",
+        "review-animations/STANDARDS.md:77-100"
+      ],
+      "source_id": "review-animations",
+      "unit_ids": [
+        "review-animations:unit-003",
+        "review-animations:unit-010",
+        "review-animations:unit-011",
+        "review-animations:unit-012",
+        "review-animations:unit-013",
+        "review-animations:unit-014",
+        "review-animations:unit-015",
+        "review-animations:unit-017",
+        "review-animations:unit-018",
+        "review-animations:unit-019",
+        "review-animations:unit-020"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:134-161"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-020"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-014",
+    "design-taste-frontend:unit-015",
+    "frontend-design:unit-007",
+    "review-animations:unit-003",
+    "review-animations:unit-010",
+    "review-animations:unit-011",
+    "review-animations:unit-012",
+    "review-animations:unit-013",
+    "review-animations:unit-014",
+    "review-animations:unit-015",
+    "review-animations:unit-017",
+    "review-animations:unit-018",
+    "review-animations:unit-019",
+    "review-animations:unit-020",
+    "ui-ux-pro-max:unit-020"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "canary",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "52d93f8448755088d650d0673b8c2a05385066358a067f6722debfd32e73b05d",
+    "identity": "production-canary-monitoring@0.1.0-v2-candidate",
+    "skill_sha256": "5ff16acc9a64f35dd7ed69b877f28fb91b6ba3b010cb050f34ae098f401696a6"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-production-canary-monitoring-holdout-trigger-01",
+    "V2-P7-production-canary-monitoring-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-production-canary-monitoring-01",
+      "remove_exact_text": "Canary monitoring is read-only: immutable baselines cannot be silently updated, and a threshold breach may recommend but never execute promotion, repair, traffic change, or rollback.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "production-canary-monitoring",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

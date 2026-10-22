@@ -1,0 +1,150 @@
+{
+  "artifact_types": [
+    "AI observability configuration receipt",
+    "governed telemetry schema",
+    "sampling, redaction, retention, and access record",
+    "validation and rollback evidence",
+    "APM enablement receipt",
+    "instrumentation and service identity",
+    "duplicate and compatibility evidence",
+    "verification and rollback handoff",
+    "APM troubleshooting evidence",
+    "hypothesis and root-cause analysis",
+    "signal-path diagnosis",
+    "authorized fix and verification handoff",
+    "log configuration receipt",
+    "source, parse, and route schema",
+    "redaction, retention, access, and cost record",
+    "sample validation and rollback evidence",
+    "monitor and alert configuration receipt",
+    "threshold, window, and missing-data contract",
+    "routing and runbook map",
+    "validation, noise, and rollback evidence",
+    "agent installation receipt",
+    "pinned artifact and target inventory",
+    "permission and telemetry governance evidence",
+    "health, uninstall, and rollback record",
+    "per-node health check list by architecture",
+    "release association receipt",
+    "release, commit, service, and environment map",
+    "propagation and collision evidence",
+    "rollback or deletion record"
+  ],
+  "capability_id": "capability:telemetry-and-observability-configuration",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-ai-observability-config",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "AI observability may collect only explicitly governed fields at approved sampling, retention, region, and access; prompt, response, tool, user, or retrieved content is denied by default.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "APM enablement requires a single known instrumentation path, exact service and environment identity, compatibility and overhead checks, governed telemetry, and rollback; duplicate instrumentation blocks change.",
+    "Troubleshooting is read-only: it cannot install agents, change sampling or tags, restart services, remap identity, or claim a fix from diagnosis alone.",
+    "Logs deny secret and sensitive fields by default and require exact source, parsing, routing, retention, access, deletion, volume, and cost boundaries before provider mutation.",
+    "An alert requires an actionable owner, justified threshold and window, missing-data behavior, deduplication, runbook, validation, and rollback; alert volume alone is not coverage.",
+    "Agent installation requires a pinned verified artifact, exact targets, least privilege, governed telemetry, resource and network bounds, health evidence, and uninstall or rollback; mutable latest and duplicate agents are blocked.",
+    "Release observability requires exact immutable release, commit, artifact, service, and environment identities; association does not prove deployment or authorize provider actions beyond the mapping."
+  ],
+  "id": "telemetry-and-observability-configuration",
+  "inputs": [
+    "AI application, traces, sensitive-data policy, provider, evaluation signals, retention, and authorization.",
+    "Installed agent, service runtime, platform variant, environment, and authorization.",
+    "Failed verification evidence, platform variant, service configuration, logs, and authority boundary.",
+    "Log sources, schemas, provider, authorization, retention, redaction, and routing requirements.",
+    "Signal definition, threshold rationale, evaluation window, recipients, provider, and authorization.",
+    "Platform, environment, provider account, credentials, desired instrumentation, and authorization.",
+    "Release naming, repository, build metadata, provider project, credentials, and authorization."
+  ],
+  "mode_permissions": {
+    "ai-observability-configuration": "remote-write-authorized-only",
+    "apm-instrumentation-enablement": "remote-write-authorized-only",
+    "apm-instrumentation-troubleshooting": "external-read",
+    "log-observability-configuration": "remote-write-authorized-only",
+    "monitoring-and-alert-configuration": "remote-write-authorized-only",
+    "observability-agent-installation": "remote-write-authorized-only",
+    "release-observability-configuration": "remote-write-authorized-only"
+  },
+  "modes": [
+    "ai-observability-configuration",
+    "apm-instrumentation-enablement",
+    "apm-instrumentation-troubleshooting",
+    "log-observability-configuration",
+    "monitoring-and-alert-configuration",
+    "observability-agent-installation",
+    "release-observability-configuration"
+  ],
+  "outputs": [
+    "AI observability configuration receipt",
+    "governed telemetry schema",
+    "sampling, redaction, retention, and access record",
+    "validation and rollback evidence",
+    "APM enablement receipt",
+    "instrumentation and service identity",
+    "duplicate and compatibility evidence",
+    "verification and rollback handoff",
+    "APM troubleshooting evidence",
+    "hypothesis and root-cause analysis",
+    "signal-path diagnosis",
+    "authorized fix and verification handoff",
+    "log configuration receipt",
+    "source, parse, and route schema",
+    "redaction, retention, access, and cost record",
+    "sample validation and rollback evidence",
+    "monitor and alert configuration receipt",
+    "threshold, window, and missing-data contract",
+    "routing and runbook map",
+    "validation, noise, and rollback evidence",
+    "agent installation receipt",
+    "pinned artifact and target inventory",
+    "permission and telemetry governance evidence",
+    "health, uninstall, and rollback record",
+    "per-node health check list by architecture",
+    "release association receipt",
+    "release, commit, service, and environment map",
+    "propagation and collision evidence",
+    "rollback or deletion record"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "exact-application",
+      "telemetry-schema",
+      "minimization",
+      "redaction",
+      "sampling",
+      "retention",
+      "access",
+      "deletion"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Consolidated capability covering 7 related modes: Configure one provider's AI or LLM observability for exact applications and environments under explicit telemetry governance and per-action authorization.; Enable one approved APM instrumentation variant for exact services and environments without duplicate agents or manual instrumentation under per-action authorization.; Diagnose missing, duplicate, malformed, or misidentified APM signals from read-only platform evidence and route fixes to authorized enablement or installation owners.; Configure one provider's log collection, parsing, routing, retention, access, and sensitive-data controls for exact services and environments under per-action authorization.; Create or update exact provider monitors and alert routes from approved SLOs, thresholds, windows, severity, ownership, and noise controls under per-action authorization.; Install one approved observability agent variant on exact hosts or cluster scope with pinned artifact, least privilege, governed data, health, and rollback under per-action authorization.; Configure one provider's release and commit association for exact services and environments under per-action authorization without deploying or changing source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

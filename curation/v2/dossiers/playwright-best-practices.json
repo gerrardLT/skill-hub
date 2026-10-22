@@ -1,0 +1,692 @@
+{
+  "branches": [
+    "Architecture Decisions [playwright-best-practices/SKILL.md:111]",
+    "Quick Decision Tree [playwright-best-practices/SKILL.md:190]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [playwright-best-practices/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [playwright-best-practices/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [playwright-best-practices/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [playwright-best-practices/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Testing file upload/download [file-operations.md](testing-patterns/file-operations.md), [file-upload-download.md](testing-patterns/file-upload-download.md) [playwright-best-practices/SKILL.md:33]",
+    "│ ├─ File upload/download → testing-patterns/file-operations.md, testing-patterns/file-upload-download.md [playwright-best-practices/SKILL.md:212]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when writing Playwright tests, fixing flaky tests, debugging failures, implementing Page Object Model, configuring CI/CD, optimizing performance, mocking APIs, handling authentication or OAuth, testing accessibility (axe-core), file uploads/downloads, date/time mocking, WebSockets, geolocation, [playwright-best-practices/SKILL.md:3]",
+  "root_id": "skill-root:playwright-best-practices",
+  "rules_gates": [
+    "When to use: Testing WebSockets, geolocation, permissions, multi-tab flows [playwright-best-practices/SKILL.md:59]",
+    "Permission handling [browser-apis.md](browser-apis/browser-apis.md) [playwright-best-practices/SKILL.md:65]",
+    "Payment gateway mocking [third-party.md](advanced/third-party.md) [playwright-best-practices/SKILL.md:180]",
+    "│ ├─ Geolocation/permissions → browser-apis/browser-apis.md [playwright-best-practices/SKILL.md:215]"
+  ],
+  "skill_path": "playwright-best-practices/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "playwright-best-practices/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "playwright-best-practices/SKILL.md"
+    },
+    {
+      "line_end": 14,
+      "line_start": 14,
+      "path": "playwright-best-practices/SKILL.md"
+    },
+    {
+      "line_end": 18,
+      "line_start": 18,
+      "path": "playwright-best-practices/SKILL.md"
+    },
+    {
+      "line_end": 46,
+      "line_start": 46,
+      "path": "playwright-best-practices/SKILL.md"
+    }
+  ],
+  "source_sha256": "42684b93abd595551d6f4b6949b951645503baa445aefa76aa2f0d52ddda2bf7",
+  "stop_conditions": [
+    "description: Use when writing Playwright tests, fixing flaky tests, debugging failures, implementing Page Object Model, configuring CI/CD, optimizing performance, mocking APIs, handling authentication or OAuth, testing accessibility (axe-core), file uploads/downloads, date/time mocking, WebSockets, [playwright-best-practices/SKILL.md:3]",
+    "When to use: Test failures, element not found, timeouts, unexpected behavior [playwright-best-practices/SKILL.md:73]",
+    "Debugging test failures [debugging.md](debugging/debugging.md), [assertions-waiting.md](core/assertions-waiting.md) [playwright-best-practices/SKILL.md:77]",
+    "When to use: Testing error states, offline mode, network failures, validation [playwright-best-practices/SKILL.md:89]",
+    "Network failure simulation [error-testing.md](debugging/error-testing.md), [network-advanced.md](advanced/network-advanced.md) [playwright-best-practices/SKILL.md:94]",
+    "Failing on console errors [console-errors.md](debugging/console-errors.md) [playwright-best-practices/SKILL.md:182]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:42684b93abd595551d6f4b6949b951645503baa445aefa76aa2f0d52ddda2bf7",
+        "content-review:304-lines",
+        "semantic-review-report:curation/v2/reviews/qa-delivery.md"
+      ],
+      "path": "playwright-best-practices/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b6549421bf78de9304638480ee3e9eb8f65031ea2fba54aa7c69be7afb7001a0",
+        "content-review:361-lines"
+      ],
+      "path": "playwright-best-practices/advanced/authentication-flows.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:058c3afa13ccc609f130ed9c7fd007b2f88dd9477d715b83ea132eb46deba755",
+        "content-review:872-lines"
+      ],
+      "path": "playwright-best-practices/advanced/authentication.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:de7e78df2f8576e4e1ffe0a4993b8d5832cbbd63477daf511837872cd89afd9c",
+        "content-review:365-lines"
+      ],
+      "path": "playwright-best-practices/advanced/clock-mocking.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2c1cadd409279925bf048475f2d1da0de9a704da21a367a98a3c24bac95f1921",
+        "content-review:410-lines"
+      ],
+      "path": "playwright-best-practices/advanced/mobile-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:abe87f8f8d49fbf4b7a240105a51db7cbcd5622c86a8df31f481450903da4be2",
+        "content-review:289-lines"
+      ],
+      "path": "playwright-best-practices/advanced/multi-context.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fe102fd66a7c3f866dd6fe3fba638c71f9690971676ee2244f1cb43b53d07417",
+        "content-review:394-lines"
+      ],
+      "path": "playwright-best-practices/advanced/multi-user.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:49e5ec7411b5d388d700b36450fc54ab185a3f538088661fbd9a628df85073c0",
+        "content-review:453-lines"
+      ],
+      "path": "playwright-best-practices/advanced/network-advanced.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d9d07130ecb13e5e2548a59f9ed1fd76dfc58426fd5ab3de3d4589c8567313ee",
+        "content-review:465-lines"
+      ],
+      "path": "playwright-best-practices/advanced/third-party.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6619745a7ddad8c3734433325b9a09825a539a695f532aeea62e112fd8d74699",
+        "content-review:364-lines"
+      ],
+      "path": "playwright-best-practices/architecture/pom-vs-fixtures.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9f3b7e45ecbc3cadf21aaaaf3e0ce8feb0bd0a8b110f46fff1285b614f770ba2",
+        "content-review:370-lines"
+      ],
+      "path": "playwright-best-practices/architecture/test-architecture.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:919f5b8c07a477b446988734809f109a404d008e9a4bfd7744bd0d521693f84f",
+        "content-review:384-lines"
+      ],
+      "path": "playwright-best-practices/architecture/when-to-mock.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c8eb673179ddee87566ad2bed11bc3060e00d72463a7554b9cd35c12551f65b4",
+        "content-review:392-lines"
+      ],
+      "path": "playwright-best-practices/browser-apis/browser-apis.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1cf746991a1431a5f1b42ce6dc89530d534a1d04d302c8bf2211130a4e3bb817",
+        "content-review:404-lines"
+      ],
+      "path": "playwright-best-practices/browser-apis/iframes.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c771ba9b5d26f18f1555fca583f365b9ecc2cdd26394bdbafe7e5bf0be0a635f",
+        "content-review:505-lines"
+      ],
+      "path": "playwright-best-practices/browser-apis/service-workers.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ed8a75b08e89720ea2c77d3adb4504530f9dfab2c140de423e29ae68a80f36c2",
+        "content-review:404-lines"
+      ],
+      "path": "playwright-best-practices/browser-apis/websockets.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f1aac6ca31db4b485a55b80fb69073ba5bb3a994c14868f25d87056e6bebbab6",
+        "content-review:425-lines"
+      ],
+      "path": "playwright-best-practices/core/annotations.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8cdc5673d148aa3a187544aae13973996c690c8c125bd770a243c0ba5c6744cd",
+        "content-review:362-lines"
+      ],
+      "path": "playwright-best-practices/core/assertions-waiting.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d375dbb84d133a70cae42c660302323b0330346614986e5f50c190dc3da0d2d8",
+        "content-review:453-lines"
+      ],
+      "path": "playwright-best-practices/core/configuration.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:057018bd070b01e9ac1e469a80ff0df8de3e9a1ac2148be3e7c0fcb2256988e6",
+        "content-review:418-lines"
+      ],
+      "path": "playwright-best-practices/core/fixtures-hooks.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d59548fb70ee60f9270d4a1a2d68e89ae4cadffd0ec55b4c41a651e9ac70ed72",
+        "content-review:435-lines"
+      ],
+      "path": "playwright-best-practices/core/global-setup.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:888e6c2562aa28fe1a9efb36775c8cf0e77fdcc75b197c0fb66c4f0eda402378",
+        "content-review:243-lines"
+      ],
+      "path": "playwright-best-practices/core/locators.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b1ceaba7a8ce019f4ec4bfe41b9c94b452ae93f87312a78c0ae71b4e1787357e",
+        "content-review:316-lines"
+      ],
+      "path": "playwright-best-practices/core/page-object-model.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d04ec97f78e1d4767c1ae20fdeab8f4407f574d182c3a313fb43a26146b05f19",
+        "content-review:454-lines"
+      ],
+      "path": "playwright-best-practices/core/projects-dependencies.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a3ca72e9583de070bdc6808e0a59502601cb1455d180fdfe418ac9150fd7b62f",
+        "content-review:493-lines"
+      ],
+      "path": "playwright-best-practices/core/test-data.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:638a72c8d01826a842096ca2a90bd6108d27a31a0d28d209833d14379abac9ee",
+        "content-review:362-lines"
+      ],
+      "path": "playwright-best-practices/core/test-suite-structure.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:affc1e8550bfad113557670c97e050864ca5837df4fcebc322dd0b8ac6af5853",
+        "content-review:299-lines"
+      ],
+      "path": "playwright-best-practices/core/test-tags.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7332c92af9af3217516d012360621709750c1c191ecd588eaa77ecf1fd3c1450",
+        "content-review:421-lines"
+      ],
+      "path": "playwright-best-practices/debugging/console-errors.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ca751fe90673d51f7fdb28b3cab827bb7a76d745d006df21f6d7220ff5e4b112",
+        "content-review:505-lines"
+      ],
+      "path": "playwright-best-practices/debugging/debugging.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3ad834d850816d9b5bffb456175a41fd88bd399fa2d7b098a4cb1bc12914d940",
+        "content-review:361-lines"
+      ],
+      "path": "playwright-best-practices/debugging/error-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:027dfe989ef2abf9fb8d1ab1e8b0602ee0c5026c93bb3ee69c3b2ffbbcd559f8",
+        "content-review:497-lines"
+      ],
+      "path": "playwright-best-practices/debugging/flaky-tests.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4acd7095d3556dd09a486c7ef30e0a6af1bab1cbfe2645739cca32914ef93009",
+        "content-review:531-lines"
+      ],
+      "path": "playwright-best-practices/frameworks/angular.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1a6370ebb6f9b871e59027673e641fc968d24943d37ec73caad6e6b8463d7a4b",
+        "content-review:470-lines"
+      ],
+      "path": "playwright-best-practices/frameworks/nextjs.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:67f248dfafd356c37354a9bc65c6306e9e48343f983c0352b78ffbc67a7d8391",
+        "content-review:532-lines"
+      ],
+      "path": "playwright-best-practices/frameworks/react.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b35f8d561dd9b5ebe8b86be7408ff4dbf03e189649714d790943ce763abb6718",
+        "content-review:575-lines"
+      ],
+      "path": "playwright-best-practices/frameworks/vue.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a6951b34dbfc4eabaad53cc5ff63edea3ca7eb35c455a1b34a73992e9572757a",
+        "content-review:469-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/ci-cd.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ba0318c1060fe7d2235899e03ab998e588581becc0da49c3562a78fdd71b6526",
+        "content-review:284-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/docker.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1f243a1b43c3a25fd29484a3789f65e38a1725588149b88e9996b37e0e7c608f",
+        "content-review:547-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/github-actions.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:91d73a21bfa8f238a719a04700390f01866f1de9dc70a064e09705ebc60f8b72",
+        "content-review:398-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/gitlab.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6aca1c5e00cb179853ee85b8f340481d59c2c938a49eea412f1d13a5e04a230a",
+        "content-review:522-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/other-providers.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:81837bf4cc6e034053a0cbc00d9e7347f5cd573ceef61db49b0587ddbeba7a23",
+        "content-review:372-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/parallel-sharding.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:01073c6bc622a7e2d347dbbea066dd8b05cb394c7717e2b2a8b26ea6f1e6e838",
+        "content-review:454-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/performance.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e7bd41103689230d3fe3d5f7019f95048548e5a1b8d70da7617cc3897236efd7",
+        "content-review:425-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/reporting.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b70eb2fa03e5cf3d4d7b98d4b342083fee1ea9092023d2c0c0cb685bfd8aa303",
+        "content-review:498-lines"
+      ],
+      "path": "playwright-best-practices/infrastructure-ci-cd/test-coverage.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a52a8d1590c841f8470ee6bea8ea73c052010a36ae9a6afed7939d12bdbf800a",
+        "content-review:360-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/accessibility.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b7b94a9015655e4d8f1826b440d5270fc8a7d969466d80aad4e7196faf60079f",
+        "content-review:720-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/api-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2f05f8f62f02ced311802c44e96198db3ceade61d2224501939ded091e952ee2",
+        "content-review:507-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/browser-extensions.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:39d62688c1e74a2e5af44efa03204be268fb2f4f62661d58aeffedfd3385998f",
+        "content-review:494-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/canvas-webgl.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2fb0d0d5053ccc0353022337beba2fa76b68389c6461b363cafacc32e8fa0c68",
+        "content-review:501-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/component-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:14c470974e736566e1c7a1c7f10c9d5d8b66085ec5c8179a6b3c33002252541d",
+        "content-review:577-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/drag-drop.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:093d00d665b96befa45d63385f32de34065785ef87f992526a333be91f83478c",
+        "content-review:510-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/electron.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:50f3818af9a2c5a9d1e83c832c7324c7bc94c0c93899c9cedb40d534e4335f60",
+        "content-review:378-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/file-operations.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2aa6a50f0f3e8703f08f4365065d6e79350f1ef7ae4646662ab67d66e8e1d3c7",
+        "content-review:563-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/file-upload-download.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:124cc991bd22106d202f6c0d7e15c79edb3dc4ca683b2fedfa700b6512df647a",
+        "content-review:562-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/forms-validation.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:25706e8c8133a86ae01a7579fab4d17000d01d4e5d2c67c174da6bcd9dbf1a36",
+        "content-review:332-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/graphql-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:348fd0817e83ce9ac1318ad2ff87f9ac5b52de6c21aecdbd99690538214c87f1",
+        "content-review:509-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/i18n.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0faccd5ec785b4c66466f194ce9c8d1b9e257674e5be5c1ef5dd8864538bde5b",
+        "content-review:477-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/performance-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c03fe6ead5ec78bfe20af45e05ab587d054f77f8e1a6d26dd7791f06be7cabd7",
+        "content-review:431-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/security-testing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b58d614c2d34f6b63df6a6aaa9d255a90dd4e4e5475db8227b6ea43c8a079a33",
+        "content-review:635-lines"
+      ],
+      "path": "playwright-best-practices/testing-patterns/visual-regression.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: playwright-best-practices/core/test-suite-structure.md [playwright-best-practices/SKILL.md:24]",
+    "Local dependency: playwright-best-practices/core/locators.md [playwright-best-practices/SKILL.md:24]",
+    "Local dependency: playwright-best-practices/core/assertions-waiting.md [playwright-best-practices/SKILL.md:24]",
+    "Local dependency: playwright-best-practices/testing-patterns/component-testing.md [playwright-best-practices/SKILL.md:25]",
+    "Local dependency: playwright-best-practices/core/test-suite-structure.md [playwright-best-practices/SKILL.md:25]",
+    "Local dependency: playwright-best-practices/testing-patterns/api-testing.md [playwright-best-practices/SKILL.md:26]",
+    "Local dependency: playwright-best-practices/core/test-suite-structure.md [playwright-best-practices/SKILL.md:26]",
+    "Local dependency: playwright-best-practices/testing-patterns/graphql-testing.md [playwright-best-practices/SKILL.md:27]",
+    "Local dependency: playwright-best-practices/testing-patterns/api-testing.md [playwright-best-practices/SKILL.md:27]",
+    "Local dependency: playwright-best-practices/testing-patterns/visual-regression.md [playwright-best-practices/SKILL.md:28]",
+    "Local dependency: playwright-best-practices/testing-patterns/canvas-webgl.md [playwright-best-practices/SKILL.md:28]",
+    "Local dependency: playwright-best-practices/core/page-object-model.md [playwright-best-practices/SKILL.md:29]"
+  ],
+  "trigger": "Use when writing Playwright tests, fixing flaky tests, debugging failures, implementing Page Object Model, configuring CI/CD, optimizing performance, mocking APIs, handling authentication or OAuth, testing accessibility (axe-core), file uploads/downloads, date/time mocking, WebSockets, geolocation, [playwright-best-practices/SKILL.md:3]",
+  "unique_methods": [
+    "Playwright Best Practices [playwright-best-practices/SKILL.md:10]",
+    "Activity-Based Reference Guide [playwright-best-practices/SKILL.md:14]",
+    "Writing New Tests [playwright-best-practices/SKILL.md:18]",
+    "Mobile & Responsive Testing [playwright-best-practices/SKILL.md:46]",
+    "Real-Time & Browser APIs [playwright-best-practices/SKILL.md:57]",
+    "Debugging & Troubleshooting [playwright-best-practices/SKILL.md:71]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [playwright-best-practices/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [playwright-best-practices/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Playwright Best Practices [playwright-best-practices/SKILL.md:10]",
+    "Activity-Based Reference Guide [playwright-best-practices/SKILL.md:14]",
+    "Writing New Tests [playwright-best-practices/SKILL.md:18]",
+    "Mobile & Responsive Testing [playwright-best-practices/SKILL.md:46]",
+    "Real-Time & Browser APIs [playwright-best-practices/SKILL.md:57]",
+    "Debugging & Troubleshooting [playwright-best-practices/SKILL.md:71]"
+  ]
+}

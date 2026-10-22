@@ -1,0 +1,135 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/browser-skills/hackernews-frontpage/SKILL.md:3"
+      ],
+      "target": "skill-root:gstack/browser-skills",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Scrape the Hacker News front page (titles, points, comment counts). [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]",
+  "root_id": "skill-root:gstack/browser-skills/hackernews-frontpage",
+  "rules_gates": [
+    "captured fixture before users notice. That's the point. [gstack/browser-skills/hackernews-frontpage/SKILL.md:52]"
+  ],
+  "skill_path": "gstack/browser-skills/hackernews-frontpage/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md"
+    },
+    {
+      "line_end": 35,
+      "line_start": 35,
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md"
+    }
+  ],
+  "source_sha256": "1a4e91d00ffdbdd38d2dc2986cf764b6d7d4d9348fdce19f2c60e92fa4a564da",
+  "stop_conditions": [
+    "When the HN HTML rotates and our selectors break, the test fails against the [gstack/browser-skills/hackernews-frontpage/SKILL.md:51]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1a4e91d00ffdbdd38d2dc2986cf764b6d7d4d9348fdce19f2c60e92fa4a564da",
+        "content-review:53-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/browser-skills/hackernews-frontpage/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:bb1056c58e442e63558fdfbab2a20bffa8165eaebc246421757f4ce86895e8c6",
+        "content-review:265-lines",
+        "behavior-signals:entrypoint|process|network"
+      ],
+      "path": "gstack/browser-skills/hackernews-frontpage/_lib/browse-client.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:dc7985d5eff03ea4c4cccd7b6625f6eecaec809093fc8b69e5a9abeb84c9da8f"
+      ],
+      "path": "gstack/browser-skills/hackernews-frontpage/fixtures/hn-2026-04-26.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e2c6dc8a6bad7e0ea0c22081111c802084ae4083d6fc53d3041659f59945082c",
+        "content-review:106-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browser-skills/hackernews-frontpage/script.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fbd172c8c1ff7be431d561df02c3e3d379029657f573aee5a4cb5c09f35c0935",
+        "content-review:133-lines",
+        "behavior-signals:entrypoint|network"
+      ],
+      "path": "gstack/browser-skills/hackernews-frontpage/script.ts",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: gstack/browser-skills/hackernews-frontpage/script.test.ts [gstack/browser-skills/hackernews-frontpage/SKILL.md:49]"
+  ],
+  "trigger": "Scrape the Hacker News front page (titles, points, comment counts). [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]",
+  "unique_methods": [
+    "Hacker News front-page scraper [gstack/browser-skills/hackernews-frontpage/SKILL.md:16]",
+    "How it works [gstack/browser-skills/hackernews-frontpage/SKILL.md:35]",
+    "Why this is the reference skill [gstack/browser-skills/hackernews-frontpage/SKILL.md:43]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/browser-skills/hackernews-frontpage/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Hacker News front-page scraper [gstack/browser-skills/hackernews-frontpage/SKILL.md:16]",
+    "Usage [gstack/browser-skills/hackernews-frontpage/SKILL.md:22]",
+    "How it works [gstack/browser-skills/hackernews-frontpage/SKILL.md:35]",
+    "Why this is the reference skill [gstack/browser-skills/hackernews-frontpage/SKILL.md:43]"
+  ]
+}

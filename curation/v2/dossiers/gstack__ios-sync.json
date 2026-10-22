@@ -1,0 +1,138 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/ios-sync/SKILL.md:61]",
+    "Skill Invocation During Plan Mode [gstack/ios-sync/SKILL.md:65]",
+    "Model-Specific Behavioral Patch (claude) [gstack/ios-sync/SKILL.md:197]",
+    "Continuous Checkpoint Mode [gstack/ios-sync/SKILL.md:297]",
+    "Failure modes [gstack/ios-sync/SKILL.md:464]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/ios-sync/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/ios-sync/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/ios-sync/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/ios-sync/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/ios-sync/SKILL.md:39]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/ios-sync/SKILL.md:44]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/ios-sync/SKILL.md:63]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-sync/SKILL.md:82]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/ios-sync/SKILL.md:106]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/ios-sync/SKILL.md:177]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/ios-sync/SKILL.md:301]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/ios-sync/SKILL.md:396]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/ios-sync/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Regenerate the iOS debug bridge against the latest upstream gstack templates. [gstack/ios-sync/SKILL.md:5]",
+  "root_id": "skill-root:gstack/ios-sync",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/ios-sync/SKILL.md:19]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/ios-sync/SKILL.md:45]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/ios-sync/SKILL.md:46]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/ios-sync/SKILL.md:47]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/ios-sync/SKILL.md:54]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/ios-sync/SKILL.md:55]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/ios-sync/SKILL.md:58]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/ios-sync/SKILL.md:69]"
+  ],
+  "skill_path": "gstack/ios-sync/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/ios-sync/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/ios-sync/SKILL.md"
+    },
+    {
+      "line_end": 33,
+      "line_start": 33,
+      "path": "gstack/ios-sync/SKILL.md"
+    },
+    {
+      "line_end": 61,
+      "line_start": 61,
+      "path": "gstack/ios-sync/SKILL.md"
+    },
+    {
+      "line_end": 65,
+      "line_start": 65,
+      "path": "gstack/ios-sync/SKILL.md"
+    }
+  ],
+  "source_sha256": "99670582dc14779fb37770c9ee02323aa648dfc3b7ec88890a023d50fb7fafda",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/ios-sync/SKILL.md:79]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/ios-sync/SKILL.md:80]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/ios-sync/SKILL.md:81]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-sync/SKILL.md:82]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/ios-sync/SKILL.md:84]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/ios-sync/SKILL.md:88]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:99670582dc14779fb37770c9ee02323aa648dfc3b7ec88890a023d50fb7fafda",
+        "content-review:472-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/ios-sync/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ba7591b9343a458575da4da7f335b7a854a12e27f7caaed3cc821c734a87af9c",
+        "content-review:101-lines"
+      ],
+      "path": "gstack/ios-sync/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: Read [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: Write [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: Edit [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: Glob [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: Grep [gstack/ios-sync/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/ios-sync/SKILL.md:1-18]"
+  ],
+  "trigger": "Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack) [gstack/ios-sync/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/ios-sync/SKILL.md:145]",
+    "Self-check before emitting [gstack/ios-sync/SKILL.md:168]",
+    "Context Recovery [gstack/ios-sync/SKILL.md:236]",
+    "Completeness Principle — Boil the Ocean [gstack/ios-sync/SKILL.md:283]",
+    "Confusion Protocol [gstack/ios-sync/SKILL.md:289]",
+    "Claimed Limitations Need Evidence [gstack/ios-sync/SKILL.md:293]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/ios-sync/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/ios-sync/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/ios-sync/SKILL.md:297]",
+    "Phase 1: Detect installed version [gstack/ios-sync/SKILL.md:418]",
+    "Phase 2: Regenerate codegen output [gstack/ios-sync/SKILL.md:426]",
+    "Phase 3: Review the generated diff [gstack/ios-sync/SKILL.md:449]",
+    "Phase 4: Verify [gstack/ios-sync/SKILL.md:457]"
+  ]
+}

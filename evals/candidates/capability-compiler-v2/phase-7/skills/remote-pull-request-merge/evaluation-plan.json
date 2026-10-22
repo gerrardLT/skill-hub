@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "gstack",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "db48846e94be55cbf9129dfc013d8643a3f959ae55c875dc7716a3358ff0ab9c",
+    "identity": "remote-pull-request-merge@0.1.0-v2-candidate",
+    "skill_sha256": "f5a66364ca2f0c6a37172d28de2ecf70989859e27549e937d5c1b7374b8123fe"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-remote-pull-request-merge-holdout-trigger-01",
+    "V2-P7-remote-pull-request-merge-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-remote-pull-request-merge-01",
+      "remove_exact_text": "Merge authorization is one-shot for one PR at one exact head SHA after a fresh gate; it never authorizes deployment or any action after readiness drift.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "remote-pull-request-merge",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

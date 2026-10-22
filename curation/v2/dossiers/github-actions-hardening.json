@@ -1,0 +1,163 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [github-actions-hardening/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [github-actions-hardening/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [github-actions-hardening/SKILL.md:3]",
+  "outputs": [
+    "Always show a findings summary table (counts by severity) first. [github-actions-hardening/SKILL.md:134]",
+    "Group by issue type, not by file. [github-actions-hardening/SKILL.md:135]",
+    "Be exact — quote the offending line and give the line location. [github-actions-hardening/SKILL.md:136]",
+    "Always pair every CRITICAL/HIGH with a concrete corrected YAML snippet. [github-actions-hardening/SKILL.md:137]",
+    "Never claim a fork pullrequest is dangerous just because it runs untrusted code — it has [github-actions-hardening/SKILL.md:138]",
+    "no secrets and a read-only token. Reserve CRITICAL for the privileged triggers. [github-actions-hardening/SKILL.md:139]"
+  ],
+  "permissions_side_effects": [
+    "(ref: ${{ github.event.pullrequest.head.sha }}) and then runs it (build, test, install [github-actions-hardening/SKILL.md:76]",
+    "scripts, npm install with lifecycle scripts, etc.), that is remote code execution against a [github-actions-hardening/SKILL.md:77]",
+    "be read/write to everything. Flag it. [github-actions-hardening/SKILL.md:85]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Security hardening reviewer for GitHub Actions workflow files (.github/workflows/.yml). [github-actions-hardening/SKILL.md:3]",
+  "root_id": "skill-root:github-actions-hardening",
+  "rules_gates": [
+    "itself and the way GitHub expands ${{ }} expressions into a shell before your script runs. [github-actions-hardening/SKILL.md:12]",
+    "Questions about GITHUBTOKEN permissions or the permissions: key [github-actions-hardening/SKILL.md:21]",
+    "In a workflow, ${{ <expr> }} is expanded by the runner into the script before the shell [github-actions-hardening/SKILL.md:30]",
+    "Step 3 — Check Privileged Triggers Don't Execute Untrusted Code [github-actions-hardening/SKILL.md:73]",
+    "Step 4 — Audit permissions [github-actions-hardening/SKILL.md:82]",
+    "If there is no permissions: block, the workflow inherits the repository default, which may [github-actions-hardening/SKILL.md:84]",
+    "Recommend a top-level permissions: {} (deny-all) or contents: read, then grant the minimum [github-actions-hardening/SKILL.md:86]",
+    "Flag any permissions: write-all or broad write scopes that the steps don't actually need. [github-actions-hardening/SKILL.md:88]"
+  ],
+  "skill_path": "github-actions-hardening/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "github-actions-hardening/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "github-actions-hardening/SKILL.md"
+    },
+    {
+      "line_end": 14,
+      "line_start": 14,
+      "path": "github-actions-hardening/SKILL.md"
+    },
+    {
+      "line_end": 28,
+      "line_start": 28,
+      "path": "github-actions-hardening/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "github-actions-hardening/SKILL.md"
+    }
+  ],
+  "source_sha256": "31a8e7483d978e6267941edefebbe42aaa946bb3d43c9095aa3db343d4a8ff06",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:31a8e7483d978e6267941edefebbe42aaa946bb3d43c9095aa3db343d4a8ff06",
+        "content-review:161-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "github-actions-hardening/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ebd6ef8d39ba6f1cd3dc13051e6ed4163d1d2ba36518cf0f7393836a211e58ff",
+        "content-review:87-lines"
+      ],
+      "path": "github-actions-hardening/references/injection.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7272d00b20cf99c6fcbf34346f76730907c00701aef44bb9cfb7ab3eecac336b",
+        "content-review:77-lines"
+      ],
+      "path": "github-actions-hardening/references/permissions-and-tokens.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3ecd2442e173bc001f858747873349be7c6c77050470b87ae516647908b1e86e",
+        "content-review:66-lines"
+      ],
+      "path": "github-actions-hardening/references/report-format.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f66f613dbd732ce87c1e76b88208efde8feae3ffe5a3ab405cde4ce3df66f605",
+        "content-review:72-lines"
+      ],
+      "path": "github-actions-hardening/references/supply-chain.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:465f3f76517e9f5374a73e30f46cb47e1fe62ce9fd81f782808a3abbb2df2756",
+        "content-review:90-lines"
+      ],
+      "path": "github-actions-hardening/references/triggers-and-privilege.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: github-actions-hardening/references/triggers-and-privilege.md [github-actions-hardening/SKILL.md:57]",
+    "Local dependency: github-actions-hardening/references/injection.md [github-actions-hardening/SKILL.md:71]",
+    "Local dependency: github-actions-hardening/references/permissions-and-tokens.md [github-actions-hardening/SKILL.md:90]",
+    "Local dependency: github-actions-hardening/references/supply-chain.md [github-actions-hardening/SKILL.md:104]",
+    "Local dependency: github-actions-hardening/references/report-format.md [github-actions-hardening/SKILL.md:118]",
+    "Local dependency: github-actions-hardening/references/triggers-and-privilege.md [github-actions-hardening/SKILL.md:146]",
+    "Local dependency: github-actions-hardening/references/injection.md [github-actions-hardening/SKILL.md:149]",
+    "Local dependency: github-actions-hardening/references/permissions-and-tokens.md [github-actions-hardening/SKILL.md:152]",
+    "Local dependency: github-actions-hardening/references/supply-chain.md [github-actions-hardening/SKILL.md:155]",
+    "Local dependency: github-actions-hardening/references/report-format.md [github-actions-hardening/SKILL.md:158]"
+  ],
+  "trigger": "Security hardening reviewer for GitHub Actions workflow files (.github/workflows/.yml). Reasons about the Actions threat model that pattern matchers and general code linters miss — untrusted-input script injection, privileged triggers running fork code, mutable action references, and over-scoped tok [github-actions-hardening/SKILL.md:3]",
+  "unique_methods": [
+    "GitHub Actions Hardening [github-actions-hardening/SKILL.md:6]",
+    "When to Use This Skill [github-actions-hardening/SKILL.md:14]",
+    "The Core Insight [github-actions-hardening/SKILL.md:28]",
+    "Severity Guide [github-actions-hardening/SKILL.md:122]",
+    "Output Rules [github-actions-hardening/SKILL.md:132]",
+    "Reference Files [github-actions-hardening/SKILL.md:142]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [github-actions-hardening/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [github-actions-hardening/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [github-actions-hardening/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Execution Workflow [github-actions-hardening/SKILL.md:43]",
+    "Step 1 — Map the Triggers and Trust Level [github-actions-hardening/SKILL.md:47]",
+    "Step 2 — Hunt for Script Injection [github-actions-hardening/SKILL.md:59]",
+    "Step 3 — Check Privileged Triggers Don't Execute Untrusted Code [github-actions-hardening/SKILL.md:73]",
+    "Step 4 — Audit permissions [github-actions-hardening/SKILL.md:82]",
+    "Step 5 — Audit Action References (Supply Chain) [github-actions-hardening/SKILL.md:92]",
+    "Step 6 — Check Secret and Output Handling [github-actions-hardening/SKILL.md:106]",
+    "Step 7 — Produce the Report [github-actions-hardening/SKILL.md:116]"
+  ]
+}

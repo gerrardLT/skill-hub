@@ -1,0 +1,94 @@
+{
+  "artifact_types": [
+    "versioned data schema and invariant contract",
+    "migration, backfill, verification, and rollback plan",
+    "API or event interface schema",
+    "compatibility, idempotency, concurrency, and test matrix",
+    "concrete DDL or schema files and a request and response example per endpoint",
+    "service identity remap receipt",
+    "collision and continuity evidence",
+    "affected dashboard, alert, and integration map",
+    "verification and rollback record"
+  ],
+  "capability_id": "capability:data-and-api-contract-design",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence"
+  ],
+  "hard_gates": [
+    "No contract passes without explicit compatibility, idempotency or retry behavior, concurrency semantics, validation and error shapes, authorization hooks, and a verified migration path with rollback or declared point of no return.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance.",
+    "Identity remapping requires collision-free exact old and new identities, bounded provider scope, continuity plan, affected-resource inventory, verification, and rollback; renaming telemetry emitters is separate.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "data-and-api-contract-design",
+  "inputs": [
+    "Approved requirements, domain entities, existing persistence and interfaces, consistency needs, and compatibility constraints.",
+    "Current service names, desired taxonomy, provider configuration, downstream dashboards, and authorization."
+  ],
+  "mode_permissions": {
+    "data-and-api-contract-design": "workspace-write",
+    "service-identity-remapping": "remote-write-authorized-only"
+  },
+  "modes": [
+    "data-and-api-contract-design",
+    "service-identity-remapping"
+  ],
+  "outputs": [
+    "versioned data schema and invariant contract",
+    "migration, backfill, verification, and rollback plan",
+    "API or event interface schema",
+    "compatibility, idempotency, concurrency, and test matrix",
+    "concrete DDL or schema files and a request and response example per endpoint",
+    "service identity remap receipt",
+    "collision and continuity evidence",
+    "affected dashboard, alert, and integration map",
+    "verification and rollback record"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "schema-invariants",
+      "migration",
+      "compatibility",
+      "validation-errors",
+      "pagination",
+      "idempotency",
+      "concurrency",
+      "authorization-hooks",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Define versioned data schemas, invariants, migration and rollback, API shapes, validation, errors, pagination, idempotency, concurrency, compatibility, and authorization hooks before implementation.; Remap one telemetry service identity in one exact provider scope after collision, continuity, retention, dashboard, alert, and rollback checks under per-action authorization.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

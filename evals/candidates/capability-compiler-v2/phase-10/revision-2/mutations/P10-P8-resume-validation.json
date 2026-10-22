@@ -1,0 +1,401 @@
+{
+  "description": "Explicit end-to-end product lifecycle across all fourteen mandatory stages, with tool runtime support inserted only when a selected owner is blocked.",
+  "execution_state": "not-run-phase-10-revision-2",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_downstream_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "resume_only_from_valid_checkpoint": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "stage recipes remain conditional and skip non-applicable atomic steps",
+    "mandatory handoffs preserve identities, authority, completion evidence, gaps, residual risk, and invalidation",
+    "support stage never grants lifecycle approval and always returns to the blocked owner",
+    "every remote or local-system action requires fresh non-cascading authorization"
+  ],
+  "handoffs": [
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-001",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:01-governance-intake",
+      "target_stage_id": "stage:02-discovery-research"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-002",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:02-discovery-research",
+      "target_stage_id": "stage:03-strategy-prioritization"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-003",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:03-strategy-prioritization",
+      "target_stage_id": "stage:04-requirements-planning"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-004",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:04-requirements-planning",
+      "target_stage_id": "stage:05-experience-design"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-005",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:05-experience-design",
+      "target_stage_id": "stage:06-architecture-risk-security"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-006",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:06-architecture-risk-security",
+      "target_stage_id": "stage:07-implementation-integration"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-007",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:07-implementation-integration",
+      "target_stage_id": "stage:08-verification-quality"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-008",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:08-verification-quality",
+      "target_stage_id": "stage:09-performance-reliability"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-009",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:09-performance-reliability",
+      "target_stage_id": "stage:10-release-readiness"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-010",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:10-release-readiness",
+      "target_stage_id": "stage:11-deployment-change"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-011",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:11-deployment-change",
+      "target_stage_id": "stage:12-observation-canary"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-012",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:12-observation-canary",
+      "target_stage_id": "stage:13-incident-recovery"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-013",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:13-incident-recovery",
+      "target_stage_id": "stage:14-learning-feedback"
+    }
+  ],
+  "human_checkpoints": [
+    "human confirms authority, data boundary, decision owner, and requested scope",
+    "human approves research purpose, governed data use, and evidence sufficiency",
+    "human selects strategy, priority, and GO/PIVOT/KILL outcome",
+    "human approves behavior, scope, acceptance criteria, plan, and unresolved exclusions",
+    "human owns taste choices, prototype promotion, accepted findings, and design disposition",
+    "human approves architecture, data migration, authorization, autonomy, risk, and rollback boundaries",
+    "human authorizes exact workspace, writer, mutation scope, and accepted remediation",
+    "human accepts independent findings, risk disposition, and any separate repair authorization",
+    "human approves budgets, thresholds, residual risk, and optimization or reliability work",
+    "human accepts release scope, redaction, residual risk, and each upcoming remote action separately",
+    "human grants fresh per-action authorization for one exact target and immutable input",
+    "human selects continue, extend, investigate, or separately authorize rollback",
+    "human authorizes mitigation or rollback actions and owns incident closure",
+    "human approves improvement commitments, learning persistence, and next-cycle scope"
+  ],
+  "id": "full-software-lifecycle",
+  "schema_version": "2.0",
+  "stage_steps": [
+    {
+      "condition": "authority, context, risk, data governance, or routing must be bounded",
+      "depends_on": [],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-01-governance-intake@0.1.0-v2-candidate",
+      "stage_id": "stage:01-governance-intake"
+    },
+    {
+      "condition": "validated discovery, research, market, system, or evidence collection is required",
+      "depends_on": [
+        "stage-01-governance-intake"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-02-discovery-research@0.1.0-v2-candidate",
+      "stage_id": "stage:02-discovery-research"
+    },
+    {
+      "condition": "evidence-backed alternatives, prioritization, positioning, or strategic choice is required",
+      "depends_on": [
+        "stage-02-discovery-research"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-03-strategy-prioritization@0.1.0-v2-candidate",
+      "stage_id": "stage:03-strategy-prioritization"
+    },
+    {
+      "condition": "approved direction needs requirements, acceptance, implementation planning, or plan review",
+      "depends_on": [
+        "stage-03-strategy-prioritization"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-04-requirements-planning@0.1.0-v2-candidate",
+      "stage_id": "stage:04-requirements-planning"
+    },
+    {
+      "condition": "user-facing flow, visual system, interaction, accessibility, prototype, or rendered review is required",
+      "depends_on": [
+        "stage-04-requirements-planning"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-05-experience-design@0.1.1-v2-candidate",
+      "stage_id": "stage:05-experience-design"
+    },
+    {
+      "condition": "technical boundaries, data/API, authorization, secrets, AI architecture, or security review is required",
+      "depends_on": [
+        "stage-05-experience-design"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-06-architecture-risk-security@0.1.0-v2-candidate",
+      "stage_id": "stage:06-architecture-risk-security"
+    },
+    {
+      "condition": "authorized source implementation, repair, integration, or developer self-check is required",
+      "depends_on": [
+        "stage-06-architecture-risk-security"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-07-implementation-integration@0.1.0-v2-candidate",
+      "stage_id": "stage:07-implementation-integration"
+    },
+    {
+      "condition": "independent tests, QA, review, compliance, regression, or completion evidence is required",
+      "depends_on": [
+        "stage-07-implementation-integration"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-08-verification-quality@0.1.0-v2-candidate",
+      "stage_id": "stage:08-verification-quality"
+    },
+    {
+      "condition": "performance, resilience, determinism, benchmark, or reliability evidence is required",
+      "depends_on": [
+        "stage-08-verification-quality"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-09-performance-reliability@0.1.0-v2-candidate",
+      "stage_id": "stage:09-performance-reliability"
+    },
+    {
+      "condition": "verified change needs local packaging, documentation, delivery preflight, or merge/deploy readiness",
+      "depends_on": [
+        "stage-09-performance-reliability"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-10-release-readiness@0.1.0-v2-candidate",
+      "stage_id": "stage:10-release-readiness"
+    },
+    {
+      "condition": "one explicitly authorized remote repository, provider, deployment, or configuration action is requested",
+      "depends_on": [
+        "stage-10-release-readiness"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-11-deployment-change@0.1.0-v2-candidate",
+      "stage_id": "stage:11-deployment-change"
+    },
+    {
+      "condition": "a deployed change or production baseline needs read-only observation, canary, alerts, or health evidence",
+      "depends_on": [
+        "stage-11-deployment-change"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-12-observation-canary@0.1.0-v2-candidate",
+      "stage_id": "stage:12-observation-canary"
+    },
+    {
+      "condition": "production failure requires investigation, coordination, or one separately authorized recovery action",
+      "depends_on": [
+        "stage-12-observation-canary"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-13-incident-recovery@0.1.0-v2-candidate",
+      "stage_id": "stage:13-incident-recovery"
+    },
+    {
+      "condition": "outcomes, feedback, retrospective, adoption, or validated learning must feed the next lifecycle pass",
+      "depends_on": [
+        "stage-13-incident-recovery"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-14-learning-feedback@0.1.0-v2-candidate",
+      "stage_id": "stage:14-learning-feedback"
+    }
+  ],
+  "status": "evaluating",
+  "support_stage": {
+    "condition": "a selected owner is blocked by a local tool, browser, artifact, memory, auth, or workflow-runtime prerequisite",
+    "mandatory_in_recipe": false,
+    "recipe_ref": "stage-15-tool-runtime-support@0.1.1-v2-candidate",
+    "return_to_blocked_owner": true,
+    "stage_id": "stage:15-tool-runtime-support"
+  },
+  "version": "0.1.2-v2-candidate"
+}

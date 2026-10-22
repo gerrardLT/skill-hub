@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "gstack",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "a3af35d81e6dcc1ca653d1eadc49591e43ebe3050f315d4f5c8d82806accfb1a",
+    "identity": "merge-and-deploy-readiness@0.1.0-v2-candidate",
+    "skill_sha256": "58b06063afe7c26f7f3b031b9b5c999769b3082ac3bc41b739e34788072ca6cb"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-merge-and-deploy-readiness-holdout-trigger-01",
+    "V2-P7-merge-and-deploy-readiness-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-merge-and-deploy-readiness-01",
+      "remove_exact_text": "Readiness cannot mutate remote state and must issue separate merge and deploy verdicts; a passing merge gate neither performs nor authorizes deployment.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "merge-and-deploy-readiness",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

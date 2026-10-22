@@ -1,0 +1,66 @@
+{
+  "artifact_types": [
+    "calibrated hypothesis and learning record candidate",
+    "evidence and uncertainty map",
+    "priority and review cadence",
+    "next discovery, experiment, reliability, or persistence handoff"
+  ],
+  "capability_id": "capability:feedback-and-continuous-learning-loop",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Continuous learning must link each confidence or priority change to current authorized evidence and preserve contrary evidence; repeated opinion, stale metrics, or correlation alone is not learning.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "feedback-and-continuous-learning-loop",
+  "inputs": [
+    "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions."
+  ],
+  "outputs": [
+    "calibrated hypothesis and learning record candidate",
+    "evidence and uncertainty map",
+    "priority and review cadence",
+    "next discovery, experiment, reliability, or persistence handoff"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "evidence-freshness",
+      "hypothesis-calibration",
+      "contrary-evidence",
+      "causal-uncertainty",
+      "review-cadence",
+      "next-learning-input",
+      "no-persistence"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Synthesize authorized runtime signals, customer feedback, experiment results, alerts, and residual assumptions into calibrated hypotheses, priorities, and the next learning cycle without collection or persistence.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

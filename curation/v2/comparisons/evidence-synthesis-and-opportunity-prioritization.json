@@ -1,0 +1,525 @@
+{
+  "candidate_responsibility": "Synthesize multi-source evidence into patterns and rank opportunities with methods suited to the data.",
+  "canonical_unit_ids": [
+    "competitive-strategy:unit-037",
+    "competitive-strategy:unit-053",
+    "competitive-strategy:unit-062",
+    "competitive-strategy:unit-080",
+    "competitive-strategy:unit-088",
+    "discovery-process:unit-004",
+    "discovery-process:unit-050",
+    "discovery-process:unit-052",
+    "prd-development:unit-031"
+  ],
+  "cluster_id": "cluster:evidence-synthesis-and-opportunity-prioritization",
+  "decision_references": [
+    "V2-DEC-003"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "competitive-strategy/references/artifacts.md:127-130",
+    "competitive-strategy/references/artifacts.md:222-225",
+    "competitive-strategy/references/artifacts.md:7-10",
+    "competitive-strategy/references/guest-insights.md:153-162",
+    "competitive-strategy/references/guest-insights.md:54-61",
+    "discovery-process/SKILL.md:49-53",
+    "discovery-process/examples/sample-lifesciences.md:7-13",
+    "discovery-process/examples/sample.md:3-35",
+    "prd-development/template.md:625-655"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:evidence-synthesis-and-opportunity-prioritization"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization:fusion:boundary",
+      "rule": "Synthesize multi-source evidence into patterns and rank opportunities with methods suited to the data."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:evidence-synthesis-and-opportunity-prioritization"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization:fusion:inputs",
+      "rule": "Accept only: Research notes, behavior data, support signals, competitive evidence, and candidate opportunities."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:evidence-synthesis-and-opportunity-prioritization"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization:fusion:outputs",
+      "rule": "Produce only: Themes, evidence strength, opportunity scores, priorities, rationale, and uncertainty."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-003"
+      ],
+      "id": "cluster:evidence-synthesis-and-opportunity-prioritization:policy:human-decision",
+      "rule": "Produce evidence-backed recommendations and unknowns; GO, PIVOT, KILL, prioritization adoption, roadmap commitment, and build approval remain human decisions."
+    }
+  ],
+  "input_boundary": "Research notes, behavior data, support signals, competitive evidence, and candidate opportunities.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "competitive-strategy",
+        "discovery-process",
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "competitive-strategy",
+        "discovery-process",
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "competitive-strategy",
+        "discovery-process",
+        "prd-development"
+      ]
+    }
+  ],
+  "output_boundary": "Themes, evidence strength, opportunity scores, priorities, rationale, and uncertainty.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "用 vision、市场共建和核心 strengths 三个支柱对竞争响应分类，并为每项响应指定支柱。; 把业务价值活动完整归入 Power、Market Size、Operational Excellence 三类。; 按季度给小组分配 competitor，完成 SWOT、方向判断、本方战略关系和 presentation-day 输出。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Explicit limits: 适用于制定竞争响应；vision 不得被竞品噪声改写，grow-the-pie 需合作伙伴与扩张机制，strengths 需 ecosystem 边界和不可让渡 core standards；人物仅作出处。; 用于分类 value-driving activities，不是估值公式；每项需归类依据，三类完备性是来源主张而非已验证财务预测。; 适用于能按季度分组研究具体 competitor 并汇报的组织；SWOT 和方向判断需可引用证据，prize/presentation 不证明质量。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (method=4, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-037",
+        "competitive-strategy:unit-053",
+        "competitive-strategy:unit-062",
+        "competitive-strategy:unit-080",
+        "competitive-strategy:unit-088"
+      ]
+    },
+    {
+      "approach": "用 vision、市场共建和核心 strengths 三个支柱对竞争响应分类，并为每项响应指定支柱。; 把业务价值活动完整归入 Power、Market Size、Operational Excellence 三类。; 按季度给小组分配 competitor，完成 SWOT、方向判断、本方战略关系和 presentation-day 输出。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162"
+      ],
+      "limitations": "Explicit limits: 适用于制定竞争响应；vision 不得被竞品噪声改写，grow-the-pie 需合作伙伴与扩张机制，strengths 需 ecosystem 边界和不可让渡 core standards；人物仅作出处。; 用于分类 value-driving activities，不是估值公式；每项需归类依据，三类完备性是来源主张而非已验证财务预测。; 适用于能按季度分组研究具体 competitor 并汇报的组织；SWOT 和方向判断需可引用证据，prize/presentation 不证明质量。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-037",
+        "competitive-strategy:unit-053",
+        "competitive-strategy:unit-062",
+        "competitive-strategy:unit-088"
+      ]
+    },
+    {
+      "approach": "适用于制定竞争响应；vision 不得被竞品噪声改写，grow-the-pie 需合作伙伴与扩张机制，strengths 需 ecosystem 边界和不可让渡 core standards；人物仅作出处。; 用于分类 value-driving activities，不是估值公式；每项需归类依据，三类完备性是来源主张而非已验证财务预测。; 适用于能按季度分组研究具体 competitor 并汇报的组织；SWOT 和方向判断需可引用证据，prize/presentation 不证明质量。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Explicit limits: 适用于制定竞争响应；vision 不得被竞品噪声改写，grow-the-pie 需合作伙伴与扩张机制，strengths 需 ecosystem 边界和不可让渡 core standards；人物仅作出处。; 用于分类 value-driving activities，不是估值公式；每项需归类依据，三类完备性是来源主张而非已验证财务预测。; 适用于能按季度分组研究具体 competitor 并汇报的组织；SWOT 和方向判断需可引用证据，prize/presentation 不证明质量。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (method=4, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-037",
+        "competitive-strategy:unit-053",
+        "competitive-strategy:unit-062",
+        "competitive-strategy:unit-080",
+        "competitive-strategy:unit-088"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "competitive-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查输出逐项记录 teardown source、context assumptions、own-data test、business-model fit、hypothesis status、roadmap decision；缺少决定性前提时标 unknown/defer，不得越权下结论。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Explicit limits: Insight/Tactical advice 仅为本地 curated summary、不是逐字引语；title/URL/timestamp 未外部核验。外部 tactic 未经本方数据/商业模式验证不得进 roadmap。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-080"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "competitive-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "competitive-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "通过先测假设、客户证据、小实验和早期 no-go 信号逐步降低投入风险。; 正向 SaaS 复合案例展示完整 evidence chain。; 受监管环境的对象、访问和合规后果提高前置 framing 价值。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Explicit limits: 这些是工作机制，不是发现已经成功的证据。; 全部比例、样本、周期、工具和目标值仅是案例事实。; 生命科学约束模式，不无条件套用普通 SaaS。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (example=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-004",
+        "discovery-process:unit-050",
+        "discovery-process:unit-052"
+      ]
+    },
+    {
+      "approach": "正向 SaaS 复合案例展示完整 evidence chain。; 受监管环境的对象、访问和合规后果提高前置 framing 价值。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Explicit limits: 全部比例、样本、周期、工具和目标值仅是案例事实。; 生命科学约束模式，不无条件套用普通 SaaS。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 2 source-grounded atom(s) for method (example=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-050",
+        "discovery-process:unit-052"
+      ]
+    },
+    {
+      "approach": "这些是工作机制，不是发现已经成功的证据。; 全部比例、样本、周期、工具和目标值仅是案例事实。; 生命科学约束模式，不无条件套用普通 SaaS。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Explicit limits: 这些是工作机制，不是发现已经成功的证据。; 全部比例、样本、周期、工具和目标值仅是案例事实。; 生命科学约束模式，不无条件套用普通 SaaS。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (example=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-004",
+        "discovery-process:unit-050",
+        "discovery-process:unit-052"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "决策链能显示被检验假设、客户证据、渐进实验和早停信号。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53"
+      ],
+      "limitations": "Explicit limits: 这些是工作机制，不是发现已经成功的证据。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "完成十节后对最强/最弱证据、最高风险假设及单一下一步做诚实诊断。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Explicit limits: 自评必须引用正文证据和未知项；不能用主观信心或填满模板替代 readiness。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-031"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "自评必须引用正文证据和未知项；不能用主观信心或填满模板替代 readiness。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Explicit limits: 自评必须引用正文证据和未知项；不能用主观信心或填满模板替代 readiness。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-031"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "自评指出可核查强弱项，按风险选择 Assumption 并为每项给出验证路径，推荐下一步针对最大缺口。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Explicit limits: 自评必须引用正文证据和未知项；不能用主观信心或填满模板替代 readiness。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-031"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 4,
+        "rule": 1
+      },
+      "evidence": [
+        "competitive-strategy/references/artifacts.md:127-130",
+        "competitive-strategy/references/artifacts.md:222-225",
+        "competitive-strategy/references/artifacts.md:7-10",
+        "competitive-strategy/references/guest-insights.md:153-162",
+        "competitive-strategy/references/guest-insights.md:54-61"
+      ],
+      "source_id": "competitive-strategy",
+      "unit_ids": [
+        "competitive-strategy:unit-037",
+        "competitive-strategy:unit-053",
+        "competitive-strategy:unit-062",
+        "competitive-strategy:unit-080",
+        "competitive-strategy:unit-088"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 2,
+        "rule": 1
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:49-53",
+        "discovery-process/examples/sample-lifesciences.md:7-13",
+        "discovery-process/examples/sample.md:3-35"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-004",
+        "discovery-process:unit-050",
+        "discovery-process:unit-052"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "prd-development/template.md:625-655"
+      ],
+      "source_id": "prd-development",
+      "unit_ids": [
+        "prd-development:unit-031"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "competitive-strategy:unit-037",
+    "competitive-strategy:unit-053",
+    "competitive-strategy:unit-062",
+    "competitive-strategy:unit-080",
+    "competitive-strategy:unit-088",
+    "discovery-process:unit-004",
+    "discovery-process:unit-050",
+    "discovery-process:unit-052",
+    "prd-development:unit-031"
+  ]
+}

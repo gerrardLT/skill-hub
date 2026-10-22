@@ -1,0 +1,607 @@
+{
+  "candidate_responsibility": "Run cross-cutting UI preflight checks for accessibility, content, interaction states, responsive behavior, and release readiness.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-017",
+    "design-taste-frontend:unit-023",
+    "frontend-design:unit-011",
+    "ui-ux-pro-max:unit-010",
+    "ui-ux-pro-max:unit-015",
+    "web-accessibility:unit-005",
+    "web-accessibility:unit-014",
+    "web-accessibility:unit-019"
+  ],
+  "cluster_id": "cluster:cross-domain-ui-preflight-checklists",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:519-550",
+    "design-taste-frontend/SKILL.md:910-980",
+    "frontend-design/SKILL.md:53-56",
+    "ui-ux-pro-max/SKILL.md:212-214",
+    "ui-ux-pro-max/references/pro-rules.md:64-117",
+    "web-accessibility/SKILL.md:54-62",
+    "web-accessibility/references/outcome-probes.md:1-23",
+    "web-accessibility/references/testing-and-evidence.md:1-35"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:cross-domain-ui-preflight-checklists"
+      ],
+      "id": "cluster:cross-domain-ui-preflight-checklists:fusion:boundary",
+      "rule": "Run cross-cutting UI preflight checks for accessibility, content, interaction states, responsive behavior, and release readiness."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:cross-domain-ui-preflight-checklists"
+      ],
+      "id": "cluster:cross-domain-ui-preflight-checklists:fusion:inputs",
+      "rule": "Accept only: A rendered UI, acceptance criteria, content, supported devices, and release boundary."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:cross-domain-ui-preflight-checklists"
+      ],
+      "id": "cluster:cross-domain-ui-preflight-checklists:fusion:outputs",
+      "rule": "Produce only: A checklist result, blocking findings, evidence requirements, and residual risk."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:cross-domain-ui-preflight-checklists:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A rendered UI, acceptance criteria, content, supported devices, and release boundary.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "ui-ux-pro-max",
+        "web-accessibility"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "ui-ux-pro-max",
+        "web-accessibility"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "ui-ux-pro-max",
+        "web-accessibility"
+      ]
+    }
+  ],
+  "output_boundary": "A checklist result, blocking findings, evidence requirements, and residual risk.",
+  "retained_auxiliary_unit_ids": [
+    "skills/ui-ux-pro-max/SKILL.md:212-214"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义性能与无障碍硬性护栏：仅对 transform 与 opacity 执行硬件加速动画，严禁动画化 top/left/width/height；MOTION_INTENSITY > 3 时必须强制支持 prefers-reduced-motion，将动画完全降级为静态显示；从一开始就规划亮暗双主题，遵循 WCAG AA 对比度；Core Web Vitals 目标为 LCP < 2.5s（英雄区图片设置 priority）、INP < 200ms、CLS < 0.1；颗粒/噪声噪点（Grain filters）必须仅应用于固定的 pointer-events-none 伪元素，严禁放在滚动容器上导致 GPU 持续重绘；严禁滥用任意 z-index。; 定义发版前终极机械核验矩阵（Final Pre-Flight Check）：在输出代码前必须逐条运行 50+ 项核验清单，覆盖 Design Read 声明、滑块显式赋值、零破折号硬性核查、单主题锁定、色彩/形体圆角一致性、按钮对比度、CTA 按钮单行无折行、无重复意图 CTA、衬线纪律、高端消费禁令、斜体下延部间距、Hero 首屏自适应（≤2行标题/≤20词/≤pt-24）、眉题数量上限（≤ ceil(sections/3)）、Bento 格子数量精准匹配、真实图像（无 div 假截图）、动效动机说明、单页面跑马灯 ≤1、禁止 scroll 监听、减弱动效降级等；任一检查项未通过均严禁宣告交付。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Explicit limits: 涉及视觉渲染与动效时为硬性工程基线，Grain 滤镜滥用与无障碍缺失直接判定不合格。; 前端页面交付前的终审准入门禁，所有检查项必须真实通过。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-017",
+        "design-taste-frontend:unit-023"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "涉及视觉渲染与动效时为硬性工程基线，Grain 滤镜滥用与无障碍缺失直接判定不合格。; 前端页面交付前的终审准入门禁，所有检查项必须真实通过。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Explicit limits: 涉及视觉渲染与动效时为硬性工程基线，Grain 滤镜滥用与无障碍缺失直接判定不合格。; 前端页面交付前的终审准入门禁，所有检查项必须真实通过。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-017",
+        "design-taste-frontend:unit-023"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "验证动效属性是否仅限 transform/opacity，验证 prefers-reduced-motion 降级逻辑，核验 Grain 噪点是否被限制在固定伪元素上。; 检查交付物是否通过 Pre-Flight 全部机械断言，确认无任何违禁项遗留。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Explicit limits: 涉及视觉渲染与动效时为硬性工程基线，Grain 滤镜滥用与无障碍缺失直接判定不合格。; 前端页面交付前的终审准入门禁，所有检查项必须真实通过。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-017",
+        "design-taste-frontend:unit-023"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "编码前反模板审核门禁与 CSS 特异性工程纪律：方案必须对照简报复核，若存在任何类似页面的通用默认痕迹必须重修并注明原因；仅在方案独特性确立后方可编码；编码时需警惕 CSS 选择器特异性冲突（如 .section 与 .cta 内外边距冲突）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: 进入具体前端编码前的前置门禁。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "进入具体前端编码前的前置门禁。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: 进入具体前端编码前的前置门禁。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否设立编码前独特性审查门禁以及 CSS 选择器特异性冲突防范。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Explicit limits: 进入具体前端编码前的前置门禁。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义移动应用与原生 UI 发版前的准入审计门禁：在交付原生/移动应用界面代码前，必须查阅 references/pro-rules.md 并逐项执行规范的发版前清单（Pre-Delivery Checklist），覆盖图标规范、交互反馈、明暗对比度、安全区与无障碍合规。; 定义移动应用发版前规范检查清单（Pre-Delivery Checklist）：涵盖流程测试（375px 小屏、横屏旋转、减弱动效 reduced-motion、Dynamic Type 系统大字体验证）、视觉质量（严禁 Emoji 充当图标、统一矢量家族、按下不抖动、语义色令牌）、交互（80-150ms 反馈、≥44pt/48dp 热区、无手势冲突）、明暗双主题（4.5:1 对比度实测、遮罩层可读性）、布局（安全区避让、滚动内容不被遮挡、4/8dp 间距节奏）、无障碍（装饰图标 aria-hidden、表单标签与错误提示、焦点防遮挡、单指针/键盘替代拖拽、非认知认证、轮播暂停控件）。; 交付前门控：发布 App UI 前必须阅读 references/pro-rules.md 并执行其规范的交付前检查清单。涵盖图标/视觉元素规范、交互反馈、明暗对比、安全区域布局和无障碍性——适用于原生/移动端 App UI（iOS/Android/React Native/Flutter）",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Explicit limits: 在向生产交付任何 iOS、Android、React Native 或 Flutter 界面代码之前为硬性拦截门禁。; 移动/原生应用发版前必须 100% 逐项勾选通过的终极验收核对表。; 仅适用于移动 App 场景；Web 项目不适用此清单",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (gate=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max:unit-010",
+        "ui-ux-pro-max:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在向生产交付任何 iOS、Android、React Native 或 Flutter 界面代码之前为硬性拦截门禁。; 移动/原生应用发版前必须 100% 逐项勾选通过的终极验收核对表。; 仅适用于移动 App 场景；Web 项目不适用此清单",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Explicit limits: 在向生产交付任何 iOS、Android、React Native 或 Flutter 界面代码之前为硬性拦截门禁。; 移动/原生应用发版前必须 100% 逐项勾选通过的终极验收核对表。; 仅适用于移动 App 场景；Web 项目不适用此清单",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (gate=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max:unit-010",
+        "ui-ux-pro-max:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查在移动应用交付前是否完整跑完 Pre-Delivery Checklist，任何未达标项均阻断交付。; 对照清单逐条核对发版前交付物，确认所有项无遗漏通过，任何一项缺陷均判定不达标。; 逐项核对 checklist 所有项",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Explicit limits: 在向生产交付任何 iOS、Android、React Native 或 Flutter 界面代码之前为硬性拦截门禁。; 移动/原生应用发版前必须 100% 逐项勾选通过的终极验收核对表。; 仅适用于移动 App 场景；Web 项目不适用此清单",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (gate=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max:unit-010",
+        "ui-ux-pro-max:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立完工与职责边界门禁：只有当每条验收准则均具备直接证据或记录了明确的受阻/不适用时方可结项；透明汇报残余风险；严禁越界处理通用 CMS 架构、泛化产品发现或具体框架内部实现细节。; 建立五项核心场景结果探针（Outcome Probes）：A. 模态个人资料编辑器；B. 联系表单恢复；C. 响应式导航；D. 自定义 Combobox；E. 发布合规裁决。用于在设计审查中快速识别并否决虚假假设（如滥用 novalidate、aria-hidden 遮罩、menuitem 导航等）。; 确立人机混合测试协议与证据规范：清醒界定自动化工具的边界（无法判断文本意图、全键盘契约或真实任务完成度）；建立包含静态扫描、全键盘盲测、可访问性树核查、真机屏幕阅读器与自适应环境检查的手工协议；结项必须记录具体环境与残余风险，严禁仅凭扫描通过判定合格。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Explicit limits: 未完成测试严禁默认通过，技能专注于可访问性深度与合规证据。; 作为人工审查与方案验收的高频场景验证标尺。; 所有发布决议必须基于明确记录的证据矩阵，不留未经测试的盲区。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (gate=2, method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-accessibility:unit-005",
+        "web-accessibility:unit-014",
+        "web-accessibility:unit-019"
+      ]
+    },
+    {
+      "approach": "确立人机混合测试协议与证据规范：清醒界定自动化工具的边界（无法判断文本意图、全键盘契约或真实任务完成度）；建立包含静态扫描、全键盘盲测、可访问性树核查、真机屏幕阅读器与自适应环境检查的手工协议；结项必须记录具体环境与残余风险，严禁仅凭扫描通过判定合格。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Explicit limits: 所有发布决议必须基于明确记录的证据矩阵，不留未经测试的盲区。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-accessibility:unit-019"
+      ]
+    },
+    {
+      "approach": "未完成测试严禁默认通过，技能专注于可访问性深度与合规证据。; 作为人工审查与方案验收的高频场景验证标尺。; 所有发布决议必须基于明确记录的证据矩阵，不留未经测试的盲区。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Explicit limits: 未完成测试严禁默认通过，技能专注于可访问性深度与合规证据。; 作为人工审查与方案验收的高频场景验证标尺。; 所有发布决议必须基于明确记录的证据矩阵，不留未经测试的盲区。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (gate=2, method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-accessibility:unit-005",
+        "web-accessibility:unit-014",
+        "web-accessibility:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-accessibility",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验完工证据链要求与职责边界判定是否完备。; 核验五类典型场景的探针核验条件与否决项是否准确。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23"
+      ],
+      "limitations": "Explicit limits: 未完成测试严禁默认通过，技能专注于可访问性深度与合规证据。; 作为人工审查与方案验收的高频场景验证标尺。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-accessibility:unit-005",
+        "web-accessibility:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-accessibility",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-accessibility",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:519-550",
+        "design-taste-frontend/SKILL.md:910-980"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-017",
+        "design-taste-frontend:unit-023"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:53-56"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-011"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 3
+      },
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max/references/pro-rules.md:64-117"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "skills/ui-ux-pro-max/SKILL.md:212-214",
+        "ui-ux-pro-max:unit-010",
+        "ui-ux-pro-max:unit-015"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 2,
+        "method": 1
+      },
+      "evidence": [
+        "web-accessibility/SKILL.md:54-62",
+        "web-accessibility/references/outcome-probes.md:1-23",
+        "web-accessibility/references/testing-and-evidence.md:1-35"
+      ],
+      "source_id": "web-accessibility",
+      "unit_ids": [
+        "web-accessibility:unit-005",
+        "web-accessibility:unit-014",
+        "web-accessibility:unit-019"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-017",
+    "design-taste-frontend:unit-023",
+    "frontend-design:unit-011",
+    "skills/ui-ux-pro-max/SKILL.md:212-214",
+    "ui-ux-pro-max:unit-010",
+    "ui-ux-pro-max:unit-015",
+    "web-accessibility:unit-005",
+    "web-accessibility:unit-014",
+    "web-accessibility:unit-019"
+  ]
+}

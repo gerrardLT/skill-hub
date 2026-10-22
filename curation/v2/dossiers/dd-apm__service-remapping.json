@@ -1,0 +1,119 @@
+{
+  "branches": [],
+  "inputs": [
+    "pup-cli: check, install, and authenticate [dd-apm/service-remapping/SKILL.md:112]",
+    "Claude runs [dd-apm/service-remapping/SKILL.md:114]",
+    "pup --version [dd-apm/service-remapping/SKILL.md:117]",
+    "If not found [dd-apm/service-remapping/SKILL.md:120]",
+    "Claude runs [dd-apm/service-remapping/SKILL.md:122]",
+    "brew tap datadog-labs/pack [dd-apm/service-remapping/SKILL.md:125]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/service-remapping/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/service-remapping/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/service-remapping/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "All services with a prefix service:deploy-test [dd-apm/service-remapping/SKILL.md:57]",
+    "List, review, or delete existing service remapping rules [dd-apm/service-remapping/SKILL.md:102]",
+    "pup-cli: check, install, and authenticate [dd-apm/service-remapping/SKILL.md:112]",
+    "brew install pup [dd-apm/service-remapping/SKILL.md:126]",
+    "pup apm service-remapping list and get work with OAuth. Create, update, and delete require API keys (DDAPIKEY, DDAPPKEY, DDSITE) until apmservicerenamingwrite is added to pup's OAuth scopes. [dd-apm/service-remapping/SKILL.md:146]",
+    "If any are missing and you need to create/update/delete rules [dd-apm/service-remapping/SKILL.md:156]",
+    "Delete a rule [dd-apm/service-remapping/SKILL.md:408]",
+    "Show the user the rule's name and filter first, then ask for confirmation. Delete requires both the rule id and version from the list/get output [dd-apm/service-remapping/SKILL.md:410]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/service-remapping/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Create and manage APM service remapping rules — rewrite service names at ingestion time to collapse noisy inferred entities, clean up auto-generated names, handle org renames, or normalize naming conventions. [dd-apm/service-remapping/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/service-remapping",
+  "rules_gates": [
+    "alwaysApply: \"false\" [dd-apm/service-remapping/SKILL.md:9]",
+    "> Before acting: Surface an impact preview (monitors/dashboards referencing the old service name) before presenting the planned rule. For inferred-entity remaps, also confirm peer.service is set on outbound spans. Variables from Context to resolve before acting can be gathered alongside that preview [dd-apm/service-remapping/SKILL.md:15]",
+    "Read this before building any rule. It gives you the mental model to construct the right filter and catch edge cases. [dd-apm/service-remapping/SKILL.md:21]",
+    "What remapping does: A rule intercepts telemetry at ingestion time and rewrites the service name before indexing. A rule says: \"for any entity matching this filter, replace its service name with this new value.\" [dd-apm/service-remapping/SKILL.md:23]",
+    "Prerequisite for inferred entity remapping — peer.service must be set [dd-apm/service-remapping/SKILL.md:32]",
+    "To verify peer.service is being set before building a rule [dd-apm/service-remapping/SKILL.md:44]",
+    "If zero results — the tracer is not setting peer.service. Ask the user to add DDTRACEPEERSERVICEDEFAULTSENABLED=true to their service's environment and redeploy before continuing. [dd-apm/service-remapping/SKILL.md:50]",
+    "Do NOT invoke this skill if [dd-apm/service-remapping/SKILL.md:104]"
+  ],
+  "skill_path": "dd-apm/service-remapping/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/service-remapping/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "dd-apm/service-remapping/SKILL.md"
+    },
+    {
+      "line_end": 19,
+      "line_start": 19,
+      "path": "dd-apm/service-remapping/SKILL.md"
+    },
+    {
+      "line_end": 93,
+      "line_start": 93,
+      "path": "dd-apm/service-remapping/SKILL.md"
+    },
+    {
+      "line_end": 110,
+      "line_start": 110,
+      "path": "dd-apm/service-remapping/SKILL.md"
+    }
+  ],
+  "source_sha256": "23986548c73dcd733d07944565e95c59f1ae5d2d5e0cd430a4f25c12209f38af",
+  "stop_conditions": [
+    "If zero results — the tracer is not setting peer.service. Ask the user to add DDTRACEPEERSERVICEDEFAULTSENABLED=true to their service's environment and redeploy before continuing. [dd-apm/service-remapping/SKILL.md:50]",
+    "ENV Required before creating the rule (Step 4). Ask the user — do NOT assume prod. Read-only verification and impact preview do not need ENV and should run first. [dd-apm/service-remapping/SKILL.md:176]",
+    "ORIGINALSERVICE Current service name(s) to remap — discover with pup apm services list or ask the user [dd-apm/service-remapping/SKILL.md:177]",
+    "TARGETNAME The desired new service name — ask the user [dd-apm/service-remapping/SKILL.md:179]",
+    "Use the output to help the user identify exact service names. Ask the user to confirm which names they want remapped before proceeding. [dd-apm/service-remapping/SKILL.md:195]",
+    "How to detect: if the service name looks like a well-known integration name (single-word library names, <protocol>-<client> patterns, <vendor>.<resource> patterns), ask the user [dd-apm/service-remapping/SKILL.md:207]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:23986548c73dcd733d07944565e95c59f1ae5d2d5e0cd430a4f25c12209f38af",
+        "content-review:440-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/service-remapping/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Create and manage APM service remapping rules — rewrite service names at ingestion time to collapse noisy inferred entities, clean up auto-generated names, handle org renames, or normalize naming conventions. Use for any request involving service renaming, service mapping, inferred service cleanup, [dd-apm/service-remapping/SKILL.md:3]",
+  "unique_methods": [
+    "APM Service Remapping [dd-apm/service-remapping/SKILL.md:13]",
+    "How Service Remapping Works — Domain Knowledge [dd-apm/service-remapping/SKILL.md:19]",
+    "Triggers [dd-apm/service-remapping/SKILL.md:93]",
+    "Prerequisites [dd-apm/service-remapping/SKILL.md:110]",
+    "pup-cli: check, install, and authenticate [dd-apm/service-remapping/SKILL.md:112]",
+    "Claude runs [dd-apm/service-remapping/SKILL.md:114]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/service-remapping/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Step 0: Discover Current Service Names [dd-apm/service-remapping/SKILL.md:184]",
+    "Step 1: Build the Rule [dd-apm/service-remapping/SKILL.md:199]",
+    "Step 2: Preview Impact [dd-apm/service-remapping/SKILL.md:239]",
+    "Step 3: Confirm the Rule [dd-apm/service-remapping/SKILL.md:284]",
+    "Step 4: Create the Rule [dd-apm/service-remapping/SKILL.md:296]",
+    "Step 5: Verify [dd-apm/service-remapping/SKILL.md:320]"
+  ]
+}

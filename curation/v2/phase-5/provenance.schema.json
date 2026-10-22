@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_files": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "minProperties": 3,
+      "type": "object"
+    },
+    "canonical_unit_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "capability_id": {
+      "type": "string"
+    },
+    "decision_references": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "fusion_decision_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "type": "string"
+    },
+    "prior_artifact_trees": {
+      "const": {
+        "phase2": "57ff1aec49b2b7b370d74d36e52659d7338adf2f16260fe62be7ada870472601",
+        "phase3": "de60929ce7eb1877ffb64a9e8cd671beec389b433f843e10320701c890de8965",
+        "phase4": "968fd1e2175bdc35d77a4d9025a88ab35e5f096fba353137dbf9770e030d4695"
+      }
+    },
+    "retained_auxiliary_unit_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "root_derived_atom_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "source_cluster_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "source_defect_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "source_evidence": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "source_fragment_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "capability_id",
+    "prior_artifact_trees",
+    "source_cluster_ids",
+    "canonical_unit_ids",
+    "retained_auxiliary_unit_ids",
+    "root_derived_atom_ids",
+    "source_fragment_ids",
+    "fusion_decision_ids",
+    "decision_references",
+    "source_evidence",
+    "source_defect_refs",
+    "candidate_files"
+  ],
+  "type": "object"
+}

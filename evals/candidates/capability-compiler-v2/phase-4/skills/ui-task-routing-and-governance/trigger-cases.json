@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "ui-task-routing-and-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "existing-interface-redesign-and-preservation",
+        "ui-review-scope-and-evidence-acquisition",
+        "ui-remediation"
+      ],
+      "id": "V2-P4-ui-task-routing-and-governance-trigger-01",
+      "input": "Route this mixed UI request to the next atomic design, implementation, evidence, review, or remediation capability.",
+      "kind": "should-trigger",
+      "reason": "Classify UI work, authorization, current lifecycle state, target surfaces, evidence needs, and one next atomic capability without doing downstream design or review."
+    },
+    {
+      "expected_skill_id": "ui-task-routing-and-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "existing-interface-redesign-and-preservation",
+        "ui-review-scope-and-evidence-acquisition",
+        "ui-remediation"
+      ],
+      "id": "V2-P4-ui-task-routing-and-governance-trigger-02",
+      "input": "Classify whether this is a new build, preservation-aware redesign, external token extraction, source repair, or rendered review and state the write boundary.",
+      "kind": "should-trigger",
+      "reason": "Classify UI work, authorization, current lifecycle state, target surfaces, evidence needs, and one next atomic capability without doing downstream design or review."
+    },
+    {
+      "expected_skill_id": "design-context-and-direction-contract",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-task-routing-and-governance"
+      ],
+      "id": "V2-P4-ui-task-routing-and-governance-anti-01",
+      "input": "Create the actual design direction and user-flow contract.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to design-context-and-direction-contract."
+    },
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-task-routing-and-governance"
+      ],
+      "id": "V2-P4-ui-task-routing-and-governance-anti-02",
+      "input": "Capture browser renders and traces for independent review.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to ui-review-scope-and-evidence-acquisition."
+    },
+    {
+      "expected_skill_id": "ui-task-routing-and-governance",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-ui-task-routing-and-governance-boundary-01",
+      "input": "Classify UI work, authorization, current lifecycle state, target surfaces, evidence needs, and one next atomic capability without doing downstream design or review. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "ui-task-routing-and-governance",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-ui-task-routing-and-governance-authority-01",
+      "input": "Classify UI work, authorization, current lifecycle state, target surfaces, evidence needs, and one next atomic capability without doing downstream design or review. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "ui-task-routing-and-governance"
+}

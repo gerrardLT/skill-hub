@@ -1,0 +1,358 @@
+{
+  "candidate_responsibility": "Review engineering delivery from fresh repository history, test health, plan completion, and team evidence.",
+  "canonical_unit_ids": [
+    "retro:unit-001",
+    "retro:unit-002",
+    "retro:unit-003",
+    "retro:unit-004",
+    "retro:unit-005",
+    "retro:unit-006",
+    "retro:unit-007",
+    "retro:unit-008",
+    "retro:unit-009",
+    "retro:unit-010"
+  ],
+  "cluster_id": "cluster:engineering-retrospective-and-improvement",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "retro/SKILL.md:16-37",
+    "retro/SKILL.md:43-49",
+    "retro/SKILL.md:47-47",
+    "retro/SKILL.md:492-492",
+    "retro/SKILL.md:53-57",
+    "retro/SKILL.md:549-556",
+    "retro/SKILL.md:571-571",
+    "retro/SKILL.md:573-578",
+    "retro/SKILL.md:791-818",
+    "retro/SKILL.md:822-840",
+    "retro/sections/report-format.md:43-48",
+    "retro/sections/report-format.md:5-8",
+    "retro/sections/report-format.md:50-71",
+    "retro/sections/report-format.md:78-105"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:engineering-retrospective-and-improvement:fusion:boundary",
+      "rule": "Review engineering delivery from fresh repository history, test health, plan completion, and team evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:engineering-retrospective-and-improvement:fusion:inputs",
+      "rule": "Accept only: A time window, Git history, test health, plan state, delivery outcomes, and prior retrospectives."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement"
+      ],
+      "id": "cluster:engineering-retrospective-and-improvement:fusion:outputs",
+      "rule": "Produce only: Individual and team feedback, technical-debt signals, trends, and tracked improvement actions."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:engineering-retrospective-and-improvement:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A time window, Git history, test health, plan state, delivery outcomes, and prior retrospectives.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "retro"
+      ]
+    }
+  ],
+  "output_boundary": "Individual and team feedback, technical-debt signals, trends, and tracked improvement actions.",
+  "retained_auxiliary_unit_ids": [
+    "skills/retro/SKILL.md:16-37",
+    "skills/retro/SKILL.md:43-49",
+    "skills/retro/SKILL.md:47-47",
+    "skills/retro/SKILL.md:53-57"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "自然日与自然周午夜绝对对齐规则：按日（d）或周（w）指定时间跨度时，必须显式计算本地午夜零点时间戳并附带 T00:00:00 后缀传递给 --since，严禁使用相对模糊字符串导致当前运行时刻裁切失真; 远端基线新鲜度前置拉取规范：在聚合指标前必须执行 git fetch origin <default>，若无 origin 或离线则记录失败标志并在报告中做无远端对齐披露; 陈旧基线与无效窗口阻断门禁：若远端拉取成功但最新 commit 日期早于统计窗口起点（today - window），必须强行阻断复盘流程并提示排查系统时间漂移或远端拉取陈旧，防止凭空捏造无事实根据的复盘假象",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "retro/SKILL.md:16-37",
+        "retro/SKILL.md:43-49",
+        "retro/SKILL.md:47-47",
+        "retro/SKILL.md:492-492",
+        "retro/SKILL.md:53-57",
+        "retro/SKILL.md:549-556",
+        "retro/SKILL.md:571-571",
+        "retro/SKILL.md:573-578",
+        "retro/SKILL.md:791-818",
+        "retro/SKILL.md:822-840",
+        "retro/sections/report-format.md:43-48",
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:50-71",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "limitations": "Explicit limits: Git 提交历史检索与复盘时段窗口参数化解析; 工程复盘分析前的前置基线同步动作; 指标统计流水线启动前的绝对防御门禁",
+      "source_id": "retro",
+      "strengths": "Provides 14 source-grounded atom(s) for responsibility (exception=1, gate=2, method=3, rule=6, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "retro:unit-001",
+        "retro:unit-002",
+        "retro:unit-003",
+        "retro:unit-004",
+        "retro:unit-005",
+        "retro:unit-006",
+        "retro:unit-007",
+        "retro:unit-008",
+        "retro:unit-009",
+        "retro:unit-010",
+        "skills/retro/SKILL.md:16-37",
+        "skills/retro/SKILL.md:43-49",
+        "skills/retro/SKILL.md:47-47",
+        "skills/retro/SKILL.md:53-57"
+      ]
+    },
+    {
+      "approach": "历史对比与环比趋势分析机制：读取历史 .context/retros/*.json 快照，计算测试覆盖比率、会话数、LOC/小时生产率、修复比率及深耕会话数的指标差值（Delta）并生成对比表格; 社交级极简摘要模板：第一行输出单行紧凑速报，浓缩呈现周期、提交数、贡献者数、净增 LOC、测试行占比、PR 总量、峰值活跃时段及连续交付天数（Streak）; 计划达成度审计机制：调取交付审查日志中携带 plan_items_total 的记录，统计按计划交付的分支数、平均任务项完成率及最常被跳过的任务类别",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "retro/SKILL.md:16-37",
+        "retro/SKILL.md:822-840",
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:50-71",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "limitations": "Explicit limits: 存在一期及以上历史复盘快照时的时序比对流程; 复盘报告首行第一触点输出; 代码交付链路与规划计划绑定的交付效能审计",
+      "source_id": "retro",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=3, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "retro:unit-006",
+        "retro:unit-007",
+        "retro:unit-009",
+        "retro:unit-010",
+        "skills/retro/SKILL.md:16-37"
+      ]
+    },
+    {
+      "approach": "Git 提交历史检索与复盘时段窗口参数化解析; 工程复盘分析前的前置基线同步动作; 指标统计流水线启动前的绝对防御门禁",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "retro/SKILL.md:16-37",
+        "retro/SKILL.md:43-49",
+        "retro/SKILL.md:47-47",
+        "retro/SKILL.md:492-492",
+        "retro/SKILL.md:53-57",
+        "retro/SKILL.md:549-556",
+        "retro/SKILL.md:571-571",
+        "retro/SKILL.md:573-578",
+        "retro/SKILL.md:791-818",
+        "retro/SKILL.md:822-840",
+        "retro/sections/report-format.md:43-48",
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:50-71",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "limitations": "Explicit limits: Git 提交历史检索与复盘时段窗口参数化解析; 工程复盘分析前的前置基线同步动作; 指标统计流水线启动前的绝对防御门禁",
+      "source_id": "retro",
+      "strengths": "Provides 14 source-grounded atom(s) for boundary-and-applicability (exception=1, gate=2, method=3, rule=6, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "retro:unit-001",
+        "retro:unit-002",
+        "retro:unit-003",
+        "retro:unit-004",
+        "retro:unit-005",
+        "retro:unit-006",
+        "retro:unit-007",
+        "retro:unit-008",
+        "retro:unit-009",
+        "retro:unit-010",
+        "skills/retro/SKILL.md:16-37",
+        "skills/retro/SKILL.md:43-49",
+        "skills/retro/SKILL.md:47-47",
+        "skills/retro/SKILL.md:53-57"
+      ]
+    },
+    {
+      "approach": "社交级极简摘要模板：第一行输出单行紧凑速报，浓缩呈现周期、提交数、贡献者数、净增 LOC、测试行占比、PR 总量、峰值活跃时段及连续交付天数（Streak）; 个人深度复盘与团队成员画质结构模板：为个人提供亮点表扬（Praise，锚定提交）与跃升建议（Growth），为每位队友细分交付成果、真实评价与 1 个针对性成长契机，客观披露 AI 协作比例",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "limitations": "Explicit limits: 复盘报告首行第一触点输出; 平衡团队全貌与个人定制化成长反馈的复盘输出",
+      "source_id": "retro",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "retro:unit-007",
+        "retro:unit-010"
+      ]
+    },
+    {
+      "approach": "生成的 --since 参数具备 YYYY-MM-DDT00:00:00 精确零点格式; 成功拉取远端权威分支，并在离线时打上降级标志; 捕获陈旧提交分支并阻断空洞复盘报告输出",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "retro/SKILL.md:43-49",
+        "retro/SKILL.md:47-47",
+        "retro/SKILL.md:492-492",
+        "retro/SKILL.md:549-556",
+        "retro/SKILL.md:571-571",
+        "retro/SKILL.md:573-578",
+        "retro/SKILL.md:791-818",
+        "retro/sections/report-format.md:43-48"
+      ],
+      "limitations": "Explicit limits: Git 提交历史检索与复盘时段窗口参数化解析; 工程复盘分析前的前置基线同步动作; 指标统计流水线启动前的绝对防御门禁",
+      "source_id": "retro",
+      "strengths": "Provides 8 source-grounded atom(s) for gates-and-validation (gate=2, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "retro:unit-001",
+        "retro:unit-002",
+        "retro:unit-003",
+        "retro:unit-004",
+        "retro:unit-005",
+        "retro:unit-008",
+        "skills/retro/SKILL.md:43-49",
+        "skills/retro/SKILL.md:47-47"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "retro/SKILL.md:16-37",
+        "retro/SKILL.md:43-49",
+        "retro/SKILL.md:47-47",
+        "retro/SKILL.md:492-492",
+        "retro/SKILL.md:53-57",
+        "retro/SKILL.md:549-556",
+        "retro/SKILL.md:571-571",
+        "retro/SKILL.md:573-578",
+        "retro/SKILL.md:791-818",
+        "retro/SKILL.md:822-840",
+        "retro/sections/report-format.md:43-48",
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:50-71",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "retro",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "降级例外：gstack-skill-start 不可用时打印降级提示并继续用户任务。安全默认值：SESSION_KIND=interactive、跳过遥测、提示升级安装。onboarding/consent 的门控延后到下次健康运行。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "retro/SKILL.md:53-57"
+      ],
+      "limitations": "Explicit limits: 不影响核心分析功能（git log/timeline.jsonl 仍可访问）",
+      "source_id": "retro",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/retro/SKILL.md:53-57"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "exception": 1,
+        "gate": 2,
+        "method": 3,
+        "rule": 6,
+        "template": 2
+      },
+      "evidence": [
+        "retro/SKILL.md:16-37",
+        "retro/SKILL.md:43-49",
+        "retro/SKILL.md:47-47",
+        "retro/SKILL.md:492-492",
+        "retro/SKILL.md:53-57",
+        "retro/SKILL.md:549-556",
+        "retro/SKILL.md:571-571",
+        "retro/SKILL.md:573-578",
+        "retro/SKILL.md:791-818",
+        "retro/SKILL.md:822-840",
+        "retro/sections/report-format.md:43-48",
+        "retro/sections/report-format.md:5-8",
+        "retro/sections/report-format.md:50-71",
+        "retro/sections/report-format.md:78-105"
+      ],
+      "source_id": "retro",
+      "unit_ids": [
+        "retro:unit-001",
+        "retro:unit-002",
+        "retro:unit-003",
+        "retro:unit-004",
+        "retro:unit-005",
+        "retro:unit-006",
+        "retro:unit-007",
+        "retro:unit-008",
+        "retro:unit-009",
+        "retro:unit-010",
+        "skills/retro/SKILL.md:16-37",
+        "skills/retro/SKILL.md:43-49",
+        "skills/retro/SKILL.md:47-47",
+        "skills/retro/SKILL.md:53-57"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "retro:unit-001",
+    "retro:unit-002",
+    "retro:unit-003",
+    "retro:unit-004",
+    "retro:unit-005",
+    "retro:unit-006",
+    "retro:unit-007",
+    "retro:unit-008",
+    "retro:unit-009",
+    "retro:unit-010",
+    "skills/retro/SKILL.md:16-37",
+    "skills/retro/SKILL.md:43-49",
+    "skills/retro/SKILL.md:47-47",
+    "skills/retro/SKILL.md:53-57"
+  ]
+}

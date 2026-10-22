@@ -1,0 +1,87 @@
+{
+  "artifact_types": [
+    "criterion-to-evidence matrix",
+    "deduplicated release findings",
+    "UI release recommendation",
+    "risk and recapture ledger",
+    "preflight result with blocking-finding register, evidence-gap list and residual-risk summary",
+    "UI review scope matrix",
+    "rendered evidence bundle",
+    "capture provenance manifest",
+    "evidence completeness result",
+    "routed observations with evidence, forwarded to critique"
+  ],
+  "capability_id": "capability:evidence-based-ui-review-and-release-gates",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, merge, deploy, release, cloud mutation, or external-system write",
+    "invent product facts, brand authority, copy claims, customer data, assets, evidence, or approval",
+    "perform an adjacent capability or combine independent review with source repair",
+    "treat static inspection, stale capture, or model self-report as current rendered evidence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "No release criterion may pass from source inspection, prior screenshots, or reviewer assertion when current rendered or interaction evidence is required.",
+    "Review, evidence acquisition, preflight, and preservation audit never imply source remediation or release authority.",
+    "No capture is review evidence unless its source revision, runtime, route, state, viewport, zoom or scale, input mode, timestamp, tool, and hash are recorded and current."
+  ],
+  "id": "evidence-based-ui-review-and-release-gates",
+  "inputs": [
+    "An implementation, desktop and mobile captures, a brief, direction contract, target files, and findings; in preflight mode, a rendered UI or build, acceptance criteria, content, supported devices, and the release boundary.",
+    "A UI brief, target files, runtime, rendered surfaces, and review criteria."
+  ],
+  "mode_permissions": {
+    "evidence-based-ui-review-and-release-gates": "workspace-write",
+    "ui-review-scope-and-evidence-acquisition": "artifact-write-local-exec-external-read"
+  },
+  "modes": [
+    "evidence-based-ui-review-and-release-gates",
+    "ui-review-scope-and-evidence-acquisition"
+  ],
+  "outputs": [
+    "criterion-to-evidence matrix",
+    "deduplicated release findings",
+    "UI release recommendation",
+    "risk and recapture ledger",
+    "preflight result with blocking-finding register, evidence-gap list and residual-risk summary",
+    "UI review scope matrix",
+    "rendered evidence bundle",
+    "capture provenance manifest",
+    "evidence completeness result",
+    "routed observations with evidence, forwarded to critique"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "criterion-evidence",
+      "current-render",
+      "blocking-findings",
+      "release-recommendation",
+      "recapture"
+    ],
+    "human_decision": true,
+    "rendered_evidence": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Apply explicit UI release criteria to current rendered evidence, or run a bounded cross-domain preflight before capture, aggregate blocking findings, and recommend a bounded release disposition without source repair.; Define independent UI review scope and acquire authorized current rendered evidence without evaluating findings or repairing source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

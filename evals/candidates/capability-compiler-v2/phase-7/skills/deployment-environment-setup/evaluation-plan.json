@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "gstack",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "3e2326965c2d93d8622a8c2645283282e326d8aea42a9cd1376f43af16cc42b9",
+    "identity": "deployment-environment-setup@0.1.0-v2-candidate",
+    "skill_sha256": "bbdcb957483f17ffdeaf42655607789ac2ed2d5795fc10d739546189e87d1fab"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-deployment-environment-setup-holdout-trigger-01",
+    "V2-P7-deployment-environment-setup-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-deployment-environment-setup-01",
+      "remove_exact_text": "Environment setup writes local configuration only; it cannot create provider resources, credentials, domains, environments, deployments, or production state.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "deployment-environment-setup",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

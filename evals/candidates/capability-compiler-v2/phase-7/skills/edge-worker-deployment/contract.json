@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "edge deployment receipt",
+    "immutable worker and binding manifest",
+    "route and environment identity",
+    "health handoff and rollback reference"
+  ],
+  "capability_id": "capability:edge-worker-deployment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-edge-deploy",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Edge deployment requires exact immutable code, bindings, routes, limits, traffic scope, health criteria, and rollback target; wildcard route or binding changes and unrelated resource mutations are blocked.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "edge-worker-deployment",
+  "inputs": [
+    "Worker source, environment bindings, provider account, compatibility target, and authorization."
+  ],
+  "outputs": [
+    "edge deployment receipt",
+    "immutable worker and binding manifest",
+    "route and environment identity",
+    "health handoff and rollback reference"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "immutable-worker",
+      "bindings",
+      "routes",
+      "compatibility-version",
+      "limits",
+      "per-action-authorization",
+      "rollback-target"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Deploy one immutable edge-worker artifact through one approved provider adapter after build, binding, route, limit, and rollback preflight.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

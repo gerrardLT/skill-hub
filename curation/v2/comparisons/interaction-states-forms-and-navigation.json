@@ -1,0 +1,680 @@
+{
+  "candidate_responsibility": "Define and implement controls, navigation, forms, loading, empty, error, disabled, and recovery states.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-009",
+    "frontend-design:unit-015",
+    "redesign-existing-projects:unit-005",
+    "ui-ux-pro-max:unit-012",
+    "ui-ux-pro-max:unit-017"
+  ],
+  "cluster_id": "cluster:interaction-states-forms-and-navigation",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:219-233",
+    "frontend-design/SKILL.md:69-71",
+    "impeccable/reference/craft-floor.md:14-15",
+    "impeccable/reference/craft-floor.md:29-30",
+    "redesign-existing-projects/SKILL.md:63-76",
+    "ui-ux-pro-max/references/pro-rules.md:25-36",
+    "ui-ux-pro-max/references/quick-reference.md:35-54"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:interaction-states-forms-and-navigation"
+      ],
+      "id": "cluster:interaction-states-forms-and-navigation:fusion:boundary",
+      "rule": "Define and implement controls, navigation, forms, loading, empty, error, disabled, and recovery states."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:interaction-states-forms-and-navigation"
+      ],
+      "id": "cluster:interaction-states-forms-and-navigation:fusion:inputs",
+      "rule": "Accept only: User flows, acceptance criteria, a component system, content, state model, and platform behavior."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:interaction-states-forms-and-navigation"
+      ],
+      "id": "cluster:interaction-states-forms-and-navigation:fusion:outputs",
+      "rule": "Produce only: Complete interaction states, recovery behavior, navigation, focus paths, and state feedback."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:interaction-states-forms-and-navigation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "User flows, acceptance criteria, a component system, content, state model, and platform behavior.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "impeccable",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "Complete interaction states, recovery behavior, navigation, focus paths, and state feedback.",
+  "retained_auxiliary_unit_ids": [
+    "impeccable:craft-floor:refuse-modal-default",
+    "impeccable:craft-floor:states-complete"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义交互状态完整性与 CTA 按钮严苛纪律：必须完整实现骨架加载态、精美空态、就近错误态与物理按下反馈（-translate-y-[1px] 或 scale-[0.98]）；按钮文本必须符合 WCAG AA 4.5:1 对比度（严禁白底白字或幽灵按钮无边框）；**CTA 按钮桌面折行禁令（CTA Button Wrap Ban）**：桌面端主 CTA 文本严禁折行为两行或三行（通过缩短至 1-3 词或放宽按钮宽度解决）；**禁止重复意图 CTA（No Duplicate CTA Intent）**：单页严禁出现意图相同的多个不同 CTA 标签（如 Get in touch 与 Let's talk 混用，必须统一唯一用词）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Explicit limits: 桌面端 CTA 按钮折行与相同意图词汇分裂直接构成发版阻断性 Pre-Flight Fail。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "桌面端 CTA 按钮折行与相同意图词汇分裂直接构成发版阻断性 Pre-Flight Fail。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Explicit limits: 桌面端 CTA 按钮折行与相同意图词汇分裂直接构成发版阻断性 Pre-Flight Fail。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验桌面端所有主 CTA 按钮是否保持单行无折行，核验整页同一行为意图的 CTA 文案是否全局完全统一。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Explicit limits: 桌面端 CTA 按钮折行与相同意图词汇分裂直接构成发版阻断性 Pre-Flight Fail。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "错误与空状态指引原则：将错误与空状态视为明确行动指引的契机，而非情绪宣泄；说明出了什么问题以及如何修复，界面语气客观直接、绝不道歉且绝不含糊；空状态是引导行动的邀请；保持对话式自然句式与单一职责。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Explicit limits: 表单校验、异常状态呈现及初次引导空状态编写时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "表单校验、异常状态呈现及初次引导空状态编写时适用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Explicit limits: 表单校验、异常状态呈现及初次引导空状态编写时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立错误客观给指引不道歉，以及空状态作为行动邀请的设计准则。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Explicit limits: 表单校验、异常状态呈现及初次引导空状态编写时适用。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "完整状态集：hover、disabled、loading、error、empty。加上真实内容、可工作控件、响应式构图、键盘焦点; 拒绝模态对话框例外：对不需要中断或受保护焦点的任务不使用模态框",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Explicit limits: 必须覆盖用户可能遇到的所有交互分支; 仅当任务需要 modal 时才允许",
+      "source_id": "impeccable",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (exception=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-modal-default",
+        "impeccable:craft-floor:states-complete"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "必须覆盖用户可能遇到的所有交互分支; 仅当任务需要 modal 时才允许",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Explicit limits: 必须覆盖用户可能遇到的所有交互分支; 仅当任务需要 modal 时才允许",
+      "source_id": "impeccable",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (exception=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-modal-default",
+        "impeccable:craft-floor:states-complete"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "矩阵检查每类控件的状态覆盖率",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15"
+      ],
+      "limitations": "Explicit limits: 必须覆盖用户可能遇到的所有交互分支",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:states-complete"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "拒绝模态对话框例外：对不需要中断或受保护焦点的任务不使用模态框",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "limitations": "Explicit limits: 仅当任务需要 modal 时才允许",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-modal-default"
+      ]
+    },
+    {
+      "approach": "确立交互与状态（Interactivity and States）审查准则：添加悬停微交互；按压时引入 scale(0.98) 或 translateY(1px) 物理触感反馈；所有交互元素配置 200-300ms 平滑过渡；保留键盘导航可见焦点环；以骨架屏替换圆形转圈；精心设计空状态；表单采用内联错误；杜绝死链接；启用平滑滚动与 GPU 加速属性。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Explicit limits: 所有可交互元素必须具备完整生命周期状态（默认、悬停、按压、加载、空值、错误、禁用）。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "所有可交互元素必须具备完整生命周期状态（默认、悬停、按压、加载、空值、错误、禁用）。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Explicit limits: 所有可交互元素必须具备完整生命周期状态（默认、悬停、按压、加载、空值、错误、禁用）。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验交互是否补齐按压微反馈、焦点环、骨架屏与完整错误反馈。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Explicit limits: 所有可交互元素必须具备完整生命周期状态（默认、悬停、按压、加载、空值、错误、禁用）。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义移动端应用交互规范：点击操作必须在 80-150ms 内提供清晰的视觉按下反馈（波纹/不透明度/高度变化）；动效时长使用基于距离与复杂度的共享设计令牌；无障碍焦点顺序必须与视觉阅读顺序严格一致；禁用态必须具备语义声明与低视觉强调，避免误导；每个区域保持单一主手势，规避滑动与手势冲突；优先采用原生交互基元（Button, Pressable）。; 定义核心分类2：触控与交互（Touch & Interaction - CRITICAL）细则：最小点击热区 iOS 44x44pt / Material 48x48dp；目标间距保持 ≥8px；首要交互使用点击而非单纯依赖悬停 hover；异步操作禁用按钮并展示加载进度；错误反馈就近提示；主内容避免横向滑动以纵向滚动为主；使用 touch-action: manipulation 消除移动端 300ms 点击延迟；采用平台标准手势且严禁拦截系统手势（控制中心、返回滑动）；提供按下视觉高亮与克制的触觉反馈（haptic）；核心操作严禁纯手势独占，必须提供可见备选控件；拖拽设置初始位移阈值防误触。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Explicit limits: 适用于触屏移动设备及原生交互界面的所有点击、滑动与手势处理。; 适用于移动端触摸屏与触控交互控件的尺寸、手势与反馈设计。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-012",
+        "ui-ux-pro-max:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于触屏移动设备及原生交互界面的所有点击、滑动与手势处理。; 适用于移动端触摸屏与触控交互控件的尺寸、手势与反馈设计。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Explicit limits: 适用于触屏移动设备及原生交互界面的所有点击、滑动与手势处理。; 适用于移动端触摸屏与触控交互控件的尺寸、手势与反馈设计。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-012",
+        "ui-ux-pro-max:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验点击反馈是否在 80-150ms 内响应，焦点顺序是否与视觉一致，手势区域是否不存在嵌套滑动冲突。; 测量触控热区与间距是否合规，检查是否消除了 300ms 点击延迟，确认未阻断系统手势。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Explicit limits: 适用于触屏移动设备及原生交互界面的所有点击、滑动与手势处理。; 适用于移动端触摸屏与触控交互控件的尺寸、手势与反馈设计。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-012",
+        "ui-ux-pro-max:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:219-233"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-009"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:69-71"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-015"
+      ]
+    },
+    {
+      "contribution_types": {
+        "exception": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "impeccable/reference/craft-floor.md:14-15",
+        "impeccable/reference/craft-floor.md:29-30"
+      ],
+      "source_id": "impeccable",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-modal-default",
+        "impeccable:craft-floor:states-complete"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:63-76"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-005"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 2
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/pro-rules.md:25-36",
+        "ui-ux-pro-max/references/quick-reference.md:35-54"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-012",
+        "ui-ux-pro-max:unit-017"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-009",
+    "frontend-design:unit-015",
+    "impeccable:craft-floor:refuse-modal-default",
+    "impeccable:craft-floor:states-complete",
+    "redesign-existing-projects:unit-005",
+    "ui-ux-pro-max:unit-012",
+    "ui-ux-pro-max:unit-017"
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [test-case-generator/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [test-case-generator/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [test-case-generator/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [test-case-generator/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "⚠️ 检测到缺失的依赖，请运行：pip install python-docx [test-case-generator/SKILL.md:108]",
+    "解决：pip install python-docx pdfplumber openpyxl [test-case-generator/SKILL.md:275]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "专业的测试用例生成技能。支持文本/文档输入，自动生成高质量测试用例。内置依赖检测、质量评分、多格式导出、测试数据生成、用例评审、增量更新等高级功能。支持自定义 prompt 和配置。 [test-case-generator/SKILL.md:3]",
+  "root_id": "skill-root:test-case-generator",
+  "rules_gates": [
+    "\"requiredfields\": [...], // 必填字段 [test-case-generator/SKILL.md:217]"
+  ],
+  "skill_path": "test-case-generator/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "test-case-generator/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "test-case-generator/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "test-case-generator/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "test-case-generator/SKILL.md"
+    },
+    {
+      "line_end": 17,
+      "line_start": 17,
+      "path": "test-case-generator/SKILL.md"
+    }
+  ],
+  "source_sha256": "4606c17df9a84b9fe93ba603b001945606312c9029aee7eb16f5f9fb8da185a5",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4606c17df9a84b9fe93ba603b001945606312c9029aee7eb16f5f9fb8da185a5",
+        "content-review:289-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "test-case-generator/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d96dc19183b7589003384780a63778b1068a91c0e62c3bd5359031120888564e",
+        "content-review:12-lines"
+      ],
+      "path": "test-case-generator/_meta.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:629ca5c89729e4f5ee99b0e8c8a933dec53b47d0f31e907f40cd78432804ffa0",
+        "content-review:21-lines"
+      ],
+      "path": "test-case-generator/config.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2000b1d17c1aa1691890479564fa51c55e34ec4f49a714cd024595234e50f080",
+        "content-review:193-lines"
+      ],
+      "path": "test-case-generator/references/advanced-prompt.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:68887dd4fcbf0a3e8dfccb76f238c03a0181801455fc0e9e3b3495cd25592e80",
+        "content-review:94-lines"
+      ],
+      "path": "test-case-generator/references/default-prompt.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8d10766f30678c6c421da61e3003f65893c3b38e63fa6abdf33769511ae0421b",
+        "content-review:149-lines"
+      ],
+      "path": "test-case-generator/references/format-examples.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d2cdc62551c2169639ea38b398a22a852f10cbfb066f706fed0267755aafdf6f",
+        "content-review:120-lines"
+      ],
+      "path": "test-case-generator/references/prompt-templates.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:afb792e14df59394b35f7b9e2b634f817960d700c22bdd1d2f0332a81db66333",
+        "content-review:59-lines",
+        "behavior-signals:entrypoint|process"
+      ],
+      "path": "test-case-generator/scripts/check_dependencies.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6709394d2840adaabe47948788867995cff3cd8f8832601c322235a1d44b3d0c",
+        "content-review:106-lines",
+        "behavior-signals:entrypoint|filesystem-write"
+      ],
+      "path": "test-case-generator/scripts/config_manager.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ddcf8ba8a988e7b24b610a7684c73664021622b572f06cec596d374660b48b34",
+        "content-review:185-lines",
+        "behavior-signals:entrypoint|filesystem-write"
+      ],
+      "path": "test-case-generator/scripts/diff_requirements.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:77d677c2dc68252d840163969a4cdecf033c2ec31716624fdb2f43eb0156720c",
+        "content-review:186-lines",
+        "behavior-signals:entrypoint|filesystem-write"
+      ],
+      "path": "test-case-generator/scripts/export_testcases.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f7403b92e70660f16e30a71361490f22325865470fe47c7151b728c14284bfd1",
+        "content-review:70-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "test-case-generator/scripts/extract_requirements.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:27435363eba12627da37f77a9b77a8e1b613f0e15346fa594d2904b18b626fdf",
+        "content-review:225-lines",
+        "behavior-signals:entrypoint|network|filesystem-write"
+      ],
+      "path": "test-case-generator/scripts/generate_testdata.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:36b613c467e4a4bffe4fe71316f83a8da916d697e61fc275d061cc5102712b94",
+        "content-review:223-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "test-case-generator/scripts/quality_score.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ad9c0a4c1b8d06b25d42f5a30b4754e977317d0499476b118de9160f66a5bf8b",
+        "content-review:204-lines",
+        "behavior-signals:entrypoint|filesystem-write"
+      ],
+      "path": "test-case-generator/scripts/review_testcases.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0acecd9483569215a18dc8c8f420b2757d9eb7a0b93340d1ea08b004a285aa37",
+        "content-review:70-lines",
+        "behavior-signals:entrypoint|process"
+      ],
+      "path": "test-case-generator/scripts/run_all_tests.py",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "专业的测试用例生成技能。支持文本/文档输入，自动生成高质量测试用例。内置依赖检测、质量评分、多格式导出、测试数据生成、用例评审、增量更新等高级功能。支持自定义 prompt 和配置。 [test-case-generator/SKILL.md:3]",
+  "unique_methods": [
+    "测试用例生成技能（完整版） [test-case-generator/SKILL.md:6]",
+    "核心功能 [test-case-generator/SKILL.md:8]",
+    "支持的输入方式 [test-case-generator/SKILL.md:12]",
+    "内置高级功能 [test-case-generator/SKILL.md:17]",
+    "快速开始 [test-case-generator/SKILL.md:29]",
+    "1. 检查依赖 [test-case-generator/SKILL.md:31]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [test-case-generator/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [test-case-generator/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [test-case-generator/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [test-case-generator/SKILL.md:3]"
+  ],
+  "workflow": [
+    "测试用例生成技能（完整版） [test-case-generator/SKILL.md:6]",
+    "核心功能 [test-case-generator/SKILL.md:8]",
+    "支持的输入方式 [test-case-generator/SKILL.md:12]",
+    "内置高级功能 [test-case-generator/SKILL.md:17]",
+    "快速开始 [test-case-generator/SKILL.md:29]",
+    "1. 检查依赖 [test-case-generator/SKILL.md:31]"
+  ]
+}

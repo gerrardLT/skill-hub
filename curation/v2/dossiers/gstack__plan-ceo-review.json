@@ -1,0 +1,174 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/plan-ceo-review/SKILL.md:86]",
+    "Skill Invocation During Plan Mode [gstack/plan-ceo-review/SKILL.md:90]",
+    "Model-Specific Behavioral Patch (claude) [gstack/plan-ceo-review/SKILL.md:222]",
+    "Continuous Checkpoint Mode [gstack/plan-ceo-review/SKILL.md:322]",
+    "Step 0: Detect platform and base branch [gstack/plan-ceo-review/SKILL.md:456]",
+    "Mega Plan Review Mode [gstack/plan-ceo-review/SKILL.md:495]"
+  ],
+  "inputs": [
+    "When the design doc check above prints \"No design doc found,\" offer the prerequisite [gstack/plan-ceo-review/SKILL.md:644]",
+    "skill before proceeding. [gstack/plan-ceo-review/SKILL.md:645]",
+    "Say to the user via AskUserQuestion [gstack/plan-ceo-review/SKILL.md:647]",
+    "Options [gstack/plan-ceo-review/SKILL.md:654]",
+    "A) Run /office-hours now (we'll pick up the review right after) [gstack/plan-ceo-review/SKILL.md:655]",
+    "B) Skip — proceed with standard review [gstack/plan-ceo-review/SKILL.md:656]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/plan-ceo-review/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/plan-ceo-review/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/plan-ceo-review/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/plan-ceo-review/SKILL.md:64]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/plan-ceo-review/SKILL.md:69]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/plan-ceo-review/SKILL.md:88]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-ceo-review/SKILL.md:107]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/plan-ceo-review/SKILL.md:131]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/plan-ceo-review/SKILL.md:202]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/plan-ceo-review/SKILL.md:326]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/plan-ceo-review/SKILL.md:449]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/plan-ceo-review/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "CEO/founder-mode plan review. [gstack/plan-ceo-review/SKILL.md:5]",
+  "root_id": "skill-root:gstack/plan-ceo-review",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/plan-ceo-review/SKILL.md:43]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/plan-ceo-review/SKILL.md:70]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/plan-ceo-review/SKILL.md:71]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/plan-ceo-review/SKILL.md:72]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/plan-ceo-review/SKILL.md:79]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/plan-ceo-review/SKILL.md:80]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/plan-ceo-review/SKILL.md:83]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/plan-ceo-review/SKILL.md:94]"
+  ],
+  "skill_path": "gstack/plan-ceo-review/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/plan-ceo-review/SKILL.md"
+    },
+    {
+      "line_end": 47,
+      "line_start": 47,
+      "path": "gstack/plan-ceo-review/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/plan-ceo-review/SKILL.md"
+    },
+    {
+      "line_end": 86,
+      "line_start": 86,
+      "path": "gstack/plan-ceo-review/SKILL.md"
+    },
+    {
+      "line_end": 90,
+      "line_start": 90,
+      "path": "gstack/plan-ceo-review/SKILL.md"
+    }
+  ],
+  "source_sha256": "b249051152bcba854fbd8f646d3cb5235979f6794d634fb6e72d84bcdea31a47",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/plan-ceo-review/SKILL.md:104]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/plan-ceo-review/SKILL.md:105]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/plan-ceo-review/SKILL.md:106]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-ceo-review/SKILL.md:107]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/plan-ceo-review/SKILL.md:109]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/plan-ceo-review/SKILL.md:113]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b249051152bcba854fbd8f646d3cb5235979f6794d634fb6e72d84bcdea31a47",
+        "content-review:1165-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/plan-ceo-review/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:959494a82262625c6fc5bac7a5dc87c8e78be9b1965d4d759930182f12d1dff2",
+        "content-review:432-lines"
+      ],
+      "path": "gstack/plan-ceo-review/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dfeb9eb1e961a456f00ff21e957573ac5a731c539cd71d2cb352eb001a6775a7",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/plan-ceo-review/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:860faae85c2f1932cdee7d018107055667b770e848aa8ad0b3038f574255d57b",
+        "content-review:945-lines"
+      ],
+      "path": "gstack/plan-ceo-review/sections/review-sections.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f0536d6e706b241b9e3d1733dfafb082b27c34213120fbd01672ddea5189bfd6",
+        "content-review:493-lines"
+      ],
+      "path": "gstack/plan-ceo-review/sections/review-sections.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Read [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Declared tool: Grep [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Declared tool: Glob [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Declared tool: Bash [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Declared tool: AskUserQuestion [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Declared tool: WebSearch [gstack/plan-ceo-review/SKILL.md:1-42]",
+    "Local dependency: gstack/plan-ceo-review/sections/review-sections.md [gstack/plan-ceo-review/SKILL.md:874]",
+    "Local dependency: gstack/plan-ceo-review/sections/review-sections.md [gstack/plan-ceo-review/SKILL.md:1128]"
+  ],
+  "trigger": "CEO/founder-mode plan review. (gstack) [gstack/plan-ceo-review/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/plan-ceo-review/SKILL.md:170]",
+    "Self-check before emitting [gstack/plan-ceo-review/SKILL.md:193]",
+    "Context Recovery [gstack/plan-ceo-review/SKILL.md:261]",
+    "Completeness Principle — Boil the Ocean [gstack/plan-ceo-review/SKILL.md:308]",
+    "Confusion Protocol [gstack/plan-ceo-review/SKILL.md:314]",
+    "Claimed Limitations Need Evidence [gstack/plan-ceo-review/SKILL.md:318]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/plan-ceo-review/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/plan-ceo-review/SKILL.md:322]",
+    "Step 0: Detect platform and base branch [gstack/plan-ceo-review/SKILL.md:456]",
+    "PRE-REVIEW SYSTEM AUDIT (before Step 0) [gstack/plan-ceo-review/SKILL.md:590]",
+    "Step 0: Nuclear Scope Challenge + Mode Selection [gstack/plan-ceo-review/SKILL.md:876]",
+    "0C-bis. Implementation Alternatives (MANDATORY) [gstack/plan-ceo-review/SKILL.md:894]"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "branches": [
+    "Operating mode resolution [agent-observability-eval-pipeline/SKILL.md:337]"
+  ],
+  "inputs": [
+    "Input Required Default Description [agent-observability-eval-pipeline/SKILL.md:73]",
+    "mlapp Yes — The instrumented LLM app to onboard / evaluate against. The precheck verifies it has recent traces. [agent-observability-eval-pipeline/SKILL.md:75]",
+    "project-name No derived from pyproject.toml / setup.cfg / setup.py / package.json / cwd (same order as agent-observability-experiment-bootstrap); falls back to experiment-sdk-default The Datadog project the pipeline writes datasets and experiments into. The SDK lazily creates the project on first us [agent-observability-eval-pipeline/SKILL.md:76]",
+    "timeframe No now-7d Lookback window for Phase 1 classification and Phase 4 dataset sampling. [agent-observability-eval-pipeline/SKILL.md:77]",
+    "trace-limit No 20 Sampling cap for Phase 4. Phase 1 internally uses min(20, --trace-limit) for the classification sample. [agent-observability-eval-pipeline/SKILL.md:78]",
+    "format No py Passed to agent-observability-experiment-bootstrap in Phase 5: py (script) or ipynb (Jupyter notebook). [agent-observability-eval-pipeline/SKILL.md:79]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [agent-observability-eval-pipeline/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [agent-observability-eval-pipeline/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [agent-observability-eval-pipeline/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "description: End-to-end Agent Observability pipeline for an instrumented mlapp — classify production traces, root-cause failures, bootstrap evaluators, then (optionally) sample + publish a dataset, generate + run an experiment, and analyze results. Six narrated phases with a standardized banner and [agent-observability-eval-pipeline/SKILL.md:3]",
+    "> \"Neither the Datadog MCP server nor the pup CLI is available. Connect the MCP server (claude mcp add --scope user --transport http datadog-llmo-mcp 'https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=llmobs') or install pup.\" [agent-observability-eval-pipeline/SKILL.md:16]",
+    "[Phase 4: Create + publish dataset] entity: dataset record, published dataset [agent-observability-eval-pipeline/SKILL.md:44]",
+    "online-evaluators No off Phase 3: publish online LLM-judge evaluators directly to Datadog (created as disabled drafts; enable in the UI). Online evaluators run on production spans as they're emitted. Maps internally to agent-observability-eval-bootstrap publish mode (was --publish). [agent-observability-eval-pipeline/SKILL.md:82]",
+    "data-only No off Phase 3: emit a local data blob only — no executable evaluator code or online publish. At Phase 3 entry the skill prompts the user to pick one of: (a) a DatasetRecordRaw[] JSON suitable for experiment use (maps internally to agent-observability-eval-bootstrap --emit-dataset), or (b) [agent-observability-eval-pipeline/SKILL.md:83]",
+    "dataset-file <path> No auto-loaded from <output-dir>/state/04-published-dataset.json's datasetfile field (or the most recent <output-dir>/dataset<mlapp>.json) The local DatasetRecordRaw[] JSON. Used by Phase 4's publish sub-step when re-publishing without re-sampling. [agent-observability-eval-pipeline/SKILL.md:88]",
+    "output-dir No ./experiments Where the dataset JSON, publish script, and generated experiment file are written. [agent-observability-eval-pipeline/SKILL.md:95]",
+    "If mlapp is not provided, ask the user before proceeding. The three evaluator-output flags (--offline-evaluators, --online-evaluators, --data-only) are mutually exclusive — error out if more than one is set. If none are set, --offline-evaluators is the default. The legacy flag names --publish and [agent-observability-eval-pipeline/SKILL.md:98]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "End-to-end Agent Observability pipeline for an instrumented mlapp — classify production traces, root-cause failures, bootstrap evaluators, then (optionally) sample + publish a dataset, generate + run an experiment, and analyze results. [agent-observability-eval-pipeline/SKILL.md:3]",
+  "root_id": "skill-root:agent-observability-eval-pipeline",
+  "rules_gates": [
+    "Detection — At the start of every invocation, before taking any action, determine which backend to use [agent-observability-eval-pipeline/SKILL.md:8]",
+    "backend pup is accepted anywhere in the invocation arguments. Strip it from args before passing to sub-skills, but carry the pup-mode decision forward — every sub-skill must also operate in pup mode for the entire pipeline run. [agent-observability-eval-pipeline/SKILL.md:18]",
+    "Sub-skill backend propagation: The backend detected at startup applies to all sub-skills invoked across the six phases. Do not re-detect per phase. Announce once at startup [agent-observability-eval-pipeline/SKILL.md:20]",
+    "Invocation ID: At the very start of each invocation, before any MCP tool call, generate an 8-character hex invocation ID (e.g., 3a9f1c2b). Keep it constant for the entire invocation. [agent-observability-eval-pipeline/SKILL.md:24]",
+    "A deterministic, six-phase guided pipeline for an already-instrumented mlapp owner. Each phase has the same envelope — a banner that names the entity being produced, an explanation of its purpose, the action (a sub-skill call or a small executable step), and a checkpoint. You always know where you a [agent-observability-eval-pipeline/SKILL.md:32]",
+    "[Precheck] verify mlapp, project, backend, credentials, output dir [agent-observability-eval-pipeline/SKILL.md:35]",
+    "↓ (in-phase review beat before run) [agent-observability-eval-pipeline/SKILL.md:48]",
+    "Input Required Default Description [agent-observability-eval-pipeline/SKILL.md:73]"
+  ],
+  "skill_path": "agent-observability-eval-pipeline/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "agent-observability-eval-pipeline/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "agent-observability-eval-pipeline/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "agent-observability-eval-pipeline/SKILL.md"
+    },
+    {
+      "line_end": 54,
+      "line_start": 54,
+      "path": "agent-observability-eval-pipeline/SKILL.md"
+    },
+    {
+      "line_end": 71,
+      "line_start": 71,
+      "path": "agent-observability-eval-pipeline/SKILL.md"
+    }
+  ],
+  "source_sha256": "bb52c7b9b1da308e1ea3d7dc4d71a88d6d8a7aa01ce8f1cc0f4d76be42410175",
+  "stop_conditions": [
+    "description: End-to-end Agent Observability pipeline for an instrumented mlapp — classify production traces, root-cause failures, bootstrap evaluators, then (optionally) sample + publish a dataset, generate + run an experiment, and analyze results. Six narrated phases with a standardized banner and [agent-observability-eval-pipeline/SKILL.md:3]",
+    "6. If neither is available → stop and tell the user [agent-observability-eval-pipeline/SKILL.md:15]",
+    "[Phase 2: Root cause analysis] entity: failure mode, root cause [agent-observability-eval-pipeline/SKILL.md:39]",
+    "↓ (stop here with --stop-after eval-bootstrap [agent-observability-eval-pipeline/SKILL.md:42]",
+    "[--stop-after classifyrcaeval-bootstrapdatasetexperimentanalyze] [agent-observability-eval-pipeline/SKILL.md:61]",
+    "stop-after <phase> No analyze (run everything) Stop after the named phase completes. classify = Phase 1 only. rca = through Phase 2. eval-bootstrap = through Phase 3 (matches the classic eval-pipeline). dataset = through Phase 4 (dataset created + published). experiment = through Phase 5 (experiment [agent-observability-eval-pipeline/SKILL.md:84]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bb52c7b9b1da308e1ea3d7dc4d71a88d6d8a7aa01ce8f1cc0f4d76be42410175",
+        "content-review:789-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "agent-observability-eval-pipeline/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+        "content-review:3-lines"
+      ],
+      "path": "agent-observability-eval-pipeline/scripts/.gitignore",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4ca5c91a3c198040f7794b684c74b5e67bb938aead9a73884b01f0182cc8584d",
+        "content-review:75-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "agent-observability-eval-pipeline/scripts/load_env.py",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3bd802c4a1140ce5c8c410d9126d7710ff74904b9a2fe92901cfd14ac5dc7ab9",
+        "content-review:123-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "agent-observability-eval-pipeline/scripts/publish_dataset.py",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: agent-observability-eval-pipeline/scripts/publish_dataset.py [agent-observability-eval-pipeline/SKILL.md:769]"
+  ],
+  "trigger": "End-to-end Agent Observability pipeline for an instrumented mlapp — classify production traces, root-cause failures, bootstrap evaluators, then (optionally) sample + publish a dataset, generate + run an experiment, and analyze results. Six narrated phases with a standardized banner and a \"continue\" [agent-observability-eval-pipeline/SKILL.md:3]",
+  "unique_methods": [
+    "Backend [agent-observability-eval-pipeline/SKILL.md:6]",
+    "Agent Observability Eval Pipeline — Classify → RCA → Eval Bootstrap → Dataset → Experiment → Analyze [agent-observability-eval-pipeline/SKILL.md:30]",
+    "Operating mode resolution [agent-observability-eval-pipeline/SKILL.md:337]",
+    "Final Summary [agent-observability-eval-pipeline/SKILL.md:581]",
+    "Agent Observability Eval Pipeline complete [agent-observability-eval-pipeline/SKILL.md:586]",
+    "What you learned [agent-observability-eval-pipeline/SKILL.md:599]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [agent-observability-eval-pipeline/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Precheck [agent-observability-eval-pipeline/SKILL.md:102]",
+    "Precheck [agent-observability-eval-pipeline/SKILL.md:147]",
+    "Phase Template [agent-observability-eval-pipeline/SKILL.md:167]",
+    "Phase N of 6: <Title> [agent-observability-eval-pipeline/SKILL.md:172]",
+    "Checkpoint <N> [agent-observability-eval-pipeline/SKILL.md:191]",
+    "Phase 1: Classify mlapp traces [agent-observability-eval-pipeline/SKILL.md:207]",
+    "Checkpoint 1 [agent-observability-eval-pipeline/SKILL.md:253]",
+    "Phase 1 complete — you've seen what <mlapp> does in production [agent-observability-eval-pipeline/SKILL.md:258]",
+    "Phase 2: Root cause analysis [agent-observability-eval-pipeline/SKILL.md:280]",
+    "Checkpoint 2 [agent-observability-eval-pipeline/SKILL.md:296]"
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_types": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "capability_id": {
+      "pattern": "^capability:",
+      "type": "string"
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_execution_state": {
+          "const": "not-executed-phase-7"
+        },
+        "external": {
+          "type": "string"
+        },
+        "host_actions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "model_tools": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "mutation_scope": {
+          "enum": [
+            "none",
+            "run-output",
+            "artifact-output",
+            "authorized-workspace",
+            "local-system-write",
+            "remote-deployment-trigger",
+            "remote-edge-deploy",
+            "remote-kubernetes-deploy",
+            "remote-pr-comment",
+            "remote-release-rollback",
+            "remote-git-push",
+            "remote-pr-change",
+            "remote-pr-merge",
+            "remote-service-identity",
+            "remote-web-deploy",
+            "remote-ai-observability-config",
+            "remote-apm-enablement",
+            "remote-log-config",
+            "remote-monitor-config",
+            "remote-agent-install",
+            "remote-release-observability"
+          ]
+        },
+        "remote_write": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "model_tools",
+        "host_actions",
+        "external",
+        "mutation_scope",
+        "remote_write",
+        "candidate_execution_state"
+      ],
+      "type": "object"
+    },
+    "forbidden_actions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "hard_gates": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "type": "string"
+    },
+    "inputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "outputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "permission_identity": {
+      "enum": [
+        "artifact-write-local-exec-external-read",
+        "external-read",
+        "local-exec-external-read",
+        "local-system-write-authorized-only",
+        "read-only",
+        "remote-write-authorized-only",
+        "workspace-write",
+        "workspace-write-local-exec"
+      ]
+    },
+    "policy": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "data_governance": {
+          "type": "boolean"
+        },
+        "human_decision": {
+          "type": "boolean"
+        },
+        "observation_action_separation": {
+          "const": true
+        },
+        "remote_or_system_action": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "human_decision",
+        "data_governance",
+        "remote_or_system_action",
+        "observation_action_separation",
+        "coverage"
+      ],
+      "type": "object"
+    },
+    "responsibility": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "statuses": {
+      "const": [
+        "passed",
+        "needs-input",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "capability_id",
+    "responsibility",
+    "inputs",
+    "outputs",
+    "permission_identity",
+    "statuses",
+    "hard_gates",
+    "forbidden_actions",
+    "artifact_types",
+    "execution",
+    "policy"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,113 @@
+{
+  "branches": [],
+  "inputs": [
+    "[ ] agent-install is complete [dd-apm/linux-ssi/verify-ssi/SKILL.md:31]",
+    "[ ] Application services have been restarted since the agent was installed [dd-apm/linux-ssi/verify-ssi/SKILL.md:32]",
+    "pup-cli: check, install, and authenticate [dd-apm/linux-ssi/verify-ssi/SKILL.md:34]",
+    "Claude runs [dd-apm/linux-ssi/verify-ssi/SKILL.md:36]",
+    "pup --version [dd-apm/linux-ssi/verify-ssi/SKILL.md:39]",
+    "If not found [dd-apm/linux-ssi/verify-ssi/SKILL.md:42]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "SSI has not been enabled yet — run agent-install first [dd-apm/linux-ssi/verify-ssi/SKILL.md:24]",
+    "Services have not been restarted since the agent was installed — restart them first, then verify [dd-apm/linux-ssi/verify-ssi/SKILL.md:25]",
+    "[ ] agent-install is complete [dd-apm/linux-ssi/verify-ssi/SKILL.md:31]",
+    "pup-cli: check, install, and authenticate [dd-apm/linux-ssi/verify-ssi/SKILL.md:34]",
+    "brew install pup [dd-apm/linux-ssi/verify-ssi/SKILL.md:48]",
+    "If empty — install did not set up the launcher. Re-run the install script with DDAPMINSTRUMENTATIONENABLED=host. If non-empty but the process still isn't injected — the process was started before the launcher was installed. Restart the service and recheck. [dd-apm/linux-ssi/verify-ssi/SKILL.md:119]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/linux-ssi/verify-ssi/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/linux-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Verify Single Step Instrumentation (SSI) is working end-to-end on Linux hosts — SSI automatically instruments applications for APM without code changes. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/linux-ssi/verify-ssi",
+  "rules_gates": [
+    "name: verify-ssi [dd-apm/linux-ssi/verify-ssi/SKILL.md:2]",
+    "description: Verify Single Step Instrumentation (SSI) is working end-to-end on Linux hosts — SSI automatically instruments applications for APM without code changes. Only use after enable-ssi has run. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]",
+    "alwaysApply: \"false\" [dd-apm/linux-ssi/verify-ssi/SKILL.md:9]",
+    "Verify APM SSI on Linux [dd-apm/linux-ssi/verify-ssi/SKILL.md:12]",
+    "> Before doing anything else: Fully resolve all variables in Context to resolve before acting. Do not begin Step 1 until every variable has a concrete value. [dd-apm/linux-ssi/verify-ssi/SKILL.md:14]",
+    "Verify the tracer is running and reporting telemetry [dd-apm/linux-ssi/verify-ssi/SKILL.md:21]",
+    "Do NOT invoke this skill if [dd-apm/linux-ssi/verify-ssi/SKILL.md:23]",
+    "Services have not been restarted since the agent was installed — restart them first, then verify [dd-apm/linux-ssi/verify-ssi/SKILL.md:25]"
+  ],
+  "skill_path": "dd-apm/linux-ssi/verify-ssi/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md"
+    },
+    {
+      "line_end": 29,
+      "line_start": 29,
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md"
+    },
+    {
+      "line_end": 34,
+      "line_start": 34,
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md"
+    }
+  ],
+  "source_sha256": "1a0b45cd4e833a3466624d4c10d7c492027ed5763c24897ab8d0dbdacf85ecdd",
+  "stop_conditions": [
+    "SERVICENAME Expected service name in APM — ask the user [dd-apm/linux-ssi/verify-ssi/SKILL.md:76]",
+    "ENV Environment tag — ask the user [dd-apm/linux-ssi/verify-ssi/SKILL.md:77]",
+    "DDSITE grep \"^site:\" /etc/datadog-agent/datadog.yaml via SSH, or ask the user [dd-apm/linux-ssi/verify-ssi/SKILL.md:78]",
+    "If any check fails, go to troubleshoot-ssi. [dd-apm/linux-ssi/verify-ssi/SKILL.md:189]",
+    "When all steps pass, automatically proceed to onboarding-summary now — do not ask the user for permission. [dd-apm/linux-ssi/verify-ssi/SKILL.md:191]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1a0b45cd4e833a3466624d4c10d7c492027ed5763c24897ab8d0dbdacf85ecdd",
+        "content-review:199-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/linux-ssi/verify-ssi/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Verify Single Step Instrumentation (SSI) is working end-to-end on Linux hosts — SSI automatically instruments applications for APM without code changes. Only use after enable-ssi has run. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]",
+  "unique_methods": [
+    "Verify APM SSI on Linux [dd-apm/linux-ssi/verify-ssi/SKILL.md:12]",
+    "Triggers [dd-apm/linux-ssi/verify-ssi/SKILL.md:16]",
+    "Prerequisites [dd-apm/linux-ssi/verify-ssi/SKILL.md:29]",
+    "pup-cli: check, install, and authenticate [dd-apm/linux-ssi/verify-ssi/SKILL.md:34]",
+    "Claude runs [dd-apm/linux-ssi/verify-ssi/SKILL.md:36]",
+    "Claude runs [dd-apm/linux-ssi/verify-ssi/SKILL.md:44]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/linux-ssi/verify-ssi/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Step 1: Confirm the Process is Injected [dd-apm/linux-ssi/verify-ssi/SKILL.md:85]",
+    "Step 2: Confirm the Agent is Receiving Traces [dd-apm/linux-ssi/verify-ssi/SKILL.md:123]",
+    "Step 3: Confirm the Service is Visible in Datadog [dd-apm/linux-ssi/verify-ssi/SKILL.md:142]"
+  ]
+}

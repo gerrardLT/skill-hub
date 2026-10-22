@@ -1,0 +1,140 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/context-save/SKILL.md:60]",
+    "Skill Invocation During Plan Mode [gstack/context-save/SKILL.md:64]",
+    "Model-Specific Behavioral Patch (claude) [gstack/context-save/SKILL.md:196]",
+    "Continuous Checkpoint Mode [gstack/context-save/SKILL.md:296]",
+    "Decisions Made [gstack/context-save/SKILL.md:542]",
+    "Date Title Branch Status [gstack/context-save/SKILL.md:622]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/context-save/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/context-save/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/context-save/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/context-save/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/context-save/SKILL.md:38]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/context-save/SKILL.md:43]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/context-save/SKILL.md:62]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/context-save/SKILL.md:81]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/context-save/SKILL.md:105]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/context-save/SKILL.md:176]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/context-save/SKILL.md:300]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/context-save/SKILL.md:395]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/context-save/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Save working context. [gstack/context-save/SKILL.md:5]",
+  "root_id": "skill-root:gstack/context-save",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/context-save/SKILL.md:19]",
+    "Formerly /checkpoint — renamed because Claude Code treats /checkpoint as a [gstack/context-save/SKILL.md:29]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/context-save/SKILL.md:44]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/context-save/SKILL.md:45]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/context-save/SKILL.md:46]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/context-save/SKILL.md:53]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/context-save/SKILL.md:54]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/context-save/SKILL.md:57]"
+  ],
+  "skill_path": "gstack/context-save/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/context-save/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/context-save/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "gstack/context-save/SKILL.md"
+    },
+    {
+      "line_end": 60,
+      "line_start": 60,
+      "path": "gstack/context-save/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/context-save/SKILL.md"
+    }
+  ],
+  "source_sha256": "95e52cba82acdf40ea127b3e8a1c01bc07baed45f8f610fee47ac1e64f91d6cf",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/context-save/SKILL.md:78]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/context-save/SKILL.md:79]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/context-save/SKILL.md:80]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/context-save/SKILL.md:81]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/context-save/SKILL.md:83]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/context-save/SKILL.md:87]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:95e52cba82acdf40ea127b3e8a1c01bc07baed45f8f610fee47ac1e64f91d6cf",
+        "content-review:647-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/context-save/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7410fcc1a4c7abcd50e3ab716b630eab221f640f25b15be62eb0067cf0c365b4",
+        "content-review:274-lines"
+      ],
+      "path": "gstack/context-save/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/context-save/SKILL.md:1-18]",
+    "Declared tool: Read [gstack/context-save/SKILL.md:1-18]",
+    "Declared tool: Write [gstack/context-save/SKILL.md:1-18]",
+    "Declared tool: Glob [gstack/context-save/SKILL.md:1-18]",
+    "Declared tool: Grep [gstack/context-save/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/context-save/SKILL.md:1-18]"
+  ],
+  "trigger": "Save working context. (gstack) [gstack/context-save/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/context-save/SKILL.md:144]",
+    "Self-check before emitting [gstack/context-save/SKILL.md:167]",
+    "Context Recovery [gstack/context-save/SKILL.md:235]",
+    "Completeness Principle — Boil the Ocean [gstack/context-save/SKILL.md:282]",
+    "Confusion Protocol [gstack/context-save/SKILL.md:288]",
+    "Claimed Limitations Need Evidence [gstack/context-save/SKILL.md:292]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/context-save/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/context-save/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/context-save/SKILL.md:296]",
+    "Step 1: Gather state [gstack/context-save/SKILL.md:430]",
+    "Step 2: Summarize context [gstack/context-save/SKILL.md:451]",
+    "Step 3: Compute session duration [gstack/context-save/SKILL.md:464]",
+    "Step 4: Write saved-context file [gstack/context-save/SKILL.md:486]",
+    "Step 1: Gather saved contexts [gstack/context-save/SKILL.md:577]",
+    "Step 2: Display table [gstack/context-save/SKILL.md:594]"
+  ]
+}

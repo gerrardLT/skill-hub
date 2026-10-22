@@ -1,0 +1,143 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [canary/SKILL.md:57]",
+    "Skill Invocation During Plan Mode [canary/SKILL.md:61]",
+    "Model-Specific Behavioral Patch (claude) [canary/SKILL.md:193]",
+    "Continuous Checkpoint Mode [canary/SKILL.md:293]",
+    "Step 0: Detect platform and base branch [canary/SKILL.md:480]",
+    "Phase 2: Baseline Capture (--baseline mode) [canary/SKILL.md:548]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [canary/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [canary/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [canary/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [canary/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "description: Post-deploy canary monitoring. (gstack) [canary/SKILL.md:5]",
+    "monitor after deploy [canary/SKILL.md:13]",
+    "watch for errors post-deploy [canary/SKILL.md:15]",
+    "periodic screenshots, compares against pre-deploy baselines, and alerts [canary/SKILL.md:25]",
+    "on anomalies. Use when: \"monitor deploy\", \"canary\", \"post-deploy check\", [canary/SKILL.md:26]",
+    "\"watch production\", \"verify deploy\". [canary/SKILL.md:27]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [canary/SKILL.md:35]",
+    "(script absent, stale install, or a different protocol number), apply safe [canary/SKILL.md:40]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "SKILL.md body is byte-identical in the V2 coverage ledger.",
+      "evidence": [
+        "curation/v2/coverage.json:duplicate_skill_body_groups",
+        "sha256:7f8f08a7b7e66039536c063896724d16594a9cbbba7b418a50e33d452c1061e8"
+      ],
+      "target": "skill-root:gstack/canary",
+      "type": "duplicate"
+    }
+  ],
+  "responsibility": "Post-deploy canary monitoring. [canary/SKILL.md:5]",
+  "root_id": "skill-root:canary",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [canary/SKILL.md:17]",
+    "\"watch production\", \"verify deploy\". [canary/SKILL.md:27]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [canary/SKILL.md:41]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [canary/SKILL.md:42]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [canary/SKILL.md:43]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [canary/SKILL.md:50]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [canary/SKILL.md:51]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [canary/SKILL.md:54]"
+  ],
+  "skill_path": "canary/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "canary/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "canary/SKILL.md"
+    },
+    {
+      "line_end": 29,
+      "line_start": 29,
+      "path": "canary/SKILL.md"
+    },
+    {
+      "line_end": 57,
+      "line_start": 57,
+      "path": "canary/SKILL.md"
+    },
+    {
+      "line_end": 61,
+      "line_start": 61,
+      "path": "canary/SKILL.md"
+    }
+  ],
+  "source_sha256": "7f8f08a7b7e66039536c063896724d16594a9cbbba7b418a50e33d452c1061e8",
+  "stop_conditions": [
+    "performance regressions, and page failures. Takes [canary/SKILL.md:24]",
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [canary/SKILL.md:75]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [canary/SKILL.md:76]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [canary/SKILL.md:77]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [canary/SKILL.md:78]",
+    "When AskUserQuestion is unavailable or a call fails [canary/SKILL.md:80]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7f8f08a7b7e66039536c063896724d16594a9cbbba7b418a50e33d452c1061e8",
+        "content-review:735-lines",
+        "semantic-review-report:curation/v2/reviews/qa-delivery.md"
+      ],
+      "path": "canary/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:540923fed0929cb1b90edc06dba28e22d544936792efa3f90bf1c5f001e7ac0b",
+        "content-review:247-lines"
+      ],
+      "path": "canary/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [canary/SKILL.md:1-16]",
+    "Declared tool: Read [canary/SKILL.md:1-16]",
+    "Declared tool: Write [canary/SKILL.md:1-16]",
+    "Declared tool: Glob [canary/SKILL.md:1-16]",
+    "Declared tool: AskUserQuestion [canary/SKILL.md:1-16]"
+  ],
+  "trigger": "Post-deploy canary monitoring. (gstack) [canary/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [canary/SKILL.md:141]",
+    "Self-check before emitting [canary/SKILL.md:164]",
+    "Context Recovery [canary/SKILL.md:232]",
+    "Completeness Principle — Boil the Ocean [canary/SKILL.md:279]",
+    "Confusion Protocol [canary/SKILL.md:285]",
+    "Claimed Limitations Need Evidence [canary/SKILL.md:289]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [canary/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [canary/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [canary/SKILL.md:293]",
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [canary/SKILL.md:399]",
+    "Translate the Aside scripts step by step [canary/SKILL.md:450]",
+    "Step 0: Detect platform and base branch [canary/SKILL.md:480]",
+    "Phase 1: Setup [canary/SKILL.md:537]",
+    "Phase 2: Baseline Capture (--baseline mode) [canary/SKILL.md:548]",
+    "Phase 3: Page Discovery [canary/SKILL.md:593]",
+    "Phase 4: Pre-Deploy Snapshot (if no baseline exists) [canary/SKILL.md:615]",
+    "Phase 5: Continuous Monitoring Loop [canary/SKILL.md:625]",
+    "Phase 6: Health Report [canary/SKILL.md:679]"
+  ]
+}

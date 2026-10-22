@@ -1,0 +1,249 @@
+{
+  "branches": [
+    "Step 1: Present Fix Plan + Choose Path [azure-reliability/SKILL.md:143]",
+    "Path A: Fix Now (CLI) [azure-reliability/SKILL.md:170]",
+    "Path B: Patch IaC [azure-reliability/SKILL.md:212]",
+    "Step 2 (both paths): Re-Assess [azure-reliability/SKILL.md:305]",
+    "Step 3 (both paths): Multi-region follow-up — ASK and WAIT [azure-reliability/SKILL.md:329]"
+  ],
+  "inputs": [
+    "Authentication: user is logged in to Azure via az login [azure-reliability/SKILL.md:42]",
+    "Permissions: Reader access on target subscription/resource group (for assessment) [azure-reliability/SKILL.md:43]",
+    "Permissions: Contributor access (for configuration changes) [azure-reliability/SKILL.md:44]",
+    "Azure Resource Graph extension: az extension add --name resource-graph [azure-reliability/SKILL.md:45]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [azure-reliability/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [azure-reliability/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [azure-reliability/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "(If you use azd or Terraform, option B is recommended so azd up won't overwrite changes.) [azure-reliability/SKILL.md:167]",
+    "Zone redundancy (App plan) 🟢 Safe patch In-place property update on next deploy [azure-reliability/SKILL.md:229]",
+    "Storage LRS → ZRS 🟡 Pre-migration required Live storage migration must complete before the IaC SKU change can deploy. Never bundle with safe patches — use the two-deploy flow in Steps 3–5. [azure-reliability/SKILL.md:230]",
+    "Health check path (Basic/Standard/Premium / Dedicated) 🟢 Safe patch In-place update, but causes app restart [azure-reliability/SKILL.md:231]",
+    "The IaC patching framework (detection, AVM-module guidance, deploy-order rule, storage SKU patch) lives in [azure-reliability/SKILL.md:236]",
+    "Deploy 1 — Quick wins only. Patch the 🟢 Safe items (zone redundancy on the App Service/Function App plan, health probes on Basic/Standard/Premium / Dedicated). Do NOT include the storage SKU patch in this deploy. [azure-reliability/SKILL.md:245]",
+    "After patching, the skill runs the deploy itself (do not stop and tell the user to run it). Detect the deployment tool and confirm once before executing [azure-reliability/SKILL.md:247]",
+    "📦 Patches applied to your IaC. Ready to deploy [azure-reliability/SKILL.md:250]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "\"Assess and improve the reliability posture of PaaS Applications (Azure Functions and Azure App Service). [azure-reliability/SKILL.md:3]",
+  "root_id": "skill-root:azure-reliability",
+  "rules_gates": [
+    "Permissions: Reader access on target subscription/resource group (for assessment) [azure-reliability/SKILL.md:43]",
+    "Permissions: Contributor access (for configuration changes) [azure-reliability/SKILL.md:44]",
+    "3. Classify resources by service type (Functions, Storage, etc.). If non-Functions compute (App Service sites that aren't Function Apps, Container Apps) is found, note it but do not deep-dive — those services are planned for a future version of this skill. [azure-reliability/SKILL.md:63]",
+    "Important: Always scope queries to the user's specified resource group or subscription. Add these filters to every Resource Graph query [azure-reliability/SKILL.md:65]",
+    "This skill version ships only the Azure Functions and App Service per-service references. Other compute services are listed below explicitly so the dispatch logic is unambiguous: if a resource matches an unsupported row, do not attempt to load a reference, fabricate CLI commands, or generate IaC pat [azure-reliability/SKILL.md:85]",
+    "> Handling unsupported services: If a resource matches an unsupported row above, surface it in the discovery summary, mark it as ⚪ not assessed (planned) in the Phase 3 table, and skip the per-service remediation steps for it. Do not attempt to fabricate CLI commands or IaC patches for those service [azure-reliability/SKILL.md:93]",
+    "plan zone redundancy + health checks on supported plans), then ask before [azure-reliability/SKILL.md:116]",
+    "🟡 PARTIAL — some resources have it, some don't (or partial config like liveness-only) [azure-reliability/SKILL.md:125]"
+  ],
+  "skill_path": "azure-reliability/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "azure-reliability/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "azure-reliability/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "azure-reliability/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "azure-reliability/SKILL.md"
+    },
+    {
+      "line_end": 40,
+      "line_start": 40,
+      "path": "azure-reliability/SKILL.md"
+    }
+  ],
+  "source_sha256": "a29e054ff1073c263853d137dc9109e100caa1b0b677f4e80652b67d8f6fbdb0",
+  "stop_conditions": [
+    "description: \"Assess and improve the reliability posture of PaaS Applications (Azure Functions and Azure App Service). Scans deployed resources for zone redundancy, ZRS storage, health probes, and multi-region failover. Presents a feature-pivoted checklist, then drives staged remediation (CLI or IaC [azure-reliability/SKILL.md:3]",
+    "Best for Reliability posture assessment, zone redundancy enablement, multi-region failover setup [azure-reliability/SKILL.md:16]",
+    "\"Set up multi-region failover for my app\" (App Service and Functions resources only) [azure-reliability/SKILL.md:31]",
+    "\"Find single points of failure\" (App Service and Functions resources only) [azure-reliability/SKILL.md:33]",
+    "1. Identify scope — Ask user for resource group, subscription, or app name [azure-reliability/SKILL.md:61]",
+    "Present findings as a feature-pivoted table: one row per reliability feature (Zone redundancy on compute, Zone-redundant storage, Health probes, Multi-region failover), with a single status indicator and the specific resources that are relevant to that feature. This avoids the noise of one-row-per-r [azure-reliability/SKILL.md:97]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a29e054ff1073c263853d137dc9109e100caa1b0b677f4e80652b67d8f6fbdb0",
+        "content-review:388-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "azure-reliability/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:76cbd211b7787625ea07502972c2214fe80e12262997880017bcc13bf2b13f62",
+        "content-review:31-lines"
+      ],
+      "path": "azure-reliability/references/configure-health-probes.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b68152b061e021402a5862ca7d3de2364bb9a30c00a586c67c68c4a0b16b5ddc",
+        "content-review:599-lines"
+      ],
+      "path": "azure-reliability/references/configure-multi-region.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e2e4c1ec09593e2e7bc1bfdab69404a361424ef1507348e1ead0efb88d0fad60",
+        "content-review:181-lines"
+      ],
+      "path": "azure-reliability/references/configure-storage.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e07930ab95e876dce61e013fa55abd62ec7e292056ac62e6cda6e68910f54f4f",
+        "content-review:39-lines"
+      ],
+      "path": "azure-reliability/references/configure-zone-redundancy.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7a84e9d5120e51b5c10d74d21421b5224dcbea95bfd7ae38bd0966deff971b61",
+        "content-review:80-lines"
+      ],
+      "path": "azure-reliability/references/health-probe-checks.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:96d86b9dc0f0bbf4a9b012e7f97bf36dbd6358b942f96c6cb9f217f0d3447f49",
+        "content-review:200-lines"
+      ],
+      "path": "azure-reliability/references/iac-patching-bicep.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e9ad7a612fe483d9bcd0298907487b5a8756bc6e7faeee0cca1ed58d45cbfe72",
+        "content-review:132-lines"
+      ],
+      "path": "azure-reliability/references/iac-patching-terraform.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b5f3700d0e40e464675d4f482a06a8046986aa61018d21d28af7eafbc9e3988d",
+        "content-review:189-lines"
+      ],
+      "path": "azure-reliability/references/multi-region-checks.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:91f1ecd1c07826ed684a5361bcae60bca5fde4b818c4dae04ef965b8aee37077",
+        "content-review:261-lines"
+      ],
+      "path": "azure-reliability/references/services/app-service/reliability.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:95527035e16b597bc0e78e85b74f7e85de1a253fad76066b1d2fdbfc7cfbb5f8",
+        "content-review:198-lines"
+      ],
+      "path": "azure-reliability/references/services/functions/reliability.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2ef140db5d9e29958aa572c8bb90556d12ffc2da96881c2130c36c420bac5536",
+        "content-review:135-lines"
+      ],
+      "path": "azure-reliability/references/storage-redundancy-checks.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6a328177624859e845e87cec80f3fb59e434b3f077f7232669d5c795cd4310c7",
+        "content-review:57-lines"
+      ],
+      "path": "azure-reliability/references/zone-redundancy-checks.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: azure-reliability/references/zone-redundancy-checks.md [azure-reliability/SKILL.md:78]",
+    "Local dependency: azure-reliability/references/storage-redundancy-checks.md [azure-reliability/SKILL.md:79]",
+    "Local dependency: azure-reliability/references/multi-region-checks.md [azure-reliability/SKILL.md:80]",
+    "Local dependency: azure-reliability/references/health-probe-checks.md [azure-reliability/SKILL.md:81]",
+    "Local dependency: azure-reliability/references/services/functions/reliability.md [azure-reliability/SKILL.md:89]",
+    "Local dependency: azure-reliability/references/services/app-service/reliability.md [azure-reliability/SKILL.md:90]",
+    "Local dependency: azure-reliability/references/services/functions/reliability.md [azure-reliability/SKILL.md:178]",
+    "Local dependency: azure-reliability/references/services/app-service/reliability.md [azure-reliability/SKILL.md:179]",
+    "Local dependency: azure-reliability/references/configure-storage.md [azure-reliability/SKILL.md:180]",
+    "Local dependency: azure-reliability/references/configure-multi-region.md [azure-reliability/SKILL.md:181]",
+    "Local dependency: azure-reliability/references/configure-zone-redundancy.md [azure-reliability/SKILL.md:182]",
+    "Local dependency: azure-reliability/references/configure-health-probes.md [azure-reliability/SKILL.md:182]"
+  ],
+  "trigger": "\"Assess and improve the reliability posture of PaaS Applications (Azure Functions and Azure App Service). Scans deployed resources for zone redundancy, ZRS storage, health probes, and multi-region failover. Presents a feature-pivoted checklist, then drives staged remediation (CLI or IaC patches) end [azure-reliability/SKILL.md:3]",
+  "unique_methods": [
+    "Azure Reliability Assessment & Configuration [azure-reliability/SKILL.md:10]",
+    "Quick Reference [azure-reliability/SKILL.md:12]",
+    "When to Use This Skill [azure-reliability/SKILL.md:21]",
+    "Prerequisites [azure-reliability/SKILL.md:40]",
+    "MCP Tools [azure-reliability/SKILL.md:47]",
+    "Path A: Fix Now (CLI) [azure-reliability/SKILL.md:170]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [azure-reliability/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Assessment Workflow [azure-reliability/SKILL.md:57]",
+    "Phase 1: Discover Resources [azure-reliability/SKILL.md:59]",
+    "Phase 2: Assess Reliability [azure-reliability/SKILL.md:70]",
+    "Phase 3: Generate Reliability Checklist [azure-reliability/SKILL.md:95]",
+    "Configuration Workflow [azure-reliability/SKILL.md:137]",
+    "Step 1: Present Fix Plan + Choose Path [azure-reliability/SKILL.md:143]",
+    "Step 2 (both paths): Re-Assess [azure-reliability/SKILL.md:305]",
+    "Step 3 (both paths): Multi-region follow-up — ASK and WAIT [azure-reliability/SKILL.md:329]"
+  ]
+}

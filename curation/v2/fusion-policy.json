@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.0",
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-002",
+    "V2-DEC-003",
+    "V2-DEC-004",
+    "V2-DEC-005",
+    "V2-DEC-006",
+    "V2-DEC-007"
+  ],
+  "skill_architecture": {
+    "production_unit": "atomic-skill",
+    "monolith_disposition": "source-or-recipe",
+    "single_responsibility_required": true,
+    "independent_evaluation_required": true
+  },
+  "global_hard_rules": {
+    "domains": [
+      "accessibility",
+      "safety",
+      "security",
+      "performance",
+      "data-governance",
+      "evidence-integrity",
+      "authorization"
+    ],
+    "aesthetic_rules": "contextual-variants",
+    "aesthetic_variant_requires": [
+      "product-context",
+      "user-brief-or-authority",
+      "applicability-condition"
+    ]
+  },
+  "product_authority": {
+    "skill_output": "evidence-backed-recommendation",
+    "allowed_decisions": [
+      "recommend-go",
+      "recommend-pivot",
+      "recommend-kill",
+      "needs-input",
+      "blocked"
+    ],
+    "final_decision_authority": "human",
+    "automatic-build-approval": false
+  },
+  "data_governance": {
+    "required": true,
+    "applies_to": [
+      "customer-interviews",
+      "support-tickets",
+      "customer-data",
+      "proprietary-data",
+      "recordings",
+      "external-llm-judges"
+    ],
+    "required_fields": [
+      "authorization",
+      "minimization",
+      "redaction",
+      "retention",
+      "external-transfer-boundary",
+      "deletion-policy"
+    ],
+    "missing_status": "needs-input-or-blocked"
+  },
+  "named_frameworks": {
+    "formula_policy": "named-variants",
+    "formula_must_record": [
+      "framework-name",
+      "exact-formula",
+      "variable-definitions",
+      "assumptions",
+      "selected-variant-or-custom"
+    ],
+    "universal-formula_claim_allowed": false
+  },
+  "source_defects": {
+    "source_mutation_allowed": false,
+    "affected_capability_status": "deferred",
+    "safe_v2_rewrite_allowed": true,
+    "rewrite_requires": [
+      "source-evidence",
+      "explicit-boundary",
+      "tests",
+      "candidate-evaluation"
+    ]
+  },
+  "file_review_states": {
+    "allowed": [
+      "semantic-read",
+      "behavior-reviewed",
+      "excluded"
+    ],
+    "excluded_requires_subkind": true,
+    "excluded_subkinds": [
+      "binary",
+      "generated",
+      "vendor",
+      "fixture",
+      "duplicate",
+      "historical",
+      "implementation-internal",
+      "irrelevant-to-capability"
+    ],
+    "reason_required": true
+  }
+}

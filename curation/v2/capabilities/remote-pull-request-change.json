@@ -1,0 +1,49 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:remote-pull-request-change",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-1242",
+    "V2-FUSION-1243"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Verified remote refs, approved base, title and body artifacts, redaction result, provider, and current authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Remote Pull Request Change",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Pull or merge request identity, URL, exact title and body hashes, provider receipt, or fail-closed error."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [],
+  "responsibility": "Create or update one pull or merge request from a verified pushed ref only after redaction and explicit per-action authorization.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "gstack/ship/sections/pr-body.md:180-225",
+    "gstack/ship/sections/pr-body.md:59-67"
+  ],
+  "source_fragment_ids": [
+    "gstack/ship/sections/pr-body.md:180-225",
+    "gstack/ship/sections/pr-body.md:59-67"
+  ],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

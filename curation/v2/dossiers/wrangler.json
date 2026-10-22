@@ -1,0 +1,99 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [wrangler/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [wrangler/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [wrangler/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [wrangler/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Find the package manager, installed Wrangler version, package scripts, framework, and Wrangler config. Run commands through the project's scripts or package manager so they use its local version. Install dependencies using the existing lockfile when needed; do not silently upgrade Wrangler to match [wrangler/SKILL.md:12]",
+    "Identify the config used by the build or deploy command, including framework-generated config. Edit its source rather than generated output. [wrangler/SKILL.md:13]",
+    "Deploy a framework application [Framework guides](https://developers.cloudflare.com/workers/framework-guides/); follow the guide for the project's existing framework and adapter [wrangler/SKILL.md:24]",
+    "Deploy an unauthenticated prototype [Claim deployments](https://developers.cloudflare.com/workers/platform/claim-deployments/) for eligibility, expiry, and claim URL handling; use a permanent account for production or CI [wrangler/SKILL.md:31]",
+    "With the Cloudflare Vite plugin, select the environment via CLOUDFLAREENV at dev or build time. Deploy the resulting build; setting an environment at deploy time does not retarget its flattened config. See [Vite environments](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare [wrangler/SKILL.md:39]",
+    "Reconcile dashboard changes with the config before deploying: Wrangler can overwrite dashboard variables and routes. When binding existing resources, verify their identifiers; omitted identifiers can trigger [automatic provisioning](https://developers.cloudflare.com/workers/wrangler/configuration/au [wrangler/SKILL.md:40]",
+    "Treat wrangler secret put and secret delete as deployments: they create a version and deploy it immediately. Use the documented wrangler versions secret workflow when the change must be staged. [wrangler/SKILL.md:43]",
+    "For deployment changes, use the project's build workflow and wrangler deploy --dry-run where supported, with the intended config and environment. A successful dry run checks the build and packaging; it does not prove remote resources or runtime behavior work. Use task-specific local or remote checks [wrangler/SKILL.md:50]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management. [wrangler/SKILL.md:3]",
+  "root_id": "skill-root:wrangler",
+  "rules_gates": [
+    "Use the project's Wrangler version and retrieve the relevant documentation before writing commands or configuration. CLI flags and configuration fields change; do not rely on memorized examples. [wrangler/SKILL.md:8]",
+    "Find the package manager, installed Wrangler version, package scripts, framework, and Wrangler config. Run commands through the project's scripts or package manager so they use its local version. Install dependencies using the existing lockfile when needed; do not silently upgrade Wrangler to match [wrangler/SKILL.md:12]",
+    "Establish the target account, Worker, environment, and resource before running commands that change them. For data operations, determine whether the target is local or remote. [wrangler/SKILL.md:14]",
+    "Use installed help and schema to check whether documented features exist in the project's version. If a required feature needs an upgrade, make that dependency explicit. If retrieval is unavailable, state the gap and use available local evidence rather than inventing syntax. [wrangler/SKILL.md:33]",
+    "Check environment inheritance before adding bindings or variables. Some fields must be specified separately for each environment; a working default config does not establish that staging is configured. [wrangler/SKILL.md:38]",
+    "Reconcile dashboard changes with the config before deploying: Wrangler can overwrite dashboard variables and routes. When binding existing resources, verify their identifiers; omitted identifiers can trigger [automatic provisioning](https://developers.cloudflare.com/workers/wrangler/configuration/au [wrangler/SKILL.md:40]",
+    "Distinguish local simulation from remote bindings during development. A locally running Worker can still access real resources; check the selected bindings before testing writes. [wrangler/SKILL.md:41]",
+    "Keep secret values out of command arguments, source code, and logs. Use the documented interactive input or protected file/stdin mechanism for the command. Local secret files must be ignored by version control and are not automatically uploaded as deployed secrets. For missing local secrets, check f [wrangler/SKILL.md:42]"
+  ],
+  "skill_path": "wrangler/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "wrangler/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "wrangler/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "wrangler/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "wrangler/SKILL.md"
+    },
+    {
+      "line_end": 35,
+      "line_start": 35,
+      "path": "wrangler/SKILL.md"
+    }
+  ],
+  "source_sha256": "bb0cbafd6083bd35e904941aff83264fd6edef8814ba1d629bdc55292b16ef50",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bb0cbafd6083bd35e904941aff83264fd6edef8814ba1d629bdc55292b16ef50",
+        "content-review:53-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "wrangler/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management. [wrangler/SKILL.md:3]",
+  "unique_methods": [
+    "Wrangler CLI [wrangler/SKILL.md:6]",
+    "Inspect the Project [wrangler/SKILL.md:10]",
+    "Retrieve What the Task Needs [wrangler/SKILL.md:16]",
+    "Apply the Change [wrangler/SKILL.md:35]",
+    "Validate [wrangler/SKILL.md:46]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [wrangler/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [wrangler/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [wrangler/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [wrangler/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Wrangler CLI [wrangler/SKILL.md:6]",
+    "Inspect the Project [wrangler/SKILL.md:10]",
+    "Retrieve What the Task Needs [wrangler/SKILL.md:16]",
+    "Apply the Change [wrangler/SKILL.md:35]",
+    "Validate [wrangler/SKILL.md:46]"
+  ]
+}

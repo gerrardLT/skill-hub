@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "phase": 10,
+  "revision": 2,
+  "version": "0.1.2-v2-candidate",
+  "status": "rejected-targeted-threshold-miss",
+  "task_count": 58,
+  "completed_attempts": 58,
+  "strict_parse_count": 58,
+  "evidence_errors": 0,
+  "passed_runs": 54,
+  "failed_runs": 4,
+  "thresholds_passed": false,
+  "candidate_actions_executed": 0,
+  "improvements_over_revision_1": [
+    "Phase 8 Recipe authored cases reached 8/8.",
+    "Phase 8 Recipe holdouts reached 6/6.",
+    "Phase 8 router holdouts reached 8/8.",
+    "Seven of nine causal mutations were killed with passing controls."
+  ],
+  "failures": [
+    {
+      "id": "P10-R2-FAIL-001",
+      "run_id": "run-0001",
+      "scope": "Phase 4 complete-route planning",
+      "finding": "The route reached explicit-human-approval but stopped before the frozen release-gate step, even though the evaluation asks for the complete intended route rather than execution.",
+      "required_revision": "State structurally that complete route planning includes the post-decision release-gate while execution still stops for the named human decision."
+    },
+    {
+      "id": "P10-R2-FAIL-002",
+      "run_id": "run-0018",
+      "scope": "test runtime owner versus authorization",
+      "finding": "The router selected tool-runtime-readiness because setup authorization was absent, although the frozen routing fixture asks which atomic capability owns a missing project-local test runtime.",
+      "required_revision": "Separate target ownership from activation: route to test-runtime-bootstrap, mark activation needs-input/disabled until fresh authorization, and never execute from routing."
+    },
+    {
+      "id": "P10-R2-FAIL-003",
+      "run_id": "run-0050",
+      "scope": "review-write causal mutation",
+      "finding": "The mutant changed permission identity and mutation scope but retained hard Gates forbidding repair; the behavioral assertion did not name the immutable expected identity/scope, so the model reasonably treated the mutated values as exact.",
+      "required_revision": "Use a causal mutant that also removes non-remediation Gates and asks review to fix source, and name the expected original identity/scope in the challenge."
+    },
+    {
+      "id": "P10-R2-FAIL-004",
+      "run_id": "run-0053",
+      "scope": "lifecycle approval control",
+      "finding": "The control requires human acceptance of release scope and residual risk but does not require a named decision owner, so the predeclared named-human challenge correctly failed.",
+      "required_revision": "Add a named human release decision owner and durable decision evidence to the revised delivery composite; generate the mutant from that revised control."
+    }
+  ],
+  "preserved_evidence": [
+    "evals/runs/capability-compiler-v2/phase-10/grading-report.json",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0001",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0018",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0050",
+    "evals/runs/capability-compiler-v2/phase-10/attempts/run-0053"
+  ],
+  "deleted_failures": 0,
+  "thresholds_lowered": false,
+  "phase_11_allowed": false,
+  "final_user_approval": false,
+  "next_state": "awaiting-explicit-authorization-for-bounded-revision-3"
+}

@@ -1,0 +1,100 @@
+{
+  "branches": [],
+  "inputs": [
+    "curl available in shell [sentry-create-alert/SKILL.md:22]",
+    "Sentry org auth token with alerts:write scope (also accepts org:admin or [sentry-create-alert/SKILL.md:23]",
+    "org:write) [sentry-create-alert/SKILL.md:24]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [sentry-create-alert/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [sentry-create-alert/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [sentry-create-alert/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Phase 4: Create the Alert [sentry-create-alert/SKILL.md:165]",
+    "Delete a workflow [sentry-create-alert/SKILL.md:203]",
+    "curl -s -X DELETE \"$API/workflows/{id}/\" -H \"$AUTH\" [sentry-create-alert/SKILL.md:204]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Create Sentry alerts using the workflow engine API. [sentry-create-alert/SKILL.md:3]",
+  "root_id": "skill-root:sentry-create-alert",
+  "rules_gates": [
+    "Detail Required Example [sentry-create-alert/SKILL.md:30]",
+    "Conditions Optional Filter conditions before actions execute [sentry-create-alert/SKILL.md:37]",
+    "Use logicType: \"any-short\" (triggers must always use this). [sentry-create-alert/SKILL.md:74]",
+    "Conditions that must pass before actions execute. [sentry-create-alert/SKILL.md:85]",
+    "Structure note: triggers.actions is always [] — actions live inside [sentry-create-alert/SKILL.md:162]",
+    "Phase 5: Verify [sentry-create-alert/SKILL.md:177]",
+    "403 Forbidden Token must belong to the target org [sentry-create-alert/SKILL.md:213]",
+    "400 Bad Request Validate payload JSON structure, check required fields [sentry-create-alert/SKILL.md:215]"
+  ],
+  "skill_path": "sentry-create-alert/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "sentry-create-alert/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "sentry-create-alert/SKILL.md"
+    },
+    {
+      "line_end": 13,
+      "line_start": 13,
+      "path": "sentry-create-alert/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "sentry-create-alert/SKILL.md"
+    },
+    {
+      "line_end": 26,
+      "line_start": 26,
+      "path": "sentry-create-alert/SKILL.md"
+    }
+  ],
+  "source_sha256": "6b77bef90d5d89283d29079a9e1ccbf58f4917018a5dc406310e2666d36881db",
+  "stop_conditions": [
+    "Ask the user for any missing details [sentry-create-alert/SKILL.md:28]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6b77bef90d5d89283d29079a9e1ccbf58f4917018a5dc406310e2666d36881db",
+        "content-review:217-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "sentry-create-alert/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Create Sentry alerts using the workflow engine API. Use when asked to create alerts, set up notifications, configure issue priority alerts, or build workflow automations. Supports email, Slack, PagerDuty, Discord, and other notification actions. [sentry-create-alert/SKILL.md:3]",
+  "unique_methods": [
+    "Create Sentry Alert [sentry-create-alert/SKILL.md:6]",
+    "Invoke This Skill When [sentry-create-alert/SKILL.md:13]",
+    "Prerequisites [sentry-create-alert/SKILL.md:20]",
+    "Find user ID by email [sentry-create-alert/SKILL.md:49]",
+    "List teams [sentry-create-alert/SKILL.md:56]",
+    "List integrations (for Slack/PagerDuty) [sentry-create-alert/SKILL.md:62]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [sentry-create-alert/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Phase 1: Gather Configuration [sentry-create-alert/SKILL.md:26]",
+    "Phase 2: Look Up IDs [sentry-create-alert/SKILL.md:41]",
+    "Phase 3: Build Payload [sentry-create-alert/SKILL.md:69]",
+    "Phase 4: Create the Alert [sentry-create-alert/SKILL.md:165]",
+    "Phase 5: Verify [sentry-create-alert/SKILL.md:177]",
+    "List all workflows [sentry-create-alert/SKILL.md:194]",
+    "Get one workflow [sentry-create-alert/SKILL.md:197]",
+    "Update a workflow [sentry-create-alert/SKILL.md:200]",
+    "Delete a workflow [sentry-create-alert/SKILL.md:203]"
+  ]
+}

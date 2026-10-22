@@ -1,0 +1,183 @@
+{
+  "branches": [
+    "Skill path (set once) [playwright/SKILL.md:34]"
+  ],
+  "inputs": [
+    "Before proposing commands, check whether npx is available (the wrapper depends on it) [playwright/SKILL.md:14]",
+    "command -v npx >/dev/null 2>&1 [playwright/SKILL.md:17]",
+    "If it is not available, pause and ask the user to install Node.js/npm (which provides npx). Provide these steps verbatim [playwright/SKILL.md:20]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [playwright/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [playwright/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [playwright/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "If it is not available, pause and ask the user to install Node.js/npm (which provides npx). Provide these steps verbatim [playwright/SKILL.md:20]",
+    "If missing, install Node.js/npm, then [playwright/SKILL.md:27]",
+    "npm install -g @playwright/cli@latest [playwright/SKILL.md:28]",
+    "Once npx is present, proceed with the wrapper script. A global install of playwright-cli is optional. [playwright/SKILL.md:32]",
+    "User-scoped skills install under $CODEXHOME/skills (default: ~/.codex/skills). [playwright/SKILL.md:41]",
+    "If the user prefers a global install, this is also valid [playwright/SKILL.md:56]",
+    "npm install -g @playwright/cli@latest [playwright/SKILL.md:59]",
+    "The wrapper script uses npx --package @playwright/cli playwright-cli so the CLI can run without a global install [playwright/SKILL.md:124]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "\"Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via playwright-cli or the bundled wrapper script.\" [playwright/SKILL.md:3]",
+  "root_id": "skill-root:playwright",
+  "rules_gates": [
+    "Treat this skill as CLI-first automation. Do not pivot to @playwright/test unless the user explicitly asks for test files. [playwright/SKILL.md:10]",
+    "Prerequisite check (required) [playwright/SKILL.md:12]",
+    "Before proposing commands, check whether npx is available (the wrapper depends on it) [playwright/SKILL.md:14]",
+    "Verify Node/npm are installed [playwright/SKILL.md:23]",
+    "Always snapshot before referencing element ids like e12. [playwright/SKILL.md:141]",
+    "When you do not have a fresh snapshot, use placeholder refs like eX and say why; do not bypass refs with run-code. [playwright/SKILL.md:144]"
+  ],
+  "skill_path": "playwright/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "playwright/SKILL.md"
+    },
+    {
+      "line_end": 7,
+      "line_start": 7,
+      "path": "playwright/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "playwright/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "playwright/SKILL.md"
+    },
+    {
+      "line_end": 27,
+      "line_start": 27,
+      "path": "playwright/SKILL.md"
+    }
+  ],
+  "source_sha256": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8",
+  "stop_conditions": [
+    "If it is not available, pause and ask the user to install Node.js/npm (which provides npx). Provide these steps verbatim [playwright/SKILL.md:20]",
+    "Refs can go stale. When a command fails due to a missing ref, snapshot again. [playwright/SKILL.md:89]",
+    "\"$PWCLI\" tracing-stop [playwright/SKILL.md:110]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+        "content-review:202-lines"
+      ],
+      "path": "playwright/LICENSE.txt",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:417d5d3372914ecfd9fe102ac1d7dc2119253209f9718d6c222f616876c1904b",
+        "content-review:15-lines"
+      ],
+      "path": "playwright/NOTICE.txt",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8",
+        "content-review:148-lines",
+        "semantic-review-report:curation/v2/reviews/qa-delivery.md"
+      ],
+      "path": "playwright/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ddda43720fc566fffa45264be8f17f7745a3cee28d5245d41d3b963bc9967230",
+        "content-review:7-lines"
+      ],
+      "path": "playwright/agents/openai.yaml",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f1d213c0f76735d8272c3d3e9fbf71fe7b894e2d1588907044c780f2c33a9732",
+        "content-review:4-lines"
+      ],
+      "path": "playwright/assets/playwright-small.svg",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:521669f088c838196c6c852ccc9abdd7234d8f37fc9a8a7a9af7db2d50193381"
+      ],
+      "path": "playwright/assets/playwright.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7c069a8206ba20b9ddbdc42436b04de30bb3aa4a825ba98680757ee62e954900",
+        "content-review:117-lines"
+      ],
+      "path": "playwright/references/cli.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a2b5835a00ebee3906c146adf7f764f7718ea3f89a8702d86eaa135dfe0fc8c2",
+        "content-review:96-lines"
+      ],
+      "path": "playwright/references/workflows.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5",
+        "content-review:26-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "playwright/scripts/playwright_cli.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: playwright/references/cli.md [playwright/SKILL.md:136]",
+    "Local dependency: playwright/references/workflows.md [playwright/SKILL.md:137]"
+  ],
+  "trigger": "\"Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via playwright-cli or the bundled wrapper script.\" [playwright/SKILL.md:3]",
+  "unique_methods": [
+    "Playwright CLI Skill [playwright/SKILL.md:7]",
+    "Prerequisite check (required) [playwright/SKILL.md:12]",
+    "Verify Node/npm are installed [playwright/SKILL.md:23]",
+    "If missing, install Node.js/npm, then [playwright/SKILL.md:27]",
+    "Skill path (set once) [playwright/SKILL.md:34]",
+    "Quick start [playwright/SKILL.md:43]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [playwright/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [playwright/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Core workflow [playwright/SKILL.md:63]"
+  ]
+}

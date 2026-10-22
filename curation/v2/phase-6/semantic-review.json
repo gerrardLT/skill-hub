@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0",
+  "phase": 6,
+  "status": "passed",
+  "reviewer": "parent-direct-semantic-review",
+  "reviewed_candidate_count": 54,
+  "reviewed_batches": 4,
+  "method": [
+    "Reviewed all 54 candidate responsibilities, procedures, outputs, hard gates, permission identities, mutation scopes, triggers, anti-triggers, holdouts, baselines, and provenance in four bounded batches.",
+    "Computed pairwise lexical overlap across positive triggers at a 0.22 Jaccard threshold; manually adjudicated Playwright versus Vitest and website assessment versus remediation.",
+    "Reviewed all local-exec, external-read, local-system-write, external-session-write, and remote-write candidates for exact host actions, non-secret evidence, cleanup, rollback, revocation, deletion, cancellation, and not-executed state.",
+    "Reviewed implementation, test, review, performance, LLM evaluation, browser, tool, and workflow boundaries for one-writer ownership and independent-review separation."
+  ],
+  "resolved_findings": [
+    {
+      "id": "V2-P6-REVIEW-001",
+      "finding": "The first Phase 6 compiler imported design modules only through repository package paths and failed when invoked directly as required by the unified runner.",
+      "resolution": "Compiler and design modules support both package and local-script imports; direct py_compile and execution now succeed.",
+      "evidence": ["tools/curation/v2_compile_phase6_skills.py", "tools/curation/v2_phase6_design_a.py", "tools/curation/v2_phase6_design_b.py", "tools/curation/v2_phase6_design_c.py", "tools/curation/v2_phase6_design_d.py"]
+    },
+    {
+      "id": "V2-P6-REVIEW-002",
+      "finding": "Project context storage initially described external synchronization although its Phase 2 identity permits only local-system writes with no external read or write.",
+      "resolution": "The candidate now permits local same-store reconciliation only and blocks cross-machine or external synchronization pending a separate authorized capability.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-6/skills/project-context-and-learning-store/SKILL.md", "evals/candidates/capability-compiler-v2/phase-6/skills/project-context-and-learning-store/contract.json"]
+    },
+    {
+      "id": "V2-P6-REVIEW-003",
+      "finding": "Four anti-routes used conceptual names that were not Phase 2 capability IDs.",
+      "resolution": "Routes now target pull-request-comment-response, change-packaging-and-versioning, remote-pull-request-change, and remote-git-push, all exact Phase 2 owners.",
+      "evidence": ["tools/curation/v2_phase6_design_a.py", "tools/curation/v2_phase6_design_b.py", "tools/curation/v2_phase6_design_d.py"]
+    },
+    {
+      "id": "V2-P6-REVIEW-004",
+      "finding": "The Gate's permission allowlist expression relied on Python set-operator precedence and incorrectly reported every non-empty allowlist as outside Phase 6.",
+      "resolution": "The union is parenthesized before subtracting expected ownership; the Gate now checks the intended set difference.",
+      "evidence": ["tools/curation/v2_phase6_gate.py"]
+    },
+    {
+      "id": "V2-P6-REVIEW-005",
+      "finding": "Framework source material could imply that local-exec Playwright and Vitest capabilities write project test files.",
+      "resolution": "Both candidates emit candidate test artifacts and may run or diagnose only existing authorized tests; project installation or writes route to test-runtime-bootstrap or an authorized workspace implementation.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-6/skills/playwright-test-engineering/SKILL.md", "evals/candidates/capability-compiler-v2/phase-6/skills/vitest-tooling/SKILL.md"]
+    },
+    {
+      "id": "V2-P6-REVIEW-006",
+      "finding": "Local-system candidates initially lacked a uniform explicit action-contract section even though they require backups, rollback, and cleanup.",
+      "resolution": "All five local-system, two external-session, and two remote-provider candidates carry external_or_system_action=true and the generated action boundary section; no action was executed in Phase 6.",
+      "evidence": ["tools/curation/v2_phase6_design_d.py", "tools/curation/v2_compile_phase6_skills.py", "tools/curation/v2_phase6_gate.py"]
+    }
+  ],
+  "boundary_samples": [
+    {"id": "V2-P6-SAMPLE-ROOT-REPAIR-TDD", "left": "root-cause-investigation", "right": "defect-remediation", "verdict": "passed", "boundary": "Investigation reproduces and proves the causal chain without source edits; remediation consumes a confirmed cause; TDD is the behavior-change loop that preserves RED before production code and may serve an approved repair."},
+    {"id": "V2-P6-SAMPLE-IMPLEMENT-SELF-REVIEW", "left": "isolated-task-implementation", "right": "developer-self-check-and-fix", "verdict": "passed", "boundary": "Implementation owns one frozen task and initial patch; self-check may correct deterministic in-scope defects after completion but never impersonates independent review or expands scope."},
+    {"id": "V2-P6-SAMPLE-SCOPE-CONTROL", "left": "change-scope-freeze", "right": "plan-execution-control", "verdict": "passed", "boundary": "Scope freeze defines one change boundary and non-goals; plan execution controls step states, dependencies, checkpoints, evidence, and invalidation without doing specialist work."},
+    {"id": "V2-P6-SAMPLE-LOCAL-GIT", "left": "git-destructive-command-guard", "right": "local-git-guard-setup", "verdict": "passed", "boundary": "Guard authoring writes repository candidate policy and fixtures; local setup modifies only approved untracked repository-local hook/config state after consent, classification, backup, and uninstall planning."},
+    {"id": "V2-P6-SAMPLE-LOCAL-INTEGRATION", "left": "local-branch-integration", "right": "remote-pull-request-change", "verdict": "passed", "boundary": "Local integration mutates only a clean isolated local branch with recoverable refs; fetch, push, PR update, remote merge, force, and deletion remain separate remote capabilities."},
+    {"id": "V2-P6-SAMPLE-STRATEGY-CASES-RUNTIME", "left": "testing-portfolio-strategy", "right": "test-case-design-and-export", "verdict": "passed", "boundary": "Portfolio strategy assigns risks to layers and budgets; case design derives concrete traceable cases and one output format; runtime bootstrap installs the already-selected framework and proves it with one real test."},
+    {"id": "V2-P6-SAMPLE-PLAYWRIGHT-VITEST", "left": "playwright-test-engineering", "right": "vitest-tooling", "verdict": "passed", "boundary": "Both emit candidate artifacts under local-exec, but Playwright owns browser/API/visual journey patterns while Vitest owns JavaScript module, timer, mock, snapshot, and configuration patterns; neither writes project files."},
+    {"id": "V2-P6-SAMPLE-QA-TRIAGE-REPAIR", "left": "independent-blackbox-qa", "right": "qa-finding-triage", "verdict": "passed", "boundary": "Black-box QA discovers findings through public surfaces; triage deduplicates and routes existing findings; neither inspects or repairs source, while remediation needs separate accepted findings and authorization."},
+    {"id": "V2-P6-SAMPLE-REVIEW-EVIDENCE-FINDINGS", "left": "code-review-evidence-acquisition", "right": "independent-code-review", "verdict": "passed", "boundary": "Acquisition binds diff, refs, checks, and read-only provider metadata without findings; independent review consumes that bundle and issues concrete findings without comments, fixes, or provider writes."},
+    {"id": "V2-P6-SAMPLE-COMPLIANCE-CODE-HEALTH", "left": "implementation-spec-compliance-review", "right": "code-health-assessment", "verdict": "passed", "boundary": "Compliance maps implementation to frozen requirements and design; code health assesses broader maintainability evidence; independent code review assesses a specific diff's correctness and security."},
+    {"id": "V2-P6-SAMPLE-PERFORMANCE", "left": "frontend-rendering-and-interaction-performance", "right": "web-performance-diagnostics", "verdict": "passed", "boundary": "Frontend performance owns component and interaction latency under a frozen journey; Web diagnostics owns page navigation, waterfall, caching, assets, and Core Web Vitals; both diagnose only and require repeated distributions."},
+    {"id": "V2-P6-SAMPLE-WEBSITE-ASSESS-REMEDIATE", "left": "website-audit-assessment", "right": "website-audit-remediation", "verdict": "passed", "boundary": "Assessment uses bounded local and read-only external evidence to issue findings; remediation consumes only accepted findings, changes authorized source, and requires separate reassessment without deployment."},
+    {"id": "V2-P6-SAMPLE-LLM-EVALUATOR-EVALUATION", "left": "llm-evaluator-engineering", "right": "llm-quality-evaluation", "verdict": "passed", "boundary": "Evaluator engineering implements and calibrates versioned evaluator definitions locally; quality evaluation runs governed checks over supplied outputs; an external judge remains blocked without separate transfer and provider authority."},
+    {"id": "V2-P6-SAMPLE-LLM-EXPERIMENT-ANALYSIS", "left": "llm-experiment-execution", "right": "evaluation-results-analysis", "verdict": "passed", "boundary": "Experiment execution performs one reviewed per-action provider run with frozen versions and budget; results analysis never submits runs and cannot change preregistered metrics after seeing results."},
+    {"id": "V2-P6-SAMPLE-BROWSER-SETUP-CONFIG-ACQUIRE", "left": "browser-authentication-setup", "right": "browser-data-acquisition-runtime", "verdict": "passed", "boundary": "Authentication setup stores authorized local auth state but grants no data authority; session configuration creates ephemeral invocation state; acquisition requires separate origin, field, purpose, retention, and deletion authority and stays read-only."},
+    {"id": "V2-P6-SAMPLE-PAIR-PROVISION-VERIFY", "left": "browser-agent-pairing-provisioning", "right": "browser-agent-pairing-verification", "verdict": "passed", "boundary": "Provisioning mints one scoped expiring pairing under per-action authorization; verification is local/read-only, cannot mint, renew, restart, widen, or treat connectivity as page-data authority."},
+    {"id": "V2-P6-SAMPLE-LOCAL-MEMORY-CONTEXT", "left": "local-agent-memory-setup", "right": "project-context-and-learning-store", "verdict": "passed", "boundary": "Memory setup creates a project-isolated local runtime with no broad ingestion; context store performs per-record local operations only and blocks external or cross-machine synchronization."},
+    {"id": "V2-P6-SAMPLE-COMPLETION", "left": "completion-evidence-gate", "right": "baseline-regression-control", "verdict": "passed", "boundary": "Regression control runs matched checks and attributes deltas; completion gate runs no commands and verifies current target-bound command and artifact evidence against every required criterion."}
+  ],
+  "open_findings": [],
+  "release_claim": "none; all 54 candidates remain evaluating, all evaluation plans remain not-run-phase-9, and all external or local-system candidate actions remain not-executed-phase-6"
+}

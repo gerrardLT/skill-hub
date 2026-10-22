@@ -1,0 +1,214 @@
+{
+  "candidate_responsibility": "Route an AI opportunity to the appropriate architecture, autonomy, interaction, and safety capability without reimplementing those specialist contracts.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-001"
+  ],
+  "cluster_id": "cluster:ai-capability-architecture-and-autonomy",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/SKILL.md:14-17"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-capability-architecture-and-autonomy"
+      ],
+      "id": "cluster:ai-capability-architecture-and-autonomy:fusion:boundary",
+      "rule": "Route an AI opportunity to the appropriate architecture, autonomy, interaction, and safety capability without reimplementing those specialist contracts."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-capability-architecture-and-autonomy"
+      ],
+      "id": "cluster:ai-capability-architecture-and-autonomy:fusion:inputs",
+      "rule": "Accept only: A customer problem, AI opportunity thesis, quality target, cost constraint, and capability-selection question."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-capability-architecture-and-autonomy"
+      ],
+      "id": "cluster:ai-capability-architecture-and-autonomy:fusion:outputs",
+      "rule": "Produce only: A bounded AI architecture choice, specialist handoff map, and explicit unresolved capability risks."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:ai-capability-architecture-and-autonomy:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A customer problem, AI opportunity thesis, quality target, cost constraint, and capability-selection question.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A bounded AI architecture choice, specialist handoff map, and explicit unresolved capability risks.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "入口以四步摘要串联 wedge、architecture、graduated agency 和 model curve；具体行为由独立单元承接。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Explicit limits: 仅用于选择和排序四类策略工作，不重复承担各方法的执行与验收。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-001"
+      ]
+    },
+    {
+      "approach": "入口以四步摘要串联 wedge、architecture、graduated agency 和 model curve；具体行为由独立单元承接。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Explicit limits: 仅用于选择和排序四类策略工作，不重复承担各方法的执行与验收。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-001"
+      ]
+    },
+    {
+      "approach": "仅用于选择和排序四类策略工作，不重复承担各方法的执行与验收。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Explicit limits: 仅用于选择和排序四类策略工作，不重复承担各方法的执行与验收。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-001"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "ai-product-strategy/SKILL.md:14-17"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-001"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-001"
+  ]
+}

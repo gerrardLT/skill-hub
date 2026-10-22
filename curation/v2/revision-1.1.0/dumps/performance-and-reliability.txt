@@ -1,0 +1,31 @@
+## cloud-reliability-assessment [improve] perm=external-read D=effective
+R: Assess an authorized cloud architecture against provider-specific failure, recovery, scaling, dependency, and operational practices using read-only evidence.
+IN: Architecture evidence, provider, availability target, dependencies, traffic, and recovery objectives.
+OUT: cloud reliability assessment | failure-domain and dependency map | RTO/RPO and recovery gaps | prioritized validation and remediation recommendations
+  cloud-reliability-assessment#F1 P1 source_fidelity: Add a provider-variant checklist section (Azure first) with the per-resource table columns from the source.
+  cloud-reliability-assessment#F2 P2 output_verifiability: Require each finding to carry severity, downtime impact and cost-impact fields.
+## frontend-rendering-and-interaction-performance [improve] perm=local-exec D=no-gain
+R: Measure current frontend rendering and interaction performance under a frozen user journey and identify evidence-backed bottlenecks without source repair.
+IN: A rendered frontend, interaction traces, performance measurements, and device constraints.
+OUT: interaction performance baseline | trace and distribution evidence | repeatable bottleneck findings | optimization hypotheses and limits
+  frontend-rendering-and-interaction-performance#F1 P1 procedure: Add default budgets used when the user supplies none, and require reporting against them.
+  frontend-rendering-and-interaction-performance#F2 P1 source_fidelity: Add a hypothesis catalog mapping trace symptoms to these causes.
+## kubernetes-deployment-readiness [revise] perm=external-read D=negative
+R: Read-only assess Kubernetes workload, cluster, identity, policy, scaling, networking, migration, health, and rollback readiness before deployment.
+IN: Cluster and workload configuration, provider controls, expected traffic, failure budget, and deployment plan.
+OUT: Kubernetes readiness assessment | cluster and workload evidence | blocker and safeguard register | deployment prerequisites and rollback requirements
+  kubernetes-deployment-readiness#F1 P1 output_verifiability: Adopt the severity taxonomy, blocker-first ordering and per-issue record format.
+  kubernetes-deployment-readiness#F2 P2 source_fidelity: Add an AKS Automatic variant referencing safeguard constraints such as container resource requests.
+## resilience-and-determinism [revise] perm=local-exec D=mixed
+R: Diagnose and verify nondeterminism, retries, timeouts, cleanup, isolation, ordering, and recovery behavior under a frozen workload without source repair.
+IN: A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests.
+OUT: determinism experiment record | retry and timeout analysis | cleanup and recovery evidence | root-cause hypothesis and bounded recommendation
+  resilience-and-determinism#F1 P1 boundary: Change input to 'an observed nondeterministic or resilience failure with reproduction context'.
+  resilience-and-determinism#F2 P1 source_fidelity: List 'arbitrary sleep/timeout' as a first-class hypothesis and recommend condition-based waiting.
+  resilience-and-determinism#F3 P2 source_fidelity: Reference the four validation layers when recommending repairs for invalid-data causes.
+## web-performance-diagnostics [improve] perm=local-exec D=effective
+R: Measure a frozen Web page or journey for navigation, network, caching, assets, rendering, and Core Web Vitals under declared conditions without repair.
+IN: A web application, controlled sampling environment, network waterfall, and build information.
+OUT: Web performance baseline | Core Web Vitals and waterfall evidence | repeatable bottleneck findings | optimization hypotheses and limitations
+  web-performance-diagnostics#F1 P1 procedure: Add good/needs-improvement/poor thresholds and require labelling lab versus field data.
+  web-performance-diagnostics#F2 P2 source_fidelity: Add bundler detection and bundle-attribution step to ownership analysis.

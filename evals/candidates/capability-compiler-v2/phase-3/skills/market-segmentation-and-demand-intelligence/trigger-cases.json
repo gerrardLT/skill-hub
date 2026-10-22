@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "market-segmentation-and-demand-intelligence",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "persona-jtbd-and-journey-modeling",
+        "market-positioning-and-competitive-power",
+        "strategic-choice-and-differentiation"
+      ],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-trigger-01",
+      "input": "Segment this market by demand differences rather than demographics alone.",
+      "kind": "should-trigger",
+      "reason": "Segment demand using evidence-backed differences in job, context, urgency, willingness, constraints, and reachability."
+    },
+    {
+      "expected_skill_id": "market-segmentation-and-demand-intelligence",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "persona-jtbd-and-journey-modeling",
+        "market-positioning-and-competitive-power",
+        "strategic-choice-and-differentiation"
+      ],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-trigger-02",
+      "input": "Assess which customer segment has the strongest urgent demand using these sources.",
+      "kind": "should-trigger",
+      "reason": "Segment demand using evidence-backed differences in job, context, urgency, willingness, constraints, and reachability."
+    },
+    {
+      "expected_skill_id": "persona-jtbd-and-journey-modeling",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-segmentation-and-demand-intelligence"
+      ],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-anti-01",
+      "input": "Create a detailed evidence-bounded persona and journey for the selected segment.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility persona-jtbd-and-journey-modeling."
+    },
+    {
+      "expected_skill_id": "strategic-choice-and-differentiation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "market-segmentation-and-demand-intelligence"
+      ],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-anti-02",
+      "input": "Choose the final strategic segment and commit resources.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility strategic-choice-and-differentiation."
+    },
+    {
+      "expected_skill_id": "market-segmentation-and-demand-intelligence",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-boundary-01",
+      "input": "Segment demand using evidence-backed differences in job, context, urgency, willingness, constraints, and reachability. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "market-segmentation-and-demand-intelligence",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-market-segmentation-and-demand-intelligence-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "market-segmentation-and-demand-intelligence"
+}

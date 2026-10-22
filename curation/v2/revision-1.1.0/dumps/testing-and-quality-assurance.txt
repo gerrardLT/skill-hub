@@ -1,0 +1,105 @@
+## baseline-regression-control [keep] perm=local-exec D=effective
+R: Run and compare a frozen baseline and candidate check set under matched conditions, attribute regressions, and preserve current evidence without source repair.
+IN: A trusted historical baseline and a current measurement made under the same contract.
+OUT: matched baseline and candidate evidence | regression attribution matrix | variance and comparability report | bounded repair handoff
+  baseline-regression-control#F1 P2 source_fidelity: Mark authored.
+## code-review-evidence-acquisition [improve] perm=local-exec-external-read D=effective
+R: Acquire authorized repository and provider-read evidence for a code review, bind it to exact refs, and stop before issuing findings or comments.
+IN: Change identity, base and head refs, approved provider read access, review scope, and untrusted-content boundary.
+OUT: review evidence bundle | base-head and provider identity manifest | acquisition command records | evidence completeness result
+  code-review-evidence-acquisition#F1 P1 trigger_precision: Replace the reference.
+  code-review-evidence-acquisition#F2 P2 source_fidelity: Require merge-base diff against a freshly fetched base (read-only fetch where authorized).
+## completion-evidence-gate [revise] perm=local-exec D=negative
+R: Verify a completion claim from current reproducible commands, exits, durations, source identity, artifacts, hashes, and declared limitations without changing the work.
+IN: A proposed status claim and the command capable of proving it.
+OUT: criterion-to-evidence matrix | completion gate result | stale or missing evidence register | limitations and invalidation conditions
+  completion-evidence-gate#F1 P2 trigger_precision: Route missing-evidence production to the originating owner; reserve baseline-regression-control for comparisons.
+## developer-experience-assessment [keep] perm=local-exec D=effective
+R: Execute an authorized developer journey and measure time-to-first-success, setup, errors, documentation, compatibility, and recovery without changing product source.
+IN: Repository, runnable setup path, common tasks, errors, timings, and contributor context.
+OUT: developer journey trace | time-to-first-success evidence | friction and recovery findings | bounded DX recommendations
+  developer-experience-assessment#F1 P2 source_fidelity: Include docs navigation and copy-paste of documented snippets in the journey.
+## evaluation-dataset-publication [revise] perm=remote-write-authorized-only D=negative
+R: Publish one frozen versioned evaluation dataset to one exact provider target only under per-action remote-write and data-governance authorization.
+IN: Approved samples, schema, minimization and redaction policy, provider target, retention policy, and authorization.
+OUT: versioned provider dataset identity | publication request and receipt | local-provider hash and count evidence | governance, retention, deletion, and failure-cleanup record
+## evaluation-results-analysis [keep] perm=local-exec D=effective
+R: Analyze frozen experiment results against declared metrics, variance, failure slices, costs, and decision thresholds without rerunning experiments or approving product changes.
+IN: Experiment results, metric contract, baseline, statistical assumptions, and known data limits.
+OUT: experiment comparison | variance and uncertainty report | failure-slice and regression analysis | evidence-bounded human decision readout
+  evaluation-results-analysis#F1 P2 trigger_precision: Add mutual anti-triggers.
+## implementation-spec-compliance-review [keep] perm=read-only D=effective
+R: Independently compare an implementation and its evidence with frozen requirements, design, interfaces, and scope without editing source.
+IN: Approved task requirements, implementation diff, source snapshot, and implementer report as an untrusted claim.
+OUT: requirement-to-implementation matrix | compliance findings | extra and missing behavior register | human-owned disposition recommendation
+## independent-blackbox-qa [keep] perm=artifact-write-local-exec-external-read D=no-gain
+R: Independently exercise a built product through public user surfaces, record reproducible findings and evidence, and never inspect or repair source.
+IN: An accessible application, change scope, QA mode, and authorized interaction boundary.
+OUT: black-box QA run record | reproducible numbered findings | route-state coverage matrix | blocked tests and residual risk
+  independent-blackbox-qa#F1 P2 source_fidelity: Accept a supplied change-scope list as input without reading source.
+## independent-code-review [improve] perm=read-only D=effective
+R: Independently inspect a ref-bound code change for correctness, security, failure handling, compatibility, tests, and maintainability without editing it.
+IN: A specification, change description, and precise code-diff boundary.
+OUT: independent code-review findings | affected-caller and risk analysis | test and evidence gaps | human-owned review recommendation
+  independent-code-review#F1 P1 trigger_precision: Replace with pull-request-comment-response.
+  independent-code-review#F2 P1 measured_efficacy: Phase D case: a diff with one seeded authorization bug among style noise.
+  independent-code-review#F3 P2 source_fidelity: Add an optional adversarial pass.
+## llm-evaluator-engineering [keep] perm=workspace-write-local-exec D=effective
+R: Implement bounded local or draft-online evaluator definitions and calibration checks against an explicit quality contract; provider activation remains separate.
+IN: Quality target, classified traces, evaluator mode, judge policy, local workspace, and data-governance boundary.
+OUT: evaluator definitions and local source | rubric and labeled calibration fixtures | local executable check evidence | limitations and provider-activation handoff
+## llm-experiment-execution [revise] perm=remote-write-authorized-only D=negative
+R: Execute one reviewed frozen LLM experiment against exact dataset and evaluator versions under per-action provider-write, budget, and data-transfer authorization.
+IN: Frozen experiment definition, dataset version, evaluator versions, provider target, budget, and authorization.
+OUT: provider experiment run identity | frozen parameter and version manifest | raw result references and failure evidence | cost, duration, cancellation, and cleanup record
+## llm-quality-evaluation [keep] perm=local-exec D=no-gain
+R: Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation.
+IN: Model outputs, references, criteria, annotations, and trusted historical baselines.
+OUT: repeatable quality scores | factuality and groundedness evidence | human-judge agreement and calibration | confidence, regression, and failure-slice report
+## model-and-workflow-benchmarking [improve] perm=local-exec D=effective
+R: Benchmark supplied model or workflow variants on frozen cases, matched environments, metrics, variance, cost, latency, and evidence without remote submission or product approval.
+IN: Frozen cases, candidate variants, metric contract, environment, and budget.
+OUT: matched benchmark run evidence | metric distributions and variance | cost-quality-latency comparison | regression and recommendation report
+  model-and-workflow-benchmarking#F1 P2 boundary: Scope to model/workflow variants; route app performance regression elsewhere.
+## playwright-test-engineering [improve] perm=local-exec D=effective
+R: Design Playwright test source as a candidate artifact and execute or diagnose authorized existing Playwright tests without writing project source.
+IN: Browser behaviors, test environments, risks, data, and automation acceptance goals.
+OUT: Playwright candidate test artifact | fixture and locator design | existing-test execution evidence | flake and bootstrap handoff
+  playwright-test-engineering#F1 P1 trigger_precision: Add mutual anti-triggers: browser/E2E vs unit/integration in Node.
+  playwright-test-engineering#F2 P2 permission_fit: Name tdd-change-loop or isolated-task-implementation as the apply owner.
+## qa-finding-triage [keep] perm=read-only D=effective
+R: Triage independently observed QA findings by reproducibility, severity, duplication, scope, ownership, and next capability without source repair.
+IN: QA findings, evidence, affected surface, release context, and severity policy.
+OUT: deduplicated QA finding register | reproducibility and severity rationale | ownership and routing map | blocked and missing-evidence list
+  qa-finding-triage#F1 P2 source_fidelity: Add tier-based disposition recommendation and prior-skip dedup.
+## safe-browser-probing [keep] perm=local-exec D=effective
+R: Run a bounded unauthenticated or already-authorized browser probe for one declared question and capture non-destructive evidence without source or session mutation.
+IN: A target page, authorized interactions, and a ready browser runtime.
+OUT: bounded browser probe record | screenshot or trace evidence | origin and action log | cleanup and limitation report
+## test-case-design-and-export [revise] perm=workspace-write D=mixed
+R: Derive traceable executable test cases, risk priority, data needs, coverage gaps, and one consumer-specific export from approved requirements without implementing tests.
+IN: Approved requirements, risk profile, platform, test level, data constraints, and downstream format.
+OUT: traceable prioritized test cases | coverage and gap matrix | governed test-data plan | validated consumer-specific export
+  test-case-design-and-export#F1 P1 source_fidelity: Move the quality-score rubric here and require it in the coverage matrix.
+  test-case-design-and-export#F2 P1 measured_efficacy: Phase D case.
+## test-double-discipline [keep] perm=local-exec D=no-gain
+R: Assess or design the smallest behavior-focused test double boundary so tests use complete data shapes and do not pollute production interfaces.
+IN: A test design that requires dependency isolation or an existing test double.
+OUT: test-double decision | owned boundary and contract | complete fixture or fake design | anti-pattern and verification evidence
+## testing-portfolio-strategy [keep] perm=local-exec D=effective
+R: Design a risk-based portfolio of static, unit, integration, contract, browser, performance, accessibility, security, and manual checks with ownership and feedback goals.
+IN: System architecture, risks, component types, environments, and data constraints.
+OUT: risk-to-test-layer matrix | test portfolio and ownership | runtime and data requirements | coverage gaps and sequencing
+  testing-portfolio-strategy#F1 P2 permission_fit: Reduce to read-only or run-output.
+  testing-portfolio-strategy#F2 P2 source_fidelity: Reassign sources; mark portfolio method authored.
+## vitest-tooling [improve] perm=local-exec D=no-gain
+R: Design Vitest test or configuration source as a candidate artifact and execute or diagnose authorized existing Vitest tests without writing project source.
+IN: A JavaScript or TypeScript unit or integration test project using Vitest.
+OUT: Vitest candidate test artifact | configuration or fixture design | existing-suite execution evidence | diagnosis and bootstrap handoff
+  vitest-tooling#F1 P1 trigger_precision: Add mutual anti-trigger.
+  vitest-tooling#F2 P2 source_fidelity: Add as available techniques.
+## website-audit-assessment [keep] perm=local-exec-external-read D=no-gain
+R: Independently assess an authorized website using local and read-only external evidence across content, accessibility, SEO, performance, security signals, links, and behavior without remediation.
+IN: A scannable site, audit CLI, permitted external read scope, and optional frozen baseline.
+OUT: website assessment evidence manifest | deduplicated reproducible findings | route and criterion coverage | reassessment and residual-risk report
+  website-audit-assessment#F1 P2 source_fidelity: Use baseline diff for reassessment when a prior audit exists.

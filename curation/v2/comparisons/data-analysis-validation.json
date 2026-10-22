@@ -1,0 +1,332 @@
+{
+  "candidate_responsibility": "Validate metrics, feedback, and experiment analysis for method, representation, aggregation, bias, and reproducibility.",
+  "canonical_unit_ids": [
+    "validate-data:unit-001",
+    "validate-data:unit-002",
+    "validate-data:unit-003",
+    "validate-data:unit-004",
+    "validate-data:unit-005",
+    "validate-data:unit-006",
+    "validate-data:unit-007",
+    "validate-data:unit-008",
+    "validate-data:unit-009",
+    "validate-data:unit-010"
+  ],
+  "cluster_id": "cluster:data-analysis-validation",
+  "decision_references": [
+    "V2-DEC-004"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "validate-data/SKILL.md:129-166",
+    "validate-data/SKILL.md:169-184",
+    "validate-data/SKILL.md:185-195",
+    "validate-data/SKILL.md:196-205",
+    "validate-data/SKILL.md:216-227",
+    "validate-data/SKILL.md:238-247",
+    "validate-data/SKILL.md:258-288",
+    "validate-data/SKILL.md:26-96",
+    "validate-data/SKILL.md:289-330",
+    "validate-data/SKILL.md:97-125"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:data-analysis-validation"
+      ],
+      "id": "cluster:data-analysis-validation:fusion:boundary",
+      "rule": "Validate metrics, feedback, and experiment analysis for method, representation, aggregation, bias, and reproducibility."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:data-analysis-validation"
+      ],
+      "id": "cluster:data-analysis-validation:fusion:inputs",
+      "rule": "Accept only: Product metrics, feedback, queries, an experiment design, or experiment results."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:data-analysis-validation"
+      ],
+      "id": "cluster:data-analysis-validation:fusion:outputs",
+      "rule": "Produce only: Method-checked insights, experiment designs or readouts, limitations, and actionable recommendations."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:data-analysis-validation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-004"
+      ],
+      "id": "cluster:data-analysis-validation:policy:data-governance",
+      "rule": "Before processing customer, proprietary, recorded, or externally judged data, require authorization, minimization, redaction, retention, external-transfer boundary, and deletion policy; otherwise return needs-input or blocked."
+    }
+  ],
+  "input_boundary": "Product metrics, feedback, queries, an experiment design, or experiment results.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "validate-data"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "validate-data"
+      ]
+    }
+  ],
+  "output_boundary": "Method-checked insights, experiment designs or readouts, limitations, and actionable recommendations.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "数据分析交付前质量验证全流程：涵盖方法论审查、QA清单执行、经典陷阱排查、计算抽检、可视化失真检查、叙述结论评估至生成三级置信度评级; 数据验证报告模板：输出总体评估评级、方法论审查、问题列表（含高/中/低严重度与影响）、抽检结果、可视化审查、改进建议与必要声明; 数据交付前 QA 四维核查清单：逐项扫描数据质量检查（源、新鲜度、完备性、空值、去重、过滤）、计算检查（聚合、分母、日期、JOIN、口径、求和）、合理性检查与呈现检查",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Explicit limits: 向业务或管理层汇报前对数据分析成果实施系统性质检; 规范化呈现数据分析审查结论的标准结构; 数据分析报告定稿前的机械化检查门禁",
+      "source_id": "validate-data",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (method=3, rule=5, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "validate-data:unit-001",
+        "validate-data:unit-002",
+        "validate-data:unit-003",
+        "validate-data:unit-004",
+        "validate-data:unit-005",
+        "validate-data:unit-006",
+        "validate-data:unit-007",
+        "validate-data:unit-008",
+        "validate-data:unit-009",
+        "validate-data:unit-010"
+      ]
+    },
+    {
+      "approach": "数据分析交付前质量验证全流程：涵盖方法论审查、QA清单执行、经典陷阱排查、计算抽检、可视化失真检查、叙述结论评估至生成三级置信度评级; 数据验证报告模板：输出总体评估评级、方法论审查、问题列表（含高/中/低严重度与影响）、抽检结果、可视化审查、改进建议与必要声明; 数据交付前 QA 四维核查清单：逐项扫描数据质量检查（源、新鲜度、完备性、空值、去重、过滤）、计算检查（聚合、分母、日期、JOIN、口径、求和）、合理性检查与呈现检查",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Explicit limits: 向业务或管理层汇报前对数据分析成果实施系统性质检; 规范化呈现数据分析审查结论的标准结构; 数据分析报告定稿前的机械化检查门禁",
+      "source_id": "validate-data",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=3, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "validate-data:unit-001",
+        "validate-data:unit-002",
+        "validate-data:unit-003",
+        "validate-data:unit-009",
+        "validate-data:unit-010"
+      ]
+    },
+    {
+      "approach": "向业务或管理层汇报前对数据分析成果实施系统性质检; 规范化呈现数据分析审查结论的标准结构; 数据分析报告定稿前的机械化检查门禁",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Explicit limits: 向业务或管理层汇报前对数据分析成果实施系统性质检; 规范化呈现数据分析审查结论的标准结构; 数据分析报告定稿前的机械化检查门禁",
+      "source_id": "validate-data",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (method=3, rule=5, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "validate-data:unit-001",
+        "validate-data:unit-002",
+        "validate-data:unit-003",
+        "validate-data:unit-004",
+        "validate-data:unit-005",
+        "validate-data:unit-006",
+        "validate-data:unit-007",
+        "validate-data:unit-008",
+        "validate-data:unit-009",
+        "validate-data:unit-010"
+      ]
+    },
+    {
+      "approach": "数据验证报告模板：输出总体评估评级、方法论审查、问题列表（含高/中/低严重度与影响）、抽检结果、可视化审查、改进建议与必要声明; 可复现数据分析文档标准模板：明确规范分析问题、数据源（表名与快照日期）、指标/分群精准口径、方法步骤、假设与局限、关键发现、带注SQL查询与局限声明",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Explicit limits: 规范化呈现数据分析审查结论的标准结构; 沉淀可传承、支持第三方复现审计的数据分析资产文档",
+      "source_id": "validate-data",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "validate-data:unit-002",
+        "validate-data:unit-010"
+      ]
+    },
+    {
+      "approach": "行数增长超出预期时必须停机排查关联基数; 明确核查已被删除、流失或评估未通过的实体是否被误过滤; 严格保障对比周期的时间天数与采样边界完全对齐",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247"
+      ],
+      "limitations": "Explicit limits: 编写与审查复杂多表 SQL 查询时的计算准则; 定义分析样本人群与提取历史数据时的思维防线; 进行环比、同比或阶段业绩度量时的基准约束",
+      "source_id": "validate-data",
+      "strengths": "Provides 5 source-grounded atom(s) for gates-and-validation (rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "validate-data:unit-004",
+        "validate-data:unit-005",
+        "validate-data:unit-006",
+        "validate-data:unit-007",
+        "validate-data:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "validate-data",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "validate-data",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 5,
+        "template": 2
+      },
+      "evidence": [
+        "validate-data/SKILL.md:129-166",
+        "validate-data/SKILL.md:169-184",
+        "validate-data/SKILL.md:185-195",
+        "validate-data/SKILL.md:196-205",
+        "validate-data/SKILL.md:216-227",
+        "validate-data/SKILL.md:238-247",
+        "validate-data/SKILL.md:258-288",
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330",
+        "validate-data/SKILL.md:97-125"
+      ],
+      "source_id": "validate-data",
+      "unit_ids": [
+        "validate-data:unit-001",
+        "validate-data:unit-002",
+        "validate-data:unit-003",
+        "validate-data:unit-004",
+        "validate-data:unit-005",
+        "validate-data:unit-006",
+        "validate-data:unit-007",
+        "validate-data:unit-008",
+        "validate-data:unit-009",
+        "validate-data:unit-010"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "validate-data:unit-001",
+    "validate-data:unit-002",
+    "validate-data:unit-003",
+    "validate-data:unit-004",
+    "validate-data:unit-005",
+    "validate-data:unit-006",
+    "validate-data:unit-007",
+    "validate-data:unit-008",
+    "validate-data:unit-009",
+    "validate-data:unit-010"
+  ]
+}

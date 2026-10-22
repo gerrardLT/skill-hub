@@ -1,0 +1,936 @@
+{
+  "candidate_responsibility": "Deduplicate available context, identify missing inputs, and route work to the applicable capability.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-007",
+    "ai-product-strategy:unit-008",
+    "ai-product-strategy:unit-009",
+    "ai-product-strategy:unit-023",
+    "ai-product-strategy:unit-024",
+    "ai-product-strategy:unit-046",
+    "ai-product-strategy:unit-054",
+    "interview-script:unit-003",
+    "interview-script:unit-004",
+    "interview-script:unit-014",
+    "metrics-dashboard:unit-003",
+    "metrics-dashboard:unit-014",
+    "metrics-dashboard:unit-016",
+    "prd-development:unit-002",
+    "prd-development:unit-004",
+    "pre-mortem:unit-004",
+    "pre-mortem:unit-016",
+    "product-strategy-session:unit-039"
+  ],
+  "cluster_id": "cluster:context-intake-and-routing",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/SKILL.md:65-79",
+    "ai-product-strategy/references/artifacts.md:51-59",
+    "ai-product-strategy/references/artifacts.md:530-567",
+    "ai-product-strategy/references/artifacts.md:574-581",
+    "ai-product-strategy/references/artifacts.md:91-99",
+    "ai-product-strategy/references/guest-insights.md:684-691",
+    "ai-product-strategy/references/guest-insights.md:811-818",
+    "interview-script/SKILL.md:16-19",
+    "interview-script/SKILL.md:22-26",
+    "interview-script/SKILL.md:83-84",
+    "metrics-dashboard/SKILL.md:10-15",
+    "metrics-dashboard/SKILL.md:76-80",
+    "metrics-dashboard/SKILL.md:83-94",
+    "prd-development/SKILL.md:108-122",
+    "prd-development/SKILL.md:25-32",
+    "pre-mortem/SKILL.md:17-19",
+    "pre-mortem/SKILL.md:88-93",
+    "product-strategy-session/SKILL.md:433-447"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:context-intake-and-routing"
+      ],
+      "id": "cluster:context-intake-and-routing:fusion:boundary",
+      "rule": "Deduplicate available context, identify missing inputs, and route work to the applicable capability."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:context-intake-and-routing"
+      ],
+      "id": "cluster:context-intake-and-routing:fusion:inputs",
+      "rule": "Accept only: A request, existing artifacts, project context, and known constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:context-intake-and-routing"
+      ],
+      "id": "cluster:context-intake-and-routing:fusion:outputs",
+      "rule": "Produce only: A routing decision, explicit unknowns, applicable boundaries, and an invocation path."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:context-intake-and-routing:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A request, existing artifacts, project context, and known constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prd-development",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "interview-script",
+        "metrics-dashboard",
+        "prd-development",
+        "pre-mortem",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "interview-script",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "interview-script",
+        "metrics-dashboard",
+        "prd-development",
+        "pre-mortem",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "interview-script",
+        "metrics-dashboard",
+        "pre-mortem"
+      ]
+    }
+  ],
+  "output_boundary": "A routing decision, explicit unknowns, applicable boundaries, and an invocation path.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "用问题、数据需求、概率 UX、scaffolding、专有数据和学习循环问题审查策略并标记常见错误。; 从真实问题开始，确认已有或相邻数据；MVP/buy-in 阶段可先用体验原型展示假设；对每个已发布产品持续询问能否更智能，最后决定 build 或 buy。; 机会须同时满足用户 desirability、业务 viability 和研究/技术 feasibility。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Explicit limits: 问题是诊断提示，缺证据保持未知。; prototype 不证明模型质量、技术可行性或 PMF；既有产品 smarter 扫描不同于首次集成判断；多数 startup 先用现成模型，自建需 unmet need 或竞争优势。; 任一未知不能用 demo 替代。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (gate=4, method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-007",
+        "ai-product-strategy:unit-008",
+        "ai-product-strategy:unit-009",
+        "ai-product-strategy:unit-023",
+        "ai-product-strategy:unit-024",
+        "ai-product-strategy:unit-046",
+        "ai-product-strategy:unit-054"
+      ]
+    },
+    {
+      "approach": "从真实问题开始，确认已有或相邻数据；MVP/buy-in 阶段可先用体验原型展示假设；对每个已发布产品持续询问能否更智能，最后决定 build 或 buy。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:51-59"
+      ],
+      "limitations": "Explicit limits: prototype 不证明模型质量、技术可行性或 PMF；既有产品 smarter 扫描不同于首次集成判断；多数 startup 先用现成模型，自建需 unmet need 或竞争优势。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-008"
+      ]
+    },
+    {
+      "approach": "问题是诊断提示，缺证据保持未知。; prototype 不证明模型质量、技术可行性或 PMF；既有产品 smarter 扫描不同于首次集成判断；多数 startup 先用现成模型，自建需 unmet need 或竞争优势。; 任一未知不能用 demo 替代。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Explicit limits: 问题是诊断提示，缺证据保持未知。; prototype 不证明模型质量、技术可行性或 PMF；既有产品 smarter 扫描不同于首次集成判断；多数 startup 先用现成模型，自建需 unmet need 或竞争优势。; 任一未知不能用 demo 替代。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (gate=4, method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-007",
+        "ai-product-strategy:unit-008",
+        "ai-product-strategy:unit-009",
+        "ai-product-strategy:unit-023",
+        "ai-product-strategy:unit-024",
+        "ai-product-strategy:unit-046",
+        "ai-product-strategy:unit-054"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "能发现 generic AI、accuracy 假设和 data neglect。; 三类均有证据或 needs-input。; 明确未满足项，不以勾选数掩盖硬缺口。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Explicit limits: 问题是诊断提示，缺证据保持未知。; 任一未知不能用 demo 替代。; 品牌和即时性等建议按情境条件化。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=4, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-007",
+        "ai-product-strategy:unit-009",
+        "ai-product-strategy:unit-023",
+        "ai-product-strategy:unit-024",
+        "ai-product-strategy:unit-046",
+        "ai-product-strategy:unit-054"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "基于给定的研究领域主题进行准备，并在生成脚本前优先通读用户提供的画像、假设清单、产品简报或历史访谈记录。; 澄清研究目标：明确团队亟待解答的具体问题、研究成果支持的业务决策，以及需要验证的核心假设。; 脚本定制化适配：根据具体产品领域、用户画像、研究目标及可用访谈时长，增删或调整对应章节与提问。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Explicit limits: 输入参数为目标研究主题；前置文件若存在必须优先阅读并提取约束，若未提供则依常规领域展开。; 访谈脚本启动的必要前置环节；目标不明确或缺少决策指向时，访谈产出无法收敛。; 适配仅限于问题具体化与时长裁剪，不得裁剪或破坏 The Mom Test 的非推销、非预测底线规则。",
+      "source_id": "interview-script",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-003",
+        "interview-script:unit-004",
+        "interview-script:unit-014"
+      ]
+    },
+    {
+      "approach": "基于给定的研究领域主题进行准备，并在生成脚本前优先通读用户提供的画像、假设清单、产品简报或历史访谈记录。; 澄清研究目标：明确团队亟待解答的具体问题、研究成果支持的业务决策，以及需要验证的核心假设。; 脚本定制化适配：根据具体产品领域、用户画像、研究目标及可用访谈时长，增删或调整对应章节与提问。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Explicit limits: 输入参数为目标研究主题；前置文件若存在必须优先阅读并提取约束，若未提供则依常规领域展开。; 访谈脚本启动的必要前置环节；目标不明确或缺少决策指向时，访谈产出无法收敛。; 适配仅限于问题具体化与时长裁剪，不得裁剪或破坏 The Mom Test 的非推销、非预测底线规则。",
+      "source_id": "interview-script",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-003",
+        "interview-script:unit-004",
+        "interview-script:unit-014"
+      ]
+    },
+    {
+      "approach": "输入参数为目标研究主题；前置文件若存在必须优先阅读并提取约束，若未提供则依常规领域展开。; 访谈脚本启动的必要前置环节；目标不明确或缺少决策指向时，访谈产出无法收敛。; 适配仅限于问题具体化与时长裁剪，不得裁剪或破坏 The Mom Test 的非推销、非预测底线规则。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Explicit limits: 输入参数为目标研究主题；前置文件若存在必须优先阅读并提取约束，若未提供则依常规领域展开。; 访谈脚本启动的必要前置环节；目标不明确或缺少决策指向时，访谈产出无法收敛。; 适配仅限于问题具体化与时长裁剪，不得裁剪或破坏 The Mom Test 的非推销、非预测底线规则。",
+      "source_id": "interview-script",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "interview-script:unit-003",
+        "interview-script:unit-004",
+        "interview-script:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "interview-script",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "上下文输入与前置资料研读：基于参数目标产品展开设计；若用户提供了现有看板、数据分析报表、OKR 或战略文档，必须优先阅读吸收。; 第六步基于用户上下文推荐落地工具栈：产品分析类工具（Amplitude、Mixpanel 等）；SQL 仪表盘工具（Looker、Metabase、Mode 等）；运维健康监控工具（Datadog、Grafana 等）。; 推荐进一步阅读资料：包含产品指标终极列表、北极星框架、产品分析指南（AARRR、HEART、群组与漏斗）、漏斗分析、指标追踪正误及持续产品发现大师课等外部扩展资源。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Explicit limits: 优先读取并结合用户提供的上下文背景材料，不得凭空假想与实际脱节的指标。; 推荐必须按产品分析、SQL 看板与运维健康三类区分；本地执行遵循项目 PostHog 适配器永久封禁安全不变量。; 外部网络参考文档；在离线运行时延迟消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-003",
+        "metrics-dashboard:unit-014",
+        "metrics-dashboard:unit-016"
+      ]
+    },
+    {
+      "approach": "上下文输入与前置资料研读：基于参数目标产品展开设计；若用户提供了现有看板、数据分析报表、OKR 或战略文档，必须优先阅读吸收。; 第六步基于用户上下文推荐落地工具栈：产品分析类工具（Amplitude、Mixpanel 等）；SQL 仪表盘工具（Looker、Metabase、Mode 等）；运维健康监控工具（Datadog、Grafana 等）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80"
+      ],
+      "limitations": "Explicit limits: 优先读取并结合用户提供的上下文背景材料，不得凭空假想与实际脱节的指标。; 推荐必须按产品分析、SQL 看板与运维健康三类区分；本地执行遵循项目 PostHog 适配器永久封禁安全不变量。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-003",
+        "metrics-dashboard:unit-014"
+      ]
+    },
+    {
+      "approach": "优先读取并结合用户提供的上下文背景材料，不得凭空假想与实际脱节的指标。; 推荐必须按产品分析、SQL 看板与运维健康三类区分；本地执行遵循项目 PostHog 适配器永久封禁安全不变量。; 外部网络参考文档；在离线运行时延迟消费。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Explicit limits: 优先读取并结合用户提供的上下文背景材料，不得凭空假想与实际脱节的指标。; 推荐必须按产品分析、SQL 看板与运维健康三类区分；本地执行遵循项目 PostHog 适配器永久封禁安全不变量。; 外部网络参考文档；在离线运行时延迟消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-003",
+        "metrics-dashboard:unit-014",
+        "metrics-dashboard:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确认包含完整的外部参考资源文章列表与链接，状态标记为 defer。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Explicit limits: 外部网络参考文档；在离线运行时延迟消费。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "把 invocation 和粘贴上下文视为已回答输入，跳过已覆盖问题，同时允许从空输入开始问题定义。; 将 PRD 与像素级规格、瀑布合同、协作替代品、琐碎工作和持续发现实验分离。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Explicit limits: 任何 elicitation 前适用；不得重问已提供信息，也不得因空输入编造事实。; 小型已对齐工作路由到 user stories，连续实验路由到 Lean UX/发现方法。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (exception=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-002",
+        "prd-development:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "任何 elicitation 前适用；不得重问已提供信息，也不得因空输入编造事实。; 小型已对齐工作路由到 user stories，连续实验路由到 Lean UX/发现方法。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Explicit limits: 任何 elicitation 前适用；不得重问已提供信息，也不得因空输入编造事实。; 小型已对齐工作路由到 user stories，连续实验路由到 Lean UX/发现方法。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (exception=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-002",
+        "prd-development:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "富输入从首个缺口继续，空输入从问题定义开始且未知值保持显式。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Explicit limits: 任何 elicitation 前适用；不得重问已提供信息，也不得因空输入编造事实。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-002"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "将 PRD 与像素级规格、瀑布合同、协作替代品、琐碎工作和持续发现实验分离。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prd-development/SKILL.md:108-122"
+      ],
+      "limitations": "Explicit limits: 小型已对齐工作路由到 user stories，连续实验路由到 Lean UX/发现方法。",
+      "source_id": "prd-development",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-004"
+      ]
+    },
+    {
+      "approach": "第一步搜集与通读 PRD：全面理解产品定义、目标市场、关键假设与发布时间线；必要时借助网络搜索调研竞品格局与市场条件。; 推荐进一步阅读资料：包含 Meta/Instagram 利用 Pre-Mortem 避免 Post-Mortem 的案例模板，以及产品经理风险管理指南等外部参考文章。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Explicit limits: 执行风险分析前必须先获取并通读输入文档；在上下文不足时补充外部市场或竞品搜索。; 外部网络参考链接；不作为本地运行时离线闭环的阻断依赖，延迟运行时消费。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-004",
+        "pre-mortem:unit-016"
+      ]
+    },
+    {
+      "approach": "第一步搜集与通读 PRD：全面理解产品定义、目标市场、关键假设与发布时间线；必要时借助网络搜索调研竞品格局与市场条件。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19"
+      ],
+      "limitations": "Explicit limits: 执行风险分析前必须先获取并通读输入文档；在上下文不足时补充外部市场或竞品搜索。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-004"
+      ]
+    },
+    {
+      "approach": "执行风险分析前必须先获取并通读输入文档；在上下文不足时补充外部市场或竞品搜索。; 外部网络参考链接；不作为本地运行时离线闭环的阻断依赖，延迟运行时消费。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Explicit limits: 执行风险分析前必须先获取并通读输入文档；在上下文不足时补充外部市场或竞品搜索。; 外部网络参考链接；不作为本地运行时离线闭环的阻断依赖，延迟运行时消费。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-004",
+        "pre-mortem:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "pre-mortem",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确认收录文章标题与 URL 链接，状态标记为 defer。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Explicit limits: 外部网络参考链接；不作为本地运行时离线闭环的阻断依赖，延迟运行时消费。",
+      "source_id": "pre-mortem",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "pre-mortem:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "pre-mortem",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "pre-mortem",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "记录来源列出的外部框架、Dean's Work 引用和原作者建议的 workflow 元数据；其中待补链接不构成可执行依赖。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Explicit limits: 仅作 provenance/reference metadata 使用；不联网核验、不把书目观点或 15+ 数量当作本项目事实。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-039"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "仅作 provenance/reference metadata 使用；不联网核验、不把书目观点或 15+ 数量当作本项目事实。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Explicit limits: 仅作 provenance/reference metadata 使用；不联网核验、不把书目观点或 15+ 数量当作本项目事实。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-039"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "记录来源列出的外部框架、Dean's Work 引用和原作者建议的 workflow 元数据；其中待补链接不构成可执行依赖。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "limitations": "Explicit limits: 仅作 provenance/reference metadata 使用；不联网核验、不把书目观点或 15+ 数量当作本项目事实。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-039"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 4,
+        "method": 1,
+        "rule": 2
+      },
+      "evidence": [
+        "ai-product-strategy/SKILL.md:65-79",
+        "ai-product-strategy/references/artifacts.md:51-59",
+        "ai-product-strategy/references/artifacts.md:530-567",
+        "ai-product-strategy/references/artifacts.md:574-581",
+        "ai-product-strategy/references/artifacts.md:91-99",
+        "ai-product-strategy/references/guest-insights.md:684-691",
+        "ai-product-strategy/references/guest-insights.md:811-818"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-007",
+        "ai-product-strategy:unit-008",
+        "ai-product-strategy:unit-009",
+        "ai-product-strategy:unit-023",
+        "ai-product-strategy:unit-024",
+        "ai-product-strategy:unit-046",
+        "ai-product-strategy:unit-054"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 3
+      },
+      "evidence": [
+        "interview-script/SKILL.md:16-19",
+        "interview-script/SKILL.md:22-26",
+        "interview-script/SKILL.md:83-84"
+      ],
+      "source_id": "interview-script",
+      "unit_ids": [
+        "interview-script:unit-003",
+        "interview-script:unit-004",
+        "interview-script:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 1
+      },
+      "evidence": [
+        "metrics-dashboard/SKILL.md:10-15",
+        "metrics-dashboard/SKILL.md:76-80",
+        "metrics-dashboard/SKILL.md:83-94"
+      ],
+      "source_id": "metrics-dashboard",
+      "unit_ids": [
+        "metrics-dashboard:unit-003",
+        "metrics-dashboard:unit-014",
+        "metrics-dashboard:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "exception": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "prd-development/SKILL.md:108-122",
+        "prd-development/SKILL.md:25-32"
+      ],
+      "source_id": "prd-development",
+      "unit_ids": [
+        "prd-development:unit-002",
+        "prd-development:unit-004"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "pre-mortem/SKILL.md:17-19",
+        "pre-mortem/SKILL.md:88-93"
+      ],
+      "source_id": "pre-mortem",
+      "unit_ids": [
+        "pre-mortem:unit-004",
+        "pre-mortem:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "exception": 1
+      },
+      "evidence": [
+        "product-strategy-session/SKILL.md:433-447"
+      ],
+      "source_id": "product-strategy-session",
+      "unit_ids": [
+        "product-strategy-session:unit-039"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-007",
+    "ai-product-strategy:unit-008",
+    "ai-product-strategy:unit-009",
+    "ai-product-strategy:unit-023",
+    "ai-product-strategy:unit-024",
+    "ai-product-strategy:unit-046",
+    "ai-product-strategy:unit-054",
+    "interview-script:unit-003",
+    "interview-script:unit-004",
+    "interview-script:unit-014",
+    "metrics-dashboard:unit-003",
+    "metrics-dashboard:unit-014",
+    "metrics-dashboard:unit-016",
+    "prd-development:unit-002",
+    "prd-development:unit-004",
+    "pre-mortem:unit-004",
+    "pre-mortem:unit-016",
+    "product-strategy-session:unit-039"
+  ]
+}

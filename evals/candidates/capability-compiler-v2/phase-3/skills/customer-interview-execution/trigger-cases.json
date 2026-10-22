@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "research-planning-and-governance",
+        "qualitative-evidence-synthesis",
+        "problem-framing-and-customer-research"
+      ],
+      "id": "V2-P3-customer-interview-execution-trigger-01",
+      "input": "Create a non-leading interview guide and evidence log for these authorized participants.",
+      "kind": "should-trigger",
+      "reason": "Prepare and conduct a non-leading, consented interview session and preserve observation separately from interpretation."
+    },
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "research-planning-and-governance",
+        "qualitative-evidence-synthesis",
+        "problem-framing-and-customer-research"
+      ],
+      "id": "V2-P3-customer-interview-execution-trigger-02",
+      "input": "Help facilitate this consented customer interview and separate quotes, observations, and hypotheses.",
+      "kind": "should-trigger",
+      "reason": "Prepare and conduct a non-leading, consented interview session and preserve observation separately from interpretation."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution"
+      ],
+      "id": "V2-P3-customer-interview-execution-anti-01",
+      "input": "Synthesize themes across these completed interview records.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility qualitative-evidence-synthesis."
+    },
+    {
+      "expected_skill_id": "research-planning-and-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution"
+      ],
+      "id": "V2-P3-customer-interview-execution-anti-02",
+      "input": "Recruit or contact customers using their private details.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility research-planning-and-governance."
+    },
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-customer-interview-execution-boundary-01",
+      "input": "Prepare and conduct a non-leading, consented interview session and preserve observation separately from interpretation. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-customer-interview-execution-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "customer-interview-execution"
+}

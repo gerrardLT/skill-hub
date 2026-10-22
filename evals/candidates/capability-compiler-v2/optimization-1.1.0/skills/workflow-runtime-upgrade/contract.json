@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "runtime upgrade receipt",
+    "before and after version evidence",
+    "compatibility and health checks",
+    "backup, rollback, and cleanup record"
+  ],
+  "capability_id": "capability:workflow-runtime-upgrade",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-system-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "local-system-write",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A runtime upgrade requires a pinned trusted target, explicit affected paths, compatibility and migration plan, backup, rollback, and current post-upgrade health evidence; unpinned latest upgrades fail closed.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "workflow-runtime-upgrade",
+  "inputs": [
+    "Installed runtime, target version, local-system write authorization, compatibility constraints, and rollback path."
+  ],
+  "outputs": [
+    "runtime upgrade receipt",
+    "before and after version evidence",
+    "compatibility and health checks",
+    "backup, rollback, and cleanup record"
+  ],
+  "permission_identity": "local-system-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "detected-version",
+      "pinned-target",
+      "trusted-source",
+      "compatibility",
+      "backup",
+      "rollback",
+      "health-check"
+    ],
+    "data_governance": false,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Upgrade one installed workflow runtime under explicit local-system authorization with version detection, backup, compatibility checks, rollback, and no hidden credential or provider changes.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

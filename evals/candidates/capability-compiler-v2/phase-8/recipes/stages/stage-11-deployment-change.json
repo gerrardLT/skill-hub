@@ -1,0 +1,892 @@
+{
+  "condition": "one explicitly authorized remote repository, provider, deployment, or configuration action is requested",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "sentry-setup-releases/SKILL.md:26-64",
+        "sentry-setup-ai-monitoring/SKILL.md:119-150"
+      ],
+      "id": "V2-DEPENDENCY-0180",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "AI telemetry extends a configured release-observability boundary when the product contains model calls.",
+      "source_capability_id": "capability:release-observability-configuration",
+      "target_capability_id": "capability:ai-observability-configuration"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-apm/k8s-ssi/agent-install/SKILL.md:102-126",
+        "dd-apm/SKILL.md:129-135"
+      ],
+      "id": "V2-DEPENDENCY-0182",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "APM enablement uses an installed provider agent when that adapter is selected.",
+      "source_capability_id": "capability:observability-agent-installation",
+      "target_capability_id": "capability:apm-instrumentation-enablement"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/land-and-deploy/SKILL.md:665-699",
+        "deploy-to-vercel/SKILL.md:105-134"
+      ],
+      "id": "V2-DEPENDENCY-0195",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Web deployment requires an explicitly prepared target environment.",
+      "source_capability_id": "capability:deployment-environment-setup",
+      "target_capability_id": "capability:web-hosting-deployment"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/land-and-deploy/SKILL.md:665-699",
+        "azure-kubernetes/SKILL.md:118-124"
+      ],
+      "id": "V2-DEPENDENCY-0196",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Kubernetes deployment requires an explicitly prepared target environment.",
+      "source_capability_id": "capability:deployment-environment-setup",
+      "target_capability_id": "capability:kubernetes-application-deployment"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:317-356",
+        "agent-observability-eval-pipeline/SKILL.md:381-420"
+      ],
+      "id": "V2-DEPENDENCY-0205",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Dataset publication requires a frozen evaluator and quality contract.",
+      "source_capability_id": "capability:llm-evaluator-engineering",
+      "target_capability_id": "capability:evaluation-dataset-publication"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:381-420",
+        "agent-observability-eval-pipeline/SKILL.md:467-504"
+      ],
+      "id": "V2-DEPENDENCY-0206",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A provider experiment consumes the approved versioned dataset selected for that run.",
+      "source_capability_id": "capability:evaluation-dataset-publication",
+      "target_capability_id": "capability:llm-experiment-execution"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:10-49",
+        "azure-kubernetes/SKILL.md:118-124"
+      ],
+      "id": "V2-DEPENDENCY-0210",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A Kubernetes release must pass provider-specific readiness before deployment.",
+      "source_capability_id": "capability:kubernetes-deployment-readiness",
+      "target_capability_id": "capability:kubernetes-application-deployment"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/ship/SKILL.md:706-745",
+        "gstack/ship/SKILL.md:955-963"
+      ],
+      "id": "V2-DEPENDENCY-0238",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Only a verified packaged ref may be pushed remotely.",
+      "source_capability_id": "capability:change-packaging-and-versioning",
+      "target_capability_id": "capability:remote-git-push"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/ship/SKILL.md:955-963",
+        "gstack/ship/sections/pr-body.md:180-225"
+      ],
+      "id": "V2-DEPENDENCY-0239",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A pull request can be created or updated only after the intended ref exists remotely.",
+      "source_capability_id": "capability:remote-git-push",
+      "target_capability_id": "capability:remote-pull-request-change"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/land-and-deploy/SKILL.md:535-574",
+        "gstack/land-and-deploy/sections/merge-and-deploy.md:1-145"
+      ],
+      "id": "V2-DEPENDENCY-0240",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Remote merge consumes a fresh passing readiness decision.",
+      "source_capability_id": "capability:merge-and-deploy-readiness",
+      "target_capability_id": "capability:remote-pull-request-merge"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/land-and-deploy/sections/merge-and-deploy.md:1-145",
+        "gstack/land-and-deploy/SKILL.md:796-810"
+      ],
+      "id": "V2-DEPENDENCY-0241",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An explicit deploy trigger is selected only when merge does not already start the approved deployment.",
+      "source_capability_id": "capability:remote-pull-request-merge",
+      "target_capability_id": "capability:deployment-trigger-execution"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "code-review/SKILL.md:11-11",
+        "gstack/review/greptile-triage.md:97-111"
+      ],
+      "id": "V2-DEPENDENCY-0245",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A verified review finding may produce one separately authorized provider response.",
+      "source_capability_id": "capability:independent-code-review",
+      "target_capability_id": "capability:pull-request-comment-response"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/ship/SKILL.md:965-965",
+        "gstack/ship/SKILL.md:955-963"
+      ],
+      "id": "V2-DEPENDENCY-0249",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "An approved local guard can protect a later push but never authorizes it.",
+      "source_capability_id": "capability:local-git-guard-setup",
+      "target_capability_id": "capability:remote-git-push"
+    }
+  ],
+  "description": "Execute explicitly authorized remote deployment or configuration change.",
+  "execution_state": "not-run-phase-9",
+  "exit_contract": "one durable remote receipt or fail-closed action result; no cascaded authorization",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human grants fresh per-action authorization for one exact target and immutable input",
+  "id": "stage-11-deployment-change",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:11-deployment-change",
+  "stage_order": 11,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/ai-observability-configuration",
+      "condition": "Select only when the atomic requested outcome matches: Configure one provider's AI or LLM observability for exact applications and environments under explicit telemetry governance and per-action authorization.",
+      "contract_sha256": "34bcabe6ac2dbe36f1aab63af9035fba3116c8a36404d66aa214abc32806466e",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0180"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "AI observability may collect only explicitly governed fields at approved sampling, retention, region, and access; prompt, response, tool, user, or retrieved content is denied by default.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "ai-observability-configuration",
+      "inputs": [
+        "AI application, traces, sensitive-data policy, provider, evaluation signals, retention, and authorization."
+      ],
+      "mutation_scope": "remote-ai-observability-config",
+      "outputs": [
+        "AI observability configuration receipt",
+        "governed telemetry schema",
+        "sampling, redaction, retention, and access record",
+        "validation and rollback evidence"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "ai-observability-configuration@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/apm-instrumentation-enablement",
+      "condition": "Select only when the atomic requested outcome matches: Enable one approved APM instrumentation variant for exact services and environments without duplicate agents or manual instrumentation under per-action authorization.",
+      "contract_sha256": "08fd4e2359dc6ce3c0eddb8cdae625b00e9336e6ebd146e25652be1d3d34c5ea",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0182"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "APM enablement requires a single known instrumentation path, exact service and environment identity, compatibility and overhead checks, governed telemetry, and rollback; duplicate instrumentation blocks change.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "apm-instrumentation-enablement",
+      "inputs": [
+        "Installed agent, service runtime, platform variant, environment, and authorization."
+      ],
+      "mutation_scope": "remote-apm-enablement",
+      "outputs": [
+        "APM enablement receipt",
+        "instrumentation and service identity",
+        "duplicate and compatibility evidence",
+        "verification and rollback handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "apm-instrumentation-enablement@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/deployment-trigger-execution",
+      "condition": "Select only when the atomic requested outcome matches: Trigger one exact approved deployment workflow or hook with frozen parameters and per-action authorization, without merging code or observing or rolling back the result.",
+      "contract_sha256": "c73bec0a89549c9c123aee6cbcfe4478ee758a1acd5311199a2536e07f42c74c",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0241"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "One deployment-trigger authorization covers one exact workflow, environment, immutable artifact, parameter set, and attempt; it authorizes neither merge, configuration change, observation, promotion, nor rollback.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "deployment-trigger-execution",
+      "inputs": [
+        "Release identity, reviewed deployment target, frozen parameters, provider or hook adapter, credentials, and current authorization."
+      ],
+      "mutation_scope": "remote-deployment-trigger",
+      "outputs": [
+        "deployment trigger receipt",
+        "immutable request and artifact identity",
+        "run or hook identity",
+        "failure, cancellation, and handoff record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "deployment-trigger-execution@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/edge-worker-deployment",
+      "condition": "Select only when the atomic requested outcome matches: Deploy one immutable edge-worker artifact through one approved provider adapter after build, binding, route, limit, and rollback preflight.",
+      "contract_sha256": "2d67c3cf8c871285768876eb1046d3419131533d53748464035b3382b9db120b",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Edge deployment requires exact immutable code, bindings, routes, limits, traffic scope, health criteria, and rollback target; wildcard route or binding changes and unrelated resource mutations are blocked.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "edge-worker-deployment",
+      "inputs": [
+        "Worker source, environment bindings, provider account, compatibility target, and authorization."
+      ],
+      "mutation_scope": "remote-edge-deploy",
+      "outputs": [
+        "edge deployment receipt",
+        "immutable worker and binding manifest",
+        "route and environment identity",
+        "health handoff and rollback reference"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "edge-worker-deployment@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/evaluation-dataset-publication",
+      "condition": "Select only when the atomic requested outcome matches: Publish one frozen versioned evaluation dataset to one exact provider target only under per-action remote-write and data-governance authorization.",
+      "contract_sha256": "1d041a5786b67aedf0dc9a20cec0409c2b408fd3a5ffd4462b6c9c48ebed25ba",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0205"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Remote dataset publication is one per-action-authorized write to an exact provider target and version; missing rights, redaction, transfer, retention, deletion, visibility, idempotency, or cleanup terms blocks publication.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "evaluation-dataset-publication",
+      "inputs": [
+        "Approved samples, schema, minimization and redaction policy, provider target, retention policy, and authorization."
+      ],
+      "mutation_scope": "remote-provider-write",
+      "outputs": [
+        "versioned provider dataset identity",
+        "publication request and receipt",
+        "local-provider hash and count evidence",
+        "governance, retention, deletion, and failure-cleanup record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "evaluation-dataset-publication@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/kubernetes-application-deployment",
+      "condition": "Select only when the atomic requested outcome matches: Deploy one immutable application version to an existing Kubernetes platform with validated manifests, identity, rollout, health, and rollback controls under per-action authorization.",
+      "contract_sha256": "ef3260822b8a5dc2e24cef046fde72aa08a8879e8ea12e4404ec1252aac999b6",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0196",
+        "V2-DEPENDENCY-0210"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Kubernetes deployment is bound to one cluster, namespace, manifest set, image digest, identity, rollout, health gate, and rollback revision; readiness failure or unexpected diff blocks apply.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "kubernetes-application-deployment",
+      "inputs": [
+        "Application artifact, existing cluster context, provider adapter, manifests, credentials, and deployment authorization."
+      ],
+      "mutation_scope": "remote-kubernetes-deploy",
+      "outputs": [
+        "Kubernetes deployment receipt",
+        "applied resource and image identity",
+        "rollout and health status",
+        "recovery, observation, and rollback handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "kubernetes-application-deployment@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/llm-experiment-execution",
+      "condition": "Select only when the atomic requested outcome matches: Execute one reviewed frozen LLM experiment against exact dataset and evaluator versions under per-action provider-write, budget, and data-transfer authorization.",
+      "contract_sha256": "8d681254fd1d1da232db7fc612b5a7c16ff2242e4751e60ac050b74d8c922c16",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0206"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Experiment execution requires one exact reviewed definition and per-action provider authorization; any prompt, model, dataset, evaluator, metric, budget, transfer, or target drift invalidates or blocks the run.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "llm-experiment-execution",
+      "inputs": [
+        "Frozen experiment definition, dataset version, evaluator versions, provider target, budget, and authorization."
+      ],
+      "mutation_scope": "remote-provider-write",
+      "outputs": [
+        "provider experiment run identity",
+        "frozen parameter and version manifest",
+        "raw result references and failure evidence",
+        "cost, duration, cancellation, and cleanup record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "llm-experiment-execution@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/log-observability-configuration",
+      "condition": "Select only when the atomic requested outcome matches: Configure one provider's log collection, parsing, routing, retention, access, and sensitive-data controls for exact services and environments under per-action authorization.",
+      "contract_sha256": "3b1371dbfebaa9eeaf1f3844c8fd0e89481a96537ae406e41d0e535ae3a1ad93",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Logs deny secret and sensitive fields by default and require exact source, parsing, routing, retention, access, deletion, volume, and cost boundaries before provider mutation.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "log-observability-configuration",
+      "inputs": [
+        "Log sources, schemas, provider, authorization, retention, redaction, and routing requirements."
+      ],
+      "mutation_scope": "remote-log-config",
+      "outputs": [
+        "log configuration receipt",
+        "source, parse, and route schema",
+        "redaction, retention, access, and cost record",
+        "sample validation and rollback evidence"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "log-observability-configuration@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/monitoring-and-alert-configuration",
+      "condition": "Select only when the atomic requested outcome matches: Create or update exact provider monitors and alert routes from approved SLOs, thresholds, windows, severity, ownership, and noise controls under per-action authorization.",
+      "contract_sha256": "06307eed3bc1b0a3a07a46547ec14745d17256d5e88e59d959d32b2b6308f155",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "An alert requires an actionable owner, justified threshold and window, missing-data behavior, deduplication, runbook, validation, and rollback; alert volume alone is not coverage.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "monitoring-and-alert-configuration",
+      "inputs": [
+        "Signal definition, threshold rationale, evaluation window, recipients, provider, and authorization."
+      ],
+      "mutation_scope": "remote-monitor-config",
+      "outputs": [
+        "monitor and alert configuration receipt",
+        "threshold, window, and missing-data contract",
+        "routing and runbook map",
+        "validation, noise, and rollback evidence"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "monitoring-and-alert-configuration@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/observability-agent-installation",
+      "condition": "Select only when the atomic requested outcome matches: Install one approved observability agent variant on exact hosts or cluster scope with pinned artifact, least privilege, governed data, health, and rollback under per-action authorization.",
+      "contract_sha256": "bd4f3c9ac3ba6f52f266e6e7fd9ac05477a46dff83e62f213714ae4515651a16",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Agent installation requires a pinned verified artifact, exact targets, least privilege, governed telemetry, resource and network bounds, health evidence, and uninstall or rollback; mutable latest and duplicate agents are blocked.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "observability-agent-installation",
+      "inputs": [
+        "Platform, environment, provider account, credentials, desired instrumentation, and authorization."
+      ],
+      "mutation_scope": "remote-agent-install",
+      "outputs": [
+        "agent installation receipt",
+        "pinned artifact and target inventory",
+        "permission and telemetry governance evidence",
+        "health, uninstall, and rollback record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "observability-agent-installation@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/pull-request-comment-response",
+      "condition": "Select only when the atomic requested outcome matches: Post one evidence-backed response to one identified pull-request review comment under per-action authorization, without changing source or resolving unrelated threads.",
+      "contract_sha256": "c10588ea4b2582f78c3452a3ab1214acdb3bf19a80f07c33da7651c667039e32",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0245"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Authorization covers one exact PR comment response and no other thread, source change, resolution, label, assignment, merge, or deployment action.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "pull-request-comment-response",
+      "inputs": [
+        "Comment identity, verified finding classification, response artifact, evidence links, provider, and current authorization."
+      ],
+      "mutation_scope": "remote-pr-comment",
+      "outputs": [
+        "provider comment receipt",
+        "posted response and evidence links",
+        "target PR and thread identity",
+        "failure or bounded retry record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "pull-request-comment-response@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/release-observability-configuration",
+      "condition": "Select only when the atomic requested outcome matches: Configure one provider's release and commit association for exact services and environments under per-action authorization without deploying or changing source.",
+      "contract_sha256": "95ba43f1d8d31992c43bc46577777bcf87fbeb820ce1448ed46ff8cffd8644b3",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Release observability requires exact immutable release, commit, artifact, service, and environment identities; association does not prove deployment or authorize provider actions beyond the mapping.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "release-observability-configuration",
+      "inputs": [
+        "Release naming, repository, build metadata, provider project, credentials, and authorization."
+      ],
+      "mutation_scope": "remote-release-observability",
+      "outputs": [
+        "release association receipt",
+        "release, commit, service, and environment map",
+        "propagation and collision evidence",
+        "rollback or deletion record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "release-observability-configuration@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/remote-git-push",
+      "condition": "Select only when the atomic requested outcome matches: Push one verified local branch to one approved remote ref without force under fresh per-action authorization and exact lease expectations.",
+      "contract_sha256": "33a404e2ba7f1a5468984cf487c7c6e8ce5b73563df99624db4a9ff5cace8b45",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0238",
+        "V2-DEPENDENCY-0249"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Push authorization covers one exact non-force refspec and expected remote state; it does not authorize force, deletion, tags, other refs, PR changes, merge, or deploy.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "remote-git-push",
+      "inputs": [
+        "Verified source ref, approved remote and target ref, current authorization, credential boundary, and redaction result."
+      ],
+      "mutation_scope": "remote-git-push",
+      "outputs": [
+        "remote push receipt",
+        "source and destination ref identity",
+        "before and after remote SHA",
+        "failure and pull-request handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "remote-git-push@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/remote-pull-request-change",
+      "condition": "Select only when the atomic requested outcome matches: Create or update one pull or merge request from one verified pushed ref after redaction and per-action authorization, without merge or deployment.",
+      "contract_sha256": "9c5f6270cbf450abbb87242a2bf74481f50190c6d8d3b27a093e81585b6dc782",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0239"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "PR-change authorization covers one exact create or update and cannot push, edit source, respond to unrelated comments, enable auto-merge, merge, or deploy.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "remote-pull-request-change",
+      "inputs": [
+        "Verified remote refs, approved base, title and body artifacts, redaction result, provider, and current authorization."
+      ],
+      "mutation_scope": "remote-pr-change",
+      "outputs": [
+        "pull-request create or update receipt",
+        "PR identity and URL",
+        "base, head, and metadata evidence",
+        "failure and readiness handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "remote-pull-request-change@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/remote-pull-request-merge",
+      "condition": "Select only when the atomic requested outcome matches: Merge one identified pull request with one allowed repository method after a fresh passing readiness gate and explicit per-action authorization, without deployment.",
+      "contract_sha256": "db48846e94be55cbf9129dfc013d8643a3f959ae55c875dc7716a3358ff0ab9c",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0240"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Merge authorization is one-shot for one PR at one exact head SHA after a fresh gate; it never authorizes deployment or any action after readiness drift.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "remote-pull-request-merge",
+      "inputs": [
+        "Pull request identity, fresh CI and review evidence, mergeability, approved method, current authorization, and rollback plan."
+      ],
+      "mutation_scope": "remote-pr-merge",
+      "outputs": [
+        "pull-request merge receipt",
+        "resulting merge commit identity",
+        "fresh readiness and provider evidence",
+        "failure and separate deployment handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "remote-pull-request-merge@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/service-identity-remapping",
+      "condition": "Select only when the atomic requested outcome matches: Remap one telemetry service identity in one exact provider scope after collision, continuity, retention, dashboard, alert, and rollback checks under per-action authorization.",
+      "contract_sha256": "572694541c2829d9c3d516b5677ea6d0100ce363a07a2f375337716b23a726ec",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Identity remapping requires collision-free exact old and new identities, bounded provider scope, continuity plan, affected-resource inventory, verification, and rollback; renaming telemetry emitters is separate.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "service-identity-remapping",
+      "inputs": [
+        "Current service names, desired taxonomy, provider configuration, downstream dashboards, and authorization."
+      ],
+      "mutation_scope": "remote-service-identity",
+      "outputs": [
+        "service identity remap receipt",
+        "collision and continuity evidence",
+        "affected dashboard, alert, and integration map",
+        "verification and rollback record"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "service-identity-remapping@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/web-hosting-deployment",
+      "condition": "Select only when the atomic requested outcome matches: Deploy one immutable Web application artifact through one selected hosting provider adapter with exact environment, configuration, health, domain, and rollback controls.",
+      "contract_sha256": "7813dfc84b8736647e302b88e9170297a9d399fc10f326f9f6ace6ca7249b0c6",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0195"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Web deployment requires one exact provider project, environment, immutable artifact, configuration, domain and traffic scope, health gate, and rollback target; preview or identity drift blocks deployment.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "web-hosting-deployment",
+      "inputs": [
+        "Build artifact, provider project, environment, secrets boundary, deployment plan, and authorization."
+      ],
+      "mutation_scope": "remote-web-deploy",
+      "outputs": [
+        "hosting deployment receipt",
+        "deployment URL and immutable identity",
+        "artifact and configuration evidence",
+        "observation handoff and rollback reference"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "web-hosting-deployment@0.1.0-v2-candidate"
+    }
+  ],
+  "version": "0.1.0-v2-candidate"
+}

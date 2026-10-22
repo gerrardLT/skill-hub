@@ -1,0 +1,543 @@
+{
+  "control_points": [
+    {
+      "condition": "a reviewer finding, prototype choice, residual risk, remediation scope, or release disposition requires a named human owner decision",
+      "executable": false,
+      "id": "explicit-human-approval",
+      "mutation_scope": "none",
+      "outputs": [
+        "decision owner",
+        "accepted or rejected finding",
+        "bounded remediation authorization or disposition",
+        "decision evidence"
+      ],
+      "permission_identity": "human-decision-only"
+    },
+    {
+      "condition": "a human accepted a finding and separately authorized an exact source repair scope",
+      "executable": false,
+      "id": "separate-remediation-capability",
+      "mutation_scope": "none",
+      "outputs": [
+        "exact remediator capability identity",
+        "bounded source scope",
+        "stale evidence invalidation",
+        "required recapture handoff"
+      ],
+      "permission_identity": "route-only"
+    }
+  ],
+  "description": "Conditionally compose atomic UX/UI design, implementation, evidence, critique, and release-recommendation candidates while preserving reviewer/remediator separation.",
+  "edges": [
+    {
+      "condition": "existing interface or redesign request",
+      "from": "route",
+      "to": "preserve-existing"
+    },
+    {
+      "condition": "authorized external captures or files supplied",
+      "from": "route",
+      "to": "extract-external-tokens"
+    },
+    {
+      "condition": "new design, approved redesign, or selected visual work",
+      "from": "route",
+      "to": "direction"
+    },
+    {
+      "condition": "material uncertainty merits divergent working variants",
+      "from": "direction",
+      "to": "prototype-variants"
+    },
+    {
+      "condition": "visual implementation is in scope",
+      "from": "direction",
+      "to": "visual-language"
+    },
+    {
+      "condition": "tokens or reusable components are required",
+      "from": "direction",
+      "to": "design-system"
+    },
+    {
+      "condition": "interface contains product copy, records, imagery, icons, or claims",
+      "from": "direction",
+      "to": "authentic-content"
+    },
+    {
+      "condition": "multi-viewport interface is in scope",
+      "from": "direction",
+      "to": "responsive-composition"
+    },
+    {
+      "condition": "controls, navigation, forms, async data, permission, or recovery exist",
+      "from": "responsive-composition",
+      "to": "interaction-states"
+    },
+    {
+      "condition": "interactive user-facing surface is in scope",
+      "from": "interaction-states",
+      "to": "accessibility"
+    },
+    {
+      "condition": "motion communicates hierarchy, navigation, feedback, progress, or state",
+      "from": "interaction-states",
+      "to": "motion"
+    },
+    {
+      "condition": "probabilistic or agentic behavior is user-visible",
+      "from": "interaction-states",
+      "to": "ai-ux"
+    },
+    {
+      "condition": "implementation is ready for cross-domain preflight",
+      "from": "accessibility",
+      "to": "preflight"
+    },
+    {
+      "condition": "specialist findings and current evidence are available",
+      "from": "rendered-critique",
+      "to": "release-gate"
+    },
+    {
+      "condition": "existing-interface preservation contract is required",
+      "from": "preserve-existing",
+      "to": "direction"
+    },
+    {
+      "condition": "human-approved normalized external primitives are selected",
+      "from": "extract-external-tokens",
+      "to": "design-system"
+    },
+    {
+      "condition": "a human selected a variant for promotion",
+      "from": "prototype-variants",
+      "to": "visual-language"
+    },
+    {
+      "condition": "visual implementation branch is active",
+      "from": "visual-language",
+      "to": "responsive-composition"
+    },
+    {
+      "condition": "design-system branch is active",
+      "from": "design-system",
+      "to": "responsive-composition"
+    },
+    {
+      "condition": "content branch is active",
+      "from": "authentic-content",
+      "to": "interaction-states"
+    },
+    {
+      "condition": "motion branch is active",
+      "from": "motion",
+      "to": "preflight"
+    },
+    {
+      "condition": "AI interaction branch is active",
+      "from": "ai-ux",
+      "to": "preflight"
+    },
+    {
+      "condition": "a finding, taste choice, risk acceptance, remediation scope, or release disposition needs a human decision",
+      "from": "rendered-critique",
+      "to": "explicit-human-approval"
+    },
+    {
+      "condition": "the named human owner accepts a finding and authorizes exact source remediation",
+      "from": "explicit-human-approval",
+      "to": "separate-remediation-capability"
+    },
+    {
+      "condition": "no source repair is required and the named owner requests final evidence-based disposition",
+      "from": "explicit-human-approval",
+      "to": "release-gate"
+    }
+  ],
+  "evaluation_state": "not-run-phase-10-targeted",
+  "feedback_routes": [
+    {
+      "artifact": "accepted visual findings",
+      "authorization": "explicit-human-approval",
+      "from": "rendered-critique",
+      "to": "visual-language"
+    },
+    {
+      "artifact": "accepted responsive findings",
+      "authorization": "explicit-human-approval",
+      "from": "rendered-critique",
+      "to": "responsive-composition"
+    },
+    {
+      "artifact": "accepted interaction findings",
+      "authorization": "explicit-human-approval",
+      "from": "rendered-critique",
+      "to": "interaction-states"
+    },
+    {
+      "artifact": "recapture requirements after authorized repair",
+      "authorization": "explicit-human-approval",
+      "from": "release-gate",
+      "to": "review-evidence"
+    }
+  ],
+  "forbidden_actions": [
+    "execute a downstream Skill inside the Recipe definition",
+    "automatically select taste, promote a prototype, accept risk, repair source from review, or release",
+    "remote Git, merge, deploy, provider mutation, or external write",
+    "claim Phase 9 model evidence, Phase 10 human approval, or released status"
+  ],
+  "gates": [
+    "every active step has satisfied prerequisites and a compatible permission identity",
+    "review and evidence steps cannot mutate product source",
+    "static source inspection cannot satisfy rendered evidence",
+    "all required UI states, viewports, accessibility, content, motion, and AI branches are explicitly applied or marked not applicable with rationale",
+    "final release disposition remains human-owned",
+    "human approval is a non-executable control point and never grants the reviewer source-write authority",
+    "accepted findings route to a separate remediator identity; repaired UI invalidates stale evidence and must be recaptured"
+  ],
+  "human_checkpoints": [
+    "approve unresolved visual direction and taste choices before production promotion",
+    "select a prototype variant before promotion when variants are used",
+    "authorize source remediation separately from every review finding",
+    "accept residual risk and make the final release disposition"
+  ],
+  "id": "complete-ui-design-and-review",
+  "inputs": [
+    "approved product behavior and acceptance criteria",
+    "design and brand authority",
+    "project or existing-interface context",
+    "supported routes, states, viewports, input modes, and assistive technologies",
+    "explicit source, artifact, local-exec, and external-read authorization"
+  ],
+  "outputs": [
+    "UI direction and preservation contracts",
+    "authorized UI implementation artifacts",
+    "current rendered evidence manifest",
+    "independent findings and human-owned release recommendation"
+  ],
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "steps": [
+    {
+      "depends_on": [],
+      "gates": [
+        "Routing must not smuggle design, review, source mutation, browser capture, or release judgment into the intake artifact.",
+        "authority-and-write-boundary"
+      ],
+      "id": "route",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "UI task classification",
+        "authorization and write-boundary record",
+        "next-capability route",
+        "missing-input and stop-condition list"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "ui-task-routing-and-governance@0.1.0-v2-candidate",
+      "when": "always"
+    },
+    {
+      "depends_on": [
+        "route"
+      ],
+      "gates": [
+        "No existing route, content obligation, analytics event, SEO contract, user task, or behavior may be silently removed because it appears visually obsolete.",
+        "authority-and-write-boundary"
+      ],
+      "id": "preserve-existing",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "current-state UI audit",
+        "preservation and migration contract",
+        "invariant test map",
+        "redesign risk ledger"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "existing-interface-redesign-and-preservation@0.1.0-v2-candidate",
+      "when": "existing interface or redesign request"
+    },
+    {
+      "depends_on": [
+        "route"
+      ],
+      "gates": [
+        "Observed external values are evidence, not project authority: no project token, copied asset, or design decision may be written or approved by this capability.",
+        "authority-and-write-boundary"
+      ],
+      "id": "extract-external-tokens",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "authorized external primitive inventory",
+        "provenance and confidence ledger",
+        "normalized candidate token map",
+        "unknown and conflict register"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "external-design-token-extraction-and-normalization@0.1.0-v2-candidate",
+      "when": "authorized external captures or files supplied"
+    },
+    {
+      "depends_on": [
+        "route"
+      ],
+      "gates": [
+        "The design direction cannot pass unless each major visual or spatial choice traces to product purpose, audience, content, brand authority, or an explicitly human-owned taste decision.",
+        "authority-and-write-boundary"
+      ],
+      "id": "direction",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "design evidence read",
+        "user-flow and information-hierarchy contract",
+        "visual and spatial direction",
+        "design decision ledger"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "design-context-and-direction-contract@0.1.0-v2-candidate",
+      "when": "new design, approved redesign, or selected visual work"
+    },
+    {
+      "depends_on": [
+        "direction"
+      ],
+      "gates": [
+        "At least two variants must differ structurally on declared axes; palette-only or typography-only alternatives do not count as divergence.",
+        "authority-and-write-boundary"
+      ],
+      "id": "prototype-variants",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "isolated working variants",
+        "equivalent comparison captures",
+        "tradeoff matrix",
+        "human selection and promotion handoff"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "divergent-prototyping-and-variant-selection@0.1.0-v2-candidate",
+      "when": "material uncertainty merits divergent working variants"
+    },
+    {
+      "depends_on": [
+        "direction"
+      ],
+      "gates": [
+        "Every prominent visual device must serve hierarchy, task, content, state, or evidenced brand identity; unsupported decoration and generic template motifs must be removed.",
+        "authority-and-write-boundary"
+      ],
+      "id": "visual-language",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "visual-language specification",
+        "implemented visual grammar",
+        "anti-template audit",
+        "taste-decision register"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "visual-language-and-anti-template-controls@0.1.0-v2-candidate",
+      "when": "visual implementation is in scope"
+    },
+    {
+      "depends_on": [
+        "direction"
+      ],
+      "gates": [
+        "Do not create a parallel design system, token alias maze, or component abstraction when the existing project foundation can express the required states.",
+        "authority-and-write-boundary"
+      ],
+      "id": "design-system",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "semantic token set",
+        "component contract catalog",
+        "theme and state rules",
+        "persistence and exception ledger"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "design-system-foundation-and-token-extraction@0.1.0-v2-candidate",
+      "when": "tokens or reusable components are required"
+    },
+    {
+      "depends_on": [
+        "direction"
+      ],
+      "gates": [
+        "No placeholder, invented claim, unverifiable metric, fake social proof, or unlicensed asset may enter a candidate presented as realistic or release-ready.",
+        "authority-and-write-boundary"
+      ],
+      "id": "authentic-content",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "interface copy deck",
+        "realistic content fixtures",
+        "asset provenance ledger",
+        "state-content matrix"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "content-copy-and-authentic-assets@0.1.0-v2-candidate",
+      "when": "interface contains product copy, records, imagery, icons, or claims"
+    },
+    {
+      "depends_on": [
+        "direction"
+      ],
+      "gates": [
+        "Desktop and mobile endpoints are insufficient: the layout must survive intermediate widths, 200% zoom, long or localized content, overflow, and touch-target constraints without losing task order.",
+        "authority-and-write-boundary"
+      ],
+      "id": "responsive-composition",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "responsive composition source",
+        "breakpoint and reflow contract",
+        "spatial hierarchy map",
+        "multi-width stress evidence"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "responsive-layout-and-spatial-composition@0.1.0-v2-candidate",
+      "when": "multi-viewport interface is in scope"
+    },
+    {
+      "depends_on": [
+        "responsive-composition"
+      ],
+      "gates": [
+        "The happy path cannot pass alone: every applicable loading, empty, validation, error, permission, disabled, interruption, success, and recovery state must exist and be reachable for verification.",
+        "authority-and-write-boundary"
+      ],
+      "id": "interaction-states",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "interaction and state model",
+        "implemented controls/forms/navigation",
+        "state coverage matrix",
+        "recovery verification evidence"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "interaction-states-forms-and-navigation@0.1.0-v2-candidate",
+      "when": "controls, navigation, forms, async data, permission, or recovery exist"
+    },
+    {
+      "depends_on": [
+        "interaction-states"
+      ],
+      "gates": [
+        "A generic WCAG checklist cannot pass: every criterion must name a user task, state, expected observable behavior, and current evidence or explicit untested risk.",
+        "authority-and-write-boundary"
+      ],
+      "id": "accessibility",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "accessibility acceptance contract",
+        "assistive-technology test matrix",
+        "criterion evidence ledger",
+        "residual-risk report"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "accessibility-contracts-and-assistive-validation@0.1.0-v2-candidate",
+      "when": "interactive user-facing surface is in scope"
+    },
+    {
+      "depends_on": [
+        "interaction-states"
+      ],
+      "gates": [
+        "Motion without a named communication purpose, deterministic end state, interruption behavior, and information-equivalent reduced-motion path must be removed or blocked.",
+        "authority-and-write-boundary"
+      ],
+      "id": "motion",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "motion purpose map",
+        "implemented deterministic animation",
+        "reduced-motion behavior",
+        "interaction and performance evidence"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "purposeful-motion-and-animation-engineering@0.1.0-v2-candidate",
+      "when": "motion communicates hierarchy, navigation, feedback, progress, or state"
+    },
+    {
+      "depends_on": [
+        "interaction-states"
+      ],
+      "gates": [
+        "Never present generated content, confidence, personalization, or autonomous action as certain, authoritative, or irreversible when the system cannot prove it.",
+        "authority-and-write-boundary"
+      ],
+      "id": "ai-ux",
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "AI interaction-state model",
+        "uncertainty and provenance contract",
+        "correction and escalation flow",
+        "safe-failure acceptance criteria"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "ai-interaction-and-probabilistic-ux@0.1.0-v2-candidate",
+      "when": "probabilistic or agentic behavior is user-visible"
+    },
+    {
+      "depends_on": [
+        "accessibility"
+      ],
+      "gates": [
+        "A preflight item passes only with current criterion-linked evidence; unchecked, not-applicable without rationale, and source-inspection-only items remain unresolved.",
+        "authority-and-write-boundary"
+      ],
+      "id": "preflight",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "UI preflight result",
+        "blocking-finding register",
+        "evidence-gap list",
+        "residual-risk summary"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "cross-domain-ui-preflight-checklists@0.1.0-v2-candidate",
+      "when": "implementation is ready for cross-domain preflight"
+    },
+    {
+      "depends_on": [
+        "review-evidence"
+      ],
+      "gates": [
+        "Static source review, DOM assertions, or a single ideal screenshot cannot substitute for current rendered evidence across the declared routes, states, viewports, input modes, and motion behavior.",
+        "authority-and-write-boundary"
+      ],
+      "id": "rendered-critique",
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "rendered critique",
+        "prioritized reproducible findings",
+        "remediation hierarchy",
+        "recapture and disposition recommendation"
+      ],
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "skill_ref": "rendered-ui-critique-and-release-disposition@0.1.0-v2-candidate",
+      "when": "evidence manifest is complete"
+    },
+    {
+      "depends_on": [
+        "rendered-critique"
+      ],
+      "gates": [
+        "No release criterion may pass from source inspection, prior screenshots, or reviewer assertion when current rendered or interaction evidence is required.",
+        "authority-and-write-boundary"
+      ],
+      "id": "release-gate",
+      "mutation_scope": "run-output",
+      "outputs": [
+        "criterion-to-evidence matrix",
+        "deduplicated release findings",
+        "UI release recommendation",
+        "risk and recapture ledger"
+      ],
+      "permission_identity": "workspace-write",
+      "skill_ref": "evidence-based-ui-review-and-release-gates@0.1.0-v2-candidate",
+      "when": "specialist findings and current evidence are available"
+    }
+  ],
+  "version": "0.1.1-v2-candidate"
+}

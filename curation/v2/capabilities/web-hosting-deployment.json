@@ -1,0 +1,96 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:web-hosting-deployment",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0310",
+    "V2-FUSION-0311",
+    "V2-FUSION-0312",
+    "V2-FUSION-0313",
+    "V2-FUSION-0314",
+    "V2-FUSION-0315",
+    "V2-FUSION-0316",
+    "V2-FUSION-0317",
+    "V2-FUSION-0318",
+    "V2-FUSION-0319",
+    "V2-FUSION-0320",
+    "V2-FUSION-0321",
+    "V2-FUSION-0322",
+    "V2-FUSION-0323",
+    "V2-FUSION-0324"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Build artifact, provider project, environment, secrets boundary, deployment plan, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Web Hosting Deployment",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Deployment result, URL, verification evidence, provider metadata, and rollback handle."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=vercel and environment=managed-cloud; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "managed-cloud",
+      "id": "variant:vercel:deploy-to-vercel",
+      "provider": "vercel",
+      "source_root": "deploy-to-vercel"
+    }
+  ],
+  "responsibility": "Deploy a web application through an explicitly selected hosting provider adapter and authorization gate.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:deploy-to-vercel:001:root-responsibility",
+    "v2-root:deploy-to-vercel:002:deploy-to-vercel",
+    "v2-root:deploy-to-vercel:003:step-1-gather-project-state",
+    "v2-root:deploy-to-vercel:004:1-check-for-a-git-remote",
+    "v2-root:deploy-to-vercel:005:2-check-if-locally-linked-to-a-vercel-project-either-file-means-linked",
+    "v2-root:deploy-to-vercel:006:3-check-if-the-vercel-cli-is-installed-and-authenticated",
+    "v2-root:deploy-to-vercel:007:step-2-choose-a-deploy-method",
+    "v2-root:deploy-to-vercel:008:linked-vercel-exists-no-git-remote-vercel-deploy",
+    "v2-root:deploy-to-vercel:009:not-linked-cli-is-authenticated-link-first-then-deploy",
+    "v2-root:deploy-to-vercel:010:not-linked-cli-not-authenticated-install-auth-link-deploy",
+    "v2-root:deploy-to-vercel:011:deploy-current-directory",
+    "v2-root:deploy-to-vercel:012:deploy-specific-project",
+    "v2-root:deploy-to-vercel:013:deploy-existing-tarball",
+    "v2-root:deploy-to-vercel:014:agent-specific-notes",
+    "v2-root:deploy-to-vercel:015:troubleshooting"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "deploy-to-vercel/SKILL.md:105-134",
+    "deploy-to-vercel/SKILL.md:135-161",
+    "deploy-to-vercel/SKILL.md:15-19",
+    "deploy-to-vercel/SKILL.md:175-177",
+    "deploy-to-vercel/SKILL.md:178-180",
+    "deploy-to-vercel/SKILL.md:181-220",
+    "deploy-to-vercel/SKILL.md:20-22",
+    "deploy-to-vercel/SKILL.md:227-248",
+    "deploy-to-vercel/SKILL.md:23-25",
+    "deploy-to-vercel/SKILL.md:26-28",
+    "deploy-to-vercel/SKILL.md:270-296",
+    "deploy-to-vercel/SKILL.md:3-7",
+    "deploy-to-vercel/SKILL.md:53-92",
+    "deploy-to-vercel/SKILL.md:84-104",
+    "deploy-to-vercel/SKILL.md:9-19"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

@@ -1,0 +1,589 @@
+{
+  "candidate_responsibility": "Maintain customer contact, feedback synthesis, metric review, calibration, and the next learning cycle.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-003",
+    "ai-product-strategy:unit-018",
+    "ai-product-strategy:unit-019",
+    "ai-product-strategy:unit-020",
+    "ai-product-strategy:unit-037",
+    "analyzing-user-feedback:unit-001",
+    "analyzing-user-feedback:unit-002",
+    "analyzing-user-feedback:unit-003",
+    "analyzing-user-feedback:unit-004",
+    "analyzing-user-feedback:unit-005",
+    "analyzing-user-feedback:unit-009",
+    "analyzing-user-feedback:unit-010",
+    "metrics-dashboard:unit-012",
+    "metrics-dashboard:unit-013"
+  ],
+  "cluster_id": "cluster:feedback-and-continuous-learning-loop",
+  "decision_references": [
+    "V2-DEC-004"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/SKILL.md:26-29",
+    "ai-product-strategy/references/artifacts.md:33-44",
+    "ai-product-strategy/references/artifacts.md:335-338",
+    "ai-product-strategy/references/artifacts.md:345-348",
+    "ai-product-strategy/references/artifacts.md:355-358",
+    "analyzing-user-feedback/SKILL.md:21-25",
+    "analyzing-user-feedback/SKILL.md:26-30",
+    "analyzing-user-feedback/SKILL.md:36-40",
+    "analyzing-user-feedback/references/artifacts.md:12-16",
+    "analyzing-user-feedback/references/artifacts.md:7-11",
+    "analyzing-user-feedback/references/guest-insights.md:20-30",
+    "analyzing-user-feedback/references/guest-insights.md:46-56",
+    "metrics-dashboard/SKILL.md:65-70",
+    "metrics-dashboard/SKILL.md:71-75"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop:fusion:boundary",
+      "rule": "Maintain customer contact, feedback synthesis, metric review, calibration, and the next learning cycle."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop:fusion:inputs",
+      "rule": "Accept only: Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:feedback-and-continuous-learning-loop"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop:fusion:outputs",
+      "rule": "Produce only: A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-004"
+      ],
+      "id": "cluster:feedback-and-continuous-learning-loop:policy:data-governance",
+      "rule": "Before processing customer, proprietary, recorded, or externally judged data, require authorization, minimization, redaction, retention, external-transfer boundary, and deletion policy; otherwise return needs-input or blocked."
+    }
+  ],
+  "input_boundary": "Runtime metrics, customer feedback, experiment results, alerts, and residual assumptions.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "analyzing-user-feedback",
+        "metrics-dashboard"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "analyzing-user-feedback",
+        "metrics-dashboard"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy",
+        "analyzing-user-feedback",
+        "metrics-dashboard"
+      ]
+    }
+  ],
+  "output_boundary": "A review cadence, learning record, calibrated hypotheses, priorities, and the next discovery input.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "把 AI 产品作为从交互持续学习的系统，以团队处理数据和改善循环的能力衡量进展。; 区分开放式知识工作与高确定性 SOP，为两类任务选择不同控制模式。; 用数据摄取、reward、实验与 tuning 循环衡量产品学习 metabolism。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Explicit limits: 用于通过交互数据持续调优结果的 AI 产品；衡量学习循环而非静态功能发布。; 开放式工作允许探索；SOP 流程要求更高 determinism。; 必须有合法数据和 outcome；交互量不等于学习质量。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (method=4, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-003",
+        "ai-product-strategy:unit-018",
+        "ai-product-strategy:unit-019",
+        "ai-product-strategy:unit-020",
+        "ai-product-strategy:unit-037"
+      ]
+    },
+    {
+      "approach": "把 AI 产品作为从交互持续学习的系统，以团队处理数据和改善循环的能力衡量进展。; 区分开放式知识工作与高确定性 SOP，为两类任务选择不同控制模式。; 用数据摄取、reward、实验与 tuning 循环衡量产品学习 metabolism。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348"
+      ],
+      "limitations": "Explicit limits: 用于通过交互数据持续调优结果的 AI 产品；衡量学习循环而非静态功能发布。; 开放式工作允许探索；SOP 流程要求更高 determinism。; 必须有合法数据和 outcome；交互量不等于学习质量。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-003",
+        "ai-product-strategy:unit-018",
+        "ai-product-strategy:unit-019",
+        "ai-product-strategy:unit-037"
+      ]
+    },
+    {
+      "approach": "用于通过交互数据持续调优结果的 AI 产品；衡量学习循环而非静态功能发布。; 开放式工作允许探索；SOP 流程要求更高 determinism。; 必须有合法数据和 outcome；交互量不等于学习质量。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Explicit limits: 用于通过交互数据持续调优结果的 AI 产品；衡量学习循环而非静态功能发布。; 开放式工作允许探索；SOP 流程要求更高 determinism。; 必须有合法数据和 outcome；交互量不等于学习质量。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (method=4, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-003",
+        "ai-product-strategy:unit-018",
+        "ai-product-strategy:unit-019",
+        "ai-product-strategy:unit-020",
+        "ai-product-strategy:unit-037"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "解释积累如何合法且持续增值。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Explicit limits: 只有许可、用户控制和真实增值成立时计入。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "体验式共情与解法解耦铁律：组织跨职能走查时严格遵循‘不准使用内部行话、不是来解决问题或提BUG’两大规则，沉浸式体验用户原生摩擦; 全员业务核心服务强制实践规范：要求全体员工（包括高管与产研）定期亲历业务核心履约或服务（如跑腿、客服），建立真实共情并捕获深层运营缺陷; 统计代表性过滤法则：声音大不等于需求广，必须严格审查发声群体的身份与大盘占比，杜绝被嗓门最大的极客少数派绑架",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Explicit limits: 组织内部产品走查或沉浸式体验会时的前置纪律; 建立企业全员用户同理心与一线运营连接机制; 评估高声量抗议或客诉时的理性甄别准则",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-001",
+        "analyzing-user-feedback:unit-002",
+        "analyzing-user-feedback:unit-003",
+        "analyzing-user-feedback:unit-004",
+        "analyzing-user-feedback:unit-005",
+        "analyzing-user-feedback:unit-009",
+        "analyzing-user-feedback:unit-010"
+      ]
+    },
+    {
+      "approach": "体验吐槽风暴（Complaint-Storms）操作规程：跨职能团队先投影邻近竞品逐屏记录困惑与痛点，随后以同等严苛标准审查自家产品屏幕; 产品运营双向反馈桥梁构建规程：设立专职 Product Operations 嵌入产研团队并对运营负责，将分布式一线市场客诉过滤为中心研发可规模化解决的共性技术课题; 大模型命令行智能体自动化文档分析规程：利用 CLI 代理自主扫描大容量访谈纪要与客诉文本，维护 Notebook 知识本提炼跨文档的核心共性洞察",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Explicit limits: 打破内部认知盲区、建立敏锐产品批判视角的团队工作坊; 跨国或多业务线规模化运营下的产研与一线协同架构; 利用 AI 批量处理非结构化用户研究与反馈资产",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-005",
+        "analyzing-user-feedback:unit-009",
+        "analyzing-user-feedback:unit-010"
+      ]
+    },
+    {
+      "approach": "组织内部产品走查或沉浸式体验会时的前置纪律; 建立企业全员用户同理心与一线运营连接机制; 评估高声量抗议或客诉时的理性甄别准则",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Explicit limits: 组织内部产品走查或沉浸式体验会时的前置纪律; 建立企业全员用户同理心与一线运营连接机制; 评估高声量抗议或客诉时的理性甄别准则",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-001",
+        "analyzing-user-feedback:unit-002",
+        "analyzing-user-feedback:unit-003",
+        "analyzing-user-feedback:unit-004",
+        "analyzing-user-feedback:unit-005",
+        "analyzing-user-feedback:unit-009",
+        "analyzing-user-feedback:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "体验阶段坚决推迟解决方案讨论，全心记录原生操作阻碍; 制度化设定员工履约频次，将现场摩擦转化为产品质量抓手; 审查反馈者的大盘占比（是否达10%）与实际人群代表性",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:7-11"
+      ],
+      "limitations": "Explicit limits: 组织内部产品走查或沉浸式体验会时的前置纪律; 建立企业全员用户同理心与一线运营连接机制; 评估高声量抗议或客诉时的理性甄别准则",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-001",
+        "analyzing-user-feedback:unit-002",
+        "analyzing-user-feedback:unit-003",
+        "analyzing-user-feedback:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "analyzing-user-feedback",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "第四步设定四级复盘审查节奏：每日审查运行健康（错误、延迟、核心流程）；每周审查输入指标与互动趋势；每月审查北极星、商业指标与 OKR 进展；每季度进行战略审查与指标校准。; 第五步定义告警机制三要素：明确触发异常排查的阈值界限；明确告警触达对象（责任人/角色）与触达通道；明确预期的应急响应时限（SLA）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Explicit limits: 复盘周期必须覆盖每日、每周、每月、每季度四个梯度，各周期对应专属的关注层级。; 每个关键告警必须具备阈值、接收方/渠道与响应时限三要素，缺一不可。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-012",
+        "metrics-dashboard:unit-013"
+      ]
+    },
+    {
+      "approach": "第五步定义告警机制三要素：明确触发异常排查的阈值界限；明确告警触达对象（责任人/角色）与触达通道；明确预期的应急响应时限（SLA）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Explicit limits: 每个关键告警必须具备阈值、接收方/渠道与响应时限三要素，缺一不可。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-013"
+      ]
+    },
+    {
+      "approach": "复盘周期必须覆盖每日、每周、每月、每季度四个梯度，各周期对应专属的关注层级。; 每个关键告警必须具备阈值、接收方/渠道与响应时限三要素，缺一不可。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Explicit limits: 复盘周期必须覆盖每日、每周、每月、每季度四个梯度，各周期对应专属的关注层级。; 每个关键告警必须具备阈值、接收方/渠道与响应时限三要素，缺一不可。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-012",
+        "metrics-dashboard:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "验证是否定义了日、周、月、季四级复盘节奏及其对应的具体指标审查范围。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70"
+      ],
+      "limitations": "Explicit limits: 复盘周期必须覆盖每日、每周、每月、每季度四个梯度，各周期对应专属的关注层级。",
+      "source_id": "metrics-dashboard",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "metrics-dashboard:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "metrics-dashboard",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 4,
+        "rule": 1
+      },
+      "evidence": [
+        "ai-product-strategy/SKILL.md:26-29",
+        "ai-product-strategy/references/artifacts.md:33-44",
+        "ai-product-strategy/references/artifacts.md:335-338",
+        "ai-product-strategy/references/artifacts.md:345-348",
+        "ai-product-strategy/references/artifacts.md:355-358"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-003",
+        "ai-product-strategy:unit-018",
+        "ai-product-strategy:unit-019",
+        "ai-product-strategy:unit-020",
+        "ai-product-strategy:unit-037"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 4
+      },
+      "evidence": [
+        "analyzing-user-feedback/SKILL.md:21-25",
+        "analyzing-user-feedback/SKILL.md:26-30",
+        "analyzing-user-feedback/SKILL.md:36-40",
+        "analyzing-user-feedback/references/artifacts.md:12-16",
+        "analyzing-user-feedback/references/artifacts.md:7-11",
+        "analyzing-user-feedback/references/guest-insights.md:20-30",
+        "analyzing-user-feedback/references/guest-insights.md:46-56"
+      ],
+      "source_id": "analyzing-user-feedback",
+      "unit_ids": [
+        "analyzing-user-feedback:unit-001",
+        "analyzing-user-feedback:unit-002",
+        "analyzing-user-feedback:unit-003",
+        "analyzing-user-feedback:unit-004",
+        "analyzing-user-feedback:unit-005",
+        "analyzing-user-feedback:unit-009",
+        "analyzing-user-feedback:unit-010"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "metrics-dashboard/SKILL.md:65-70",
+        "metrics-dashboard/SKILL.md:71-75"
+      ],
+      "source_id": "metrics-dashboard",
+      "unit_ids": [
+        "metrics-dashboard:unit-012",
+        "metrics-dashboard:unit-013"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-003",
+    "ai-product-strategy:unit-018",
+    "ai-product-strategy:unit-019",
+    "ai-product-strategy:unit-020",
+    "ai-product-strategy:unit-037",
+    "analyzing-user-feedback:unit-001",
+    "analyzing-user-feedback:unit-002",
+    "analyzing-user-feedback:unit-003",
+    "analyzing-user-feedback:unit-004",
+    "analyzing-user-feedback:unit-005",
+    "analyzing-user-feedback:unit-009",
+    "analyzing-user-feedback:unit-010",
+    "metrics-dashboard:unit-012",
+    "metrics-dashboard:unit-013"
+  ]
+}

@@ -1,0 +1,596 @@
+{
+  "candidate_responsibility": "Critique real UI renders and animation behavior, prioritize evidence-backed findings, and issue a bounded disposition.",
+  "canonical_unit_ids": [
+    "impeccable:unit-003",
+    "impeccable:unit-010",
+    "impeccable:unit-015",
+    "redesign-existing-projects:unit-010",
+    "redesign-existing-projects:unit-012",
+    "review-animations:unit-001",
+    "review-animations:unit-002",
+    "review-animations:unit-004",
+    "review-animations:unit-005",
+    "review-animations:unit-006",
+    "review-animations:unit-007",
+    "review-animations:unit-008",
+    "review-animations:unit-022"
+  ],
+  "cluster_id": "cluster:rendered-ui-critique-and-release-disposition",
+  "decision_references": [
+    "V2-DEC-002"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "impeccable/SKILL.md:15-19",
+    "impeccable/reference/craft-floor.md:1-18",
+    "impeccable/reference/craft-floor.md:11-12",
+    "impeccable/reference/new-work.md:104-120",
+    "redesign-existing-projects/SKILL.md:123-131",
+    "redesign-existing-projects/SKILL.md:159-170",
+    "review-animations/SKILL.md:1-10",
+    "review-animations/SKILL.md:109-112",
+    "review-animations/SKILL.md:11-18",
+    "review-animations/SKILL.md:43-61",
+    "review-animations/SKILL.md:62-75",
+    "review-animations/SKILL.md:76-90",
+    "review-animations/SKILL.md:91-108",
+    "review-animations/STANDARDS.md:178-187"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition:fusion:boundary",
+      "rule": "Critique real UI renders and animation behavior, prioritize evidence-backed findings, and issue a bounded disposition."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition:fusion:inputs",
+      "rule": "Accept only: Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition:fusion:outputs",
+      "rule": "Produce only: Prioritized findings, remediation hierarchy, verdict, recapture requirements, and residual risk."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-002"
+      ],
+      "id": "cluster:rendered-ui-critique-and-release-disposition:policy:contextual-aesthetics",
+      "rule": "Treat typography, color, card, eyebrow, theme, motion, and other aesthetic prescriptions as context-selected variants. Only accessibility, safety, and performance constraints may be global hard rules."
+    }
+  ],
+  "input_boundary": "Rendered captures, interaction traces, design criteria, accessibility context, and implementation constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "impeccable"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "impeccable",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "impeccable",
+        "redesign-existing-projects",
+        "review-animations"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "impeccable",
+        "redesign-existing-projects",
+        "review-animations"
+      ]
+    }
+  ],
+  "output_boundary": "Prioritized findings, remediation hierarchy, verdict, recapture requirements, and residual risk.",
+  "retained_auxiliary_unit_ids": [
+    "impeccable:craft-floor:verify-spacing"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "确立核心原则与有界审查机制：全力以赴且交付物必须完备；构想宏大且独具一格；实行有界轮次验证（桌面端与移动端批次打包走查，至多两轮修复闭环，严禁陷入无休止且高成本的自我审查循环）。; 工艺底线机械硬指标核验：对比度（正文≥4.5:1，大字≥3:1，次级文字需提色禁用中性灰）；阴影深度（必须有位移与柔和模糊）；间距（计算值分组）；字体（行宽65-75ch，标题上方间距大于下方）；动效（单一精心编排，非散乱hover）；状态完备；系统边角料重绘（选区、光标、滚动条、聚焦环）。; 四状态独立终审与文档闭环门禁：批次收集桌面端与移动端截图，交由独立审核员进行严格判定；严格依据 recapture（证据重截）、rebuild（保真度崩溃全局重构）、fix（单批次修复）与 ship（达标放行）流转；至多两轮修复封顶；放行后由 documenter 闭环更新 DESIGN.md。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Explicit limits: 审查必须批量合并执行（桌面+移动端），严禁为单个微调反复单独截图；两轮修复为绝对上限。; 所有生成的 UI 代码必须一次性通过此机械核验，且各项检查合并在批次走查中统一校验。; 终审必须由独立审查视角执行；处理流转必须严格对齐四大处置状态，两轮未决则向用户透明呈现。",
+      "source_id": "impeccable",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:verify-spacing",
+        "impeccable:unit-003",
+        "impeccable:unit-010",
+        "impeccable:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "审查必须批量合并执行（桌面+移动端），严禁为单个微调反复单独截图；两轮修复为绝对上限。; 所有生成的 UI 代码必须一次性通过此机械核验，且各项检查合并在批次走查中统一校验。; 终审必须由独立审查视角执行；处理流转必须严格对齐四大处置状态，两轮未决则向用户透明呈现。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Explicit limits: 审查必须批量合并执行（桌面+移动端），严禁为单个微调反复单独截图；两轮修复为绝对上限。; 所有生成的 UI 代码必须一次性通过此机械核验，且各项检查合并在批次走查中统一校验。; 终审必须由独立审查视角执行；处理流转必须严格对齐四大处置状态，两轮未决则向用户透明呈现。",
+      "source_id": "impeccable",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:verify-spacing",
+        "impeccable:unit-003",
+        "impeccable:unit-010",
+        "impeccable:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "验证走查是否在双端批次中运行，且修复轮次不超过两轮；若存在无界微调试错循环则判定失败。; 检查交付代码中对比度是否≥4.5:1，正文行宽是否在 65-75ch，系统滚动条与选区是否经过重绘；任一项违规判定不合格。; 验证审查是否采用四状态判定标准，确认满足两轮封顶机制并在放行后更新 DESIGN.md 规范。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Explicit limits: 审查必须批量合并执行（桌面+移动端），严禁为单个微调反复单独截图；两轮修复为绝对上限。; 所有生成的 UI 代码必须一次性通过此机械核验，且各项检查合并在批次走查中统一校验。; 终审必须由独立审查视角执行；处理流转必须严格对齐四大处置状态，两轮未决则向用户透明呈现。",
+      "source_id": "impeccable",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (gate=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:verify-spacing",
+        "impeccable:unit-003",
+        "impeccable:unit-010",
+        "impeccable:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "防范战略性遗漏（Strategic Omissions）：主动补齐 AI 经常遗忘的关键基础设施，包括页脚法律条款与隐私政策链接、全流程返回导航路径、品牌化 404 错误页、前端表单多格式校验、键盘跳转主内容 skip-to-content 链接以及合规 Cookie 授权横幅。; 确立七级修复优先级次序（Fix Priority）：1. 字体置换（低风险高回报） -> 2. 配色净化 -> 3. 悬停与按压微状态 -> 4. 布局与留白重构 -> 5. 替换通用老套组件 -> 6. 补全加载/空值/错误三态 -> 7. 排版间距终极打磨。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Explicit limits: 产品交付前必须核验所有兜底与辅助路径，消除用户流死胡同。; 执行改造任务必须按照优先级逐步实施，以最小破坏风险换取最大的体验升级。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-010",
+        "redesign-existing-projects:unit-012"
+      ]
+    },
+    {
+      "approach": "确立七级修复优先级次序（Fix Priority）：1. 字体置换（低风险高回报） -> 2. 配色净化 -> 3. 悬停与按压微状态 -> 4. 布局与留白重构 -> 5. 替换通用老套组件 -> 6. 补全加载/空值/错误三态 -> 7. 排版间距终极打磨。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Explicit limits: 执行改造任务必须按照优先级逐步实施，以最小破坏风险换取最大的体验升级。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-012"
+      ]
+    },
+    {
+      "approach": "产品交付前必须核验所有兜底与辅助路径，消除用户流死胡同。; 执行改造任务必须按照优先级逐步实施，以最小破坏风险换取最大的体验升级。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Explicit limits: 产品交付前必须核验所有兜底与辅助路径，消除用户流死胡同。; 执行改造任务必须按照优先级逐步实施，以最小破坏风险换取最大的体验升级。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-010",
+        "redesign-existing-projects:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否补齐了法律链接、返回导航、404、skip-link 与表单校验。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131"
+      ],
+      "limitations": "Explicit limits: 产品交付前必须核验所有兜底与辅助路径，消除用户流死胡同。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义动效审查技能的专属职责边界：专注于依照顶级工艺标准审查动效与过渡代码，严禁编写业务功能、修复无关缺陷或审查非动效代码。; 确立动效审查的工作姿态：作为具备极度苛刻品味的高级设计工程师，以动效自然手感为准绳，默认质疑与严格标记，唯有真正达标方可批准。; 定义严苛升级升级触发器（Aggressive Escalation Triggers）：凡出现 transition: all、scale(0)、UI 使用 ease-in、键盘快捷键动画、时长超 300ms、未锚定触发器、Toast 使用 keyframes、非 GPU 属性布局动画或父级 CSS 变量引发重算风暴等，一律强制阻断。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/SKILL.md:91-108",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "limitations": "Explicit limits: 仅用于动画与动效代码走查，遇非动效代码请求直接拒绝并重定向。; 审查过程中凡迟滞、原点错误、频次过高或掉帧的动画一律视为缺陷而非合格。; 只要 diff 中命中任一触发项，即触发一票否决级审查阻断。",
+      "source_id": "review-animations",
+      "strengths": "Provides 8 source-grounded atom(s) for responsibility (gate=2, method=3, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-001",
+        "review-animations:unit-002",
+        "review-animations:unit-004",
+        "review-animations:unit-005",
+        "review-animations:unit-006",
+        "review-animations:unit-007",
+        "review-animations:unit-008",
+        "review-animations:unit-022"
+      ]
+    },
+    {
+      "approach": "定义动效整改偏好阶梯（Remedial Preference Hierarchy）：首选删除动画 -> 缩减时长与属性 -> 修正缓动曲线 -> 纠正原点与缩放值 -> 转为可中断过渡 -> 迁移至 GPU 属性 -> 应用非对称时序 -> 细节打磨 -> a11y 与调性调优。; 规范审查输出的第一部分格式：强制采用单一 Markdown 发现表格（| Before | After | Why |），一行记录一处缺陷，严禁使用 Before/After 叙述文本列表。; 明确动效实现与调试心智模型：预设动效优先采用 CSS/WAAPI，动态手势与物理交互采用 JS/Spring；对手感不确定时采用慢放与隔夜审视而非随意猜测。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "limitations": "Explicit limits: 提出重构建议时必须遵循从前至后的优先阶梯，严禁先建议复杂打磨后建议删减。; 审查发现清单必须严格格式化为包含 Before、After、Why 的标准对比表格。; 技术选型与审查评估时遵从预设走 CSS、手势走 JS 物理引擎的分工原则。",
+      "source_id": "review-animations",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-005",
+        "review-animations:unit-006",
+        "review-animations:unit-008",
+        "review-animations:unit-022"
+      ]
+    },
+    {
+      "approach": "仅用于动画与动效代码走查，遇非动效代码请求直接拒绝并重定向。; 审查过程中凡迟滞、原点错误、频次过高或掉帧的动画一律视为缺陷而非合格。; 只要 diff 中命中任一触发项，即触发一票否决级审查阻断。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/SKILL.md:91-108",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "limitations": "Explicit limits: 仅用于动画与动效代码走查，遇非动效代码请求直接拒绝并重定向。; 审查过程中凡迟滞、原点错误、频次过高或掉帧的动画一律视为缺陷而非合格。; 只要 diff 中命中任一触发项，即触发一票否决级审查阻断。",
+      "source_id": "review-animations",
+      "strengths": "Provides 8 source-grounded atom(s) for boundary-and-applicability (gate=2, method=3, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-001",
+        "review-animations:unit-002",
+        "review-animations:unit-004",
+        "review-animations:unit-005",
+        "review-animations:unit-006",
+        "review-animations:unit-007",
+        "review-animations:unit-008",
+        "review-animations:unit-022"
+      ]
+    },
+    {
+      "approach": "规范审查输出的第一部分格式：强制采用单一 Markdown 发现表格（| Before | After | Why |），一行记录一处缺陷，严禁使用 Before/After 叙述文本列表。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "review-animations/SKILL.md:76-90"
+      ],
+      "limitations": "Explicit limits: 审查发现清单必须严格格式化为包含 Before、After、Why 的标准对比表格。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-006"
+      ]
+    },
+    {
+      "approach": "核验审查范围是否严格收敛于动效与过渡实现。; 核验审查姿态是否贯彻默认标记（Default to flagging）与凭实力通过准则。; 核验触发器清单是否覆盖常见高频动效反模式并触发阻断。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:91-108"
+      ],
+      "limitations": "Explicit limits: 仅用于动画与动效代码走查，遇非动效代码请求直接拒绝并重定向。; 审查过程中凡迟滞、原点错误、频次过高或掉帧的动画一律视为缺陷而非合格。; 只要 diff 中命中任一触发项，即触发一票否决级审查阻断。",
+      "source_id": "review-animations",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (gate=2, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-001",
+        "review-animations:unit-002",
+        "review-animations:unit-004",
+        "review-animations:unit-007"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/SKILL.md:91-108",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/SKILL.md:91-108",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 2,
+        "rule": 2
+      },
+      "evidence": [
+        "impeccable/SKILL.md:15-19",
+        "impeccable/reference/craft-floor.md:1-18",
+        "impeccable/reference/craft-floor.md:11-12",
+        "impeccable/reference/new-work.md:104-120"
+      ],
+      "source_id": "impeccable",
+      "unit_ids": [
+        "impeccable:craft-floor:verify-spacing",
+        "impeccable:unit-003",
+        "impeccable:unit-010",
+        "impeccable:unit-015"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:123-131",
+        "redesign-existing-projects/SKILL.md:159-170"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-010",
+        "redesign-existing-projects:unit-012"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 2,
+        "method": 3,
+        "rule": 2,
+        "template": 1
+      },
+      "evidence": [
+        "review-animations/SKILL.md:1-10",
+        "review-animations/SKILL.md:109-112",
+        "review-animations/SKILL.md:11-18",
+        "review-animations/SKILL.md:43-61",
+        "review-animations/SKILL.md:62-75",
+        "review-animations/SKILL.md:76-90",
+        "review-animations/SKILL.md:91-108",
+        "review-animations/STANDARDS.md:178-187"
+      ],
+      "source_id": "review-animations",
+      "unit_ids": [
+        "review-animations:unit-001",
+        "review-animations:unit-002",
+        "review-animations:unit-004",
+        "review-animations:unit-005",
+        "review-animations:unit-006",
+        "review-animations:unit-007",
+        "review-animations:unit-008",
+        "review-animations:unit-022"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "impeccable:craft-floor:verify-spacing",
+    "impeccable:unit-003",
+    "impeccable:unit-010",
+    "impeccable:unit-015",
+    "redesign-existing-projects:unit-010",
+    "redesign-existing-projects:unit-012",
+    "review-animations:unit-001",
+    "review-animations:unit-002",
+    "review-animations:unit-004",
+    "review-animations:unit-005",
+    "review-animations:unit-006",
+    "review-animations:unit-007",
+    "review-animations:unit-008",
+    "review-animations:unit-022"
+  ]
+}

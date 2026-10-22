@@ -1,0 +1,114 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:apm-instrumentation-verification",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0221",
+    "V2-FUSION-0223",
+    "V2-FUSION-0224",
+    "V2-FUSION-0225",
+    "V2-FUSION-0226",
+    "V2-FUSION-0227",
+    "V2-FUSION-0228",
+    "V2-FUSION-0264",
+    "V2-FUSION-0266",
+    "V2-FUSION-0267",
+    "V2-FUSION-0268",
+    "V2-FUSION-0269",
+    "V2-FUSION-0270",
+    "V2-FUSION-0271"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Instrumented environment, expected service identity, provider read access, and observation window."
+  ],
+  "lifecycle_stage_id": "stage:12-observation-canary",
+  "name": "Apm Instrumentation Verification",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Verification verdict, missing signals, service identity findings, and next action."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "external-read",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/troubleshoot-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/verify-ssi",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/verify-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/troubleshoot-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/verify-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/verify-ssi"
+    }
+  ],
+  "responsibility": "Verify that APM instrumentation emits correct service, environment, version, and trace evidence.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:011:step-6-verify",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:001:root-responsibility",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:002:verify-apm-ssi-on-kubernetes",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:004:step-1-confirm-pods-are-instrumented",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:005:step-2-confirm-the-tracer-is-reporting-telemetry",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:006:step-3-confirm-tracer-configuration",
+    "v2-root:dd-apm/k8s-ssi/verify-ssi:007:security-constraints",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:015:step-7-verify",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:001:root-responsibility",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:002:verify-apm-ssi-on-linux",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:004:step-1-confirm-the-process-is-injected",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:005:step-2-confirm-the-agent-is-receiving-traces",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:006:step-3-confirm-the-service-is-visible-in-datadog",
+    "v2-root:dd-apm/linux-ssi/verify-ssi:007:security-constraints"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:404-420",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:12-51",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:123-142",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:156-159",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:3-7",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:82-96",
+    "dd-apm/k8s-ssi/verify-ssi/SKILL.md:97-111",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:393-410",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:12-51",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:123-141",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:142-181",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:195-198",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:3-7",
+    "dd-apm/linux-ssi/verify-ssi/SKILL.md:85-122"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

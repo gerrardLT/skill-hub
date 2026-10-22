@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "tool readiness verdict",
+    "executable and version evidence",
+    "bounded smoke command record",
+    "upgrade or bootstrap handoff"
+  ],
+  "capability_id": "capability:tool-runtime-readiness",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "PATH presence is not readiness: the exact executable, version, required capability, invocation, and bounded smoke behavior must be verified without installation or configuration changes.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "tool-runtime-readiness",
+  "inputs": [
+    "A tool request, project path, shell environment, and declared prerequisite contract."
+  ],
+  "outputs": [
+    "tool readiness verdict",
+    "executable and version evidence",
+    "bounded smoke command record",
+    "upgrade or bootstrap handoff"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "executable-path",
+      "version",
+      "required-capability",
+      "bounded-smoke",
+      "no-install",
+      "failure-mode"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Verify one required local tool runtime, version, invocation, capability, and safe failure mode without installing or upgrading it.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

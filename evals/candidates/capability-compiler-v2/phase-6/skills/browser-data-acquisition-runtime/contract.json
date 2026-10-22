@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "captured evidence or structured data",
+    "route and field provenance",
+    "access and reuse limits",
+    "cleanup and deletion status"
+  ],
+  "capability_id": "capability:browser-data-acquisition-runtime",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "A valid login does not authorize acquisition or reuse: each origin, field, purpose, action, transfer, retention, and deletion boundary must be explicit, and all acquisition remains read-only.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "browser-data-acquisition-runtime",
+  "inputs": [
+    "Target URL, authentication authority, data-governance boundary, browser runtime, and extraction scope."
+  ],
+  "outputs": [
+    "captured evidence or structured data",
+    "route and field provenance",
+    "access and reuse limits",
+    "cleanup and deletion status"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "authorized-origin",
+      "authorized-fields",
+      "purpose-limitation",
+      "read-only",
+      "provenance",
+      "reuse-boundary",
+      "cleanup-deletion"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Acquire only authorized page evidence or structured data through an approved read-only browser session, preserving provenance, limits, and cleanup.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

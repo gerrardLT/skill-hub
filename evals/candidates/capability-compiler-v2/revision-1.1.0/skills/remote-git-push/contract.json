@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "remote push receipt",
+    "source and destination ref identity",
+    "before and after remote SHA",
+    "failure and pull-request handoff"
+  ],
+  "capability_id": "capability:remote-git-push",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-git-push",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Push authorization covers one exact non-force refspec and expected remote state; it does not authorize force, deletion, tags, other refs, PR changes, merge, or deploy.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "remote-git-push",
+  "inputs": [
+    "Verified source ref, approved remote and target ref, current authorization, credential boundary, and redaction result."
+  ],
+  "outputs": [
+    "remote push receipt",
+    "source and destination ref identity",
+    "before and after remote SHA",
+    "failure and pull-request handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "exact-refspec",
+      "non-force",
+      "expected-remote-SHA",
+      "per-action-authorization",
+      "push-receipt",
+      "no-PR-action"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Push one verified local branch to one approved remote ref without force under fresh per-action authorization and exact lease expectations.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

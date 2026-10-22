@@ -1,0 +1,99 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/unfreeze/SKILL.md:4]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/unfreeze/SKILL.md:4]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/unfreeze/SKILL.md:4]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/unfreeze/SKILL.md:4]"
+  ],
+  "permissions_side_effects": [
+    "remove edit restrictions [gstack/unfreeze/SKILL.md:8]",
+    "Use when asked to \"unfreeze\", \"unlock edits\", \"remove freeze\", or [gstack/unfreeze/SKILL.md:20]",
+    "Remove the edit restriction set by /freeze, allowing edits to all directories. [gstack/unfreeze/SKILL.md:25]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/unfreeze/SKILL.md:4"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Clear the freeze boundary set by /freeze, allowing edits to all directories again. [gstack/unfreeze/SKILL.md:4]",
+  "root_id": "skill-root:gstack/unfreeze",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/unfreeze/SKILL.md:13]"
+  ],
+  "skill_path": "gstack/unfreeze/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 8,
+      "line_start": 4,
+      "path": "gstack/unfreeze/SKILL.md"
+    },
+    {
+      "line_end": 17,
+      "line_start": 17,
+      "path": "gstack/unfreeze/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/unfreeze/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "gstack/unfreeze/SKILL.md"
+    }
+  ],
+  "source_sha256": "e0a396b1304d002e83880a780cf17e0704c3ada205f6f3f0d6e5e7cf5d15f340",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e0a396b1304d002e83880a780cf17e0704c3ada205f6f3f0d6e5e7cf5d15f340",
+        "content-review:49-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/unfreeze/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:079d600dcb90cc73074724c776f8482f01783dcfa9a72154a2b699cd7e4a01fe",
+        "content-review:45-lines"
+      ],
+      "path": "gstack/unfreeze/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/unfreeze/SKILL.md:1-12]",
+    "Declared tool: Read [gstack/unfreeze/SKILL.md:1-12]"
+  ],
+  "trigger": "Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack) [gstack/unfreeze/SKILL.md:4]",
+  "unique_methods": [
+    "/unfreeze — Clear Freeze Boundary [gstack/unfreeze/SKILL.md:23]",
+    "Clear the boundary [gstack/unfreeze/SKILL.md:32]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/unfreeze/SKILL.md:4]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/unfreeze/SKILL.md:4]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [gstack/unfreeze/SKILL.md:4]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [gstack/unfreeze/SKILL.md:4]"
+  ],
+  "workflow": [
+    "When to invoke this skill [gstack/unfreeze/SKILL.md:17]",
+    "/unfreeze — Clear Freeze Boundary [gstack/unfreeze/SKILL.md:23]",
+    "Clear the boundary [gstack/unfreeze/SKILL.md:32]"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "condition": {
+      "type": "string"
+    },
+    "dependency_records": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "description": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "execution_state": {
+      "const": "not-run-phase-9"
+    },
+    "exit_contract": {
+      "type": "string"
+    },
+    "failure_policy": {
+      "type": "object"
+    },
+    "gates": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "human_checkpoint": {
+      "type": "string"
+    },
+    "id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "mandatory_stage": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "stage_id": {
+      "pattern": "^stage:",
+      "type": "string"
+    },
+    "stage_order": {
+      "maximum": 15,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "steps": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "activation": {
+            "enum": [
+              "conditional",
+              "disabled-pending-current-authorization"
+            ]
+          },
+          "candidate_path": {
+            "type": "string"
+          },
+          "condition": {
+            "minLength": 20,
+            "type": "string"
+          },
+          "contract_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "default_state": {
+            "const": "skipped"
+          },
+          "dependency_refs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "evidence_contract": {
+            "const": [
+              "artifact identities and hashes",
+              "decision and authority record",
+              "completion evidence",
+              "known gaps and residual risk"
+            ]
+          },
+          "failure_routes": {
+            "type": "object"
+          },
+          "hard_gates": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "type": "string"
+          },
+          "inputs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mutation_scope": {
+            "type": "string"
+          },
+          "outputs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "permission_identity": {
+            "type": "string"
+          },
+          "remote_write": {
+            "type": "boolean"
+          },
+          "skill_ref": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "skill_ref",
+          "candidate_path",
+          "contract_sha256",
+          "condition",
+          "default_state",
+          "activation",
+          "permission_identity",
+          "mutation_scope",
+          "remote_write",
+          "inputs",
+          "outputs",
+          "hard_gates",
+          "dependency_refs",
+          "failure_routes",
+          "evidence_contract"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "description",
+    "gates",
+    "failure_policy",
+    "execution_state",
+    "stage_id",
+    "stage_order",
+    "mandatory_stage",
+    "condition",
+    "human_checkpoint",
+    "exit_contract",
+    "steps",
+    "dependency_records"
+  ],
+  "type": "object"
+}

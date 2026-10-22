@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "configured local authentication state",
+    "non-secret validation receipt",
+    "storage and origin boundary",
+    "expiry, cleanup, and rollback instructions"
+  ],
+  "capability_id": "capability:browser-authentication-setup",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-system-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "local-system-write",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Authentication setup grants neither page-data authority nor general browsing scope; credential values never enter prompts, logs, hashes, receipts, or artifacts.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "browser-authentication-setup",
+  "inputs": [
+    "Browser profile, target origin, credential authority, local-system write authorization, retention, and deletion policy."
+  ],
+  "outputs": [
+    "configured local authentication state",
+    "non-secret validation receipt",
+    "storage and origin boundary",
+    "expiry, cleanup, and rollback instructions"
+  ],
+  "permission_identity": "local-system-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "exact-origin",
+      "secure-storage",
+      "no-credential-output",
+      "non-secret-validation",
+      "expiry",
+      "cleanup",
+      "no-data-authority"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Configure authorized authentication state in one local browser profile for exact origins without exposing values or granting unrelated browsing authority.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

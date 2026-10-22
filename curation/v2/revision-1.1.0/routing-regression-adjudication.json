@@ -1,0 +1,16 @@
+{
+  "status": "owner-approved-corrected-fixtures-passed-with-original-failures-retained",
+  "observed": {"passed": 20, "total": 22, "would_execute_true": 0},
+  "failed_cases": [
+    {"id": "V2-P8-ROUTER-support", "frozen_expected": "stage-15-tool-runtime-support", "observed_target": "test-runtime-bootstrap"},
+    {"id": "V2-P8-HOLDOUT-tool", "frozen_expected": "stage-15-tool-runtime-support", "observed_target": "tool-runtime-readiness"}
+  ],
+  "inspection": "Both 1.0.0 and the candidate router contain identical atomic-precedence entries for these targets: one missing approved project-local test runtime routes to test-runtime-bootstrap; one approved existing runtime readiness question routes to tool-runtime-readiness; multiple runtime capabilities or unresolved ownership routes to stage-15-tool-runtime-support. The frozen Phase 8 expectations appear inconsistent with these later router entries.",
+  "decision": "Fresh 1.0.0 model calls selected the same atomic targets as the candidate on both cases, with would_execute false. This is evidence of an inherited fixture conflict, not a new candidate routing regression. Keep both cases failed against the frozen plan; do not rewrite expected targets or claim acceptance passed. Owner disposition remains required.",
+  "baseline_evidence": "evals/runs/capability-compiler-v2/revision-1.1.0-eval/routing-v100/report.json",
+  "evidence": "evals/runs/capability-compiler-v2/revision-1.1.0-eval/routing/report.json",
+  "owner_disposition": "corrected-fixtures: retain the original failures, correct only the two inherited runtime expectations in a separate frozen plan, and rerun all 22 cases",
+  "corrected_evidence": "evals/runs/capability-compiler-v2/revision-1.1.0-eval/routing-v2/report.json",
+  "corrected_result": {"passed": 22, "total": 22},
+  "release_effect": "Routing acceptance passes under the separately approved corrected plan. Original acceptance remains 20/22 and must be disclosed alongside the corrected result. This does not approve release or substitute for unfinished execution-quality evaluation."
+}

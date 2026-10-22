@@ -1,0 +1,268 @@
+{
+  "domain": "implementation-and-code-quality",
+  "skills": {
+    "change-scope-freeze": {
+      "trigger_signals": [
+        "A change is about to start and someone must fix exactly which files, behaviors and non-goals it may touch",
+        "Scope keeps drifting and the team needs a frozen boundary with conditions that reopen it"
+      ],
+      "anti_add": [
+        {
+          "text": "Block edits outside a directory with a guard hook",
+          "route": "git-destructive-command-guard"
+        }
+      ],
+      "guidance": [
+        "Record every allowed path as a normalized absolute prefix ending in a path separator, so a sibling such as src/app-old never matches src/app.",
+        "List invalidation conditions as concrete triggers: requirement id changed, base ref moved, a protected path needed, a new dependency required."
+      ],
+      "source_evidence_add": [
+        "gstack/freeze/SKILL.md:48-76"
+      ],
+      "resolves": {
+        "change-scope-freeze#F1": "fixed: guidance (normalized absolute prefix with trailing separator)"
+      }
+    },
+    "code-health-assessment": {
+      "trigger_signals": [
+        "A codebase needs a maintainability and risk assessment from static evidence and tool output without changing it",
+        "Someone asks which code-quality problems are worth fixing and which should be left alone"
+      ],
+      "guidance": [
+        "Use the categories, weights and scales the task or owner supplies. When none are supplied, report a per-category status from the tool exits (tool, version, command, exit, duration) without a composite number. A composite score with illustrative weights (type check 22%, lint 18%, tests 28%, dead code 13%, other checks 19%) may be offered only as a labelled optional convention, never as a prescribed rule.",
+        "Show a per-category table with score, status and detail, then cited findings. Sort findings by maintenance consequence; a style preference without a cited consequence is not a finding.",
+        "If remediation cost exceeds the evidenced benefit, the recommendation is leave unchanged, with the reasoning stated."
+      ],
+      "outputs_add": [
+        "per-category status table from tool exits (composite score only when weights are supplied)"
+      ],
+      "source_evidence_add": [
+        "gstack/health/SKILL.md:510-549",
+        "gstack/health/SKILL.md:559-598"
+      ],
+      "resolves": {
+        "code-health-assessment#F1": "fixed: guidance + outputs_add (weighted category score)",
+        "code-health-assessment#F2": "deferred-to-eval: Phase R5 fresh holdout includes a leave-unchanged case"
+      }
+    },
+    "defect-remediation": {
+      "trigger_signals": [
+        "A root cause is confirmed with a reproduction and the smallest safe source fix must be applied and verified",
+        "Someone asks for a patch plus a test that fails before and passes after, in an isolated workspace"
+      ],
+      "guidance": [
+        "If the evidence came from a specific release or revision, check out or diff that revision first; stop and flag when the frames or symptoms do not match the workspace.",
+        "Discriminator: use when a root cause is confirmed and a minimal source repair is authorized."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Confirm the workspace revision matches the revision the evidence came from; stop and flag any mismatch before patching."
+        }
+      ],
+      "source_evidence_add": [
+        "sentry-debug-issue/SKILL.md:128-141"
+      ],
+      "resolves": {
+        "defect-remediation#F1": "fixed: procedure_insert + guidance (revision match check)"
+      },
+      "anti_add": [
+        {
+          "text": "Fix only the author's own just-completed patch within its frozen scope",
+          "route": "developer-self-check-and-fix"
+        }
+      ]
+    },
+    "developer-self-check-and-fix": {
+      "trigger_signals": [
+        "An implementer has finished a task and should check their own work against the spec before handing it to independent review",
+        "A patch needs a self-review pass and deterministic in-scope fixes, not an approval"
+      ],
+      "guidance": [
+        "Self-review questions. Completeness: is every requirement implemented, and are edge cases handled? Quality: are names accurate, is the code clean? Discipline: nothing built beyond the spec (YAGNI). Testing: do tests verify behavior rather than mocks?",
+        "Report one state: DONE, DONE_WITH_CONCERNS (finished with doubts about correctness or scope, concerns listed), BLOCKED (cannot continue), or NEEDS_CONTEXT (named information missing).",
+        "Fix only deterministic defects inside the frozen scope; everything else goes to the owner in the report.",
+        "Discriminator: use for the author's own in-scope patch after it is complete; it never accepts findings from an independent review."
+      ],
+      "outputs_add": [
+        "report state (DONE, DONE_WITH_CONCERNS, BLOCKED, NEEDS_CONTEXT) with concerns listed"
+      ],
+      "source_evidence_add": [
+        "subagent-driven-development/implementer-prompt.md:74-113"
+      ],
+      "resolves": {
+        "developer-self-check-and-fix#F1": "fixed: guidance + outputs_add (question checklist, four report states)",
+        "developer-self-check-and-fix#F2": "deferred-to-eval: Phase R5 fresh holdout uses a seeded-defect patch"
+      }
+    },
+    "git-destructive-command-guard": {
+      "trigger_signals": [
+        "A repository needs a guard that blocks destructive Git commands before an agent or developer runs them",
+        "Someone asks for the block and allow rules, test fixtures and hook wiring for dangerous commands"
+      ],
+      "anti_add": [
+        {
+          "text": "Restrict edits to one directory or a frozen set of paths",
+          "route": "change-scope-freeze"
+        }
+      ],
+      "guidance": [
+        "Default destructive-pattern table: push --force and -f and refspecs starting with +, push --delete and :branch, reset --hard, clean -f and -fd, checkout -- . and restore of uncommitted paths, branch -D, stash drop and clear, reflog expire, filter-branch. Include equivalent forms and chained or quoted commands.",
+        "Near-miss pairs must pass: --force-with-lease when explicitly allowed, reset --soft, clean -n, branch -d, stash push.",
+        "Parse commands with a real tokenizer (for example shlex), split chained commands at &&, ||, ; and |, and never match by substring alone."
+      ],
+      "outputs_add": [
+        "default destructive-pattern table with near-miss pass cases"
+      ],
+      "source_evidence_add": [
+        "git-guardrails-claude-code/SKILL.md:37-81",
+        "gstack/careful/SKILL.md:32-71"
+      ],
+      "resolves": {
+        "git-destructive-command-guard#F1": "fixed: guidance + outputs_add (default pattern table, equivalent forms)",
+        "git-destructive-command-guard#F2": "fixed: anti_add (change-scope-freeze)"
+      }
+    },
+    "isolated-task-implementation": {
+      "trigger_signals": [
+        "One fully specified task must be implemented in an isolated workspace with a single writer and a reviewable handoff",
+        "A work slice is ready to code and tests must run through the host before review"
+      ],
+      "guidance": [
+        "Escalate instead of guessing when: the task needs an architectural decision with several valid approaches, understanding code beyond what was provided, uncertainty about whether the approach is correct, or restructuring code the plan did not anticipate. Stopping with a clear question is correct; bad work is worse than no work."
+      ],
+      "source_evidence_add": [
+        "subagent-driven-development/implementer-prompt.md:57-73"
+      ],
+      "resolves": {
+        "isolated-task-implementation#F1": "fixed: guidance (explicit escalation triggers)"
+      }
+    },
+    "local-branch-integration": {
+      "trigger_signals": [
+        "An approved base ref must be merged or rebased into a change branch locally with a recovery ref kept",
+        "A worktree is clean and the user wants the latest base integrated without any remote writes"
+      ],
+      "anti_add": [
+        {
+          "text": "Create or update the pull request after the push",
+          "route": "remote-pull-request-change"
+        }
+      ],
+      "guidance": [
+        "On conflict, stop and preserve the state. Report each conflict as mechanical (version file, lockfile, changelog ordering) or semantic (code logic), with the recovery command, so the owner knows what the stop costs."
+      ],
+      "source_evidence_add": [
+        "gstack/ship/SKILL.md:674-705"
+      ],
+      "resolves": {
+        "local-branch-integration#F1": "fixed: anti_add + reference fix (pull-request-update replaced by remote-pull-request-change)",
+        "local-branch-integration#F2": "fixed: guidance (mechanical vs semantic conflict report)"
+      }
+    },
+    "plan-execution-control": {
+      "trigger_signals": [
+        "An approved plan is being executed step by step and someone must track state, dependencies and checkpoints",
+        "A step failed or an upstream artifact changed and dependents must be stopped and invalidated"
+      ],
+      "guidance": [
+        "Map implementer report states to transitions: DONE moves to review; DONE_WITH_CONCERNS requires reading the concerns and resolving correctness or scope concerns before review; NEEDS_CONTEXT returns to the owner for the missing information; BLOCKED stops dependents.",
+        "Invariant: never run two writers against the same workspace or overlapping files at the same time."
+      ],
+      "source_evidence_add": [
+        "subagent-driven-development/SKILL.md:104-121",
+        "subagent-driven-development/SKILL.md:236-267"
+      ],
+      "resolves": {
+        "plan-execution-control#F1": "fixed: guidance (status transitions, no-parallel-writer invariant)"
+      }
+    },
+    "root-cause-investigation": {
+      "trigger_signals": [
+        "A bug, failing test, incident or regression needs its real cause found and demonstrated before anyone patches it",
+        "Someone proposes a quick fix for a symptom and the cause has not been established"
+      ],
+      "guidance": [
+        "Red flags that mean stop and investigate: 'quick fix now, investigate later', 'just try changing X', 'it's probably X', 'I don't fully understand but this might work', and listing fixes before any investigation.",
+        "Trace backward from the symptom through each caller until you find the original bad value or first violated invariant; the last stack frame is usually a symptom, not the cause.",
+        "Test one hypothesis at a time with a change in exactly one variable."
+      ],
+      "source_evidence_add": [
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/root-cause-tracing.md:109-169"
+      ],
+      "resolves": {
+        "root-cause-investigation#F1": "deferred-to-eval: Phase R5 fresh holdout uses a red-herring last stack frame",
+        "root-cause-investigation#F2": "fixed: guidance (red-flag list, backward tracing)"
+      }
+    },
+    "tdd-change-loop": {
+      "trigger_signals": [
+        "A behavior change must be built test-first with the failing test observed before any production code",
+        "Someone wants a feature or fix implemented through red, green and refactor with host-run evidence"
+      ],
+      "guidance": [
+        "The failing test must fail for the expected reason (the missing behavior), not because of a typo or import error; record the failure output.",
+        "Anti-rationalization: tests written after the code pass immediately and prove nothing; manual testing is not a substitute. If code was written before the test, discard it and start from the test."
+      ],
+      "source_evidence_add": [
+        "test-driven-development/SKILL.md:206-256"
+      ],
+      "resolves": {
+        "tdd-change-loop#F1": "deferred-to-eval: Phase R5 fresh holdout requires a test failing for the right reason",
+        "tdd-change-loop#F2": "fixed: guidance (anti-rationalization note)"
+      }
+    },
+    "ui-remediation": {
+      "trigger_signals": [
+        "Accepted UI findings must be fixed in source and the affected states recaptured for independent review",
+        "A reviewer's visual, responsive or interaction findings have been approved for repair"
+      ],
+      "anti_add": [
+        {
+          "text": "Fix accepted findings from a website audit tool (SEO, content, links, performance)",
+          "route": "website-audit-remediation"
+        }
+      ],
+      "guidance": [
+        "Capture the pre-fix state of each affected route and viewport first. Where the app supports restoring state, add a regression fixture that restores the pre-fix state and asserts the fixed behavior.",
+        "Discriminator: use when accepted, evidence-backed UI findings exist and need source changes."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Capture the pre-fix state of each affected route and viewport before changing source."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/ios-fix/SKILL.md:416-427",
+        "gstack/ios-fix/SKILL.md:455-465"
+      ],
+      "resolves": {
+        "ui-remediation#F1": "fixed: procedure_insert + guidance (pre-fix capture, regression fixture)"
+      }
+    },
+    "website-audit-remediation": {
+      "trigger_signals": [
+        "Accepted website audit findings (SEO, content, links, accessibility, performance) must be fixed in source",
+        "An audit report exists and the approved fixes should be applied in batches with re-audit evidence prepared"
+      ],
+      "anti_add": [
+        {
+          "text": "Fix accepted findings from a rendered UI critique",
+          "route": "ui-remediation"
+        },
+        {
+          "text": "Repair a defect whose root cause was confirmed outside a website audit",
+          "route": "defect-remediation"
+        }
+      ],
+      "resolves": {
+        "website-audit-remediation#F1": "fixed: anti_add (ui-remediation); audit-tool findings vs rendered-critique findings is the stated discriminator"
+      },
+      "guidance": [
+        "Discriminator: use when accepted website audit findings exist and need source changes."
+      ]
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "attempt_history": [
+    {
+      "asset_drift": false,
+      "attempt": 1,
+      "finding": "V1 tree verifier globally sorted paths instead of preserving the pre-release manifest's slots-then-recipes order.",
+      "ok": false,
+      "resolution": "Recompute in the frozen pre-release order; no asset or expected hash changed.",
+      "scope": "release-assets-and-v1-compatibility",
+      "thresholds_lowered": false
+    },
+    {
+      "asset_drift": false,
+      "attempt": 2,
+      "finding": null,
+      "ok": true,
+      "scope": "release-assets-and-v1-compatibility",
+      "thresholds_lowered": false
+    },
+    {
+      "asset_drift": false,
+      "attempt": 3,
+      "finding": "Phase 12 artifact verifier re-sorted POSIX paths instead of preserving the manifest builder's deterministic Windows Path order.",
+      "ok": false,
+      "resolution": "Recompute from the frozen manifest record order; no artifact or expected hash changed.",
+      "scope": "final-report-recomputation",
+      "thresholds_lowered": false
+    },
+    {
+      "asset_drift": false,
+      "attempt": 4,
+      "finding": null,
+      "ok": true,
+      "scope": "final-report-recomputation",
+      "thresholds_lowered": false
+    },
+    {
+      "asset_drift": false,
+      "attempt": 5,
+      "finding": "The report builder changed after its prior hash was written to the Phase 12 artifact manifest, and the final-report-aware Gate correctly rejected the stale hash.",
+      "ok": false,
+      "resolution": "Record the failed attempt and rebuild the Phase 12 manifest before rerunning the unchanged release and repository Gates.",
+      "scope": "unified-final-verification",
+      "thresholds_lowered": false
+    },
+    {
+      "asset_drift": false,
+      "attempt": 6,
+      "finding": null,
+      "ok": true,
+      "scope": "unified-final-verification-after-release-writer-hardening",
+      "thresholds_lowered": false
+    }
+  ],
+  "checks": [
+    {
+      "errors": [],
+      "name": "exact-human-approval-and-authority-boundary",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "byte-exact-release-manifest",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "released-atomic-skills-contracts-and-provenance",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "recipes-router-and-protected-action-boundaries",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "version-lock-and-reference-integrity",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "v1-compatibility-and-rollback-readiness",
+      "ok": true
+    },
+    {
+      "errors": [],
+      "name": "frozen-prior-evidence-and-release-claim-boundary",
+      "ok": true
+    }
+  ],
+  "counts": {
+    "composite_recipes": 5,
+    "protected_steps": 27,
+    "release_assets": 495,
+    "remote_actions": 0,
+    "routers": 1,
+    "skills": 157,
+    "specialized_recipes": 1,
+    "stage_recipes": 15,
+    "v1_assets": 287
+  },
+  "errors": [],
+  "gate": "capability-compiler-v2-phase-12",
+  "ok": true,
+  "release_asset_tree_sha256": "116651adca2b907b3629e7e1954cddcd15cf0388e3401facaf2e8cb5c210d852",
+  "release_version": "1.0.0",
+  "released": true,
+  "repository_verification": {
+    "all_repository_gates": "30/30 passed",
+    "commit_push_pr_merge_deploy": false,
+    "duration_ms": 403094.644,
+    "failed_gates": [],
+    "phase12_targeted_tests": "6 passed",
+    "pytest": "396 passed, 1 warning in 359.30s (0:05:59)",
+    "remote_actions": []
+  }
+}

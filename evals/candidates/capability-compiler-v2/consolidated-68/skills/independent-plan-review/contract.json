@@ -1,0 +1,102 @@
+{
+  "artifact_types": [
+    "independent engineering review",
+    "traceability and risk findings",
+    "missing-test and rollback register",
+    "human-owned review recommendation",
+    "amendments as exact change set",
+    "executive plan review",
+    "scope challenge",
+    "one-way-door register",
+    "human decision queue",
+    "independent plan review",
+    "traceability gaps",
+    "finding register",
+    "review verdict"
+  ],
+  "capability_id": "capability:independent-plan-review",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities"
+  ],
+  "hard_gates": [
+    "A plan cannot pass on completeness of prose: every material architecture, data, security, migration, failure, and verification claim must trace to approved intent and an executable evidence path.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance.",
+    "Do not turn an ambitious option into accepted scope or write a CEO plan without explicit human selection and a separate persistence capability.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries.",
+    "The review must cite the frozen plan; generic best-practice advice without a demonstrated gap is not a finding."
+  ],
+  "id": "independent-plan-review",
+  "inputs": [
+    "Approved requirements, plan, architecture context, constraints, and existing system evidence.",
+    "Plan, evidence, product context, constraints, and decision owners.",
+    "A proposed plan, repository constraints, task boundaries, and verification requirements."
+  ],
+  "mode_permissions": {
+    "engineering-plan-review": "read-only",
+    "executive-plan-review": "read-only",
+    "independent-plan-review": "read-only"
+  },
+  "modes": [
+    "engineering-plan-review",
+    "executive-plan-review",
+    "independent-plan-review"
+  ],
+  "outputs": [
+    "independent engineering review",
+    "traceability and risk findings",
+    "missing-test and rollback register",
+    "human-owned review recommendation",
+    "amendments as exact change set",
+    "executive plan review",
+    "scope challenge",
+    "one-way-door register",
+    "human decision queue",
+    "independent plan review",
+    "traceability gaps",
+    "finding register",
+    "review verdict"
+  ],
+  "permission_identity": "read-only",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "traceability",
+      "architecture",
+      "data-migration",
+      "authorization",
+      "failure-modes",
+      "operability",
+      "rollback",
+      "verification"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 3 related modes: Independently review an implementation plan for architecture, interfaces, data, failure modes, security, operability, migration, verification, and execution risk without editing it.; Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership.; Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

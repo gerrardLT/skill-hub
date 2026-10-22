@@ -1,0 +1,24 @@
+{
+  "status": "two-confirmed-candidate-fabrications-require-remediation",
+  "judge_model": "taomu/gpt-5.6-sol",
+  "cases": [
+    {
+      "skill": "change-scope-freeze",
+      "task": "T2",
+      "finding": "confirmed",
+      "candidate_behavior": "Expanded task-relative prefixes into a fabricated absolute empty-cwd path and described unsupported workspace facts despite no tools.",
+      "baseline_behavior": "Kept supplied paths relative and explicitly labeled pasted evidence unverified.",
+      "disposition": "candidate defect; fix shared no-tool path handling"
+    },
+    {
+      "skill": "requirements-and-delivery-contract",
+      "task": "T1",
+      "finding": "confirmed",
+      "candidate_behavior": "Inserted the unsupplied document date 2025-03-08 into change history instead of using an unknown/placeholder date.",
+      "baseline_behavior": "Did not invent a calendar date.",
+      "disposition": "candidate defect; require placeholders for missing metadata"
+    }
+  ],
+  "release_effect": "Fresh holdout aggregate passes 28 wins >= 20 losses, but acceptance is blocked until both new fabrication defects are fixed and re-evaluated on new independently reviewed unseen tasks. Current 616 executions and 616 replacement judgments remain immutable pre-fix evidence.",
+  "release_approved": false
+}

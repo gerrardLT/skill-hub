@@ -1,0 +1,354 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/ship/SKILL.md:61]",
+    "Skill Invocation During Plan Mode [gstack/ship/SKILL.md:65]",
+    "Model-Specific Behavioral Patch (claude) [gstack/ship/SKILL.md:197]",
+    "Continuous Checkpoint Mode [gstack/ship/SKILL.md:297]",
+    "Step 0: Detect platform and base branch [gstack/ship/SKILL.md:459]",
+    "Step 3: Merge the base branch (BEFORE tests) [gstack/ship/SKILL.md:674]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/ship/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/ship/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/ship/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/ship/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "create a pr [gstack/ship/SKILL.md:18]",
+    "deploy this [gstack/ship/SKILL.md:20]",
+    "Use when asked to \"ship\", \"deploy\", [gstack/ship/SKILL.md:28]",
+    "\"push to main\", \"create a PR\", \"merge and push\", or \"get it deployed\". [gstack/ship/SKILL.md:29]",
+    "is ready, asks about deploying, wants to push code up, or asks to create a PR. [gstack/ship/SKILL.md:31]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/ship/SKILL.md:39]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/ship/SKILL.md:44]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/ship/SKILL.md:63]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "SKILL.md body is byte-identical in the V2 coverage ledger.",
+      "evidence": [
+        "curation/v2/coverage.json:duplicate_skill_body_groups",
+        "sha256:d3ebb385defcd1dd3a01489b3b14ff316ea4a6cfb0a5d4943a315c7a91fb2f3e"
+      ],
+      "target": "skill-root:ship",
+      "type": "duplicate"
+    },
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/ship/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. [gstack/ship/SKILL.md:5]",
+  "root_id": "skill-root:gstack/ship",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/ship/SKILL.md:22]",
+    "Proactively invoke this skill (do NOT push/PR directly) when the user says code [gstack/ship/SKILL.md:30]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/ship/SKILL.md:45]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/ship/SKILL.md:46]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/ship/SKILL.md:47]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/ship/SKILL.md:54]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/ship/SKILL.md:55]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/ship/SKILL.md:58]"
+  ],
+  "skill_path": "gstack/ship/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/ship/SKILL.md"
+    },
+    {
+      "line_end": 26,
+      "line_start": 26,
+      "path": "gstack/ship/SKILL.md"
+    },
+    {
+      "line_end": 33,
+      "line_start": 33,
+      "path": "gstack/ship/SKILL.md"
+    },
+    {
+      "line_end": 61,
+      "line_start": 61,
+      "path": "gstack/ship/SKILL.md"
+    },
+    {
+      "line_end": 65,
+      "line_start": 65,
+      "path": "gstack/ship/SKILL.md"
+    }
+  ],
+  "source_sha256": "d3ebb385defcd1dd3a01489b3b14ff316ea4a6cfb0a5d4943a315c7a91fb2f3e",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/ship/SKILL.md:79]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/ship/SKILL.md:80]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/ship/SKILL.md:81]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ship/SKILL.md:82]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/ship/SKILL.md:84]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/ship/SKILL.md:88]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d3ebb385defcd1dd3a01489b3b14ff316ea4a6cfb0a5d4943a315c7a91fb2f3e",
+        "content-review:1123-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/ship/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c9144e7b23fe8f8430988686c1772ca26b1274c0845c0e88d61f2cad9643095c",
+        "content-review:587-lines"
+      ],
+      "path": "gstack/ship/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a50c8782bb3858d51da4fc661ae4204e1b4c0a4fd9a02252d822e1b78df41046",
+        "content-review:227-lines"
+      ],
+      "path": "gstack/ship/sections/adversarial.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2a9316db42a915ecca9914efec6eed2c41b369ede737b24eebd6e435dfaf294a",
+        "content-review:20-lines"
+      ],
+      "path": "gstack/ship/sections/adversarial.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f0e4442705a41d46c67e1428e0d33a85540169176e164347cb576c0e741ba0b1",
+        "content-review:59-lines"
+      ],
+      "path": "gstack/ship/sections/apple-release.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a86ff8a92a730469bd965caca8127d267842486f507fc8be47a73ddcce6fe4fa",
+        "content-review:57-lines"
+      ],
+      "path": "gstack/ship/sections/apple-release.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f70c31afb13f2e4df31c1166dd9963758cb39a942cf83e86a48b29f6e4da91da",
+        "content-review:46-lines"
+      ],
+      "path": "gstack/ship/sections/changelog.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3384256c68938f68c34aa5f5f12e0e7dfec712552456cd2561fd2dd8d4a98952",
+        "content-review:4-lines"
+      ],
+      "path": "gstack/ship/sections/changelog.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:411256ceea433a11dc914b3334650610986fe0efb6afe647f8fdca26555419ae",
+        "content-review:56-lines"
+      ],
+      "path": "gstack/ship/sections/greptile.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1a4d81fe67c936d6d80fe2f72aa2c108615505613b40ac0d02ce91f90b9dae32",
+        "content-review:54-lines"
+      ],
+      "path": "gstack/ship/sections/greptile.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:57cbafc17a91a2e097949325025124afd6be6f6635eddc56a4a8cf1eed0274bd",
+        "content-review:63-lines"
+      ],
+      "path": "gstack/ship/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e329e5ef76991a02f0248931974667106ee1ad8ec4a324651efa3c6d1291df2f",
+        "content-review:332-lines"
+      ],
+      "path": "gstack/ship/sections/plan-completion.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:20951f1a689992cc3f15059109728ef31a312ba1ba3f7f70e63235c6dbe5fada",
+        "content-review:34-lines"
+      ],
+      "path": "gstack/ship/sections/plan-completion.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:56216f7f98e4a74db510d81aa5e5ddf6e25becc06639e5f1f0772f2de9781b99",
+        "content-review:230-lines"
+      ],
+      "path": "gstack/ship/sections/pr-body.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:621b420df38bd0d3be5ef8c11ae28f925c638f31cc75d5aa91eefb96c20d53b6",
+        "content-review:228-lines"
+      ],
+      "path": "gstack/ship/sections/pr-body.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dbfda2aa3f8c1588e77daa375e8d8f80493ecce2b28ff4a08a7ac3c654b42ef6",
+        "content-review:428-lines"
+      ],
+      "path": "gstack/ship/sections/review-army.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:5d2bff0dceec6084343d18c809705756d6d9862e4df7d5e21a103e7fa02b9fd2",
+        "content-review:57-lines"
+      ],
+      "path": "gstack/ship/sections/review-army.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:451c26a7cc9439e461d98334e97c1a0c057f3826af831f2c83c18ef1174f8d1b",
+        "content-review:267-lines"
+      ],
+      "path": "gstack/ship/sections/test-coverage.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:cf0bfe9fd1e0162b04fc2b611b9dfffe40ad63092b20be80b77a7952f8aaabc8",
+        "content-review:26-lines"
+      ],
+      "path": "gstack/ship/sections/test-coverage.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b96d0a3ef407da5372c91585069063b2d5c26232c2ff929af4cf1b026c274018",
+        "content-review:407-lines"
+      ],
+      "path": "gstack/ship/sections/tests.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1e0e5e0d0fd4f585a03df3521ae8f3f131beba2344d6809a6ce3d4546ef6b4da",
+        "content-review:117-lines"
+      ],
+      "path": "gstack/ship/sections/tests.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Read [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Write [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Edit [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Grep [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Glob [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: Agent [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: AskUserQuestion [gstack/ship/SKILL.md:1-21]",
+    "Declared tool: WebSearch [gstack/ship/SKILL.md:1-21]",
+    "Local dependency: gstack/ship/sections/apple-release.md [gstack/ship/SKILL.md:546]",
+    "Local dependency: gstack/ship/sections/tests.md [gstack/ship/SKILL.md:547]",
+    "Local dependency: gstack/ship/sections/test-coverage.md [gstack/ship/SKILL.md:548]",
+    "Local dependency: gstack/ship/sections/plan-completion.md [gstack/ship/SKILL.md:549]",
+    "Local dependency: gstack/ship/sections/review-army.md [gstack/ship/SKILL.md:550]",
+    "Local dependency: gstack/ship/sections/greptile.md [gstack/ship/SKILL.md:551]",
+    "Local dependency: gstack/ship/sections/adversarial.md [gstack/ship/SKILL.md:552]",
+    "Local dependency: gstack/ship/sections/changelog.md [gstack/ship/SKILL.md:553]",
+    "Local dependency: gstack/ship/sections/pr-body.md [gstack/ship/SKILL.md:554]"
+  ],
+  "trigger": "\"Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. (gstack)\" [gstack/ship/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/ship/SKILL.md:145]",
+    "Self-check before emitting [gstack/ship/SKILL.md:168]",
+    "Context Recovery [gstack/ship/SKILL.md:236]",
+    "Completeness Principle — Boil the Ocean [gstack/ship/SKILL.md:283]",
+    "Confusion Protocol [gstack/ship/SKILL.md:289]",
+    "Claimed Limitations Need Evidence [gstack/ship/SKILL.md:293]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/ship/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/ship/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/ship/SKILL.md:297]",
+    "Step 0: Detect platform and base branch [gstack/ship/SKILL.md:459]",
+    "Ship: Fully Automated Ship Workflow [gstack/ship/SKILL.md:500]",
+    "Step 0.9: Apple target detection [gstack/ship/SKILL.md:558]",
+    "Step 1: Pre-flight [gstack/ship/SKILL.md:570]",
+    "Step 2: Distribution Pipeline Check [gstack/ship/SKILL.md:646]",
+    "Step 3: Merge the base branch (BEFORE tests) [gstack/ship/SKILL.md:674]",
+    "Step 12: Version bump (auto-decide) [gstack/ship/SKILL.md:706]",
+    "Step 14: TODOS.md (auto-update) [gstack/ship/SKILL.md:749]",
+    "Step 15: Commit (bisectable chunks) [gstack/ship/SKILL.md:804]"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "change-artifact": "Status: passed\n\nEvidence:\n\n1. **RED observed**\n   - QA failure supplied at `evals/runs/full-dev-loop/ip-rate-limiting-v1/qa-red.json`, SHA-256 `2cb2089cb2f4b9884b02a6eebf5943183b2a9594a944985fdc722ad317a31814`, return code `1`.\n   - Finding: nested conversation paths were incorrectly classified as conversation-message requests.\n\n2. **GREEN implementation**\n   - Changed `apps/api/app/core/rate_limit.py`.\n   - Conversation classification now requires exactly `POST /v2/conversation/{single-segment}/message`.\n   - `/v2/conversation/a/nested/message` remains global-only, per QA finding and AC-10.\n\n3. **Completion verification**\n   - Host-authorized fixed verification command remains pending host execution:\n     ```text\n     python -c import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))\n     ```\n   - Expected green evidence: `12 tests passed`.\n   - No local test runner tool was authorized to this execution adapter.\n\nGate Results:\n\n1. **evidence-present: passed**\n   - Requirements, acceptance criteria, design contract, RED record, and QA failure record supplied.\n\n2. **unknowns-preserved: passed**\n   - `OPEN-1` remains known unavailable and non-blocking. No traffic, cost, Redis, or distributed-state inference made.\n\n3. **authority-boundary: passed**\n   - Patch is confined to `apps/api/app/core/rate_limit.py`.\n   - No dependency added; no network, remote Git, merge, deployment, or original-worktree modification used.\n\n4. **responsibility-boundary: passed**\n   - Minimal implementation patch only. Final command execution belongs to the host per explicit authorization.\n\nUnknowns:\n\n1. **OPEN-1 — Traffic and cost measurements unavailable**\n   - Preserved; non-blocking.\n\nskipped: regex or route abstraction; add when multiple exact route classifications require shared matching.\n\n## Host Execution Evidence\n\n```json\n{\n  \"duration_ms\": 38262.744,\n  \"command_results\": [\n    {\n      \"argv\": [\n        \"python\",\n        \"-c\",\n        \"import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))\"\n      ],\n      \"returncode\": 0,\n      \"duration_ms\": 3230.175,\n      \"stdout\": \"............                                                             [100%]\\n12 passed in 1.31s\\n\",\n      \"stderr\": \"C:\\\\Users\\\\gerrard\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\Lib\\\\site-packages\\\\pytest_asyncio\\\\plugin.py:247: PytestDeprecationWarning: The configuration option \\\"asyncio_default_fixture_loop_scope\\\" is unset.\\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \\\"function\\\", \\\"class\\\", \\\"module\\\", \\\"package\\\", \\\"session\\\"\\n\\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\\n\"\n    }\n  ],\n  \"git_status\": \" M apps/api/app/core/rate_limit.py\\n\",\n  \"patch_file\": \"D:\\\\project\\\\skills-hub\\\\evals\\\\runs\\\\full-dev-loop\\\\ip-rate-limiting-v1\\\\run\\\\build_feature_tdd\\\\implement-execution\\\\changes.patch\",\n  \"patch_sha256\": \"6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d\",\n  \"verification_passed\": true,\n  \"delivered\": true\n}\n```",
+  "completion-evidence": "Status: passed\n\nEvidence:\n\n1. **Current completion verification**\n   - Source: `HOST PREFLIGHT EVIDENCE`, observed in the exact isolated snapshot.\n   - Command:\n     ```text\n     python -c import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))\n     ```\n   - Exit code: `0`.\n   - Output:\n     ```text\n     ............                                                             [100%]\n     12 passed in 1.25s\n     ```\n   - Inspection: complete declared evaluation suite passed. `stderr` contains only `PytestDeprecationWarning` for unset `asyncio_default_fixture_loop_scope`; no test failure or execution error.\n\n2. **Freshness and artifact identity**\n   - Source: `HOST PREFLIGHT EVIDENCE`.\n   - Isolated snapshot `HEAD`: `3b300baeea5531346d7e17993dd392deef74b731`.\n   - Source repository `HEAD`: `3b300baeea5531346d7e17993dd392deef74b731`.\n   - Baseline patch SHA-256: `6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d`.\n   - This matches the delivered patch SHA-256 recorded in `change-artifact`: `6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d`.\n\n3. **RED-before-GREEN evidence**\n   - Source: `change-artifact`, record 1.\n   - RED result: `evals/runs/full-dev-loop/ip-rate-limiting-v1/qa-red.json`.\n   - SHA-256: `2cb2089cb2f4b9884b02a6eebf5943183b2a9594a944985fdc722ad317a31814`.\n   - Return code: `1`.\n   - Recorded failure: nested conversation paths were incorrectly classified as conversation-message requests.\n   - GREEN implementation: `apps/api/app/core/rate_limit.py` restricts conversation classification to exact `POST /v2/conversation/{single-segment}/message`; nested paths remain global-only.\n\n4. **Authority and responsibility scope**\n   - Source: `change-artifact`, host execution evidence, and `HOST PREFLIGHT EVIDENCE`.\n   - Modified application file: `apps/api/app/core/rate_limit.py`.\n   - Verification target: `apps/api/tests/test_ip_rate_limit_eval.py`.\n   - Recorded execution scope excludes network access, remote Git, merge, deployment, and modification of `D:/tem_projects/MirrorMind`.\n   - Completion claim rests on host-observed command output and exit code, not delegated self-report.\n\nGate Results:\n\n1. **evidence-present: passed**\n   - Current complete verification command, inspected stdout/stderr, and exit code `0` are present in `HOST PREFLIGHT EVIDENCE`.\n   - Supplied RED evidence and acceptance criteria provide traceable prior-failure and intended-behavior context.\n\n2. **unknowns-preserved: passed**\n   - `OPEN-1 — Traffic and cost measurements unavailable` remains preserved in `change-artifact`.\n   - Acceptance criteria declare it known unavailable and non-blocking. No unsupported traffic, cost, Redis, or distributed-state conclusion is made.\n\n3. **authority-boundary: passed**\n   - Evidence records local application scope only: `apps/api/app/core/rate_limit.py`.\n   - No evidence indicates use of network, remote Git, merge, deployment, or external-worktree modification authority.\n   - Host preflight establishes the verified isolated snapshot and matching patch identity.\n\n4. **responsibility-boundary: passed**\n   - Declared implementation responsibility is limited to the rate-limit classification patch.\n   - Required completion verification was performed by the supplied host execution adapter.\n   - No upstream requirement revision, downstream merge, deployment, or operational approval is claimed.\n\nUnknowns:\n\n1. **OPEN-1 — Traffic and cost measurements unavailable**\n   - Preserved as non-blocking.\n   - Per-process in-memory behavior remains the accepted MVP scope; no distributed-state inference is asserted.\n\n2. **Pytest configuration warning**\n   - `pytest_asyncio` reports unset `asyncio_default_fixture_loop_scope`.\n   - Observed warning only; command exit code is `0` and all 12 tests passed.\n\n## Host Execution Evidence\n\n```json\n{\n  \"duration_ms\": 25416.369,\n  \"command_results\": [\n    {\n      \"argv\": [\n        \"python\",\n        \"-c\",\n        \"import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))\"\n      ],\n      \"returncode\": 0,\n      \"duration_ms\": 2966.765,\n      \"stdout\": \"............                                                             [100%]\\n12 passed in 1.25s\\n\",\n      \"stderr\": \"C:\\\\Users\\\\gerrard\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\Lib\\\\site-packages\\\\pytest_asyncio\\\\plugin.py:247: PytestDeprecationWarning: The configuration option \\\"asyncio_default_fixture_loop_scope\\\" is unset.\\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \\\"function\\\", \\\"class\\\", \\\"module\\\", \\\"package\\\", \\\"session\\\"\\n\\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\\n\"\n    }\n  ],\n  \"git_status\": \"M  apps/api/app/core/rate_limit.py\\n\",\n  \"patch_file\": \"D:\\\\project\\\\skills-hub\\\\evals\\\\runs\\\\full-dev-loop\\\\ip-rate-limiting-v1\\\\run\\\\build_feature_tdd\\\\complete-execution\\\\changes.patch\",\n  \"patch_sha256\": \"6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d\",\n  \"verification_passed\": true,\n  \"delivered\": false\n}\n```",
+  "qa-verdict": "Status: passed\n\nEvidence:\n\n1. **QA-1 — Current isolated verification passed**\n   - **Classification:** evidence.\n   - **Citation:** HOST PREFLIGHT EVIDENCE, isolated head `3b300baeea5531346d7e17993dd392deef74b731`; baseline patch SHA-256 `6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d`.\n   - **Command:** `python -c import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))`\n   - **Observed result:** return code `0`; `12 passed in 1.21s`.\n   - **Non-failing stderr evidence:** `PytestDeprecationWarning` for unset `asyncio_default_fixture_loop_scope`; no test failure.\n\n2. **QA-2 — Changed behavior regression target passed**\n   - **Classification:** evidence.\n   - **Citation:** change-artifact record 1 and record 2; host preflight command result.\n   - **Observed scope:** `apps/api/tests/test_ip_rate_limit_eval.py` passed its nested-path case. The required distinction remains: `POST /v2/conversation/a/nested/message` is global-only, not a conversation-message route.\n   - **Result:** No observed regression in the previously failing route classification.\n\n3. **QA-3 — Verified black-box coverage**\n   - **Classification:** evidence.\n   - **Citation:** `apps/api/tests/test_ip_rate_limit_eval.py`; host preflight result.\n   - **Passed observable checks:** configured global threshold rejection; configured conversation threshold rejection; exempt `/healthz` and `/metrics`; ASGI peer-host identity; ignored `X-Forwarded-For`; distinct peer-host isolation; rejected conversation attempts incrementing global state; selected-limit headers and retry metadata in one constrained scenario; fixed-window recovery; environment configuration parsing; application middleware wiring; absence of Redis dependency.\n\n4. **QA-4 — No observed defect**\n   - **Classification:** authorized QA result.\n   - **Citation:** QA-1 through QA-3.\n   - **Result:** No execution failure or black-box defect observed within the supplied current verification command and its 12 tests.\n\n5. **QA-5 — Coverage limits preserved**\n   - **Classification:** unknown.\n   - **Citation:** acceptance criteria AC-2, AC-4 through AC-8, AC-11 through AC-14, AC-16 through AC-18; `apps/api/tests/test_ip_rate_limit_eval.py`.\n   - **Unverified by supplied current execution evidence:** exact default 10/30 boundaries, full one-hour conversation recovery, exact `ceil` behavior at fractional remaining time, all lower-ratio and equal-ratio tie-break permutations, simultaneous dual rejection selection, direct per-process storage inspection, and execution-history confirmation beyond supplied artifacts.\n   - **Result:** These are coverage gaps, not observed failures. They remain unresolved rather than inferred passed.\n\nHealth Score: 82/100 — current targeted regression suite passes; principal risk is incomplete black-box evidence for edge semantics and tie-break permutations.\n\nGate Results:\n\n1. **evidence-present: passed**\n   - Current isolated-snapshot test evidence exists with command, return code, stdout, stderr, source head, and patch SHA-256.\n   - RED-before-GREEN evidence remains recorded in the change-artifact: RED return code `1`, then GREEN host execution return code `0`.\n\n2. **unknowns-preserved: passed**\n   - `OPEN-1` remains known unavailable and non-blocking.\n   - QA-5 coverage limits remain explicitly unknown; no unexecuted criterion is represented as passed.\n\n3. **authority-boundary: passed**\n   - Evidence concerns only the supplied isolated workspace and local host preflight.\n   - No network, remote Git, merge, deployment, or `D:/tem_projects/MirrorMind` modification is claimed or performed.\n   - `SRC-2` remains non-binding.\n\n4. **responsibility-boundary: passed**\n   - Report-only QA artifact. No product source modification, repair, dependency action, merge, or deployment performed.\n\nUnknowns:\n\n1. **OPEN-1 — Traffic and cost measurements unavailable**\n   - Status: known unavailable; non-blocking.\n   - Source: requirements-artifact `OPEN-1`.\n   - No production traffic inference, threshold adjustment, or distributed-state requirement follows.\n\n2. **QA coverage beyond the 12 supplied executed tests**\n   - Status: not currently evidenced.\n   - Source: QA-5.\n   - Add targeted black-box cases when release assurance requires complete AC-2 through AC-18 execution evidence.\n\n## Host Execution Evidence\n\n```json\n{\n  \"duration_ms\": 42184.193,\n  \"command_results\": [\n    {\n      \"argv\": [\n        \"python\",\n        \"-c\",\n        \"import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))\"\n      ],\n      \"returncode\": 0,\n      \"duration_ms\": 2802.775,\n      \"stdout\": \"............                                                             [100%]\\n12 passed in 1.21s\\n\",\n      \"stderr\": \"C:\\\\Users\\\\gerrard\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\Lib\\\\site-packages\\\\pytest_asyncio\\\\plugin.py:247: PytestDeprecationWarning: The configuration option \\\"asyncio_default_fixture_loop_scope\\\" is unset.\\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \\\"function\\\", \\\"class\\\", \\\"module\\\", \\\"package\\\", \\\"session\\\"\\n\\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\\n\"\n    }\n  ],\n  \"git_status\": \"M  apps/api/app/core/rate_limit.py\\n\",\n  \"patch_file\": \"D:\\\\project\\\\skills-hub\\\\evals\\\\runs\\\\full-dev-loop\\\\ip-rate-limiting-v1\\\\run\\\\qa_only\\\\qa-execution\\\\changes.patch\",\n  \"patch_sha256\": \"6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d\",\n  \"verification_passed\": true,\n  \"delivered\": false\n}\n```",
+  "repository-state": {
+    "delivery_manifest": "evals/runs/full-dev-loop/ip-rate-limiting-v1/delivery-package/manifest.json",
+    "sha256": "5e0d83c18ceff53a01506a111198ed23151abb44f2f8dc9904b375a07e8078f3",
+    "content": {
+      "schema_version": "1.0",
+      "source_ref": "992e0d3",
+      "evaluation_head": "3b300baeea5531346d7e17993dd392deef74b731",
+      "files": [
+        {
+          "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/delivery-package/full.patch",
+          "bytes": 11478,
+          "sha256": "b5f88dce3c1ede3ffd78619edfab76dfa5918cdb5f355399defaef69d84f7976"
+        },
+        {
+          "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/delivery-package/incremental-correction.patch",
+          "bytes": 806,
+          "sha256": "6b3a145486ed48946c2768e42292cd9be06a3892cebdbdf60121d254f056172d"
+        }
+      ],
+      "checks": [
+        {
+          "argv": [
+            "git",
+            "merge-base",
+            "HEAD",
+            "992e0d3"
+          ],
+          "returncode": 0,
+          "duration_ms": 23.517,
+          "stdout": "992e0d3dab3e4498fbda0f2898319ebd38333540\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--name-only",
+            "992e0d3",
+            "--",
+            "docs",
+            ".kiro"
+          ],
+          "returncode": 0,
+          "duration_ms": 20.512,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "duration_ms": 23.918,
+          "stdout": "M  apps/api/app/core/rate_limit.py\n",
+          "stderr": ""
+        }
+      ],
+      "remote_actions": [],
+      "merge_performed": false,
+      "deployment_performed": false
+    }
+  },
+  "delivery-policy": {
+    "mode": "local-review-package-only",
+    "integration_target": "MirrorMind source ref 992e0d3",
+    "merge_base": "992e0d3",
+    "documentation_invariant": "No product documentation change is required by the frozen acceptance criteria; existing documentation files must remain unchanged.",
+    "required_artifacts": [
+      "full patch",
+      "incremental correction patch",
+      "RED evidence",
+      "QA RED evidence",
+      "fresh GREEN command result",
+      "source and isolated HEADs"
+    ],
+    "forbidden": [
+      "push",
+      "remote-git",
+      "merge",
+      "deploy",
+      "network"
+    ]
+  },
+  "delivery-authorization": {
+    "remote_git": false,
+    "merge": false,
+    "deploy": false
+  }
+}

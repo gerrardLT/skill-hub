@@ -1,0 +1,118 @@
+{
+  "branches": [],
+  "inputs": [
+    "Environment [dd-apm/k8s-ssi/enable-ssi/SKILL.md:54]",
+    "[ ] Datadog Agent is installed and healthy — agent-install complete [dd-apm/k8s-ssi/enable-ssi/SKILL.md:55]",
+    "[ ] Kubernetes v1.20+ [dd-apm/k8s-ssi/enable-ssi/SKILL.md:56]",
+    "[ ] Linux node pools only — Windows pods require explicit namespace exclusion [dd-apm/k8s-ssi/enable-ssi/SKILL.md:57]",
+    "[ ] Cluster is not ECS Fargate — unsupported [dd-apm/k8s-ssi/enable-ssi/SKILL.md:58]",
+    "[ ] Not a hardened SELinux environment — unsupported [dd-apm/k8s-ssi/enable-ssi/SKILL.md:59]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "description: Enable Single Step Instrumentation (SSI) on Kubernetes — automatically instruments applications for APM without code changes. Only use if the Datadog Agent is already running on the cluster — if not, use agent-install first. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]",
+    "> If any match — stop. Remove the package entirely (not just the import), rebuild the image, reload it into the cluster, and restart the pod before continuing. A package present in the manifest is enough to trigger this even if it is never imported. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:32]",
+    "The Datadog Agent is not yet installed — run agent-install first [dd-apm/k8s-ssi/enable-ssi/SKILL.md:44]",
+    "[ ] Datadog Agent is installed and healthy — agent-install complete [dd-apm/k8s-ssi/enable-ssi/SKILL.md:55]",
+    "AGENTNAMESPACE Same namespace used in agent-install (e.g. datadog) [dd-apm/k8s-ssi/enable-ssi/SKILL.md:79]",
+    "Step 0 (Only if existing instrumentation detected): Remove Manual Instrumentation [dd-apm/k8s-ssi/enable-ssi/SKILL.md:91]",
+    "If found — remove the import/package, then rebuild and reload [dd-apm/k8s-ssi/enable-ssi/SKILL.md:97]",
+    "docker push to a registry Push the new image; the cluster will pull on restart — skip local load [dd-apm/k8s-ssi/enable-ssi/SKILL.md:113]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/k8s-ssi/enable-ssi/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/k8s-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Enable Single Step Instrumentation (SSI) on Kubernetes — automatically instruments applications for APM without code changes. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/k8s-ssi/enable-ssi",
+  "rules_gates": [
+    "alwaysApply: \"false\" [dd-apm/k8s-ssi/enable-ssi/SKILL.md:9]",
+    "> Before doing anything else: Fully resolve all variables in Context to resolve before acting. Do not begin Step 0 until every variable has a concrete value. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:14]",
+    "> Silent failure — check this before any other step [dd-apm/k8s-ssi/enable-ssi/SKILL.md:18]",
+    "> If any match — stop. Remove the package entirely (not just the import), rebuild the image, reload it into the cluster, and restart the pod before continuing. A package present in the manifest is enough to trigger this even if it is never imported. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:32]",
+    "Do NOT invoke this skill if [dd-apm/k8s-ssi/enable-ssi/SKILL.md:43]",
+    "The user wants to verify SSI after setup — use verify-ssi [dd-apm/k8s-ssi/enable-ssi/SKILL.md:45]",
+    "> These are not a reading exercise — actively verify each one before proceeding. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:52]",
+    "[ ] Runtime version is within SSI's supported range — verify against the [SSI compatibility matrix](https://docs.datadoghq.com/tracing/tracecollection/automaticinstrumentation/single-step-apm/compatibility/) [dd-apm/k8s-ssi/enable-ssi/SKILL.md:65]"
+  ],
+  "skill_path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 36,
+      "line_start": 36,
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 50,
+      "line_start": 50,
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 73,
+      "line_start": 73,
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md"
+    }
+  ],
+  "source_sha256": "62831a45ff4cd6481eae19743e8cbe1593897a6dc6d4cd7aa8d45ce1338c8269",
+  "stop_conditions": [
+    "> Silent failure — check this before any other step [dd-apm/k8s-ssi/enable-ssi/SKILL.md:18]",
+    "> The failure is invisible: init containers run and complete, the pod starts healthy, no errors appear in kubectl or pup, but no traces arrive. The injector detects the user-installed tracer and exits cleanly without logging anything. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:22]",
+    "> If any match — stop. Remove the package entirely (not just the import), rebuild the image, reload it into the cluster, and restart the pod before continuing. A package present in the manifest is enough to trigger this even if it is never imported. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:32]",
+    "> Discover from the cluster — do not ask the user for information you can find yourself. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:75]",
+    "SERVICENAME Use the deployment name (e.g. python-app → service python-app). Do not ask the user. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:86]",
+    "VERSION Use 1.0.0 as the default. Do not ask the user. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:87]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:62831a45ff4cd6481eae19743e8cbe1593897a6dc6d4cd7aa8d45ce1338c8269",
+        "content-review:267-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/k8s-ssi/enable-ssi/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Enable Single Step Instrumentation (SSI) on Kubernetes — automatically instruments applications for APM without code changes. Only use if the Datadog Agent is already running on the cluster — if not, use agent-install first. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]",
+  "unique_methods": [
+    "Triggers [dd-apm/k8s-ssi/enable-ssi/SKILL.md:36]",
+    "Prerequisites [dd-apm/k8s-ssi/enable-ssi/SKILL.md:50]",
+    "Context to resolve before acting [dd-apm/k8s-ssi/enable-ssi/SKILL.md:73]",
+    "Claude runs [dd-apm/k8s-ssi/enable-ssi/SKILL.md:99]",
+    "Claude runs [dd-apm/k8s-ssi/enable-ssi/SKILL.md:123]",
+    "Claude runs [dd-apm/k8s-ssi/enable-ssi/SKILL.md:195]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/k8s-ssi/enable-ssi/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Enable APM on Kubernetes via Single Step Instrumentation [dd-apm/k8s-ssi/enable-ssi/SKILL.md:12]",
+    "Step 0 (Only if existing instrumentation detected): Remove Manual Instrumentation [dd-apm/k8s-ssi/enable-ssi/SKILL.md:91]",
+    "Step 1: Extend the DatadogAgent Manifest with APM [dd-apm/k8s-ssi/enable-ssi/SKILL.md:135]",
+    "Step 2: Inform the User About Unified Service Tags [dd-apm/k8s-ssi/enable-ssi/SKILL.md:207]",
+    "Step 3: Restart Application Pods [dd-apm/k8s-ssi/enable-ssi/SKILL.md:224]"
+  ]
+}

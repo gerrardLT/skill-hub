@@ -1,0 +1,170 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/plan-design-review/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/plan-design-review/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/plan-design-review/SKILL.md:195]",
+    "Continuous Checkpoint Mode [gstack/plan-design-review/SKILL.md:295]",
+    "Step 0: Detect platform and base branch [gstack/plan-design-review/SKILL.md:429]",
+    "EXIT PLAN MODE GATE (BLOCKING) [gstack/plan-design-review/SKILL.md:1113]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/plan-design-review/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/plan-design-review/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/plan-design-review/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/plan-design-review/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/plan-design-review/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/plan-design-review/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/plan-design-review/SKILL.md:61]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-design-review/SKILL.md:80]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/plan-design-review/SKILL.md:104]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/plan-design-review/SKILL.md:175]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/plan-design-review/SKILL.md:299]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/plan-design-review/SKILL.md:422]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/plan-design-review/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Designer's eye plan review — interactive, like CEO and Eng review. [gstack/plan-design-review/SKILL.md:5]",
+  "root_id": "skill-root:gstack/plan-design-review",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/plan-design-review/SKILL.md:18]",
+    "should be reviewed before implementation. [gstack/plan-design-review/SKILL.md:29]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/plan-design-review/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/plan-design-review/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/plan-design-review/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/plan-design-review/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/plan-design-review/SKILL.md:53]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/plan-design-review/SKILL.md:56]"
+  ],
+  "skill_path": "gstack/plan-design-review/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/plan-design-review/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "gstack/plan-design-review/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/plan-design-review/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/plan-design-review/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/plan-design-review/SKILL.md"
+    }
+  ],
+  "source_sha256": "f10d4481bdca4aeee42ec63790af7cf96c2173265c29f4451d79d06ffdf33a0e",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/plan-design-review/SKILL.md:77]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/plan-design-review/SKILL.md:78]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/plan-design-review/SKILL.md:79]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-design-review/SKILL.md:80]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/plan-design-review/SKILL.md:82]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/plan-design-review/SKILL.md:86]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f10d4481bdca4aeee42ec63790af7cf96c2173265c29f4451d79d06ffdf33a0e",
+        "content-review:1142-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/plan-design-review/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1e2531cdaed108bac3a7962e9f926b312c3981f44128a1891ac9a2228447dd96",
+        "content-review:303-lines"
+      ],
+      "path": "gstack/plan-design-review/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8ecf45e52509ae3a014ed3b19b7508a8b580621e5ff3145eae562dd3b8696019",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/plan-design-review/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a5928670b0dab33d534877b91f6df2ec23bac70bd9496329f9b72f6d43740011",
+        "content-review:618-lines"
+      ],
+      "path": "gstack/plan-design-review/sections/review-sections.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:571eab66adbe14158475f7ee2534d0b97e9f554ff9bf9b4fcc6a72d55c3b98b2",
+        "content-review:224-lines"
+      ],
+      "path": "gstack/plan-design-review/sections/review-sections.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Read [gstack/plan-design-review/SKILL.md:1-17]",
+    "Declared tool: Edit [gstack/plan-design-review/SKILL.md:1-17]",
+    "Declared tool: Grep [gstack/plan-design-review/SKILL.md:1-17]",
+    "Declared tool: Glob [gstack/plan-design-review/SKILL.md:1-17]",
+    "Declared tool: Bash [gstack/plan-design-review/SKILL.md:1-17]",
+    "Declared tool: AskUserQuestion [gstack/plan-design-review/SKILL.md:1-17]",
+    "Local dependency: gstack/plan-design-review/sections/review-sections.md [gstack/plan-design-review/SKILL.md:761]",
+    "Local dependency: gstack/plan-design-review/sections/review-sections.md [gstack/plan-design-review/SKILL.md:1111]"
+  ],
+  "trigger": "Designer's eye plan review — interactive, like CEO and Eng review. (gstack) [gstack/plan-design-review/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/plan-design-review/SKILL.md:143]",
+    "Self-check before emitting [gstack/plan-design-review/SKILL.md:166]",
+    "Context Recovery [gstack/plan-design-review/SKILL.md:234]",
+    "Completeness Principle — Boil the Ocean [gstack/plan-design-review/SKILL.md:281]",
+    "Confusion Protocol [gstack/plan-design-review/SKILL.md:287]",
+    "Claimed Limitations Need Evidence [gstack/plan-design-review/SKILL.md:291]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/plan-design-review/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/plan-design-review/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/plan-design-review/SKILL.md:295]",
+    "Step 0: Detect platform and base branch [gstack/plan-design-review/SKILL.md:429]",
+    "PRE-REVIEW SYSTEM AUDIT (before Step 0) [gstack/plan-design-review/SKILL.md:653]",
+    "Step 0: Design Scope Assessment [gstack/plan-design-review/SKILL.md:765]",
+    "Step 0.5: Visual Mockups (DEFAULT when DESIGNREADY) [gstack/plan-design-review/SKILL.md:786]"
+  ]
+}

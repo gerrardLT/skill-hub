@@ -1,0 +1,303 @@
+{
+  "condition": "performance, resilience, determinism, benchmark, or reliability evidence is required",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-runtime-boundaries-and-dependency-safety",
+        "curation/clusters.json:cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "V2-DEPENDENCY-0070",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:frontend-runtime-boundaries-and-dependency-safety",
+      "legacy_target_cluster_id": "cluster:frontend-rendering-and-interaction-performance",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:frontend-runtime-boundaries-and-dependency-safety",
+      "target_capability_id": "capability:frontend-rendering-and-interaction-performance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:purposeful-motion-and-animation-engineering",
+        "curation/clusters.json:cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "V2-DEPENDENCY-0114",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:purposeful-motion-and-animation-engineering",
+      "legacy_target_cluster_id": "cluster:frontend-rendering-and-interaction-performance",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:purposeful-motion-and-animation-engineering",
+      "target_capability_id": "capability:frontend-rendering-and-interaction-performance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation",
+        "curation/clusters.json:cluster:resilience-and-determinism"
+      ],
+      "id": "V2-DEPENDENCY-0131",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:root-cause-investigation",
+      "legacy_target_cluster_id": "cluster:resilience-and-determinism",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:root-cause-investigation",
+      "target_capability_id": "capability:resilience-and-determinism"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing",
+        "curation/clusters.json:cluster:web-performance-diagnostics"
+      ],
+      "id": "V2-DEPENDENCY-0136",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:safe-browser-probing",
+      "legacy_target_cluster_id": "cluster:web-performance-diagnostics",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:safe-browser-probing",
+      "target_capability_id": "capability:web-performance-diagnostics"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness",
+        "curation/clusters.json:cluster:web-performance-diagnostics"
+      ],
+      "id": "V2-DEPENDENCY-0164",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:tool-runtime-readiness",
+      "legacy_target_cluster_id": "cluster:web-performance-diagnostics",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:tool-runtime-readiness",
+      "target_capability_id": "capability:web-performance-diagnostics"
+    }
+  ],
+  "description": "Measure and improve performance, resilience, and deployment readiness.",
+  "execution_state": "not-run-phase-9",
+  "exit_contract": "repeatable baseline, variance, findings, and bounded recommendation",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human approves budgets, thresholds, residual risk, and optimization or reliability work",
+  "id": "stage-09-performance-reliability",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:09-performance-reliability",
+  "stage_order": 9,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/cloud-reliability-assessment",
+      "condition": "Select only when the atomic requested outcome matches: Assess an authorized cloud architecture against provider-specific failure, recovery, scaling, dependency, and operational practices using read-only evidence.",
+      "contract_sha256": "08f49cee918c84adeccc90cee5ee701ee713a285d7aaca81c63c9d97748c9d61",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Reliability assessment is read-only and evidence-bounded; it cannot perform failover, scale, restart, reconfigure, restore, or claim resilience from architecture diagrams alone.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "cloud-reliability-assessment",
+      "inputs": [
+        "Architecture evidence, provider, availability target, dependencies, traffic, and recovery objectives."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "cloud reliability assessment",
+        "failure-domain and dependency map",
+        "RTO/RPO and recovery gaps",
+        "prioritized validation and remediation recommendations"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "cloud-reliability-assessment@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/frontend-rendering-and-interaction-performance",
+      "condition": "Select only when the atomic requested outcome matches: Measure current frontend rendering and interaction performance under a frozen user journey and identify evidence-backed bottlenecks without source repair.",
+      "contract_sha256": "b7a430ea61919a8cf5ab51474c307a3c558aa7e5a76ac66a20d2c52b9a89422d",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0070",
+        "V2-DEPENDENCY-0114"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A frontend performance finding requires a frozen journey, representative device profile, warmup, sample count, distribution, budget, and repeatable trace; one fast or slow run is not evidence.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "frontend-rendering-and-interaction-performance",
+      "inputs": [
+        "A rendered frontend, interaction traces, performance measurements, and device constraints."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "interaction performance baseline",
+        "trace and distribution evidence",
+        "repeatable bottleneck findings",
+        "optimization hypotheses and limits"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "frontend-rendering-and-interaction-performance@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/kubernetes-deployment-readiness",
+      "condition": "Select only when the atomic requested outcome matches: Read-only assess Kubernetes workload, cluster, identity, policy, scaling, networking, migration, health, and rollback readiness before deployment.",
+      "contract_sha256": "997ffe8b7347a5b548b3945d96cbf0fb3e20cc9fbae9c35a4a0afa8834aad011",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Readiness authority is read-only: no apply, patch, rollout, scale, restart, secret read, policy change, or namespace mutation is permitted.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "kubernetes-deployment-readiness",
+      "inputs": [
+        "Cluster and workload configuration, provider controls, expected traffic, failure budget, and deployment plan."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "Kubernetes readiness assessment",
+        "cluster and workload evidence",
+        "blocker and safeguard register",
+        "deployment prerequisites and rollback requirements"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "kubernetes-deployment-readiness@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/resilience-and-determinism",
+      "condition": "Select only when the atomic requested outcome matches: Diagnose and verify nondeterminism, retries, timeouts, cleanup, isolation, ordering, and recovery behavior under a frozen workload without source repair.",
+      "contract_sha256": "c270e3f114f3c6a49a5e7dd1936575c7fd0eb4b72c7d9ff8a78602dc0aabadc2",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0131"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A resilience claim requires repeated target-bound evidence with recorded seeds, ordering, environment, retries, timeouts, side effects, cleanup, and failure injection; one passing retry proves nothing.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "resilience-and-determinism",
+      "inputs": [
+        "A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "determinism experiment record",
+        "retry and timeout analysis",
+        "cleanup and recovery evidence",
+        "root-cause hypothesis and bounded recommendation"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "resilience-and-determinism@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-6/skills/web-performance-diagnostics",
+      "condition": "Select only when the atomic requested outcome matches: Measure a frozen Web page or journey for navigation, network, caching, assets, rendering, and Core Web Vitals under declared conditions without repair.",
+      "contract_sha256": "32f3ab30f174abdf01b830e5fdfabb5df3afc1b60a06cec623df99b826a42800",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0136",
+        "V2-DEPENDENCY-0164"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A Web performance claim requires repeated runs with recorded browser, device, network, cache, warmup, sample count, distribution, budget, and target identity; a single Lighthouse score cannot pass.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "web-performance-diagnostics",
+      "inputs": [
+        "A web application, controlled sampling environment, network waterfall, and build information."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "Web performance baseline",
+        "Core Web Vitals and waterfall evidence",
+        "repeatable bottleneck findings",
+        "optimization hypotheses and limitations"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "web-performance-diagnostics@0.1.0-v2-candidate"
+    }
+  ],
+  "version": "0.1.0-v2-candidate"
+}

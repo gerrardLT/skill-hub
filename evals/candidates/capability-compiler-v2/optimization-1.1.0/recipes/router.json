@@ -1,0 +1,220 @@
+{
+  "atomic_index_ref": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skill-index.json",
+  "atomic_precedence": [
+    {
+      "activation": "conditional-local-exec",
+      "authorization_if_missing": "needs-input",
+      "condition": "one exact approved existing runtime needs readiness verification before a selected owner resumes",
+      "target": "tool-runtime-readiness"
+    },
+    {
+      "activation": "disabled-pending-fresh-authorized-workspace-and-local-exec",
+      "authorization_if_missing": "needs-input",
+      "condition": "one exact approved project-local test runtime is missing",
+      "target": "test-runtime-bootstrap"
+    },
+    {
+      "activation": "conditional-routing-only",
+      "authorization_if_missing": "needs-input",
+      "condition": "multiple runtime capabilities are needed or the support owner is unresolved",
+      "target": "stage-15-tool-runtime-support"
+    }
+  ],
+  "composite_targets": [
+    {
+      "condition": "Govern, research, choose direction, and produce approved requirements and plans without implementation.",
+      "id": "product-discovery-and-planning",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/composites/product-discovery-and-planning.json"
+    },
+    {
+      "condition": "Turn approved requirements into experience and architecture contracts, bounded implementation, independent verification, performance evidence, and local release readiness.",
+      "id": "feature-build-and-verify",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/composites/feature-build-and-verify.json"
+    },
+    {
+      "condition": "Package and preflight a verified change, perform only separately authorized remote actions, then observe production read-only.",
+      "id": "verified-change-delivery-and-observation",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/composites/verified-change-delivery-and-observation.json"
+    },
+    {
+      "condition": "Observe and investigate production, coordinate or separately authorize recovery, then produce evidence-linked learning.",
+      "id": "incident-recovery-and-learning",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/composites/incident-recovery-and-learning.json"
+    },
+    {
+      "condition": "Explicit end-to-end product lifecycle across all fourteen mandatory stages, with tool runtime support inserted only when a selected owner is blocked.",
+      "id": "full-software-lifecycle",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/composites/full-software-lifecycle.json"
+    }
+  ],
+  "execution_state": "candidate-definition-not-executed",
+  "fallback": {
+    "reason": "ambiguous authority, scope, lifecycle stage, or multi-domain request",
+    "status": "needs-input",
+    "target": "stage-01-governance-intake"
+  },
+  "gates": [
+    "select the smallest sufficient target",
+    "never activate a remote or local-system step from routing alone",
+    "preserve all human checkpoints and invalidation",
+    "router does not execute target work",
+    "when a safety disposition matches, return its exact disposition ID before any normal target; its next_route is explanatory and is not executed",
+    "atomic runtime support beats stage 15 when one exact owner is known; stage 15 owns multi-capability support or unresolved support-owner selection",
+    "evaluate atomic_precedence before stage targets; exact readiness or test-bootstrap ownership cannot be widened to stage 15",
+    "route target ownership independently from activation authority: a missing project-local test runtime belongs to test-runtime-bootstrap even when activation remains disabled and needs-input"
+  ],
+  "id": "capability-compiler-v2-router",
+  "safety_dispositions": [
+    {
+      "authorization_propagates": false,
+      "executable": false,
+      "id": "blocked-data-governance",
+      "match": "customer, proprietary, recorded, or external-Judge data lacks consent, minimization, redaction, retention, transfer, access, deletion, or incident terms",
+      "next_route": "stage-01-governance-intake",
+      "status": "blocked"
+    },
+    {
+      "authorization_propagates": false,
+      "executable": false,
+      "id": "split-independent-review-human-approval-remediation",
+      "match": "one request explicitly asks the same reviewer or QA identity to mutate source, accept its own fix, self-approve, or release; a governed composite with separate identities and human-owned disposition does not match",
+      "next_route": "independent review then explicit human approval then a separate remediator",
+      "status": "needs-input"
+    },
+    {
+      "authorization_propagates": false,
+      "executable": false,
+      "id": "split-observation-human-authorization-rollback",
+      "match": "one request combines production observation with automatic rollback or recovery",
+      "next_route": "deployment-observation then explicit human rollback authorization then release-rollback-execution",
+      "status": "needs-input"
+    },
+    {
+      "authorization_propagates": false,
+      "executable": false,
+      "id": "blocked-non-cascading-remote-authorization",
+      "match": "one approval is offered for multiple remote actions such as push, PR change, comment, merge, deploy, provider configuration, or rollback",
+      "next_route": "stage-10-release-readiness then one separately authorized remote action",
+      "status": "blocked"
+    }
+  ],
+  "safety_overrides": [
+    "missing customer, proprietary, recorded, or external-Judge governance returns needs-input or blocked",
+    "review plus repair splits identities and requires human repair authorization",
+    "observation plus rollback splits identities and requires fresh rollback authorization",
+    "remote, external-session, or local-system action without fresh per-action authorization routes to readiness or stops",
+    "one remote authorization never propagates to a later remote action",
+    "ambiguous multi-domain intent routes to governance intake instead of full lifecycle"
+  ],
+  "schema_version": "2.0",
+  "selection_order": [
+    "safety override",
+    "one atomic candidate Skill",
+    "one stage Recipe",
+    "specialized complete UI Recipe",
+    "smallest bounded composite Recipe",
+    "explicit full-software-lifecycle only",
+    "governance intake fallback"
+  ],
+  "specialized_targets": [
+    {
+      "condition": "explicit complete UI design, implementation, rendered review, and human-owned release recommendation",
+      "id": "complete-ui-design-and-review",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/specialized/complete-ui-design-and-review.json"
+    }
+  ],
+  "stage_targets": [
+    {
+      "condition": "authority, context, risk, data governance, or routing must be bounded",
+      "id": "stage-01-governance-intake",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-01-governance-intake.json",
+      "stage_id": "stage:01-governance-intake"
+    },
+    {
+      "condition": "validated discovery, research, market, system, or evidence collection is required",
+      "id": "stage-02-discovery-research",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-02-discovery-research.json",
+      "stage_id": "stage:02-discovery-research"
+    },
+    {
+      "condition": "evidence-backed alternatives, prioritization, positioning, or strategic choice is required",
+      "id": "stage-03-strategy-prioritization",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-03-strategy-prioritization.json",
+      "stage_id": "stage:03-strategy-prioritization"
+    },
+    {
+      "condition": "approved direction needs requirements, acceptance, implementation planning, or plan review",
+      "id": "stage-04-requirements-planning",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-04-requirements-planning.json",
+      "stage_id": "stage:04-requirements-planning"
+    },
+    {
+      "condition": "user-facing flow, visual system, interaction, accessibility, prototype, or rendered review is required",
+      "id": "stage-05-experience-design",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-05-experience-design.json",
+      "stage_id": "stage:05-experience-design"
+    },
+    {
+      "condition": "technical boundaries, data/API, authorization, secrets, AI architecture, or security review is required",
+      "id": "stage-06-architecture-risk-security",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-06-architecture-risk-security.json",
+      "stage_id": "stage:06-architecture-risk-security"
+    },
+    {
+      "condition": "authorized source implementation, repair, integration, or developer self-check is required",
+      "id": "stage-07-implementation-integration",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-07-implementation-integration.json",
+      "stage_id": "stage:07-implementation-integration"
+    },
+    {
+      "condition": "independent tests, QA, review, compliance, regression, or completion evidence is required",
+      "id": "stage-08-verification-quality",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-08-verification-quality.json",
+      "stage_id": "stage:08-verification-quality"
+    },
+    {
+      "condition": "performance, resilience, determinism, benchmark, or reliability evidence is required",
+      "id": "stage-09-performance-reliability",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-09-performance-reliability.json",
+      "stage_id": "stage:09-performance-reliability"
+    },
+    {
+      "condition": "verified change needs local packaging, documentation, delivery preflight, or merge/deploy readiness",
+      "id": "stage-10-release-readiness",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-10-release-readiness.json",
+      "stage_id": "stage:10-release-readiness"
+    },
+    {
+      "condition": "one explicitly authorized remote repository, provider, deployment, or configuration action is requested",
+      "id": "stage-11-deployment-change",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-11-deployment-change.json",
+      "stage_id": "stage:11-deployment-change"
+    },
+    {
+      "condition": "a deployed change or production baseline needs read-only observation, canary, alerts, or health evidence",
+      "id": "stage-12-observation-canary",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-12-observation-canary.json",
+      "stage_id": "stage:12-observation-canary"
+    },
+    {
+      "condition": "production failure requires investigation, coordination, or one separately authorized recovery action",
+      "id": "stage-13-incident-recovery",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-13-incident-recovery.json",
+      "stage_id": "stage:13-incident-recovery"
+    },
+    {
+      "condition": "outcomes, feedback, retrospective, adoption, or validated learning must feed the next lifecycle pass",
+      "id": "stage-14-learning-feedback",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-14-learning-feedback.json",
+      "stage_id": "stage:14-learning-feedback"
+    },
+    {
+      "condition": "a selected owner is blocked by a local tool, browser, artifact, memory, auth, or workflow-runtime prerequisite",
+      "id": "stage-15-tool-runtime-support",
+      "path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/recipes/stages/stage-15-tool-runtime-support.json",
+      "stage_id": "stage:15-tool-runtime-support"
+    }
+  ],
+  "status": "evaluating",
+  "version": "1.1.0-candidate"
+}

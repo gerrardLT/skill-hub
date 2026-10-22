@@ -1,0 +1,85 @@
+{
+  "artifact_types": [
+    "agency and action-right contract",
+    "human-control and interruption map",
+    "autonomy graduation and revocation criteria",
+    "fallback and residual-risk record",
+    "AI safety boundary",
+    "threat and abuse-case register",
+    "red-team and stop-condition plan",
+    "human-checkpoint and residual-risk report"
+  ],
+  "capability_id": "capability:ai-safety-and-action-governance",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "No action right expands without task-specific evidence, a named human owner, observable bounds, interruption, rollback or containment, and explicit approval.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance.",
+    "High-impact, irreversible, privileged, privacy-sensitive, or externally consequential AI actions remain default-deny without explicit policy, task-scoped authorization, human confirmation, containment, and current safety evidence."
+  ],
+  "id": "ai-safety-and-action-governance",
+  "inputs": [
+    "A task definition, agent capabilities, human roles, failure cost, and observed behavior.",
+    "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level."
+  ],
+  "mode_permissions": {
+    "ai-agent-autonomy-and-human-control": "workspace-write",
+    "ai-safety-and-action-governance": "read-only"
+  },
+  "modes": [
+    "ai-agent-autonomy-and-human-control",
+    "ai-safety-and-action-governance"
+  ],
+  "outputs": [
+    "agency and action-right contract",
+    "human-control and interruption map",
+    "autonomy graduation and revocation criteria",
+    "fallback and residual-risk record",
+    "AI safety boundary",
+    "threat and abuse-case register",
+    "red-team and stop-condition plan",
+    "human-checkpoint and residual-risk report"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "action-classes",
+      "graduated-autonomy",
+      "human-checkpoint",
+      "interruption",
+      "rollback",
+      "revocation",
+      "fallback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Define an evidence-gated agency contract for AI tasks, action rights, human handoffs, interruption, fallback, and graduated autonomy.; Independently assess AI prompt, data, tool, and action risks; define red-team scope, default-deny boundaries, human checkpoints, stop conditions, and residual risk without remediation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

@@ -1,0 +1,115 @@
+{
+  "branches": [
+    "/guard — Full Safety Mode [gstack/guard/SKILL.md:42]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/guard/SKILL.md:4]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/guard/SKILL.md:4]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/guard/SKILL.md:4]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/guard/SKILL.md:4]"
+  ],
+  "permissions_side_effects": [
+    "\"1. Destructive command guard — rm -rf, DROP TABLE, force-push, etc. warn before executing (overridable); catastrophic shapes (recursive delete of / or ~, force-push to the default branch) are hard-denied\" [gstack/guard/SKILL.md:83]",
+    "\"To remove the edit boundary, run /unfreeze. To deactivate everything, end the session.\" [gstack/guard/SKILL.md:85]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/guard/SKILL.md:4"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Full safety mode: destructive command warnings + directory-scoped edits. [gstack/guard/SKILL.md:4]",
+  "root_id": "skill-root:gstack/guard",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/guard/SKILL.md:31]",
+    "Combines /careful (warns before rm -rf, DROP TABLE, force-push, etc.) with [gstack/guard/SKILL.md:37]",
+    "and /freeze skill directories. Both must be installed (they are installed together [gstack/guard/SKILL.md:48]",
+    "Question: \"Guard mode: which directory should edits be restricted to? Destructive command warnings are always on. Files outside the chosen path will be blocked from editing.\" [gstack/guard/SKILL.md:60]",
+    "\"1. Destructive command guard — rm -rf, DROP TABLE, force-push, etc. warn before executing (overridable); catastrophic shapes (recursive delete of / or ~, force-push to the default branch) are hard-denied\" [gstack/guard/SKILL.md:83]"
+  ],
+  "skill_path": "gstack/guard/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 8,
+      "line_start": 4,
+      "path": "gstack/guard/SKILL.md"
+    },
+    {
+      "line_end": 35,
+      "line_start": 35,
+      "path": "gstack/guard/SKILL.md"
+    },
+    {
+      "line_end": 42,
+      "line_start": 42,
+      "path": "gstack/guard/SKILL.md"
+    },
+    {
+      "line_end": 56,
+      "line_start": 56,
+      "path": "gstack/guard/SKILL.md"
+    },
+    {
+      "line_end": 87,
+      "line_start": 87,
+      "path": "gstack/guard/SKILL.md"
+    }
+  ],
+  "source_sha256": "ae1ec65c42568c760bfd0c2127c2b5a668bf04e808d731d2f234f4d65a94bf06",
+  "stop_conditions": [
+    "Ask the user which directory to restrict edits to. Use AskUserQuestion [gstack/guard/SKILL.md:58]",
+    "Question: \"Guard mode: which directory should edits be restricted to? Destructive command warnings are always on. Files outside the chosen path will be blocked from editing.\" [gstack/guard/SKILL.md:60]",
+    "\"2. Edit boundary — file edits restricted to <path>/. Edits outside this directory are blocked.\" [gstack/guard/SKILL.md:84]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ae1ec65c42568c760bfd0c2127c2b5a668bf04e808d731d2f234f4d65a94bf06",
+        "content-review:91-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/guard/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:291c337777d3d8086e0a7343de4db98174cf85ef54c69b12f9f04ab018380c9f",
+        "content-review:87-lines"
+      ],
+      "path": "gstack/guard/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/guard/SKILL.md:1-30]",
+    "Declared tool: Read [gstack/guard/SKILL.md:1-30]",
+    "Declared tool: AskUserQuestion [gstack/guard/SKILL.md:1-30]"
+  ],
+  "trigger": "\"Full safety mode: destructive command warnings + directory-scoped edits. (gstack)\" [gstack/guard/SKILL.md:4]",
+  "unique_methods": [
+    "/guard — Full Safety Mode [gstack/guard/SKILL.md:42]",
+    "Setup [gstack/guard/SKILL.md:56]",
+    "What's protected [gstack/guard/SKILL.md:87]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/guard/SKILL.md:4]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/guard/SKILL.md:4]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [gstack/guard/SKILL.md:4]"
+  ],
+  "workflow": [
+    "When to invoke this skill [gstack/guard/SKILL.md:35]",
+    "/guard — Full Safety Mode [gstack/guard/SKILL.md:42]",
+    "Setup [gstack/guard/SKILL.md:56]",
+    "What's protected [gstack/guard/SKILL.md:87]"
+  ]
+}

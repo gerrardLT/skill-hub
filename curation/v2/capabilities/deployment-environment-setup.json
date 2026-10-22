@@ -1,0 +1,79 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:deployment-environment-setup",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0625",
+    "V2-FUSION-0879",
+    "V2-FUSION-0880",
+    "V2-FUSION-0881",
+    "V2-FUSION-0882",
+    "V2-FUSION-0883",
+    "V2-FUSION-0884",
+    "V2-FUSION-0885",
+    "V2-FUSION-0886",
+    "V2-FUSION-0887",
+    "V2-FUSION-0888",
+    "V2-FUSION-0889"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Application, providers, environments, secrets policy, target, and deployment constraints."
+  ],
+  "lifecycle_stage_id": "stage:10-release-readiness",
+  "name": "Deployment Environment Setup",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Deployment configuration, preflight result, required authorization, and rollback plan."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "workspace-write",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [],
+  "responsibility": "Prepare local deployment configuration, provider selection, environment boundaries, and dry-run evidence without deploying.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:gstack/land-and-deploy:010:step-1-5-first-run-dry-run-validation",
+    "v2-root:gstack/setup-deploy:001:root-responsibility",
+    "v2-root:gstack/setup-deploy:006:setup-deploy-configure-deployment-for-gstack",
+    "v2-root:gstack/setup-deploy:007:step-1-check-existing-configuration",
+    "v2-root:gstack/setup-deploy:008:step-2-detect-platform",
+    "v2-root:gstack/setup-deploy:009:github-actions-deploy-workflows",
+    "v2-root:gstack/setup-deploy:010:step-3-platform-specific-setup",
+    "v2-root:gstack/setup-deploy:011:step-4-write-configuration",
+    "v2-root:gstack/setup-deploy:012:deploy-configuration-configured-by-setup-deploy",
+    "v2-root:gstack/setup-deploy:013:custom-deploy-hooks",
+    "v2-root:gstack/setup-deploy:014:step-5-verify",
+    "v2-root:gstack/setup-deploy:015:step-6-summary"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "gstack/land-and-deploy/SKILL.md:665-699",
+    "gstack/setup-deploy/SKILL.md:430-463",
+    "gstack/setup-deploy/SKILL.md:443-458",
+    "gstack/setup-deploy/SKILL.md:459-463",
+    "gstack/setup-deploy/SKILL.md:472-476",
+    "gstack/setup-deploy/SKILL.md:482-521",
+    "gstack/setup-deploy/SKILL.md:5-9",
+    "gstack/setup-deploy/SKILL.md:563-568",
+    "gstack/setup-deploy/SKILL.md:569-608",
+    "gstack/setup-deploy/SKILL.md:578-584",
+    "gstack/setup-deploy/SKILL.md:585-601",
+    "gstack/setup-deploy/SKILL.md:602-620"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

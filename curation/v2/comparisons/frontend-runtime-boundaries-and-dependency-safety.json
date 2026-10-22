@@ -1,0 +1,453 @@
+{
+  "candidate_responsibility": "Keep frontend dependencies, client-server boundaries, assets, and runtime assumptions safe and explicit.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-005",
+    "frontend-design:unit-010",
+    "redesign-existing-projects:unit-009",
+    "redesign-existing-projects:unit-013"
+  ],
+  "cluster_id": "cluster:frontend-runtime-boundaries-and-dependency-safety",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:122-159",
+    "frontend-design/SKILL.md:47-52",
+    "redesign-existing-projects/SKILL.md:112-122",
+    "redesign-existing-projects/SKILL.md:171-178"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-runtime-boundaries-and-dependency-safety"
+      ],
+      "id": "cluster:frontend-runtime-boundaries-and-dependency-safety:fusion:boundary",
+      "rule": "Keep frontend dependencies, client-server boundaries, assets, and runtime assumptions safe and explicit."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-runtime-boundaries-and-dependency-safety"
+      ],
+      "id": "cluster:frontend-runtime-boundaries-and-dependency-safety:fusion:inputs",
+      "rule": "Accept only: A frontend implementation, dependency graph, rendering environment, and integration constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-runtime-boundaries-and-dependency-safety"
+      ],
+      "id": "cluster:frontend-runtime-boundaries-and-dependency-safety:fusion:outputs",
+      "rule": "Produce only: A bounded runtime design, dependency decision, and safety evidence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:frontend-runtime-boundaries-and-dependency-safety:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A frontend implementation, dependency graph, rendering environment, and integration constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "frontend-design"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "frontend-design",
+        "redesign-existing-projects"
+      ]
+    }
+  ],
+  "output_boundary": "A bounded runtime design, dependency decision, and safety evidence.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义默认工程架构与规范：React/Next.js 默认 Server Components (RSC)；涉及动效与监听的交互必须隔离在顶部标注 'use client' 的叶子组件中；严禁使用 useState 跟踪鼠标与连续滚动（必须使用 Motion 的 useMotionValue/useTransform/useScroll）；Tailwind v4 样式；Phosphor/HugeIcons/Radix/Tabler 矢量图标（严禁手绘 SVG 路径，严禁使用 Emoji 充当 UI 符号）；英雄区必须使用 min-h-[100dvh] 避免 iOS 地址栏跳动；网格布局优先采用 CSS Grid 严禁百分比 flexbox 计算。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Explicit limits: 适用于基于 React/Next.js 的所有前端实现代码结构，严格防范客户端与服务端组件边界污染与滚动性能崩溃。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于基于 React/Next.js 的所有前端实现代码结构，严格防范客户端与服务端组件边界污染与滚动性能崩溃。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Explicit limits: 适用于基于 React/Next.js 的所有前端实现代码结构，严格防范客户端与服务端组件边界污染与滚动性能崩溃。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查 RSC 隔离性、连续输入状态机制、矢量图标库选型以及是否采用了 min-h-[100dvh] 视口高度。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Explicit limits: 适用于基于 React/Next.js 的所有前端实现代码结构，严格防范客户端与服务端组件边界污染与滚动性能崩溃。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "第一阶段紧凑设计系统规划：编码前先头脑风暴并输出紧凑令牌系统：1. Color（4-6 个具名 Hex 色值的核心调色板）；2. Type（明确字体家族与其角色职责）；3. Layout（一句话概念叙述+ASCII 线框图推演对齐与结构）；4. Principles（指引该页面独特性的高阶设计原则）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Explicit limits: 编码实现前的架构与令牌设计阶段执行。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-010"
+      ]
+    },
+    {
+      "approach": "第一阶段紧凑设计系统规划：编码前先头脑风暴并输出紧凑令牌系统：1. Color（4-6 个具名 Hex 色值的核心调色板）；2. Type（明确字体家族与其角色职责）；3. Layout（一句话概念叙述+ASCII 线框图推演对齐与结构）；4. Principles（指引该页面独特性的高阶设计原则）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Explicit limits: 编码实现前的架构与令牌设计阶段执行。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-010"
+      ]
+    },
+    {
+      "approach": "编码实现前的架构与令牌设计阶段执行。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Explicit limits: 编码实现前的架构与令牌设计阶段执行。",
+      "source_id": "frontend-design",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "frontend-design:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "frontend-design",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立代码质量（Code Quality）审查准则：杜绝 div 汤，全面采用语义化 HTML（nav, main, article, aside, section）；消除内联样式；使用相对尺寸（%, rem, em）；为所有有意义图片提供描述性 alt 文本；建立规范的 z-index 阶梯；清理废弃注释代码；杜绝依赖 import 幻觉；配置完整的 SEO 与 OpenGraph 元标签。; 规定重构实施的核心工程纪律：与既有技术栈紧密协同，严禁强推跨框架迁移；绝不破坏既有功能（改完必测）；引入新库前预检 package.json；Tailwind 项目识别 v3/v4 版本；无框架时采用原生 CSS；保持变更聚焦小步快跑，易于代码审查。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Explicit limits: 重构输出的代码必须符合工业级语义化、可访问性与模块化标准。; 贯穿项目重构全程的不可逾越底线，确保改造过程安全、受控、零回归。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-009",
+        "redesign-existing-projects:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "重构输出的代码必须符合工业级语义化、可访问性与模块化标准。; 贯穿项目重构全程的不可逾越底线，确保改造过程安全、受控、零回归。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Explicit limits: 重构输出的代码必须符合工业级语义化、可访问性与模块化标准。; 贯穿项目重构全程的不可逾越底线，确保改造过程安全、受控、零回归。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-009",
+        "redesign-existing-projects:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验代码重构是否消除了 div 堆砌、任意 z-index 与无效依赖引用。; 核验重构过程是否坚守栈协同、功能零回归与预检依赖等红线。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Explicit limits: 重构输出的代码必须符合工业级语义化、可访问性与模块化标准。; 贯穿项目重构全程的不可逾越底线，确保改造过程安全、受控、零回归。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-009",
+        "redesign-existing-projects:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:122-159"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-005"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "frontend-design/SKILL.md:47-52"
+      ],
+      "source_id": "frontend-design",
+      "unit_ids": [
+        "frontend-design:unit-010"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 2
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:112-122",
+        "redesign-existing-projects/SKILL.md:171-178"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-009",
+        "redesign-existing-projects:unit-013"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-005",
+    "frontend-design:unit-010",
+    "redesign-existing-projects:unit-009",
+    "redesign-existing-projects:unit-013"
+  ]
+}

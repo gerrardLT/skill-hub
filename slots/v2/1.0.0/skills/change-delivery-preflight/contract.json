@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "delivery preflight report",
+    "branch and ref evidence",
+    "credential and automation-stop status",
+    "blocker and next-owner register"
+  ],
+  "capability_id": "capability:change-delivery-preflight",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Preflight is read-only: readiness never authorizes packaging, push, pull-request change, merge, deployment, or provider mutation.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "change-delivery-preflight",
+  "inputs": [
+    "A reviewed change, repository state, delivery policy, and intended publication boundary."
+  ],
+  "outputs": [
+    "delivery preflight report",
+    "branch and ref evidence",
+    "credential and automation-stop status",
+    "blocker and next-owner register"
+  ],
+  "permission_identity": "local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "branch-ref-identity",
+      "merge-base",
+      "clean-state",
+      "credential-status",
+      "automation-stops",
+      "no-remote-mutation"
+    ],
+    "data_governance": false,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Preflight one verified local change for delivery by checking branch and ref identity, merge base, credentials status, automation stops, evidence, documentation, and remote readiness without mutation.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

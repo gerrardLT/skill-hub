@@ -1,0 +1,130 @@
+{
+  "artifact_types": [
+    "minimal source and test patch",
+    "before-and-after reproduction evidence",
+    "focused and regression command records",
+    "rollback and residual-risk note",
+    "self-review checklist",
+    "bounded correction patch",
+    "updated focused evidence",
+    "independent-review handoff",
+    "report state (DONE, DONE_WITH_CONCERNS, BLOCKED, NEEDS_CONTEXT) with concerns listed",
+    "provider comment receipt",
+    "posted response and evidence links",
+    "target PR and thread identity",
+    "failure or bounded retry record",
+    "bounded UI repair patch",
+    "finding-to-change map",
+    "focused verification evidence",
+    "recapture bundle and independent-review handoff",
+    "bounded website repair patch",
+    "finding-to-fix traceability",
+    "focused verification records",
+    "independent reassessment handoff"
+  ],
+  "capability_id": "capability:code-and-asset-remediation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence"
+  ],
+  "hard_gates": [
+    "Remediation cannot start from an unconfirmed symptom, and it cannot pass without a root-cause-linked patch plus current focused and affected-regression evidence.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority.",
+    "A developer correction pass may fix deterministic in-scope defects but must never impersonate independent review, erase failed evidence, or expand the frozen change.",
+    "Authorization covers one exact PR comment response and no other thread, source change, resolution, label, assignment, merge, or deployment action.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "UI remediation requires accepted reproducible findings and separate authorization; the remediator cannot create its own findings, waive risk, judge its recaptures, or issue release disposition.",
+    "Website remediation cannot begin without accepted audit findings and cannot close them without separate current reassessment; repair authority never includes deployment."
+  ],
+  "id": "code-and-asset-remediation",
+  "inputs": [
+    "Confirmed finding, reproduction evidence, source workspace, repair authority, and regression contract.",
+    "Implemented code, its task specification, test output, and change list.",
+    "Comment identity, verified finding classification, response artifact, evidence links, provider, and current authorization.",
+    "UI findings, source workspace, design system, platform variant, and write authority.",
+    "Confirmed audit finding, source mapping, approved repair scope, workspace, and local verification command."
+  ],
+  "mode_permissions": {
+    "defect-remediation": "workspace-write-local-exec",
+    "developer-self-check-and-fix": "workspace-write-local-exec",
+    "pull-request-comment-response": "remote-write-authorized-only",
+    "ui-remediation": "workspace-write-local-exec",
+    "website-audit-remediation": "workspace-write-local-exec"
+  },
+  "modes": [
+    "defect-remediation",
+    "developer-self-check-and-fix",
+    "pull-request-comment-response",
+    "ui-remediation",
+    "website-audit-remediation"
+  ],
+  "outputs": [
+    "minimal source and test patch",
+    "before-and-after reproduction evidence",
+    "focused and regression command records",
+    "rollback and residual-risk note",
+    "self-review checklist",
+    "bounded correction patch",
+    "updated focused evidence",
+    "independent-review handoff",
+    "report state (DONE, DONE_WITH_CONCERNS, BLOCKED, NEEDS_CONTEXT) with concerns listed",
+    "provider comment receipt",
+    "posted response and evidence links",
+    "target PR and thread identity",
+    "failure or bounded retry record",
+    "bounded UI repair patch",
+    "finding-to-change map",
+    "focused verification evidence",
+    "recapture bundle and independent-review handoff",
+    "bounded website repair patch",
+    "finding-to-fix traceability",
+    "focused verification records",
+    "independent reassessment handoff"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "confirmed-root-cause",
+      "shared-fix-point",
+      "minimal-patch",
+      "single-writer",
+      "focused-regression",
+      "rollback"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 5 related modes: Apply the smallest authorized source repair for a confirmed root cause and verify the changed behavior plus relevant regressions in one isolated workspace.; Self-review one completed authorized change, fix only deterministic defects within its frozen scope, and leave independent review ownership intact.; Post one evidence-backed response to one identified pull-request review comment under per-action authorization, without changing source or resolving unrelated threads.; Apply only accepted evidence-backed UI findings to authorized source and recapture the affected states without performing independent review.; Apply explicitly accepted website audit findings to authorized source, verify affected checks, and preserve a separate reassessment boundary.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

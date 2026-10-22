@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "workflow-orchestration-and-lifecycle",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "context-intake-and-routing",
+        "implementation-planning-and-handoff",
+        "plan-execution-control"
+      ],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-trigger-01",
+      "input": "Build a conditional capability workflow for this product task from the approved atomic contracts.",
+      "kind": "should-trigger",
+      "reason": "Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work."
+    },
+    {
+      "expected_skill_id": "workflow-orchestration-and-lifecycle",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "context-intake-and-routing",
+        "implementation-planning-and-handoff",
+        "plan-execution-control"
+      ],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-trigger-02",
+      "input": "Resume this lifecycle run from its saved stage and invalidate stale downstream evidence.",
+      "kind": "should-trigger",
+      "reason": "Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work."
+    },
+    {
+      "expected_skill_id": "plan-execution-control",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "workflow-orchestration-and-lifecycle"
+      ],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-anti-01",
+      "input": "Execute these implementation tasks in the workspace.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility plan-execution-control."
+    },
+    {
+      "expected_skill_id": "context-intake-and-routing",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "workflow-orchestration-and-lifecycle"
+      ],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-anti-02",
+      "input": "Classify a single vague request and choose only the next capability.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility context-intake-and-routing."
+    },
+    {
+      "expected_skill_id": "workflow-orchestration-and-lifecycle",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-boundary-01",
+      "input": "Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "workflow-orchestration-and-lifecycle",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-workflow-orchestration-and-lifecycle-authority-01",
+      "input": "Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "workflow-orchestration-and-lifecycle"
+}

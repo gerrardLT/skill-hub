@@ -1,0 +1,94 @@
+{
+  "canonical_unit_ids": [
+    "canary:unit-001",
+    "canary:unit-003",
+    "canary:unit-004",
+    "canary:unit-005",
+    "canary:unit-006",
+    "canary:unit-007",
+    "land-and-deploy:unit-008",
+    "land-and-deploy:unit-009"
+  ],
+  "capability_id": "capability:production-canary-monitoring",
+  "completion_evidence": [
+    "All declared outputs exist and their source citations, hashes, or executable checks are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0059",
+    "V2-FUSION-0397",
+    "V2-FUSION-0398",
+    "V2-FUSION-0399",
+    "V2-FUSION-0401",
+    "V2-FUSION-0403",
+    "V2-FUSION-0404",
+    "V2-FUSION-0633"
+  ],
+  "hard_gates": [
+    "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise.",
+    "Accept only: A deployed application, safely accessible pages, and a trusted initial baseline.",
+    "Produce only: Ongoing health status, differential alerts, evidence, and controlled baseline updates.",
+    "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+  ],
+  "inputs": [
+    "A deployed application, safely accessible pages, and a trusted initial baseline."
+  ],
+  "lifecycle_stage_id": "stage:12-observation-canary",
+  "name": "Production Canary Monitoring",
+  "non_responsibility": "Does not approve upstream product decisions, expand authority, or perform remote writes beyond its explicit permission identity.",
+  "outputs": [
+    "Ongoing health status, differential alerts, evidence, and controlled baseline updates."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [],
+  "responsibility": "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise.",
+  "retained_auxiliary_unit_ids": [
+    "skills/canary/SKILL.md:21-27",
+    "skills/canary/SKILL.md:23-25",
+    "skills/canary/SKILL.md:6-11"
+  ],
+  "root_derived_atom_ids": [
+    "v2-root:gstack/canary:001:root-responsibility",
+    "v2-root:gstack/canary:007:canary-post-deploy-visual-monitor",
+    "v2-root:gstack/canary:008:phase-1-setup",
+    "v2-root:gstack/canary:010:phase-3-page-discovery",
+    "v2-root:gstack/canary:012:phase-5-continuous-monitoring-loop",
+    "v2-root:gstack/canary:013:phase-6-health-report",
+    "v2-root:gstack/land-and-deploy:018:step-7-canary-verification-conditional-depth"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [
+    "cluster:production-canary-monitoring"
+  ],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "canary/SKILL.md:21-27",
+    "canary/SKILL.md:23-25",
+    "canary/SKILL.md:537-547",
+    "canary/SKILL.md:593-614",
+    "canary/SKILL.md:6-11",
+    "canary/SKILL.md:625-646",
+    "canary/SKILL.md:647-655",
+    "canary/SKILL.md:656-678",
+    "canary/SKILL.md:680-714",
+    "gstack/canary/SKILL.md:5-9",
+    "gstack/canary/SKILL.md:519-558",
+    "gstack/canary/SKILL.md:537-547",
+    "gstack/canary/SKILL.md:593-614",
+    "gstack/canary/SKILL.md:625-664",
+    "gstack/canary/SKILL.md:679-714",
+    "gstack/land-and-deploy/SKILL.md:857-896",
+    "land-and-deploy/SKILL.md:857-890",
+    "land-and-deploy/SKILL.md:906-920"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop on missing required input, authority, data-governance boundary, failed evidence check, or incompatible permission identity."
+  ]
+}

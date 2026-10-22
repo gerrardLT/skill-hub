@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "executive-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "engineering-plan-review",
+        "plan-review-decision-synthesis"
+      ],
+      "id": "V2-P3-executive-plan-review-trigger-01",
+      "input": "Review this plan as an executive for scope, leverage, one-way doors, and missing business decisions.",
+      "kind": "should-trigger",
+      "reason": "Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership."
+    },
+    {
+      "expected_skill_id": "executive-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "engineering-plan-review",
+        "plan-review-decision-synthesis"
+      ],
+      "id": "V2-P3-executive-plan-review-trigger-02",
+      "input": "Challenge whether this feature plan is the smallest valuable move without approving it.",
+      "kind": "should-trigger",
+      "reason": "Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership."
+    },
+    {
+      "expected_skill_id": "strategic-choice-and-differentiation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "executive-plan-review"
+      ],
+      "id": "V2-P3-executive-plan-review-anti-01",
+      "input": "Choose the company's strategy and approve the plan.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility strategic-choice-and-differentiation."
+    },
+    {
+      "expected_skill_id": "engineering-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "executive-plan-review"
+      ],
+      "id": "V2-P3-executive-plan-review-anti-02",
+      "input": "Review the plan's implementation interfaces and failure modes.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility engineering-plan-review."
+    },
+    {
+      "expected_skill_id": "executive-plan-review",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-executive-plan-review-boundary-01",
+      "input": "Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "executive-plan-review",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-executive-plan-review-authority-01",
+      "input": "Independently challenge a plan's leverage, scope, user value, one-way doors, strategic risk, and decision ownership. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "executive-plan-review"
+}

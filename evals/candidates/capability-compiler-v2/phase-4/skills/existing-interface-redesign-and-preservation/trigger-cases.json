@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "existing-interface-redesign-and-preservation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "ui-task-routing-and-governance",
+        "ui-remediation",
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-trigger-01",
+      "input": "Before redesigning this live interface, inventory the user flow, routes, content, analytics, SEO, and behavioral invariants that must survive.",
+      "kind": "should-trigger",
+      "reason": "Audit an existing interface and define a redesign preservation contract for product truth, user flow, information architecture, routes, SEO, analytics, behavior, and content."
+    },
+    {
+      "expected_skill_id": "existing-interface-redesign-and-preservation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "ui-task-routing-and-governance",
+        "ui-remediation",
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-trigger-02",
+      "input": "Define the migration order and explicit preservation contract for modernizing this existing product UI.",
+      "kind": "should-trigger",
+      "reason": "Audit an existing interface and define a redesign preservation contract for product truth, user flow, information architecture, routes, SEO, analytics, behavior, and content."
+    },
+    {
+      "expected_skill_id": "design-context-and-direction-contract",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "existing-interface-redesign-and-preservation"
+      ],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-anti-01",
+      "input": "Choose a visual direction for a new interface with no existing product behavior to preserve.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to design-context-and-direction-contract."
+    },
+    {
+      "expected_skill_id": "ui-remediation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "existing-interface-redesign-and-preservation"
+      ],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-anti-02",
+      "input": "Apply accepted redesign fixes to product source after review.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to ui-remediation."
+    },
+    {
+      "expected_skill_id": "existing-interface-redesign-and-preservation",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-boundary-01",
+      "input": "Audit an existing interface and define a redesign preservation contract for product truth, user flow, information architecture, routes, SEO, analytics, behavior, and content. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "existing-interface-redesign-and-preservation",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-existing-interface-redesign-and-preservation-authority-01",
+      "input": "Audit an existing interface and define a redesign preservation contract for product truth, user flow, information architecture, routes, SEO, analytics, behavior, and content. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "existing-interface-redesign-and-preservation"
+}

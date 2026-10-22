@@ -1,0 +1,263 @@
+{
+  "condition": "authority, context, risk, data governance, or routing must be bounded",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-capability-architecture-and-autonomy",
+        "curation/clusters.json:cluster:ai-safety-and-action-governance"
+      ],
+      "id": "V2-DEPENDENCY-0007",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:ai-capability-architecture-and-autonomy",
+      "legacy_target_cluster_id": "cluster:ai-safety-and-action-governance",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:ai-model-and-data-architecture",
+      "target_capability_id": "capability:ai-safety-and-action-governance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-capability-architecture-and-autonomy",
+        "curation/clusters.json:cluster:risk-preflight-and-safety-governance"
+      ],
+      "id": "V2-DEPENDENCY-0008",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:ai-capability-architecture-and-autonomy",
+      "legacy_target_cluster_id": "cluster:risk-preflight-and-safety-governance",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:ai-model-and-data-architecture",
+      "target_capability_id": "capability:risk-preflight-and-safety-governance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-interaction-and-probabilistic-ux",
+        "curation/clusters.json:cluster:ai-safety-and-action-governance"
+      ],
+      "id": "V2-DEPENDENCY-0009",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:ai-interaction-and-probabilistic-ux",
+      "legacy_target_cluster_id": "cluster:ai-safety-and-action-governance",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:interaction-states-forms-and-navigation",
+      "target_capability_id": "capability:ai-safety-and-action-governance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-safety-and-action-governance",
+        "curation/clusters.json:cluster:risk-preflight-and-safety-governance"
+      ],
+      "id": "V2-DEPENDENCY-0015",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:ai-safety-and-action-governance",
+      "legacy_target_cluster_id": "cluster:risk-preflight-and-safety-governance",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:ai-safety-and-action-governance",
+      "target_capability_id": "capability:risk-preflight-and-safety-governance"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:requirements-and-delivery-contract",
+        "curation/clusters.json:cluster:risk-preflight-and-safety-governance"
+      ],
+      "id": "V2-DEPENDENCY-0120",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:requirements-and-delivery-contract",
+      "legacy_target_cluster_id": "cluster:risk-preflight-and-safety-governance",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:requirements-and-delivery-contract",
+      "target_capability_id": "capability:risk-preflight-and-safety-governance"
+    }
+  ],
+  "description": "Bound authority, context, data governance, and routing before substantive work.",
+  "execution_state": "candidate-definition-not-executed",
+  "exit_contract": "one next route or a governed blocked/needs-input state",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human confirms authority, data boundary, decision owner, and requested scope",
+  "id": "stage-01-governance-intake",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:01-governance-intake",
+  "stage_order": 1,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/consolidated-68/skills/ai-safety-and-action-governance",
+      "condition": "Select only when the atomic requested outcome matches: Independently assess AI prompt, data, tool, and action risks; define red-team scope, default-deny boundaries, human checkpoints, stop conditions, and residual risk without remediation.",
+      "contract_sha256": "56fea82ed97f0c931ee947c29ae2d1eaae1813cfa9a2d2ea2fbbffb567021a65",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0002",
+        "V2-DEPENDENCY-0007",
+        "V2-DEPENDENCY-0009"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "High-impact, irreversible, privileged, privacy-sensitive, or externally consequential AI actions remain default-deny without explicit policy, task-scoped authorization, human confirmation, containment, and current safety evidence.",
+        "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+      ],
+      "id": "ai-safety-and-action-governance",
+      "inputs": [
+        "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "AI safety boundary",
+        "threat and abuse-case register",
+        "red-team and stop-condition plan",
+        "human-checkpoint and residual-risk report"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "ai-safety-and-action-governance@1.1.0-consolidated",
+      "mode": "ai-safety-and-action-governance",
+      "skill": "ai-safety-and-action-governance",
+      "gates": [
+        "status-declared",
+        "non-execution-stated",
+        "unknowns-preserved",
+        "authority-named"
+      ],
+      "advisory_gates": [
+        "High-impact, irreversible, privileged, privacy-sensitive, or externally consequential AI actions remain default-deny without explicit policy, task-scoped authorization, human confirmation, containment, and current safety evidence.",
+        "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+      ]
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/consolidated-68/skills/context-intake-and-routing",
+      "condition": "Select only when the atomic requested outcome matches: Classify a request, authority, evidence state, lifecycle stage, and next atomic capability without doing downstream work.",
+      "contract_sha256": "78498ce3616aa3687e419aae167788349f1eeafeeb5be2647de19a86cf22d346",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Never manufacture domain analysis merely to justify a route; route only from supplied evidence and declared scope.",
+        "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+      ],
+      "id": "context-intake-and-routing",
+      "inputs": [
+        "A request, existing artifacts, project context, and known constraints."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "intake register",
+        "routing decision",
+        "missing-input list",
+        "authority boundary"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "context-intake-and-routing@1.1.0-consolidated",
+      "mode": "context-intake-and-routing",
+      "skill": "context-intake-and-routing",
+      "gates": [
+        "status-declared",
+        "non-execution-stated",
+        "authority-named",
+        "unknowns-preserved"
+      ],
+      "advisory_gates": [
+        "Never manufacture domain analysis merely to justify a route; route only from supplied evidence and declared scope.",
+        "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+      ]
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/consolidated-68/skills/risk-preflight-and-safety-governance",
+      "condition": "Select only when the atomic requested outcome matches: Classify task risk, reversibility, trust boundaries, data sensitivity, authorization, evidence, and required stop or escalation before execution.",
+      "contract_sha256": "0857fe85909db9794ec291eb7cb470a41d21bdad4f30751e1db370b23fb4edfc",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0008",
+        "V2-DEPENDENCY-0015",
+        "V2-DEPENDENCY-0120"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A prior authorization, tool availability, or low technical difficulty must never be treated as current permission for an irreversible or external action.",
+        "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+      ],
+      "id": "risk-preflight-and-safety-governance",
+      "inputs": [
+        "Requirements, a solution, release plans, dependencies, permissions, and high-consequence assumptions."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "risk preflight",
+        "authority matrix",
+        "control checklist",
+        "stop and escalation record"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "risk-preflight-and-safety-governance@1.1.0-consolidated",
+      "mode": "risk-preflight-and-safety-governance",
+      "skill": "risk-preflight-and-safety-governance",
+      "gates": [
+        "status-declared",
+        "non-execution-stated",
+        "unknowns-preserved",
+        "authority-named"
+      ],
+      "advisory_gates": [
+        "A prior authorization, tool availability, or low technical difficulty must never be treated as current permission for an irreversible or external action.",
+        "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+      ]
+    }
+  ],
+  "version": "1.1.0-candidate"
+}

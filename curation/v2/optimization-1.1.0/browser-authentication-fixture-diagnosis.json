@@ -1,0 +1,10 @@
+{
+  "status": "two-review-failures-stop-for-diagnosis",
+  "skill": "browser-authentication-setup",
+  "cause": "Cross-platform assumptions in the original generated rubric are inconsistent with actual certificate-store and profile semantics. A partial repair fixed Windows but left Firefox scope, temporary extraction, password-file and missing subject requirements inconsistent.",
+  "evidence": "evals/runs/capability-compiler-v2/optimization-1.1.0/full-fixture-review/browser-authentication-setup/attempt-2/review.json",
+  "required_next_revision": ["Revise all T1 rubric clauses together rather than only adding a corrective prompt", "Use approved direct profile path; do not reward out-of-scope extracted profiles", "Acknowledge profile-wide certificate selection; test origin isolation, not impossible per-origin selection", "No secret command-line values; proposed password-file handling stays inside approved scope", "Unprovided certificate subject stays unknown", "Preserve T2 seven-day expiry and cleanup terms"],
+  "candidate_changed": false,
+  "rejected_evidence_retained": true,
+  "full_review_driver": "stopped; no unaccepted fixture used for execution"
+}

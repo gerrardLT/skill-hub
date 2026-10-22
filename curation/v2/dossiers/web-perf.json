@@ -1,0 +1,97 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [web-perf/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [web-perf/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [web-perf/SKILL.md:3]",
+  "outputs": [
+    "Present findings as [web-perf/SKILL.md:196]",
+    "1. Core Web Vitals Summary - Table with metric, value, and rating (good/needs-improvement/poor) [web-perf/SKILL.md:198]",
+    "2. Top Issues - Prioritized list of problems with estimated impact (high/medium/low) [web-perf/SKILL.md:199]",
+    "3. Recommendations - Specific, actionable fixes with code snippets or config changes [web-perf/SKILL.md:200]",
+    "4. Codebase Findings - Framework/bundler detected, optimization opportunities (omit if no codebase access) [web-perf/SKILL.md:201]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [web-perf/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores. [web-perf/SKILL.md:3]",
+  "root_id": "skill-root:web-perf",
+  "rules_gates": [
+    "FIRST: Verify MCP Tools Available [web-perf/SKILL.md:18]",
+    "Discover available browser and performance tools before starting. Use the capabilities available for the requested audit. If trace tools are unavailable, continue any useful source or network analysis and state which measurements could not be collected. [web-perf/SKILL.md:20]",
+    "Be assertive: Verify claims by checking network requests, DOM, or codebase—then state findings definitively. [web-perf/SKILL.md:33]",
+    "Verify before recommending: Confirm something is unused before suggesting removal. [web-perf/SKILL.md:34]",
+    "Quantify impact: Use estimated savings from insights. Don't prioritize changes with 0ms impact. [web-perf/SKILL.md:35]",
+    "Skip non-issues: If render-blocking resources have 0ms estimated impact, note but don't recommend action. [web-perf/SKILL.md:36]",
+    "If trace returns empty or fails, verify the page loaded correctly with navigatepage first [web-perf/SKILL.md:79]",
+    "If insight names don't match, inspect the trace response to list available insights [web-perf/SKILL.md:80]"
+  ],
+  "skill_path": "web-perf/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "web-perf/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "web-perf/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "web-perf/SKILL.md"
+    },
+    {
+      "line_end": 18,
+      "line_start": 18,
+      "path": "web-perf/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "web-perf/SKILL.md"
+    }
+  ],
+  "source_sha256": "79c531e95ca4d96a7de920c28c127c2c09ec55cd452a92222267d2954580be23",
+  "stop_conditions": [
+    "If trace returns empty or fails, verify the page loaded correctly with navigatepage first [web-perf/SKILL.md:79]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:79c531e95ca4d96a7de920c28c127c2c09ec55cd452a92222267d2954580be23",
+        "content-review:202-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "web-perf/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores. [web-perf/SKILL.md:3]",
+  "unique_methods": [
+    "Web Performance Audit [web-perf/SKILL.md:6]",
+    "Retrieval Sources [web-perf/SKILL.md:10]",
+    "FIRST: Verify MCP Tools Available [web-perf/SKILL.md:18]",
+    "Key Guidelines [web-perf/SKILL.md:31]",
+    "Quick Reference [web-perf/SKILL.md:40]",
+    "Detect Framework & Bundler [web-perf/SKILL.md:152]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [web-perf/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Workflow [web-perf/SKILL.md:51]",
+    "Phase 1: Performance Trace [web-perf/SKILL.md:64]",
+    "Phase 2: Core Web Vitals Analysis [web-perf/SKILL.md:82]",
+    "Phase 3: Network Analysis [web-perf/SKILL.md:112]",
+    "Phase 4: Accessibility Snapshot [web-perf/SKILL.md:133]",
+    "Phase 5: Codebase Analysis [web-perf/SKILL.md:146]"
+  ]
+}

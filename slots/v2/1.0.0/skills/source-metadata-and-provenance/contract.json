@@ -1,0 +1,66 @@
+{
+  "artifact_types": [
+    "source and revision identity record",
+    "artifact lineage and normalized hashes",
+    "license and use constraints",
+    "fact, inference, interpretation, and gap labels"
+  ],
+  "capability_id": "capability:source-metadata-and-provenance",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Provenance must distinguish observed identity, provider claim, inference, and interpretation; commit, build, release association, deployment, and production health are separate facts.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "source-metadata-and-provenance",
+  "inputs": [
+    "A curated unit, source declaration, citation context, or provenance concern."
+  ],
+  "outputs": [
+    "source and revision identity record",
+    "artifact lineage and normalized hashes",
+    "license and use constraints",
+    "fact, inference, interpretation, and gap labels"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "source-identity",
+      "revision",
+      "artifact-lineage",
+      "license",
+      "normalized-hash",
+      "fact-inference-interpretation",
+      "no-deploy-inference"
+    ],
+    "data_governance": false,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Preserve exact source identity, revision, artifact lineage, license or provenance facts, and the boundary between evidence, inference, and interpretation without provider mutation.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

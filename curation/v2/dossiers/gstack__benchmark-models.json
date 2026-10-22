@@ -1,0 +1,133 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/benchmark-models/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/benchmark-models/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/benchmark-models/SKILL.md:82]",
+    "/benchmark-models — Cross-Model Skill Benchmark [gstack/benchmark-models/SKILL.md:159]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/benchmark-models/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/benchmark-models/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/benchmark-models/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/benchmark-models/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/benchmark-models/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/benchmark-models/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/benchmark-models/SKILL.md:61]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/benchmark-models/SKILL.md:152]",
+    "[ -x \"$BIN\" ] { echo \"ERROR: gstack-model-benchmark not found. Run ./setup in the gstack install dir.\" >&2; exit 1; } [gstack/benchmark-models/SKILL.md:172]",
+    "Simplify: \"The quality judge scores each model's output on a 0-10 scale using Anthropic's Claude as a tiebreaker. Adds ~$0.05/run. Recommended if you care about output quality, not just latency and cost.\" [gstack/benchmark-models/SKILL.md:226]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/benchmark-models/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Cross-model benchmark for gstack skills. [gstack/benchmark-models/SKILL.md:5]",
+  "root_id": "skill-root:gstack/benchmark-models",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/benchmark-models/SKILL.md:16]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/benchmark-models/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/benchmark-models/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/benchmark-models/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/benchmark-models/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/benchmark-models/SKILL.md:53]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/benchmark-models/SKILL.md:56]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/benchmark-models/SKILL.md:67]"
+  ],
+  "skill_path": "gstack/benchmark-models/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/benchmark-models/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "gstack/benchmark-models/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/benchmark-models/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/benchmark-models/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/benchmark-models/SKILL.md"
+    }
+  ],
+  "source_sha256": "85a9090da4521e1c237bf49287fe28510ad6f59cae7017951c53298629a01fe8",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/benchmark-models/SKILL.md:78]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/benchmark-models/SKILL.md:85]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/benchmark-models/SKILL.md:113]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/benchmark-models/SKILL.md:116]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/benchmark-models/SKILL.md:137]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/benchmark-models/SKILL.md:147]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:85a9090da4521e1c237bf49287fe28510ad6f59cae7017951c53298629a01fe8",
+        "content-review:282-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-strategy.md"
+      ],
+      "path": "gstack/benchmark-models/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:eac159f56b39cd6c6c78e6eb0115d1a6cb1a2d0e3b22807c2915107e4af7983d",
+        "content-review:152-lines"
+      ],
+      "path": "gstack/benchmark-models/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/benchmark-models/SKILL.md:1-15]",
+    "Declared tool: Read [gstack/benchmark-models/SKILL.md:1-15]",
+    "Declared tool: AskUserQuestion [gstack/benchmark-models/SKILL.md:1-15]"
+  ],
+  "trigger": "Cross-model benchmark for gstack skills. (gstack) [gstack/benchmark-models/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/benchmark-models/SKILL.md:108]",
+    "Operational Self-Improvement [gstack/benchmark-models/SKILL.md:118]",
+    "Telemetry (run last) [gstack/benchmark-models/SKILL.md:134]",
+    "Plan Status Footer [gstack/benchmark-models/SKILL.md:155]",
+    "/benchmark-models — Cross-Model Skill Benchmark [gstack/benchmark-models/SKILL.md:159]",
+    "Important Rules [gstack/benchmark-models/SKILL.md:275]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/benchmark-models/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/benchmark-models/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Step 0: Locate the binary [gstack/benchmark-models/SKILL.md:167]",
+    "Step 1: Choose a prompt [gstack/benchmark-models/SKILL.md:180]",
+    "Step 2: Choose providers [gstack/benchmark-models/SKILL.md:199]",
+    "Step 3: Decide on judge [gstack/benchmark-models/SKILL.md:219]",
+    "Step 4: Run the benchmark [gstack/benchmark-models/SKILL.md:236]",
+    "Step 5: Interpret results [gstack/benchmark-models/SKILL.md:250]",
+    "Step 6: Offer to save results [gstack/benchmark-models/SKILL.md:262]"
+  ]
+}

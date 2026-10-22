@@ -1,0 +1,425 @@
+{
+  "domain": "product-discovery-and-strategy",
+  "skills": {
+    "ai-product-opportunity-and-wedge": {
+      "trigger_signals": [
+        "A team asks whether AI gives real, defensible user value for a workflow and which narrow entry point to start with",
+        "Someone wants AI wedge candidates compared against a simpler non-AI alternative with falsification conditions"
+      ],
+      "guidance": [
+        "Score each candidate wedge on promise to payoff: the ratio of user effort removed to reward delivered, how often the workflow runs, and how repeatable its steps are. Pick the smallest wedge that tests differentiated value.",
+        "Rate defensibility by layer, most to least durable: proprietary or uniquely accessible data, then interface and workflow integration, then the model itself. A model-only advantage is rated weak because any competitor can buy the same model.",
+        "Always state the non-AI alternative and the condition under which the AI wedge would be falsified."
+      ],
+      "outputs_add": [
+        "wedge scoring table (promise-to-payoff) and defensibility rating by data, interface and model layer"
+      ],
+      "source_evidence_add": [
+        "ai-product-strategy/references/artifacts.md:101-115",
+        "ai-product-strategy/references/artifacts.md:148-157"
+      ],
+      "resolves": {
+        "ai-product-opportunity-and-wedge#F1": "fixed: guidance + outputs_add (promise-to-payoff, data > interface > model stack)",
+        "ai-product-opportunity-and-wedge#F2": "deferred-to-eval: Phase R5 fresh holdout where a model-only advantage must be rated weak"
+      }
+    },
+    "competitive-case-library": {
+      "trigger_signals": [
+        "Dated competitor or comparable-company moves need to be recorded as reusable, sourced cases",
+        "Someone asks for a library of what rivals did, in what context and with what observed outcome"
+      ],
+      "anti_add": [
+        {
+          "text": "Code customer interview or research notes into themes",
+          "route": "qualitative-evidence-synthesis"
+        }
+      ],
+      "resolves": {
+        "competitive-case-library#F1": "fixed: anti_add (qualitative-evidence-synthesis)"
+      }
+    },
+    "competitive-response-and-monitoring": {
+      "trigger_signals": [
+        "Competitor moves need watch signals, thresholds and pre-agreed response options rather than ad hoc reactions",
+        "Someone asks when a competitor release should trigger an investigation or a strategy decision"
+      ],
+      "guidance": [
+        "Monitor comparables as well as direct competitors: comparables tackle a similar problem in a different market and show patterns that will reach yours.",
+        "Response options include no response, a reversible probe, a strategic response, and adopting a proven industry pattern when it is better than inventing a new one."
+      ],
+      "source_evidence_add": [
+        "competitive-strategy/references/guest-insights.md:277-286",
+        "competitive-strategy/references/guest-insights.md:367-376"
+      ],
+      "resolves": {
+        "competitive-response-and-monitoring#F1": "deferred-to-eval: Phase R5 fresh holdout",
+        "competitive-response-and-monitoring#F2": "fixed: guidance (comparables, adopt-proven-pattern option)"
+      }
+    },
+    "customer-interview-execution": {
+      "trigger_signals": [
+        "An interview script or session needs to be non-leading, consented and recorded without mixing observation and interpretation",
+        "Someone asks for behavior-first interview questions and a note template for customer conversations"
+      ],
+      "guidance": [
+        "Restate the consent boundary exactly as the participant and owner gave it and do not invent extra terms. When a request goes past that boundary (external or commercial use, quoting in a roadmap, sharing beyond the team), deliver the part inside consent, propose asking for separate explicit consent for the wider use, and name the decision owner for any roadmap or status claim. Never block a follow-up the participant agreed to.",
+        "Probes: 'tell me more about that', a gentle repeated 'why' (two or three times), 'can you give me a specific example', 'what happened next'.",
+        "Observation log fields: participant id, date, key jobs, current solution, biggest pain, desired outcome, willingness to pay, direct quotes with source ids, and interviewer inference labelled separately.",
+        "Record gaps in the evidence (for example a lost or inaudible segment) as follow-up: say what was lost and plan to re-collect it."
+      ],
+      "outputs_add": [
+        "probe list and observation-log template"
+      ],
+      "source_evidence_add": [
+        "interview-script/SKILL.md:61-98"
+      ],
+      "resolves": {
+        "customer-interview-execution#F1": "fixed: guidance + outputs_add (probes, observation template); Phase D loss (overriding stated consent boundary) addressed by guidance"
+      }
+    },
+    "data-analysis-validation": {
+      "trigger_signals": [
+        "A metric, dataset or analytical claim must be checked for correctness before it supports a decision",
+        "Someone asks whether a result is trustworthy, including denominators, cohorts, leakage and confounds"
+      ],
+      "anti_add": [
+        {
+          "text": "Interpret model evaluation results across experiments",
+          "route": "evaluation-results-analysis"
+        },
+        {
+          "text": "Read a finished product experiment against its go, pivot or kill rule",
+          "route": "results-analysis-and-decision-readout"
+        }
+      ],
+      "guidance": [
+        "Recompute the headline aggregate from the supplied data and show the arithmetic. State every denominator. Check sample ratio mismatch for experiments (compute the chi-square against the intended split and call a failed check a failed check with the statistic).",
+        "Reproduction notes template: question, data sources with as-of date, definitions, method, result, caveats and known unknowns.",
+        "Analysis split: data-analysis-validation checks the data, results-analysis-and-decision-readout interprets product experiments, evaluation-results-analysis interprets model evaluations."
+      ],
+      "outputs_add": [
+        "recomputed aggregates with arithmetic and sample-ratio check"
+      ],
+      "source_evidence_add": [
+        "validate-data/SKILL.md:26-96",
+        "validate-data/SKILL.md:289-330"
+      ],
+      "resolves": {
+        "data-analysis-validation#F1": "deferred-to-eval: Phase R5 fresh holdout with a denominator error; Phase D loss (unquantified imbalance) addressed by guidance and outputs_add",
+        "data-analysis-validation#F2": "fixed: guidance (reproduction notes template)",
+        "data-analysis-validation#F3": "fixed: anti_add (evaluation-results-analysis)"
+      }
+    },
+    "decision-and-outcome-roadmapping": {
+      "trigger_signals": [
+        "An approved strategy must become a now, next, later roadmap organized by outcomes and decisions rather than features",
+        "Someone asks which assumptions must be resolved, and by when, before each roadmap item can be committed"
+      ],
+      "authored_content": [
+        "roadmap construction method is authored; cited sources describe stakeholder presentation only"
+      ],
+      "resolves": {
+        "decision-and-outcome-roadmapping#F1": "fixed: authored_content"
+      }
+    },
+    "evidence-synthesis-and-opportunity-prioritization": {
+      "trigger_signals": [
+        "Mixed evidence (research notes, usage data, support tickets, competitor facts) must be reconciled into opportunity statements",
+        "Someone asks how strongly the evidence supports each candidate opportunity and where sources disagree"
+      ],
+      "anti_add": [
+        {
+          "text": "Rank opportunities with a named formula such as RICE or ICE",
+          "route": "opportunity-prioritization-and-frameworks"
+        }
+      ],
+      "responsibility": "Synthesize heterogeneous evidence into bounded opportunity statements and compare them on explicit dimensions without hiding disagreement; ranking is left to the frameworks Skill or the human owner.",
+      "contract": {
+        "outputs": [
+          "opportunity set",
+          "evidence-to-opportunity matrix",
+          "comparison on explicit dimensions",
+          "dissent register",
+          "ranking handoff with evidence matrix, candidate ids, missing inputs and named scoring owner"
+        ],
+        "artifact_types": [
+          "opportunity set",
+          "evidence-to-opportunity matrix",
+          "comparison on explicit dimensions",
+          "dissent register",
+          "ranking handoff with evidence matrix, candidate ids, missing inputs and named scoring owner"
+        ]
+      },
+      "guidance": [
+        "Compare opportunities on importance, frequency, severity, reach, confidence and strategic relevance as separate columns. A requested composite ranking is calculated by the frameworks Skill through an explicit handoff; do not silently omit it.",
+        "A deferred rename to evidence-synthesis-and-opportunity-framing is recorded; the id stays stable in this release.",
+        "When the request also requires scores or ranking, deliver the synthesis and an explicit input-ready handoff to opportunity-prioritization-and-frameworks. Do not describe ranking as forbidden by the user or as awaiting approval merely to calculate it. A provisional evidence-led comparison may be delivered, labelled as a recommendation, not an approved decision."
+      ],
+      "resolves": {
+        "evidence-synthesis-and-opportunity-prioritization#F1": "fixed: contract override (outputs no longer include a priority recommendation) + anti_add; rename deferred (structure.json deferred_renames)"
+      }
+    },
+    "executive-plan-review": {
+      "trigger_signals": [
+        "A plan needs a leadership-level challenge of scope, leverage, user value and one-way decisions before commitment",
+        "Someone asks whether the plan is too small, too large or hides an irreversible bet"
+      ],
+      "guidance": [
+        "Choose one review mode first and state it: scope expansion (dream bigger), selective expansion (hold the base, cherry-pick additions), hold scope (make it bulletproof), or scope reduction (cut to the core).",
+        "Evaluate every review section without skipping; when a section has no findings write 'no issues found' explicitly rather than omitting it.",
+        "Ambitious options stay options until a human selects them; none becomes accepted scope through this review.",
+        "Reviewer selection: independent-plan-review for traceability and completeness; design-plan-review for UX scope and states; developer-experience-plan-review for developer setup and interfaces; engineering-plan-review for architecture and failure modes; executive-plan-review for leverage, scope and one-way decisions."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "State the review mode (expansion, selective expansion, hold scope or reduction) and evaluate every section, writing 'no issues found' where that is the result."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/openclaw/skills/gstack-openclaw-ceo-review/SKILL.md:6-45",
+        "gstack/openclaw/skills/gstack-openclaw-ceo-review/SKILL.md:125-164"
+      ],
+      "resolves": {
+        "executive-plan-review#F1": "fixed: procedure_insert + guidance (review mode first, no skipped sections)"
+      },
+      "anti_add": [
+        {
+          "text": "Review the plan from the perspective owned by independent-plan-review",
+          "route": "independent-plan-review"
+        },
+        {
+          "text": "Review the plan from the perspective owned by design-plan-review",
+          "route": "design-plan-review"
+        },
+        {
+          "text": "Review the plan from the perspective owned by developer-experience-plan-review",
+          "route": "developer-experience-plan-review"
+        },
+        {
+          "text": "Review the plan from the perspective owned by engineering-plan-review",
+          "route": "engineering-plan-review"
+        }
+      ]
+    },
+    "market-positioning-and-competitive-power": {
+      "trigger_signals": [
+        "A proposed market position needs testing against customer evidence, alternatives and competitive power",
+        "Someone asks whether a positioning claim is credible and which claims competitors can copy quickly"
+      ],
+      "guidance": [
+        "The comparison frame includes the internal alternative and doing nothing (spending the same effort elsewhere), not only rival products."
+      ],
+      "source_evidence_add": [
+        "product-strategy-session/examples/sample-lifesciences.md:76-92"
+      ],
+      "resolves": {
+        "market-positioning-and-competitive-power#F1": "fixed: guidance (internal alternative / do nothing)"
+      }
+    },
+    "market-segmentation-and-demand-intelligence": {
+      "trigger_signals": [
+        "A market must be divided into segments by job, urgency, willingness to pay and reachability rather than demographics",
+        "Someone asks which segment to validate first and what evidence of demand exists for each"
+      ],
+      "guidance": [
+        "In the attractiveness comparison include the incumbent access gap: segments where incumbents cannot or will not serve (for example secondary markets they lack inventory in) are often the better entry."
+      ],
+      "source_evidence_add": [
+        "competitive-strategy/references/artifacts.md:207-220"
+      ],
+      "resolves": {
+        "market-segmentation-and-demand-intelligence#F1": "fixed: guidance (incumbent access gap)"
+      }
+    },
+    "opportunity-prioritization-and-frameworks": {
+      "trigger_signals": [
+        "A set of opportunities must be ranked with a named formula such as RICE, ICE or Opportunity Score",
+        "Someone asks for a reproducible score and how the ranking changes if the inputs change"
+      ],
+      "guidance": [
+        "Canonical variants: RICE = (Reach x Impact x Confidence) / Effort with Reach in users per period, Impact on a stated scale, Confidence 0-100% and Effort in person-months; ICE = (Impact + Confidence + Ease) / 3 or the product, as named; Opportunity Score = Importance + max(Importance - Satisfaction, 0). Compute the variant the owner named. If the owner names a mix, compute the closest canonical variant and state the difference.",
+        "Always compute the scores, show the arithmetic, and show the ranking under at least one alternate assumption (sensitivity).",
+        "When an input is missing (for example an effort estimate), still deliver: compute provisional scores with the assumption labelled, give the ranking for items with known inputs, show how the ranking moves across the plausible range of the missing value, and name the owner who can supply it. Never declare the ranking indeterminate with no scores. Where sources conflict (survey versus usage), tie the conflict to the confidence score.",
+        "A request to choose a scoring method authorizes proposing a clearly labelled analytical method, not approving a roadmap. Unknown effort limits effort-based comparisons, not evidence-only provisional rankings."
+      ],
+      "outputs_add": [
+        "canonical variant definition and arithmetic for every score"
+      ],
+      "source_evidence_add": [
+        "prioritization-frameworks/SKILL.md:37-46"
+      ],
+      "resolves": {
+        "opportunity-prioritization-and-frameworks#F1": "deferred-to-eval: Phase R5 fresh holdout requires an exact RICE computation with sensitivity",
+        "opportunity-prioritization-and-frameworks#F2": "fixed: guidance + outputs_add (canonical definitions per variant)"
+      },
+      "anti_add": [
+        {
+          "text": "Reconcile mixed evidence into opportunity statements without ranking",
+          "route": "evidence-synthesis-and-opportunity-prioritization"
+        }
+      ],
+      "contract": {
+        "hard_gates": [
+          "Declare the exact named or custom scoring formula, units and assumptions before computing; do not silently mix incompatible variants. If the user asks you to choose a method, propose and label a suitable formula without implying decision approval.",
+          "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+        ]
+      },
+      "superseded_gates": [
+        "Reject any unnamed, hybrid, or partially specified RICE, ICE, Opportunity Score, or custom formula."
+      ]
+    },
+    "persona-jtbd-and-journey-modeling": {
+      "trigger_signals": [
+        "Interview or behavioral evidence must become actors, jobs and a journey without inventing persona details",
+        "Someone asks what job a customer hires the product for and what pushes or blocks the switch"
+      ],
+      "guidance": [
+        "JTBD statement: 'When <situation>, I want to <motivation>, so I can <expected outcome>', each part supported by evidence.",
+        "Forces: push away from the current solution, pull toward the new one, anxiety about switching, and habit of the current way; record only forces that evidence supports.",
+        "Preserve temporal phrases verbatim unless their anchor is supplied. Three weeks late does not mean three weeks after booking.",
+        "Do not invent research, governance or operational owners. When ownership is absent, record owner unknown/to assign. Do not infer channel-choice effects beyond supplied evidence.",
+        "Do not assign validation owners or state that an owner is presently unassigned unless supplied. Use owner: unknown/to assign and label suggested owner roles as proposals. Include an explicit result placeholder for every required citation or artifact verification check."
+      ],
+      "outputs_add": [
+        "JTBD statements in the standard template with the four forces"
+      ],
+      "resolves": {
+        "persona-jtbd-and-journey-modeling#F1": "fixed: guidance + outputs_add (statement template, four forces)",
+        "persona-jtbd-and-journey-modeling#optimization-old-safety": "fixed: evidence-bound unknown/access/arithmetic guidance from old regression adjudication",
+        "persona-jtbd-and-journey-modeling#final-remediation": "fixed: final unseen evaluation safety/specificity gap",
+        "persona-jtbd-and-journey-modeling#final5": "fixed: final unseen regression/safety defect"
+      }
+    },
+    "problem-framing-and-customer-research": {
+      "trigger_signals": [
+        "Raw notes, a request or a hypothesis must be reframed as a customer problem before any solution is discussed",
+        "Someone asks whether a problem is real, who has it, how painful it is and what evidence is missing"
+      ],
+      "guidance": [
+        "Interrogate the frame with forcing questions: what is the strongest evidence of demand (not interest), what do people do today instead (the status quo), who specifically needs this most, and what is the narrowest version that would matter.",
+        "Problem statement format: who has the problem, what it is, why it hurts, and the evidence (quotes, data) with source ids. It names no feature, mechanism or vendor. When the request is already solution-shaped, restate it as the underlying problem and list the solution as an unvalidated assumption."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "Interrogate the frame with the forcing questions (demand evidence, status quo, specific user, narrowest version) and restate any solution-shaped input as a problem."
+        }
+      ],
+      "outputs_add": [
+        "structured problem statement with evidence and source ids"
+      ],
+      "source_evidence_add": [
+        "gstack/office-hours/SKILL.md:540-557",
+        "gstack/office-hours/SKILL.md:636-675",
+        "prd-development/SKILL.md:173-217"
+      ],
+      "resolves": {
+        "problem-framing-and-customer-research#F1": "fixed: procedure_insert + guidance + outputs_add (forcing questions, problem statement)",
+        "problem-framing-and-customer-research#F2": "declined: rename to problem-framing deferred to keep ids stable (structure.json deferred_renames); boundary is clarified in text now",
+        "problem-framing-and-customer-research#F3": "deferred-to-eval: Phase R5 fresh holdout with solution-laden notes"
+      }
+    },
+    "qualitative-evidence-synthesis": {
+      "trigger_signals": [
+        "Interview notes and quotes must be coded into themes with counterexamples and contradictions preserved",
+        "Someone asks what the qualitative evidence actually supports and where it is thin or split"
+      ],
+      "guidance": [
+        "Characterize each theme by depth (how strongly it affects those who hold it) and breadth (how many participants) as description only; this is not prioritization. Keep every minority or contradicting account as its own entry with its source id and say how it limits the theme.",
+        "State the directional conclusion the evidence supports, while preserving minority accounts and uncertainty. Do not claim workspace access is unavailable when the task explicitly grants it; distinguish the actual no-tools evaluation environment from ownership."
+      ],
+      "outputs_add": [
+        "depth and breadth characterization per theme"
+      ],
+      "source_evidence_add": [
+        "analyzing-user-feedback/references/artifacts.md:46-66",
+        "discovery-process/SKILL.md:178-207"
+      ],
+      "resolves": {
+        "qualitative-evidence-synthesis#F1": "deferred-to-eval: Phase R5 fresh holdout with a minority contradicting theme",
+        "qualitative-evidence-synthesis#F2": "fixed: guidance + outputs_add (depth and breadth, description only)"
+      }
+    },
+    "research-planning-and-governance": {
+      "trigger_signals": [
+        "A research effort needs its decision link, method, sampling and data-governance terms set before anyone is contacted",
+        "Someone asks what consent, retention and transfer terms are needed to run interviews or a survey"
+      ],
+      "resolves": {}
+    },
+    "results-analysis-and-decision-readout": {
+      "trigger_signals": [
+        "A finished product experiment or research result must be read against the thresholds declared beforehand",
+        "Someone asks whether to go, pivot or kill on the result and what uncertainty remains"
+      ],
+      "anti_add": [
+        {
+          "text": "Analyze model or evaluator results from an LLM evaluation run",
+          "route": "evaluation-results-analysis"
+        },
+        {
+          "text": "Check whether the data or metric itself is correct",
+          "route": "data-analysis-validation"
+        }
+      ],
+      "resolves": {
+        "results-analysis-and-decision-readout#F1": "fixed: anti_add (evaluation-results-analysis, data-analysis-validation)"
+      },
+      "guidance": [
+        "Analysis split: data-analysis-validation checks the data, results-analysis-and-decision-readout interprets product experiments, evaluation-results-analysis interprets model evaluations."
+      ]
+    },
+    "solution-hypothesis-and-experiment-design": {
+      "trigger_signals": [
+        "A validated problem needs falsifiable solution hypotheses and the cheapest experiment that could disprove them",
+        "Someone asks how to test an idea with predeclared success and kill criteria"
+      ],
+      "guidance": [
+        "Experiment menu by risk and cost: fake door or landing page (low cost, demand), concierge test (manual delivery, value), prototype test (usability), A/B test (effect size, needs traffic). Pick the cheapest that could falsify the hypothesis and say why cheaper ones are insufficient.",
+        "Write the hypothesis as: we believe <change> for <audience> will <measurable effect> because <mechanism>; declare the counterfactual, the metric and threshold, the guardrails and the stopping rule before running."
+      ],
+      "source_evidence_add": [
+        "discovery-process/SKILL.md:393-410"
+      ],
+      "resolves": {
+        "solution-hypothesis-and-experiment-design#F1": "fixed: guidance (experiment types by risk and cost)"
+      }
+    },
+    "strategic-choice-and-differentiation": {
+      "trigger_signals": [
+        "Several mutually exclusive strategic options must be compared on value, fit, tradeoffs and reversibility",
+        "Someone asks what differentiates a position and what evidence would reverse the recommendation"
+      ],
+      "guidance": [
+        "For networked products use the niche-first lens: the early audience often looks like a weird niche and the product like a toy; test whether the niche can compound before judging the market as small."
+      ],
+      "source_evidence_add": [
+        "competitive-strategy/references/artifacts.md:77-88"
+      ],
+      "resolves": {
+        "strategic-choice-and-differentiation#F1": "fixed: guidance (networked-product lens)"
+      }
+    },
+    "structural-power-and-moats": {
+      "trigger_signals": [
+        "A claimed competitive advantage must be tested for durability, imitation risk and decay",
+        "Someone asks whether growth, brand, data or technology counts as a real moat"
+      ],
+      "guidance": [
+        "Growth, market share, brand awareness, proprietary data or technical complexity alone are not moats; state the causal mechanism that keeps them from being copied or eroded, or label the claim unsupported.",
+        "Switching cost has four components: time, money, organizational friction and emotional attachment. Assess each separately with evidence.",
+        "A requester title does not establish decision ownership. Keep pricing, approval and execution owners unknown unless explicit authority evidence names them."
+      ],
+      "source_evidence_add": [
+        "competitive-strategy/references/artifacts.md:111-125",
+        "competitive-strategy/references/artifacts.md:137-158"
+      ],
+      "resolves": {
+        "structural-power-and-moats#F1": "deferred-to-eval: Phase R5 fresh holdout where growth is mislabeled as a moat",
+        "structural-power-and-moats#F2": "fixed: guidance (four switching-cost components)",
+        "structural-power-and-moats#optimization-old-safety": "fixed: evidence-bound unknown/access/arithmetic guidance from old regression adjudication"
+      }
+    }
+  }
+}

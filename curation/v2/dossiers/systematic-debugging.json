@@ -1,0 +1,207 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [systematic-debugging/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [systematic-debugging/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [systematic-debugging/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [systematic-debugging/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [systematic-debugging/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes [systematic-debugging/SKILL.md:3]",
+  "root_id": "skill-root:systematic-debugging",
+  "rules_gates": [
+    "description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes [systematic-debugging/SKILL.md:3]",
+    "Core principle: ALWAYS find root cause before attempting fixes. Symptom fixes are failure. [systematic-debugging/SKILL.md:12]",
+    "You don't fully understand the issue [systematic-debugging/SKILL.md:39]",
+    "Don't skip when [systematic-debugging/SKILL.md:41]",
+    "You MUST complete each phase before proceeding to the next. [systematic-debugging/SKILL.md:48]",
+    "BEFORE attempting ANY fix [systematic-debugging/SKILL.md:52]",
+    "Don't skip past errors or warnings [systematic-debugging/SKILL.md:55]",
+    "If not reproducible → gather more data, don't guess [systematic-debugging/SKILL.md:64]"
+  ],
+  "skill_path": "systematic-debugging/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "systematic-debugging/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "systematic-debugging/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "systematic-debugging/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "systematic-debugging/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "systematic-debugging/SKILL.md"
+    }
+  ],
+  "source_sha256": "4999cb851360485eca5074e727bbdd62ef20549c5d5b01216fcbf5831badb473",
+  "stop_conditions": [
+    "description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes [systematic-debugging/SKILL.md:3]",
+    "Core principle: ALWAYS find root cause before attempting fixes. Symptom fixes are failure. [systematic-debugging/SKILL.md:12]",
+    "Test failures [systematic-debugging/SKILL.md:27]",
+    "Build failures [systematic-debugging/SKILL.md:31]",
+    "THEN analyze evidence to identify failing component [systematic-debugging/SKILL.md:85]",
+    "This reveals: Which layer fails (secrets → workflow ✓, workflow → build ✗) [systematic-debugging/SKILL.md:108]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789",
+        "content-review:120-lines"
+      ],
+      "path": "systematic-debugging/CREATION-LOG.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4999cb851360485eca5074e727bbdd62ef20549c5d5b01216fcbf5831badb473",
+        "content-review:297-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "systematic-debugging/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+        "content-review:159-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "systematic-debugging/condition-based-waiting-example.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+        "content-review:116-lines"
+      ],
+      "path": "systematic-debugging/condition-based-waiting.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+        "content-review:123-lines"
+      ],
+      "path": "systematic-debugging/defense-in-depth.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6462747eae9b175ac145b78bcfaeab755654a75e32637f08eb633f065a9e1d7c",
+        "content-review:64-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "systematic-debugging/find-polluter.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6b0622269e098ca1399e123e553fd385f0b6412d88ef0e9c4f5a8ea9cf1cec7b",
+        "content-review:170-lines"
+      ],
+      "path": "systematic-debugging/root-cause-tracing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486",
+        "content-review:15-lines"
+      ],
+      "path": "systematic-debugging/test-academic.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a",
+        "content-review:59-lines"
+      ],
+      "path": "systematic-debugging/test-pressure-1.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016",
+        "content-review:69-lines"
+      ],
+      "path": "systematic-debugging/test-pressure-2.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708",
+        "content-review:70-lines"
+      ],
+      "path": "systematic-debugging/test-pressure-3.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: systematic-debugging/root-cause-tracing.md [systematic-debugging/SKILL.md:114]",
+    "Local dependency: systematic-debugging/root-cause-tracing.md [systematic-debugging/SKILL.md:282]",
+    "Local dependency: systematic-debugging/defense-in-depth.md [systematic-debugging/SKILL.md:283]",
+    "Local dependency: systematic-debugging/condition-based-waiting.md [systematic-debugging/SKILL.md:284]"
+  ],
+  "trigger": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes [systematic-debugging/SKILL.md:3]",
+  "unique_methods": [
+    "Systematic Debugging [systematic-debugging/SKILL.md:6]",
+    "The Iron Law [systematic-debugging/SKILL.md:16]",
+    "When to Use [systematic-debugging/SKILL.md:24]",
+    "your human partner's Signals You're Doing It Wrong [systematic-debugging/SKILL.md:234]",
+    "Common Rationalizations [systematic-debugging/SKILL.md:245]",
+    "Quick Reference [systematic-debugging/SKILL.md:258]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [systematic-debugging/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [systematic-debugging/SKILL.md:3]"
+  ],
+  "workflow": [
+    "The Four Phases [systematic-debugging/SKILL.md:46]",
+    "Phase 1: Root Cause Investigation [systematic-debugging/SKILL.md:50]",
+    "Phase 2: Pattern Analysis [systematic-debugging/SKILL.md:122]",
+    "Phase 3: Hypothesis and Testing [systematic-debugging/SKILL.md:145]",
+    "Phase 4: Implementation [systematic-debugging/SKILL.md:170]",
+    "Red Flags - STOP and Follow Process [systematic-debugging/SKILL.md:215]",
+    "When Process Reveals \"No Root Cause\" [systematic-debugging/SKILL.md:267]"
+  ]
+}

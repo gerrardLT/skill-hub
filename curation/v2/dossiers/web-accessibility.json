@@ -1,0 +1,265 @@
+{
+  "branches": [
+    "Decision Rules [web-accessibility/SKILL.md:45]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [web-accessibility/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [web-accessibility/SKILL.md:3]",
+  "non_trigger": "When Not To Use [web-accessibility/SKILL.md:58]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [web-accessibility/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [web-accessibility/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "> [web-accessibility/SKILL.md:3]",
+  "root_id": "skill-root:web-accessibility",
+  "rules_gates": [
+    "Do not use this skill for unrelated requests; route to the nearest named specialist. [web-accessibility/SKILL.md:8]",
+    "Accessibility is successful task completion and recovery for disabled people, not a tool score. Define observable requirements before implementation, prefer native platform behavior where it fits, and gather bounded evidence in the supported browser and assistive-technology (AT) environment. [web-accessibility/SKILL.md:18]",
+    "6. Verify with references/testing-and-evidence.md and the design, implementation, and release templates. Record tool, version, scope, manual tasks, actual browser/AT combinations, failures, and blocked or not-applicable items. [web-accessibility/SKILL.md:27]",
+    "7. Do not issue a WCAG conformance or general accessibility verdict from an automated scan. A conformance claim needs a complete, scoped evaluation outside this skill's automatic verdict. [web-accessibility/SKILL.md:28]",
+    "Use WAI-ARIA 1.2 only when native host-language semantics do not provide the required behavior. ARIA changes semantics; it does not create keyboard behavior or visual presentation. [web-accessibility/SKILL.md:48]",
+    "Use the Accessible Name and Description Computation 1.2 algorithm for edge cases. Do not substitute a priority mnemonic; inspect the computed accessibility tree and name. [web-accessibility/SKILL.md:49]",
+    "For a modal, prefer <dialog>.showModal() when it supports the target environment. Keep background content unavailable/inert, choose initial focus for the content and task, provide a visible close path, and return focus logically. Do not hide a backdrop with aria-hidden or hide an ancestor of the dia [web-accessibility/SKILL.md:50]",
+    "Stop when each acceptance criterion has direct evidence or a recorded failed, blocked, or not-applicable result. Report residual risk and the exact evidence boundary; do not turn absent testing into a pass. [web-accessibility/SKILL.md:56]"
+  ],
+  "skill_path": "web-accessibility/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "web-accessibility/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "web-accessibility/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "web-accessibility/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "web-accessibility/SKILL.md"
+    },
+    {
+      "line_end": 45,
+      "line_start": 45,
+      "path": "web-accessibility/SKILL.md"
+    }
+  ],
+  "source_sha256": "ae766659271316a9d348d3a81fe81b682b28778c00b75d397411b49477ab00eb",
+  "stop_conditions": [
+    "1. Define the task, users, supported browsers/AT, input methods, and failure recovery. Start with assets/acceptance-criteria-template.md. [web-accessibility/SKILL.md:22]",
+    "6. Verify with references/testing-and-evidence.md and the design, implementation, and release templates. Record tool, version, scope, manual tasks, actual browser/AT combinations, failures, and blocked or not-applicable items. [web-accessibility/SKILL.md:27]",
+    "Stop when each acceptance criterion has direct evidence or a recorded failed, blocked, or not-applicable result. Report residual risk and the exact evidence boundary; do not turn absent testing into a pass. [web-accessibility/SKILL.md:56]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7873a5efda8598334e67ee837852de6c14b5f53dc4f99e0a9c325df696e621d8",
+        "content-review:43-lines"
+      ],
+      "path": "web-accessibility/README.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ae766659271316a9d348d3a81fe81b682b28778c00b75d397411b49477ab00eb",
+        "content-review:63-lines",
+        "semantic-review-report:curation/v2/reviews/design.md"
+      ],
+      "path": "web-accessibility/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dd07fc87344f83851d8ef42ad11fae2b184178e9004f4af1c18472cf5e523bf2",
+        "content-review:24-lines"
+      ],
+      "path": "web-accessibility/assets/acceptance-criteria-template.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3f43942d210c119748ed16c007b72fe45911499be835d9dbefc1546624f5fa14",
+        "content-review:11-lines"
+      ],
+      "path": "web-accessibility/assets/review-checklist-design.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:63db858e5d3c6a9366a065ddc5b9d65d64d5b6482f9317330e792ce53dec3fa5",
+        "content-review:11-lines"
+      ],
+      "path": "web-accessibility/assets/review-checklist-implementation.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:301b659804b43df8432835a761e7ed1ee2c935c7b6adec38a29affb36334ab96",
+        "content-review:28-lines"
+      ],
+      "path": "web-accessibility/assets/review-checklist-release.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:85188e30a2bedb1cf12860b06ca5e8c630f60ecd49414cafb98773bc95012708",
+        "content-review:57-lines"
+      ],
+      "path": "web-accessibility/evals/evals.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:94d490e7e92e58b8e5031798948bdec0970f7b3c9da18870bd4c324e78c696b7",
+        "content-review:24-lines"
+      ],
+      "path": "web-accessibility/references/composite-widgets.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:50818999ee5d8279a2e81c9a055c6aaf3d1213c11ae29c17e8404f54c2bccd93",
+        "content-review:16-lines"
+      ],
+      "path": "web-accessibility/references/dialogs-disclosures-navigation.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:5a310cb02d91bde842f0fa34a13b036fc6bda273d3046ce7a2551adae44ee3bf",
+        "content-review:25-lines"
+      ],
+      "path": "web-accessibility/references/forms-errors-authentication.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2edf9b4738af2acac8e6673a349ef5944b929397c8e42ab3ab7f087895da2ffb",
+        "content-review:19-lines"
+      ],
+      "path": "web-accessibility/references/keyboard-focus-and-routing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:5c5f132f8e2e51547eec2d3c6e45bc5fc584f920fd6f113c0f26837501db9601",
+        "content-review:24-lines"
+      ],
+      "path": "web-accessibility/references/outcome-probes.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:24ba2333ce2e9c0cf67c3ab372ce9e2b1a5dc9f39fb32aa9b87b6de3186f4aa4",
+        "content-review:16-lines"
+      ],
+      "path": "web-accessibility/references/routing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:64778d42899e60ef8314eb1cda16888628ae57a55c5c43c670f7a4726b39db1b",
+        "content-review:23-lines"
+      ],
+      "path": "web-accessibility/references/semantics-and-names.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7d07ab44b9787b18cb2d9bf3bc69d2191e13c0424216997b90045a36a46bba75",
+        "content-review:33-lines"
+      ],
+      "path": "web-accessibility/references/source-index.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:94541c6e51804c36b4d8db5fed711a0d4944f56ae4fff43548ed5ab1634dee91",
+        "content-review:36-lines"
+      ],
+      "path": "web-accessibility/references/testing-and-evidence.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2b6e4eeb1e47ae5de2fd1d5e3081e22273b85cbeb4f533efc9d233cd2fdb348e",
+        "content-review:18-lines"
+      ],
+      "path": "web-accessibility/references/visual-input-and-motion.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: web-accessibility/assets/acceptance-criteria-template.md [web-accessibility/SKILL.md:22]",
+    "Local dependency: web-accessibility/references/semantics-and-names.md [web-accessibility/SKILL.md:23]",
+    "Local dependency: web-accessibility/references/visual-input-and-motion.md [web-accessibility/SKILL.md:25]",
+    "Local dependency: web-accessibility/references/testing-and-evidence.md [web-accessibility/SKILL.md:27]",
+    "Local dependency: web-accessibility/references/source-index.md [web-accessibility/SKILL.md:34]",
+    "Local dependency: web-accessibility/references/semantics-and-names.md [web-accessibility/SKILL.md:35]",
+    "Local dependency: web-accessibility/references/keyboard-focus-and-routing.md [web-accessibility/SKILL.md:36]",
+    "Local dependency: web-accessibility/references/forms-errors-authentication.md [web-accessibility/SKILL.md:37]",
+    "Local dependency: web-accessibility/references/dialogs-disclosures-navigation.md [web-accessibility/SKILL.md:38]",
+    "Local dependency: web-accessibility/references/composite-widgets.md [web-accessibility/SKILL.md:39]",
+    "Local dependency: web-accessibility/references/visual-input-and-motion.md [web-accessibility/SKILL.md:40]",
+    "Local dependency: web-accessibility/references/testing-and-evidence.md [web-accessibility/SKILL.md:41]"
+  ],
+  "trigger": "> [web-accessibility/SKILL.md:3]",
+  "unique_methods": [
+    "Web Accessibility [web-accessibility/SKILL.md:16]",
+    "Load On Demand [web-accessibility/SKILL.md:30]",
+    "Decision Rules [web-accessibility/SKILL.md:45]",
+    "Completion [web-accessibility/SKILL.md:54]",
+    "When Not To Use [web-accessibility/SKILL.md:58]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [web-accessibility/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [web-accessibility/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Workflow [web-accessibility/SKILL.md:20]"
+  ]
+}

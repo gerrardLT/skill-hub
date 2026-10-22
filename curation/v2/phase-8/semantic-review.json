@@ -1,0 +1,132 @@
+{
+  "schema_version": "2.0",
+  "phase": 8,
+  "status": "passed",
+  "reviewed_stage_recipe_count": 15,
+  "reviewed_composite_recipe_count": 5,
+  "reviewed_router_count": 1,
+  "reviewed_candidate_step_count": 157,
+  "review_method": "Manual semantic review of stage policies, representative generated steps, composite boundaries, mandatory handoffs, router precedence, permission preservation, authorization stops, invalidation, fixtures, and mutations. Generated candidate metadata remains subject to deterministic exact-recompute gates.",
+  "boundary_samples": [
+    {
+      "id": "V2-P8-REVIEW-001",
+      "boundary": "atomic Skill versus stage Recipe",
+      "finding": "A single root-cause outcome routes to root-cause-investigation; it does not activate the entire verification stage.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-002",
+      "boundary": "stage Recipe versus bounded composite Recipe",
+      "finding": "Multiple independent verification outcomes use stage-08; cross-stage requirements-to-readiness work uses feature-build-and-verify.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-003",
+      "boundary": "bounded composite versus full lifecycle",
+      "finding": "Full lifecycle is explicit-only and ordered after all smaller targets; ambiguous requests fall back to governed intake.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-004",
+      "boundary": "specialized UI Recipe versus general feature Recipe",
+      "finding": "Complete UI design and rendered review routes to the existing Phase 4 specialized Recipe without copying its step graph.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-005",
+      "boundary": "mandatory lifecycle stage versus conditional atomic step",
+      "finding": "The fourteen spine stages retain handoffs, while every atomic step defaults to skipped unless its own outcome and prerequisites match.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-006",
+      "boundary": "tool runtime support versus lifecycle approval",
+      "finding": "Stage 15 is conditional, returns to the blocked owner, and cannot approve requirements, implementation, release, or recovery.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-007",
+      "boundary": "hard, optional, and feedback dependency",
+      "finding": "Hard dependencies are prerequisites; optional edges do not force activation; feedback edges feed a future pass rather than block the current run.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-008",
+      "boundary": "review versus remediation",
+      "finding": "Independent review remains non-mutating; source repair requires a separate writer identity and human-approved remediation scope.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-009",
+      "boundary": "release preflight versus remote change",
+      "finding": "Local readiness cannot push, modify a PR, comment, merge, deploy, or configure a provider.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-010",
+      "boundary": "remote action chaining",
+      "finding": "Push, PR change, comment, merge, deployment, and provider configuration each stop for a fresh exact authorization; no approval cascades.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-011",
+      "boundary": "observation versus rollback",
+      "finding": "Observation is read-only and may recommend rollback; rollback remains disabled until separate current authorization.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-012",
+      "boundary": "incident coordination versus provider mutation",
+      "finding": "Coordination may assemble roles and evidence but cannot acknowledge, silence, assign, comment, mitigate, or close provider incidents under external-read authority.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-013",
+      "boundary": "learning synthesis versus local persistence",
+      "finding": "Learning can produce bounded artifacts; persistent local-system storage requires the separate local-learning-persistence identity and authorization.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-014",
+      "boundary": "governed data versus external evaluator",
+      "finding": "Missing consent, minimization, redaction, retention, transfer, or deletion boundaries stops before external-Judge routing.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-015",
+      "boundary": "handoff completion versus evidence invalidation",
+      "finding": "Every spine handoff carries all four artifact classes and all four invalidation causes; an upstream rerun invalidates dependent evidence.",
+      "verdict": "passed"
+    },
+    {
+      "id": "V2-P8-REVIEW-016",
+      "boundary": "candidate construction versus actual execution",
+      "finding": "Recipes, router, cases, and evaluation plan all remain evaluating and not-run-phase-9; no remote, browser-auth, provider, local-system, or production action was executed.",
+      "verdict": "passed"
+    }
+  ],
+  "findings": [
+    {
+      "id": "V2-P8-FINDING-001",
+      "severity": "medium",
+      "finding": "Initial router composite array placed full-software-lifecycle before bounded composites, allowing unsafe first-match implementations to choose the largest route.",
+      "resolution": "Compiler now orders bounded composites first and full-software-lifecycle last; Gate locks the order.",
+      "status": "resolved"
+    },
+    {
+      "id": "V2-P8-FINDING-002",
+      "severity": "medium",
+      "finding": "Initial protected-step rule omitted authorized-local-git even though local branch integration is a bounded local Git mutation.",
+      "resolution": "authorized-local-git now remains disabled pending current authorization alongside remote, local-system, and external-session actions.",
+      "status": "resolved"
+    },
+    {
+      "id": "V2-P8-FINDING-003",
+      "severity": "low",
+      "finding": "Nested one-line JSON schema construction was syntactically fragile and failed py_compile.",
+      "resolution": "Schema construction was rewritten into named, shallow dictionaries and compiled successfully.",
+      "status": "resolved"
+    }
+  ],
+  "open_findings": []
+}

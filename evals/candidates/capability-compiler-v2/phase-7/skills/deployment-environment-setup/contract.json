@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "local deployment configuration candidate",
+    "environment and secret-reference contract",
+    "dry-run and validation evidence",
+    "provider handoff and teardown plan"
+  ],
+  "capability_id": "capability:deployment-environment-setup",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Environment setup writes local configuration only; it cannot create provider resources, credentials, domains, environments, deployments, or production state.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "deployment-environment-setup",
+  "inputs": [
+    "Application, providers, environments, secrets policy, target, and deployment constraints."
+  ],
+  "outputs": [
+    "local deployment configuration candidate",
+    "environment and secret-reference contract",
+    "dry-run and validation evidence",
+    "provider handoff and teardown plan"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "coverage": [
+      "local-config-only",
+      "provider-adapter",
+      "environment-boundary",
+      "secret-references",
+      "dry-run",
+      "teardown-plan",
+      "no-provision"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Prepare local deployment configuration, provider choice, environment boundaries, secret references, and dry-run instructions without provisioning or deploying.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

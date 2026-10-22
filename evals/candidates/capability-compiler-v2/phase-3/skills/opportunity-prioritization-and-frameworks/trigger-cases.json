@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "evidence-synthesis-and-opportunity-prioritization",
+        "decision-and-outcome-roadmapping",
+        "results-analysis-and-decision-readout"
+      ],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-trigger-01",
+      "input": "Score these opportunities with RICE and declare the exact formula and assumptions.",
+      "kind": "should-trigger",
+      "reason": "Apply an explicitly named prioritization framework and exact formula variant to an evidence-bounded opportunity set."
+    },
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "evidence-synthesis-and-opportunity-prioritization",
+        "decision-and-outcome-roadmapping",
+        "results-analysis-and-decision-readout"
+      ],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-trigger-02",
+      "input": "Compare ICE and Opportunity Score variants for this backlog without hiding missing inputs.",
+      "kind": "should-trigger",
+      "reason": "Apply an explicitly named prioritization framework and exact formula variant to an evidence-bounded opportunity set."
+    },
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "opportunity-prioritization-and-frameworks"
+      ],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-anti-01",
+      "input": "Synthesize raw evidence into opportunity statements before scoring.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility evidence-synthesis-and-opportunity-prioritization."
+    },
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "opportunity-prioritization-and-frameworks"
+      ],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-anti-02",
+      "input": "Approve the highest-scoring item for delivery.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility decision-and-outcome-roadmapping."
+    },
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-boundary-01",
+      "input": "Apply an explicitly named prioritization framework and exact formula variant to an evidence-bounded opportunity set. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-opportunity-prioritization-and-frameworks-authority-01",
+      "input": "Rank the opportunities with RICE now, but do not declare the formula variant, variables, scales, assumptions, missing values, or sensitivity.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "opportunity-prioritization-and-frameworks"
+}

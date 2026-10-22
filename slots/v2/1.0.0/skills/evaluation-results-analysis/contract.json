@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "experiment comparison",
+    "variance and uncertainty report",
+    "failure-slice and regression analysis",
+    "evidence-bounded human decision readout"
+  ],
+  "capability_id": "capability:evaluation-results-analysis",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Analysis cannot change metrics, thresholds, exclusions, or slices after seeing results without labeling the work exploratory; incomplete or incomparable runs cannot yield a pass claim.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "evaluation-results-analysis",
+  "inputs": [
+    "Experiment results, metric contract, baseline, statistical assumptions, and known data limits."
+  ],
+  "outputs": [
+    "experiment comparison",
+    "variance and uncertainty report",
+    "failure-slice and regression analysis",
+    "evidence-bounded human decision readout"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "frozen-metrics",
+      "variance",
+      "uncertainty",
+      "failure-slices",
+      "cost-latency",
+      "no-metric-shopping",
+      "human-decision"
+    ],
+    "data_governance": true,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Analyze frozen experiment results against declared metrics, variance, failure slices, costs, and decision thresholds without rerunning experiments or approving product changes.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

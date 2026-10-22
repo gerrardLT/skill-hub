@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "external-design-token-extraction-and-normalization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-system-foundation-and-token-extraction",
+        "design-context-and-direction-contract",
+        "source-metadata-and-provenance",
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-trigger-01",
+      "input": "Extract the supplied authorized site's captures into observable color, type, spacing, radius, shadow, and motion primitives with provenance.",
+      "kind": "should-trigger",
+      "reason": "Extract observable design primitives from supplied authorized external captures or files, normalize them with provenance and confidence, and stop before project token writes."
+    },
+    {
+      "expected_skill_id": "external-design-token-extraction-and-normalization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-system-foundation-and-token-extraction",
+        "design-context-and-direction-contract",
+        "source-metadata-and-provenance",
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-trigger-02",
+      "input": "Normalize these supplied external design files into candidate semantic roles without treating them as project authority.",
+      "kind": "should-trigger",
+      "reason": "Extract observable design primitives from supplied authorized external captures or files, normalize them with provenance and confidence, and stop before project token writes."
+    },
+    {
+      "expected_skill_id": "design-system-foundation-and-token-extraction",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "external-design-token-extraction-and-normalization"
+      ],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-anti-01",
+      "input": "Persist approved semantic tokens and components into this project's design system.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to design-system-foundation-and-token-extraction."
+    },
+    {
+      "expected_skill_id": "design-context-and-direction-contract",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "external-design-token-extraction-and-normalization"
+      ],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-anti-02",
+      "input": "Copy the external product's layout, brand, assets, or interaction wholesale.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to design-context-and-direction-contract."
+    },
+    {
+      "expected_skill_id": "external-design-token-extraction-and-normalization",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-boundary-01",
+      "input": "Extract observable design primitives from supplied authorized external captures or files, normalize them with provenance and confidence, and stop before project token writes. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "external-design-token-extraction-and-normalization",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-external-design-token-extraction-and-normalization-authority-01",
+      "input": "Extract observable design primitives from supplied authorized external captures or files, normalize them with provenance and confidence, and stop before project token writes. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "external-design-token-extraction-and-normalization"
+}

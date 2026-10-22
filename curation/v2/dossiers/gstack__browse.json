@@ -1,0 +1,2751 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/browse/SKILL.md:55]",
+    "Skill Invocation During Plan Mode [gstack/browse/SKILL.md:59]",
+    "Model-Specific Behavioral Patch (claude) [gstack/browse/SKILL.md:78]",
+    "Pick the mode [gstack/browse/SKILL.md:372]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/browse/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/browse/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/browse/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/browse/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/browse/SKILL.md:33]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/browse/SKILL.md:38]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/browse/SKILL.md:57]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/browse/SKILL.md:148]",
+    "Each block is one aside repl call. Scripts are single-quoted for bash, so use double quotes and template literals inside. Every script follows the same skeleton: install the console hook, open the page, do the work, print evidence lines, close the tab, print the sentinel. [gstack/browse/SKILL.md:247]",
+    "bug report, check a page for console errors, confirm a deploy actually rendered. The [gstack/browse/SKILL.md:367]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/browse/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. [gstack/browse/SKILL.md:5]",
+  "root_id": "skill-root:gstack/browse",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/browse/SKILL.md:16]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/browse/SKILL.md:39]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/browse/SKILL.md:40]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/browse/SKILL.md:41]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/browse/SKILL.md:48]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/browse/SKILL.md:49]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/browse/SKILL.md:52]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/browse/SKILL.md:63]"
+  ],
+  "skill_path": "gstack/browse/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/browse/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "gstack/browse/SKILL.md"
+    },
+    {
+      "line_end": 27,
+      "line_start": 27,
+      "path": "gstack/browse/SKILL.md"
+    },
+    {
+      "line_end": 55,
+      "line_start": 55,
+      "path": "gstack/browse/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/browse/SKILL.md"
+    }
+  ],
+  "source_sha256": "851aab576c9c2bd38561117323add4458f72521f18939955f22c28b77e254c44",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/browse/SKILL.md:74]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/browse/SKILL.md:81]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/browse/SKILL.md:109]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/browse/SKILL.md:112]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/browse/SKILL.md:133]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/browse/SKILL.md:143]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:992ae35640887a9fee715b7079d20f4825a2d38453cbe43b8ecb6dd3dff6a28d",
+        "content-review:103-lines"
+      ],
+      "path": "gstack/browse/PLAN-snapshot-dropdown-interactive.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:851aab576c9c2bd38561117323add4458f72521f18939955f22c28b77e254c44",
+        "content-review:444-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/browse/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7f3ab4e5f2cd3df4b7c9ee49d2605e1d538f823d812d611b5a296d8cd5dfc116",
+        "content-review:122-lines"
+      ],
+      "path": "gstack/browse/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b8384a68c84ff7cce502bf1c1fcf8f9e0aa88565010f67747dfc277215e757d2",
+        "content-review:22-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/bin/find-browse",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:dad6f5ba6973242b47b35e4b62d8108f9d3f9bb4886a198646efcb7b447868f8",
+        "content-review:15-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/bin/remote-slug",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:83a3db3f25706c47e501112101533da96821f4725c123b29360e5201594cf259",
+        "content-review:61-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/scripts/build-node-server.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7711fbafee13b5c2c8d0b12d46f5ead8711df978d73ec125e3af4119ed52262b",
+        "content-review:46-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/scripts/extension-id.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:eb17d99d718227e3ec5252fd2ea470f054f9185e8a38d9d8b30d373ae500aca0",
+        "content-review:176-lines"
+      ],
+      "path": "gstack/browse/sections/command-list.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8880b4f96ee720561552b1476e6c63c8550f1132960e30fab779ac23447bbe6a",
+        "content-review:8-lines"
+      ],
+      "path": "gstack/browse/sections/command-list.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:23f65e738d98fe265f61dca14fb5d44afc875590a12877245261f9273c48ad61",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/browse/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:29aae8ce5a82fe60dc40d78f9f9bb180836f88673a4a05f51d11fe552cb67bd7",
+        "content-review:210-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/activity.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6d73388ec695fe38fb83f549c960ee463099e5288aa63dbe9c5dc56eb543593c",
+        "content-review:70-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/audit.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:bb1056c58e442e63558fdfbab2a20bffa8165eaebc246421757f4ce86895e8c6",
+        "content-review:265-lines",
+        "behavior-signals:entrypoint|process|network"
+      ],
+      "path": "gstack/browse/src/browse-client.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:82e844073b657358bd6ab7204aac244bc41e10f2e2063d6c1901c9c1aef595b0",
+        "content-review:2060-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/browser-manager.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1d03b669e8e65b30d45202ac4cda9e1fe389044b08443cd2e2187ff831677a71",
+        "content-review:467-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/browser-skill-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3cc1adf60df2247397ca04425b7031c0cf0ed4688f8495f856417b7731cb4ff3",
+        "content-review:217-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/src/browser-skill-write.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:27ee8f4bf1dc6590d1dd7f43a9d322cfa98f6b0b9e77783b4908deb3ac7d8f82",
+        "content-review:421-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/browser-skills.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4bb058655cfe4c9ce7c228356ddfcd85b7a85dad18e22d3100b241424ddac101",
+        "content-review:138-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/buffers.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ac9c6c56052dbd5aee7225142f6794b1ca5139e9ef5f15dd95a2bf66def4fbda",
+        "content-review:251-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/bun-polyfill.cjs",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6afb120d6c6d583a6207424d3f520896f4335b966261315bb8164a463dcc8d2f",
+        "content-review:236-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/cdp-allowlist.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9fc3b87492790b94d6ee496d7a6deec4dbb38fbf8903f2d4ab76f9132feda877",
+        "content-review:181-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/cdp-bridge.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:eda7a7d29032c5e6a4fe3443c359badeed2b5500b1980f8daa39be44bcfe39da",
+        "content-review:65-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/cdp-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9b2a26864f7687335bd42e89cb476d5cc0d39a39a913c44822600c16b04f6f32",
+        "content-review:825-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/cdp-inspector.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b57fa2af76aa196997a6e024ed5f046e60036a68d62118b0d4ca30a80b83673e",
+        "content-review:3-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/claude-bin.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6b8c17ab4c41bb2c34cc043e78a636b1b4a804e8309400d33ac45a2c1ff9c25a",
+        "content-review:1990-lines",
+        "behavior-signals:entrypoint|process|network"
+      ],
+      "path": "gstack/browse/src/cli.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:819585382c560406fa52684257e57b79d59db4b880a70beb47a2ca6392d11b75",
+        "content-review:297-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ae0964b501a2b082db8f4080262fa89696cef17197a69236b45865f313d70a63",
+        "content-review:319-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/src/config.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:782e85aa30b2be37d1c5cfaa5f1ff2d8ae39893eb535427416bf08ba752a00a6",
+        "content-review:374-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/content-security.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2d8a06307c6d408b291894fb35133a5dab363db093eafd75ba393dcc1a8eb83b",
+        "content-review:1047-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/cookie-import-browser.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:88473dbd8a7dae4de5c30b0f71d0134c01d2fd731dcc735cc1e33a5e85754f18",
+        "content-review:341-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/cookie-picker-routes.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1fc229f6b70d273ded5178c1add73a32e10cce966d0adb4229938b57c8ecf85b",
+        "content-review:697-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/cookie-picker-ui.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e2de59507f06796dd4682acb6e24580c46e88b17e498ce76e653ec2b4aafb07a",
+        "content-review:302-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/src/domain-skill-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0bfb7c74f897255489fd4ed22aa9c2dcb71d68a9aa7c1b4d384a6b633418ca38",
+        "content-review:439-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/src/domain-skills.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f655604d2e80e9983dcba0287784a15e008fddb24f08a12a3e9557747284a318",
+        "content-review:3-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/error-handling.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:927505017364b0176a6af76f3b5115bdd770170c4428cdbfa5f142adb4b773a9",
+        "content-review:355-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/src/file-permissions.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:621572ae17362605bf6ece1d9dcbd610aedddb3d00eaa03e6f69fbdf08ac189e",
+        "content-review:112-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "gstack/browse/src/find-browse.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:253f01dc87db710ce4fe506de44db2ffdab7fdf46c5f8796f0a12b2630c8d1bc",
+        "content-review:79-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/find-security-sidecar.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c3fccb1c875db79cbc3fb857ab10534aaa7e99942d72a97f3fa9336a7ca13fa7",
+        "content-review:178-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/media-extract.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:31288ea76587cc0c14c3656d5131cab1c6dbf9cafad24a151860b95fc4232a0d",
+        "content-review:116-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/memory-command.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:877ae07e5a94dbd165cd379e1d611473ca64624a8f6cc324fb5edfa8ecfac561",
+        "content-review:74-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/memory-snapshot.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:17c129cf9dd85de7ca22943b8078c9f5506ab4eaedbf569f8a2898c6478e2d85",
+        "content-review:1150-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/meta-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0dabb6e3093998f8fe168d09b3ecaa3d1e0faf7fb18324dc6435bceae11d31cc",
+        "content-review:180-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/src/network-capture.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:261cfff11b067203554d34190b6fc8b17315756ae3ac043ade4159c1cdaecc1f",
+        "content-review:125-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/path-security.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3f25dae6e6409d5f48aaf9fc66ff7a9662d2d89546c66a976ef5386e58cd03ce",
+        "content-review:39-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/platform.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0c4fe568c39314f2a2887531d539c9ee64ce2bb530e7a56bba1f84f96c66248a",
+        "content-review:141-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/port-allocator.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9cfcc8c555014ea55f1666a4edc098367f536d4e8d138bff98fa4e3224939180",
+        "content-review:37-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/project-slug.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5007d30873e5761bbc3a8b7b989e487aca5738a8e80e0a1f17919d33c65a9323",
+        "content-review:156-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/proxy-config.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:01a4b81bb4da979270d28bd802119bce93c02615574cdcfcb43be29f74381516",
+        "content-review:47-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/proxy-redact.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:607835918359934d41f10ba47fd52a02d413ada502132f33088d379dfd8397f0",
+        "content-review:65-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/pty-session-cookie.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:81830211db58c2d13e2073ae64d2bdb3d57165c2c0656540b9a07d50ef22732a",
+        "content-review:138-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/pty-session-lease.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b15726739e7c155643c3b0333b4f9fd681dfc50ed64e9108ce7f4a0b2ee8fc25",
+        "content-review:757-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/src/read-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ab0fd10fbbc37b52094394b11d0977a9cf7b3eda851f48c6e249c69d755ca03a",
+        "content-review:50-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/sanitize.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ed1e7d3af2ea06b7c9ca5b541dd2620b9c66c74d1cf71ab27d83e4cf2d2bcaa9",
+        "content-review:107-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/src/screenshot-size-guard.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:74d98ed3c2d273e6215bb8ac22e50d8ffd9bf6a62dd1e1f8e1094601aee396e3",
+        "content-review:259-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/src/security-classifier.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3eed1634f1ec10aec9bf0b5ded207b360347c17272b7372fc9a4dc5245f3ef06",
+        "content-review:235-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/security-sidecar-client.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4e5e047cbe42340a51d76730e01374ca16adef297d9ff148bd2b144b8b6fbac3",
+        "content-review:121-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "gstack/browse/src/security-sidecar-entry.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c942774656a046625bc6ad95a431199d08faa5c30eeb28e81a0e78e89ac440dc",
+        "content-review:329-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/security.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:56fc5cca4ff2b0334fcf8ce719dc3ec639c2580f93c261f21980980a38acf000",
+        "content-review:3380-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/src/server.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7fe0eca3f3adb8d27a127814cc3d4bc5d9425392d9d7faeb032ae6b0533b676e",
+        "content-review:125-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/session-cookie-store.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b29e2b1e3f6591b46570543483766b62d1be2bb03b3505f55bac53583f47d4d5",
+        "content-review:179-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/session-persist.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2a21decf38c002ff9463725b3bebad5f73f6c5bff675f31c87f56b98a2a7c352",
+        "content-review:92-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/skill-token.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e91b7d431a292cffeaf0b65c67f5c93346cc6480c8dd14dd31c15f72e331082d",
+        "content-review:692-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/snapshot.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7d2fe319b708687c2c5a13a002b81ad679df2008af095e699a11c36164162f6d",
+        "content-review:315-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/socks-bridge.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:34358a4ac23dd54d1b18beb1483641f5e95540df55a72af8a0c5bedd2e94ffa5",
+        "content-review:148-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/sse-helpers.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b6ab3f793f52e9c4fe6d206718598a052e07b58dec0e123190e77a35a990b847",
+        "content-review:66-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/sse-session-cookie.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2cb9484c4f725be9c8e9949f3bba7d0012205577830317b30e872ba86d904098",
+        "content-review:581-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/stealth.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1133d463a4b0c576d95d240914f5e2a69e6f74c081358beaf6fe11ac36435a9a",
+        "content-review:211-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/tab-session.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7f423c6b7807b5df0f53034b56bc1d3fb6ca701215efeb913537ac0910c2958d",
+        "content-review:116-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/src/telemetry.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d798504c316d2bc6dcf9a5801383ee08ed0167f743f94440ee7247f35b0e4a74",
+        "content-review:151-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/terminal-agent-control.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f2c31580880664802173874df905819402fc268be13a4abd3205db7a4597f691",
+        "content-review:1047-lines",
+        "behavior-signals:entrypoint|process|network"
+      ],
+      "path": "gstack/browse/src/terminal-agent.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fc2cf6c209ebc179d5bd159e15f8a4ce8147da3c6b2c4135b1da0dff37fae0d3",
+        "content-review:720-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/token-registry.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6ddfb16adae4edd392f6eb596d1cf249800776e790f71831de06180aa3c989d8",
+        "content-review:99-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/src/tunnel-denial-log.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:11b1c7d59ea8f33c66f6b3084c2fad27a6d2b9ca1c45f8ef9dc40e1bbbe3d236",
+        "content-review:314-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/url-validation.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:751de56e1fcc8f661945613adf6e0fee63efab8b965a7b4878f0376c0c931854",
+        "content-review:238-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/src/welcome.html",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7f1dbceb9a30985546312c7373825c9cb24d49b2f69390f5e6354fd35ed8be9e",
+        "content-review:1444-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/src/write-commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8bdf69256e9018f62918975276b2d23bc6e038a4d44aae92022c7a58fbcb8831",
+        "content-review:440-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/xprotect-heal.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:14ac4419a5d9d5d4c68786ac6e14c7461b5241d5f94dbe7c1fbdd1310b2ff8d9",
+        "content-review:243-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/src/xvfb.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8f52f582c708e102e99e0807e6e088bf7b341e21575f43743f30be9fc5108f22",
+        "content-review:121-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/activity.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4555943781b4c6df8495e15b799629858ff723c19378b30e4fd05d474c7b5378",
+        "content-review:33-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/adversarial-security.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:53780d1481ede82afebaf5a1f8651ab75899d41d3c01dd57dc94d20fb8a05090",
+        "content-review:268-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/batch.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:db7e2ad7eb93f71a9e024700e3cff731ac729c63891fbb5871dcf0dce725b916",
+        "content-review:206-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/bridge-chromium-e2e.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1b41f6d8938a30d564120d653e24fcfbabcd6d60bd77cb3e3da3fa27c77d03ad",
+        "content-review:301-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/browse-client.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6c76f362b90988a44fcdffcbb0459c022c8d0457c5c0c0a81bb8e6d060d8401f",
+        "content-review:87-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/browse-eval-wrapping.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7ac6039027035dab66d6f6ded0d5dd472c87ef320941240c4201392afbf61b4c",
+        "content-review:68-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/browser-manager-custom-chromium.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2f9a724e2829250d8b8c2f6d8dbc739675927b5c50dee9aec55e214d19ca6109",
+        "content-review:372-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/browser-manager-unit.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ed873661224b278b14d1327a43df13bf061bc5ff6b17306ec0cced011742f927",
+        "content-review:434-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/browser-skill-commands.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7fcdd3a07d08d6db270b2c2cf7d92d541c325bd669c6bbec828aeaac4dcb80e5",
+        "content-review:351-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/browser-skill-write.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b373c848503e6788c4f452cdccfb6575224bbd108ff367c8ef7adfd67f39f13f",
+        "content-review:102-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/browser-skills-e2e.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ea9fb292454c1859f973336fa827daa21409fdef631dbf2db5086417af16fd82",
+        "content-review:284-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/browser-skills-storage.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:22dc3243bc4570bc45c8f2b05bb2a90a19acce9f4a939d8f3809d52a0f9fee70",
+        "content-review:69-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/build-command-response.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:dcb1e23cf5b81ba919c18c20c687f1657af7322f7322c491d5cd71e8a2dc1b60",
+        "content-review:29-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/build.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ddcaea9a6728f2303bd9c997f22cc0c7e4d0f938b73dc3fd67d010f7a5dbb78e",
+        "content-review:270-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/bun-polyfill.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a09a504f7734c630bc032a85069bce7f644c9716b8ffe143fa55bb2bbcb057c2",
+        "content-review:271-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/busy-daemon-iron-rule.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0ed4c9c7f6ac5a2f9a53d0613d60a910d7d34c8c9e9aa8b137426b9cadea7016",
+        "content-review:135-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/busy-daemon-recovery.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d9e3cf10f32fe0d230df5884256582744926180d3188084ca4a2579a9b1b5255",
+        "content-review:110-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/cdp-allowlist.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0629ed6864c1f57a116595249f5613be8545b746494619c8b9ca52563ce632b4",
+        "content-review:118-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/cdp-e2e.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:eeef2651ab44d0233ec10cfe4e645fec7f0c648a78b03e5805562a11750555d6",
+        "content-review:96-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/cdp-inspector-history-cap.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ef58644bd68e6c4a05ae3d62ff903c36ae959a651b0aa739e872e11f8c11d99d",
+        "content-review:114-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/cdp-mutex.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f075f956d5010bbbc361bcd4ae6f2499c4d8b7a356a6bdac55727ea6588b1ef6",
+        "content-review:172-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/cdp-session-cleanup.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:edbcd1558746815cee34f6a82dae4a0df7a24d3a4b6117038fa3fdec00ee9853",
+        "content-review:96-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/claude-bin.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2e218a438aea585ecdb39b7c2ab57a9bbf6c947a15115f8d0bb4048be1a46400",
+        "content-review:121-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/cli-lock.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4226e5883b0ff911550886dc65b697d29b0155e31966f41d208598d97d6b8679",
+        "content-review:76-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/cli-setsid-daemonize.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:794da0eae6a8cdde3f9b7a3715b3497b34ebbf2a7782adae3a3299e0b0f96d45",
+        "content-review:78-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/cli-start-final-healthcheck.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:db5f29dfea57a8d39ba4772eb052ec9ec450da2a6210dc56e852fefd31fb7492",
+        "content-review:82-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/cli-supervisor.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1e66e0bcf78190781db79a4ffe696fbc3a374eb8dd8638ce55fb1b5615269d34",
+        "content-review:2646-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/commands.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fef57edf31ec203b6556904e355d1559e5ebde7b6049b93c38cb6c44a8f9a527",
+        "content-review:388-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/compare-board.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:aa97b9d05aaa80713c51511002efa60207742bb135f964ca7a916b4710cf7ac4",
+        "content-review:516-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/config.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:964d44c20aee6bcb75f06eb0bd046717926e27e18842953df0f5fcf8de4e8907",
+        "content-review:681-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/content-security.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8fe29918a60a64a77fd288bb31410a9b949669ed1a12da45ed9aa025822c5dc9",
+        "content-review:524-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/cookie-import-browser.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:600551280b4a3e23df00ccaab8ff6b6babfefe414b5fa286691ccdd4257d6fd9",
+        "content-review:447-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/cookie-picker-routes.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:cdde719c00ac602ca3729545c8384302e8d64627b4f0b6972107f665bbe6b913",
+        "content-review:136-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/daemon-log-hygiene.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7e24302e24462cacd7726b22d1e1850f8ca70cc56146a4619df562a550d855e5",
+        "content-review:179-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/daemon-mismatch-refuse.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5dd9c551b0f4d5b7173ae85d4c7dcfe2575d1a8650f19f5e6969618fbc1fecd2",
+        "content-review:177-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/data-platform.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:321286c3caf7388b50692555e463d98f87ad360e1a68444a254b9d1573763384",
+        "content-review:143-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/domain-skills-e2e.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3d46c5821765eb31e3de5493fdb6d23635bfe8b2eecfe74530d0d972c7725eff",
+        "content-review:264-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/domain-skills-storage.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8b149991f5af93d9de01e3ccc79e2507d5fcf76771558e127f1f2dac719dfdb1",
+        "content-review:369-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/dual-listener.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fce660a3194ded78ffa6a22c28e48ba570f12da95bdf1fa00e5c092c10a3723d",
+        "content-review:102-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/dx-polish.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a415874e19378faeeadfb447dba2da60ffddfbd3a042c2b19ef88428627ece34",
+        "content-review:48-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/error-handling.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:42340791d4e900c7aa03aba0612b43c92fe23ed5bd8d9aa8f1939d729e2f1d05",
+        "content-review:286-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/extension-sender-auth.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3cc9f9d81acbfa848d5d0f0d329fa431f4c04a6044f428ebd3641983d8e319d8",
+        "content-review:179-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/extension-token.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0299c181a02ce34487ded5219b9f0da35a9860a7d3fe2f42865317fedac7d13a",
+        "content-review:272-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/file-drop.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ee7a1a11996de0a04eddd592e1a5e0a66142d60da27576d0303de517cefc94fd",
+        "content-review:326-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/file-permissions.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f14fd1c737a2134bf34a66649eeae2d9f7d2b6d77561a839a840dc090ecff10b",
+        "content-review:79-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/fill-change-event.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e659782652ef6db8eb9b140ac2c30add9f40f11764c366dcb4d5f8e695ce5d6b",
+        "content-review:62-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/find-browse.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2f3cad30418d779f93b50bd451655201bc501525f9e293ea3466196e95b4d76b",
+        "content-review:234-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/findport.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:e27dd0b3c5888c3a5a926dcfb7fb7d9279e1da6b5d55cb4ec9d811d7717bcdfa"
+      ],
+      "path": "gstack/browse/test/fixtures/basic.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:e8fb585938d6a607a3160366708bd88edc836bf213634e287541dfdabe3f7ecf"
+      ],
+      "path": "gstack/browse/test/fixtures/change-only-validator.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:b10bcc31f60b38c61ef6ae8edc8701800bde577d9520210cbef5fb7d8290448e"
+      ],
+      "path": "gstack/browse/test/fixtures/cursor-interactive.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:e966bb3cde66d17c90777192bd4c8be733b8740b8abcb6d5f069940eeea4221b"
+      ],
+      "path": "gstack/browse/test/fixtures/dialog.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:1b028891377d27a2784ec1e22903a8b654d7c27f36cdc2f142deb0bb78a43aae"
+      ],
+      "path": "gstack/browse/test/fixtures/dropdown.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:49f45ab1766afefa2b5f8b7353f5c30c6fa456f46b5db677cc42d16fd1bb3a75"
+      ],
+      "path": "gstack/browse/test/fixtures/empty.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:c86a1d31f83960f3013b764682297c9c1b5fbc4597ee5bdb1c6d937e09997147"
+      ],
+      "path": "gstack/browse/test/fixtures/forms.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:b6d9924aabf1abb72a10eecd266fb4d8a1aeb0557fe5eae206ba90fcc121dc3e"
+      ],
+      "path": "gstack/browse/test/fixtures/iframe.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:3b85f6048e77a43b6f043bd11eb746db3920412ec63a952520b8f265119178b1"
+      ],
+      "path": "gstack/browse/test/fixtures/injection-combined.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:0dd1dae08ed8eafc8137d60219dc1166434980a9c9d08ec09481b8cad290f4c4"
+      ],
+      "path": "gstack/browse/test/fixtures/injection-hidden.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:af8eaf9cef7b0bedfdcb0ce50ace493af7fe013f68ff9e5818a3c259c99c0098"
+      ],
+      "path": "gstack/browse/test/fixtures/injection-social.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:a1d38500802a348b63b7db183ef45c5781bc032d5b690c2b4482dd8742d463a0"
+      ],
+      "path": "gstack/browse/test/fixtures/injection-visible.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:d3765e5d4f98d14a1fc3eb5b7f08621ef56ff4087c9c0bc9f989c7387b99da86"
+      ],
+      "path": "gstack/browse/test/fixtures/media-page.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:0649189168db50837bd2e7f9eae2af3c061f80c2bd7bee40b7835b23771df0cc"
+      ],
+      "path": "gstack/browse/test/fixtures/mock-claude/claude",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:70b7e5ebbe5bb71ff4a919479285711eaa89869594872bbf222c9a13050be199"
+      ],
+      "path": "gstack/browse/test/fixtures/network-idle.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:668b9e7cd8f8bfff7ecf8e6602e00f2584f29ea4129640aaf6293542aaffb378"
+      ],
+      "path": "gstack/browse/test/fixtures/qa-eval-checkout.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:2dfe85e1ed717eb44734ed8fb1d03319121434036182a57e723ee37d72686f0c"
+      ],
+      "path": "gstack/browse/test/fixtures/qa-eval-spa.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:523c08ba3df0850fe2570b3103525576c7d2aebb05d2f676d181fc6975dd953e"
+      ],
+      "path": "gstack/browse/test/fixtures/qa-eval.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:0b5320f1705116f543ca988c055cbaf454473c9cca2a4bc64655d32abf65558e"
+      ],
+      "path": "gstack/browse/test/fixtures/responsive.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:7e0f5ff3a9ea2afb7a25d5f6ff0419847a40b633ec629486c5bf1896c1efbcaa"
+      ],
+      "path": "gstack/browse/test/fixtures/snapshot-ambiguous.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:242e7d16ed955d55d13397df46999e6bbb6ecd9eaf2983f4bbd44e767991bc68"
+      ],
+      "path": "gstack/browse/test/fixtures/snapshot.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:2bba33d1bbff657039e48df16d35148725615fa9a54eb461837936dbd455dbaa"
+      ],
+      "path": "gstack/browse/test/fixtures/spa.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:17e9b3ab0e349791b6e43868e2cee5d6394e50f0385c33ff768f26b73350ee7c"
+      ],
+      "path": "gstack/browse/test/fixtures/states.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:5019f1755e0d35e88bb7f42e0290ed5f4aa5fd80ec35acb11540485280c2c34e"
+      ],
+      "path": "gstack/browse/test/fixtures/upload.html",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:44f464df311b8a9831320f1d4118f04a252c71d974850e014296aae0cfaa47d6",
+        "content-review:69-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/from-file-path-validation.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c12f114cf3c724ff93583a823b15a03df190b847db213fbc85a61cd3665efd57",
+        "content-review:253-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/gstack-config.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9e11046fef129ab0b83fedffe75b5a5f6df15285fe905fb059dc80df0c79ebf8",
+        "content-review:565-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/gstack-update-check.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ca5cd3c3387414284295b37f2fa7ae8022953b808f2343218c884f693db146e1",
+        "content-review:272-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/handoff.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e307b83d36840f2faf232d13e4bfeabe1d0d976563c59bbb699f200e9eb8c5d0",
+        "content-review:200-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/headless-gpu-and-reap.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:68e3dbb4559eef591286c3f7eab711eaca8f108a3abbe4b67676e5eca5193112",
+        "content-review:75-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/launch-signal-flags.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:887f5d1265beec0017dfed0d43e128c575eb2770b329081a8536805a5b14eb0c",
+        "content-review:34-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/learnings-injection.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5dc4cca32ec3f2ff27b093bf40a7e765f89eb89096830798d9a65b8b181f23a4",
+        "content-review:295-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/media-extract-unit.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:88cec2294ce2884a4860954d94ebdc0b516dfd76c2a411cd93803b8f604d53f6",
+        "content-review:248-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/memory-command.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5855ece88b09b4fd07d976ac6c576c67f4394f92e8fe93a5bfbda13ed734fe56",
+        "content-review:133-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/memory-leak-reproducer.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8cbb8d79a792c685ef9849332d4f44054a7a0996a63a2ccc6a17d4f6c0ac0dee",
+        "content-review:594-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/pair-agent-e2e.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9573a7ed1dd47f862baa697037087abedccaedc157d1dc0d33ef4e2abddbf5b9",
+        "content-review:162-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/pair-agent-optin-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c5f41c5175da7e0855e99af545f60399efa26e45a29d1ecdc5a94adcabf4c7e7",
+        "content-review:216-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/pair-agent-tunnel-eval.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:232e2c9f58ad405826f6caf6f4e0e8c1d908d289514010cdcbf3741a117ea5de",
+        "content-review:195-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/path-validation.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:17b7108ca34f980467e395224d8efbdfd1a38cac84dd34dac6c7724a2e741714",
+        "content-review:87-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/pdf-flags.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:31bfb444b0793469b78dab40de311595b5d90b1298be60f802107bd5be906ce7",
+        "content-review:38-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/platform.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1b5f07335f1eec57e3914d9f3117f2174e9147e34c2d1463e15ee7cc67a68200",
+        "content-review:63-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/playwright-core-patch.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5ae7f07702ad21993dc691aaddf6f1e704dd9e1686393c7314bbadfa8d777815",
+        "content-review:149-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/poisoned-bundle-probe.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:eab6cd269e72f2ce05385133c8bdc282600c70ea7332db7bf265fcd80ca06f7c",
+        "content-review:156-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/process-liveness-windows.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:057fc891d232fa1375e51db8544bae2e6604ccc1617292cf27125dde70904689",
+        "content-review:190-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/proxy-config.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:85f25fa0ab7659e8fe38fe1c1d0a8853b41847d30808c6567626e3dfacec0e19",
+        "content-review:65-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/proxy-redact.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9b15305e4b8512cf496f097953ee9063303143b8509db75b4fdc98d0cd0f54d9",
+        "content-review:77-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/pty-inject-scan.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:038b7f10583eecb8bc4b4031b91568515e61f4cbdcefa9f9fb9d00f165daf39d",
+        "content-review:99-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/pty-session-lease.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:35288d662f1d10c82fa1d4c057c0770e125dcb9c09a03ef960dfd89a8ee46022",
+        "content-review:54-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/rebrand-signed-bundle.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:34a23f124b7645f661e6db6eb87a90c041bbc5dd37b6f261c5ad9c3764cd473a",
+        "content-review:84-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/regression-pr1169-pdf-from-file-invalid-json.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d0141360958eb9c1ede8c540ea9295cc05ed7aa57c5ec71a16fc4565b3cacd5f",
+        "content-review:40-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/restart-env.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a535d4ab78298546b5945d7727dbdcbc13c340cb9054b544ddc9cc2a9605d60c",
+        "content-review:113-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/sanitize.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:450c3a8e8849429e90eee4132cb25c5fe801de007ef64e1238630fdb1fcab930",
+        "content-review:119-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/screenshot-size-guard.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ff3713984432fd0f4aaffd91771caff717cc57c246880d33780370fa2134e59c",
+        "content-review:102-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/security-adversarial-fixes.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d7a3f5f97a1a13dd25e21438a39b985df3e91ce56451ff82f193d142e967d498",
+        "content-review:343-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/security-adversarial.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:df3475761e27c99beda0ca9d518cd247ee684c4b955289b9e481efe63e96e22a",
+        "content-review:538-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/security-audit-r2.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:27c133e11be71f15d9d7bface347c689db314e2a55956ee33d74a1749abe83c5",
+        "content-review:160-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/security-bench.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e856b0f17b61411cc517d69bcdc428a7fa630b5b4efa16cd5c8378fc85258936",
+        "content-review:139-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/security-classifier-download-cleanup.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9b020efe3488b155173a3402d5ae20502623ff14eda3bd00252dbc9213992338",
+        "content-review:30-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/security-classifier.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:68709de385d6c5b26685e96442ed3caa4d47b948bf518a132bd9d8d2894dc1e9",
+        "content-review:185-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/security-integration.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:21034912df08d658a8e38c935d8b80e3281557aa4978e8589bca57d7eacf72a6",
+        "content-review:196-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/security-live-playwright.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f352d9a7a132bc89f2f481eba934f4e08c135f21425e4612cab8c722bc16692d",
+        "content-review:67-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/security-sidecar-client.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:55cbf6353c07f0f0e3ebe822443799dd20b26d85b55815decdba7a2179a898e5",
+        "content-review:268-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/security.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a5eb8e83b754b327e1cf4b481876c22be26e19db0785c7ab4d04e4917b8e1611",
+        "content-review:443-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/server-auth.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0923eb0ba614e0196d708d08eca3b7820fd24baada39f7fca2f21dd6c63f44c1",
+        "content-review:252-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/server-embedder-terminal-port.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:921167e6a4b171a05b90f6877d9aa4b9e9f2089be4febc6046e5836c054b9b78",
+        "content-review:547-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/server-factory.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7fe9a050d92349b5155edf593bf84a8f082db2fa4052f610dcc3082acfd698ae",
+        "content-review:74-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/server-flush-trackers.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6adc12f8f182bfbba123d5e1725f72d37f0581e8491c166b82de8dc61f5df287",
+        "content-review:125-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/server-lock-errors.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6f599dfb2828de8715def2c1258e60c962621c4bb2f2f83bbf8960f797645a62",
+        "content-review:111-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/server-no-import-side-effects.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:53add4cbfd4360f22574018bb4ceaf47b3cfbc9c7db410b05a3c5d005269ad74",
+        "content-review:99-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/server-proxy-fail-fast.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:402ce28991672ef5ca590d3a4e02ec85f103358b287929833ee2c8092f32e457",
+        "content-review:95-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/server-pty-lease-routes.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b2b8ecf83f3b05bd3569927f2ccf83c4910b92aabb81c45f83810ed152e33632",
+        "content-review:165-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/server-sanitize-surrogates.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3cc208a372152d8789e6374d7063146033aee388f72c3b2ea1d3885b9b860fe5",
+        "content-review:87-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/server-security-surface.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4cb5f47aa36e5c3409b9d3f5d0121c005e67240d9beff8cd9fe69fc4840e8a5f",
+        "content-review:111-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/server-tmp-state-path.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:214a37174f9333e9085546c70d68d10bf2880bc8f0c589eee16edd5956e6be8e",
+        "content-review:160-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/session-cookie-store.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:513301ee53b5f2a18dadfd1c51637cf6936f19fb02338af9bde96f735e4b12f6",
+        "content-review:288-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/session-persist.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:30c9319148fccc320e106236af36a47b876629507b5202ea2a029bf68b14719c",
+        "content-review:281-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/sidebar-tabs.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8f4c5b9a719e7f52819f30368af3cdb7ce0506e4d0a6926aa06144537484b37b",
+        "content-review:998-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/sidebar-ux.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fe62d847694967fb9e9699720f808481a978a59a0be856001c66c21de749a3cd",
+        "content-review:71-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/sidepanel-patient-autoconnect.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8779ac63485e09e53026574e5dfce873546a45574eafc7f8e90dbdc614cd86d9",
+        "content-review:94-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/sidepanel-reattach.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:889d379333630ab3c7d16b52ee637f84c849a245692b86a8115e6e0ddec32f5f",
+        "content-review:107-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/sidepanel-restart-dispose.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:002061357b91bcf3302562e12b445f504eae9ae0f4a7299d87647572d635a428",
+        "content-review:168-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/skill-token.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:33b3d6b7769cef9ff6a6a49c95d902005fdb4daf059d4da7225122c9b5db8717",
+        "content-review:594-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/snapshot.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:547ddcb7883ae4d3dc6985c3e9759eac9b0cdefe24b8d3d7f1fad89b6c86628e",
+        "content-review:462-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/socks-bridge.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:77c82774bb2998f73d9f70d866b7d9d368f7d942e8090a28fd1e8814e305ea78",
+        "content-review:195-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/sse-helpers.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6fd1034ec9e9fe068454001c5c6ef788f7ded6ddb7996f8534a586cc6bdd11f7",
+        "content-review:156-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/sse-session-cookie.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6057d8169ea9ec42f13d5e6abaf686aff20017598969ffb980493734d8ac930f",
+        "content-review:36-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/state-ttl.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:cceb5d2e5b499d1535c86c099f1152dac1e263ea73959d7195859f6291159ba2",
+        "content-review:128-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/stealth-extended.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:18927fa7e93af289a991580c8dabafc018a33faed41fa9fc333f1bc525d9246e",
+        "content-review:284-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/stealth-layer-c.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fdbf922ecc7ae8a250e8347f7322968d457331f521baa5117d28c4581155394b",
+        "content-review:326-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/stealth-webdriver.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:64cb2fa4e6892fff119f81b37b5af64e4df2d88eaa044606ea3d9d66ac005f93",
+        "content-review:24-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/stop-ack-before-shutdown.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4456f56581dc176e7c35010ea8d229e01710b80981956afc1471d5804f82b453",
+        "content-review:154-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/stop-dead-daemon.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:722f461bc994845c0f8f9c42baa4b9d5db247c7b07a48913a9fa80896826506f",
+        "content-review:197-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/tab-each.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b65363dbcf475dc30217d6d80b78ec078f1fee7e9c889f7a46580bcfc551e1fd",
+        "content-review:119-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/tab-guardrail.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2efb9568033654c0b3d5acd8acce018002cf5afcc1c7d1cf0639ac757ecfb76f",
+        "content-review:310-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/tab-isolation.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:21fdcf7ad909d055b36db3de7cf950ffce0bbf9e103877bf9f1d634c7672e847",
+        "content-review:155-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/tab-session-frame-detach.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5857067799cc86adeb0a7b5da38517f2a35ca1a91da3ee71c8704be395bc19d0",
+        "content-review:176-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/telemetry-optout.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e5af71dfc1321c6e75ee666cf3d99c5a5b8ac549f611b382d310df61cffa60ff",
+        "content-review:78-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/telemetry.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1ad7df435b552d3637fbc6826aabf031ed5d926cc3a321cff585b154dd02318a",
+        "content-review:130-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/temp-dirs.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:899f855766234795d014f1c181da0388d2bb7fc089904a7b1556a78049f98b1e",
+        "content-review:128-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/terminal-agent-detach-reattach.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3d200b5be60eb4a018b0e301c5e8ddea8cfd8733257632e3ec3f22a1bdb4cec0",
+        "content-review:313-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/terminal-agent-integration.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ba348431cac36f90c0e1139a76e1fe56a883f8646b356575434fb91e0705eb7b",
+        "content-review:52-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/terminal-agent-internal-handler.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:724bdecdc1933197bfdd7cff3c9818d457ccb9375bb4d36b280cc77808f2d907",
+        "content-review:89-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/terminal-agent-keepalive.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:6013062398d55404ecd6a1ccf3562c634ce69c51778b3d549e42216e872449d8",
+        "content-review:82-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/terminal-agent-owner-watchdog.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:500050666eddf5961e2a865c5c1a0d0042a8ea698a0fd4e15ef8d1bfdf2e85b4",
+        "content-review:162-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/browse/test/terminal-agent-pid-identity.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c983b733f25f83f518a8de84b52df12e69a90d458ff358fb34715325be1b1ded",
+        "content-review:81-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/terminal-agent-port-range.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d0bddf0f09a577403ed705c03cb834573ba6dbcb6499a5f4f1c97b4d21d3fe14",
+        "content-review:158-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/terminal-agent-ring-buffer-runtime.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3b43d90a3e341ff33270682625e9240a4e825d0a044da557caa2fefb0a2f658c",
+        "content-review:97-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/terminal-agent-session-routing.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:92563c99860b3ae967cf5180d1addba1eb7d9ad4fbb152766fd48eca29fb145c",
+        "content-review:98-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/terminal-agent-watchdog.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:45bad9d30076d4fecaaf3e53f35521d469c6f6877170ec27ca41d4ba4768ace1",
+        "content-review:248-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/browse/test/terminal-agent.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:01e8dda095e873d670bab86b39c7f807a687e5e5c266c6454cbe5075ecb3e6db",
+        "content-review:58-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/test-server.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:01da7c5ba0a24de79798a91f3577b1b61a94ccd14e45599424570225dc6fae37",
+        "content-review:612-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/token-registry.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3b49aecced92b6b70000466fd302896c1ba571d293723ec3466fd92213581413",
+        "content-review:130-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/tunnel-gate-unit.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0a3e5f0a18725d7299012484a19ce196082ae851c20180ef43d3f7083ec8aa2a",
+        "content-review:436-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/tunnel-revoke-cli.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:53d212b3e5e61221561d3db8964aa39c280519fddb1c3afe7223402ddbdddd25",
+        "content-review:324-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/browse/test/url-validation.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4ae46d3067ce5d0c288b2539693815a8e0430c7a77a0805a838915b2b0d4a3f2",
+        "content-review:130-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/browse/test/watch.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:bddc599c451053b82387de51751eba6750924828bd988dbc1773eb7575e6409c",
+        "content-review:338-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/watchdog.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:104946e3e4464a9c3bc35bdef4fd83a4a864a1490355780802608b1119c3fe18",
+        "content-review:144-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/browse/test/welcome-page.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:fdc5d016f58e052bf4b13bcd26211185bd000564ab02a91779cdb4467aa16108",
+        "content-review:159-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/windows-spawn-hide.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:dfe7dc2b418ad6378f19783ee9c81faeac6acc615ddcbf683bfae69815096c1a",
+        "content-review:458-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/browse/test/xprotect-heal.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0af4c016e7c0d49e8f81ba33807d960c1a2a96b50f076f2864fee8947a5256dc",
+        "content-review:177-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/browse/test/xvfb.test.ts",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/browse/SKILL.md:1-15]",
+    "Declared tool: Read [gstack/browse/SKILL.md:1-15]",
+    "Declared tool: AskUserQuestion [gstack/browse/SKILL.md:1-15]",
+    "Local dependency: gstack/browse/sections/command-list.md [gstack/browse/SKILL.md:243]",
+    "Local dependency: gstack/browse/sections/command-list.md [gstack/browse/SKILL.md:361]"
+  ],
+  "trigger": "\"Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. (gstack)\" [gstack/browse/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/browse/SKILL.md:104]",
+    "Operational Self-Improvement [gstack/browse/SKILL.md:114]",
+    "Telemetry (run last) [gstack/browse/SKILL.md:130]",
+    "Plan Status Footer [gstack/browse/SKILL.md:151]",
+    "browse: give the agent eyes [gstack/browse/SKILL.md:155]",
+    "Rules for driving a real browser [gstack/browse/SKILL.md:184]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/browse/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/browse/SKILL.md:5]"
+  ],
+  "workflow": [
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/browse/SKILL.md:164]",
+    "Translate the Aside scripts step by step [gstack/browse/SKILL.md:215]"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "independent-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-plan-review",
+        "developer-experience-plan-review",
+        "executive-plan-review"
+      ],
+      "id": "V2-P3-independent-plan-review-trigger-01",
+      "input": "Run a general independent review of this implementation plan against its requirements.",
+      "kind": "should-trigger",
+      "reason": "Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions."
+    },
+    {
+      "expected_skill_id": "independent-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-plan-review",
+        "developer-experience-plan-review",
+        "executive-plan-review"
+      ],
+      "id": "V2-P3-independent-plan-review-trigger-02",
+      "input": "Check this plan for missing dependencies, contradictions, scope creep, and unverifiable tasks.",
+      "kind": "should-trigger",
+      "reason": "Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions."
+    },
+    {
+      "expected_skill_id": "design-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review"
+      ],
+      "id": "V2-P3-independent-plan-review-anti-01",
+      "input": "Review only the user interface and design states in this plan.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility design-plan-review."
+    },
+    {
+      "expected_skill_id": "implementation-planning-and-handoff",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review"
+      ],
+      "id": "V2-P3-independent-plan-review-anti-02",
+      "input": "Rewrite the plan to address the findings.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility implementation-planning-and-handoff."
+    },
+    {
+      "expected_skill_id": "independent-plan-review",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-independent-plan-review-boundary-01",
+      "input": "Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "independent-plan-review",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-independent-plan-review-authority-01",
+      "input": "Independently inspect a plan for traceability, completeness, consistency, feasibility, scope, tests, risks, and unresolved decisions. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "independent-plan-review"
+}

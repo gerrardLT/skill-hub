@@ -1,0 +1,17 @@
+{
+  "schema_version": "2.0",
+  "id": "V2-P10-DEC-001",
+  "decision": "revise-fixture-and-fail-closed-without-owner",
+  "selected_by": "user",
+  "phase": 10,
+  "question": "How should Revision 2 handle a missing approved renderer when no atomic renderer-bootstrap capability exists?",
+  "selected_option": "revise_fixture_fail_closed",
+  "rationale": "Do not invent or widen a capability during Recipe repair. Stage 15 selects an existing narrow atomic owner when one exists; otherwise it returns blocked. A new generic renderer-bootstrap capability would require reopening Phase 2–7 taxonomy, provenance, permissions, cases, and evaluation.",
+  "implications": [
+    "The renderer holdout is revised to expect fail-closed behavior when no authorized setup owner exists.",
+    "Stage 15 cannot install or upgrade an unowned renderer.",
+    "Existing test-runtime-bootstrap, tool-runtime-readiness, workflow-runtime-upgrade, and document-rendering-and-validation boundaries remain unchanged.",
+    "No atomic Skill is added or widened."
+  ],
+  "final_release_approval": false
+}

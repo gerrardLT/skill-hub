@@ -1,0 +1,137 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [deploy-to-vercel/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [deploy-to-vercel/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [deploy-to-vercel/SKILL.md:3]",
+  "outputs": [
+    "Always show the user the deployment URL. [deploy-to-vercel/SKILL.md:251]",
+    "Git push: Use vercel ls --format json to find the preview URL. If the CLI isn't authenticated, tell the user to check the Vercel dashboard or commit status checks. [deploy-to-vercel/SKILL.md:253]",
+    "CLI deploy: Show the URL returned by vercel deploy --no-wait. Use vercel inspect <url> to check build status and report it to the user. [deploy-to-vercel/SKILL.md:254]",
+    "No-auth fallback: Show both the preview URL and the claim URL [deploy-to-vercel/SKILL.md:255]",
+    "Deployment successful! [deploy-to-vercel/SKILL.md:257]",
+    "Preview URL: https://my-app-abc123.vercel.app [deploy-to-vercel/SKILL.md:259]"
+  ],
+  "permissions_side_effects": [
+    "name: deploy-to-vercel [deploy-to-vercel/SKILL.md:2]",
+    "description: Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\". [deploy-to-vercel/SKILL.md:3]",
+    "Deploy to Vercel [deploy-to-vercel/SKILL.md:9]",
+    "Deploy any project to Vercel. Always deploy as preview (not production) unless the user explicitly asks for production. [deploy-to-vercel/SKILL.md:11]",
+    "If the user belongs to multiple teams, present all available team slugs as a bulleted list and ask which one to deploy to. Once the user picks a team, proceed immediately to the next step — do not ask for additional confirmation. [deploy-to-vercel/SKILL.md:35]",
+    "Pass the team slug via --scope on all subsequent CLI commands (vercel deploy, vercel link, vercel inspect, etc.) [deploy-to-vercel/SKILL.md:37]",
+    "vercel deploy [path] -y --no-wait --scope <team-slug> [deploy-to-vercel/SKILL.md:40]",
+    "Step 2: Choose a Deploy Method [deploy-to-vercel/SKILL.md:53]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Deploy applications and websites to Vercel. [deploy-to-vercel/SKILL.md:3]",
+  "root_id": "skill-root:deploy-to-vercel",
+  "rules_gates": [
+    "Deploy any project to Vercel. Always deploy as preview (not production) unless the user explicitly asks for production. [deploy-to-vercel/SKILL.md:11]",
+    "Run all four checks before deciding which method to use [deploy-to-vercel/SKILL.md:17]",
+    "If the user belongs to multiple teams, present all available team slugs as a bulleted list and ask which one to deploy to. Once the user picks a team, proceed immediately to the next step — do not ask for additional confirmation. [deploy-to-vercel/SKILL.md:35]",
+    "Do NOT use vercel project inspect, vercel ls, or vercel link to detect state in an unlinked directory — without a .vercel/ config, they will interactively prompt (or with --yes, silently link as a side-effect). Only vercel whoami is safe to run anywhere. [deploy-to-vercel/SKILL.md:51]",
+    "1. Ask the user before pushing. Never push without explicit approval [deploy-to-vercel/SKILL.md:59]",
+    "2. Once a team is selected, proceed directly to linking. Tell the user what will happen but do not ask for separate confirmation [deploy-to-vercel/SKILL.md:111]",
+    "Escalated network access: Only escalate the actual deploy command if sandboxing blocks the network call (sandboxpermissions=requireescalated). Do not escalate the command -v vercel check. [deploy-to-vercel/SKILL.md:223]",
+    "You have full shell access. Do NOT use the /mnt/skills/ path. Follow the decision flow above using the CLI directly. [deploy-to-vercel/SKILL.md:231]"
+  ],
+  "skill_path": "deploy-to-vercel/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "deploy-to-vercel/SKILL.md"
+    },
+    {
+      "line_end": 9,
+      "line_start": 9,
+      "path": "deploy-to-vercel/SKILL.md"
+    },
+    {
+      "line_end": 15,
+      "line_start": 15,
+      "path": "deploy-to-vercel/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "deploy-to-vercel/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "deploy-to-vercel/SKILL.md"
+    }
+  ],
+  "source_sha256": "cfcc3dd479ab2e0ae721ddf39b8af84d977321487672f1487c8d6855f576927b",
+  "stop_conditions": [
+    "1. Ask the user before pushing. Never push without explicit approval [deploy-to-vercel/SKILL.md:59]",
+    "1. Ask the user which team to deploy to. Present the team slugs from Step 1 as a bulleted list. If there's only one team (or just a personal account), skip this step. [deploy-to-vercel/SKILL.md:109]",
+    "This reads the git remote URL and matches it to existing Vercel projects that deploy from that repo. It creates .vercel/repo.json. This is much more reliable than vercel link (without --repo), which tries to match by directory name and often fails when the local folder and Vercel project are named d [deploy-to-vercel/SKILL.md:121]",
+    "When to use: In the Codex sandbox where the CLI may not be authenticated. Codex runs in a sandboxed environment by default — try the CLI first, and fall back to the deploy script if auth fails. [deploy-to-vercel/SKILL.md:193]",
+    "3. If vercel is not installed, or the CLI fails with \"No existing credentials found\", use the fallback script [deploy-to-vercel/SKILL.md:205]",
+    "If deployment fails due to network restrictions on claude.ai, tell the user [deploy-to-vercel/SKILL.md:274]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:37c0d035b3d2c6256105316a2492c1487f3688efa21f030a8a623a9f7f0ee02f"
+      ],
+      "path": "deploy-to-vercel/Archive.zip",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:cfcc3dd479ab2e0ae721ddf39b8af84d977321487672f1487c8d6855f576927b",
+        "content-review:297-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "deploy-to-vercel/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:18b411e2bfe07778bca11d7f0e1ec9c95e5764011dd2e3838f51066728646855",
+        "content-review:302-lines",
+        "behavior-signals:network"
+      ],
+      "path": "deploy-to-vercel/resources/deploy-codex.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:418da6ff48c582790799d850a88fd83ca00f2ee00502665caf8dbb06d4dab8b9",
+        "content-review:302-lines",
+        "behavior-signals:network"
+      ],
+      "path": "deploy-to-vercel/resources/deploy.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\". [deploy-to-vercel/SKILL.md:3]",
+  "unique_methods": [
+    "Deploy to Vercel [deploy-to-vercel/SKILL.md:9]",
+    "1. Check for a git remote [deploy-to-vercel/SKILL.md:20]",
+    "2. Check if locally linked to a Vercel project (either file means linked) [deploy-to-vercel/SKILL.md:23]",
+    "3. Check if the Vercel CLI is installed and authenticated [deploy-to-vercel/SKILL.md:26]",
+    "4. List available teams (if authenticated) [deploy-to-vercel/SKILL.md:29]",
+    "Team selection [deploy-to-vercel/SKILL.md:33]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [deploy-to-vercel/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Step 1: Gather Project State [deploy-to-vercel/SKILL.md:15]",
+    "Step 2: Choose a Deploy Method [deploy-to-vercel/SKILL.md:53]"
+  ]
+}

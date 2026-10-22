@@ -1,0 +1,73 @@
+{
+  "artifact_types": [
+    "incident coordination record",
+    "roles, timeline, fact, hypothesis, and decision log",
+    "mitigation and specialist action handoffs",
+    "recovery evidence and closure recommendation",
+    "severity recommendation with evidence",
+    "update drafts for each audience with next-update time"
+  ],
+  "capability_id": "capability:incident-response-coordination",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Coordination under external-read authority cannot acknowledge, silence, assign, comment, change traffic, scale, restart, deploy, rollback, remediate, or close provider incidents; every action routes to a separately authorized owner.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "incident-response-coordination",
+  "inputs": [
+    "An active production anomaly, impact evidence, alerts, and available mitigation controls."
+  ],
+  "outputs": [
+    "incident coordination record",
+    "roles, timeline, fact, hypothesis, and decision log",
+    "mitigation and specialist action handoffs",
+    "recovery evidence and closure recommendation",
+    "severity recommendation with evidence",
+    "update drafts for each audience with next-update time"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "severity",
+      "roles",
+      "timeline",
+      "fact-hypothesis",
+      "mitigation-first",
+      "separate-action-owner",
+      "no-provider-mutation",
+      "closure-recommendation"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Coordinate an active incident's severity, roles, timeline, hypotheses, mitigation options, communications, recovery criteria, and closure recommendation from read-only evidence without executing provider actions.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

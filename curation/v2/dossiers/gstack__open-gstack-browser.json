@@ -1,0 +1,133 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/open-gstack-browser/SKILL.md:57]",
+    "Skill Invocation During Plan Mode [gstack/open-gstack-browser/SKILL.md:61]",
+    "Model-Specific Behavioral Patch (claude) [gstack/open-gstack-browser/SKILL.md:80]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/open-gstack-browser/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/open-gstack-browser/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/open-gstack-browser/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/open-gstack-browser/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/open-gstack-browser/SKILL.md:35]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/open-gstack-browser/SKILL.md:40]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/open-gstack-browser/SKILL.md:59]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/open-gstack-browser/SKILL.md:150]",
+    "curl -fsSL \"https://bun.sh/install\" -o \"$tmpfile\" [gstack/open-gstack-browser/SKILL.md:185]",
+    "echo \"ERROR: bun install script checksum mismatch\" >&2 [gstack/open-gstack-browser/SKILL.md:194]",
+    "The connect command auto-discovers the extension from the gstack install [gstack/open-gstack-browser/SKILL.md:240]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/open-gstack-browser/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. [gstack/open-gstack-browser/SKILL.md:5]",
+  "root_id": "skill-root:gstack/open-gstack-browser",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/open-gstack-browser/SKILL.md:16]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/open-gstack-browser/SKILL.md:41]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/open-gstack-browser/SKILL.md:42]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/open-gstack-browser/SKILL.md:43]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/open-gstack-browser/SKILL.md:50]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/open-gstack-browser/SKILL.md:51]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/open-gstack-browser/SKILL.md:54]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/open-gstack-browser/SKILL.md:65]"
+  ],
+  "skill_path": "gstack/open-gstack-browser/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/open-gstack-browser/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "gstack/open-gstack-browser/SKILL.md"
+    },
+    {
+      "line_end": 29,
+      "line_start": 29,
+      "path": "gstack/open-gstack-browser/SKILL.md"
+    },
+    {
+      "line_end": 57,
+      "line_start": 57,
+      "path": "gstack/open-gstack-browser/SKILL.md"
+    },
+    {
+      "line_end": 61,
+      "line_start": 61,
+      "path": "gstack/open-gstack-browser/SKILL.md"
+    }
+  ],
+  "source_sha256": "12903b3d6de06e0d97a2521a9e2ad28af0b5d8b80bc0e789286e8307ac6adfac",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/open-gstack-browser/SKILL.md:76]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/open-gstack-browser/SKILL.md:83]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/open-gstack-browser/SKILL.md:111]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/open-gstack-browser/SKILL.md:114]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/open-gstack-browser/SKILL.md:135]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/open-gstack-browser/SKILL.md:145]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:12903b3d6de06e0d97a2521a9e2ad28af0b5d8b80bc0e789286e8307ac6adfac",
+        "content-review:382-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/open-gstack-browser/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:86cb7b07cca74cfc24e947ea2713b80129b1f9b19f3cafda403f1a4e372cc75a",
+        "content-review:211-lines"
+      ],
+      "path": "gstack/open-gstack-browser/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/open-gstack-browser/SKILL.md:1-15]",
+    "Declared tool: Read [gstack/open-gstack-browser/SKILL.md:1-15]",
+    "Declared tool: AskUserQuestion [gstack/open-gstack-browser/SKILL.md:1-15]"
+  ],
+  "trigger": "Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. [gstack/open-gstack-browser/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/open-gstack-browser/SKILL.md:106]",
+    "Operational Self-Improvement [gstack/open-gstack-browser/SKILL.md:116]",
+    "Telemetry (run last) [gstack/open-gstack-browser/SKILL.md:132]",
+    "Plan Status Footer [gstack/open-gstack-browser/SKILL.md:153]",
+    "/open-gstack-browser — Launch GStack Browser [gstack/open-gstack-browser/SKILL.md:157]",
+    "SETUP (run this check BEFORE any browse command) [gstack/open-gstack-browser/SKILL.md:162]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/open-gstack-browser/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/open-gstack-browser/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Step 0: Pre-flight cleanup [gstack/open-gstack-browser/SKILL.md:204]",
+    "Step 1: Connect [gstack/open-gstack-browser/SKILL.md:227]",
+    "Step 2: Verify [gstack/open-gstack-browser/SKILL.md:249]",
+    "Step 3: Guide the user to the Side Panel [gstack/open-gstack-browser/SKILL.md:274]",
+    "Step 4: Demo [gstack/open-gstack-browser/SKILL.md:322]",
+    "Step 5: Sidebar chat [gstack/open-gstack-browser/SKILL.md:340]",
+    "Step 6: What's next [gstack/open-gstack-browser/SKILL.md:353]"
+  ]
+}

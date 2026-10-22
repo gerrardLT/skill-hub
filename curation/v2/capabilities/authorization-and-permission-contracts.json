@@ -1,0 +1,57 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:authorization-and-permission-contracts",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0330",
+    "V2-FUSION-0440"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Actors, resources, operations, trust boundaries, tenancy model, authentication context, and risk policy."
+  ],
+  "lifecycle_stage_id": "stage:06-architecture-risk-security",
+  "name": "Authorization And Permission Contracts",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Authorization matrix, enforcement points, negative cases, audit requirements, and residual risk."
+  ],
+  "owning_phase": 5,
+  "permission_identity": "workspace-write",
+  "primary_domain_id": "domain:architecture-data-api-and-security",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=github-actions and environment=ci; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "ci",
+      "id": "variant:github-actions:workflow",
+      "provider": "github-actions",
+      "source_root": "workflow"
+    }
+  ],
+  "responsibility": "Define and verify actors, roles, permissions, trust boundaries, tenant isolation, privileged paths, and deny-by-default behavior.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:github-actions-hardening:006:step-4-audit-permissions",
+    "v2-root:gstack/cso:010:phase-1-attack-surface-census"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "github-actions-hardening/SKILL.md:82-91",
+    "gstack/cso/SKILL.md:573-612"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

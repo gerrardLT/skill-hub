@@ -1,0 +1,120 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [git-guardrails-claude-code/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [git-guardrails-claude-code/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [git-guardrails-claude-code/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [git-guardrails-claude-code/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "description: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code. [git-guardrails-claude-code/SKILL.md:3]",
+    "git push (all variants including --force) [git-guardrails-claude-code/SKILL.md:12]",
+    "git reset --hard [git-guardrails-claude-code/SKILL.md:13]",
+    "git clean -f / git clean -fd [git-guardrails-claude-code/SKILL.md:14]",
+    "Ask the user: install for this project only (.claude/settings.json) or all projects (~/.claude/settings.json)? [git-guardrails-claude-code/SKILL.md:24]",
+    "If the settings file already exists, merge the hook into the existing hooks.PreToolUse array. Don't overwrite other settings. [git-guardrails-claude-code/SKILL.md:81]",
+    "Ask if user wants to add or remove any patterns from the blocked list. Edit the copied script accordingly. [git-guardrails-claude-code/SKILL.md:85]",
+    "echo '{\"toolinput\":{\"command\":\"git push origin main\"}}' <path-to-script> [git-guardrails-claude-code/SKILL.md:92]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. [git-guardrails-claude-code/SKILL.md:3]",
+  "root_id": "skill-root:git-guardrails-claude-code",
+  "rules_gates": [
+    "description: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code. [git-guardrails-claude-code/SKILL.md:3]",
+    "Sets up a PreToolUse hook that intercepts and blocks dangerous git commands before Claude executes them. [git-guardrails-claude-code/SKILL.md:8]",
+    "If the settings file already exists, merge the hook into the existing hooks.PreToolUse array. Don't overwrite other settings. [git-guardrails-claude-code/SKILL.md:81]",
+    "5. Verify [git-guardrails-claude-code/SKILL.md:87]"
+  ],
+  "skill_path": "git-guardrails-claude-code/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "git-guardrails-claude-code/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "git-guardrails-claude-code/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "git-guardrails-claude-code/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "git-guardrails-claude-code/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "git-guardrails-claude-code/SKILL.md"
+    }
+  ],
+  "source_sha256": "69b291d655626a01602b998a1836fcb93c058ede68dfafddfd71e87f17074764",
+  "stop_conditions": [
+    "What Gets Blocked [git-guardrails-claude-code/SKILL.md:10]",
+    "When blocked, Claude sees a message telling it that it does not have authority to access these commands. [git-guardrails-claude-code/SKILL.md:18]",
+    "Ask the user: install for this project only (.claude/settings.json) or all projects (~/.claude/settings.json)? [git-guardrails-claude-code/SKILL.md:24]",
+    "Ask if user wants to add or remove any patterns from the blocked list. Edit the copied script accordingly. [git-guardrails-claude-code/SKILL.md:85]",
+    "Should exit with code 2 and print a BLOCKED message to stderr. [git-guardrails-claude-code/SKILL.md:95]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:69b291d655626a01602b998a1836fcb93c058ede68dfafddfd71e87f17074764",
+        "content-review:96-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "git-guardrails-claude-code/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:d53cd783fc0ac208dec9a4c267989284384785aab6422dccdaed42f9e40243ec",
+        "content-review:4-lines"
+      ],
+      "path": "git-guardrails-claude-code/agents/openai.yaml",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:234922b83c0a1737ee7300806c21ac0f389b07aaeb65c2d71ccedafbc5e1ea4b",
+        "content-review:26-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "git-guardrails-claude-code/scripts/block-dangerous-git.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: git-guardrails-claude-code/scripts/block-dangerous-git.sh [git-guardrails-claude-code/SKILL.md:28]"
+  ],
+  "trigger": "Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code. [git-guardrails-claude-code/SKILL.md:3]",
+  "unique_methods": [
+    "Setup Git Guardrails [git-guardrails-claude-code/SKILL.md:6]",
+    "What Gets Blocked [git-guardrails-claude-code/SKILL.md:10]",
+    "1. Ask scope [git-guardrails-claude-code/SKILL.md:22]",
+    "2. Copy the hook script [git-guardrails-claude-code/SKILL.md:26]",
+    "3. Add hook to settings [git-guardrails-claude-code/SKILL.md:37]",
+    "4. Ask about customization [git-guardrails-claude-code/SKILL.md:83]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [git-guardrails-claude-code/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [git-guardrails-claude-code/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [git-guardrails-claude-code/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Steps [git-guardrails-claude-code/SKILL.md:20]"
+  ]
+}

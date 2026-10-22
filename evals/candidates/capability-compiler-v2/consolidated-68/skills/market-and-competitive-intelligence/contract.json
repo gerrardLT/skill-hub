@@ -1,0 +1,109 @@
+{
+  "artifact_types": [
+    "competitive case records",
+    "evidence-quality register",
+    "case taxonomy",
+    "staleness queue",
+    "monitoring contract",
+    "signal register",
+    "response option matrix",
+    "escalation record",
+    "positioning evidence map",
+    "competitive power analysis",
+    "claim-proof register",
+    "position options",
+    "segment model",
+    "demand evidence matrix",
+    "segment attractiveness comparison",
+    "validation backlog",
+    "strategy choice matrix",
+    "tradeoff register",
+    "differentiation evidence",
+    "human decision brief"
+  ],
+  "capability_id": "capability:market-and-competitive-intelligence",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A case without a source, observation date, and fact-versus-inference label cannot enter the library.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries.",
+    "Monitoring may recommend options but must not scrape unauthorized sources or auto-change product, price, or messaging.",
+    "Do not convert an attractive phrase into a validated position or imply market power without evidence about alternatives and bargaining structure.",
+    "Demographics alone do not constitute a demand segment, and missing market evidence must not become fabricated TAM.",
+    "Do not disguise a bundle of incompatible choices as a strategy or convert recommendation strength into approval authority."
+  ],
+  "id": "market-and-competitive-intelligence",
+  "inputs": [
+    "A competitive question, case material, historical context, and applicability boundary.",
+    "Competitor releases, market signals, comparable products, and monitoring evidence.",
+    "Market questions, customer alternatives, competitive evidence, and business constraints.",
+    "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence.",
+    "A market position, baseline utility, cost structure, strategic strength, and candidate differentiation."
+  ],
+  "mode_permissions": {
+    "competitive-case-library": "workspace-write",
+    "competitive-response-and-monitoring": "workspace-write",
+    "market-positioning-and-competitive-power": "workspace-write",
+    "market-segmentation-and-demand-intelligence": "workspace-write",
+    "strategic-choice-and-differentiation": "workspace-write"
+  },
+  "modes": [
+    "competitive-case-library",
+    "competitive-response-and-monitoring",
+    "market-positioning-and-competitive-power",
+    "market-segmentation-and-demand-intelligence",
+    "strategic-choice-and-differentiation"
+  ],
+  "outputs": [
+    "competitive case records",
+    "evidence-quality register",
+    "case taxonomy",
+    "staleness queue",
+    "monitoring contract",
+    "signal register",
+    "response option matrix",
+    "escalation record",
+    "positioning evidence map",
+    "competitive power analysis",
+    "claim-proof register",
+    "position options",
+    "segment model",
+    "demand evidence matrix",
+    "segment attractiveness comparison",
+    "validation backlog",
+    "strategy choice matrix",
+    "tradeoff register",
+    "differentiation evidence",
+    "human decision brief"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Consolidated capability covering 5 related modes: Build a traceable case library from supplied or authorized competitor evidence for later comparison.; Define bounded competitor signals, thresholds, and response options without auto-executing strategy changes.; Evaluate a proposed market position against customer evidence, alternatives, category context, and sources of bargaining or competitive power.; Segment demand using evidence-backed differences in job, context, urgency, willingness, constraints, and reachability.; Compare strategic choices by customer value, coherence, tradeoffs, differentiation, capability fit, reversibility, and evidence, leaving selection to humans.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

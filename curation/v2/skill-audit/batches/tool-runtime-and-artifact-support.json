@@ -1,0 +1,922 @@
+{
+  "brief": ".specs/capability-compiler-v2/skill-audit/reviewer-brief.md",
+  "domain": "tool-runtime-and-artifact-support",
+  "skill_count": 19,
+  "skills": [
+    {
+      "id": "agent-workflow-runtime-support",
+      "path": "slots/v2/1.0.0/skills/agent-workflow-runtime-support/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "workflow-orchestration-and-lifecycle",
+          "isolated-task-implementation"
+        ],
+        "boilerplate_line_ratio": 0.357,
+        "canonical_units": 1,
+        "hard_gates": 2,
+        "id": "agent-workflow-runtime-support",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "browser-session-and-runtime-configuration",
+            "jaccard": 0.167
+          },
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.137
+          },
+          {
+            "id": "workflow-orchestration-and-lifecycle",
+            "jaccard": 0.12
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 20,
+        "source_evidence_refs": 21,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 519
+      }
+    },
+    {
+      "id": "artifact-persistence-and-tool-actions",
+      "path": "slots/v2/1.0.0/skills/artifact-persistence-and-tool-actions/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "document-rendering-and-validation",
+          "evaluation-dataset-publication"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 4,
+        "hard_gates": 2,
+        "id": "artifact-persistence-and-tool-actions",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "local-learning-persistence",
+            "jaccard": 0.2
+          },
+          {
+            "id": "document-rendering-and-validation",
+            "jaccard": 0.125
+          },
+          {
+            "id": "safe-browser-probing",
+            "jaccard": 0.12
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write-local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 6,
+        "source_evidence_refs": 11,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 535
+      }
+    },
+    {
+      "id": "browser-agent-pairing-provisioning",
+      "path": "slots/v2/1.0.0/skills/browser-agent-pairing-provisioning/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "browser-agent-pairing-verification",
+          "browser-authentication-setup"
+        ],
+        "boilerplate_line_ratio": 0.356,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "browser-agent-pairing-provisioning",
+        "mutation_scope": "external-session-write",
+        "nearest_neighbours": [
+          {
+            "id": "provider-cli-authentication-setup",
+            "jaccard": 0.226
+          },
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.216
+          },
+          {
+            "id": "browser-authentication-setup",
+            "jaccard": 0.196
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-external-session-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 7,
+        "source_evidence_refs": 7,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 682
+      }
+    },
+    {
+      "id": "browser-agent-pairing-verification",
+      "path": "slots/v2/1.0.0/skills/browser-agent-pairing-verification/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "browser-agent-pairing-provisioning",
+          "browser-authentication-setup"
+        ],
+        "boilerplate_line_ratio": 0.349,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "browser-agent-pairing-verification",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.208
+          },
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.175
+          },
+          {
+            "id": "browser-data-acquisition-runtime",
+            "jaccard": 0.161
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec-external-read",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 2,
+        "source_evidence_refs": 2,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 623
+      }
+    },
+    {
+      "id": "browser-authentication-setup",
+      "path": "slots/v2/1.0.0/skills/browser-authentication-setup/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "browser-data-acquisition-runtime",
+          "browser-agent-pairing-provisioning"
+        ],
+        "boilerplate_line_ratio": 0.356,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "browser-authentication-setup",
+        "mutation_scope": "local-system-write",
+        "nearest_neighbours": [
+          {
+            "id": "provider-cli-authentication-setup",
+            "jaccard": 0.222
+          },
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.212
+          },
+          {
+            "id": "browser-agent-pairing-provisioning",
+            "jaccard": 0.196
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 5,
+        "source_evidence_refs": 5,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 688
+      }
+    },
+    {
+      "id": "browser-data-acquisition-runtime",
+      "path": "slots/v2/1.0.0/skills/browser-data-acquisition-runtime/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "browser-authentication-setup",
+          "safe-browser-probing"
+        ],
+        "boilerplate_line_ratio": 0.341,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "browser-data-acquisition-runtime",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "browser-agent-pairing-verification",
+            "jaccard": 0.161
+          },
+          {
+            "id": "safe-browser-probing",
+            "jaccard": 0.154
+          },
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.151
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "behavioral-challenge-needed",
+        "procedure_steps": 4,
+        "root_atoms": 18,
+        "source_evidence_refs": 18,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-behavioral-challenge-needed"
+        ],
+        "words": 664
+      }
+    },
+    {
+      "id": "browser-session-and-runtime-configuration",
+      "path": "slots/v2/1.0.0/skills/browser-session-and-runtime-configuration/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "browser-authentication-setup",
+          "browser-data-acquisition-runtime"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 6,
+        "hard_gates": 2,
+        "id": "browser-session-and-runtime-configuration",
+        "mutation_scope": "runtime-session",
+        "nearest_neighbours": [
+          {
+            "id": "agent-workflow-runtime-support",
+            "jaccard": 0.167
+          },
+          {
+            "id": "safe-browser-probing",
+            "jaccard": 0.118
+          },
+          {
+            "id": "tool-runtime-readiness",
+            "jaccard": 0.111
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 6,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 532
+      }
+    },
+    {
+      "id": "diagram-and-architecture-artifact-generation",
+      "path": "slots/v2/1.0.0/skills/diagram-and-architecture-artifact-generation/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "architecture-deepening-discovery",
+          "architecture-interface-alternative-evaluation"
+        ],
+        "boilerplate_line_ratio": 0.167,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "diagram-and-architecture-artifact-generation",
+        "mutation_scope": "run-output",
+        "nearest_neighbours": [
+          {
+            "id": "documentation-authoring",
+            "jaccard": 0.152
+          },
+          {
+            "id": "document-rendering-and-validation",
+            "jaccard": 0.12
+          },
+          {
+            "id": "architecture-candidate-reporting",
+            "jaccard": 0.12
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 5,
+        "root_atoms": 5,
+        "source_evidence_refs": 5,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "mutation-survived"
+        ],
+        "words": 521
+      }
+    },
+    {
+      "id": "document-rendering-and-validation",
+      "path": "slots/v2/1.0.0/skills/document-rendering-and-validation/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "documentation-authoring",
+          "change-packaging-and-versioning"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "document-rendering-and-validation",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "documentation-authoring",
+            "jaccard": 0.159
+          },
+          {
+            "id": "workflow-skill-authoring",
+            "jaccard": 0.152
+          },
+          {
+            "id": "git-destructive-command-guard",
+            "jaccard": 0.14
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write-local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 4,
+        "source_evidence_refs": 4,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 539
+      }
+    },
+    {
+      "id": "local-agent-memory-setup",
+      "path": "slots/v2/1.0.0/skills/local-agent-memory-setup/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "project-context-and-learning-store",
+          "workflow-runtime-upgrade"
+        ],
+        "boilerplate_line_ratio": 0.356,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "local-agent-memory-setup",
+        "mutation_scope": "local-system-write",
+        "nearest_neighbours": [
+          {
+            "id": "local-learning-persistence",
+            "jaccard": 0.265
+          },
+          {
+            "id": "project-context-and-learning-store",
+            "jaccard": 0.231
+          },
+          {
+            "id": "browser-agent-pairing-provisioning",
+            "jaccard": 0.216
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 18,
+        "source_evidence_refs": 18,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 666
+      }
+    },
+    {
+      "id": "local-git-guard-setup",
+      "path": "slots/v2/1.0.0/skills/local-git-guard-setup/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "git-destructive-command-guard",
+          "local-branch-integration"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "local-git-guard-setup",
+        "mutation_scope": "local-system-write",
+        "nearest_neighbours": [
+          {
+            "id": "workflow-runtime-upgrade",
+            "jaccard": 0.18
+          },
+          {
+            "id": "observability-agent-installation",
+            "jaccard": 0.136
+          },
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.132
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 644
+      }
+    },
+    {
+      "id": "mobile-platform-runtime-support",
+      "path": "slots/v2/1.0.0/skills/mobile-platform-runtime-support/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "workflow-runtime-upgrade",
+          "defect-remediation"
+        ],
+        "boilerplate_line_ratio": 0.381,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "mobile-platform-runtime-support",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "browser-agent-pairing-verification",
+            "jaccard": 0.208
+          },
+          {
+            "id": "safe-browser-probing",
+            "jaccard": 0.18
+          },
+          {
+            "id": "tool-runtime-readiness",
+            "jaccard": 0.17
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 10,
+        "source_evidence_refs": 10,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 549
+      }
+    },
+    {
+      "id": "project-context-and-learning-store",
+      "path": "slots/v2/1.0.0/skills/project-context-and-learning-store/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "local-agent-memory-setup",
+          "artifact-persistence-and-tool-actions"
+        ],
+        "boilerplate_line_ratio": 0.356,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "project-context-and-learning-store",
+        "mutation_scope": "local-system-write",
+        "nearest_neighbours": [
+          {
+            "id": "local-learning-persistence",
+            "jaccard": 0.283
+          },
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.231
+          },
+          {
+            "id": "browser-agent-pairing-provisioning",
+            "jaccard": 0.133
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 36,
+        "source_evidence_refs": 36,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 711
+      }
+    },
+    {
+      "id": "provider-cli-authentication-setup",
+      "path": "slots/v2/1.0.0/skills/provider-cli-authentication-setup/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "llm-experiment-execution",
+          "browser-agent-pairing-verification"
+        ],
+        "boilerplate_line_ratio": 0.356,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "provider-cli-authentication-setup",
+        "mutation_scope": "external-session-write",
+        "nearest_neighbours": [
+          {
+            "id": "browser-agent-pairing-provisioning",
+            "jaccard": 0.226
+          },
+          {
+            "id": "browser-authentication-setup",
+            "jaccard": 0.222
+          },
+          {
+            "id": "workflow-runtime-upgrade",
+            "jaccard": 0.2
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-external-session-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 704
+      }
+    },
+    {
+      "id": "reference-library-and-deferred-material",
+      "path": "slots/v2/1.0.0/skills/reference-library-and-deferred-material/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "workflow-skill-authoring",
+          "project-context-and-learning-store"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 22,
+        "hard_gates": 2,
+        "id": "reference-library-and-deferred-material",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "local-learning-persistence",
+            "jaccard": 0.086
+          },
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.071
+          },
+          {
+            "id": "pull-request-comment-response",
+            "jaccard": 0.07
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 22,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 529
+      }
+    },
+    {
+      "id": "test-runtime-bootstrap",
+      "path": "slots/v2/1.0.0/skills/test-runtime-bootstrap/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "testing-portfolio-strategy",
+          "vitest-tooling"
+        ],
+        "boilerplate_line_ratio": 0.381,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "test-runtime-bootstrap",
+        "mutation_scope": "authorized-workspace",
+        "nearest_neighbours": [
+          {
+            "id": "defect-remediation",
+            "jaccard": 0.127
+          },
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.113
+          },
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.111
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write-local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 589
+      }
+    },
+    {
+      "id": "tool-runtime-readiness",
+      "path": "slots/v2/1.0.0/skills/tool-runtime-readiness/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "workflow-runtime-upgrade",
+          "test-runtime-bootstrap"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 1,
+        "hard_gates": 2,
+        "id": "tool-runtime-readiness",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "mobile-platform-runtime-support",
+            "jaccard": 0.17
+          },
+          {
+            "id": "git-destructive-command-guard",
+            "jaccard": 0.127
+          },
+          {
+            "id": "llm-evaluator-engineering",
+            "jaccard": 0.117
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 11,
+        "source_evidence_refs": 12,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 529
+      }
+    },
+    {
+      "id": "workflow-runtime-upgrade",
+      "path": "slots/v2/1.0.0/skills/workflow-runtime-upgrade/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "tool-runtime-readiness",
+          "provider-cli-authentication-setup"
+        ],
+        "boilerplate_line_ratio": 0.364,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "workflow-runtime-upgrade",
+        "mutation_scope": "local-system-write",
+        "nearest_neighbours": [
+          {
+            "id": "local-agent-memory-setup",
+            "jaccard": 0.213
+          },
+          {
+            "id": "provider-cli-authentication-setup",
+            "jaccard": 0.2
+          },
+          {
+            "id": "local-git-guard-setup",
+            "jaccard": 0.18
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "local-system-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 15,
+        "source_evidence_refs": 15,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 665
+      }
+    },
+    {
+      "id": "workflow-skill-authoring",
+      "path": "slots/v2/1.0.0/skills/workflow-skill-authoring/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "workflow-orchestration-and-lifecycle",
+          "remote-git-push"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "workflow-skill-authoring",
+        "mutation_scope": "authorized-workspace",
+        "nearest_neighbours": [
+          {
+            "id": "document-rendering-and-validation",
+            "jaccard": 0.152
+          },
+          {
+            "id": "llm-evaluator-engineering",
+            "jaccard": 0.151
+          },
+          {
+            "id": "deployment-environment-setup",
+            "jaccard": 0.146
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "workspace-write-local-exec",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 14,
+        "source_evidence_refs": 14,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 551
+      }
+    }
+  ]
+}

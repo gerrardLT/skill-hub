@@ -1,0 +1,56 @@
+{
+  "canonical_unit_ids": [
+    "subagent-driven-development:unit-011",
+    "subagent-driven-development:unit-012",
+    "subagent-driven-development:unit-013",
+    "subagent-driven-development:unit-014"
+  ],
+  "capability_id": "capability:isolated-task-implementation",
+  "completion_evidence": [
+    "All declared outputs exist and their source citations, hashes, or executable checks are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0077"
+  ],
+  "hard_gates": [
+    "Do not read beyond or mutate outside the authorized task scope.",
+    "Stop and report NEEDS_CONTEXT or BLOCKED rather than guessing or silently widening architecture.",
+    "Do not perform independent specification or code-quality approval of your own work."
+  ],
+  "inputs": [
+    "One approved task, complete task-local context, isolated workspace, edit scope, test command, and escalation boundary."
+  ],
+  "lifecycle_stage_id": "stage:07-implementation-integration",
+  "name": "Isolated Task Implementation",
+  "non_responsibility": "Does not approve upstream product decisions, expand authority, or perform remote writes beyond its explicit permission identity.",
+  "outputs": [
+    "A bounded implementation, test evidence, self-review, changed-file list, and DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED status."
+  ],
+  "owning_phase": 6,
+  "permission_identity": "workspace-write-local-exec",
+  "primary_domain_id": "domain:implementation-and-code-quality",
+  "provider_or_framework_variants": [],
+  "responsibility": "Implement one bounded task in an isolated context, ask for missing context, self-check, and report a structured status without orchestrating reviewers or later tasks.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [],
+  "schema_version": "2.0",
+  "source_cluster_ids": [
+    "cluster:subagent-task-pipeline"
+  ],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "subagent-driven-development/implementer-prompt.md:1-28",
+    "subagent-driven-development/implementer-prompt.md:29-43",
+    "subagent-driven-development/implementer-prompt.md:44-56",
+    "subagent-driven-development/implementer-prompt.md:57-73"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop on missing required input, authority, data-governance boundary, failed evidence check, or incompatible permission identity."
+  ]
+}

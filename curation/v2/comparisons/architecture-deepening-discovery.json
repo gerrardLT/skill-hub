@@ -1,0 +1,236 @@
+{
+  "candidate_responsibility": "Find shallow modules, leaked boundaries, repeated orchestration, and other evidence-backed deepening candidates.",
+  "canonical_unit_ids": [
+    "improve-codebase-architecture:unit-001",
+    "improve-codebase-architecture:unit-002",
+    "improve-codebase-architecture:unit-003"
+  ],
+  "cluster_id": "cluster:architecture-deepening-discovery",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "improve-codebase-architecture/SKILL.md:1-15",
+    "improve-codebase-architecture/SKILL.md:17-26",
+    "improve-codebase-architecture/SKILL.md:27-36"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deepening-discovery"
+      ],
+      "id": "cluster:architecture-deepening-discovery:fusion:boundary",
+      "rule": "Find shallow modules, leaked boundaries, repeated orchestration, and other evidence-backed deepening candidates."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deepening-discovery"
+      ],
+      "id": "cluster:architecture-deepening-discovery:fusion:inputs",
+      "rule": "Accept only: A codebase, change hotspots, repeated logic, and maintenance-friction evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-deepening-discovery"
+      ],
+      "id": "cluster:architecture-deepening-discovery:fusion:outputs",
+      "rule": "Produce only: Scoped architectural candidates, evidence, and a YAGNI-aware recommendation to deepen or leave unchanged."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:architecture-deepening-discovery:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A codebase, change hotspots, repeated logic, and maintenance-friction evidence.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "improve-codebase-architecture"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "improve-codebase-architecture"
+      ]
+    }
+  ],
+  "output_boundary": "Scoped architectural candidates, evidence, and a YAGNI-aware recommendation to deepen or leave unchanged.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "架构深化核心使命与标准词汇表约束：识别架构摩擦并提出'深化重构机会'（将浅模块转变为深模块），目标是提升可测试性与 AI 智能体自主导航能力；严格使用 7 大架构术语（module, interface, depth, seam, adapter, leverage, locality）与核心原则（删除测试、接口即测试表面、一个适配器是假设性接缝两个才是真实接缝）；严禁使用 component/service/API/boundary 等模糊术语；以 CONTEXT.md 领域模型为命名基准，不重新辩论 ADR 已定决策。; YAGNI 扫描范围界定与 Git 提交热点检索：扫描前先界定范围，深化模块应当为未来变更降低成本，因此优先关注近期变动的代码；若用户指定了模块/子系统则直接采纳，否则通过 git log --oneline 回溯提交历史定位高频修改热点；先阅读 CONTEXT.md 与触及区域的 ADR 文档再动工。; 五大有机摩擦信号排查与删除测试判定法：派发子智能体排查——1. 理解概念是否在多小模块间反复跳转；2. 模块是否属于浅模块（接口几乎与实现等宽）；3. 是否为追求测试盲目提取纯函数导致缺乏局部内聚力（no locality）；4. 紧耦合模块是否跨接缝泄漏；5. 哪些代码难以通过当前接口实施有效测试。对可疑浅模块施加删除测试（The deletion test）：删除它会凝聚复杂度还是仅仅转移复杂度，只有'凝聚复杂度'才是正确信号。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Explicit limits: 贯穿架构扫描、卡片生成与重构建议全周期的最高词汇与原则规约。; 在对代码库启动自动化架构探查前的范围收敛协议。; 子智能体在代码库遍历分析时用于定位架构缺陷的探针与过滤器。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-001",
+        "improve-codebase-architecture:unit-002",
+        "improve-codebase-architecture:unit-003"
+      ]
+    },
+    {
+      "approach": "YAGNI 扫描范围界定与 Git 提交热点检索：扫描前先界定范围，深化模块应当为未来变更降低成本，因此优先关注近期变动的代码；若用户指定了模块/子系统则直接采纳，否则通过 git log --oneline 回溯提交历史定位高频修改热点；先阅读 CONTEXT.md 与触及区域的 ADR 文档再动工。; 五大有机摩擦信号排查与删除测试判定法：派发子智能体排查——1. 理解概念是否在多小模块间反复跳转；2. 模块是否属于浅模块（接口几乎与实现等宽）；3. 是否为追求测试盲目提取纯函数导致缺乏局部内聚力（no locality）；4. 紧耦合模块是否跨接缝泄漏；5. 哪些代码难以通过当前接口实施有效测试。对可疑浅模块施加删除测试（The deletion test）：删除它会凝聚复杂度还是仅仅转移复杂度，只有'凝聚复杂度'才是正确信号。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Explicit limits: 在对代码库启动自动化架构探查前的范围收敛协议。; 子智能体在代码库遍历分析时用于定位架构缺陷的探针与过滤器。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-002",
+        "improve-codebase-architecture:unit-003"
+      ]
+    },
+    {
+      "approach": "贯穿架构扫描、卡片生成与重构建议全周期的最高词汇与原则规约。; 在对代码库启动自动化架构探查前的范围收敛协议。; 子智能体在代码库遍历分析时用于定位架构缺陷的探针与过滤器。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Explicit limits: 贯穿架构扫描、卡片生成与重构建议全周期的最高词汇与原则规约。; 在对代码库启动自动化架构探查前的范围收敛协议。; 子智能体在代码库遍历分析时用于定位架构缺陷的探针与过滤器。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-001",
+        "improve-codebase-architecture:unit-002",
+        "improve-codebase-architecture:unit-003"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立深模块目标、7 大架构专有词汇限制、以及禁止使用常见泛化名词的红线。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15"
+      ],
+      "limitations": "Explicit limits: 贯穿架构扫描、卡片生成与重构建议全周期的最高词汇与原则规约。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-001"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 1
+      },
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:1-15",
+        "improve-codebase-architecture/SKILL.md:17-26",
+        "improve-codebase-architecture/SKILL.md:27-36"
+      ],
+      "source_id": "improve-codebase-architecture",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-001",
+        "improve-codebase-architecture:unit-002",
+        "improve-codebase-architecture:unit-003"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "improve-codebase-architecture:unit-001",
+    "improve-codebase-architecture:unit-002",
+    "improve-codebase-architecture:unit-003"
+  ]
+}

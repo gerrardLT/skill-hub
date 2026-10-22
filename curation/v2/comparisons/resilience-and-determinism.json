@@ -1,0 +1,600 @@
+{
+  "candidate_responsibility": "Use layered defenses, condition waits, isolated fixtures, stable assertions, and controlled time to prevent flakiness.",
+  "canonical_unit_ids": [
+    "playwright-best-practices:unit-017",
+    "playwright-best-practices:unit-018",
+    "playwright-best-practices:unit-019",
+    "playwright-best-practices:unit-026",
+    "systematic-debugging:unit-016",
+    "systematic-debugging:unit-017",
+    "systematic-debugging:unit-018",
+    "systematic-debugging:unit-019",
+    "systematic-debugging:unit-020",
+    "systematic-debugging:unit-021",
+    "systematic-debugging:unit-022",
+    "systematic-debugging:unit-023",
+    "vitest:unit-009",
+    "vitest:unit-010",
+    "vitest:unit-011",
+    "vitest:unit-012"
+  ],
+  "cluster_id": "cluster:resilience-and-determinism",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "playwright-best-practices/advanced/clock-mocking.md:13-25",
+    "playwright-best-practices/core/assertions-waiting.md:349-355",
+    "playwright-best-practices/core/fixtures-hooks.md:12-26",
+    "playwright-best-practices/debugging/flaky-tests.md:17-25",
+    "systematic-debugging/condition-based-waiting-example.ts:1-158",
+    "systematic-debugging/condition-based-waiting.md:1-34",
+    "systematic-debugging/condition-based-waiting.md:35-84",
+    "systematic-debugging/condition-based-waiting.md:85-115",
+    "systematic-debugging/defense-in-depth.md:1-20",
+    "systematic-debugging/defense-in-depth.md:21-86",
+    "systematic-debugging/defense-in-depth.md:87-122",
+    "systematic-debugging/find-polluter.sh:1-63",
+    "vitest/references/features-concurrency.md:33-51",
+    "vitest/references/features-concurrency.md:52-72",
+    "vitest/references/features-context.md:29-52",
+    "vitest/references/features-context.md:84-93"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:resilience-and-determinism"
+      ],
+      "id": "cluster:resilience-and-determinism:fusion:boundary",
+      "rule": "Use layered defenses, condition waits, isolated fixtures, stable assertions, and controlled time to prevent flakiness."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:resilience-and-determinism"
+      ],
+      "id": "cluster:resilience-and-determinism:fusion:inputs",
+      "rule": "Accept only: A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:resilience-and-determinism"
+      ],
+      "id": "cluster:resilience-and-determinism:fusion:outputs",
+      "rule": "Produce only: Defensive validation, deterministic synchronization, and isolation mechanisms."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:resilience-and-determinism:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A confirmed cause involving invalid data, races, environment contamination, fragile waits, or flaky tests.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices",
+        "systematic-debugging",
+        "vitest"
+      ]
+    }
+  ],
+  "output_boundary": "Defensive validation, deterministic synchronization, and isolation mechanisms.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "等待反模式绝对禁令：严禁在用例中使用 page.waitForTimeout()、手动 Promise setTimeout 或在 DOM 元素上使用无重试的原生 JavaScript 断言; 内置隔离测试夹具（Built-in Fixtures）核心机制：为每个测试用例注入完全隔离的 page、context、browser 与 request 实例，确保用例间零状态泄漏; 脆弱测试四大根因分类与症状分析模型：UI驱动型（缺少等待/动画未结束）、环境驱动型（CI硬件受限/网络变慢）、数据/并行驱动型（共享后端状态冲突）及测试套件驱动型（跨用例泄漏状态）",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Explicit limits: 测试用例合并入库前的硬性门禁审查; 构建任何 Playwright 测试用例与执行环境时的底层保证; 排查测试偶发失败与构建不稳定问题时使用",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=1, method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-017",
+        "playwright-best-practices:unit-018",
+        "playwright-best-practices:unit-019",
+        "playwright-best-practices:unit-026"
+      ]
+    },
+    {
+      "approach": "内置隔离测试夹具（Built-in Fixtures）核心机制：为每个测试用例注入完全隔离的 page、context、browser 与 request 实例，确保用例间零状态泄漏; 时钟模拟与时间旅行（Clock Mocking）模式：在页面导航前调用 page.clock.install 锁定固定时间基准，并在测试中验证与时间相关的渲染逻辑",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26"
+      ],
+      "limitations": "Explicit limits: 构建任何 Playwright 测试用例与执行环境时的底层保证; 测试倒计时、会话过期、定时任务、日历组件或特定日期促销场景",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-018",
+        "playwright-best-practices:unit-026"
+      ]
+    },
+    {
+      "approach": "测试用例合并入库前的硬性门禁审查; 构建任何 Playwright 测试用例与执行环境时的底层保证; 排查测试偶发失败与构建不稳定问题时使用",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Explicit limits: 测试用例合并入库前的硬性门禁审查; 构建任何 Playwright 测试用例与执行环境时的底层保证; 排查测试偶发失败与构建不稳定问题时使用",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=1, method=2, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-017",
+        "playwright-best-practices:unit-018",
+        "playwright-best-practices:unit-019",
+        "playwright-best-practices:unit-026"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "杜绝硬编码时间睡眠，防止测试执行周期膨胀与脆弱竞态; 将偶发报错精确归类并应用对应的针对性治理策略",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Explicit limits: 测试用例合并入库前的硬性门禁审查; 排查测试偶发失败与构建不稳定问题时使用",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-017",
+        "playwright-best-practices:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "多层深度防御总纲：单点校验极易被新代码分支、重构或 Mock 绕过；核心原则：在数据穿透的每一层（入口、业务、环境、取证）都布设校验，使缺陷在结构上不可发生。; 四层防御具体实现架构：Layer 1 入口校验（API 边界拒绝非空/非目录）；Layer 2 业务逻辑校验（领域状态确保）；Layer 3 环境防护卫士（测试环境拒绝临时目录以外的破坏性操作）；Layer 4 调试取证探针（堆栈与环境参数详尽记录）。; 四层防御落地方法与关键洞见：追踪数据流 -> 映射检查点 -> 逐层布设 -> 分别绕过测试；核心洞见：四层防御互不替代，每一层都曾拦截下其他层级因不同代码路径或 Mock 造成的遗漏漏网之鱼。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/condition-based-waiting.md:1-34",
+        "systematic-debugging/condition-based-waiting.md:35-84",
+        "systematic-debugging/condition-based-waiting.md:85-115",
+        "systematic-debugging/defense-in-depth.md:1-20",
+        "systematic-debugging/defense-in-depth.md:21-86",
+        "systematic-debugging/defense-in-depth.md:87-122",
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "limitations": "Explicit limits: 针对涉及跨模块传递数据有效性的 Bug 进行加固时生效。; 为高危接口与系统级操作构建防御层时遵循。; 执行防御验证测试时必须依照此四步方法落地。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 8 source-grounded atom(s) for responsibility (method=2, rule=4, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-016",
+        "systematic-debugging:unit-017",
+        "systematic-debugging:unit-018",
+        "systematic-debugging:unit-019",
+        "systematic-debugging:unit-020",
+        "systematic-debugging:unit-021",
+        "systematic-debugging:unit-022",
+        "systematic-debugging:unit-023"
+      ]
+    },
+    {
+      "approach": "四层防御具体实现架构：Layer 1 入口校验（API 边界拒绝非空/非目录）；Layer 2 业务逻辑校验（领域状态确保）；Layer 3 环境防护卫士（测试环境拒绝临时目录以外的破坏性操作）；Layer 4 调试取证探针（堆栈与环境参数详尽记录）。; 条件轮询标准范式与通用 waitFor 实现：定义通用异步轮询函数，默认 10ms 检查一次、超时 5000ms 明确抛错；覆盖等待事件发生、状态就绪、元素数量达标及文件存在等典型速查模式。; 领域专用条件等待工具全套实现：包含 waitForEvent（等待特定类型事件到达）、waitForEventCount（等待事件达到目标数量）与 waitForEventMatch（自定义断言谓词匹配事件内容），以及真实调试重构前后的对比样本。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/condition-based-waiting.md:35-84",
+        "systematic-debugging/defense-in-depth.md:21-86",
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "limitations": "Explicit limits: 为高危接口与系统级操作构建防御层时遵循。; 在异步测试套件中替换固化 sleep 延时时调用。; 在事件驱动架构或 Agent 交互测试中需要精准异步同步时复用。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=2, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-017",
+        "systematic-debugging:unit-020",
+        "systematic-debugging:unit-022",
+        "systematic-debugging:unit-023"
+      ]
+    },
+    {
+      "approach": "针对涉及跨模块传递数据有效性的 Bug 进行加固时生效。; 为高危接口与系统级操作构建防御层时遵循。; 执行防御验证测试时必须依照此四步方法落地。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/condition-based-waiting.md:1-34",
+        "systematic-debugging/condition-based-waiting.md:35-84",
+        "systematic-debugging/condition-based-waiting.md:85-115",
+        "systematic-debugging/defense-in-depth.md:1-20",
+        "systematic-debugging/defense-in-depth.md:21-86",
+        "systematic-debugging/defense-in-depth.md:87-122",
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "limitations": "Explicit limits: 针对涉及跨模块传递数据有效性的 Bug 进行加固时生效。; 为高危接口与系统级操作构建防御层时遵循。; 执行防御验证测试时必须依照此四步方法落地。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 8 source-grounded atom(s) for boundary-and-applicability (method=2, rule=4, template=1, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-016",
+        "systematic-debugging:unit-017",
+        "systematic-debugging:unit-018",
+        "systematic-debugging:unit-019",
+        "systematic-debugging:unit-020",
+        "systematic-debugging:unit-021",
+        "systematic-debugging:unit-022",
+        "systematic-debugging:unit-023"
+      ]
+    },
+    {
+      "approach": "领域专用条件等待工具全套实现：包含 waitForEvent（等待特定类型事件到达）、waitForEventCount（等待事件达到目标数量）与 waitForEventMatch（自定义断言谓词匹配事件内容），以及真实调试重构前后的对比样本。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158"
+      ],
+      "limitations": "Explicit limits: 在事件驱动架构或 Agent 交互测试中需要精准异步同步时复用。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-022"
+      ]
+    },
+    {
+      "approach": "核验是否确立在数据流经的所有层级全面加固的结构化防御原则。; 核验四步落地流程及各层防御互相查缺补漏、绝不停留于单点校验的核心洞见。; 核验是否明确禁止在异步测试中使用随意 sleep 猜时延，确立条件就绪等待原则。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting.md:1-34",
+        "systematic-debugging/condition-based-waiting.md:85-115",
+        "systematic-debugging/defense-in-depth.md:1-20",
+        "systematic-debugging/defense-in-depth.md:87-122"
+      ],
+      "limitations": "Explicit limits: 针对涉及跨模块传递数据有效性的 Bug 进行加固时生效。; 执行防御验证测试时必须依照此四步方法落地。; 治理异步操作、并发测试与偶发超时测试时适用。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-016",
+        "systematic-debugging:unit-018",
+        "systematic-debugging:unit-019",
+        "systematic-debugging:unit-021"
+      ]
+    },
+    {
+      "approach": "测试环境污染源二分定位脚本：通过 Bash 逐一执行测试并检测指定污染文件或目录是否被创建；在检测到污染后立即终止并输出污染用例路径及详情，提供单测复现与审查指引。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "limitations": "Explicit limits: 排查测试套件产生的幽灵状态或测试互相污染问题时运行。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "systematic-debugging:unit-023"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/condition-based-waiting.md:1-34",
+        "systematic-debugging/condition-based-waiting.md:35-84",
+        "systematic-debugging/condition-based-waiting.md:85-115",
+        "systematic-debugging/defense-in-depth.md:1-20",
+        "systematic-debugging/defense-in-depth.md:21-86",
+        "systematic-debugging/defense-in-depth.md:87-122",
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "systematic-debugging",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "并发测试断言上下文绑定门禁：在 test.concurrent 中必须解构并使用用例级 expect 上下文，禁止使用顶层全局 expect; Vitest 5 退出并发模式规程：因 sequential 被移除，必须显式传入 { concurrent: false } 退出并发继承; 自定义 Fixture 链式构建方法：通过 .extend() 构建强类型自推断夹具，并注入 onCleanup 生命周期释放资源",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Explicit limits: 任何 test.concurrent 或 describe.concurrent 并发执行流; 在全局并发或父级 describe.concurrent 下需要排他单线程执行的用例; 测试用例需要可复用依赖注入与确定性资源清理",
+      "source_id": "vitest",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=1, method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-009",
+        "vitest:unit-010",
+        "vitest:unit-011",
+        "vitest:unit-012"
+      ]
+    },
+    {
+      "approach": "自定义 Fixture 链式构建方法：通过 .extend() 构建强类型自推断夹具，并注入 onCleanup 生命周期释放资源",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "vitest/references/features-context.md:29-52"
+      ],
+      "limitations": "Explicit limits: 测试用例需要可复用依赖注入与确定性资源清理",
+      "source_id": "vitest",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-011"
+      ]
+    },
+    {
+      "approach": "任何 test.concurrent 或 describe.concurrent 并发执行流; 在全局并发或父级 describe.concurrent 下需要排他单线程执行的用例; 测试用例需要可复用依赖注入与确定性资源清理",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Explicit limits: 任何 test.concurrent 或 describe.concurrent 并发执行流; 在全局并发或父级 describe.concurrent 下需要排他单线程执行的用例; 测试用例需要可复用依赖注入与确定性资源清理",
+      "source_id": "vitest",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=1, method=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-009",
+        "vitest:unit-010",
+        "vitest:unit-011",
+        "vitest:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "并发执行中每个异步断言严格绑定独立上下文，无状态交叉污染; 带有 { concurrent: false } 的测试或套件按串行顺序独立运行; 夹具按声明的作用域级别创建与销毁，未越界访问非法上下文",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Explicit limits: 任何 test.concurrent 或 describe.concurrent 并发执行流; 在全局并发或父级 describe.concurrent 下需要排他单线程执行的用例; 设计重型数据库容器、HTTP 服务或轻量上下文夹具时选择生命周期",
+      "source_id": "vitest",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (gate=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-009",
+        "vitest:unit-010",
+        "vitest:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1,
+        "method": 2,
+        "rule": 1
+      },
+      "evidence": [
+        "playwright-best-practices/advanced/clock-mocking.md:13-25",
+        "playwright-best-practices/core/assertions-waiting.md:349-355",
+        "playwright-best-practices/core/fixtures-hooks.md:12-26",
+        "playwright-best-practices/debugging/flaky-tests.md:17-25"
+      ],
+      "source_id": "playwright-best-practices",
+      "unit_ids": [
+        "playwright-best-practices:unit-017",
+        "playwright-best-practices:unit-018",
+        "playwright-best-practices:unit-019",
+        "playwright-best-practices:unit-026"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 4,
+        "template": 1,
+        "tool-action": 1
+      },
+      "evidence": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/condition-based-waiting.md:1-34",
+        "systematic-debugging/condition-based-waiting.md:35-84",
+        "systematic-debugging/condition-based-waiting.md:85-115",
+        "systematic-debugging/defense-in-depth.md:1-20",
+        "systematic-debugging/defense-in-depth.md:21-86",
+        "systematic-debugging/defense-in-depth.md:87-122",
+        "systematic-debugging/find-polluter.sh:1-63"
+      ],
+      "source_id": "systematic-debugging",
+      "unit_ids": [
+        "systematic-debugging:unit-016",
+        "systematic-debugging:unit-017",
+        "systematic-debugging:unit-018",
+        "systematic-debugging:unit-019",
+        "systematic-debugging:unit-020",
+        "systematic-debugging:unit-021",
+        "systematic-debugging:unit-022",
+        "systematic-debugging:unit-023"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "method": 1,
+        "rule": 2
+      },
+      "evidence": [
+        "vitest/references/features-concurrency.md:33-51",
+        "vitest/references/features-concurrency.md:52-72",
+        "vitest/references/features-context.md:29-52",
+        "vitest/references/features-context.md:84-93"
+      ],
+      "source_id": "vitest",
+      "unit_ids": [
+        "vitest:unit-009",
+        "vitest:unit-010",
+        "vitest:unit-011",
+        "vitest:unit-012"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "playwright-best-practices:unit-017",
+    "playwright-best-practices:unit-018",
+    "playwright-best-practices:unit-019",
+    "playwright-best-practices:unit-026",
+    "systematic-debugging:unit-016",
+    "systematic-debugging:unit-017",
+    "systematic-debugging:unit-018",
+    "systematic-debugging:unit-019",
+    "systematic-debugging:unit-020",
+    "systematic-debugging:unit-021",
+    "systematic-debugging:unit-022",
+    "systematic-debugging:unit-023",
+    "vitest:unit-009",
+    "vitest:unit-010",
+    "vitest:unit-011",
+    "vitest:unit-012"
+  ]
+}

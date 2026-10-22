@@ -1,0 +1,1455 @@
+{
+  "condition": "independent tests, QA, review, compliance, regression, or completion evidence is required",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0025",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:browser-session-and-runtime-configuration",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:browser-session-and-runtime-configuration",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration",
+        "curation/clusters.json:cluster:safe-browser-probing"
+      ],
+      "id": "V2-DEPENDENCY-0026",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:browser-session-and-runtime-configuration",
+      "legacy_target_cluster_id": "cluster:safe-browser-probing",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:browser-session-and-runtime-configuration",
+      "target_capability_id": "capability:safe-browser-probing"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:data-analysis-validation",
+        "curation/clusters.json:cluster:llm-quality-evaluation"
+      ],
+      "id": "V2-DEPENDENCY-0044",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:data-analysis-validation",
+      "legacy_target_cluster_id": "cluster:llm-quality-evaluation",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:data-analysis-validation",
+      "target_capability_id": "capability:llm-quality-evaluation"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:developer-self-check-and-fix",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0055",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:developer-self-check-and-fix",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:developer-self-check-and-fix",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:developer-self-check-and-fix",
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "V2-DEPENDENCY-0056",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:developer-self-check-and-fix",
+      "legacy_target_cluster_id": "cluster:independent-code-review",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:developer-self-check-and-fix",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:engineering-retrospective-and-improvement",
+        "curation/clusters.json:cluster:testing-portfolio-strategy"
+      ],
+      "id": "V2-DEPENDENCY-0061",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:engineering-retrospective-and-improvement",
+      "legacy_target_cluster_id": "cluster:testing-portfolio-strategy",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:engineering-retrospective-and-improvement",
+      "target_capability_id": "capability:testing-portfolio-strategy"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-blackbox-qa",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0079",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:independent-blackbox-qa",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:independent-blackbox-qa",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-code-review",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0081",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:independent-code-review",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:independent-code-review",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:llm-quality-evaluation",
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "V2-DEPENDENCY-0087",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:llm-quality-evaluation",
+      "legacy_target_cluster_id": "cluster:baseline-regression-control",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:llm-quality-evaluation",
+      "target_capability_id": "capability:baseline-regression-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0104",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:plan-execution-control",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:plan-execution-control",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control",
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "V2-DEPENDENCY-0105",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:plan-execution-control",
+      "legacy_target_cluster_id": "cluster:independent-code-review",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:plan-execution-control",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:playwright-test-engineering",
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "V2-DEPENDENCY-0107",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:playwright-test-engineering",
+      "legacy_target_cluster_id": "cluster:baseline-regression-control",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:playwright-test-engineering",
+      "target_capability_id": "capability:baseline-regression-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:playwright-test-engineering",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0108",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:playwright-test-engineering",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:playwright-test-engineering",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:resilience-and-determinism",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0122",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:resilience-and-determinism",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:resilience-and-determinism",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:resilience-and-determinism",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0123",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:resilience-and-determinism",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:resilience-and-determinism",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing",
+        "curation/clusters.json:cluster:independent-blackbox-qa"
+      ],
+      "id": "V2-DEPENDENCY-0133",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:safe-browser-probing",
+      "legacy_target_cluster_id": "cluster:independent-blackbox-qa",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:safe-browser-probing",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:safe-browser-probing",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0134",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:safe-browser-probing",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:safe-browser-probing",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0147",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:subagent-task-pipeline",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:isolated-task-implementation",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline",
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "V2-DEPENDENCY-0149",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:subagent-task-pipeline",
+      "legacy_target_cluster_id": "cluster:independent-code-review",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:isolated-task-implementation",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0150",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:tdd-change-loop",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:tdd-change-loop",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop",
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "V2-DEPENDENCY-0152",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:tdd-change-loop",
+      "legacy_target_cluster_id": "cluster:independent-code-review",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:tdd-change-loop",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop",
+        "curation/clusters.json:cluster:test-double-discipline"
+      ],
+      "id": "V2-DEPENDENCY-0153",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:tdd-change-loop",
+      "legacy_target_cluster_id": "cluster:test-double-discipline",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:tdd-change-loop",
+      "target_capability_id": "capability:test-double-discipline"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:test-double-discipline",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0154",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:test-double-discipline",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:test-double-discipline",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:test-double-discipline",
+        "curation/clusters.json:cluster:vitest-tooling"
+      ],
+      "id": "V2-DEPENDENCY-0155",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:test-double-discipline",
+      "legacy_target_cluster_id": "cluster:vitest-tooling",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:test-double-discipline",
+      "target_capability_id": "capability:vitest-tooling"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy",
+        "curation/clusters.json:cluster:independent-blackbox-qa"
+      ],
+      "id": "V2-DEPENDENCY-0156",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:testing-portfolio-strategy",
+      "legacy_target_cluster_id": "cluster:independent-blackbox-qa",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:testing-portfolio-strategy",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0157",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:testing-portfolio-strategy",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:testing-portfolio-strategy",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy",
+        "curation/clusters.json:cluster:test-double-discipline"
+      ],
+      "id": "V2-DEPENDENCY-0159",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:testing-portfolio-strategy",
+      "legacy_target_cluster_id": "cluster:test-double-discipline",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:testing-portfolio-strategy",
+      "target_capability_id": "capability:test-double-discipline"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy",
+        "curation/clusters.json:cluster:vitest-tooling"
+      ],
+      "id": "V2-DEPENDENCY-0160",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:testing-portfolio-strategy",
+      "legacy_target_cluster_id": "cluster:vitest-tooling",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:testing-portfolio-strategy",
+      "target_capability_id": "capability:vitest-tooling"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness",
+        "curation/clusters.json:cluster:playwright-test-engineering"
+      ],
+      "id": "V2-DEPENDENCY-0162",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:tool-runtime-readiness",
+      "legacy_target_cluster_id": "cluster:playwright-test-engineering",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:tool-runtime-readiness",
+      "target_capability_id": "capability:playwright-test-engineering"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness",
+        "curation/clusters.json:cluster:safe-browser-probing"
+      ],
+      "id": "V2-DEPENDENCY-0163",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:tool-runtime-readiness",
+      "legacy_target_cluster_id": "cluster:safe-browser-probing",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:tool-runtime-readiness",
+      "target_capability_id": "capability:safe-browser-probing"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness",
+        "curation/clusters.json:cluster:website-audit-remediation"
+      ],
+      "id": "V2-DEPENDENCY-0165",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:tool-runtime-readiness",
+      "legacy_target_cluster_id": "cluster:website-audit-remediation",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:tool-runtime-readiness",
+      "target_capability_id": "capability:website-audit-assessment"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:vitest-tooling",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0172",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:vitest-tooling",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:vitest-tooling",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:web-performance-diagnostics",
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "V2-DEPENDENCY-0173",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:web-performance-diagnostics",
+      "legacy_target_cluster_id": "cluster:baseline-regression-control",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:web-performance-diagnostics",
+      "target_capability_id": "capability:baseline-regression-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:website-audit-remediation",
+        "curation/clusters.json:cluster:baseline-regression-control"
+      ],
+      "id": "V2-DEPENDENCY-0175",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:website-audit-remediation",
+      "legacy_target_cluster_id": "cluster:baseline-regression-control",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:website-audit-assessment",
+      "target_capability_id": "capability:baseline-regression-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:website-audit-remediation",
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "V2-DEPENDENCY-0176",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:website-audit-remediation",
+      "legacy_target_cluster_id": "cluster:completion-evidence-gate",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:website-audit-assessment",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/browse/SKILL.md:372-381",
+        "playwright/SKILL.md:104-112"
+      ],
+      "id": "V2-DEPENDENCY-0188",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Browser probing may use the acquisition runtime without making it universally mandatory.",
+      "source_capability_id": "capability:browser-data-acquisition-runtime",
+      "target_capability_id": "capability:safe-browser-probing"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "github-actions-hardening/SKILL.md:116-121",
+        "audit-website/SKILL.md:74-82"
+      ],
+      "id": "V2-DEPENDENCY-0190",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Hardened CI controls must be exercised by regression evidence before release.",
+      "source_capability_id": "capability:ci-pipeline-security-hardening",
+      "target_capability_id": "capability:baseline-regression-control"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/health/SKILL.md:401-424",
+        "code-review/SKILL.md:11-11"
+      ],
+      "id": "V2-DEPENDENCY-0192",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Measured code-health findings inform independent code review.",
+      "source_capability_id": "capability:code-health-assessment",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/qa/SKILL.md:736-742",
+        "gstack/ios-qa/SKILL.md:443-467"
+      ],
+      "id": "V2-DEPENDENCY-0194",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A repaired defect returns to independent QA for fresh verification.",
+      "source_capability_id": "capability:defect-remediation",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:559-585",
+        "agent-observability-eval-pipeline/SKILL.md:317-356"
+      ],
+      "id": "V2-DEPENDENCY-0208",
+      "kind": "feedback",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Analysis findings refine evaluators in a future evaluation pass.",
+      "source_capability_id": "capability:evaluation-results-analysis",
+      "target_capability_id": "capability:llm-evaluator-engineering"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/ios-clean/SKILL.md:437-446",
+        "gstack/ios-qa/SKILL.md:443-467"
+      ],
+      "id": "V2-DEPENDENCY-0214",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Mobile QA may select platform runtime support without imposing it on non-mobile work.",
+      "source_capability_id": "capability:mobile-platform-runtime-support",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/benchmark-models/SKILL.md:159-198",
+        "audit-website/SKILL.md:83-86"
+      ],
+      "id": "V2-DEPENDENCY-0215",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Benchmark evidence may contribute to completion when the work includes model or workflow changes.",
+      "source_capability_id": "capability:model-and-workflow-benchmarking",
+      "target_capability_id": "capability:completion-evidence-gate"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "test-case-generator/SKILL.md:108-113",
+        "gstack/ios-qa/SKILL.md:443-467"
+      ],
+      "id": "V2-DEPENDENCY-0227",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Independent QA may consume traceable test cases while retaining exploratory scope.",
+      "source_capability_id": "capability:test-case-design-and-export",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/design-review/SKILL.md:1557-1563",
+        "gstack/ios-qa/SKILL.md:443-467"
+      ],
+      "id": "V2-DEPENDENCY-0228",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "UI repairs require independent behavior and regression verification.",
+      "source_capability_id": "capability:ui-remediation",
+      "target_capability_id": "capability:independent-blackbox-qa"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "audit-website/SKILL.md:50-60",
+        "audit-website/SKILL.md:18-23"
+      ],
+      "id": "V2-DEPENDENCY-0230",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Website repairs return to the independent audit identity for fresh scoring.",
+      "source_capability_id": "capability:website-audit-remediation",
+      "target_capability_id": "capability:website-audit-assessment"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/skillify/SKILL.md:400-439",
+        "gstack/benchmark-models/SKILL.md:159-198"
+      ],
+      "id": "V2-DEPENDENCY-0232",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A new workflow skill may enter bounded benchmarking before release.",
+      "source_capability_id": "capability:workflow-skill-authoring",
+      "target_capability_id": "capability:model-and-workflow-benchmarking"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "subagent-driven-development/implementer-prompt.md:1-28",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36"
+      ],
+      "id": "V2-DEPENDENCY-0233",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A bounded implementation must pass independent specification compliance review.",
+      "source_capability_id": "capability:isolated-task-implementation",
+      "target_capability_id": "capability:implementation-spec-compliance-review"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "code-review/SKILL.md:11-11"
+      ],
+      "id": "V2-DEPENDENCY-0234",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Code-quality review follows only after specification compliance passes.",
+      "source_capability_id": "capability:implementation-spec-compliance-review",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/review/SKILL.md:489-496",
+        "code-review/SKILL.md:11-11"
+      ],
+      "id": "V2-DEPENDENCY-0244",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Independent review consumes a frozen evidence snapshot when provider evidence is in scope.",
+      "source_capability_id": "capability:code-review-evidence-acquisition",
+      "target_capability_id": "capability:independent-code-review"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/design-review/SKILL.md:663-671",
+        "gstack/design-review/SKILL.md:1632-1643"
+      ],
+      "id": "V2-DEPENDENCY-0246",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Browser test engineering may consume an approved bootstrapped project test runtime.",
+      "source_capability_id": "capability:test-runtime-bootstrap",
+      "target_capability_id": "capability:playwright-test-engineering"
+    }
+  ],
+  "description": "Run independent review, tests, QA, regression, and evidence gates.",
+  "execution_state": "candidate-definition-not-executed",
+  "exit_contract": "independent evidence and pass, repair, blocked, or needs-input disposition",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human accepts independent findings, risk disposition, and any separate repair authorization",
+  "id": "stage-08-verification-quality",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:08-verification-quality",
+  "stage_order": 8,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/baseline-regression-control",
+      "condition": "Select only when the atomic requested outcome matches: Run and compare a frozen baseline and candidate check set under matched conditions, attribute regressions, and preserve current evidence without source repair.",
+      "contract_sha256": "9dfe2da00326bb88952e2dd7b617bad920ecadfbb97a9faa463bede84a2b617a",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0087",
+        "V2-DEPENDENCY-0107",
+        "V2-DEPENDENCY-0173",
+        "V2-DEPENDENCY-0175",
+        "V2-DEPENDENCY-0190"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A regression verdict requires frozen identities and matched commands, environment, data, seeds, warmup, thresholds, and retry policy; unmatched or stale evidence is incomparable, not passing.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "baseline-regression-control",
+      "inputs": [
+        "A trusted historical baseline and a current measurement made under the same contract."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "matched baseline and candidate evidence",
+        "regression attribution matrix",
+        "variance and comparability report",
+        "bounded repair handoff"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "baseline-regression-control@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/code-review-evidence-acquisition",
+      "condition": "Select only when the atomic requested outcome matches: Acquire authorized repository and provider-read evidence for a code review, bind it to exact refs, and stop before issuing findings or comments.",
+      "contract_sha256": "3b0ca1bac6d524028a11dc8956a5f2ebc12dbf4d9cbb79bb00d14a78d0baf4a4",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Review evidence is valid only when bound to exact base/head refs and provider identity; acquisition authority never includes findings, comments, labels, source edits, or remote writes.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "code-review-evidence-acquisition",
+      "inputs": [
+        "Change identity, base and head refs, approved provider read access, review scope, and untrusted-content boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "review evidence bundle",
+        "base-head and provider identity manifest",
+        "acquisition command records",
+        "evidence completeness result"
+      ],
+      "permission_identity": "local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "code-review-evidence-acquisition@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/completion-evidence-gate",
+      "condition": "Select only when the atomic requested outcome matches: Verify a completion claim from current reproducible commands, exits, durations, source identity, artifacts, hashes, and declared limitations without changing the work.",
+      "contract_sha256": "d7bc4c65ef1a194b3bcf4f95016d3feb986194e72f65d05d0948a1524a2b4845",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0055",
+        "V2-DEPENDENCY-0079",
+        "V2-DEPENDENCY-0081",
+        "V2-DEPENDENCY-0104",
+        "V2-DEPENDENCY-0108",
+        "V2-DEPENDENCY-0122",
+        "V2-DEPENDENCY-0147",
+        "V2-DEPENDENCY-0150",
+        "V2-DEPENDENCY-0172",
+        "V2-DEPENDENCY-0176",
+        "V2-DEPENDENCY-0215"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A completion claim cannot pass from prose, status text, model confidence, stale output, or partial success; each required criterion needs current target-bound executable or artifact evidence.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "completion-evidence-gate",
+      "inputs": [
+        "A proposed status claim and the command capable of proving it."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "criterion-to-evidence matrix",
+        "completion gate result",
+        "stale or missing evidence register",
+        "limitations and invalidation conditions"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "completion-evidence-gate@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/developer-experience-assessment",
+      "condition": "Select only when the atomic requested outcome matches: Execute an authorized developer journey and measure time-to-first-success, setup, errors, documentation, compatibility, and recovery without changing product source.",
+      "contract_sha256": "b5c211b709598922ba24ea020dc24458e4f0a488aafa4260bdeeee17792d660c",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Developer experience claims require a real target-bound journey with recorded environment, commands, elapsed time, errors, recovery, and cleanup; reading docs alone is insufficient.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "developer-experience-assessment",
+      "inputs": [
+        "Repository, runnable setup path, common tasks, errors, timings, and contributor context."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "developer journey trace",
+        "time-to-first-success evidence",
+        "friction and recovery findings",
+        "bounded DX recommendations"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "developer-experience-assessment@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/implementation-spec-compliance-review",
+      "condition": "Select only when the atomic requested outcome matches: Independently compare an implementation and its evidence with frozen requirements, design, interfaces, and scope without editing source.",
+      "contract_sha256": "5b0552699700a23d4d59be579586253f6afab88d8b0a52e7bffc5835e3c299ff",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0233"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Compliance passes only when every frozen requirement and design obligation has current implementation and verification evidence and no unapproved behavior is silently introduced.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "implementation-spec-compliance-review",
+      "inputs": [
+        "Approved task requirements, implementation diff, source snapshot, and implementer report as an untrusted claim."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "requirement-to-implementation matrix",
+        "compliance findings",
+        "extra and missing behavior register",
+        "human-owned disposition recommendation"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "implementation-spec-compliance-review@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/independent-blackbox-qa",
+      "condition": "Select only when the atomic requested outcome matches: Independently exercise a built product through public user surfaces, record reproducible findings and evidence, and never inspect or repair source.",
+      "contract_sha256": "7845682e303eacb10c4b2b03c9befdbb7d4846ae9cf5f54cd8a5f4ba53e713d5",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0133",
+        "V2-DEPENDENCY-0156",
+        "V2-DEPENDENCY-0194",
+        "V2-DEPENDENCY-0214",
+        "V2-DEPENDENCY-0227",
+        "V2-DEPENDENCY-0228"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Black-box QA must use public product surfaces and current build evidence; source inspection, implementation knowledge, or self-repair invalidates reviewer independence.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "independent-blackbox-qa",
+      "inputs": [
+        "An accessible application, change scope, QA mode, and authorized interaction boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "black-box QA run record",
+        "reproducible numbered findings",
+        "route-state coverage matrix",
+        "blocked tests and residual risk"
+      ],
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "independent-blackbox-qa@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/independent-code-review",
+      "condition": "Select only when the atomic requested outcome matches: Independently inspect a ref-bound code change for correctness, security, failure handling, compatibility, tests, and maintainability without editing it.",
+      "contract_sha256": "f718f79540544eacdbd89f09d166371b89ff4a484045f98417c4e6f4d9deb7e1",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0056",
+        "V2-DEPENDENCY-0105",
+        "V2-DEPENDENCY-0149",
+        "V2-DEPENDENCY-0152",
+        "V2-DEPENDENCY-0192",
+        "V2-DEPENDENCY-0234",
+        "V2-DEPENDENCY-0244"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A finding requires a concrete failing or risky scenario, source citation, consequence, and contract; the reviewer never edits source, posts comments, or approves its own remediation.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "independent-code-review",
+      "inputs": [
+        "A specification, change description, and precise code-diff boundary."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "independent code-review findings",
+        "affected-caller and risk analysis",
+        "test and evidence gaps",
+        "human-owned review recommendation"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "independent-code-review@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/llm-evaluator-engineering",
+      "condition": "Select only when the atomic requested outcome matches: Implement bounded local or draft-online evaluator definitions and calibration checks against an explicit quality contract; provider activation remains separate.",
+      "contract_sha256": "8aa016c62f628778ee991fa94ee058a285f5c92dc29217456fc09c0e53d7e693",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0208"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "An evaluator cannot pass from plausible rubric prose: it needs versioned executable behavior, labeled calibration cases, abstention and invalid handling, disagreement evidence, and no unauthorized provider call.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "llm-evaluator-engineering",
+      "inputs": [
+        "Quality target, classified traces, evaluator mode, judge policy, local workspace, and data-governance boundary."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "evaluator definitions and local source",
+        "rubric and labeled calibration fixtures",
+        "local executable check evidence",
+        "limitations and provider-activation handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "llm-evaluator-engineering@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/llm-quality-evaluation",
+      "condition": "Select only when the atomic requested outcome matches: Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation.",
+      "contract_sha256": "a907c45d658c7317d05c212b3b1ec71040942cb5f765c80824aa387819a3dbd4",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0044"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "External LLM Judge use is not implicit in local evaluation authority; without explicit data-transfer, provider, retention, deletion, and cost authorization, judge-dependent results remain blocked.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "llm-quality-evaluation",
+      "inputs": [
+        "Model outputs, references, criteria, annotations, and trusted historical baselines."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "repeatable quality scores",
+        "factuality and groundedness evidence",
+        "human-judge agreement and calibration",
+        "confidence, regression, and failure-slice report"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "llm-quality-evaluation@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/model-and-workflow-benchmarking",
+      "condition": "Select only when the atomic requested outcome matches: Benchmark supplied model or workflow variants on frozen cases, matched environments, metrics, variance, cost, latency, and evidence without remote submission or product approval.",
+      "contract_sha256": "0bca0e359b9b48ef80ba969d18fd656350bd3a596ec7e933b44cc76514f398ec",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0232"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A benchmark requires frozen cases and versions, matched environment and budgets, warmup, repeated runs, variance, failed-case retention, and exact artifacts; leaderboard point estimates alone fail.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "model-and-workflow-benchmarking",
+      "inputs": [
+        "Frozen cases, candidate variants, metric contract, environment, and budget."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "matched benchmark run evidence",
+        "metric distributions and variance",
+        "cost-quality-latency comparison",
+        "regression and recommendation report"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "model-and-workflow-benchmarking@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/playwright-test-engineering",
+      "condition": "Select only when the atomic requested outcome matches: Design Playwright test source as a candidate artifact and execute or diagnose authorized existing Playwright tests without writing project source.",
+      "contract_sha256": "4e6864385fd059b431d2d82a6354cfe11d377ef08fc3b057ea15608ab7ae8080",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0025",
+        "V2-DEPENDENCY-0123",
+        "V2-DEPENDENCY-0134",
+        "V2-DEPENDENCY-0154",
+        "V2-DEPENDENCY-0157",
+        "V2-DEPENDENCY-0162",
+        "V2-DEPENDENCY-0246"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A local-exec Playwright candidate cannot modify project tests or config; project installation or source writes require a separate authorized workspace capability.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "playwright-test-engineering",
+      "inputs": [
+        "Browser behaviors, test environments, risks, data, and automation acceptance goals."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "Playwright candidate test artifact",
+        "fixture and locator design",
+        "existing-test execution evidence",
+        "flake and bootstrap handoff"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "playwright-test-engineering@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/qa-finding-triage",
+      "condition": "Select only when the atomic requested outcome matches: Triage independently observed QA findings by reproducibility, severity, duplication, scope, ownership, and next capability without source repair.",
+      "contract_sha256": "ddafd46ed9ab2a5911b622050b3d37687ba6e46f04a0e76db48fafd5c90b1766",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Triage may classify and route findings but cannot repair source, waive risk, close defects without current evidence, or overwrite independent severity ownership.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "qa-finding-triage",
+      "inputs": [
+        "QA findings, evidence, affected surface, release context, and severity policy."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "deduplicated QA finding register",
+        "reproducibility and severity rationale",
+        "ownership and routing map",
+        "blocked and missing-evidence list"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "qa-finding-triage@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/safe-browser-probing",
+      "condition": "Select only when the atomic requested outcome matches: Run a bounded unauthenticated or already-authorized browser probe for one declared question and capture non-destructive evidence without source or session mutation.",
+      "contract_sha256": "616e0f94193b21eb7232a274c4f64a2a786afa4d6811fb9c53d5c34173ef2c52",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0026",
+        "V2-DEPENDENCY-0163",
+        "V2-DEPENDENCY-0188"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A safe probe has one declared question, allowlisted origins and actions, no credential or destructive state change, and complete capture provenance and cleanup.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "safe-browser-probing",
+      "inputs": [
+        "A target page, authorized interactions, and a ready browser runtime."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "bounded browser probe record",
+        "screenshot or trace evidence",
+        "origin and action log",
+        "cleanup and limitation report"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "safe-browser-probing@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/test-case-design-and-export",
+      "condition": "Select only when the atomic requested outcome matches: Derive traceable executable test cases, risk priority, data needs, coverage gaps, and one consumer-specific export from approved requirements without implementing tests.",
+      "contract_sha256": "6b58cbcaa4dda7ff627e2c77efbdb1a9ef3a302ee79b6ad46878dcf0c2180a13",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Every test case must trace to approved behavior or risk and state preconditions, data, action, observable expected result, priority, and test level; exported volume cannot substitute for coverage quality.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "test-case-design-and-export",
+      "inputs": [
+        "Approved requirements, risk profile, platform, test level, data constraints, and downstream format."
+      ],
+      "mutation_scope": "run-output",
+      "outputs": [
+        "traceable prioritized test cases",
+        "coverage and gap matrix",
+        "governed test-data plan",
+        "validated consumer-specific export",
+        "five-dimension case quality score in the coverage matrix",
+        "per-case synthetic data mapping"
+      ],
+      "permission_identity": "workspace-write",
+      "remote_write": false,
+      "skill_ref": "test-case-design-and-export@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/test-double-discipline",
+      "condition": "Select only when the atomic requested outcome matches: Assess or design the smallest behavior-focused test double boundary so tests use complete data shapes and do not pollute production interfaces.",
+      "contract_sha256": "3e22c00b9b840a9777bbaf59d7433fec8e679edab63ba02b581ccbd78f8b93af",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0153",
+        "V2-DEPENDENCY-0159"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A double is justified only at a real owned boundary and must preserve complete contract shapes and meaningful failures; mocking internals or adding test-only production APIs fails.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "test-double-discipline",
+      "inputs": [
+        "A test design that requires dependency isolation or an existing test double."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "test-double decision",
+        "owned boundary and contract",
+        "complete fixture or fake design",
+        "anti-pattern and verification evidence"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "test-double-discipline@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/testing-portfolio-strategy",
+      "condition": "Select only when the atomic requested outcome matches: Design a risk-based portfolio of static, unit, integration, contract, browser, performance, accessibility, security, and manual checks with ownership and feedback goals.",
+      "contract_sha256": "be3bc7ae4caa8fd63d473205d545e248fb898534c2b6b08c720754b19fd478ab",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0061"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A portfolio must justify every layer by observable risk and feedback value; test-count targets, pyramid dogma, and duplicate assertions across layers are not strategy.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "testing-portfolio-strategy",
+      "inputs": [
+        "System architecture, risks, component types, environments, and data constraints."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "risk-to-test-layer matrix",
+        "test portfolio and ownership",
+        "runtime and data requirements",
+        "coverage gaps and sequencing"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "testing-portfolio-strategy@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/vitest-tooling",
+      "condition": "Select only when the atomic requested outcome matches: Design Vitest test or configuration source as a candidate artifact and execute or diagnose authorized existing Vitest tests without writing project source.",
+      "contract_sha256": "f677d3497c8f6a2eb022ea4061c0d403f85ed6f588ce9d02a893db7258d7cee3",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0155",
+        "V2-DEPENDENCY-0160"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A local-exec Vitest candidate cannot modify project tests or config; project installation or source writes require a separate authorized workspace capability.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "vitest-tooling",
+      "inputs": [
+        "A JavaScript or TypeScript unit or integration test project using Vitest."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "Vitest candidate test artifact",
+        "configuration or fixture design",
+        "existing-suite execution evidence",
+        "diagnosis and bootstrap handoff"
+      ],
+      "permission_identity": "local-exec",
+      "remote_write": false,
+      "skill_ref": "vitest-tooling@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/revision-1.1.0/skills/website-audit-assessment",
+      "condition": "Select only when the atomic requested outcome matches: Independently assess an authorized website using local and read-only external evidence across content, accessibility, SEO, performance, security signals, links, and behavior without remediation.",
+      "contract_sha256": "70e223229a51f6e7fbdfc3002faef13aa474e682487531c4b8ec482a59ec1b0c",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0165",
+        "V2-DEPENDENCY-0230"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Assessment authority is read-only: no source repair, form submission with consequential state, account change, provider mutation, deployment, or finding closure is permitted.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "website-audit-assessment",
+      "inputs": [
+        "A scannable site, audit CLI, permitted external read scope, and optional frozen baseline."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "website assessment evidence manifest",
+        "deduplicated reproducible findings",
+        "route and criterion coverage",
+        "reassessment and residual-risk report"
+      ],
+      "permission_identity": "local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "website-audit-assessment@1.1.0-candidate"
+    }
+  ],
+  "version": "1.1.0-candidate"
+}

@@ -1,0 +1,376 @@
+{
+  "candidate_responsibility": "Configure browser sessions, wrapper dispatch, CLI settings, and isolated project context after prerequisites pass.",
+  "canonical_unit_ids": [
+    "audit-website:unit-001",
+    "playwright:unit-002",
+    "playwright:unit-003",
+    "playwright:unit-010",
+    "playwright:unit-012",
+    "playwright:unit-025"
+  ],
+  "cluster_id": "cluster:browser-session-and-runtime-configuration",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "audit-website/SKILL.md:12-16",
+    "playwright/SKILL.md:12-32",
+    "playwright/SKILL.md:122-131",
+    "playwright/SKILL.md:34-41",
+    "playwright/references/workflows.md:72-89",
+    "playwright/scripts/playwright_cli.sh:4-7"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration"
+      ],
+      "id": "cluster:browser-session-and-runtime-configuration:fusion:boundary",
+      "rule": "Configure browser sessions, wrapper dispatch, CLI settings, and isolated project context after prerequisites pass."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration"
+      ],
+      "id": "cluster:browser-session-and-runtime-configuration:fusion:inputs",
+      "rule": "Accept only: A validated browser task, session identifier, project path, wrapper contract, and CLI configuration."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:browser-session-and-runtime-configuration"
+      ],
+      "id": "cluster:browser-session-and-runtime-configuration:fusion:outputs",
+      "rule": "Produce only: A configured isolated session and reproducible browser invocation settings."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:browser-session-and-runtime-configuration:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A validated browser task, session identifier, project path, wrapper contract, and CLI configuration.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "playwright"
+      ]
+    }
+  ],
+  "output_boundary": "A configured isolated session and reproducible browser invocation settings.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义 audit-website 核心能力定位与环境强依赖门禁：依赖 PATH 中可执行的 squirrel CLI 命令行工具，前置通过 squirrel --version 校验",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Explicit limits: 执行全站体检与修复前必须通过环境门禁",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-001"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "执行全站体检与修复前必须通过环境门禁",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Explicit limits: 执行全站体检与修复前必须通过环境门禁",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-001"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确认 squirrel CLI 已安装且可在终端直接调用",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Explicit limits: 执行全站体检与修复前必须通过环境门禁",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-001"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "执行任何浏览器自动化命令前的强依赖门禁：检测 npx 可用性，并在缺失时向用户提供固定的 Node.js/npm 与 playwright-cli 安装指导; 配置技能执行脚本路径与 CODEX_HOME 环境变量，解析用户级技能路径与包装脚本位置; 包装脚本无缝执行机制：利用 npx --package @playwright/cli 免全局安装按需拉取运行，在项目中形成规范化调用",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright/SKILL.md:12-32",
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41",
+        "playwright/references/workflows.md:72-89",
+        "playwright/scripts/playwright_cli.sh:4-7"
+      ],
+      "limitations": "Explicit limits: 在向终端发送或提议任何自动化命令前必须执行此检查; 在首次执行 playwright CLI 交互前配置环境变量; 开发环境未预装全局 playwright-cli 时优先采用包装器",
+      "source_id": "playwright",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (gate=2, template=1, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-002",
+        "playwright:unit-003",
+        "playwright:unit-010",
+        "playwright:unit-012",
+        "playwright:unit-025"
+      ]
+    },
+    {
+      "approach": "配置技能执行脚本路径与 CODEX_HOME 环境变量，解析用户级技能路径与包装脚本位置; 包装脚本无缝执行机制：利用 npx --package @playwright/cli 免全局安装按需拉取运行，在项目中形成规范化调用; Playwright CLI 配置文件定义与结构：默认读取当前目录 playwright-cli.json 或通过 --config 指定，定义无头状态(headless)与视口宽高(viewport: 1280x720)",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41",
+        "playwright/references/workflows.md:72-89"
+      ],
+      "limitations": "Explicit limits: 在首次执行 playwright CLI 交互前配置环境变量; 开发环境未预装全局 playwright-cli 时优先采用包装器; 需要统一测试分辨率或固定有头无头模式的测试套件配置",
+      "source_id": "playwright",
+      "strengths": "Provides 3 source-grounded atom(s) for method (template=1, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-003",
+        "playwright:unit-010",
+        "playwright:unit-025"
+      ]
+    },
+    {
+      "approach": "在向终端发送或提议任何自动化命令前必须执行此检查; 在首次执行 playwright CLI 交互前配置环境变量; 开发环境未预装全局 playwright-cli 时优先采用包装器",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright/SKILL.md:12-32",
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41",
+        "playwright/references/workflows.md:72-89",
+        "playwright/scripts/playwright_cli.sh:4-7"
+      ],
+      "limitations": "Explicit limits: 在向终端发送或提议任何自动化命令前必须执行此检查; 在首次执行 playwright CLI 交互前配置环境变量; 开发环境未预装全局 playwright-cli 时优先采用包装器",
+      "source_id": "playwright",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (gate=2, template=1, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-002",
+        "playwright:unit-003",
+        "playwright:unit-010",
+        "playwright:unit-012",
+        "playwright:unit-025"
+      ]
+    },
+    {
+      "approach": "Playwright CLI 配置文件定义与结构：默认读取当前目录 playwright-cli.json 或通过 --config 指定，定义无头状态(headless)与视口宽高(viewport: 1280x720)",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright/references/workflows.md:72-89"
+      ],
+      "limitations": "Explicit limits: 需要统一测试分辨率或固定有头无头模式的测试套件配置",
+      "source_id": "playwright",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-025"
+      ]
+    },
+    {
+      "approach": "通过 command -v npx 校验，并在缺失时给出规范安装指引以避免命令失败; 拦截无 Node/npx 环境的无效执行，防止后续级联语法错误",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright/SKILL.md:12-32",
+        "playwright/scripts/playwright_cli.sh:4-7"
+      ],
+      "limitations": "Explicit limits: 在向终端发送或提议任何自动化命令前必须执行此检查; 每次脚本调用执行的最初始步骤",
+      "source_id": "playwright",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-002",
+        "playwright:unit-012"
+      ]
+    },
+    {
+      "approach": "配置技能执行脚本路径与 CODEX_HOME 环境变量，解析用户级技能路径与包装脚本位置; 包装脚本无缝执行机制：利用 npx --package @playwright/cli 免全局安装按需拉取运行，在项目中形成规范化调用",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41"
+      ],
+      "limitations": "Explicit limits: 在首次执行 playwright CLI 交互前配置环境变量; 开发环境未预装全局 playwright-cli 时优先采用包装器",
+      "source_id": "playwright",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-003",
+        "playwright:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright/SKILL.md:12-32",
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41",
+        "playwright/references/workflows.md:72-89",
+        "playwright/scripts/playwright_cli.sh:4-7"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "audit-website/SKILL.md:12-16"
+      ],
+      "source_id": "audit-website",
+      "unit_ids": [
+        "audit-website:unit-001"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 2,
+        "template": 1,
+        "tool-action": 2
+      },
+      "evidence": [
+        "playwright/SKILL.md:12-32",
+        "playwright/SKILL.md:122-131",
+        "playwright/SKILL.md:34-41",
+        "playwright/references/workflows.md:72-89",
+        "playwright/scripts/playwright_cli.sh:4-7"
+      ],
+      "source_id": "playwright",
+      "unit_ids": [
+        "playwright:unit-002",
+        "playwright:unit-003",
+        "playwright:unit-010",
+        "playwright:unit-012",
+        "playwright:unit-025"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "audit-website:unit-001",
+    "playwright:unit-002",
+    "playwright:unit-003",
+    "playwright:unit-010",
+    "playwright:unit-012",
+    "playwright:unit-025"
+  ]
+}

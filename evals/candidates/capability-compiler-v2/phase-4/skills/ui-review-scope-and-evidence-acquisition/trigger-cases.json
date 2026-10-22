@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "rendered-ui-critique-and-release-disposition",
+        "evidence-based-ui-review-and-release-gates",
+        "ui-remediation",
+        "cross-domain-ui-preflight-checklists"
+      ],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-trigger-01",
+      "input": "Define the review matrix and capture current routes, states, widths, themes, zoom, input, and motion traces for this UI.",
+      "kind": "should-trigger",
+      "reason": "Define independent UI review scope and acquire authorized current rendered evidence without evaluating findings or repairing source."
+    },
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "rendered-ui-critique-and-release-disposition",
+        "evidence-based-ui-review-and-release-gates",
+        "ui-remediation",
+        "cross-domain-ui-preflight-checklists"
+      ],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-trigger-02",
+      "input": "Acquire reproducible rendered evidence for the changed interface and bind every capture to source, runtime, route, state, and viewport identity.",
+      "kind": "should-trigger",
+      "reason": "Define independent UI review scope and acquire authorized current rendered evidence without evaluating findings or repairing source."
+    },
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-anti-01",
+      "input": "Critique the completed capture set and prioritize UI defects.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to rendered-ui-critique-and-release-disposition."
+    },
+    {
+      "expected_skill_id": "ui-remediation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-anti-02",
+      "input": "Modify product source in response to previously accepted findings.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to ui-remediation."
+    },
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-boundary-01",
+      "input": "Define independent UI review scope and acquire authorized current rendered evidence without evaluating findings or repairing source. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "ui-review-scope-and-evidence-acquisition",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-ui-review-scope-and-evidence-acquisition-authority-01",
+      "input": "Define independent UI review scope and acquire authorized current rendered evidence without evaluating findings or repairing source. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "ui-review-scope-and-evidence-acquisition"
+}

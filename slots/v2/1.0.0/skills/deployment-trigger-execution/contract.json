@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "deployment trigger receipt",
+    "immutable request and artifact identity",
+    "run or hook identity",
+    "failure, cancellation, and handoff record"
+  ],
+  "capability_id": "capability:deployment-trigger-execution",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-deployment-trigger",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "One deployment-trigger authorization covers one exact workflow, environment, immutable artifact, parameter set, and attempt; it authorizes neither merge, configuration change, observation, promotion, nor rollback.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "deployment-trigger-execution",
+  "inputs": [
+    "Release identity, reviewed deployment target, frozen parameters, provider or hook adapter, credentials, and current authorization."
+  ],
+  "outputs": [
+    "deployment trigger receipt",
+    "immutable request and artifact identity",
+    "run or hook identity",
+    "failure, cancellation, and handoff record"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "per-action-authorization",
+      "exact-target",
+      "artifact-digest",
+      "frozen-parameters",
+      "idempotency",
+      "trigger-receipt",
+      "cancellation"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Trigger one exact approved deployment workflow or hook with frozen parameters and per-action authorization, without merging code or observing or rolling back the result.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

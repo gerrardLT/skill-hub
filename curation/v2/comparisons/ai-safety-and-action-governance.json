@@ -1,0 +1,259 @@
+{
+  "candidate_responsibility": "Assess prompt and action risks, preserve human checkpoints, and prevent unsafe autonomy or unsupported safety claims.",
+  "canonical_unit_ids": [
+    "ai-product-strategy:unit-022",
+    "ai-product-strategy:unit-030",
+    "ai-product-strategy:unit-035",
+    "ai-product-strategy:unit-057"
+  ],
+  "cluster_id": "cluster:ai-safety-and-action-governance",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ai-product-strategy/references/artifacts.md:461-492",
+    "ai-product-strategy/references/guest-insights.md:625-632",
+    "ai-product-strategy/references/guest-insights.md:636-643",
+    "ai-product-strategy/references/guest-insights.md:695-702"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-safety-and-action-governance:fusion:boundary",
+      "rule": "Assess prompt and action risks, preserve human checkpoints, and prevent unsafe autonomy or unsupported safety claims."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-safety-and-action-governance:fusion:inputs",
+      "rule": "Accept only: An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:ai-safety-and-action-governance"
+      ],
+      "id": "cluster:ai-safety-and-action-governance:fusion:outputs",
+      "rule": "Produce only: A safety boundary, red-team scope, human checkpoint, stop condition, and residual risk."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:ai-safety-and-action-governance:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ai-product-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A safety boundary, red-team scope, human checkpoint, stop condition, and residual risk.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "agent 建设前确认任务理解、最小范围、低 downside、必要 context 和原始客户信号。; 来源认为 prompt injection 无法完全解决；用创意角色和场景红队测试，且只把 safety-tuning 视为部分防御。; 单独评估 agent 工具动作的现实后果，红队测试自主动作及恶意网页投毒路径。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Explicit limits: DM、draft、append 是降风险示例而非授权动作。; 属于来源安全观点，不构成绝对技术定理；高风险财务或个人系统须严格人工监督。; 用于能执行动作的 agent；花钱或改变基础设施的动作设置人工 checkpoint。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-022",
+        "ai-product-strategy:unit-030",
+        "ai-product-strategy:unit-035",
+        "ai-product-strategy:unit-057"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "DM、draft、append 是降风险示例而非授权动作。; 属于来源安全观点，不构成绝对技术定理；高风险财务或个人系统须严格人工监督。; 用于能执行动作的 agent；花钱或改变基础设施的动作设置人工 checkpoint。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Explicit limits: DM、draft、append 是降风险示例而非授权动作。; 属于来源安全观点，不构成绝对技术定理；高风险财务或个人系统须严格人工监督。; 用于能执行动作的 agent；花钱或改变基础设施的动作设置人工 checkpoint。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-022",
+        "ai-product-strategy:unit-030",
+        "ai-product-strategy:unit-035",
+        "ai-product-strategy:unit-057"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "说明人工流程、scope、权限、context 和证据保真。; 不宣称 tuning 完全防注入，保留对抗测试及高风险人工监督。; 评估注入到动作的危害路径，并在支出及基础设施变更前设置人工检查点。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Explicit limits: DM、draft、append 是降风险示例而非授权动作。; 属于来源安全观点，不构成绝对技术定理；高风险财务或个人系统须严格人工监督。; 用于能执行动作的 agent；花钱或改变基础设施的动作设置人工 checkpoint。",
+      "source_id": "ai-product-strategy",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (gate=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ai-product-strategy:unit-022",
+        "ai-product-strategy:unit-030",
+        "ai-product-strategy:unit-035",
+        "ai-product-strategy:unit-057"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ai-product-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 4
+      },
+      "evidence": [
+        "ai-product-strategy/references/artifacts.md:461-492",
+        "ai-product-strategy/references/guest-insights.md:625-632",
+        "ai-product-strategy/references/guest-insights.md:636-643",
+        "ai-product-strategy/references/guest-insights.md:695-702"
+      ],
+      "source_id": "ai-product-strategy",
+      "unit_ids": [
+        "ai-product-strategy:unit-022",
+        "ai-product-strategy:unit-030",
+        "ai-product-strategy:unit-035",
+        "ai-product-strategy:unit-057"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ai-product-strategy:unit-022",
+    "ai-product-strategy:unit-030",
+    "ai-product-strategy:unit-035",
+    "ai-product-strategy:unit-057"
+  ]
+}

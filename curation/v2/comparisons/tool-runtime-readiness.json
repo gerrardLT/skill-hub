@@ -1,0 +1,209 @@
+{
+  "candidate_responsibility": "Validate that a requested browser, audit, or test tool is available and its invocation boundary is safe before setup.",
+  "canonical_unit_ids": [
+    "playwright:unit-013"
+  ],
+  "cluster_id": "cluster:tool-runtime-readiness",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "playwright/scripts/playwright_cli.sh:9-25"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness"
+      ],
+      "id": "cluster:tool-runtime-readiness:fusion:boundary",
+      "rule": "Validate that a requested browser, audit, or test tool is available and its invocation boundary is safe before setup."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness"
+      ],
+      "id": "cluster:tool-runtime-readiness:fusion:inputs",
+      "rule": "Accept only: A tool request, project path, shell environment, and declared prerequisite contract."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tool-runtime-readiness"
+      ],
+      "id": "cluster:tool-runtime-readiness:fusion:outputs",
+      "rule": "Produce only: A prerequisite verdict, supported wrapper boundary, or explicit unavailable-tool failure."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:tool-runtime-readiness:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A tool request, project path, shell environment, and declared prerequisite contract.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright"
+      ]
+    }
+  ],
+  "output_boundary": "A prerequisite verdict, supported wrapper boundary, or explicit unavailable-tool failure.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "包装脚本核心逻辑：扫描参数中的 --session 标志，自动将环境变量 PLAYWRIGHT_CLI_SESSION 注入命令，并通过 exec 转发执行 npx playwright-cli",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Explicit limits: 包装脚本接收到用户参数时组装并执行终端浏览器命令",
+      "source_id": "playwright",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-013"
+      ]
+    },
+    {
+      "approach": "包装脚本核心逻辑：扫描参数中的 --session 标志，自动将环境变量 PLAYWRIGHT_CLI_SESSION 注入命令，并通过 exec 转发执行 npx playwright-cli",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Explicit limits: 包装脚本接收到用户参数时组装并执行终端浏览器命令",
+      "source_id": "playwright",
+      "strengths": "Provides 1 source-grounded atom(s) for method (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-013"
+      ]
+    },
+    {
+      "approach": "包装脚本接收到用户参数时组装并执行终端浏览器命令",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Explicit limits: 包装脚本接收到用户参数时组装并执行终端浏览器命令",
+      "source_id": "playwright",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "包装脚本核心逻辑：扫描参数中的 --session 标志，自动将环境变量 PLAYWRIGHT_CLI_SESSION 注入命令，并通过 exec 转发执行 npx playwright-cli",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Explicit limits: 包装脚本接收到用户参数时组装并执行终端浏览器命令",
+      "source_id": "playwright",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "tool-action": 1
+      },
+      "evidence": [
+        "playwright/scripts/playwright_cli.sh:9-25"
+      ],
+      "source_id": "playwright",
+      "unit_ids": [
+        "playwright:unit-013"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "playwright:unit-013"
+  ]
+}

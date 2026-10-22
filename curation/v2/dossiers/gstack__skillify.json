@@ -1,0 +1,141 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/skillify/SKILL.md:58]",
+    "Skill Invocation During Plan Mode [gstack/skillify/SKILL.md:62]",
+    "Model-Specific Behavioral Patch (claude) [gstack/skillify/SKILL.md:194]",
+    "Continuous Checkpoint Mode [gstack/skillify/SKILL.md:294]",
+    "Step 6 — Resolve the canonical SDK path + read it [gstack/skillify/SKILL.md:590]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/skillify/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/skillify/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/skillify/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/skillify/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/skillify/SKILL.md:36]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/skillify/SKILL.md:41]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/skillify/SKILL.md:60]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/skillify/SKILL.md:79]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/skillify/SKILL.md:103]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/skillify/SKILL.md:174]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/skillify/SKILL.md:298]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/skillify/SKILL.md:393]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/skillify/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Codify the most recent successful /scrape flow into a permanent browser-skill on disk. [gstack/skillify/SKILL.md:5]",
+  "root_id": "skill-root:gstack/skillify",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/skillify/SKILL.md:17]",
+    "+ fixture, runs the test in a temp dir, and asks before committing. [gstack/skillify/SKILL.md:26]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/skillify/SKILL.md:42]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/skillify/SKILL.md:43]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/skillify/SKILL.md:44]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/skillify/SKILL.md:51]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/skillify/SKILL.md:52]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/skillify/SKILL.md:55]"
+  ],
+  "skill_path": "gstack/skillify/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/skillify/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "gstack/skillify/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "gstack/skillify/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/skillify/SKILL.md"
+    },
+    {
+      "line_end": 62,
+      "line_start": 62,
+      "path": "gstack/skillify/SKILL.md"
+    }
+  ],
+  "source_sha256": "fb5e31b111e76087c893b9c44747e9acf7de0a024be245195be3bf9b36a9acf2",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/skillify/SKILL.md:76]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/skillify/SKILL.md:77]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/skillify/SKILL.md:78]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/skillify/SKILL.md:79]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/skillify/SKILL.md:81]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/skillify/SKILL.md:85]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:fb5e31b111e76087c893b9c44747e9acf7de0a024be245195be3bf9b36a9acf2",
+        "content-review:845-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/skillify/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e564becd0937081929c60fabeb34ba79a12207cf659ec4ec8b44067315d7713f",
+        "content-review:442-lines"
+      ],
+      "path": "gstack/skillify/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/skillify/SKILL.md:1-16]",
+    "Declared tool: Read [gstack/skillify/SKILL.md:1-16]",
+    "Declared tool: Write [gstack/skillify/SKILL.md:1-16]",
+    "Declared tool: AskUserQuestion [gstack/skillify/SKILL.md:1-16]",
+    "Local dependency: gstack/skillify/SKILL.md [gstack/skillify/SKILL.md:740]"
+  ],
+  "trigger": "Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack) [gstack/skillify/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/skillify/SKILL.md:142]",
+    "Self-check before emitting [gstack/skillify/SKILL.md:165]",
+    "Context Recovery [gstack/skillify/SKILL.md:233]",
+    "Completeness Principle — Boil the Ocean [gstack/skillify/SKILL.md:280]",
+    "Confusion Protocol [gstack/skillify/SKILL.md:286]",
+    "Claimed Limitations Need Evidence [gstack/skillify/SKILL.md:290]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/skillify/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/skillify/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/skillify/SKILL.md:294]",
+    "Step 1 — Provenance guard (D1) [gstack/skillify/SKILL.md:433]",
+    "Step 2 — Propose name + triggers [gstack/skillify/SKILL.md:460]",
+    "Step 3 — Synthesize script.ts (D2) [gstack/skillify/SKILL.md:500]",
+    "Step 4 — Capture the fixture [gstack/skillify/SKILL.md:545]",
+    "Step 5 — Write script.test.ts [gstack/skillify/SKILL.md:559]",
+    "Step 6 — Resolve the canonical SDK path + read it [gstack/skillify/SKILL.md:590]",
+    "Step 7 — Stage the skill (D3 atomic write) [gstack/skillify/SKILL.md:632]",
+    "Step 8 — Run $B skill test against the staged dir [gstack/skillify/SKILL.md:688]",
+    "Step 9 — Approval gate [gstack/skillify/SKILL.md:718]"
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "domain": "performance-and-reliability",
+  "skills": {
+    "cloud-reliability-assessment": {
+      "trigger_signals": [
+        "An architecture, IaC or resource inventory needs an availability, failover and recovery assessment against stated SLO, RTO or RPO targets",
+        "Someone asks whether a cloud workload is zone redundant, backed up and restorable, using read-only evidence only"
+      ],
+      "guidance": [
+        "Azure variant: for each App Service plan, Function app or storage account report zone redundancy, instance count, health-check path and storage redundancy (LRS/ZRS/GRS) in one row.",
+        "Classify each recommendation as quick win (no downtime, no cost change), config change (brief impact) or migration (downtime or cost impact) so the owner can sequence it."
+      ],
+      "outputs_add": [
+        "per-resource reliability table with severity, downtime impact and cost impact"
+      ],
+      "source_evidence_add": [
+        "azure-reliability/SKILL.md:10-49",
+        "azure-reliability/SKILL.md:137-176"
+      ],
+      "resolves": {
+        "cloud-reliability-assessment#F1": "fixed: guidance (Azure per-resource table columns)",
+        "cloud-reliability-assessment#F2": "fixed: outputs_add + guidance (severity, downtime, cost, change class)"
+      }
+    },
+    "frontend-rendering-and-interaction-performance": {
+      "trigger_signals": [
+        "A specific interaction (click, type, scroll, route change) feels slow or janky and needs a trace-backed explanation",
+        "Component-level rendering, long tasks, hydration or animation frame drops must be measured on a frozen journey"
+      ],
+      "anti_add": [
+        {
+          "text": "Measure field Core Web Vitals, including field INP, for a page",
+          "route": "web-performance-diagnostics"
+        }
+      ],
+      "guidance": [
+        "Default budgets when the user supplies none: long task <= 50 ms, frame <= 16.7 ms (60 fps), interaction latency (INP) <= 200 ms at p75; report every measured value against them and say when a default was used.",
+        "Hypothesis catalog: animating width/height/top/left instead of transform/opacity triggers layout and paint; a parent CSS variable driving child transforms recalculates every child; Framer Motion x/y/scale shorthands run on the main thread and drop frames under load.",
+        "Ownership: field INP belongs to web-performance-diagnostics; this Skill owns component-level interaction traces.",
+        "Ownership: component-level render and interaction traces belong here; page-level Core Web Vitals, including field INP, belong to web-performance-diagnostics."
+      ],
+      "source_evidence_add": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "resolves": {
+        "frontend-rendering-and-interaction-performance#F1": "fixed: guidance (default budgets)",
+        "frontend-rendering-and-interaction-performance#F2": "fixed: guidance (symptom-to-cause hypothesis catalog)"
+      }
+    },
+    "kubernetes-deployment-readiness": {
+      "trigger_signals": [
+        "A Kubernetes workload needs a read-only go/no-go before deployment covering rollout, scaling, policy and rollback",
+        "Manifests or a cluster must be checked against AKS Automatic or platform safeguards before anything is applied"
+      ],
+      "guidance": [
+        "Severity taxonomy per issue: incompatible (migration blocker), requiresChanges, autoFixed by the platform, cluster-config. Order blockers first; group by constraint id when more than 10 issues.",
+        "Per-issue record: constraint id, severity, affected namespace/resource (Kind), current value, required value, fix summary, documentation link.",
+        "AKS Automatic variant: check container resource requests and limits, probes, non-root and privilege settings, and disallowed host access against the safeguard constraints.",
+        "Give concrete rollout values when the plan lacks them (for example maxUnavailable 0, maxSurge 1, replica count, PodDisruptionBudget minAvailable, HPA bounds) and compute rollback cost arithmetic explicitly."
+      ],
+      "outputs_add": [
+        "per-issue severity record with current and required values"
+      ],
+      "procedure_insert": [
+        {
+          "after": 3,
+          "text": "Return concrete recommended values for rollout strategy, autoscaling and disruption budgets, each with its arithmetic, instead of naming the topic only."
+        }
+      ],
+      "source_evidence_add": [
+        "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:161-200",
+        "azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:10-49"
+      ],
+      "resolves": {
+        "kubernetes-deployment-readiness#F1": "fixed: guidance + outputs_add (severity taxonomy, blocker-first, per-issue record); Phase D loss reasons (concrete values, rollback arithmetic) addressed by procedure_insert",
+        "kubernetes-deployment-readiness#F2": "fixed: guidance (AKS Automatic variant)"
+      }
+    },
+    "resilience-and-determinism": {
+      "trigger_signals": [
+        "A test or job fails intermittently and needs a reproducible failure model before anyone edits code",
+        "Retries, timeouts, ordering or cleanup may be masking a race, leaked state or an arbitrary sleep"
+      ],
+      "inputs": [
+        "An observed nondeterministic or resilience failure with reproduction context: the failing test or job, logs, environment, and any suspected cause (invalid data, race, contamination, fragile wait)."
+      ],
+      "guidance": [
+        "First-class hypothesis: an arbitrary sleep or fixed timeout. Prefer condition-based waiting (poll for the specific state with a bounded timeout and a failure message naming the expected and last observed state) over longer sleeps.",
+        "When the cause is invalid data, recommend validation at four layers: entry point, business logic, environment guard, and debug instrumentation.",
+        "Deliver the concrete fix as a patch or code block for the owner to apply; do not withhold it as a vague candidate when the race is confirmed, and state exactly what remains unverified.",
+        "Preserve existing approved timezone and business semantics. A proposed policyholder-zone change is a separate product decision, not an assumed implementation fix. Reproduction and repeat checks must use the unchanged semantics until that decision is approved."
+      ],
+      "procedure_insert": [
+        {
+          "after": 2,
+          "text": "List the candidate causes including arbitrary sleeps or fixed timeouts, and rank them by the evidence from the repeated runs."
+        }
+      ],
+      "source_evidence_add": [
+        "systematic-debugging/condition-based-waiting-example.ts:1-158",
+        "systematic-debugging/defense-in-depth.md:21-86"
+      ],
+      "resolves": {
+        "resilience-and-determinism#F1": "fixed: inputs replaced (observed failure, not pre-confirmed cause)",
+        "resilience-and-determinism#F2": "fixed: guidance + procedure_insert (sleep hypothesis, condition-based waiting)",
+        "resilience-and-determinism#F3": "fixed: guidance (four validation layers)"
+      }
+    },
+    "web-performance-diagnostics": {
+      "trigger_signals": [
+        "A page or journey needs a page-load, network, caching or Core Web Vitals baseline under declared conditions",
+        "Someone asks why a page is slow and needs waterfall, asset and bundle evidence rather than one Lighthouse score"
+      ],
+      "anti_add": [
+        {
+          "text": "Trace one slow interaction or component render in an already loaded page",
+          "route": "frontend-rendering-and-interaction-performance"
+        }
+      ],
+      "guidance": [
+        "Core Web Vitals thresholds at p75: LCP good <= 2.5 s, poor > 4 s; INP good <= 200 ms, poor > 500 ms; CLS good <= 0.1, poor > 0.25. Label every number as lab or field data and never mix them in one verdict.",
+        "Detect the framework and bundler from config files and package.json, then attribute large bundles to owning packages and check tree-shaking (sideEffects, usedExports, production mode) before proposing hypotheses.",
+        "Field INP ownership sits here; component-level interaction traces belong to frontend-rendering-and-interaction-performance.",
+        "Ownership: field and lab INP, LCP, CLS and other Core Web Vitals belong here; component-level interaction traces belong to frontend-rendering-and-interaction-performance."
+      ],
+      "outputs_add": [
+        "threshold table with lab or field label per metric"
+      ],
+      "source_evidence_add": [
+        "web-perf/SKILL.md:150-193"
+      ],
+      "resolves": {
+        "web-performance-diagnostics#F1": "fixed: guidance + outputs_add (thresholds, lab vs field)",
+        "web-performance-diagnostics#F2": "fixed: guidance (bundler detection, bundle attribution)"
+      }
+    }
+  }
+}

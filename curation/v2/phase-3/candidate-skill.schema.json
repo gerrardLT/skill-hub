@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_types": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "capability_id": {
+      "pattern": "^capability:",
+      "type": "string"
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "const": "artifact"
+        },
+        "model_tools": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "mutation_scope": {
+          "enum": [
+            "run-output",
+            "none"
+          ]
+        },
+        "remote_write": {
+          "const": false
+        }
+      },
+      "required": [
+        "adapter",
+        "model_tools",
+        "mutation_scope",
+        "remote_write"
+      ],
+      "type": "object"
+    },
+    "forbidden_actions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "hard_gates": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "inputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "outputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "permission_identity": {
+      "enum": [
+        "workspace-write",
+        "read-only"
+      ]
+    },
+    "policy": {
+      "additionalProperties": false,
+      "properties": {
+        "data_governance": {
+          "type": "boolean"
+        },
+        "human_decision": {
+          "type": "boolean"
+        },
+        "named_formula_variants": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "human_decision",
+        "data_governance",
+        "named_formula_variants"
+      ],
+      "type": "object"
+    },
+    "responsibility": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "statuses": {
+      "const": [
+        "passed",
+        "needs-input",
+        "blocked",
+        "failed"
+      ],
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "capability_id",
+    "responsibility",
+    "inputs",
+    "outputs",
+    "permission_identity",
+    "statuses",
+    "hard_gates",
+    "forbidden_actions",
+    "artifact_types",
+    "execution",
+    "policy"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,103 @@
+## ai-observability-configuration [improve] perm=remote-write-authorized-only D=effective
+R: Configure one provider's AI or LLM observability for exact applications and environments under explicit telemetry governance and per-action authorization.
+IN: AI application, traces, sensitive-data policy, provider, evaluation signals, retention, and authorization.
+OUT: AI observability configuration receipt | governed telemetry schema | sampling, redaction, retention, and access record | validation and rollback evidence
+  ai-observability-configuration#F1 P1 trigger_precision: Add mutual anti-triggers: gen_ai spans and agent traces vs log pipelines.
+  ai-observability-configuration#F2 P1 source_fidelity: Reference OpenTelemetry/Sentry gen_ai semantic conventions as the default schema and detect supported SDKs before manual instrumentation.
+## apm-instrumentation-enablement [revise] perm=remote-write-authorized-only D=negative
+R: Enable one approved APM instrumentation variant for exact services and environments without duplicate agents or manual instrumentation under per-action authorization.
+IN: Installed agent, service runtime, platform variant, environment, and authorization.
+OUT: APM enablement receipt | instrumentation and service identity | duplicate and compatibility evidence | verification and rollback handoff
+  apm-instrumentation-enablement#F1 P2 source_fidelity: Add both as preconditions for the Kubernetes variant.
+## apm-instrumentation-troubleshooting [keep] perm=external-read D=no-gain
+R: Diagnose missing, duplicate, malformed, or misidentified APM signals from read-only platform evidence and route fixes to authorized enablement or installation owners.
+IN: Failed verification evidence, platform variant, service configuration, logs, and authority boundary.
+OUT: APM troubleshooting evidence | hypothesis and root-cause analysis | signal-path diagnosis | authorized fix and verification handoff
+  apm-instrumentation-troubleshooting#F1 P2 source_fidelity: Order checks provider-side first, then host-side with stated rationale.
+  apm-instrumentation-troubleshooting#F2 P2 measured_efficacy: Phase D case.
+## apm-instrumentation-verification [revise] perm=external-read D=negative
+R: Verify from read-only current evidence that APM instrumentation emits correct service, environment, version, trace linkage, sampling, and governed fields.
+IN: Instrumented environment, expected service identity, provider read access, and observation window.
+OUT: APM verification matrix | current trace evidence | expected-observed identity and coverage | gap and troubleshooting handoff
+## apm-onboarding-summary [merge] perm=read-only D=mixed
+R: Summarize current APM onboarding coverage, verified evidence, gaps, owners, and next actions without configuring or verifying systems itself.
+IN: Installation, enablement, verification, and troubleshooting evidence.
+OUT: APM onboarding status summary | service coverage matrix | gap and owner action map | stale-evidence register
+  apm-onboarding-summary#F1 P2 boundary: Fold the service coverage matrix into apm-instrumentation-verification as its multi-service output.
+  TARGET apm-instrumentation-verification
+## canary-baseline-management [revise] perm=artifact-write-local-exec-external-read D=mixed
+R: Create or update immutable local canary baseline evidence only for explicitly selected production pages, without application or provider mutation.
+IN: Approved URL and pages, external read authority, artifact directory, prior baseline, and baseline-write decision.
+OUT: versioned canary baseline artifacts | capture provenance manifest | threshold and masking policy | supersession and deletion record
+  canary-baseline-management#F1 P2 source_fidelity: Require healthy canary evidence as precondition for supersession.
+## deployment-observation [revise] perm=artifact-write-local-exec-external-read D=negative
+R: Observe one deployed change through read-only provider status and production health signals, persist bounded evidence, and recommend continue, investigate, or rollback without recovery execution.
+IN: A deployed change identity, provider read access, observation window, expected signals, and health thresholds.
+OUT: deployment observation evidence | health and guardrail comparison | anomaly and confidence report | continue, investigate, or rollback recommendation
+  deployment-observation#F1 P1 source_fidelity: Define window start as confirmed deploy completion per platform strategy.
+## error-monitoring-issue-investigation [keep] perm=external-read D=effective
+R: Investigate one error-monitoring issue from read-only event evidence to an evidence-bounded root-cause hypothesis and repair recommendation without provider or source mutation.
+IN: Issue identity, event context, release, environment, source access, and authority boundary.
+OUT: error issue evidence bundle | hypothesis and root-cause analysis | release and impact correlation | bounded repair or instrumentation recommendation
+  error-monitoring-issue-investigation#F1 P2 source_fidelity: Add category classification as step 1.
+  error-monitoring-issue-investigation#F2 P2 trigger_precision: Add it.
+## incident-response-coordination [improve] perm=external-read D=effective
+R: Coordinate an active incident's severity, roles, timeline, hypotheses, mitigation options, communications, recovery criteria, and closure recommendation from read-only evidence without executing provider actions.
+IN: An active production anomaly, impact evidence, alerts, and available mitigation controls.
+OUT: incident coordination record | roles, timeline, fact, hypothesis, and decision log | mitigation and specialist action handoffs | recovery evidence and closure recommendation
+  incident-response-coordination#F1 P1 source_fidelity: Embed SEV1-SEV4 definitions, three-audience cadence and update templates.
+## log-observability-configuration [improve] perm=remote-write-authorized-only D=no-gain
+R: Configure one provider's log collection, parsing, routing, retention, access, and sensitive-data controls for exact services and environments under per-action authorization.
+IN: Log sources, schemas, provider, authorization, retention, redaction, and routing requirements.
+OUT: log configuration receipt | source, parse, and route schema | redaction, retention, access, and cost record | sample validation and rollback evidence
+  log-observability-configuration#F1 P1 trigger_precision: Add anti-trigger.
+  log-observability-configuration#F2 P1 measured_efficacy: Phase D case.
+  log-observability-configuration#F3 P2 source_fidelity: Add exclusion filters as the first cost control and the troubleshooting table.
+## metrics-system-and-observability [improve] perm=external-read D=no-gain
+R: Define an evidence-linked metric system of outcomes, inputs, secondary and guardrail metrics with baselines, instrumentation contracts, dashboards, and alert recommendations without provider mutation.
+IN: Business goals, user outcomes, risks, data sources, and observable events.
+OUT: metric tree and exact definitions | baseline, target, and guardrail contract | instrumentation and dashboard specification | ownership, gap, and alert recommendation
+  metrics-system-and-observability#F1 P1 measured_efficacy: Phase D case with an ambiguous denominator.
+  metrics-system-and-observability#F2 P2 source_fidelity: Require one primary metric and a review cadence.
+## monitoring-and-alert-configuration [improve] perm=remote-write-authorized-only D=effective
+R: Create or update exact provider monitors and alert routes from approved SLOs, thresholds, windows, severity, ownership, and noise controls under per-action authorization.
+IN: Signal definition, threshold rationale, evaluation window, recipients, provider, and authorization.
+OUT: monitor and alert configuration receipt | threshold, window, and missing-data contract | routing and runbook map | validation, noise, and rollback evidence
+  monitoring-and-alert-configuration#F1 P1 measured_efficacy: Phase D case with an alert lacking an actionable owner.
+## observability-agent-installation [revise] perm=remote-write-authorized-only D=negative
+R: Install one approved observability agent variant on exact hosts or cluster scope with pinned artifact, least privilege, governed data, health, and rollback under per-action authorization.
+IN: Platform, environment, provider account, credentials, desired instrumentation, and authorization.
+OUT: agent installation receipt | pinned artifact and target inventory | permission and telemetry governance evidence | health, uninstall, and rollback record
+  observability-agent-installation#F1 P2 source_fidelity: Add cluster-type variant notes.
+## production-canary-monitoring [improve] perm=artifact-write-local-exec-external-read D=effective
+R: Continuously sample approved production pages or signals against immutable baselines, control alert noise, and recommend investigation or rollback without production mutation.
+IN: A deployed application, safely accessible pages, and a trusted initial baseline.
+OUT: production canary samples | baseline diff and classification | noise-control and confidence record | investigation or rollback recommendation
+  production-canary-monitoring#F1 P1 measured_efficacy: Phase D case.
+  production-canary-monitoring#F2 P2 trigger_precision: Add mutual anti-triggers.
+## production-llm-trace-root-cause-analysis [keep] perm=external-read D=effective
+R: Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation.
+IN: Authorized trace data, incident scope, time window, privacy boundary, and service context.
+OUT: LLM trace root-cause evidence | competing hypothesis ledger | first-divergent-stage analysis | bounded remediation and owner handoff
+  production-llm-trace-root-cause-analysis#F1 P2 source_fidelity: Add the three investigation modes.
+## production-trace-classification [improve] perm=external-read D=effective
+R: Classify authorized production LLM traces into evidence-backed behavior and failure categories while preserving provenance, uncertainty, minority cases, and governance.
+IN: Authorized trace scope, provider read access, time window, sampling policy, and data-governance boundary.
+OUT: production trace taxonomy | trace-to-category ledger | counts, confidence, and minority cases | governed root-cause cohorts
+  production-trace-classification#F1 P1 measured_efficacy: Phase D case.
+  production-trace-classification#F2 P2 source_fidelity: Adopt yes/partial/no outcome label and pass rate in counts.
+## release-observability-configuration [revise] perm=remote-write-authorized-only D=negative
+R: Configure one provider's release and commit association for exact services and environments under per-action authorization without deploying or changing source.
+IN: Release naming, repository, build metadata, provider project, credentials, and authorization.
+OUT: release association receipt | release, commit, service, and environment map | propagation and collision evidence | rollback or deletion record
+  release-observability-configuration#F1 P1 source_fidelity: Add a half-present diagnosis step before any change.
+## release-rollback-execution [improve] perm=remote-write-authorized-only D=no-gain
+R: Execute one exact approved release rollback when current post-deploy evidence meets a predeclared rollback condition, with bounded blast radius and recovery verification.
+IN: A deployed change, health evidence, provider state, and rollback authorization.
+OUT: rollback execution receipt | before and after release identity | health and recovery evidence | partial-failure and incident handoff
+  release-rollback-execution#F1 P1 procedure: Declare method: provider-native rollback here; revert-commit path routes to change-packaging and remote-git-push.
+## service-identity-remapping [keep] perm=remote-write-authorized-only D=effective
+R: Remap one telemetry service identity in one exact provider scope after collision, continuity, retention, dashboard, alert, and rollback checks under per-action authorization.
+IN: Current service names, desired taxonomy, provider configuration, downstream dashboards, and authorization.
+OUT: service identity remap receipt | collision and continuity evidence | affected dashboard, alert, and integration map | verification and rollback record
+  service-identity-remapping#F1 P2 source_fidelity: Add as precondition for inferred-entity variant.

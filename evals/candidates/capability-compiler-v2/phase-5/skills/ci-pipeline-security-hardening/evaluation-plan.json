@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "identity": "github-actions-hardening",
+    "kind": "source-skill",
+    "reason": "Closest immutable source behavior; no released V1 Slot has this exact atomic responsibility."
+  },
+  "candidate": {
+    "contract_sha256": "894c7979eb439742f8ae7ced067e17a725028f754e8cb43b192e05768e746cdb",
+    "identity": "ci-pipeline-security-hardening@0.1.0-v2-candidate",
+    "skill_sha256": "f6eeceec03499e4f31b1a7f43f4117a729a9a849710924d253124779014723c9"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P5-ci-pipeline-security-hardening-holdout-trigger-01",
+    "V2-P5-ci-pipeline-security-hardening-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P5-MUT-ci-pipeline-security-hardening-01",
+      "remove_exact_text": "Untrusted pull-request code, metadata, artifacts, caches, or user-controlled strings must never execute in a context with secrets, write tokens, deployment identity, or unquoted command construction.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "architecture and trust-boundary traceability",
+    "authorization data and secret governance",
+    "compatibility migration and rollback completeness",
+    "failure abuse and residual-risk coverage",
+    "atomic responsibility and mutation-scope adherence",
+    "human approval and evidence integrity"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "ci-pipeline-security-hardening",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,90 @@
+{
+  "artifact_types": [
+    "error issue evidence bundle",
+    "hypothesis and root-cause analysis",
+    "release and impact correlation",
+    "bounded repair or instrumentation recommendation",
+    "minimal reproduction",
+    "hypothesis and experiment ledger",
+    "root-cause evidence chain",
+    "affected-surface and remediation handoff"
+  ],
+  "capability_id": "capability:root-cause-investigation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release"
+  ],
+  "hard_gates": [
+    "Issue investigation is read-only: it cannot resolve, mute, assign, comment, change grouping, edit source, or treat one stack trace as proven root cause.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "Investigation cannot declare root cause from correlation, the last stack frame, or one patched symptom; it needs a reproducible causal chain and sibling-path analysis.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "root-cause-investigation",
+  "inputs": [
+    "Issue identity, event context, release, environment, source access, and authority boundary.",
+    "A test failure, production incident, unexpected behavior, build issue, or performance problem."
+  ],
+  "mode_permissions": {
+    "error-monitoring-issue-investigation": "external-read",
+    "root-cause-investigation": "workspace-write-local-exec"
+  },
+  "modes": [
+    "error-monitoring-issue-investigation",
+    "root-cause-investigation"
+  ],
+  "outputs": [
+    "error issue evidence bundle",
+    "hypothesis and root-cause analysis",
+    "release and impact correlation",
+    "bounded repair or instrumentation recommendation",
+    "minimal reproduction",
+    "hypothesis and experiment ledger",
+    "root-cause evidence chain",
+    "affected-surface and remediation handoff"
+  ],
+  "permission_identity": "external-read",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "exact-issue",
+      "read-only-events",
+      "release-correlation",
+      "competing-hypotheses",
+      "cause-not-stack-frame",
+      "no-provider-mutation"
+    ],
+    "data_governance": true,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Investigate one error-monitoring issue from read-only event evidence to an evidence-bounded root-cause hypothesis and repair recommendation without provider or source mutation.; Reproduce and trace an observed defect to the highest shared evidence-backed cause without editing product source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

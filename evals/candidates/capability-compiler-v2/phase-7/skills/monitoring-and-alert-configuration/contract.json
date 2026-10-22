@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "monitor and alert configuration receipt",
+    "threshold, window, and missing-data contract",
+    "routing and runbook map",
+    "validation, noise, and rollback evidence"
+  ],
+  "capability_id": "capability:monitoring-and-alert-configuration",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-monitor-config",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "An alert requires an actionable owner, justified threshold and window, missing-data behavior, deduplication, runbook, validation, and rollback; alert volume alone is not coverage.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "monitoring-and-alert-configuration",
+  "inputs": [
+    "Signal definition, threshold rationale, evaluation window, recipients, provider, and authorization."
+  ],
+  "outputs": [
+    "monitor and alert configuration receipt",
+    "threshold, window, and missing-data contract",
+    "routing and runbook map",
+    "validation, noise, and rollback evidence"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "SLO-threshold",
+      "window",
+      "missing-data",
+      "actionable-owner",
+      "routing",
+      "deduplication",
+      "runbook",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Create or update exact provider monitors and alert routes from approved SLOs, thresholds, windows, severity, ownership, and noise controls under per-action authorization.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

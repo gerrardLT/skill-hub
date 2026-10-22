@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "documentation-authoring",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "document-and-artifact-governance",
+        "release-documentation-maintenance",
+        "document-rendering-and-validation"
+      ],
+      "id": "V2-P3-documentation-authoring-trigger-01",
+      "input": "Write a how-to for this verified local development workflow using the supplied commands.",
+      "kind": "should-trigger",
+      "reason": "Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose."
+    },
+    {
+      "expected_skill_id": "documentation-authoring",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "document-and-artifact-governance",
+        "release-documentation-maintenance",
+        "document-rendering-and-validation"
+      ],
+      "id": "V2-P3-documentation-authoring-trigger-02",
+      "input": "Turn these approved architecture facts into an explanation document with source links.",
+      "kind": "should-trigger",
+      "reason": "Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose."
+    },
+    {
+      "expected_skill_id": "document-and-artifact-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "documentation-authoring"
+      ],
+      "id": "V2-P3-documentation-authoring-anti-01",
+      "input": "Decide the lifecycle, owner, and retention of all project documents.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility document-and-artifact-governance."
+    },
+    {
+      "expected_skill_id": "release-documentation-maintenance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "documentation-authoring"
+      ],
+      "id": "V2-P3-documentation-authoring-anti-02",
+      "input": "Update release notes from a shipped diff.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility release-documentation-maintenance."
+    },
+    {
+      "expected_skill_id": "documentation-authoring",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-documentation-authoring-boundary-01",
+      "input": "Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "documentation-authoring",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-documentation-authoring-authority-01",
+      "input": "Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose. Then perform remote Git, external-system writes, merge, deploy, or downstream implementation without separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "documentation-authoring"
+}

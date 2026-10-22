@@ -1,0 +1,355 @@
+{
+  "domain": "testing-and-quality-assurance",
+  "skills": {
+    "baseline-regression-control": {
+      "trigger_signals": [
+        "A frozen baseline and a candidate must be run under matched conditions to find which differences are real regressions",
+        "Someone asks whether a failure is new, pre-existing, flaky or an intended change"
+      ],
+      "authored_content": [
+        "regression attribution method is authored; cited sources describe page-level canary baselines"
+      ],
+      "resolves": {
+        "baseline-regression-control#F1": "fixed: authored_content"
+      }
+    },
+    "code-review-evidence-acquisition": {
+      "trigger_signals": [
+        "A code change needs its exact diff, history, tests and read-only provider metadata collected before anyone reviews it",
+        "Someone asks for a reproducible evidence bundle bound to base and head refs"
+      ],
+      "guidance": [
+        "Fetch the latest base read-only where authorized, compute the merge base, and diff the head against that merge base so a stale local base does not create false positives. Record the fetch, the merge-base SHA and any truncation."
+      ],
+      "source_evidence_add": [
+        "gstack/review/SKILL.md:553-569"
+      ],
+      "resolves": {
+        "code-review-evidence-acquisition#F1": "fixed: reference fix (provider-review-comment-response replaced by pull-request-comment-response)",
+        "code-review-evidence-acquisition#F2": "fixed: guidance (merge-base diff against freshly fetched base)"
+      }
+    },
+    "completion-evidence-gate": {
+      "trigger_signals": [
+        "Someone claims work is done, tests pass or a build is green and the claim must be checked against current command evidence",
+        "A status needs a supported, unsupported or partial verdict tied to exit codes, counts and artifact hashes"
+      ],
+      "guidance": [
+        "When the supplied evidence satisfies every acceptance criterion and is current and target-bound, the verdict is Supported, stated plainly with the exit code, counts and freshness that justify it. Do not return needs-input when nothing required is missing.",
+        "List missing or stale items only for criteria they actually affect, and name the originating owner who should produce the missing evidence; this Skill never runs the commands itself.",
+        "A command piped into another (for example `test | tee`) reports the last command's exit code and can mask a failure. Give the exact unpiped form that captures the real exit code (`set -o pipefail; cmd; echo rc=$?`), and ask for the identities of any failing tests, not only the count."
+      ],
+      "anti_add": [
+        {
+          "text": "Compare a baseline and a candidate under matched conditions",
+          "route": "baseline-regression-control"
+        }
+      ],
+      "anti_drop": [
+        "baseline-regression-control"
+      ],
+      "procedure_insert": [
+        {
+          "after": 2,
+          "text": "If every criterion has current, target-bound evidence, return a clear Supported verdict with the evidence cited; otherwise list only the criteria that are unsupported and the owner for each."
+        }
+      ],
+      "resolves": {
+        "completion-evidence-gate#F1": "fixed: anti_add/anti_drop + guidance (missing-evidence production routed to the originating owner); Phase D loss (needs-input despite passing evidence) addressed by procedure_insert"
+      }
+    },
+    "developer-experience-assessment": {
+      "trigger_signals": [
+        "A repository or developer product must be used end to end by a new contributor persona, timing each step",
+        "Someone asks how long first success takes and where setup, docs or errors slow a developer down"
+      ],
+      "guidance": [
+        "Include documentation navigation and the copy-paste of each documented snippet in the journey: a command that is documented but fails when pasted is a finding with the exact snippet and error."
+      ],
+      "source_evidence_add": [
+        "gstack/devex-review/SKILL.md:662-701"
+      ],
+      "resolves": {
+        "developer-experience-assessment#F1": "fixed: guidance (documentation navigation and snippet copy-paste)"
+      }
+    },
+    "evaluation-dataset-publication": {
+      "trigger_signals": [
+        "One frozen, versioned evaluation dataset must be uploaded to one exact provider target after governance checks",
+        "Someone asks what must be true (rights, redaction, retention, visibility) before a dataset may be published"
+      ],
+      "guidance": [
+        "Redaction gaps block every publish target that would carry the affected fields, not only the requested one. When a safer target such as a staging dataset is available after the gaps are fixed, propose it as a conditional path with its own authorization need.",
+        "The proposed action must name a target that satisfies the governance terms; never propose the prohibited production-shared target."
+      ],
+      "outputs_add": [
+        "conditional alternative target with its own authorization need"
+      ],
+      "resolves": {}
+    },
+    "evaluation-results-analysis": {
+      "trigger_signals": [
+        "Finished LLM experiment or evaluation runs must be compared on predeclared metrics with variance and failure slices",
+        "Someone asks whether a model or prompt variant is really better once uncertainty and cost are counted"
+      ],
+      "anti_add": [
+        {
+          "text": "Interpret a product or UX experiment against its go, pivot or kill rule",
+          "route": "results-analysis-and-decision-readout"
+        },
+        {
+          "text": "Check whether the data or metric itself is correct",
+          "route": "data-analysis-validation"
+        }
+      ],
+      "resolves": {
+        "evaluation-results-analysis#F1": "fixed: anti_add (results-analysis-and-decision-readout)"
+      },
+      "guidance": [
+        "Analysis split: data-analysis-validation checks the data, results-analysis-and-decision-readout interprets product experiments, evaluation-results-analysis interprets model evaluations."
+      ]
+    },
+    "implementation-spec-compliance-review": {
+      "trigger_signals": [
+        "An implementation must be checked against its approved requirements for missing, extra or contradicting behavior",
+        "Someone asks whether what was built is what was requested, nothing more and nothing less"
+      ],
+      "resolves": {}
+    },
+    "independent-blackbox-qa": {
+      "trigger_signals": [
+        "A built product must be exercised through its public surfaces by someone who has not seen the source",
+        "Someone asks for numbered, reproducible QA findings with route, state and expected versus observed behavior"
+      ],
+      "guidance": [
+        "A change-scope summary supplied by another owner may focus the test plan (routes, features, risk areas). It is an input, not permission to read source."
+      ],
+      "source_evidence_add": [
+        "qa-only/SKILL.md:594-645"
+      ],
+      "resolves": {
+        "independent-blackbox-qa#F1": "fixed: guidance (supplied change scope accepted without reading source)"
+      }
+    },
+    "independent-code-review": {
+      "trigger_signals": [
+        "A ref-bound code change needs an independent review for correctness, security, failure handling and test gaps",
+        "Someone asks whether a diff is safe to merge and wants concrete scenarios, not style preferences"
+      ],
+      "guidance": [
+        "Lead with findings that have a concrete failing scenario, a source citation and a consequence; put style notes last or omit them. An authorization, tenancy or injection defect outranks any number of naming issues.",
+        "Optional adversarial pass: after the standard review, try to break the change (malformed input, missing permissions, concurrent calls, partial failure) and report only scenarios you can trace through the code."
+      ],
+      "procedure_insert": [
+        {
+          "after": 2,
+          "text": "Rank findings by consequence; severe security and correctness defects come first, and style points never displace them."
+        }
+      ],
+      "source_evidence_add": [
+        "gstack/codex/SKILL.md:584-621"
+      ],
+      "resolves": {
+        "independent-code-review#F1": "fixed: reference fix (provider-review-comment-response replaced by pull-request-comment-response)",
+        "independent-code-review#F2": "deferred-to-eval: Phase R5 fresh holdout with a seeded authorization bug among style noise",
+        "independent-code-review#F3": "fixed: guidance (optional adversarial pass)"
+      }
+    },
+    "llm-evaluator-engineering": {
+      "trigger_signals": [
+        "An evaluator or judge for model outputs must be built against an explicit quality contract and calibrated on labeled cases",
+        "Someone asks for a rubric, deterministic checks and calibration fixtures with abstention and malformed-input handling"
+      ],
+      "resolves": {}
+    },
+    "llm-experiment-execution": {
+      "trigger_signals": [
+        "One reviewed, frozen LLM experiment must be launched against an exact dataset and evaluator versions under budget and transfer authorization",
+        "Someone asks for the exact run configuration, cost preview and cancellation path before an experiment is submitted"
+      ],
+      "guidance": [
+        "Deliver a complete run configuration pinned to the frozen values that were supplied (dataset version, evaluator versions, model and parameters, seeds, budget, stop rules). Use a REQUIRED placeholder only for a value the task did not provide, and list each such value with its owner.",
+        "Compute the cost preview with the arithmetic shown and name any unpriced component, such as a judge model, instead of leaving the total open."
+      ],
+      "outputs_add": [
+        "complete run configuration pinned to supplied frozen values, with placeholders only for unsupplied items"
+      ],
+      "source_evidence_add": [
+        "agent-observability-eval-pipeline/SKILL.md:467-504",
+        "agent-observability-eval-pipeline/SKILL.md:505-536"
+      ],
+      "resolves": {}
+    },
+    "llm-quality-evaluation": {
+      "trigger_signals": [
+        "Model outputs must be scored with deterministic metrics, factuality checks and calibrated judges, with agreement and uncertainty",
+        "Someone asks whether outputs meet a quality bar and which failure slices drive the gap"
+      ],
+      "resolves": {}
+    },
+    "model-and-workflow-benchmarking": {
+      "trigger_signals": [
+        "Two or more model, prompt or workflow variants must be compared on frozen cases for quality, latency and cost",
+        "Someone asks which variant to pick once run-to-run variance and failed cases are counted"
+      ],
+      "anti_add": [
+        {
+          "text": "Compare an application's performance before and after a code change",
+          "route": "baseline-regression-control"
+        },
+        {
+          "text": "Measure web page load and Core Web Vitals",
+          "route": "web-performance-diagnostics"
+        }
+      ],
+      "guidance": [
+        "Scope is model and workflow variants on frozen cases. Preview which providers and credentials a multi-provider benchmark would use before running anything, and never submit remotely."
+      ],
+      "source_evidence_add": [
+        "gstack/benchmark-models/SKILL.md:159-198"
+      ],
+      "resolves": {
+        "model-and-workflow-benchmarking#F1": "fixed: anti_add + guidance (scoped to model and workflow variants)"
+      }
+    },
+    "playwright-test-engineering": {
+      "trigger_signals": [
+        "A browser behavior needs an end-to-end Playwright test designed, or existing Playwright tests need running and diagnosing",
+        "Someone asks for role-based locators, web-first assertions and isolated fixtures for a user journey"
+      ],
+      "anti_add": [
+        {
+          "text": "Write or run unit or integration tests for Node modules with Vitest",
+          "route": "vitest-tooling"
+        }
+      ],
+      "guidance": [
+        "Candidate tests are delivered as artifacts. Applying them to the project is a separate authorized step owned by tdd-change-loop or isolated-task-implementation; name the one that fits and hand the artifact over."
+      ],
+      "source_evidence_add": [
+        "playwright-best-practices/SKILL.md:18-45",
+        "playwright-best-practices/SKILL.md:190-291"
+      ],
+      "resolves": {
+        "playwright-test-engineering#F1": "fixed: anti_add (vitest-tooling)",
+        "playwright-test-engineering#F2": "fixed: guidance (apply owner named)"
+      }
+    },
+    "qa-finding-triage": {
+      "trigger_signals": [
+        "A batch of QA findings must be deduplicated, severity-rated and routed to owners before a release decision",
+        "Someone asks which findings block release under the severity policy and which can be deferred"
+      ],
+      "guidance": [
+        "Recommend a disposition by release tier: quick fixes critical and high only, standard adds medium, exhaustive includes low; mark the rest deferred with the reason.",
+        "Deduplicate against findings a reviewer already skipped on this branch so the same item is not re-raised; merge true duplicates without losing affected variants."
+      ],
+      "source_evidence_add": [
+        "gstack/qa/SKILL.md:710-735",
+        "gstack/review/SKILL.md:766-805"
+      ],
+      "resolves": {
+        "qa-finding-triage#F1": "fixed: guidance (tier dispositions, prior-skip dedup)"
+      }
+    },
+    "safe-browser-probing": {
+      "trigger_signals": [
+        "One question about a page must be answered by a short, non-destructive browser session with captured evidence",
+        "Someone asks what a public page shows at a viewport, or whether a specific element renders, without logging in or changing state"
+      ],
+      "resolves": {}
+    },
+    "test-case-design-and-export": {
+      "trigger_signals": [
+        "Approved requirements must become traceable test cases with priority, data and expected results in a consumer-ready format",
+        "Someone asks which boundary, invalid and permission cases are missing and how good the case set is"
+      ],
+      "guidance": [
+        "Case-set quality, five dimensions: coverage of requirement points, executability, independence, maintainability, completeness of test types. Report each as a count (for example 14 of 16 requirement points covered) with the uncovered items listed. Do not print a bare numeric score that is not derived from counted items.",
+        "Cover every boundary value on both sides and just beyond (for example 20, 21 and 22 days), plus explicit rounding-midpoint cases and the order of discount and rounding. When a requirement is ambiguous at a boundary, add a blocked case that names the open question rather than assuming an answer; also ask about edge bands (for example the top age band) and about states such as resolved or closed items. Map one synthetic data record to each case and export every case, stating the count exported versus designed; do not assume a currency the requirements did not state."
+      ],
+      "outputs_add": [
+        "five-dimension case quality score in the coverage matrix",
+        "per-case synthetic data mapping"
+      ],
+      "source_evidence_add": [
+        "test-case-generator/SKILL.md:19-27",
+        "test-case-generator/SKILL.md:200-208"
+      ],
+      "resolves": {
+        "test-case-design-and-export#F1": "fixed: guidance + outputs_add (quality-score rubric moved here)",
+        "test-case-design-and-export#F2": "deferred-to-eval: Phase R5 fresh holdout; Phase D loss (omitted boundary, partial export) addressed by guidance"
+      }
+    },
+    "test-double-discipline": {
+      "trigger_signals": [
+        "A test needs isolation from a dependency and someone must decide between real code, a fake, a stub or a mock",
+        "Someone asks whether a mock is testing behavior or just mirroring the implementation"
+      ],
+      "resolves": {}
+    },
+    "testing-portfolio-strategy": {
+      "trigger_signals": [
+        "A system needs a risk-based choice of which checks run at which layer, who owns them and how fast feedback is",
+        "Someone asks where tests are missing or duplicated across unit, integration, contract and browser layers"
+      ],
+      "authored_content": [
+        "portfolio method is authored; the previously cited sources belong to test-case-design-and-export"
+      ],
+      "contract": {
+        "permission_identity": "read-only",
+        "execution": {
+          "external": "none",
+          "host_actions": [],
+          "model_tools": [
+            "read"
+          ],
+          "mutation_scope": "none",
+          "remote_write": false
+        }
+      },
+      "resolves": {
+        "testing-portfolio-strategy#F1": "fixed: contract override (read-only; the procedure runs nothing)",
+        "testing-portfolio-strategy#F2": "fixed: authored_content (sources reassigned to test-case-design-and-export)"
+      }
+    },
+    "vitest-tooling": {
+      "trigger_signals": [
+        "A JavaScript or TypeScript unit or integration test needs designing, or an existing Vitest suite needs running and diagnosing",
+        "Someone asks for controlled time, isolated modules and cleanup in Vitest tests"
+      ],
+      "anti_add": [
+        {
+          "text": "Write or run browser end-to-end tests",
+          "route": "playwright-test-engineering"
+        }
+      ],
+      "guidance": [
+        "Type tests use the .test-d.ts suffix with expectTypeOf. Run one test by file and line (vitest path/file.test.ts:10), use vitest run in CI, and pass a name filter to narrow a run."
+      ],
+      "source_evidence_add": [
+        "vitest/references/advanced-type-testing.md:10-23",
+        "vitest/references/core-cli.md:14-28"
+      ],
+      "resolves": {
+        "vitest-tooling#F1": "fixed: anti_add (playwright-test-engineering)",
+        "vitest-tooling#F2": "fixed: guidance (type tests, file:line selection)"
+      }
+    },
+    "website-audit-assessment": {
+      "trigger_signals": [
+        "An authorized website needs an independent audit across content, accessibility, SEO, performance, security signals and links",
+        "Someone asks for a reproducible findings list and a before and after comparison with an earlier audit"
+      ],
+      "guidance": [
+        "When a prior audit exists, reassess with a baseline diff (regression since the baseline) and report new, fixed and unchanged findings rather than only a fresh list."
+      ],
+      "source_evidence_add": [
+        "audit-website/references/OUTPUT-FORMAT.md:123-160"
+      ],
+      "resolves": {
+        "website-audit-assessment#F1": "fixed: guidance (baseline diff reassessment)"
+      }
+    }
+  }
+}

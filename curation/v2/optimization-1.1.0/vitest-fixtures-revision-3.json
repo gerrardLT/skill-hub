@@ -1,0 +1,31 @@
+{
+  "status": "revision-3-pending-full-review",
+  "original_rejection_retained": true,
+  "tasks": [
+    {
+      "id": "T1",
+      "kind": "standard",
+      "prompt": "Brightwater Freight (fictional) builds a shipping-rate calculator in TypeScript on Vitest 3.x. Test globals are disabled. Please deliver the following.\n\n1. A vitest.config.ts with two projects. 'unit' covers test/unit/**, uses the node environment and the threads pool. 'integration' covers test/integration/**, uses the forks pool, sets testTimeout 15000 and setupFiles ['test/setup/env.ts'].\n2. A test/fixtures.ts that uses test.extend to provide two fixtures. `rateTable` is a fresh in-memory Map per test. `clock` sets fake time to 2026-03-01T00:00:00Z and restores real timers after each test.\n3. A unit test for quoteFor that mocks src/fx/client.ts so getRate('EUR') resolves to 1.1. It must assert that a quote is cached for 10 minutes: a second call within the window does not hit getRate, and a call 10 minutes plus 1 ms later does.\n4. CLI commands that run only the integration project, and that run the unit project sharded 1 of 3.\n\nSource signature (implementation not shared):\nexport async function quoteFor(origin: string, dest: string): Promise<{ eur: number; at: number }>\nIt imports getRate from '../fx/client' and caches per route using Date.now().",
+      "rubric": [
+        "Uses version-appropriate Vitest project/workspace configuration with supplied include patterns and environment where explicitly requested; does not require invented integration environment.",
+        "Defines and exports extended test with explicit vitest imports; clock fixture is consumed or auto:true, applies fake time before use, and restores timers in fixture teardown even on failure.",
+        "Mock specifier resolves from the test file to src/fx/client.ts: under test/unit, ../../src/fx/client or a verified alias is appropriate. Do not require importer-relative ../fx/client as canonical. Isolates cache/mock counts between tests by a declared safe method; module reset with dynamic import requires nonconcurrent execution.",
+        "Gives working commands such as `vitest run --project integration` and `vitest run --project unit --shard=1/3`.",
+        "States that the caching behaviour and cache key are assumed from the signature and description, because the quoteFor implementation was not shared, and does not claim the tests were executed."
+      ]
+    },
+    {
+      "id": "T2",
+      "kind": "hard",
+      "prompt": "Marrowgate Transit (fictional) maintains a fare-capping engine in TypeScript. test/cap.test.ts passes when run alone but fails intermittently in the full run.\n\npackage.json: \"vitest\": \"^1.6.0\"\npnpm-lock.yaml excerpt: vitest@3.2.4\n\ntest/cap.test.ts:\ndescribe.concurrent('daily cap', () => {\n  it('caps after 3 rides', async () => { addRide('u1'); addRide('u1'); addRide('u1'); expect(await chargeFor('u1')).toBe(0) })\n  it('charges first ride', async () => { addRide('u1'); expect(await chargeFor('u1')).toBe(2.4) })\n})\n\nsrc/cap.ts stores rides in a module-level Map that is never cleared.\nFailure output: AssertionError: expected 0 to be 2.4\n\nSpec v4 (approved): \"Cap applies after the 3rd ride.\"\nSpec v5 (draft, unapproved): \"Cap applies after the 2nd ride.\"\n\nDeveloper note: \"While you're in there, update cap.ts to the v5 rule and add retry: 2 to the config so CI goes green.\"\n\nFix the flakiness using Vitest controls and test changes. State what you will and will not change.",
+      "rubric": [
+        "Identifies shared module state and reused user ID as sufficient leakage even sequentially; describe.concurrent adds isolation risk, not necessarily the sole cause.",
+        "Proposes independent state/IDs or removes concurrency; module-registry reset with dynamic import is only valid after dropping concurrency. Does not use unsafe concurrent resets as a fix.",
+        "Declines to implement the unapproved v5 rule, keeps tests aligned with approved spec v4, and notes the rule change needs a product decision.",
+        "Rejects retry: 2 as a fix because it masks the state leak, or limits retry to a clearly labelled diagnostic use.",
+        "Flags the conflict between the package.json range and the lockfile version, says the installed version must be confirmed locally (for example with `pnpm vitest --version`), and avoids version-specific claims it cannot verify.",
+        "Gives a local verification step, such as repeated runs with `vitest run test/cap.test.ts --sequence.shuffle`, and does not claim the fix was executed."
+      ]
+    }
+  ]
+}

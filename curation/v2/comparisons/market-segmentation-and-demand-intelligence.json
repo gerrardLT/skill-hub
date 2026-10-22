@@ -1,0 +1,335 @@
+{
+  "candidate_responsibility": "Identify demand-side alternatives, market segments, incumbent signals, and the customer situations that define competition.",
+  "canonical_unit_ids": [
+    "competitive-strategy:unit-003",
+    "competitive-strategy:unit-007",
+    "competitive-strategy:unit-008",
+    "competitive-strategy:unit-022",
+    "competitive-strategy:unit-061",
+    "competitive-strategy:unit-063",
+    "competitive-strategy:unit-064",
+    "competitive-strategy:unit-078",
+    "competitive-strategy:unit-079",
+    "competitive-strategy:unit-090",
+    "competitive-strategy:unit-092"
+  ],
+  "cluster_id": "cluster:market-segmentation-and-demand-intelligence",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "competitive-strategy/SKILL.md:14-14",
+    "competitive-strategy/SKILL.md:21-24",
+    "competitive-strategy/SKILL.md:26-29",
+    "competitive-strategy/SKILL.md:66-66",
+    "competitive-strategy/references/artifacts.md:207-220",
+    "competitive-strategy/references/artifacts.md:227-230",
+    "competitive-strategy/references/artifacts.md:232-235",
+    "competitive-strategy/references/guest-insights.md:179-188",
+    "competitive-strategy/references/guest-insights.md:205-214",
+    "competitive-strategy/references/guest-insights.md:24-33",
+    "competitive-strategy/references/guest-insights.md:39-48"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:market-segmentation-and-demand-intelligence"
+      ],
+      "id": "cluster:market-segmentation-and-demand-intelligence:fusion:boundary",
+      "rule": "Identify demand-side alternatives, market segments, incumbent signals, and the customer situations that define competition."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:market-segmentation-and-demand-intelligence"
+      ],
+      "id": "cluster:market-segmentation-and-demand-intelligence:fusion:inputs",
+      "rule": "Accept only: Customer situations, alternatives, segment constraints, incumbent observations, and market evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:market-segmentation-and-demand-intelligence"
+      ],
+      "id": "cluster:market-segmentation-and-demand-intelligence:fusion:outputs",
+      "rule": "Produce only: A demand-side map, segment choice, market signal interpretation, and evidence gaps."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:market-segmentation-and-demand-intelligence:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Customer situations, alternatives, segment constraints, incumbent observations, and market evidence.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "competitive-strategy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "competitive-strategy"
+      ]
+    }
+  ],
+  "output_boundary": "A demand-side map, segment choice, market signal interpretation, and evidence gaps.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "从客户实际情境、期望进展和产品消失后的替代行为建立 demand-side 竞争集合。; 用客户情境和实际替代行为修正按技术类别得到的竞品清单。; 把 incumbent 发布记录为方向或商品化信号，并与已发生的即时影响分开判断。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "limitations": "Explicit limits: 需要客户访谈、替代行为或情境数据；没有 situational evidence 时保持未知。; 必须由客户情境与实际替代支持；技术类别只能作候选。; 发布仅是 signal，不等于即时 impact、必然商品化或确定结果。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 11 source-grounded atom(s) for responsibility (example=4, method=3, rule=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-003",
+        "competitive-strategy:unit-007",
+        "competitive-strategy:unit-008",
+        "competitive-strategy:unit-022",
+        "competitive-strategy:unit-061",
+        "competitive-strategy:unit-063",
+        "competitive-strategy:unit-064",
+        "competitive-strategy:unit-078",
+        "competitive-strategy:unit-079",
+        "competitive-strategy:unit-090",
+        "competitive-strategy:unit-092"
+      ]
+    },
+    {
+      "approach": "从客户实际情境、期望进展和产品消失后的替代行为建立 demand-side 竞争集合。; 在 demand-side 模块需要补充产品消失后的替代方案与客户使用情境证据时，可选用该问题询问。; 以 Booking.com 的二三级目的地、局部高密度页面和多语言查询组合作为 long-tail foothold 案例。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33"
+      ],
+      "limitations": "Explicit limits: 需要客户访谈、替代行为或情境数据；没有 situational evidence 时保持未知。; 仅在替代方案或客户情境证据不足时适用；未选用该问题不构成失败，也不得在无客户证据时推测答案。; 100x 与案例结果 均为 source-case 数字，不是普遍阈值；类比需独立机制证据。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 8 source-grounded atom(s) for method (example=4, method=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-003",
+        "competitive-strategy:unit-022",
+        "competitive-strategy:unit-061",
+        "competitive-strategy:unit-063",
+        "competitive-strategy:unit-064",
+        "competitive-strategy:unit-078",
+        "competitive-strategy:unit-090",
+        "competitive-strategy:unit-092"
+      ]
+    },
+    {
+      "approach": "需要客户访谈、替代行为或情境数据；没有 situational evidence 时保持未知。; 必须由客户情境与实际替代支持；技术类别只能作候选。; 发布仅是 signal，不等于即时 impact、必然商品化或确定结果。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "limitations": "Explicit limits: 需要客户访谈、替代行为或情境数据；没有 situational evidence 时保持未知。; 必须由客户情境与实际替代支持；技术类别只能作候选。; 发布仅是 signal，不等于即时 impact、必然商品化或确定结果。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 11 source-grounded atom(s) for boundary-and-applicability (example=4, method=3, rule=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-003",
+        "competitive-strategy:unit-007",
+        "competitive-strategy:unit-008",
+        "competitive-strategy:unit-022",
+        "competitive-strategy:unit-061",
+        "competitive-strategy:unit-063",
+        "competitive-strategy:unit-064",
+        "competitive-strategy:unit-078",
+        "competitive-strategy:unit-079",
+        "competitive-strategy:unit-090",
+        "competitive-strategy:unit-092"
+      ]
+    },
+    {
+      "approach": "在 demand-side 模块需要补充产品消失后的替代方案与客户使用情境证据时，可选用该问题询问。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "competitive-strategy/SKILL.md:66-66"
+      ],
+      "limitations": "Explicit limits: 仅在替代方案或客户情境证据不足时适用；未选用该问题不构成失败，也不得在无客户证据时推测答案。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-022"
+      ]
+    },
+    {
+      "approach": "竞争 map 列 customer situation、desired progress、actual substitute、technical-category candidate 及确认状态；不得仅凭品类确认 rival。; 检查 signal log 分列 launch、signal、immediate impact、future hypothesis、confirmation metric；写成确定结果则失败。; 检查输出逐项记录 incumbent launch、free-core change、observed impact、affected metrics、shutdown option、target segment、pivot evidence；缺少决定性前提时标 unknown/defer，不得越权下结论。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "limitations": "Explicit limits: 必须由客户情境与实际替代支持；技术类别只能作候选。; 发布仅是 signal，不等于即时 impact、必然商品化或确定结果。; 紧邻 block quote 是本地 quote-backed evidence；title/URL/timestamp 未外部核验。launch 是 signal；无实际 impact 与 segment evidence 不得关闭产品。",
+      "source_id": "competitive-strategy",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "competitive-strategy:unit-007",
+        "competitive-strategy:unit-008",
+        "competitive-strategy:unit-079"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "competitive-strategy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "competitive-strategy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "example": 4,
+        "method": 3,
+        "rule": 3,
+        "template": 1
+      },
+      "evidence": [
+        "competitive-strategy/SKILL.md:14-14",
+        "competitive-strategy/SKILL.md:21-24",
+        "competitive-strategy/SKILL.md:26-29",
+        "competitive-strategy/SKILL.md:66-66",
+        "competitive-strategy/references/artifacts.md:207-220",
+        "competitive-strategy/references/artifacts.md:227-230",
+        "competitive-strategy/references/artifacts.md:232-235",
+        "competitive-strategy/references/guest-insights.md:179-188",
+        "competitive-strategy/references/guest-insights.md:205-214",
+        "competitive-strategy/references/guest-insights.md:24-33",
+        "competitive-strategy/references/guest-insights.md:39-48"
+      ],
+      "source_id": "competitive-strategy",
+      "unit_ids": [
+        "competitive-strategy:unit-003",
+        "competitive-strategy:unit-007",
+        "competitive-strategy:unit-008",
+        "competitive-strategy:unit-022",
+        "competitive-strategy:unit-061",
+        "competitive-strategy:unit-063",
+        "competitive-strategy:unit-064",
+        "competitive-strategy:unit-078",
+        "competitive-strategy:unit-079",
+        "competitive-strategy:unit-090",
+        "competitive-strategy:unit-092"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "competitive-strategy:unit-003",
+    "competitive-strategy:unit-007",
+    "competitive-strategy:unit-008",
+    "competitive-strategy:unit-022",
+    "competitive-strategy:unit-061",
+    "competitive-strategy:unit-063",
+    "competitive-strategy:unit-064",
+    "competitive-strategy:unit-078",
+    "competitive-strategy:unit-079",
+    "competitive-strategy:unit-090",
+    "competitive-strategy:unit-092"
+  ]
+}

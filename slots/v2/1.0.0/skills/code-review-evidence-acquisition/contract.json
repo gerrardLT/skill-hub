@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "review evidence bundle",
+    "base-head and provider identity manifest",
+    "acquisition command records",
+    "evidence completeness result"
+  ],
+  "capability_id": "capability:code-review-evidence-acquisition",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Review evidence is valid only when bound to exact base/head refs and provider identity; acquisition authority never includes findings, comments, labels, source edits, or remote writes.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "code-review-evidence-acquisition",
+  "inputs": [
+    "Change identity, base and head refs, approved provider read access, review scope, and untrusted-content boundary."
+  ],
+  "outputs": [
+    "review evidence bundle",
+    "base-head and provider identity manifest",
+    "acquisition command records",
+    "evidence completeness result"
+  ],
+  "permission_identity": "local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "base-head-refs",
+      "provider-read-only",
+      "evidence-provenance",
+      "no-findings",
+      "no-comments",
+      "completeness"
+    ],
+    "data_governance": false,
+    "external_or_system_action": true,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Acquire authorized repository and provider-read evidence for a code review, bind it to exact refs, and stop before issuing findings or comments.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "azure-kubernetes",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "ef3260822b8a5dc2e24cef046fde72aa08a8879e8ea12e4404ec1252aac999b6",
+    "identity": "kubernetes-application-deployment@0.1.0-v2-candidate",
+    "skill_sha256": "333ce1eb8feb77eb28e724993af211c50c8da3e3e8afc49dcafb9ad0284144b6"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-kubernetes-application-deployment-holdout-trigger-01",
+    "V2-P7-kubernetes-application-deployment-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-kubernetes-application-deployment-01",
+      "remove_exact_text": "Kubernetes deployment is bound to one cluster, namespace, manifest set, image digest, identity, rollout, health gate, and rollback revision; readiness failure or unexpected diff blocks apply.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "kubernetes-application-deployment",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_skill_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_status": {
+            "enum": [
+              "route",
+              "needs-input",
+              "blocked"
+            ]
+          },
+          "forbidden_skill_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "pattern": "^V2-P3-",
+            "type": "string"
+          },
+          "input": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "should-trigger",
+              "should-not-trigger",
+              "boundary",
+              "authority-stop"
+            ]
+          },
+          "reason": {
+            "minLength": 10,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "input",
+          "expected_skill_id",
+          "forbidden_skill_ids",
+          "expected_status",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "minItems": 6,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "skill_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "skill_id",
+    "cases"
+  ],
+  "type": "object"
+}

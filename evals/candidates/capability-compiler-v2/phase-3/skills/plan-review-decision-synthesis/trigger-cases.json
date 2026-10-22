@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "plan-review-decision-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "executive-plan-review",
+        "design-plan-review",
+        "developer-experience-plan-review"
+      ],
+      "id": "V2-P3-plan-review-decision-synthesis-trigger-01",
+      "input": "Combine these executive, design, DX, and engineering reviews into a decision matrix.",
+      "kind": "should-trigger",
+      "reason": "Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews."
+    },
+    {
+      "expected_skill_id": "plan-review-decision-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "independent-plan-review",
+        "executive-plan-review",
+        "design-plan-review",
+        "developer-experience-plan-review"
+      ],
+      "id": "V2-P3-plan-review-decision-synthesis-trigger-02",
+      "input": "Synthesize conflicting plan-review findings while preserving dissent and human taste choices.",
+      "kind": "should-trigger",
+      "reason": "Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews."
+    },
+    {
+      "expected_skill_id": "design-plan-review",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "plan-review-decision-synthesis"
+      ],
+      "id": "V2-P3-plan-review-decision-synthesis-anti-01",
+      "input": "Perform the independent design review that is missing.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility design-plan-review."
+    },
+    {
+      "expected_skill_id": "implementation-planning-and-handoff",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "plan-review-decision-synthesis"
+      ],
+      "id": "V2-P3-plan-review-decision-synthesis-anti-02",
+      "input": "Approve and edit the plan using the synthesized recommendations.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility implementation-planning-and-handoff."
+    },
+    {
+      "expected_skill_id": "plan-review-decision-synthesis",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-plan-review-decision-synthesis-boundary-01",
+      "input": "Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "plan-review-decision-synthesis",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-plan-review-decision-synthesis-authority-01",
+      "input": "Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews. Then make and approve the final GO, PIVOT, KILL, scope, or strategy decision without the named human owner.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "plan-review-decision-synthesis"
+}

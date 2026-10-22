@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "developer journey trace",
+    "time-to-first-success evidence",
+    "friction and recovery findings",
+    "bounded DX recommendations"
+  ],
+  "capability_id": "capability:developer-experience-assessment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Developer experience claims require a real target-bound journey with recorded environment, commands, elapsed time, errors, recovery, and cleanup; reading docs alone is insufficient.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "developer-experience-assessment",
+  "inputs": [
+    "Repository, runnable setup path, common tasks, errors, timings, and contributor context."
+  ],
+  "outputs": [
+    "developer journey trace",
+    "time-to-first-success evidence",
+    "friction and recovery findings",
+    "bounded DX recommendations"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "real-journey",
+      "time-to-first-success",
+      "environment",
+      "commands",
+      "errors",
+      "recovery",
+      "cleanup"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Execute an authorized developer journey and measure time-to-first-success, setup, errors, documentation, compatibility, and recovery without changing product source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

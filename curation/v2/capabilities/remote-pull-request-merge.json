@@ -1,0 +1,46 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:remote-pull-request-merge",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-1244"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Pull request identity, fresh CI and review evidence, mergeability, approved method, current authorization, and rollback plan."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Remote Pull Request Merge",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Merge receipt and resulting ref, or a fail-closed readiness, conflict, permission, or provider error."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [],
+  "responsibility": "Merge one identified pull request using an allowed repository method only after a fresh readiness gate and explicit per-action authorization.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "gstack/land-and-deploy/sections/merge-and-deploy.md:1-145"
+  ],
+  "source_fragment_ids": [
+    "gstack/land-and-deploy/sections/merge-and-deploy.md:1-145"
+  ],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

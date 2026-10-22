@@ -1,0 +1,1066 @@
+{
+  "candidate_responsibility": "Require a fresh complete command, output inspection, and exit-code check before any success or completion claim.",
+  "canonical_unit_ids": [
+    "audit-website:unit-008",
+    "playwright-best-practices:unit-013",
+    "qao-gate-interactive-evidence-chain",
+    "ship:unit-006",
+    "test-driven-development:unit-014",
+    "verification-before-completion:unit-001",
+    "verification-before-completion:unit-002",
+    "verification-before-completion:unit-003",
+    "verification-before-completion:unit-004",
+    "verification-before-completion:unit-005",
+    "verification-before-completion:unit-006",
+    "verification-before-completion:unit-007",
+    "verification-before-completion:unit-008",
+    "verification-before-completion:unit-009",
+    "verification-before-completion:unit-010",
+    "verification-before-completion:unit-011",
+    "verification-before-completion:unit-012",
+    "verification-before-completion:unit-013",
+    "verification-before-completion:unit-014",
+    "vitest:unit-019"
+  ],
+  "cluster_id": "cluster:completion-evidence-gate",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "audit-website/SKILL.md:83-86",
+    "playwright-best-practices/SKILL.md:293-303",
+    "qa-only/SKILL.md:754-762",
+    "ship/SKILL.md:909-936",
+    "test-driven-development/SKILL.md:328-342",
+    "verification-before-completion/SKILL.md:1-10",
+    "verification-before-completion/SKILL.md:1-15",
+    "verification-before-completion/SKILL.md:102-107",
+    "verification-before-completion/SKILL.md:108-116",
+    "verification-before-completion/SKILL.md:117-132",
+    "verification-before-completion/SKILL.md:133-139",
+    "verification-before-completion/SKILL.md:16-23",
+    "verification-before-completion/SKILL.md:24-39",
+    "verification-before-completion/SKILL.md:40-51",
+    "verification-before-completion/SKILL.md:52-62",
+    "verification-before-completion/SKILL.md:63-75",
+    "verification-before-completion/SKILL.md:77-83",
+    "verification-before-completion/SKILL.md:84-89",
+    "verification-before-completion/SKILL.md:90-95",
+    "verification-before-completion/SKILL.md:96-101",
+    "vitest/references/features-coverage.md:17-51"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:completion-evidence-gate:fusion:boundary",
+      "rule": "Require a fresh complete command, output inspection, and exit-code check before any success or completion claim."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:completion-evidence-gate:fusion:inputs",
+      "rule": "Accept only: A proposed status claim and the command capable of proving it."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate"
+      ],
+      "id": "cluster:completion-evidence-gate:fusion:outputs",
+      "rule": "Produce only: An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:completion-evidence-gate:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A proposed status claim and the command capable of proving it.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "playwright-best-practices",
+        "qa-only",
+        "ship",
+        "test-driven-development",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "playwright-best-practices",
+        "qa-only",
+        "ship",
+        "test-driven-development",
+        "verification-before-completion",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "playwright-best-practices",
+        "qa-only",
+        "ship",
+        "test-driven-development",
+        "verification-before-completion",
+        "vitest"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "audit-website",
+        "playwright-best-practices",
+        "qa-only",
+        "ship",
+        "test-driven-development",
+        "verification-before-completion",
+        "vitest"
+      ]
+    }
+  ],
+  "output_boundary": "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report.",
+  "retained_auxiliary_unit_ids": [
+    "skills/verification-before-completion/SKILL.md:summary:gates"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "审计治理完结签署门禁（Definition of Done）：所有 error 必须修复、warning 修复或已明确归档、二次审计验证提升、用户已获得前后对比汇报",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Explicit limits: 任务标记完成前的终审卡点",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "任务标记完成前的终审卡点",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Explicit limits: 任务标记完成前的终审卡点",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "满足四大完备性准则，杜绝未经验证的草率收尾",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Explicit limits: 任务标记完成前的终审卡点",
+      "source_id": "audit-website",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "audit-website:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "audit-website",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "测试闭环验证循环门禁（Test Validation Loop）：编写或修改用例后必须执行测试；失败时查阅 trace 精准修复；仅在全量通过后方可推进；核心用例必须使用 --repeat-each=5 检验稳定性",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Explicit limits: 任何测试用例新增或重构提交前的强制闭环准则",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "任何测试用例新增或重构提交前的强制闭环准则",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Explicit limits: 任何测试用例新增或重构提交前的强制闭环准则",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "用例可重现、无脆弱性，并通过多轮重复测试验证方可放行",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Explicit limits: 任何测试用例新增或重构提交前的强制闭环准则",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-013"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "交互类缺陷双层证据门禁：必须按照动作前截屏、触发动作、动作后截屏、打印快照差分、编写关联截图的复现步骤五步留痕。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Explicit limits: 对于涉及页面交互、按钮失灵或表单故障的Issue建档时强制执行。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-gate-interactive-evidence-chain"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "对于涉及页面交互、按钮失灵或表单故障的Issue建档时强制执行。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Explicit limits: 对于涉及页面交互、按钮失灵或表单故障的Issue建档时强制执行。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-gate-interactive-evidence-chain"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "缺陷报告具备动作前后对比截图与DOM Snapshot Diff证据链。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Explicit limits: 对于涉及页面交互、按钮失灵或表单故障的Issue建档时强制执行。",
+      "source_id": "qa-only",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "qao-gate-interactive-evidence-chain"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "qa-only",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "新鲜验证凭据铁律门禁：严禁在缺乏新鲜验证凭证的情况下声称完成；任何非放行代码修改后必须全量重新跑测记录证据",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Explicit limits: 分支推送及创建 PR 之前的终极验收门禁",
+      "source_id": "ship",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "分支推送及创建 PR 之前的终极验收门禁",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Explicit limits: 分支推送及创建 PR 之前的终极验收门禁",
+      "source_id": "ship",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "代码与测试执行时间戳严格匹配，杜绝凭空推断与过期缓存",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Explicit limits: 分支推送及创建 PR 之前的终极验收门禁",
+      "source_id": "ship",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "完工核验清单（Verification Checklist）：在将任务标记为完成前，必须确认 8 项检查：每个新函数均有测试、每个测试亲见失败、失败原因符合预期、写最小代码通过、所有测试全绿、输出纯净无污染、使用真实代码测试、边界与错误已覆盖；未全满足则视作跳过 TDD 须重来。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Explicit limits: 在声明开发任务完成前强制执行的最终交付门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在声明开发任务完成前强制执行的最终交付门禁。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Explicit limits: 在声明开发任务完成前强制执行的最终交付门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否逐条落实 8 项交付检查点并确立不达标即重新执行的刚性约束。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Explicit limits: 在声明开发任务完成前强制执行的最终交付门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (gate=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "test-driven-development:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "完成前验证核心哲学与诚实守则：未经验证即宣称工作完成是缺乏诚实而非高效；核心原则永远是'先出证据，后作断言'（Evidence before claims, always）；违反规则的字面即是违反其实质精神。; 完成验证铁律（The Iron Law）：严禁在缺乏鲜活验证证据的情况下宣称完成（NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE）；若在当前消息上下文中未实际运行验证命令，严禁宣称测试通过或状态正常。; 五步门禁验证函数（The Gate Function）：在宣称任何状态或表达满意度之前必须按顺序执行五步：1. IDENTIFY 确定证明断言的完整命令；2. RUN 执行新鲜完整的全量命令；3. READ 阅读完整输出、检查退出码并清点失败数；4. VERIFY 确认输出是否支持断言；5. ONLY THEN 发表断言。跳过任何一步视同欺骗。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Explicit limits: 贯穿所有开发、测试、修复与交付阶段的最顶层道德与工程约束。; 在任何即将表达完成或通过的时刻触发强制拦截。; 发表任何状态声明前必须单向依次走完的 5 步硬性流程。",
+      "source_id": "verification-before-completion",
+      "strengths": "Provides 15 source-grounded atom(s) for responsibility (gate=4, method=5, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/verification-before-completion/SKILL.md:summary:gates",
+        "verification-before-completion:unit-001",
+        "verification-before-completion:unit-002",
+        "verification-before-completion:unit-003",
+        "verification-before-completion:unit-004",
+        "verification-before-completion:unit-005",
+        "verification-before-completion:unit-006",
+        "verification-before-completion:unit-007",
+        "verification-before-completion:unit-008",
+        "verification-before-completion:unit-009",
+        "verification-before-completion:unit-010",
+        "verification-before-completion:unit-011",
+        "verification-before-completion:unit-012",
+        "verification-before-completion:unit-013",
+        "verification-before-completion:unit-014"
+      ]
+    },
+    {
+      "approach": "测试验证实测标准模式：正确模式为运行测试命令 -> 亲眼看到全部通过统计（如 34/34 pass） -> 正式发表'所有测试通过'的结论；错误模式为使用'现在应该过了'或'看起来是对的'进行推测。; 回归测试红绿闭环验证模式：正确模式为编写测试 -> 运行（必须通过） -> 回滚修复代码 -> 运行（必须失败） -> 恢复修复 -> 再次运行（通过）；严禁在未经过红绿翻转检验前妄称'已写好回归测试'。; 项目构建验证标准模式：正确模式为运行实际构建命令 -> 亲眼确认进程退出码为 0（exit 0） -> 声明'构建通过'；错误模式为使用'代码规范检查（Linter）通过'冒充构建成功（Linter 不负责类型解析与编译全过程）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Explicit limits: 对测试套件执行通过性验证时的行为模式准则。; 验证新添加的测试用例是否真正具备缺陷捕获能力。; 对代码进行构建与编译校验时的唯一合法验证流程。",
+      "source_id": "verification-before-completion",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "verification-before-completion:unit-007",
+        "verification-before-completion:unit-008",
+        "verification-before-completion:unit-009",
+        "verification-before-completion:unit-010",
+        "verification-before-completion:unit-011"
+      ]
+    },
+    {
+      "approach": "贯穿所有开发、测试、修复与交付阶段的最顶层道德与工程约束。; 在任何即将表达完成或通过的时刻触发强制拦截。; 发表任何状态声明前必须单向依次走完的 5 步硬性流程。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Explicit limits: 贯穿所有开发、测试、修复与交付阶段的最顶层道德与工程约束。; 在任何即将表达完成或通过的时刻触发强制拦截。; 发表任何状态声明前必须单向依次走完的 5 步硬性流程。",
+      "source_id": "verification-before-completion",
+      "strengths": "Provides 15 source-grounded atom(s) for boundary-and-applicability (gate=4, method=5, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/verification-before-completion/SKILL.md:summary:gates",
+        "verification-before-completion:unit-001",
+        "verification-before-completion:unit-002",
+        "verification-before-completion:unit-003",
+        "verification-before-completion:unit-004",
+        "verification-before-completion:unit-005",
+        "verification-before-completion:unit-006",
+        "verification-before-completion:unit-007",
+        "verification-before-completion:unit-008",
+        "verification-before-completion:unit-009",
+        "verification-before-completion:unit-010",
+        "verification-before-completion:unit-011",
+        "verification-before-completion:unit-012",
+        "verification-before-completion:unit-013",
+        "verification-before-completion:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "verification-before-completion",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立'先证据后断言'及字面等同精神的最高诚实守则。; 核验是否包含无鲜活证据绝不宣称完成的绝对铁律与本轮会话实测要求。; 核验是否完整包含 IDENTIFY、RUN、READ、VERIFY、ONLY THEN 五个不可跳过的步骤。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75"
+      ],
+      "limitations": "Explicit limits: 贯穿所有开发、测试、修复与交付阶段的最顶层道德与工程约束。; 在任何即将表达完成或通过的时刻触发强制拦截。; 发表任何状态声明前必须单向依次走完的 5 步硬性流程。",
+      "source_id": "verification-before-completion",
+      "strengths": "Provides 10 source-grounded atom(s) for gates-and-validation (gate=4, rule=6); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/verification-before-completion/SKILL.md:summary:gates",
+        "verification-before-completion:unit-001",
+        "verification-before-completion:unit-002",
+        "verification-before-completion:unit-003",
+        "verification-before-completion:unit-004",
+        "verification-before-completion:unit-005",
+        "verification-before-completion:unit-006",
+        "verification-before-completion:unit-012",
+        "verification-before-completion:unit-013",
+        "verification-before-completion:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "verification-before-completion",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "verification-before-completion",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "代码覆盖率配置与质量门禁规程：配置 V8 提供者、显式 include 范围及行/函数/分支/语句 80% 阈值门禁",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Explicit limits: 项目 CI 流水线测试覆盖率准出校验",
+      "source_id": "vitest",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "项目 CI 流水线测试覆盖率准出校验",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Explicit limits: 项目 CI 流水线测试覆盖率准出校验",
+      "source_id": "vitest",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "运行覆盖率统计，若任何维度未达到配置阈值则直接使进程返回非零退出码",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Explicit limits: 项目 CI 流水线测试覆盖率准出校验",
+      "source_id": "vitest",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "vitest:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "vitest",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "audit-website/SKILL.md:83-86"
+      ],
+      "source_id": "audit-website",
+      "unit_ids": [
+        "audit-website:unit-008"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "playwright-best-practices/SKILL.md:293-303"
+      ],
+      "source_id": "playwright-best-practices",
+      "unit_ids": [
+        "playwright-best-practices:unit-013"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "qa-only/SKILL.md:754-762"
+      ],
+      "source_id": "qa-only",
+      "unit_ids": [
+        "qao-gate-interactive-evidence-chain"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "ship/SKILL.md:909-936"
+      ],
+      "source_id": "ship",
+      "unit_ids": [
+        "ship:unit-006"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1
+      },
+      "evidence": [
+        "test-driven-development/SKILL.md:328-342"
+      ],
+      "source_id": "test-driven-development",
+      "unit_ids": [
+        "test-driven-development:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 4,
+        "method": 5,
+        "rule": 6
+      },
+      "evidence": [
+        "verification-before-completion/SKILL.md:1-10",
+        "verification-before-completion/SKILL.md:1-15",
+        "verification-before-completion/SKILL.md:102-107",
+        "verification-before-completion/SKILL.md:108-116",
+        "verification-before-completion/SKILL.md:117-132",
+        "verification-before-completion/SKILL.md:133-139",
+        "verification-before-completion/SKILL.md:16-23",
+        "verification-before-completion/SKILL.md:24-39",
+        "verification-before-completion/SKILL.md:40-51",
+        "verification-before-completion/SKILL.md:52-62",
+        "verification-before-completion/SKILL.md:63-75",
+        "verification-before-completion/SKILL.md:77-83",
+        "verification-before-completion/SKILL.md:84-89",
+        "verification-before-completion/SKILL.md:90-95",
+        "verification-before-completion/SKILL.md:96-101"
+      ],
+      "source_id": "verification-before-completion",
+      "unit_ids": [
+        "skills/verification-before-completion/SKILL.md:summary:gates",
+        "verification-before-completion:unit-001",
+        "verification-before-completion:unit-002",
+        "verification-before-completion:unit-003",
+        "verification-before-completion:unit-004",
+        "verification-before-completion:unit-005",
+        "verification-before-completion:unit-006",
+        "verification-before-completion:unit-007",
+        "verification-before-completion:unit-008",
+        "verification-before-completion:unit-009",
+        "verification-before-completion:unit-010",
+        "verification-before-completion:unit-011",
+        "verification-before-completion:unit-012",
+        "verification-before-completion:unit-013",
+        "verification-before-completion:unit-014"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "vitest/references/features-coverage.md:17-51"
+      ],
+      "source_id": "vitest",
+      "unit_ids": [
+        "vitest:unit-019"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "audit-website:unit-008",
+    "playwright-best-practices:unit-013",
+    "qao-gate-interactive-evidence-chain",
+    "ship:unit-006",
+    "skills/verification-before-completion/SKILL.md:summary:gates",
+    "test-driven-development:unit-014",
+    "verification-before-completion:unit-001",
+    "verification-before-completion:unit-002",
+    "verification-before-completion:unit-003",
+    "verification-before-completion:unit-004",
+    "verification-before-completion:unit-005",
+    "verification-before-completion:unit-006",
+    "verification-before-completion:unit-007",
+    "verification-before-completion:unit-008",
+    "verification-before-completion:unit-009",
+    "verification-before-completion:unit-010",
+    "verification-before-completion:unit-011",
+    "verification-before-completion:unit-012",
+    "verification-before-completion:unit-013",
+    "verification-before-completion:unit-014",
+    "vitest:unit-019"
+  ]
+}

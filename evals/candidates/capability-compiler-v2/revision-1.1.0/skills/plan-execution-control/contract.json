@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "plan execution state ledger",
+    "step and dependency status",
+    "checkpoint and evidence map",
+    "invalidation, pause, and resume instructions"
+  ],
+  "capability_id": "capability:plan-execution-control",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A controller may transition only steps whose dependencies, identity, authority, and gates are current; it cannot mark specialist work passed or reuse evidence after upstream invalidation.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "plan-execution-control",
+  "inputs": [
+    "An executable implementation plan and an isolated work environment."
+  ],
+  "outputs": [
+    "plan execution state ledger",
+    "step and dependency status",
+    "checkpoint and evidence map",
+    "invalidation, pause, and resume instructions"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "step-state",
+      "dependency-DAG",
+      "checkpoint",
+      "evidence-hash",
+      "invalidation",
+      "pause-resume",
+      "no-specialist-work"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Advance an approved implementation plan through explicit step states, dependencies, checkpoints, evidence, invalidation, pause, and resume without absorbing specialist work.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

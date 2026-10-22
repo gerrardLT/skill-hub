@@ -1,0 +1,93 @@
+{
+  "artifact_types": [
+    "plan execution state ledger",
+    "step and dependency status",
+    "checkpoint and evidence map",
+    "invalidation, pause, and resume instructions",
+    "review decision matrix",
+    "dissent register",
+    "proposed amendments",
+    "human approval queue"
+  ],
+  "capability_id": "capability:plan-execution-control",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities"
+  ],
+  "hard_gates": [
+    "A controller may transition only steps whose dependencies, identity, authority, and gates are current; it cannot mark specialist work passed or reuse evidence after upstream invalidation.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority.",
+    "Synthesis cannot manufacture reviewer consensus, downgrade a blocking dissent, or convert recommendations into approved scope.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "plan-execution-control",
+  "inputs": [
+    "An executable implementation plan and an isolated work environment.",
+    "Independent review findings, plan version, decision policy, authority, and unresolved questions."
+  ],
+  "mode_permissions": {
+    "plan-execution-control": "workspace-write-local-exec",
+    "plan-review-decision-synthesis": "workspace-write"
+  },
+  "modes": [
+    "plan-execution-control",
+    "plan-review-decision-synthesis"
+  ],
+  "outputs": [
+    "plan execution state ledger",
+    "step and dependency status",
+    "checkpoint and evidence map",
+    "invalidation, pause, and resume instructions",
+    "review decision matrix",
+    "dissent register",
+    "proposed amendments",
+    "human approval queue"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "step-state",
+      "dependency-DAG",
+      "checkpoint",
+      "evidence-hash",
+      "invalidation",
+      "pause-resume",
+      "no-specialist-work"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Advance an approved implementation plan through explicit step states, dependencies, checkpoints, evidence, invalidation, pause, and resume without absorbing specialist work.; Synthesize independent plan-review findings, preserve dissent, classify decision types, and surface human approval points without rerunning reviews.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

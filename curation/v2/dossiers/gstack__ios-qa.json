@@ -1,0 +1,528 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/ios-qa/SKILL.md:67]",
+    "Skill Invocation During Plan Mode [gstack/ios-qa/SKILL.md:71]",
+    "Model-Specific Behavioral Patch (claude) [gstack/ios-qa/SKILL.md:203]",
+    "Continuous Checkpoint Mode [gstack/ios-qa/SKILL.md:303]",
+    "Modes [gstack/ios-qa/SKILL.md:596]",
+    "Demo mode [gstack/ios-qa/SKILL.md:627]"
+  ],
+  "inputs": [
+    "macOS (the daemon uses devicectl from Xcode). [gstack/ios-qa/SKILL.md:470]",
+    "iPhone connected via USB, paired and trusted. [gstack/ios-qa/SKILL.md:471]",
+    "Xcode + Swift toolchain installed (swift --version reports >= 5.9). [gstack/ios-qa/SKILL.md:472]",
+    "App source available on disk, with at least one @Observable class. [gstack/ios-qa/SKILL.md:473]",
+    "For remote-control mode: Tailscale installed and the user logged in. [gstack/ios-qa/SKILL.md:474]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/ios-qa/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/ios-qa/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/ios-qa/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/ios-qa/SKILL.md:45]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/ios-qa/SKILL.md:50]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/ios-qa/SKILL.md:69]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-qa/SKILL.md:88]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/ios-qa/SKILL.md:112]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/ios-qa/SKILL.md:183]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/ios-qa/SKILL.md:307]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/ios-qa/SKILL.md:430]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/ios-qa/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Live-device iOS QA for SwiftUI apps. [gstack/ios-qa/SKILL.md:5]",
+  "root_id": "skill-root:gstack/ios-qa",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/ios-qa/SKILL.md:21]",
+    "verify → repeat. All interaction happens via HTTP to an embedded [gstack/ios-qa/SKILL.md:30]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/ios-qa/SKILL.md:51]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/ios-qa/SKILL.md:52]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/ios-qa/SKILL.md:53]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/ios-qa/SKILL.md:60]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/ios-qa/SKILL.md:61]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/ios-qa/SKILL.md:64]"
+  ],
+  "skill_path": "gstack/ios-qa/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/ios-qa/SKILL.md"
+    },
+    {
+      "line_end": 25,
+      "line_start": 25,
+      "path": "gstack/ios-qa/SKILL.md"
+    },
+    {
+      "line_end": 39,
+      "line_start": 39,
+      "path": "gstack/ios-qa/SKILL.md"
+    },
+    {
+      "line_end": 67,
+      "line_start": 67,
+      "path": "gstack/ios-qa/SKILL.md"
+    },
+    {
+      "line_end": 71,
+      "line_start": 71,
+      "path": "gstack/ios-qa/SKILL.md"
+    }
+  ],
+  "source_sha256": "80cf2ddd5347d5e1665e15c2d9e8e361d6d094c2713134cfd2ec5fd9079b78d9",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/ios-qa/SKILL.md:85]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/ios-qa/SKILL.md:86]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/ios-qa/SKILL.md:87]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-qa/SKILL.md:88]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/ios-qa/SKILL.md:90]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/ios-qa/SKILL.md:94]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:80cf2ddd5347d5e1665e15c2d9e8e361d6d094c2713134cfd2ec5fd9079b78d9",
+        "content-review:659-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/ios-qa/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c71e967b18d558788105896525f6a2ec2acce60cefea7e64405c9697ec660e4d",
+        "content-review:259-lines"
+      ],
+      "path": "gstack/ios-qa/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:50cc3a889e8d1f3a91c5a54aec2dd9a7c9e3f99db006c5983d6b052b443c8242",
+        "content-review:115-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/src/allowlist.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:96cedd4626a24fddb37e80ef8d361f18cb62eb0e9f9c5ee5cc950dce6895797c",
+        "content-review:98-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/src/audit.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:41a13f5627fe25f2bc8566d69f5151d0731f0c1b1e5dc43e8477bf7a2f703483",
+        "content-review:90-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/src/auth-mint.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:01866c25cff1e03137c02f12d99fbb6b37ec3e0e5ea00e75a4b75c43c4b3fcb1",
+        "content-review:150-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "gstack/ios-qa/daemon/src/cli-mint.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c4f3ca72380eab51827a474112e5b28b889e2db872dcd82ec178766b38ca1e2f",
+        "content-review:336-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/src/devicectl.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:b334297627785b838289de3070a4c417b926477ee81646eeaf66bab5964d0df6",
+        "content-review:612-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/ios-qa/daemon/src/index.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:92f649ac9c1cb686332af0c2d3f1ff365680a167dfb2d9c1ea6822cce896cd91",
+        "content-review:112-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/ios-qa/daemon/src/proxy.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:78fee52b526a132aa15fb15245da4b45ee47fb67ff0c367322f91a63e7745f8a",
+        "content-review:127-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/src/session-tokens.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f3dea634eb8d18221a826e139b83e32d46e136bb1814af888ca705b3632fd849",
+        "content-review:172-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/src/single-instance.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:ce591c1e90deca14d2636f00850489987bd80f50e88db1a30b1de90d86cb2bb2",
+        "content-review:121-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/src/tailscale-localapi.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:1089473f746380dac8843d65ad9bc30e232b110c8d1892c1c62ad34a943830dd",
+        "content-review:339-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/ios-qa/daemon/src/tunnel-bootstrap.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:50022de0f1544408f55eaec2db6ce7080a0c8becf02491e563125bcb64968c2d",
+        "content-review:92-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/src/types.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f23d1d93f89d46f25e928196c17e8e5cb642622df2cf14d7a4f5a2e92e9d13eb",
+        "content-review:147-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/test/allowlist.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:cee7d31c2b0a3f75ecf8e0101c82f955e6ffd2d5c519030212e373cd2d926bd7",
+        "content-review:112-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/test/audit.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3fe3ce7eb6a042dde5f97f00d910be86470ea2fc13e8e02cad1c509da7db53a0",
+        "content-review:104-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/test/auth-mint.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:92dac3583d666589e055892d4e522e4e581a1ec8512c7399dd9c840db0f6b1e8",
+        "content-review:121-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/ios-qa/daemon/test/cli-mint.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9eaa2a0968edf0b9e529b54d9d355d1cede5286e336ac301f2414327351dcd7c",
+        "content-review:685-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/ios-qa/daemon/test/daemon-integration.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f50bfeaeb7ffeba1b0fa55fcebb5f908c29400ecc2da359013d7546720ca85e3",
+        "content-review:48-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/test/proxy-classify.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:cd9309c8ca80998ed156f7c1ab497d9f86decc5b9aca5db981b9f20a603a71a3",
+        "content-review:157-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/test/session-tokens.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:29e049959ffe51aef52383e23582bf63436f75cfb0487ffe7ca2a731cf884422",
+        "content-review:97-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/test/single-instance.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2731faf6400406d78e35261222fed0c9d52f184a87609fcc12d6c0d4288c9b9f",
+        "content-review:56-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/daemon/test/tailscale-localapi.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0f04d5711c9d4a5104582fc4d80e4d46937abc99a0fb41f951f4aa06e1184339",
+        "content-review:806-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/daemon/test/tunnel-bootstrap.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e7814c05209eba94ffab284157f1722b1a2dbb3fedcddb2dbb78c37d3a03072e",
+        "content-review:158-lines"
+      ],
+      "path": "gstack/ios-qa/docs/tailscale-acl-example.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:604a1d8d51d62c6316d48c8a4812c9fad7d0af653a07400c80613494ee4d5f94",
+        "content-review:36-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/ios-qa/scripts/gen-accessors-tool/Package.swift",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:4de2742f8df5d400f255e0d11c9c45b59689075087056cb7182dde0d6d44c199",
+        "content-review:677-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/ios-qa/scripts/gen-accessors-tool/Sources/GenAccessors/main.swift",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:911383553b99614dc46c790b00db702a361141bcf357ec47f23b82bfe612766d",
+        "content-review:1082-lines",
+        "behavior-signals:entrypoint|process|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/scripts/gen-accessors.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:332e9b1f4f7fd7f4c563ed45eddf2f40a1e396572956695dffea266b85b270de",
+        "content-review:881-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/ios-qa/scripts/gen-accessors.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7369503b7fcb6765546426bfc0269fe8a317f2b9ccdb7b7eb5625494d477a7ad",
+        "content-review:475-lines"
+      ],
+      "path": "gstack/ios-qa/templates/Bridges.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:32cbbf76b9720183f97643fe3677c00ce623500ebd5433bde9a815fc1cafd23b",
+        "content-review:39-lines"
+      ],
+      "path": "gstack/ios-qa/templates/DebugBridgeManager.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a3b7dc0392fc66dcaa01f07e723cadb7ae723a5a3d1d0c4eb69bbe136f73a34a",
+        "content-review:39-lines"
+      ],
+      "path": "gstack/ios-qa/templates/DebugBridgeTouch.h.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:834c34c1e0641fdd2c223c2ce9af12e8e01375ca1f856e6adbdf8047c54f61b9",
+        "content-review:366-lines"
+      ],
+      "path": "gstack/ios-qa/templates/DebugBridgeTouch.m.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:9cbd6461934b36a82747ea1f91dcc75446bf5dd1303f927e2ba1880a0a3d95f6",
+        "content-review:60-lines"
+      ],
+      "path": "gstack/ios-qa/templates/DebugBridgeWiring.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:cb027ff31c0e75e5528a6b30748e7189b7adaf25700ca76a3f16cccf6b0f9802",
+        "content-review:138-lines"
+      ],
+      "path": "gstack/ios-qa/templates/DebugOverlay.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6dd865d6578bc11aab6e4ce675ffe07549989d08aaf1adbb1964cf8150cd17f5",
+        "content-review:83-lines"
+      ],
+      "path": "gstack/ios-qa/templates/Package.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:65ec3c6c874889c761a96ebf268a2ad026ea5d5b8caa3983dde5cdf5b8173565",
+        "content-review:42-lines"
+      ],
+      "path": "gstack/ios-qa/templates/StateAccessor.swift.template",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:aac7b696b1356bacc000e372d88faaafe2f2175d1047f8aa58cfe147cd422eac",
+        "content-review:611-lines"
+      ],
+      "path": "gstack/ios-qa/templates/StateServer.swift.template",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: Read [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: Write [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: Edit [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: Grep [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: Glob [gstack/ios-qa/SKILL.md:1-20]",
+    "Declared tool: AskUserQuestion [gstack/ios-qa/SKILL.md:1-20]"
+  ],
+  "trigger": "Live-device iOS QA for SwiftUI apps. (gstack) [gstack/ios-qa/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/ios-qa/SKILL.md:151]",
+    "Self-check before emitting [gstack/ios-qa/SKILL.md:174]",
+    "Context Recovery [gstack/ios-qa/SKILL.md:242]",
+    "Completeness Principle — Boil the Ocean [gstack/ios-qa/SKILL.md:289]",
+    "Confusion Protocol [gstack/ios-qa/SKILL.md:295]",
+    "Claimed Limitations Need Evidence [gstack/ios-qa/SKILL.md:299]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/ios-qa/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/ios-qa/SKILL.md:303]",
+    "Phase 0: Session warm-start (optional) [gstack/ios-qa/SKILL.md:476]",
+    "Phase 1: Read source, plan codegen [gstack/ios-qa/SKILL.md:497]",
+    "Phase 2: Bootstrap the device bridge [gstack/ios-qa/SKILL.md:526]",
+    "Phase 3: Vision-driven agent loop [gstack/ios-qa/SKILL.md:579]"
+  ]
+}

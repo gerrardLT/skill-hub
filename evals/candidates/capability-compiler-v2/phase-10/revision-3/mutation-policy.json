@@ -1,0 +1,77 @@
+{
+  "phase10_behavioral_challenges": [
+    {
+      "causal": true,
+      "id": "P10-P4-review-evidence",
+      "mutant_path": "mutations/P10-P4-review-evidence.json",
+      "target": "Phase 4 review-evidence step"
+    },
+    {
+      "causal": true,
+      "id": "P10-P4-human-control-points",
+      "mutant_path": "mutations/P10-P4-human-control-points.json",
+      "target": "Phase 4 explicit human approval and separate remediation"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-handoff",
+      "mutant_path": "mutations/P10-P8-handoff.json",
+      "target": "Phase 8 mandatory handoff"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-always-on",
+      "mutant_path": "mutations/P10-P8-always-on.json",
+      "target": "Phase 8 conditional atomic step"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-review-write",
+      "mutant_path": "mutations/P10-P8-review-write.json",
+      "target": "Phase 8 review/source-write separation"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-lifecycle-approval",
+      "mutant_path": "mutations/P10-P8-lifecycle-approval.json",
+      "target": "Phase 8 release-readiness lifecycle approval, not per-action authorization"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-invalidation",
+      "mutant_path": "mutations/P10-P8-invalidation.json",
+      "target": "Phase 8 source-rerun invalidation"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-remote-activation",
+      "mutant_path": "mutations/P10-P8-remote-activation.json",
+      "target": "Phase 8 complete fresh/exact remote authorization stop"
+    },
+    {
+      "causal": true,
+      "id": "P10-P8-resume-validation",
+      "mutant_path": "mutations/P10-P8-resume-validation.json",
+      "target": "Phase 8 current checkpoint revalidation before resume"
+    },
+    {
+      "causal": true,
+      "id": "P10-P4-complete-route-planning",
+      "mutant_path": "mutations/P10-P4-complete-route-planning.json",
+      "target": "Phase 4 post-approval release-gate visibility in complete route planning"
+    }
+  ],
+  "phase9_reclassification": {
+    "behavioral_killed_claims_carried_forward": 0,
+    "deterministic_only": 157
+  },
+  "rules": [
+    "A deterministic semantic-marker deletion remains killed only by exact marker/hash Gate unless an independently authored causal behavioral challenge exists.",
+    "A behavior result is deterministic-only, killed, survived, invalid-control, or behavioral-challenge-needed; do not infer Skill quality from a non-causal survived mutation.",
+    "Lifecycle approval and per-action authorization are separate mutation targets and require separate challenges."
+  ],
+  "schema_version": "2.0",
+  "source_phase9_tree": "7540c53426a5dff605c3f751fdaf105f52059ffbafce213d77c9c3db94214152",
+  "status": "planned",
+  "version": "0.1.3-v2-candidate"
+}

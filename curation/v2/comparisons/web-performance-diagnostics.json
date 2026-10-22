@@ -1,0 +1,269 @@
+{
+  "candidate_responsibility": "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations.",
+  "canonical_unit_ids": [
+    "web-perf:unit-001",
+    "web-perf:unit-002",
+    "web-perf:unit-003",
+    "web-perf:unit-004",
+    "web-perf:unit-005",
+    "web-perf:unit-006"
+  ],
+  "cluster_id": "cluster:web-performance-diagnostics",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "web-perf/SKILL.md:103-110",
+    "web-perf/SKILL.md:119-126",
+    "web-perf/SKILL.md:150-193",
+    "web-perf/SKILL.md:194-200",
+    "web-perf/SKILL.md:33-39",
+    "web-perf/SKILL.md:56-62"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:web-performance-diagnostics"
+      ],
+      "id": "cluster:web-performance-diagnostics:fusion:boundary",
+      "rule": "Measure web vitals, network behavior, and build output to identify bottlenecks and sustained optimizations."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:web-performance-diagnostics"
+      ],
+      "id": "cluster:web-performance-diagnostics:fusion:inputs",
+      "rule": "Accept only: A web application, controlled sampling environment, network waterfall, and build information."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:web-performance-diagnostics"
+      ],
+      "id": "cluster:web-performance-diagnostics:fusion:outputs",
+      "rule": "Produce only: Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:web-performance-diagnostics:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A web application, controlled sampling environment, network waterfall, and build information.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "web-perf"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "web-perf"
+      ]
+    }
+  ],
+  "output_boundary": "Performance metrics, bottleneck evidence, recommendations, budgets, and an audit report.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "性能审计实证与收益量化核心准则：通过网络抓包与 DOM 校验事实并明确断言、确认资源完全无用后再建议移除、严格量化收益毫秒/字节并忽略 0ms 无效改动、对指标卓越（如 LCP<200ms）的站点直接认可无需过度优化; Web 性能五阶段全景审计流水线：依次执行性能冷加载 Trace 抓取、Core Web Vitals 洞察解析（含 CLS 元凶）、网络请求全链路分析、无障碍树快照与前端源码工程级打包分析; Core Web Vitals 官方核心指标阈值标准：TTFB（<800ms/<1.8s）、FCP（<1.8s/<3s）、LCP（<2.5s/<4s）、INP（<200ms/<500ms）、TBT（<200ms/<600ms）、CLS（<0.1/<0.25）及 Speed Index（<3.4s/<5.8s）三档判定线",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:33-39",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "limitations": "Explicit limits: 性能审计全流程的专业判断与建议过滤准则; 执行完整网站性能体检的标准操作规程; 量化评估网页加载与交互体验优劣的标准阈值",
+      "source_id": "web-perf",
+      "strengths": "Provides 6 source-grounded atom(s) for responsibility (method=3, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-perf:unit-001",
+        "web-perf:unit-002",
+        "web-perf:unit-003",
+        "web-perf:unit-004",
+        "web-perf:unit-005",
+        "web-perf:unit-006"
+      ]
+    },
+    {
+      "approach": "Web 性能五阶段全景审计流水线：依次执行性能冷加载 Trace 抓取、Core Web Vitals 洞察解析（含 CLS 元凶）、网络请求全链路分析、无障碍树快照与前端源码工程级打包分析; 网络链路排查六大检查项：审查 head 内无 async/defer 属性的渲染阻塞资源、次级瀑布流依赖链（CSS import/JS 字体）、关键素材预加载缺失、弱缓存头、大体积未压缩包及无请求的废弃 preconnect; 前端源码与构建配置优化审查法：自动探测构建工具（Webpack/Vite/Next.js/Astro），排查 Tree-shaking 边界（如 barrel 文件与全量引用）、CSS 冗余清洗（Tailwind content）、Babel 垫片与 core-js 膨胀、静态资源压缩与 Source Map 泄露",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "limitations": "Explicit limits: 执行完整网站性能体检的标准操作规程; 网络资源加载瀑布流与 HTTP 传输效率专项诊断; 拥有代码库访问权限时对编译产物与工程构建配置进行调优",
+      "source_id": "web-perf",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=3, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-perf:unit-002",
+        "web-perf:unit-004",
+        "web-perf:unit-005",
+        "web-perf:unit-006"
+      ]
+    },
+    {
+      "approach": "性能审计全流程的专业判断与建议过滤准则; 执行完整网站性能体检的标准操作规程; 量化评估网页加载与交互体验优劣的标准阈值",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:33-39",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "limitations": "Explicit limits: 性能审计全流程的专业判断与建议过滤准则; 执行完整网站性能体检的标准操作规程; 量化评估网页加载与交互体验优劣的标准阈值",
+      "source_id": "web-perf",
+      "strengths": "Provides 6 source-grounded atom(s) for boundary-and-applicability (method=3, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-perf:unit-001",
+        "web-perf:unit-002",
+        "web-perf:unit-003",
+        "web-perf:unit-004",
+        "web-perf:unit-005",
+        "web-perf:unit-006"
+      ]
+    },
+    {
+      "approach": "性能审计交付三段式输出结构模板：包含 Core Web Vitals 汇总表（含实测值与官方评级）、按影响程度排期的 Top Issues 缺陷清单，以及带代码片段和配置示例的具体修复建议",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "web-perf/SKILL.md:194-200"
+      ],
+      "limitations": "Explicit limits: 输出面向工程师与产品团队的性能审计结论",
+      "source_id": "web-perf",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-perf:unit-006"
+      ]
+    },
+    {
+      "approach": "建议具备精确体积或毫秒收益估算，排除无影响的非问题; 评级必须严格对照官方 good/needs-improvement/poor 分段区间",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:33-39"
+      ],
+      "limitations": "Explicit limits: 性能审计全流程的专业判断与建议过滤准则; 量化评估网页加载与交互体验优劣的标准阈值",
+      "source_id": "web-perf",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-perf:unit-001",
+        "web-perf:unit-003"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:33-39",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-perf",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:33-39",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-perf",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 2,
+        "template": 1
+      },
+      "evidence": [
+        "web-perf/SKILL.md:103-110",
+        "web-perf/SKILL.md:119-126",
+        "web-perf/SKILL.md:150-193",
+        "web-perf/SKILL.md:194-200",
+        "web-perf/SKILL.md:33-39",
+        "web-perf/SKILL.md:56-62"
+      ],
+      "source_id": "web-perf",
+      "unit_ids": [
+        "web-perf:unit-001",
+        "web-perf:unit-002",
+        "web-perf:unit-003",
+        "web-perf:unit-004",
+        "web-perf:unit-005",
+        "web-perf:unit-006"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "web-perf:unit-001",
+    "web-perf:unit-002",
+    "web-perf:unit-003",
+    "web-perf:unit-004",
+    "web-perf:unit-005",
+    "web-perf:unit-006"
+  ]
+}

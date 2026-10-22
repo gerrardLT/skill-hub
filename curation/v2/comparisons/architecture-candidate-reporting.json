@@ -1,0 +1,290 @@
+{
+  "candidate_responsibility": "Present architecture candidates as comparable cards, diagrams, rankings, and recommendations.",
+  "canonical_unit_ids": [
+    "improve-codebase-architecture:unit-004",
+    "improve-codebase-architecture:unit-005",
+    "improve-codebase-architecture:unit-007",
+    "improve-codebase-architecture:unit-008",
+    "improve-codebase-architecture:unit-009",
+    "improve-codebase-architecture:unit-010",
+    "improve-codebase-architecture:unit-011",
+    "improve-codebase-architecture:unit-012"
+  ],
+  "cluster_id": "cluster:architecture-candidate-reporting",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "improve-codebase-architecture/HTML-REPORT.md:1-34",
+    "improve-codebase-architecture/HTML-REPORT.md:106-123",
+    "improve-codebase-architecture/HTML-REPORT.md:36-40",
+    "improve-codebase-architecture/HTML-REPORT.md:41-56",
+    "improve-codebase-architecture/HTML-REPORT.md:57-93",
+    "improve-codebase-architecture/HTML-REPORT.md:94-105",
+    "improve-codebase-architecture/SKILL.md:37-42",
+    "improve-codebase-architecture/SKILL.md:43-61"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-candidate-reporting"
+      ],
+      "id": "cluster:architecture-candidate-reporting:fusion:boundary",
+      "rule": "Present architecture candidates as comparable cards, diagrams, rankings, and recommendations."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-candidate-reporting"
+      ],
+      "id": "cluster:architecture-candidate-reporting:fusion:inputs",
+      "rule": "Accept only: Already discovered architecture candidates with code evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:architecture-candidate-reporting"
+      ],
+      "id": "cluster:architecture-candidate-reporting:fusion:outputs",
+      "rule": "Produce only: A visual candidate report and comparison material, not an implementation."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:architecture-candidate-reporting:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Already discovered architecture candidates with code evidence.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "improve-codebase-architecture"
+      ]
+    }
+  ],
+  "output_boundary": "A visual candidate report and comparison material, not an implementation.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "自包含临时 HTML 报告落盘与浏览器拉起规约：将报告写入操作系统临时目录（$TMPDIR、/tmp 或 Windows %TEMP%），命名为 architecture-review-<timestamp>.html 确保零仓库污染；调用系统命令自动为用户打开（Windows start、macOS open、Linux xdg-open）；引入 Tailwind CDN 与 Mermaid CDN，采用手工 div/SVG 与 Mermaid 混合呈现丰富视觉对比图。; 候选深化卡片数据结构与 ADR 冲突处置：每个候选卡片包含涉及文件列表（Files）、痛点原因（Problem）、变动概述（Solution）、以 locality/leverage 表述的收益（Benefits）、Before/After 视觉比对图、推荐强度徽章（Strong / Worth exploring / Speculative）；结尾附核心推荐（Top recommendation）；若与既有 ADR 冲突必须存在强痛点并在卡片标注警告；禁止提前提出代码接口，以'您想探索哪一个？'作为提示语。; HTML 报告文档脚手架与基础样式层：标准 HTML5 模板，引入 Tailwind CDN 与 Mermaid v11 ESM 模块初始化（startOnLoad: true, theme: 'neutral', securityLevel: 'loose'）；定义微层样式（.seam 虚线接缝、.leak 红色泄漏、.deep 深色渐变模块）；容器采用 max-w-5xl 响应式排版。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:106-123",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/HTML-REPORT.md:57-93",
+        "improve-codebase-architecture/HTML-REPORT.md:94-105",
+        "improve-codebase-architecture/SKILL.md:37-42",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "limitations": "Explicit limits: 生成并向用户呈现架构审查报告时的物理落地规范。; 构建 HTML 审查卡片的数据规格与 ADR 约束门禁。; 生成 HTML 报告时必须遵循的基础文档骨架与 CDN 导入规范。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 8 source-grounded atom(s) for responsibility (method=1, rule=2, template=4, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004",
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009",
+        "improve-codebase-architecture:unit-010",
+        "improve-codebase-architecture:unit-011",
+        "improve-codebase-architecture:unit-012"
+      ]
+    },
+    {
+      "approach": "自包含临时 HTML 报告落盘与浏览器拉起规约：将报告写入操作系统临时目录（$TMPDIR、/tmp 或 Windows %TEMP%），命名为 architecture-review-<timestamp>.html 确保零仓库污染；调用系统命令自动为用户打开（Windows start、macOS open、Linux xdg-open）；引入 Tailwind CDN 与 Mermaid CDN，采用手工 div/SVG 与 Mermaid 混合呈现丰富视觉对比图。; 候选深化卡片数据结构与 ADR 冲突处置：每个候选卡片包含涉及文件列表（Files）、痛点原因（Problem）、变动概述（Solution）、以 locality/leverage 表述的收益（Benefits）、Before/After 视觉比对图、推荐强度徽章（Strong / Worth exploring / Speculative）；结尾附核心推荐（Top recommendation）；若与既有 ADR 冲突必须存在强痛点并在卡片标注警告；禁止提前提出代码接口，以'您想探索哪一个？'作为提示语。; HTML 报告文档脚手架与基础样式层：标准 HTML5 模板，引入 Tailwind CDN 与 Mermaid v11 ESM 模块初始化（startOnLoad: true, theme: 'neutral', securityLevel: 'loose'）；定义微层样式（.seam 虚线接缝、.leak 红色泄漏、.deep 深色渐变模块）；容器采用 max-w-5xl 响应式排版。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/HTML-REPORT.md:57-93",
+        "improve-codebase-architecture/SKILL.md:37-42",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "limitations": "Explicit limits: 生成并向用户呈现架构审查报告时的物理落地规范。; 构建 HTML 审查卡片的数据规格与 ADR 约束门禁。; 生成 HTML 报告时必须遵循的基础文档骨架与 CDN 导入规范。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 6 source-grounded atom(s) for method (method=1, template=4, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004",
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009",
+        "improve-codebase-architecture:unit-010"
+      ]
+    },
+    {
+      "approach": "生成并向用户呈现架构审查报告时的物理落地规范。; 构建 HTML 审查卡片的数据规格与 ADR 约束门禁。; 生成 HTML 报告时必须遵循的基础文档骨架与 CDN 导入规范。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:106-123",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/HTML-REPORT.md:57-93",
+        "improve-codebase-architecture/HTML-REPORT.md:94-105",
+        "improve-codebase-architecture/SKILL.md:37-42",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "limitations": "Explicit limits: 生成并向用户呈现架构审查报告时的物理落地规范。; 构建 HTML 审查卡片的数据规格与 ADR 约束门禁。; 生成 HTML 报告时必须遵循的基础文档骨架与 CDN 导入规范。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 8 source-grounded atom(s) for boundary-and-applicability (method=1, rule=2, template=4, tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004",
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009",
+        "improve-codebase-architecture:unit-010",
+        "improve-codebase-architecture:unit-011",
+        "improve-codebase-architecture:unit-012"
+      ]
+    },
+    {
+      "approach": "候选深化卡片数据结构与 ADR 冲突处置：每个候选卡片包含涉及文件列表（Files）、痛点原因（Problem）、变动概述（Solution）、以 locality/leverage 表述的收益（Benefits）、Before/After 视觉比对图、推荐强度徽章（Strong / Worth exploring / Speculative）；结尾附核心推荐（Top recommendation）；若与既有 ADR 冲突必须存在强痛点并在卡片标注警告；禁止提前提出代码接口，以'您想探索哪一个？'作为提示语。; HTML 报告文档脚手架与基础样式层：标准 HTML5 模板，引入 Tailwind CDN 与 Mermaid v11 ESM 模块初始化（startOnLoad: true, theme: 'neutral', securityLevel: 'loose'）；定义微层样式（.seam 虚线接缝、.leak 红色泄漏、.deep 深色渐变模块）；容器采用 max-w-5xl 响应式排版。; 极简图例文档头与零客套开场：包含仓库名称、日期与紧凑图例——实线框表示模块（module）、虚线表示接缝（seam）、红箭头表示泄漏（leakage）、厚深色框表示深模块（deep module）；禁止任何导言说明段落，直接进入候选卡片列表。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "limitations": "Explicit limits: 构建 HTML 审查卡片的数据规格与 ADR 约束门禁。; 生成 HTML 报告时必须遵循的基础文档骨架与 CDN 导入规范。; HTML 报告页面顶部的标准信息结构与图例组件。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 4 source-grounded atom(s) for inputs-and-outputs (template=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009"
+      ]
+    },
+    {
+      "approach": "核验是否明确约 320px 高度限制、大写跟踪标签、静态纯净性及 Top recommendation 大卡片规范。; 核验是否列出必须使用的 10 个精确词汇、8 个严禁替换词汇及空洞套话禁令。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:106-123",
+        "improve-codebase-architecture/HTML-REPORT.md:94-105"
+      ],
+      "limitations": "Explicit limits: 报告的视觉审美一致性、排版尺寸与核心推荐引导规范。; 报告撰写与交流沟通过程中对自然语言措辞的最高级别防腐检查。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-011",
+        "improve-codebase-architecture:unit-012"
+      ]
+    },
+    {
+      "approach": "自包含临时 HTML 报告落盘与浏览器拉起规约：将报告写入操作系统临时目录（$TMPDIR、/tmp 或 Windows %TEMP%），命名为 architecture-review-<timestamp>.html 确保零仓库污染；调用系统命令自动为用户打开（Windows start、macOS open、Linux xdg-open）；引入 Tailwind CDN 与 Mermaid CDN，采用手工 div/SVG 与 Mermaid 混合呈现丰富视觉对比图。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "improve-codebase-architecture/SKILL.md:37-42"
+      ],
+      "limitations": "Explicit limits: 生成并向用户呈现架构审查报告时的物理落地规范。",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "Provides 1 source-grounded atom(s) for permissions-and-side-effects (tool-action=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:106-123",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/HTML-REPORT.md:57-93",
+        "improve-codebase-architecture/HTML-REPORT.md:94-105",
+        "improve-codebase-architecture/SKILL.md:37-42",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "improve-codebase-architecture",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 2,
+        "template": 4,
+        "tool-action": 1
+      },
+      "evidence": [
+        "improve-codebase-architecture/HTML-REPORT.md:1-34",
+        "improve-codebase-architecture/HTML-REPORT.md:106-123",
+        "improve-codebase-architecture/HTML-REPORT.md:36-40",
+        "improve-codebase-architecture/HTML-REPORT.md:41-56",
+        "improve-codebase-architecture/HTML-REPORT.md:57-93",
+        "improve-codebase-architecture/HTML-REPORT.md:94-105",
+        "improve-codebase-architecture/SKILL.md:37-42",
+        "improve-codebase-architecture/SKILL.md:43-61"
+      ],
+      "source_id": "improve-codebase-architecture",
+      "unit_ids": [
+        "improve-codebase-architecture:unit-004",
+        "improve-codebase-architecture:unit-005",
+        "improve-codebase-architecture:unit-007",
+        "improve-codebase-architecture:unit-008",
+        "improve-codebase-architecture:unit-009",
+        "improve-codebase-architecture:unit-010",
+        "improve-codebase-architecture:unit-011",
+        "improve-codebase-architecture:unit-012"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "improve-codebase-architecture:unit-004",
+    "improve-codebase-architecture:unit-005",
+    "improve-codebase-architecture:unit-007",
+    "improve-codebase-architecture:unit-008",
+    "improve-codebase-architecture:unit-009",
+    "improve-codebase-architecture:unit-010",
+    "improve-codebase-architecture:unit-011",
+    "improve-codebase-architecture:unit-012"
+  ]
+}

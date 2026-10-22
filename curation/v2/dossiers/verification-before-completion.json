@@ -1,0 +1,99 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [verification-before-completion/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [verification-before-completion/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [verification-before-completion/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [verification-before-completion/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "No explicit side effect is granted by the source description; V2 defaults to read-only until authorized. [verification-before-completion/SKILL.md:3]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always [verification-before-completion/SKILL.md:3]",
+  "root_id": "skill-root:verification-before-completion",
+  "rules_gates": [
+    "name: verification-before-completion [verification-before-completion/SKILL.md:2]",
+    "description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always [verification-before-completion/SKILL.md:3]",
+    "Verification Before Completion [verification-before-completion/SKILL.md:6]",
+    "Core principle: Evidence before claims, always. [verification-before-completion/SKILL.md:12]",
+    "The Gate Function [verification-before-completion/SKILL.md:24]",
+    "BEFORE claiming any status or expressing satisfaction [verification-before-completion/SKILL.md:27]",
+    "4. VERIFY: Does output confirm the claim? [verification-before-completion/SKILL.md:32]",
+    "Skip any step = lying, not verifying [verification-before-completion/SKILL.md:37]"
+  ],
+  "skill_path": "verification-before-completion/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "verification-before-completion/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "verification-before-completion/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "verification-before-completion/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "verification-before-completion/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "verification-before-completion/SKILL.md"
+    }
+  ],
+  "source_sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c",
+  "stop_conditions": [
+    "3. READ: Full output, check exit code, count failures [verification-before-completion/SKILL.md:31]",
+    "Common Failures [verification-before-completion/SKILL.md:40]",
+    "Tests pass Test command output: 0 failures Previous run, \"should pass\" [verification-before-completion/SKILL.md:44]",
+    "Red Flags - STOP [verification-before-completion/SKILL.md:52]",
+    "✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass) [verification-before-completion/SKILL.md:86]",
+    "From 24 failure memories [verification-before-completion/SKILL.md:110]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c",
+        "content-review:140-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "verification-before-completion/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always [verification-before-completion/SKILL.md:3]",
+  "unique_methods": [
+    "Verification Before Completion [verification-before-completion/SKILL.md:6]",
+    "The Iron Law [verification-before-completion/SKILL.md:16]",
+    "The Gate Function [verification-before-completion/SKILL.md:24]",
+    "Common Failures [verification-before-completion/SKILL.md:40]",
+    "Red Flags - STOP [verification-before-completion/SKILL.md:52]",
+    "Rationalization Prevention [verification-before-completion/SKILL.md:63]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [verification-before-completion/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [verification-before-completion/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Verification Before Completion [verification-before-completion/SKILL.md:6]",
+    "Overview [verification-before-completion/SKILL.md:8]",
+    "The Iron Law [verification-before-completion/SKILL.md:16]",
+    "The Gate Function [verification-before-completion/SKILL.md:24]",
+    "Common Failures [verification-before-completion/SKILL.md:40]",
+    "Red Flags - STOP [verification-before-completion/SKILL.md:52]"
+  ]
+}

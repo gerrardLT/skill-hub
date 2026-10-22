@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "project-isolated memory runtime",
+    "non-sensitive configuration receipt",
+    "health and isolation evidence",
+    "removal and rollback instructions"
+  ],
+  "capability_id": "capability:local-agent-memory-setup",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-system-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "local-system-write",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Local memory setup requires explicit project isolation, privacy, retention, deletion, and rollback; it cannot ingest arbitrary project data or enable external synchronization implicitly.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "local-agent-memory-setup",
+  "inputs": [
+    "Project identity, runtime target, privacy choice, local-system write authorization, and retention policy."
+  ],
+  "outputs": [
+    "project-isolated memory runtime",
+    "non-sensitive configuration receipt",
+    "health and isolation evidence",
+    "removal and rollback instructions"
+  ],
+  "permission_identity": "local-system-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "project-isolation",
+      "privacy",
+      "retention",
+      "deletion",
+      "no-implicit-sync",
+      "health-check",
+      "rollback"
+    ],
+    "data_governance": true,
+    "external_or_system_action": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Initialize one project-isolated local agent memory or indexing runtime under explicit privacy, retention, deletion, and rollback controls.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

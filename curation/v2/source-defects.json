@@ -1,0 +1,62 @@
+{
+  "schema_version": "2.0",
+  "policy_decision": "V2-DEC-006",
+  "status": "open",
+  "items": [
+    {
+      "id": "V2-DEFECT-001",
+      "source": "qa-only",
+      "kind": "missing-support-files",
+      "evidence": [
+        "skills/qa-only/SKILL.md"
+      ],
+      "detail": "The source names qa/templates/qa-report-template.md and qa/references/issue-taxonomy.md, but they are absent from the immutable snapshot.",
+      "affected_capability": "report templating and issue taxonomy",
+      "disposition": "deferred-until-v2-rewrite-and-test"
+    },
+    {
+      "id": "V2-DEFECT-002",
+      "source": "gstack/codex",
+      "kind": "broken-generated-support-file",
+      "evidence": [
+        "skills/gstack/codex/sections/review-mode.md:1"
+      ],
+      "detail": "The review-mode support file contains captured CLI argument error text rather than an executable review procedure.",
+      "affected_capability": "Codex review mode",
+      "disposition": "deferred-until-v2-rewrite-and-test"
+    },
+    {
+      "id": "V2-DEFECT-003",
+      "source": "gstack/landing-report",
+      "kind": "permission-contract-conflict",
+      "evidence": [
+        "skills/gstack/landing-report/SKILL.md:382-411"
+      ],
+      "detail": "The source declares read-only behavior while running git fetch, which mutates remote-tracking refs.",
+      "affected_capability": "landing report repository refresh",
+      "disposition": "deferred-until-v2-rewrite-and-test"
+    },
+    {
+      "id": "V2-DEFECT-004",
+      "source": "gstack/ios-design-review",
+      "kind": "capability-token-conflict",
+      "evidence": [
+        "skills/gstack/ios-design-review/SKILL.md"
+      ],
+      "detail": "The source requests observe semantics while acquiring a session through an interact-only endpoint.",
+      "affected_capability": "read-only iOS design review session acquisition",
+      "disposition": "deferred-until-v2-rewrite-and-test"
+    },
+    {
+      "id": "V2-DEFECT-005",
+      "source": "gstack/design-review",
+      "kind": "read-only-versus-fix-conflict",
+      "evidence": [
+        "skills/gstack/design-review/SKILL.md"
+      ],
+      "detail": "The source simultaneously prohibits source reading and requires source location, edits, commits, and regression fixes.",
+      "affected_capability": "rendered UI critique and repair loop",
+      "disposition": "split-readonly-review-from-authorized-fix-in-v2"
+    }
+  ]
+}

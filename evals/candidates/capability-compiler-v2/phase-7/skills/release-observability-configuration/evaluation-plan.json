@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "sentry-setup-releases",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "95ba43f1d8d31992c43bc46577777bcf87fbeb820ce1448ed46ff8cffd8644b3",
+    "identity": "release-observability-configuration@0.1.0-v2-candidate",
+    "skill_sha256": "a573266557e1ec7d3340fb1e868535e76672640c430df4f8b2d3acde74409b65"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-release-observability-configuration-holdout-trigger-01",
+    "V2-P7-release-observability-configuration-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-release-observability-configuration-01",
+      "remove_exact_text": "Release observability requires exact immutable release, commit, artifact, service, and environment identities; association does not prove deployment or authorize provider actions beyond the mapping.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "release-observability-configuration",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "description": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "execution_state": {
+      "const": "not-run-phase-9"
+    },
+    "failure_policy": {
+      "type": "object"
+    },
+    "gates": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "handoffs": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "human_checkpoints": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "stage_steps": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "condition": {
+            "type": "string"
+          },
+          "depends_on": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mandatory_in_recipe": {
+            "type": "boolean"
+          },
+          "recipe_ref": {
+            "type": "string"
+          },
+          "stage_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage_id",
+          "recipe_ref",
+          "condition",
+          "depends_on",
+          "mandatory_in_recipe"
+        ],
+        "type": "object"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "status": {
+      "const": "evaluating"
+    },
+    "support_stage": {
+      "type": "object"
+    },
+    "version": {
+      "const": "0.1.0-v2-candidate"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "description",
+    "gates",
+    "failure_policy",
+    "execution_state",
+    "stage_steps",
+    "support_stage",
+    "handoffs",
+    "human_checkpoints"
+  ],
+  "type": "object"
+}

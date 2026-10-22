@@ -1,0 +1,423 @@
+{
+  "condition": "verified change needs local packaging, documentation, delivery preflight, or merge/deploy readiness",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:baseline-regression-control",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0023",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:baseline-regression-control",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:baseline-regression-control",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-delivery-preflight",
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "V2-DEPENDENCY-0027",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:change-delivery-preflight",
+      "legacy_target_cluster_id": "cluster:change-packaging-and-versioning",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:change-delivery-preflight",
+      "target_capability_id": "capability:change-packaging-and-versioning"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-packaging-and-versioning",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0028",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:change-packaging-and-versioning",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:change-packaging-and-versioning",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate",
+        "curation/clusters.json:cluster:change-delivery-preflight"
+      ],
+      "id": "V2-DEPENDENCY-0031",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:completion-evidence-gate",
+      "legacy_target_cluster_id": "cluster:change-delivery-preflight",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:completion-evidence-gate",
+      "target_capability_id": "capability:change-delivery-preflight"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate",
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "V2-DEPENDENCY-0032",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:completion-evidence-gate",
+      "legacy_target_cluster_id": "cluster:change-packaging-and-versioning",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:completion-evidence-gate",
+      "target_capability_id": "capability:change-packaging-and-versioning"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:completion-evidence-gate",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0033",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:completion-evidence-gate",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:completion-evidence-gate",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:git-destructive-command-guard",
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "V2-DEPENDENCY-0071",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:git-destructive-command-guard",
+      "legacy_target_cluster_id": "cluster:change-packaging-and-versioning",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:git-destructive-command-guard",
+      "target_capability_id": "capability:change-packaging-and-versioning"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:git-destructive-command-guard",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0072",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:git-destructive-command-guard",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:git-destructive-command-guard",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-blackbox-qa",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0080",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:independent-blackbox-qa",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:independent-blackbox-qa",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-code-review",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0082",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:independent-code-review",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:independent-code-review",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:plan-execution-control",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0106",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:plan-execution-control",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:plan-execution-control",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:web-performance-diagnostics",
+        "curation/clusters.json:cluster:merge-and-deploy-readiness"
+      ],
+      "id": "V2-DEPENDENCY-0174",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:web-performance-diagnostics",
+      "legacy_target_cluster_id": "cluster:merge-and-deploy-readiness",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:web-performance-diagnostics",
+      "target_capability_id": "capability:merge-and-deploy-readiness"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/freeze/SKILL.md:38-77",
+        "gstack/landing-report/SKILL.md:412-424"
+      ],
+      "id": "V2-DEPENDENCY-0189",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "A frozen authorized change scope is required for release preflight evidence.",
+      "source_capability_id": "capability:change-scope-freeze",
+      "target_capability_id": "capability:change-delivery-preflight"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "azure-reliability/SKILL.md:10-49",
+        "gstack/landing-report/SKILL.md:412-424"
+      ],
+      "id": "V2-DEPENDENCY-0191",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Cloud reliability risks must be resolved or accepted before release preflight.",
+      "source_capability_id": "capability:cloud-reliability-assessment",
+      "target_capability_id": "capability:change-delivery-preflight"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/cso/SKILL.md:407-446",
+        "gstack/landing-report/SKILL.md:412-424"
+      ],
+      "id": "V2-DEPENDENCY-0225",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Release preflight consumes unresolved security risks and accepted exceptions.",
+      "source_capability_id": "capability:security-audit-and-threat-modeling",
+      "target_capability_id": "capability:change-delivery-preflight"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/ship/SKILL.md:674-705",
+        "gstack/landing-report/SKILL.md:412-424"
+      ],
+      "id": "V2-DEPENDENCY-0237",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Release preflight evaluates the exact locally integrated change candidate.",
+      "source_capability_id": "capability:local-branch-integration",
+      "target_capability_id": "capability:change-delivery-preflight"
+    }
+  ],
+  "description": "Package and preflight a release without executing remote change.",
+  "execution_state": "release-definition-not-executed",
+  "exit_contract": "local package and fresh readiness evidence without remote mutation",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human accepts release scope, redaction, residual risk, and each upcoming remote action separately",
+  "id": "stage-10-release-readiness",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:10-release-readiness",
+  "stage_order": 10,
+  "status": "released",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/change-delivery-preflight",
+      "condition": "Select only when the atomic requested outcome matches: Preflight one verified local change for delivery by checking branch and ref identity, merge base, credentials status, automation stops, evidence, documentation, and remote readiness without mutation.",
+      "contract_sha256": "d3bc19eebb6ac61278cb41ae2cb7a560fc970b263888a8d171daa1804ec3425f",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0031",
+        "V2-DEPENDENCY-0189",
+        "V2-DEPENDENCY-0191",
+        "V2-DEPENDENCY-0225",
+        "V2-DEPENDENCY-0237"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Preflight is read-only: readiness never authorizes packaging, push, pull-request change, merge, deployment, or provider mutation.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "change-delivery-preflight",
+      "inputs": [
+        "A reviewed change, repository state, delivery policy, and intended publication boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "delivery preflight report",
+        "branch and ref evidence",
+        "credential and automation-stop status",
+        "blocker and next-owner register"
+      ],
+      "permission_identity": "local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "change-delivery-preflight@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/change-packaging-and-versioning",
+      "condition": "Select only when the atomic requested outcome matches: Package verified local changes into bisectable commits, coherent version and changelog metadata, credential-safe PR material, and a push handoff without remote writes.",
+      "contract_sha256": "a33b683ea56daa8c2fc00e52ca12b1f0a1be0db7fbcf7e5d54c384abe1f01aba",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0027",
+        "V2-DEPENDENCY-0032",
+        "V2-DEPENDENCY-0071"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Packaging is local only: it may create approved commits and metadata but cannot push, create or update a PR, merge, tag remotely, deploy, or claim remote delivery.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "change-packaging-and-versioning",
+      "inputs": [
+        "Implemented and reviewed changes with fresh verification evidence."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "bisectable local commits",
+        "version and changelog updates",
+        "redacted PR and release metadata",
+        "local packaging evidence and push handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "change-packaging-and-versioning@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/deployment-environment-setup",
+      "condition": "Select only when the atomic requested outcome matches: Prepare local deployment configuration, provider choice, environment boundaries, secret references, and dry-run instructions without provisioning or deploying.",
+      "contract_sha256": "f6a8011809c162e52ea1860a6bfba9e2df0f3b0bf7917a13f7ca47e2274f3fc8",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Environment setup writes local configuration only; it cannot create provider resources, credentials, domains, environments, deployments, or production state.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "deployment-environment-setup",
+      "inputs": [
+        "Application, providers, environments, secrets policy, target, and deployment constraints."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "local deployment configuration candidate",
+        "environment and secret-reference contract",
+        "dry-run and validation evidence",
+        "provider handoff and teardown plan"
+      ],
+      "permission_identity": "workspace-write",
+      "remote_write": false,
+      "skill_ref": "deployment-environment-setup@1.0.0"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "slots/v2/1.0.0/skills/merge-and-deploy-readiness",
+      "condition": "Select only when the atomic requested outcome matches: Perform a fresh read-only gate over branch, pull request, conflicts, CI, reviews, version drift, deployment preview, rollback, and authorization before merge or deploy.",
+      "contract_sha256": "52ca930c57fdb33ed5587b0f675ba8cfff31e2fbd029e9f4ac83b6101e208667",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0023",
+        "V2-DEPENDENCY-0028",
+        "V2-DEPENDENCY-0033",
+        "V2-DEPENDENCY-0072",
+        "V2-DEPENDENCY-0080",
+        "V2-DEPENDENCY-0082",
+        "V2-DEPENDENCY-0106",
+        "V2-DEPENDENCY-0174"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Readiness cannot mutate remote state and must issue separate merge and deploy verdicts; a passing merge gate neither performs nor authorizes deployment.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "merge-and-deploy-readiness",
+      "inputs": [
+        "A pull request, target branch, CI state, version state, and deployment configuration."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "merge readiness result",
+        "deployment readiness result",
+        "fresh PR and artifact evidence",
+        "blocker, authorization, and rollback register"
+      ],
+      "permission_identity": "local-exec-external-read",
+      "remote_write": false,
+      "skill_ref": "merge-and-deploy-readiness@1.0.0"
+    }
+  ],
+  "version": "1.0.0"
+}

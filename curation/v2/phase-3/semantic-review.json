@@ -1,0 +1,57 @@
+{
+  "schema_version": "2.0",
+  "phase": 3,
+  "status": "passed",
+  "reviewer": "parent-direct-semantic-review",
+  "reviewed_candidate_count": 31,
+  "method": [
+    "Compared every candidate responsibility, input, output, permission identity, trigger cases, anti-trigger routes, and distinctive gate against its Phase 2 capability and hand-authored semantic design.",
+    "Computed pairwise lexical overlap across should-trigger corpora; no pair met the 0.28 Jaccard review threshold.",
+    "Audited all anti-routes for known capability targets and all read-only plan-review execution identities for absence of write tools.",
+    "Verified Phase 9 evidence remains explicitly not-run and holdout cases are physically distinct from authored trigger cases."
+  ],
+  "resolved_findings": [
+    {
+      "id": "V2-P3-REVIEW-001",
+      "finding": "Initial candidate contracts inherited broad legacy Phase 2 cluster responsibilities and gates, allowing adjacent research or persona work to remain in problem framing.",
+      "resolution": "Candidate responsibility and hard gates now come from the Phase 3 semantic design; Phase 2 contract text remains provenance only.",
+      "evidence": ["tools/curation/v2_compile_phase3_skills.py", "evals/candidates/capability-compiler-v2/phase-3/skills/problem-framing-and-customer-research/contract.json"]
+    },
+    {
+      "id": "V2-P3-REVIEW-002",
+      "finding": "Initial evaluation plans reused authored trigger and anti-trigger IDs as holdouts.",
+      "resolution": "Added a separate 62-case holdout corpus with unseen paraphrases and disjoint IDs; evaluation plans reference only this corpus.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-3/holdout-cases.json", "tools/curation/v2_phase3_gate.py"]
+    },
+    {
+      "id": "V2-P3-REVIEW-003",
+      "finding": "Boundary and authority fixtures initially used two generic placeholder prompts for every Skill.",
+      "resolution": "Boundary prompts now embed each Skill's atomic outcome; authority prompts branch by data governance, named formula, human decision, or downstream/external action boundary.",
+      "evidence": ["tools/curation/v2_compile_phase3_skills.py", "tests/curation/test_v2_phase3_gate.py"]
+    },
+    {
+      "id": "V2-P3-REVIEW-004",
+      "finding": "The requirements candidate initially named a draft V1 Slot and nonexistent version as a released baseline.",
+      "resolution": "It now uses the source Skill baseline; the Gate independently proves every claimed released baseline exists at the exact released version.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-3/skills/requirements-and-delivery-contract/evaluation-plan.json", "tools/curation/v2_phase3_gate.py"]
+    },
+    {
+      "id": "V2-P3-REVIEW-005",
+      "finding": "The compiler initially removed the manual semantic review artifact while regenerating schema files.",
+      "resolution": "Compiler cleanup is limited to the generated candidate root; manual semantic evidence under curation/v2/phase-3 is preserved.",
+      "evidence": ["tools/curation/v2_compile_phase3_skills.py", "curation/v2/phase-3/semantic-review.json"]
+    }
+  ],
+  "boundary_samples": [
+    {"id": "V2-P3-SAMPLE-PROBLEM-HYPOTHESIS", "left": "problem-framing-and-customer-research", "right": "solution-hypothesis-and-experiment-design", "verdict": "passed", "boundary": "Problem framing classifies supplied problem evidence without solution content; hypothesis design starts only from a validated problem and produces a falsifiable mechanism and experiment contract."},
+    {"id": "V2-P3-SAMPLE-RAW-SYNTHESIS-PRIORITY", "left": "qualitative-evidence-synthesis", "right": "evidence-synthesis-and-opportunity-prioritization", "verdict": "passed", "boundary": "Qualitative synthesis codes governed observations into themes and counterexamples; opportunity synthesis integrates heterogeneous evidence and may issue a bounded ranking recommendation."},
+    {"id": "V2-P3-SAMPLE-FRAMEWORK-DECISION", "left": "opportunity-prioritization-and-frameworks", "right": "decision-and-outcome-roadmapping", "verdict": "passed", "boundary": "Named-framework scoring declares exact formulas and sensitivity; roadmap construction begins from approved outcomes and preserves human selection and decision gates."},
+    {"id": "V2-P3-SAMPLE-RESEARCH-GOVERNANCE-INTERVIEW", "left": "research-planning-and-governance", "right": "customer-interview-execution", "verdict": "passed", "boundary": "Research planning defines authorization, consent, sampling, minimization, retention, transfer, and deletion without contacting participants; interview execution operates only under that approved contract."},
+    {"id": "V2-P3-SAMPLE-GENERAL-DESIGN-DX-EXECUTIVE-REVIEWS", "left": "independent-plan-review", "right": "design-plan-review", "verdict": "passed", "boundary": "General traceability review, design-state review, developer-journey review, and strategic executive review remain distinct read-only lenses; none edits or approves the plan."},
+    {"id": "V2-P3-SAMPLE-REQUIREMENTS-PLAN", "left": "requirements-and-delivery-contract", "right": "implementation-planning-and-handoff", "verdict": "passed", "boundary": "Requirements define observable product behavior and acceptance; implementation planning consumes approved behavior to sequence work and verification without resolving product ambiguity."},
+    {"id": "V2-P3-SAMPLE-INTAKE-ORCHESTRATION", "left": "context-intake-and-routing", "right": "workflow-orchestration-and-lifecycle", "verdict": "passed", "boundary": "Intake chooses one next capability from a request; orchestration composes already selected atomic contracts into conditional stateful workflows and still performs no downstream work."},
+    {"id": "V2-P3-SAMPLE-HUMAN-AUTHORITY", "left": "results-analysis-and-decision-readout", "right": "strategic-choice-and-differentiation", "verdict": "passed", "boundary": "Both produce evidence-bounded recommendations, but GO/PIVOT/KILL, strategic selection, scope approval, and build approval remain explicit human decisions."}
+  ],
+  "open_findings": [],
+  "release_claim": "none; all 31 candidates remain evaluating and all evaluation plans remain not-run-phase-9"
+}

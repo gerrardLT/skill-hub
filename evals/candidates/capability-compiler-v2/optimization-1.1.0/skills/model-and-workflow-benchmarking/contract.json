@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "matched benchmark run evidence",
+    "metric distributions and variance",
+    "cost-quality-latency comparison",
+    "regression and recommendation report"
+  ],
+  "capability_id": "capability:model-and-workflow-benchmarking",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A benchmark requires frozen cases and versions, matched environment and budgets, warmup, repeated runs, variance, failed-case retention, and exact artifacts; leaderboard point estimates alone fail.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "model-and-workflow-benchmarking",
+  "inputs": [
+    "Frozen cases, candidate variants, metric contract, environment, and budget."
+  ],
+  "outputs": [
+    "matched benchmark run evidence",
+    "metric distributions and variance",
+    "cost-quality-latency comparison",
+    "regression and recommendation report"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "frozen-cases",
+      "matched-environment",
+      "warmup",
+      "repeated-runs",
+      "variance",
+      "failed-case-retention",
+      "cost-quality-latency"
+    ],
+    "data_governance": true,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Benchmark supplied model or workflow variants on frozen cases, matched environments, metrics, variance, cost, latency, and evidence without remote submission or product approval.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

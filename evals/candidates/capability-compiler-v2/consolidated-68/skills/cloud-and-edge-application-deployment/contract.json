@@ -1,0 +1,129 @@
+{
+  "artifact_types": [
+    "local deployment configuration candidate",
+    "environment and secret-reference contract",
+    "dry-run and validation evidence",
+    "provider handoff and teardown plan",
+    "deploy configuration block (platform, URL, workflow, status command, merge method, project type, health check, hooks, rollback) consumed by readiness and trigger Skills",
+    "edge deployment receipt",
+    "immutable worker and binding manifest",
+    "route and environment identity",
+    "health handoff and rollback reference",
+    "Kubernetes deployment receipt",
+    "applied resource and image identity",
+    "rollout and health status",
+    "recovery, observation, and rollback handoff",
+    "conditional command set marked do-not-run until blockers clear",
+    "Kubernetes readiness assessment",
+    "cluster and workload evidence",
+    "blocker and safeguard register",
+    "deployment prerequisites and rollback requirements",
+    "per-issue severity record with current and required values",
+    "hosting deployment receipt",
+    "deployment URL and immutable identity",
+    "artifact and configuration evidence",
+    "observation handoff and rollback reference"
+  ],
+  "capability_id": "capability:cloud-and-edge-application-deployment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Environment setup writes local configuration only; it cannot create provider resources, credentials, domains, environments, deployments, or production state.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "Edge deployment requires exact immutable code, bindings, routes, limits, traffic scope, health criteria, and rollback target; wildcard route or binding changes and unrelated resource mutations are blocked.",
+    "Kubernetes deployment is bound to one cluster, namespace, manifest set, image digest, identity, rollout, health gate, and rollback revision; readiness failure or unexpected diff blocks apply.",
+    "Readiness authority is read-only: no apply, patch, rollout, scale, restart, secret read, policy change, or namespace mutation is permitted.",
+    "Web deployment requires one exact provider project, environment, immutable artifact, configuration, domain and traffic scope, health gate, and rollback target; preview or identity drift blocks deployment."
+  ],
+  "id": "cloud-and-edge-application-deployment",
+  "inputs": [
+    "Application, providers, environments, secrets policy, target, and deployment constraints.",
+    "Worker source, environment bindings, provider account, compatibility target, and authorization.",
+    "Application artifact, existing cluster context, provider adapter, manifests, credentials, and deployment authorization.",
+    "Cluster and workload configuration, provider controls, expected traffic, failure budget, and deployment plan.",
+    "Build artifact, provider project, environment, secrets boundary, deployment plan, and authorization."
+  ],
+  "mode_permissions": {
+    "deployment-environment-setup": "workspace-write",
+    "edge-worker-deployment": "remote-write-authorized-only",
+    "kubernetes-application-deployment": "remote-write-authorized-only",
+    "kubernetes-deployment-readiness": "external-read",
+    "web-hosting-deployment": "remote-write-authorized-only"
+  },
+  "modes": [
+    "deployment-environment-setup",
+    "edge-worker-deployment",
+    "kubernetes-application-deployment",
+    "kubernetes-deployment-readiness",
+    "web-hosting-deployment"
+  ],
+  "outputs": [
+    "local deployment configuration candidate",
+    "environment and secret-reference contract",
+    "dry-run and validation evidence",
+    "provider handoff and teardown plan",
+    "deploy configuration block (platform, URL, workflow, status command, merge method, project type, health check, hooks, rollback) consumed by readiness and trigger Skills",
+    "edge deployment receipt",
+    "immutable worker and binding manifest",
+    "route and environment identity",
+    "health handoff and rollback reference",
+    "Kubernetes deployment receipt",
+    "applied resource and image identity",
+    "rollout and health status",
+    "recovery, observation, and rollback handoff",
+    "conditional command set marked do-not-run until blockers clear",
+    "Kubernetes readiness assessment",
+    "cluster and workload evidence",
+    "blocker and safeguard register",
+    "deployment prerequisites and rollback requirements",
+    "per-issue severity record with current and required values",
+    "hosting deployment receipt",
+    "deployment URL and immutable identity",
+    "artifact and configuration evidence",
+    "observation handoff and rollback reference"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "local-config-only",
+      "provider-adapter",
+      "environment-boundary",
+      "secret-references",
+      "dry-run",
+      "teardown-plan",
+      "no-provision"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Consolidated capability covering 5 related modes: Prepare local deployment configuration, provider choice, environment boundaries, secret references, and dry-run instructions without provisioning or deploying.; Deploy one immutable edge-worker artifact through one approved provider adapter after build, binding, route, limit, and rollback preflight.; Deploy one immutable application version to an existing Kubernetes platform with validated manifests, identity, rollout, health, and rollback controls under per-action authorization.; Read-only assess Kubernetes workload, cluster, identity, policy, scaling, networking, migration, health, and rollback readiness before deployment.; Deploy one immutable Web application artifact through one selected hosting provider adapter with exact environment, configuration, health, domain, and rollback controls.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

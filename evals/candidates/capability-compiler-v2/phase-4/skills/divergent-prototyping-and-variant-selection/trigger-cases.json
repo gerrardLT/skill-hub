@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "divergent-prototyping-and-variant-selection",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "design-system-foundation-and-token-extraction",
+        "responsive-layout-and-spatial-composition",
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-trigger-01",
+      "input": "Create three working variants that differ in layout, density, navigation, and emphasis rather than color alone.",
+      "kind": "should-trigger",
+      "reason": "Build genuinely divergent working UI variants in isolation, compare them on frozen criteria, and preserve human selection before promotion."
+    },
+    {
+      "expected_skill_id": "divergent-prototyping-and-variant-selection",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "design-context-and-direction-contract",
+        "design-system-foundation-and-token-extraction",
+        "responsive-layout-and-spatial-composition",
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-trigger-02",
+      "input": "Set up an isolated prototype comparison using authentic content and record the human-selected direction without promoting it automatically.",
+      "kind": "should-trigger",
+      "reason": "Build genuinely divergent working UI variants in isolation, compare them on frozen criteria, and preserve human selection before promotion."
+    },
+    {
+      "expected_skill_id": "design-system-foundation-and-token-extraction",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "divergent-prototyping-and-variant-selection"
+      ],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-anti-01",
+      "input": "Polish the selected direction into the production design system and responsive source.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to design-system-foundation-and-token-extraction."
+    },
+    {
+      "expected_skill_id": "rendered-ui-critique-and-release-disposition",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "divergent-prototyping-and-variant-selection"
+      ],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-anti-02",
+      "input": "Run an independent release review on the promoted production implementation.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to rendered-ui-critique-and-release-disposition."
+    },
+    {
+      "expected_skill_id": "divergent-prototyping-and-variant-selection",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-boundary-01",
+      "input": "Build genuinely divergent working UI variants in isolation, compare them on frozen criteria, and preserve human selection before promotion. The request omits the product or render identity, target states, authorization, and decision owner.",
+      "kind": "boundary",
+      "reason": "Requestable UI authority or evidence prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "divergent-prototyping-and-variant-selection",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P4-divergent-prototyping-and-variant-selection-authority-01",
+      "input": "Build genuinely divergent working UI variants in isolation, compare them on frozen criteria, and preserve human selection before promotion. Also approve the taste choice, mutate unrelated source, accept risk, and release remotely without a human owner or separate authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds the Skill's mutation, decision, and release authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "divergent-prototyping-and-variant-selection"
+}

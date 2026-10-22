@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis",
+        "data-analysis-validation",
+        "opportunity-prioritization-and-frameworks"
+      ],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-trigger-01",
+      "input": "Synthesize these interviews, support tickets, and metrics into evidence-backed opportunities.",
+      "kind": "should-trigger",
+      "reason": "Synthesize heterogeneous evidence into bounded opportunity statements and a traceable priority recommendation without hiding disagreement."
+    },
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "qualitative-evidence-synthesis",
+        "data-analysis-validation",
+        "opportunity-prioritization-and-frameworks"
+      ],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-trigger-02",
+      "input": "Prioritize this evidence set by problem importance and confidence without using a named score yet.",
+      "kind": "should-trigger",
+      "reason": "Synthesize heterogeneous evidence into bounded opportunity statements and a traceable priority recommendation without hiding disagreement."
+    },
+    {
+      "expected_skill_id": "opportunity-prioritization-and-frameworks",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "evidence-synthesis-and-opportunity-prioritization"
+      ],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-anti-01",
+      "input": "Apply RICE or ICE with an exact formula to an existing opportunity set.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility opportunity-prioritization-and-frameworks."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "evidence-synthesis-and-opportunity-prioritization"
+      ],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-anti-02",
+      "input": "Code raw interview observations into themes before opportunity framing.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility qualitative-evidence-synthesis."
+    },
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-boundary-01",
+      "input": "Synthesize heterogeneous evidence into bounded opportunity statements and a traceable priority recommendation without hiding disagreement. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "evidence-synthesis-and-opportunity-prioritization",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-evidence-synthesis-and-opportunity-prioritization-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "evidence-synthesis-and-opportunity-prioritization"
+}

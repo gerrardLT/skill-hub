@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-hub.local/schemas/v2-capability.json",
+  "title": "Capability Compiler V2 atomic capability",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "capability_id",
+    "name",
+    "primary_domain_id",
+    "lifecycle_stage_id",
+    "owning_phase",
+    "responsibility",
+    "non_responsibility",
+    "inputs",
+    "outputs",
+    "completion_evidence",
+    "permission_identity",
+    "hard_gates",
+    "stop_conditions",
+    "source_cluster_ids",
+    "canonical_unit_ids",
+    "retained_auxiliary_unit_ids",
+    "root_derived_atom_ids",
+    "source_fragment_ids",
+    "fusion_decision_ids",
+    "decision_references",
+    "provider_or_framework_variants",
+    "source_evidence",
+    "status",
+    "source_defect_refs"
+  ],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "capability_id": {"type": "string", "pattern": "^capability:[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "primary_domain_id": {"type": "string", "pattern": "^domain:[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "lifecycle_stage_id": {"type": "string", "pattern": "^stage:[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "owning_phase": {"type": "integer", "minimum": 3, "maximum": 7},
+    "responsibility": {"type": "string", "minLength": 20},
+    "non_responsibility": {"type": "string", "minLength": 20},
+    "inputs": {"$ref": "#/$defs/nonEmptyStrings"},
+    "outputs": {"$ref": "#/$defs/nonEmptyStrings"},
+    "completion_evidence": {"$ref": "#/$defs/nonEmptyStrings"},
+    "permission_identity": {
+      "enum": [
+        "read-only",
+        "workspace-write",
+        "workspace-write-local-exec",
+        "workspace-write-external-read",
+        "workspace-write-local-exec-external-read",
+        "artifact-write-local-exec",
+        "artifact-write-local-exec-external-read",
+        "local-exec-external-read",
+        "local-system-write-external-session-authorized-only",
+        "local-system-write-authorized-only",
+        "local-exec",
+        "external-read",
+        "remote-write-authorized-only"
+      ]
+    },
+    "hard_gates": {"$ref": "#/$defs/nonEmptyStrings"},
+    "stop_conditions": {"$ref": "#/$defs/nonEmptyStrings"},
+    "source_cluster_ids": {"$ref": "#/$defs/uniqueStrings"},
+    "canonical_unit_ids": {"$ref": "#/$defs/uniqueStrings"},
+    "retained_auxiliary_unit_ids": {"$ref": "#/$defs/uniqueStrings"},
+    "root_derived_atom_ids": {"$ref": "#/$defs/uniqueStrings"},
+    "source_fragment_ids": {"$ref": "#/$defs/uniqueStrings"},
+    "fusion_decision_ids": {"$ref": "#/$defs/nonEmptyUniqueStrings"},
+    "decision_references": {"$ref": "#/$defs/nonEmptyUniqueStrings"},
+    "provider_or_framework_variants": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "provider", "environment", "source_root", "applies_when"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^variant:[a-z0-9-]+:.+$"},
+          "provider": {"type": "string", "minLength": 1},
+          "environment": {"type": "string", "minLength": 1},
+          "source_root": {"type": "string", "minLength": 1},
+          "applies_when": {"type": "string", "minLength": 20}
+        }
+      }
+    },
+    "source_evidence": {"$ref": "#/$defs/nonEmptyUniqueStrings"},
+    "status": {"const": "candidate-taxonomy"},
+    "source_defect_refs": {"$ref": "#/$defs/uniqueStrings"}
+  },
+  "$defs": {
+    "uniqueStrings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "nonEmptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

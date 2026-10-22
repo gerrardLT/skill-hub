@@ -1,0 +1,105 @@
+{
+  "artifact_types": [
+    "interview guide",
+    "consent and governance record",
+    "observation log",
+    "follow-up register",
+    "probe list and observation-log template",
+    "opportunity set",
+    "evidence-to-opportunity matrix",
+    "comparison on explicit dimensions",
+    "dissent register",
+    "ranking handoff with evidence matrix, candidate ids, missing inputs and named scoring owner",
+    "problem frame",
+    "classification register",
+    "conflict register",
+    "critical gap list",
+    "structured problem statement with evidence and source ids",
+    "coded evidence table",
+    "theme map",
+    "counterexample register",
+    "confidence and saturation notes",
+    "depth and breadth characterization per theme"
+  ],
+  "capability_id": "capability:customer-research-and-synthesis",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Do not recruit, contact, record, retain, or transfer participant data without explicit authorization and governance terms.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries.",
+    "No opportunity rank may be justified by source count alone or by silently converting assumptions into evidence.",
+    "Any proposed feature, mechanism, vendor, architecture, or implied solution in the problem frame is a boundary failure.",
+    "Do not expose raw participant data, count quotes as population prevalence, or erase minority and contradictory evidence."
+  ],
+  "id": "customer-research-and-synthesis",
+  "inputs": [
+    "A research objective, participant context, consent boundary, and interview script.",
+    "Research notes, behavior data, support signals, competitive evidence, and candidate opportunities.",
+    "A problem hypothesis, target users, prior research, access constraints, and a decision to support.",
+    "Interview notes, direct quotes, affinity material, journey evidence, and known bias."
+  ],
+  "mode_permissions": {
+    "customer-interview-execution": "workspace-write",
+    "evidence-synthesis-and-opportunity-prioritization": "workspace-write",
+    "problem-framing-and-customer-research": "workspace-write",
+    "qualitative-evidence-synthesis": "workspace-write"
+  },
+  "modes": [
+    "customer-interview-execution",
+    "evidence-synthesis-and-opportunity-prioritization",
+    "problem-framing-and-customer-research",
+    "qualitative-evidence-synthesis"
+  ],
+  "outputs": [
+    "interview guide",
+    "consent and governance record",
+    "observation log",
+    "follow-up register",
+    "probe list and observation-log template",
+    "opportunity set",
+    "evidence-to-opportunity matrix",
+    "comparison on explicit dimensions",
+    "dissent register",
+    "ranking handoff with evidence matrix, candidate ids, missing inputs and named scoring owner",
+    "problem frame",
+    "classification register",
+    "conflict register",
+    "critical gap list",
+    "structured problem statement with evidence and source ids",
+    "coded evidence table",
+    "theme map",
+    "counterexample register",
+    "confidence and saturation notes",
+    "depth and breadth characterization per theme"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Consolidated capability covering 4 related modes: Prepare and conduct a non-leading, consented interview session and preserve observation separately from interpretation.; Synthesize heterogeneous evidence into bounded opportunity statements and compare them on explicit dimensions without hiding disagreement; ranking is left to the frameworks Skill or the human owner.; Create a solution-free problem frame by classifying supplied customer evidence, facts, assumptions, conflicts, impacts, and gaps.; Code authorized qualitative observations into traceable themes, counterexamples, contradictions, and confidence without ranking solutions.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

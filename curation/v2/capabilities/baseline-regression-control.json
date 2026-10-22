@@ -1,0 +1,57 @@
+{
+  "canonical_unit_ids": [
+    "audit-website:unit-007",
+    "canary:unit-002",
+    "canary:unit-008",
+    "qao-method-quick-and-regression-modes"
+  ],
+  "capability_id": "capability:baseline-regression-control",
+  "completion_evidence": [
+    "All declared outputs exist and their source citations, hashes, or executable checks are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0014"
+  ],
+  "hard_gates": [
+    "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates.",
+    "Accept only: A trusted historical baseline and a current measurement made under the same contract.",
+    "Produce only: A diff, regression decision, and controlled baseline-update decision.",
+    "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+  ],
+  "inputs": [
+    "A trusted historical baseline and a current measurement made under the same contract."
+  ],
+  "lifecycle_stage_id": "stage:08-verification-quality",
+  "name": "Baseline Regression Control",
+  "non_responsibility": "Does not approve upstream product decisions, expand authority, or perform remote writes beyond its explicit permission identity.",
+  "outputs": [
+    "A diff, regression decision, and controlled baseline-update decision."
+  ],
+  "owning_phase": 6,
+  "permission_identity": "local-exec",
+  "primary_domain_id": "domain:testing-and-quality-assurance",
+  "provider_or_framework_variants": [],
+  "responsibility": "Compare current audit, visual, performance, model, or production measures with trusted baselines and control updates.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [],
+  "schema_version": "2.0",
+  "source_cluster_ids": [
+    "cluster:baseline-regression-control"
+  ],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "audit-website/SKILL.md:74-82",
+    "canary/SKILL.md:548-574",
+    "canary/SKILL.md:715-725",
+    "qa-only/SKILL.md:650-654"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop on missing required input, authority, data-governance boundary, failed evidence check, or incompatible permission identity."
+  ]
+}

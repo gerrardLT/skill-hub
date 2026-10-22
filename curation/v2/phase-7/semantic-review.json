@@ -1,0 +1,67 @@
+{
+  "schema_version": "2.0",
+  "phase": 7,
+  "status": "passed",
+  "reviewer": "parent-direct-semantic-review",
+  "reviewed_candidate_count": 39,
+  "reviewed_batches": 3,
+  "method": [
+    "Reviewed all 39 responsibilities, procedures, outputs, hard gates, exact permission identities, mutation scopes, triggers, anti-triggers, holdouts, baselines, and provenance in delivery, observability, and incident/learning batches.",
+    "Computed pairwise positive-trigger lexical overlap at a 0.22 Jaccard threshold; manually adjudicated edge-worker versus Web-hosting deployment.",
+    "Reviewed all sixteen remote actions as separate one-action scopes and verified every observer, assessor, investigation, classification, readiness, and incident coordinator remains evidence-only.",
+    "Reviewed delivery ordering, deployment observation and rollback separation, APM lifecycle, canary baseline immutability, telemetry governance, incident roles, retrospective integrity, and local-only learning persistence."
+  ],
+  "resolved_findings": [
+    {
+      "id": "V2-P7-REVIEW-001",
+      "finding": "Incident-response source material includes acknowledgement, mitigation, communication, recovery, and closure, while the frozen Phase 2 identity is external-read only.",
+      "resolution": "The candidate coordinates severity, roles, timeline, evidence, reversible mitigation options, specialist handoffs, recovery criteria, and closure recommendation only; provider acknowledgement, silence, assignment, comment, traffic, scale, restart, deployment, rollback, remediation, and closure are explicitly prohibited.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-7/skills/incident-response-coordination/SKILL.md", "evals/candidates/capability-compiler-v2/phase-7/skills/incident-response-coordination/contract.json"]
+    },
+    {
+      "id": "V2-P7-REVIEW-002",
+      "finding": "Deployment-environment setup could be interpreted as authority to provision provider resources because it accepts provider selection and environment boundaries.",
+      "resolution": "The candidate writes only local configuration candidates, secret references, schemas, dry-run instructions, and teardown plans; provider provisioning and deployment are separate remote capabilities.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-7/skills/deployment-environment-setup/SKILL.md"]
+    },
+    {
+      "id": "V2-P7-REVIEW-003",
+      "finding": "A single remote-write identity could collapse push, PR change, comment, merge, deploy, provider configuration, and rollback into interchangeable actions.",
+      "resolution": "All sixteen remote candidates have unique mutation_scope values, exact targets, fresh per-action authorization, immutable inputs, durable receipts, and action-specific recovery boundaries; one authorization never cascades.",
+      "evidence": ["curation/v2/phase-7/designs.json", "tools/curation/v2_phase7_gate.py"]
+    },
+    {
+      "id": "V2-P7-REVIEW-004",
+      "finding": "Canary monitoring source material could let production observations silently replace baselines or automatically roll back.",
+      "resolution": "Baseline management writes immutable versioned local evidence artifacts only; production canary monitoring is read-only and can recommend investigation or rollback but cannot update baselines, promote, repair, change traffic, or rollback.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-7/skills/canary-baseline-management/SKILL.md", "evals/candidates/capability-compiler-v2/phase-7/skills/production-canary-monitoring/SKILL.md"]
+    },
+    {
+      "id": "V2-P7-REVIEW-005",
+      "finding": "Local learning persistence could make unverified inference canonical or imply external synchronization.",
+      "resolution": "It accepts one validated approved record, preserves evidence-status and provenance, writes one local destination only, and blocks secrets, unverified inference, unrelated context, external synchronization, and indefinite retention.",
+      "evidence": ["evals/candidates/capability-compiler-v2/phase-7/skills/local-learning-persistence/SKILL.md"]
+    }
+  ],
+  "boundary_samples": [
+    {"id": "V2-P7-SAMPLE-PREFLIGHT-PACKAGE", "left": "change-delivery-preflight", "right": "change-packaging-and-versioning", "verdict": "passed", "boundary": "Preflight is local and remote-read-only readiness evidence; packaging may create approved local commits, version, changelog, and metadata but cannot push."},
+    {"id": "V2-P7-SAMPLE-PUSH-PR", "left": "remote-git-push", "right": "remote-pull-request-change", "verdict": "passed", "boundary": "Push performs one non-force exact refspec; PR change consumes the verified push receipt and creates or updates one PR without merge."},
+    {"id": "V2-P7-SAMPLE-READINESS-MERGE-DEPLOY", "left": "merge-and-deploy-readiness", "right": "remote-pull-request-merge", "verdict": "passed", "boundary": "Readiness produces separate fresh merge and deploy verdicts; merge is one PR action at one head SHA; deployment requires a separate later authorization."},
+    {"id": "V2-P7-SAMPLE-TRIGGER-OBSERVE-ROLLBACK", "left": "deployment-trigger-execution", "right": "deployment-observation", "verdict": "passed", "boundary": "Trigger performs one exact deployment invocation; observation is read-only; rollback requires its own met condition, exact recovery target, compatibility, blast radius, and authorization."},
+    {"id": "V2-P7-SAMPLE-WEB-EDGE", "left": "web-hosting-deployment", "right": "edge-worker-deployment", "verdict": "passed", "boundary": "Web hosting owns project, build, domains, regions, environment, and hosting traffic; edge deployment owns worker runtime, compatibility version, bindings, routes, and platform limits."},
+    {"id": "V2-P7-SAMPLE-K8S-READY-DEPLOY", "left": "kubernetes-deployment-readiness", "right": "kubernetes-application-deployment", "verdict": "passed", "boundary": "Readiness may inspect and non-mutating dry-run only; deployment applies one reviewed manifest and immutable image to one cluster and namespace."},
+    {"id": "V2-P7-SAMPLE-APM-LIFECYCLE", "left": "apm-instrumentation-enablement", "right": "apm-instrumentation-verification", "verdict": "passed", "boundary": "Enablement configures one known instrumentation path; verification uses a known request and current traces; troubleshooting diagnoses signal-path failures read-only; summary only aggregates supplied evidence."},
+    {"id": "V2-P7-SAMPLE-AGENT-APM", "left": "observability-agent-installation", "right": "apm-instrumentation-enablement", "verdict": "passed", "boundary": "Agent installation owns pinned host or cluster collector installation and permissions; APM enablement owns application runtime instrumentation and duplicate prevention."},
+    {"id": "V2-P7-SAMPLE-METRICS-MONITOR", "left": "metrics-system-and-observability", "right": "monitoring-and-alert-configuration", "verdict": "passed", "boundary": "Metrics design defines exact formulas, baselines, guardrails, owners, and linked actions without provider writes; monitoring config creates exact provider alerts from approved definitions."},
+    {"id": "V2-P7-SAMPLE-LOG-AI-OBS", "left": "log-observability-configuration", "right": "ai-observability-configuration", "verdict": "passed", "boundary": "Log configuration governs service log sources, parsing and routes; AI observability governs model, prompt, retrieval, tool, cost and quality telemetry with stricter content minimization."},
+    {"id": "V2-P7-SAMPLE-CANARY", "left": "canary-baseline-management", "right": "production-canary-monitoring", "verdict": "passed", "boundary": "Baseline management creates immutable versioned local artifacts; monitoring samples allowlisted production and cannot replace baselines or auto-rollback."},
+    {"id": "V2-P7-SAMPLE-TRACE-CLASS-ROOT", "left": "production-trace-classification", "right": "production-llm-trace-root-cause-analysis", "verdict": "passed", "boundary": "Classification labels governed observed behavior without causality; root-cause analysis consumes a cohort, compares successes, tests hypotheses, and finds the first divergent stage."},
+    {"id": "V2-P7-SAMPLE-ERROR-INVESTIGATION", "left": "error-monitoring-issue-investigation", "right": "defect-remediation", "verdict": "passed", "boundary": "Issue investigation is provider-read-only and cannot resolve, mute, comment, assign, regroup, or edit source; remediation consumes confirmed evidence under a separate writer."},
+    {"id": "V2-P7-SAMPLE-INCIDENT-ROLLBACK", "left": "incident-response-coordination", "right": "release-rollback-execution", "verdict": "passed", "boundary": "Coordination maintains severity, roles, timeline, options and decisions under read-only authority; rollback is a separate one-shot production action and does not close the incident."},
+    {"id": "V2-P7-SAMPLE-INCIDENT-RETRO", "left": "incident-response-coordination", "right": "engineering-retrospective-and-improvement", "verdict": "passed", "boundary": "Incident coordination is active and mitigation-first; retrospective occurs after a frozen window and cannot rewrite facts or assign blame."},
+    {"id": "V2-P7-SAMPLE-LEARNING-PERSIST", "left": "feedback-and-continuous-learning-loop", "right": "local-learning-persistence", "verdict": "passed", "boundary": "Feedback synthesis calibrates hypotheses and next learning inputs without persistence; local persistence writes one validated approved record and cannot infer or synchronize externally."},
+    {"id": "V2-P7-SAMPLE-PROVENANCE-RELEASE", "left": "source-metadata-and-provenance", "right": "release-observability-configuration", "verdict": "passed", "boundary": "Provenance records source and artifact lineage without provider mutation or deployment inference; release observability associates exact immutable identities in one provider."}
+  ],
+  "open_findings": [],
+  "release_claim": "none; all 39 candidates remain evaluating, all evaluation plans remain not-run-phase-9, and all remote or local-system candidate actions remain not-executed-phase-7"
+}

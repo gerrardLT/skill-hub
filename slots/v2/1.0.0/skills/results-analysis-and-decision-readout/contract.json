@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "results readout",
+    "threshold comparison",
+    "failure-slice analysis",
+    "human decision recommendation"
+  ],
+  "capability_id": "capability:results-analysis-and-decision-readout",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "A recommendation may not be presented as a product decision, and post-hoc thresholds must be labeled rather than disguised as preregistered criteria.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "results-analysis-and-decision-readout",
+  "inputs": [
+    "Experiment or research data, metrics, baselines, bias checks, and decision criteria."
+  ],
+  "outputs": [
+    "results readout",
+    "threshold comparison",
+    "failure-slice analysis",
+    "human decision recommendation"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Interpret frozen experiment or decision results against predeclared criteria, uncertainty, failure slices, and alternatives without making the final product decision.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

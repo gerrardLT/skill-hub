@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "bisectable local commits",
+    "version and changelog updates",
+    "redacted PR and release metadata",
+    "local packaging evidence and push handoff"
+  ],
+  "capability_id": "capability:change-packaging-and-versioning",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Packaging is local only: it may create approved commits and metadata but cannot push, create or update a PR, merge, tag remotely, deploy, or claim remote delivery.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "change-packaging-and-versioning",
+  "inputs": [
+    "Implemented and reviewed changes with fresh verification evidence."
+  ],
+  "outputs": [
+    "bisectable local commits",
+    "version and changelog updates",
+    "redacted PR and release metadata",
+    "local packaging evidence and push handoff"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "local-only",
+      "bisectable-commits",
+      "version",
+      "changelog",
+      "redaction",
+      "no-push"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Package verified local changes into bisectable commits, coherent version and changelog metadata, credential-safe PR material, and a push handoff without remote writes.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

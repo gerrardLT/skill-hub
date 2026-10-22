@@ -1,0 +1,182 @@
+{
+  "domain": "learning-retrospective-and-governance",
+  "skills": {
+    "ai-organizational-adoption-and-leadership": {
+      "trigger_signals": [
+        "Leadership asks how to roll out an AI initiative: which team pilots first, who sponsors it, how value and risk are measured",
+        "An AI pilot needs enablement, ownership, stop criteria and an expansion decision before any access is granted"
+      ],
+      "guidance": [
+        "Pilot selection: score each candidate workflow on repeatability (same steps, same inputs, frequent) and reversibility; prefer repeatable business processes over open-ended knowledge work.",
+        "Pair top-down sponsorship with bottom-up early adopters: name a small tiger team of technically adjacent evangelists who can show measurable return quickly.",
+        "Plan a diverge phase (teams explore freely under stated limits) followed by a dated converge decision on a few high-conviction bets; audit each AI feature against the core objective so adoption does not add product bloat."
+      ],
+      "procedure_insert": [
+        {
+          "after": 1,
+          "text": "Score each candidate pilot workflow on repeatability and reversibility and state why the chosen one is the smallest test of differentiated value."
+        }
+      ],
+      "source_evidence_add": [
+        "ai-product-strategy/references/guest-insights.md:800-807",
+        "ai-product-strategy/references/guest-insights.md:848-855"
+      ],
+      "resolves": {
+        "ai-organizational-adoption-and-leadership#F1": "fixed: guidance + procedure_insert (repeatability scoring, tiger team, diverge/converge)",
+        "ai-organizational-adoption-and-leadership#F2": "deferred-to-eval: both Phase 9 holdouts tied; lift is re-measured in Phase R5"
+      }
+    },
+    "engineering-retrospective-and-improvement": {
+      "trigger_signals": [
+        "A sprint, release or project window has ended and the team wants an evidence-based blameless retrospective",
+        "Someone asks what repeated friction, debt or coordination problems the last period showed and what small experiments to run next"
+      ],
+      "anti_add": [
+        {
+          "text": "Synthesize runtime signals and feedback into calibrated hypotheses",
+          "route": "feedback-and-continuous-learning-loop"
+        }
+      ],
+      "guidance": [
+        "Default metric table when the user supplies none: commits and active days, net lines changed, PR size distribution, test pass rate and coverage, incident count, and context switches; show each as current value, previous value and delta.",
+        "When a previous retrospective snapshot is supplied, compare against it and report which prior actions were completed, dropped (with the reason) or still open.",
+        "Keep feedback blameless: attribute patterns to systems and process, and cite evidence (commit, metric, plan item) for every claim. Personal feedback is given only when the requester supplied individual evidence and asked for it."
+      ],
+      "outputs_add": [
+        "trend and debt register with columns: pattern, evidence refs, first seen, frequency, owner, status"
+      ],
+      "source_evidence_add": [
+        "gstack/retro/SKILL.md:1091-1130",
+        "gstack/retro/SKILL.md:1172-1211"
+      ],
+      "resolves": {
+        "engineering-retrospective-and-improvement#F1": "fixed: guidance (default metric table, snapshot comparison)",
+        "engineering-retrospective-and-improvement#F2": "fixed: outputs_add (register columns)"
+      }
+    },
+    "feedback-and-continuous-learning-loop": {
+      "trigger_signals": [
+        "A review cycle has new metrics, customer feedback, experiment results or alerts and someone must update what the team believes and what to do next",
+        "Hypotheses and priorities need re-rating after new evidence, with contrary evidence kept visible"
+      ],
+      "anti_add": [
+        {
+          "text": "Review an engineering period for delivery friction and improvement experiments",
+          "route": "engineering-retrospective-and-improvement"
+        },
+        {
+          "text": "Validate that a dataset, metric or analysis is correct before anyone uses it",
+          "route": "data-analysis-validation"
+        }
+      ],
+      "guidance": [
+        "Confidence scale for every hypothesis: 1 untested assumption, 2 single anecdotal source, 3 multiple consistent sources, 4 measured in a controlled or pre-registered comparison, 5 replicated. Record the value before and after, and the specific evidence that moved it.",
+        "Treat correlation, stale metrics and repeated opinion as no movement. State the evidence age and reject anything older than the stated review window.",
+        "End with one next learning input, its owner and a review date.",
+        "Quantify uncertainty of before/after rates when denominators exist. A point estimate clearing a threshold is not evidence its confidence interval clears that threshold. Reopen assumptions contradicted by evidence."
+      ],
+      "authored_content": [
+        "confidence scale and update rule are authored; cited sources describe adjacent practice, not this method"
+      ],
+      "resolves": {
+        "feedback-and-continuous-learning-loop#F1": "declined: no supporting source exists in the corpus for this exact method; recorded as authored_content rather than inventing provenance",
+        "feedback-and-continuous-learning-loop#F2": "fixed: guidance (5-level confidence scale, before/after, evidence that moved it)",
+        "feedback-and-continuous-learning-loop#F3": "fixed: anti_add (engineering-retrospective-and-improvement, data-analysis-validation)"
+      }
+    },
+    "local-learning-persistence": {
+      "trigger_signals": [
+        "One already validated learning, metric or review outcome must be written to one approved local store with read-back",
+        "A record must be saved with provenance, retention and deletion terms and a rollback path"
+      ],
+      "anti_add": [
+        {
+          "text": "Create the store or runtime that will hold records",
+          "route": "local-agent-memory-setup"
+        },
+        {
+          "text": "Restore, search, prune or reconcile stored records",
+          "route": "project-context-and-learning-store"
+        }
+      ],
+      "guidance": [
+        "Use the record schema the store or task defines. When none is defined, still deliver an appendable record using these fields as a labelled proposal: type (pattern, pitfall, preference, architecture, tool, operational), key, insight, source, created-at, retention, project id, and optional confidence and files. Never present proposed fields as requirements the task did not state, and never withhold the record because a proposed field is unknown; mark it as an assumption instead.",
+        "Normalize the destination path before writing: resolve to an absolute path under the approved store, reject path separators or traversal in branch or key names, and never build paths by hand from a branch name.",
+        "Write through the store's own logging helper when one exists so slug and directory handling stay consistent.",
+        "Local memory split: local-agent-memory-setup creates the runtime, local-learning-persistence writes one new record, project-context-and-learning-store restores, searches, prunes and reconciles existing records."
+      ],
+      "procedure_insert": [
+        {
+          "after": 0,
+          "text": "Normalize the destination path and reject any key or branch name that would create a subdirectory or escape the approved store."
+        }
+      ],
+      "outputs_add": [
+        "normalized record in the store's schema, or in a labelled proposed schema"
+      ],
+      "source_evidence_add": [
+        "gstack/design-review/SKILL.md:1714-1740",
+        "gstack/ship/SKILL.md:1047-1075"
+      ],
+      "resolves": {
+        "local-learning-persistence#F1": "fixed: guidance + outputs_add (minimum schema with type taxonomy)",
+        "local-learning-persistence#F2": "fixed: procedure_insert + guidance (path normalization)",
+        "local-learning-persistence#F3": "fixed: anti_add (local-agent-memory-setup)"
+      }
+    },
+    "release-documentation-maintenance": {
+      "trigger_signals": [
+        "A change has shipped or is a release candidate and the README, guides, API docs or changelog must be brought in line with the diff",
+        "Someone needs to know which externally visible changes are documented and which are not"
+      ],
+      "guidance": [
+        "Extract the public surface from the diff: new or removed exports, commands, CLI flags, config options, endpoints, environment variables and renamed modules. Each one needs a documentation target or an explicit gap.",
+        "Tag every touched document as tutorial, how-to, reference or explanation and keep one type per document.",
+        "Apply obvious factual updates directly. Return subjective wording, tone or structure changes as proposals that need the document owner's decision."
+      ],
+      "outputs_add": [
+        "proposals for subjective edits awaiting owner decision"
+      ],
+      "source_evidence_add": [
+        "gstack/document-release/SKILL.md:442-481",
+        "gstack/document-release/SKILL.md:537-576"
+      ],
+      "resolves": {
+        "release-documentation-maintenance#F1": "fixed: guidance (surface extraction, documentation type tags)",
+        "release-documentation-maintenance#F2": "fixed: guidance + outputs_add (subjective edits as proposals)"
+      }
+    },
+    "source-metadata-and-provenance": {
+      "trigger_signals": [
+        "An artifact, unit or claim needs its exact source, revision, license and lineage recorded before it is cited or reused",
+        "Someone must separate what was observed from what a provider claims or an analyst inferred"
+      ],
+      "anti_add": [
+        {
+          "text": "Update release documentation from a shipped diff",
+          "route": "release-documentation-maintenance"
+        },
+        {
+          "text": "Record material that is historical or deferred and not current guidance",
+          "route": "reference-library-and-deferred-material"
+        }
+      ],
+      "anti_drop": [
+        "release-observability-configuration",
+        "service-identity-remapping"
+      ],
+      "guidance": [
+        "License fields use SPDX identifiers (for example Apache-2.0, MIT) plus the exact file and line of the license text; unknown stays unknown.",
+        "Lineage is a list of edges: input artifact hash, transformation (command or tool and version), output artifact hash, timestamp.",
+        "Keep commit, build, release association, deployment and production health as separate facts; never infer one from another."
+      ],
+      "authored_content": [
+        "lineage edge format is authored; sources are a license text and an audit-trail table"
+      ],
+      "resolves": {
+        "source-metadata-and-provenance#F1": "fixed: anti_add/anti_drop (release-documentation-maintenance, reference-library-and-deferred-material replace provider-config routes)",
+        "source-metadata-and-provenance#F2": "fixed: guidance (SPDX identifiers, lineage edge format)"
+      }
+    }
+  }
+}

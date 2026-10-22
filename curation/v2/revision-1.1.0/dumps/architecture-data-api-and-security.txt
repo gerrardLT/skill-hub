@@ -1,0 +1,84 @@
+## ai-agent-autonomy-and-human-control [improve] perm=workspace-write D=no-gain
+R: Define an evidence-gated agency contract for AI tasks, action rights, human handoffs, interruption, fallback, and graduated autonomy.
+IN: A task definition, agent capabilities, human roles, failure cost, and observed behavior.
+OUT: agency and action-right contract | human-control and interruption map | autonomy graduation and revocation criteria | fallback and residual-risk record
+  ai-agent-autonomy-and-human-control#F1 P1 measured_efficacy: Phase D case requiring per-right preconditions and revocation triggers.
+  ai-agent-autonomy-and-human-control#F2 P2 source_fidelity: Express graduation as versioned rungs each naming its control and the data it collects.
+## ai-capability-architecture-and-autonomy [merge] perm=workspace-write D=no-gain
+R: Classify an approved AI opportunity and route its model/data, agency, interaction, and safety questions to atomic specialist contracts without solving them here.
+IN: A customer problem, AI opportunity thesis, quality target, cost constraint, and capability-selection question.
+OUT: AI capability classification | specialist handoff map | bounded option set | unresolved capability-risk ledger
+  ai-capability-architecture-and-autonomy#F1 P1 boundary: Fold the capability-classification step and non-AI fallback into ai-model-and-data-architecture step 1; route specialist questions via the stage Recipe.
+  ai-capability-architecture-and-autonomy#F2 P2 source_fidelity: Covered by merge.
+  TARGET ai-model-and-data-architecture
+## ai-model-and-data-architecture [improve] perm=workspace-write D=no-gain
+R: Design a bounded model, prompt, retrieval, data-rights, freshness, routing, cost, and evaluation architecture for an approved AI capability.
+IN: An AI task, data sources, latency and cost constraints, model options, and quality targets.
+OUT: model and routing architecture | governed data and freshness contract | prompt and retrieval boundary | evaluation, migration, and rollback plan
+  ai-model-and-data-architecture#F1 P1 source_fidelity: Add a technique decision table: prompt / RAG / fine-tune / tool by need (dynamic context vs behavior specialization).
+## ai-safety-and-action-governance [keep] perm=read-only D=effective
+R: Independently assess AI prompt, data, tool, and action risks; define red-team scope, default-deny boundaries, human checkpoints, stop conditions, and residual risk without remediation.
+IN: An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level.
+OUT: AI safety boundary | threat and abuse-case register | red-team and stop-condition plan | human-checkpoint and residual-risk report
+  ai-safety-and-action-governance#F1 P2 source_fidelity: Add: injection residual risk is always reported as non-zero; controls reduce impact, never eliminate it.
+## architecture-candidate-reporting [revise] perm=workspace-write D=negative
+R: Present already-developed architecture candidates as traceable comparable views, rankings, diagrams, and a bounded recommendation without inventing options or implementing one.
+IN: Already discovered architecture candidates with code evidence.
+OUT: architecture candidate cards | comparison and sensitivity matrix | traceable diagram index | bounded recommendation and dissent ledger
+  architecture-candidate-reporting#F1 P2 source_fidelity: Name the diagram pattern per candidate type as guidance.
+  architecture-candidate-reporting#F2 P2 measured_efficacy: Phase D case with unequal evidence across candidates.
+## architecture-deep-module-design [keep] perm=workspace-write D=no-gain
+R: Design one module boundary and interface that hides complexity, enforces dependency direction, preserves seams, and supports migration and verification.
+IN: A module, its interfaces and dependencies, or evidenced architectural friction.
+OUT: deep-module boundary | interface and invariant contract | dependency and seam map | compatibility, migration, rollback, and test plan
+  architecture-deep-module-design#F1 P2 source_fidelity: Add them to step 5 challenge list.
+## architecture-deepening-discovery [improve] perm=workspace-write D=no-gain
+R: Find evidence-backed shallow modules, leaked boundaries, repeated orchestration, and change hotspots, and recommend deepen or leave unchanged under YAGNI.
+IN: A codebase, change hotspots, repeated logic, and maintenance-friction evidence.
+OUT: architecture friction inventory | deepening candidate register | YAGNI leave-unchanged cases | evidence and priority report
+  architecture-deepening-discovery#F1 P2 source_fidelity: Prioritize areas by recent change frequency when no direction is given.
+## architecture-interface-alternative-evaluation [improve] perm=workspace-write D=effective
+R: Generate at least two independent interface alternatives and compare information hiding, caller complexity, dependencies, failure behavior, testability, compatibility, and migration cost.
+IN: A bounded module problem, constraints, and an interface-design objective.
+OUT: independent interface alternatives | contract and failure comparison | migration and compatibility matrix | human-owned recommendation
+  architecture-interface-alternative-evaluation#F1 P1 measured_efficacy: Phase D case scoring structural independence of alternatives.
+  architecture-interface-alternative-evaluation#F2 P2 source_fidelity: Default to three alternatives generated from independent briefs; two only when constrained.
+## authorization-and-permission-contracts [keep] perm=workspace-write D=effective
+R: Define and verify subject, resource, action, context, tenancy, privileged-path, service-identity, audit, and default-deny authorization contracts.
+IN: Actors, resources, operations, trust boundaries, tenancy model, authentication context, and risk policy.
+OUT: authorization policy matrix | trust-boundary enforcement map | negative authorization test contract | audit, migration, and residual-risk ledger
+  authorization-and-permission-contracts#F1 P2 source_fidelity: Record as authored with OWASP ASVS access-control mapping.
+## ci-pipeline-security-hardening [keep] perm=workspace-write D=no-gain
+R: Audit and minimally harden authorized CI workflow source for least privilege, immutable pinning, untrusted input, secret isolation, provenance, and safe rollback.
+IN: CI workflow files, repository policy, trust boundaries, permissions, and runner context.
+OUT: CI threat findings | minimal hardened workflow candidate | verification and rollback plan | residual supply-chain risk
+  ci-pipeline-security-hardening#F1 P2 source_fidelity: Add the attacker-controllable context list and flag pull_request_target with checkout of PR head.
+## data-and-api-contract-design [improve] perm=workspace-write D=effective
+R: Define versioned data schemas, invariants, migration and rollback, API shapes, validation, errors, pagination, idempotency, concurrency, compatibility, and authorization hooks before implementation.
+IN: Approved requirements, domain entities, existing persistence and interfaces, consistency needs, and compatibility constraints.
+OUT: versioned data schema and invariant contract | migration, backfill, verification, and rollback plan | API or event interface schema | compatibility, idempotency, concurrency, and test matrix
+  data-and-api-contract-design#F1 P1 trigger_precision: Remove or point to the actual owner (this Skill owns migration design; execution routes to tdd-change-loop).
+  data-and-api-contract-design#F2 P2 source_fidelity: Require concrete DDL or schema files and at least one request/response example per endpoint.
+## engineering-plan-review [revise] perm=read-only D=negative
+R: Independently review an implementation plan for architecture, interfaces, data, failure modes, security, operability, migration, verification, and execution risk without editing it.
+IN: Approved requirements, plan, architecture context, constraints, and existing system evidence.
+OUT: independent engineering review | traceability and risk findings | missing-test and rollback register | human-owned review recommendation
+  engineering-plan-review#F1 P1 source_fidelity: Add step: for each sub-problem, cite existing code that already solves it or record none found.
+  engineering-plan-review#F2 P2 trigger_precision: Add anti-trigger: completed diff routes to independent-code-review.
+## frontend-runtime-boundaries-and-dependency-safety [split] perm=workspace-write D=effective
+R: Audit and minimally repair authorized frontend source so server-only logic, credentials, privileged actions, assets, dependencies, and runtime assumptions remain on safe explicit boundaries.
+IN: A frontend implementation, dependency graph, rendering environment, and integration constraints.
+OUT: runtime-boundary audit | minimal authorized source or dependency patch | dependency and environment decision | host verification and residual-risk plan
+  frontend-runtime-boundaries-and-dependency-safety#F1 P1 boundary: Make it read-only audit; route accepted repairs to defect-remediation.
+  frontend-runtime-boundaries-and-dependency-safety#F2 P2 source_fidelity: Add framework-variant rules for RSC client/server boundaries.
+  TARGET audit vs repair (repair to defect-remediation)
+## secrets-and-environment-governance [keep] perm=workspace-write D=no-gain
+R: Define secret classes, owners, environment boundaries, injection, least exposure, logging and redaction, rotation, revocation, retention, and incident procedures without accessing values.
+IN: Secret classes, environments, providers, CI/runtime paths, owners, rotation requirements, and authorization.
+OUT: secrets and environment contract | least-exposure and redaction map | rotation and revocation procedure | leak-response and value-free verification plan
+  secrets-and-environment-governance#F1 P2 source_fidelity: Add them to the leak-path map examples.
+## security-audit-and-threat-modeling [revise] perm=local-exec D=negative
+R: Independently threat-model and audit supplied architecture, source, dependencies, infrastructure, CI, secrets metadata, AI, and skill supply chain using authorized local checks, without remediation.
+IN: Architecture, code, dependencies, infrastructure evidence, trust boundaries, and test authorization.
+OUT: threat model and trust-boundary map | authorized local-check evidence manifest | reproducible prioritized findings | remediation options and residual-risk report
+  security-audit-and-threat-modeling#F1 P2 source_fidelity: Add a census step with counts per surface category before tracing threats.

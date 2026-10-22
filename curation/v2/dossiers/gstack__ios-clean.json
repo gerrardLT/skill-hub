@@ -1,0 +1,135 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/ios-clean/SKILL.md:61]",
+    "Skill Invocation During Plan Mode [gstack/ios-clean/SKILL.md:65]",
+    "Model-Specific Behavioral Patch (claude) [gstack/ios-clean/SKILL.md:197]",
+    "Continuous Checkpoint Mode [gstack/ios-clean/SKILL.md:297]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/ios-clean/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/ios-clean/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/ios-clean/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/ios-clean/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "description: \"Remove the DebugBridge SPM package and all if DEBUG wiring from an iOS app. (gstack)\" [gstack/ios-clean/SKILL.md:5]",
+    "remove debugbridge [gstack/ios-clean/SKILL.md:15]",
+    "Use when asked to \"clean the iOS debug bridge\", \"remove DebugBridge\", [gstack/ios-clean/SKILL.md:28]",
+    "Voice triggers (speech-to-text aliases): \"clean the iOS debug bridge\", \"remove DebugBridge\", \"strip the gstack iOS instrumentation\". [gstack/ios-clean/SKILL.md:31]",
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/ios-clean/SKILL.md:39]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/ios-clean/SKILL.md:44]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/ios-clean/SKILL.md:63]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-clean/SKILL.md:82]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/ios-clean/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Remove the DebugBridge SPM package and all if DEBUG wiring from an iOS app. [gstack/ios-clean/SKILL.md:5]",
+  "root_id": "skill-root:gstack/ios-clean",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/ios-clean/SKILL.md:18]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/ios-clean/SKILL.md:45]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/ios-clean/SKILL.md:46]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/ios-clean/SKILL.md:47]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/ios-clean/SKILL.md:54]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/ios-clean/SKILL.md:55]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/ios-clean/SKILL.md:58]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/ios-clean/SKILL.md:69]"
+  ],
+  "skill_path": "gstack/ios-clean/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/ios-clean/SKILL.md"
+    },
+    {
+      "line_end": 22,
+      "line_start": 22,
+      "path": "gstack/ios-clean/SKILL.md"
+    },
+    {
+      "line_end": 33,
+      "line_start": 33,
+      "path": "gstack/ios-clean/SKILL.md"
+    },
+    {
+      "line_end": 61,
+      "line_start": 61,
+      "path": "gstack/ios-clean/SKILL.md"
+    },
+    {
+      "line_end": 65,
+      "line_start": 65,
+      "path": "gstack/ios-clean/SKILL.md"
+    }
+  ],
+  "source_sha256": "87440b355e8aeb888ab9b7fa619bb9b2242ef226a283e3f925a614773ab7c543",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/ios-clean/SKILL.md:79]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/ios-clean/SKILL.md:80]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/ios-clean/SKILL.md:81]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/ios-clean/SKILL.md:82]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/ios-clean/SKILL.md:84]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/ios-clean/SKILL.md:88]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:87440b355e8aeb888ab9b7fa619bb9b2242ef226a283e3f925a614773ab7c543",
+        "content-review:475-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/ios-clean/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:91465d957c280922a07e47e2150e4673e9b47b121731f4655b9364226104d354",
+        "content-review:104-lines"
+      ],
+      "path": "gstack/ios-clean/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/ios-clean/SKILL.md:1-17]",
+    "Declared tool: Read [gstack/ios-clean/SKILL.md:1-17]",
+    "Declared tool: Edit [gstack/ios-clean/SKILL.md:1-17]",
+    "Declared tool: Glob [gstack/ios-clean/SKILL.md:1-17]",
+    "Declared tool: Grep [gstack/ios-clean/SKILL.md:1-17]",
+    "Declared tool: AskUserQuestion [gstack/ios-clean/SKILL.md:1-17]"
+  ],
+  "trigger": "\"Remove the DebugBridge SPM package and all if DEBUG wiring from an iOS app. (gstack)\" [gstack/ios-clean/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/ios-clean/SKILL.md:145]",
+    "Self-check before emitting [gstack/ios-clean/SKILL.md:168]",
+    "Context Recovery [gstack/ios-clean/SKILL.md:236]",
+    "Completeness Principle — Boil the Ocean [gstack/ios-clean/SKILL.md:283]",
+    "Confusion Protocol [gstack/ios-clean/SKILL.md:289]",
+    "Claimed Limitations Need Evidence [gstack/ios-clean/SKILL.md:293]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/ios-clean/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/ios-clean/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/ios-clean/SKILL.md:297]",
+    "Phase 1: Inventory [gstack/ios-clean/SKILL.md:437]",
+    "Phase 2: Remove [gstack/ios-clean/SKILL.md:447]",
+    "Phase 3: Verify [gstack/ios-clean/SKILL.md:461]"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "criterion-to-evidence matrix",
+    "completion gate result",
+    "stale or missing evidence register",
+    "limitations and invalidation conditions"
+  ],
+  "capability_id": "capability:completion-evidence-gate",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "A completion claim cannot pass from prose, status text, model confidence, stale output, or partial success; each required criterion needs current target-bound executable or artifact evidence.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "completion-evidence-gate",
+  "inputs": [
+    "A proposed status claim and the command capable of proving it."
+  ],
+  "outputs": [
+    "criterion-to-evidence matrix",
+    "completion gate result",
+    "stale or missing evidence register",
+    "limitations and invalidation conditions"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "current-evidence",
+      "source-identity",
+      "command",
+      "exit-code",
+      "duration",
+      "artifact-hash",
+      "no-self-attestation",
+      "limitations"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Verify a completion claim from current reproducible commands, exits, durations, source identity, artifacts, hashes, and declared limitations without changing the work.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

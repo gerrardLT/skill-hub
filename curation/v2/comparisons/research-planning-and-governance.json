@@ -1,0 +1,344 @@
+{
+  "candidate_responsibility": "Define research context, recruitment, consent, cadence, saturation, and phase handoffs before collecting evidence.",
+  "canonical_unit_ids": [
+    "discovery-process:unit-013",
+    "discovery-process:unit-014",
+    "discovery-process:unit-015",
+    "discovery-process:unit-016",
+    "discovery-process:unit-017",
+    "discovery-process:unit-020",
+    "discovery-process:unit-037",
+    "discovery-process:unit-038",
+    "discovery-process:unit-039",
+    "discovery-process:unit-042"
+  ],
+  "cluster_id": "cluster:research-planning-and-governance",
+  "decision_references": [
+    "V2-DEC-004"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "discovery-process/SKILL.md:131-139",
+    "discovery-process/SKILL.md:143-153",
+    "discovery-process/SKILL.md:155-163",
+    "discovery-process/SKILL.md:165-168",
+    "discovery-process/SKILL.md:170-174",
+    "discovery-process/SKILL.md:215-222",
+    "discovery-process/SKILL.md:364-391",
+    "discovery-process/SKILL.md:393-410",
+    "discovery-process/SKILL.md:412-415",
+    "discovery-process/SKILL.md:451-456"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:research-planning-and-governance"
+      ],
+      "id": "cluster:research-planning-and-governance:fusion:boundary",
+      "rule": "Define research context, recruitment, consent, cadence, saturation, and phase handoffs before collecting evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:research-planning-and-governance"
+      ],
+      "id": "cluster:research-planning-and-governance:fusion:inputs",
+      "rule": "Accept only: A research question, target population, access constraints, ethical boundary, and timebox."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:research-planning-and-governance"
+      ],
+      "id": "cluster:research-planning-and-governance:fusion:outputs",
+      "rule": "Produce only: A governed research plan, participant protocol, saturation decision, and phase handoff."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:research-planning-and-governance:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-004"
+      ],
+      "id": "cluster:research-planning-and-governance:policy:data-governance",
+      "rule": "Before processing customer, proprietary, recorded, or externally judged data, require authorization, minimization, redaction, retention, external-transfer boundary, and deletion policy; otherwise return needs-input or blocked."
+    }
+  ],
+  "input_boundary": "A research question, target population, access constraints, ethical boundary, and timebox.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    }
+  ],
+  "output_boundary": "A governed research plan, participant protocol, saturation decision, and phase handoff.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "研究前检查 context；不足则先综合已有客户反馈、analytics 与市场材料。; 准备包含 methodology、questions 和 bias controls 的 discovery interview plan。; 围绕 Phase 1 segment 通过适配渠道招募 participants，并可与 Phase 1 并行。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Explicit limits: 不能默认 context 充足；+2-3 天是来源 planning heuristic。; 依赖 Skill 未读取、未验证、未执行；Day 3 与 90 分钟是 planning heuristics。; 样本、cadence、激励和时长均为来源 heuristics，须按项目伦理和访问条件重设。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (gate=3, method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-013",
+        "discovery-process:unit-014",
+        "discovery-process:unit-015",
+        "discovery-process:unit-016",
+        "discovery-process:unit-017",
+        "discovery-process:unit-020",
+        "discovery-process:unit-037",
+        "discovery-process:unit-038",
+        "discovery-process:unit-039",
+        "discovery-process:unit-042"
+      ]
+    },
+    {
+      "approach": "准备包含 methodology、questions 和 bias controls 的 discovery interview plan。; 围绕 Phase 1 segment 通过适配渠道招募 participants，并可与 Phase 1 并行。; Phase 2 正式输出 interview guide、participant roster 与 synthesis plan。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:170-174"
+      ],
+      "limitations": "Explicit limits: 依赖 Skill 未读取、未验证、未执行；Day 3 与 90 分钟是 planning heuristics。; 样本、cadence、激励和时长均为来源 heuristics，须按项目伦理和访问条件重设。; 问题数和访谈数是来源 planning heuristics，不是 SLA 或充分性 Gate。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-014",
+        "discovery-process:unit-015",
+        "discovery-process:unit-017"
+      ]
+    },
+    {
+      "approach": "不能默认 context 充足；+2-3 天是来源 planning heuristic。; 依赖 Skill 未读取、未验证、未执行；Day 3 与 90 分钟是 planning heuristics。; 样本、cadence、激励和时长均为来源 heuristics，须按项目伦理和访问条件重设。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Explicit limits: 不能默认 context 充足；+2-3 天是来源 planning heuristic。; 依赖 Skill 未读取、未验证、未执行；Day 3 与 90 分钟是 planning heuristics。; 样本、cadence、激励和时长均为来源 heuristics，须按项目伦理和访问条件重设。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (gate=3, method=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-013",
+        "discovery-process:unit-014",
+        "discovery-process:unit-015",
+        "discovery-process:unit-016",
+        "discovery-process:unit-017",
+        "discovery-process:unit-020",
+        "discovery-process:unit-037",
+        "discovery-process:unit-038",
+        "discovery-process:unit-039",
+        "discovery-process:unit-042"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "记录 YES 证据，或 NO 分支的数据收集结果和实际时间影响。; 排期记录访谈时段、buffer、跨度和逐参与者 recording consent 状态。; 单独记录重复模式、新 insight 状态与继续或停止访谈理由。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Explicit limits: 不能默认 context 充足；+2-3 天是来源 planning heuristic。; 时长与跨度是 planning heuristics；consent 和数据治理必须遵循项目规则。; 3+、5-7、3-5 和 +1 week 均为来源 heuristic，不是统计充分性定律。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 7 source-grounded atom(s) for gates-and-validation (gate=3, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-013",
+        "discovery-process:unit-016",
+        "discovery-process:unit-020",
+        "discovery-process:unit-037",
+        "discovery-process:unit-038",
+        "discovery-process:unit-039",
+        "discovery-process:unit-042"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 3,
+        "method": 3,
+        "rule": 4
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:131-139",
+        "discovery-process/SKILL.md:143-153",
+        "discovery-process/SKILL.md:155-163",
+        "discovery-process/SKILL.md:165-168",
+        "discovery-process/SKILL.md:170-174",
+        "discovery-process/SKILL.md:215-222",
+        "discovery-process/SKILL.md:364-391",
+        "discovery-process/SKILL.md:393-410",
+        "discovery-process/SKILL.md:412-415",
+        "discovery-process/SKILL.md:451-456"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-013",
+        "discovery-process:unit-014",
+        "discovery-process:unit-015",
+        "discovery-process:unit-016",
+        "discovery-process:unit-017",
+        "discovery-process:unit-020",
+        "discovery-process:unit-037",
+        "discovery-process:unit-038",
+        "discovery-process:unit-039",
+        "discovery-process:unit-042"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "discovery-process:unit-013",
+    "discovery-process:unit-014",
+    "discovery-process:unit-015",
+    "discovery-process:unit-016",
+    "discovery-process:unit-017",
+    "discovery-process:unit-020",
+    "discovery-process:unit-037",
+    "discovery-process:unit-038",
+    "discovery-process:unit-039",
+    "discovery-process:unit-042"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "artifact_types": [
+    "persona or actor model",
+    "JTBD statement set",
+    "journey map",
+    "evidence and gap register",
+    "JTBD statements in the standard template with the four forces"
+  ],
+  "capability_id": "capability:persona-and-journey-modeling",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Proto-persona decoration, invented demographics, and generic journey stages must never be presented as customer evidence.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "persona-and-journey-modeling",
+  "inputs": [
+    "Interview evidence, behavioral context, user hypotheses, and touchpoint observations."
+  ],
+  "mode_permissions": {
+    "persona-jtbd-and-journey-modeling": "workspace-write"
+  },
+  "modes": [],
+  "outputs": [
+    "persona or actor model",
+    "JTBD statement set",
+    "journey map",
+    "evidence and gap register",
+    "JTBD statements in the standard template with the four forces"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Model evidence-bounded actors, jobs, circumstances, desired progress, forces, and cross-touchpoint journeys without inventing persona facts.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

@@ -1,0 +1,145 @@
+{
+  "branches": [
+    "HIGH tier (hard deny) [gstack/careful/SKILL.md:70]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/careful/SKILL.md:4]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/careful/SKILL.md:4]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/careful/SKILL.md:4]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/careful/SKILL.md:4]"
+  ],
+  "permissions_side_effects": [
+    "force-push, git reset --hard, kubectl delete, and similar destructive operations. [gstack/careful/SKILL.md:27]",
+    "rm -rf / rm -r / rm --recursive rm -rf /var/data Recursive delete [gstack/careful/SKILL.md:47]",
+    "git push --force / -f git push -f origin main History rewrite [gstack/careful/SKILL.md:50]",
+    "git reset --hard git reset --hard HEAD~3 Uncommitted work loss [gstack/careful/SKILL.md:51]",
+    "kubectl delete kubectl delete pod Production impact [gstack/careful/SKILL.md:53]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/careful/SKILL.md:4"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Safety guardrails for destructive commands. [gstack/careful/SKILL.md:4]",
+  "root_id": "skill-root:gstack/careful",
+  "rules_gates": [
+    "warn before destructive [gstack/careful/SKILL.md:7]",
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/careful/SKILL.md:20]",
+    "Warns before rm -rf, DROP TABLE, [gstack/careful/SKILL.md:26]",
+    "patterns before running. If a destructive command is detected, you'll be warned [gstack/careful/SKILL.md:35]",
+    "permissionDecision: \"ask\" and a warning reason if a match is found (the [gstack/careful/SKILL.md:65]",
+    "decision must be nested under hookSpecificOutput — Claude Code ignores a [gstack/careful/SKILL.md:66]",
+    "top-level permissionDecision). You can always override a MEDIUM warning and [gstack/careful/SKILL.md:67]",
+    "through to the MEDIUM ask; --force-with-lease is never HIGH. A best-effort [gstack/careful/SKILL.md:75]"
+  ],
+  "skill_path": "gstack/careful/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 8,
+      "line_start": 4,
+      "path": "gstack/careful/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "gstack/careful/SKILL.md"
+    },
+    {
+      "line_end": 32,
+      "line_start": 32,
+      "path": "gstack/careful/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "gstack/careful/SKILL.md"
+    },
+    {
+      "line_end": 56,
+      "line_start": 56,
+      "path": "gstack/careful/SKILL.md"
+    }
+  ],
+  "source_sha256": "51c821326dde69174dc62a6e5faa8b399a90a8a2d2a02cea8220935fba04dfc4",
+  "stop_conditions": [
+    "advisory hard-stop, not a policy boundary: the escape hatch is ending the [gstack/careful/SKILL.md:76]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:51c821326dde69174dc62a6e5faa8b399a90a8a2d2a02cea8220935fba04dfc4",
+        "content-review:88-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/careful/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:054c86edb5bdefc943a75b6e240b1e746c9870c2a889ffa92035862f8deb6082",
+        "content-review:83-lines"
+      ],
+      "path": "gstack/careful/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:23dc8fa32afa75ac44a93328157d2e9afc8a286eb41cccfdd6340bbfd72bfed2",
+        "content-review:315-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/careful/bin/check-careful.sh",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:5be66386d4945f27ba52ac3df720a8f84755634de1713eacbd239376050106c9",
+        "content-review:111-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/careful/bin/hook-extract.sh",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/careful/SKILL.md:1-19]",
+    "Declared tool: Read [gstack/careful/SKILL.md:1-19]"
+  ],
+  "trigger": "Safety guardrails for destructive commands. (gstack) [gstack/careful/SKILL.md:4]",
+  "unique_methods": [
+    "/careful — Destructive Command Guardrails [gstack/careful/SKILL.md:32]",
+    "What's protected [gstack/careful/SKILL.md:43]",
+    "Safe exceptions [gstack/careful/SKILL.md:56]",
+    "How it works [gstack/careful/SKILL.md:61]",
+    "HIGH tier (hard deny) [gstack/careful/SKILL.md:70]",
+    "Project patterns (additive only) [gstack/careful/SKILL.md:79]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/careful/SKILL.md:4]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/careful/SKILL.md:4]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [gstack/careful/SKILL.md:4]"
+  ],
+  "workflow": [
+    "When to invoke this skill [gstack/careful/SKILL.md:24]",
+    "/careful — Destructive Command Guardrails [gstack/careful/SKILL.md:32]",
+    "What's protected [gstack/careful/SKILL.md:43]",
+    "Safe exceptions [gstack/careful/SKILL.md:56]",
+    "How it works [gstack/careful/SKILL.md:61]",
+    "HIGH tier (hard deny) [gstack/careful/SKILL.md:70]"
+  ]
+}

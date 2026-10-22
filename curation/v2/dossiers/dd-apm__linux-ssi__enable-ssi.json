@@ -1,0 +1,118 @@
+{
+  "branches": [],
+  "inputs": [
+    "Verify SSI is armed [dd-apm/linux-ssi/enable-ssi/SKILL.md:45]",
+    "Claude runs [dd-apm/linux-ssi/enable-ssi/SKILL.md:47]",
+    "ssh -o StrictHostKeyChecking=no -i <SSHKEY> <SSHUSER>@<SSHHOST> \\ [dd-apm/linux-ssi/enable-ssi/SKILL.md:50]",
+    "\"cat /etc/ld.so.preload && ls /opt/datadog-packages/ grep apm\" [dd-apm/linux-ssi/enable-ssi/SKILL.md:51]",
+    "If /etc/ld.so.preload contains a path to the launcher, and /opt/datadog-packages/datadog-apm-inject exists — SSI is armed. [dd-apm/linux-ssi/enable-ssi/SKILL.md:54]",
+    "ERROR: Either missing — run agent-install first. [dd-apm/linux-ssi/enable-ssi/SKILL.md:56]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "The Datadog Agent is not yet installed — run agent-install first [dd-apm/linux-ssi/enable-ssi/SKILL.md:24]",
+    "SSI packages are missing from /opt/datadog-packages/ — re-run agent-install [dd-apm/linux-ssi/enable-ssi/SKILL.md:25]",
+    "When the install script runs with DDAPMINSTRUMENTATIONENABLED=host, it [dd-apm/linux-ssi/enable-ssi/SKILL.md:32]",
+    "2. Writes the launcher path into /etc/ld.so.preload [dd-apm/linux-ssi/enable-ssi/SKILL.md:34]",
+    "ERROR: Either missing — run agent-install first. [dd-apm/linux-ssi/enable-ssi/SKILL.md:56]",
+    "ERROR: Manual instrumentation found — SSI silently disables itself when it detects an existing tracer. Remove the manual import/package before proceeding. [dd-apm/linux-ssi/enable-ssi/SKILL.md:68]",
+    "Step 0 (Only if existing instrumentation detected): Remove Manual Instrumentation [dd-apm/linux-ssi/enable-ssi/SKILL.md:97]",
+    "Python: pip uninstall ddtrace, remove import ddtrace / ddtrace-run from CMD [dd-apm/linux-ssi/enable-ssi/SKILL.md:99]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "dd-apm/linux-ssi/enable-ssi/SKILL.md:3"
+      ],
+      "target": "skill-root:dd-apm/linux-ssi",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Configure Unified Service Tags and verify Single Step Instrumentation (SSI) injection on Linux hosts — SSI automatically instruments applications for APM without code changes. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]",
+  "root_id": "skill-root:dd-apm/linux-ssi/enable-ssi",
+  "rules_gates": [
+    "description: Configure Unified Service Tags and verify Single Step Instrumentation (SSI) injection on Linux hosts — SSI automatically instruments applications for APM without code changes. Only use if the Datadog Agent is already installed. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]",
+    "alwaysApply: \"false\" [dd-apm/linux-ssi/enable-ssi/SKILL.md:9]",
+    "> Before doing anything else: Fully resolve all variables in Context to resolve before acting. Do not begin Step 0 until every variable has a concrete value. [dd-apm/linux-ssi/enable-ssi/SKILL.md:14]",
+    "Do NOT invoke this skill if [dd-apm/linux-ssi/enable-ssi/SKILL.md:23]",
+    "DDSERVICE, DDENV, DDVERSION — these must be set on the application process for traces to be tagged correctly [dd-apm/linux-ssi/enable-ssi/SKILL.md:38]",
+    "Verify SSI is armed [dd-apm/linux-ssi/enable-ssi/SKILL.md:45]",
+    "ERROR: Manual instrumentation found — SSI silently disables itself when it detects an existing tracer. Remove the manual import/package before proceeding. [dd-apm/linux-ssi/enable-ssi/SKILL.md:68]",
+    "ERROR: musl — SSI requires glibc. No workaround; must use a glibc-based OS. [dd-apm/linux-ssi/enable-ssi/SKILL.md:79]"
+  ],
+  "skill_path": "dd-apm/linux-ssi/enable-ssi/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md"
+    }
+  ],
+  "source_sha256": "4c667df887c2125763f710aff79060be9301d2798e0dffeb17cadb52ab4771aa",
+  "stop_conditions": [
+    "SERVICENAME Ask the user — how the service should appear in Datadog APM (e.g. payment-api) [dd-apm/linux-ssi/enable-ssi/SKILL.md:87]",
+    "ENV Ask the user — environment name (e.g. production, staging, dev) [dd-apm/linux-ssi/enable-ssi/SKILL.md:88]",
+    "VERSION Ask the user or read from the app's version file / git tag [dd-apm/linux-ssi/enable-ssi/SKILL.md:89]",
+    "ERROR: Returns failed — check logs [dd-apm/linux-ssi/enable-ssi/SKILL.md:180]",
+    "ERROR: Launcher in maps but no language library — injection attempted but failed. Run [dd-apm/linux-ssi/enable-ssi/SKILL.md:211]",
+    "Automatically proceed to verify-ssi now — do not ask the user for permission. [dd-apm/linux-ssi/enable-ssi/SKILL.md:227]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:4c667df887c2125763f710aff79060be9301d2798e0dffeb17cadb52ab4771aa",
+        "content-review:236-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "dd-apm/linux-ssi/enable-ssi/SKILL.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Configure Unified Service Tags and verify Single Step Instrumentation (SSI) injection on Linux hosts — SSI automatically instruments applications for APM without code changes. Only use if the Datadog Agent is already installed. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]",
+  "unique_methods": [
+    "Configure SSI and Unified Service Tags on Linux [dd-apm/linux-ssi/enable-ssi/SKILL.md:12]",
+    "Triggers [dd-apm/linux-ssi/enable-ssi/SKILL.md:16]",
+    "Background [dd-apm/linux-ssi/enable-ssi/SKILL.md:30]",
+    "Prerequisites [dd-apm/linux-ssi/enable-ssi/SKILL.md:43]",
+    "Claude runs [dd-apm/linux-ssi/enable-ssi/SKILL.md:47]",
+    "Claude runs [dd-apm/linux-ssi/enable-ssi/SKILL.md:60]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [dd-apm/linux-ssi/enable-ssi/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Step 0 (Only if existing instrumentation detected): Remove Manual Instrumentation [dd-apm/linux-ssi/enable-ssi/SKILL.md:97]",
+    "Step 1: Set Unified Service Tags on the Application Process [dd-apm/linux-ssi/enable-ssi/SKILL.md:109]",
+    "Step 2: Restart the Service [dd-apm/linux-ssi/enable-ssi/SKILL.md:167]",
+    "Step 3: Confirm Injection and UST in the Running Process [dd-apm/linux-ssi/enable-ssi/SKILL.md:188]",
+    "UST vars in process environment [dd-apm/linux-ssi/enable-ssi/SKILL.md:204]"
+  ]
+}

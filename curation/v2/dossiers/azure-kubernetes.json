@@ -1,0 +1,156 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [azure-kubernetes/SKILL.md:7]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [azure-kubernetes/SKILL.md:7]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [azure-kubernetes/SKILL.md:7]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [azure-kubernetes/SKILL.md:7]"
+  ],
+  "permissions_side_effects": [
+    "Related skills azure-kubernetes-app-deploy (deploy an app to an existing cluster), azure-diagnostics (troubleshooting AKS), azure-validate (readiness checks), azure-kubernetes-automatic-readiness (migrate existing cluster to AKS Automatic) [azure-kubernetes/SKILL.md:22]",
+    "> configures the cluster. To containerize an app and deploy it to a cluster [azure-kubernetes/SKILL.md:37]",
+    "> azure-kubernetes-app-deploy sub-skill instead. [azure-kubernetes/SKILL.md:39]",
+    "Expected scale (node/cluster count, workload size) [azure-kubernetes/SKILL.md:52]",
+    "Deploy across 3 Availability Zones (--zones 1 2 3) [azure-kubernetes/SKILL.md:119]",
+    "Cluster Autoscaler idle nodes, CAS off, enable autoscaler, scale-down profile, node utilization [azure-aks-autoscaler.md](./references/azure-aks-autoscaler.md) [azure-kubernetes/SKILL.md:136]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "\"Plan, create, and configure production-ready Azure Kubernetes Service (AKS) clusters. [azure-kubernetes/SKILL.md:7]",
+  "root_id": "skill-root:azure-kubernetes",
+  "rules_gates": [
+    "3. Determine if AKS Automatic or Standard SKU is more appropriate based on the user's need for control vs convenience. Default to AKS Automatic unless specific customizations are required. [azure-kubernetes/SKILL.md:44]",
+    "Required Inputs (Ask only what’s needed) [azure-kubernetes/SKILL.md:48]",
+    "Azure CNI (VNet-routable): pod IPs directly from VNet (pod subnet or node subnet), use when pods must be directly addressable from VNet or on-prem [azure-kubernetes/SKILL.md:68]",
+    "Static Egress Gateway for stable, predictable outbound IPs [azure-kubernetes/SKILL.md:75]",
+    "App Routing addon with Gateway API — recommended default for HTTP/HTTPS workloads [azure-kubernetes/SKILL.md:79]",
+    "Istio service mesh with Gateway API - for advanced traffic management, mTLS, canary releases [azure-kubernetes/SKILL.md:80]",
+    "Application Gateway for Containers — for L7 load balancing with WAF integration [azure-kubernetes/SKILL.md:81]",
+    "> Disambiguation: If a prompt matches multiple rows (e.g., \"cheaper nodes\" could suggest both Spot and autoscaler), prefer the most specific match. If ambiguous, ask the user to clarify their intent before loading a reference file. [azure-kubernetes/SKILL.md:139]"
+  ],
+  "skill_path": "azure-kubernetes/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 11,
+      "line_start": 7,
+      "path": "azure-kubernetes/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "azure-kubernetes/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "azure-kubernetes/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "azure-kubernetes/SKILL.md"
+    },
+    {
+      "line_end": 41,
+      "line_start": 41,
+      "path": "azure-kubernetes/SKILL.md"
+    }
+  ],
+  "source_sha256": "a5d09eecf5af6dd2a03397689c37aed69c4fef7965b3ff559878f2238a9464b5",
+  "stop_conditions": [
+    "Use topology spread constraints to ensure pod distribution across failure domains [azure-kubernetes/SKILL.md:123]",
+    "Stop/Start dev/test clusters: az aks stop/start [azure-kubernetes/SKILL.md:127]",
+    "> Disambiguation: If a prompt matches multiple rows (e.g., \"cheaper nodes\" could suggest both Spot and autoscaler), prefer the most specific match. If ambiguous, ask the user to clarify their intent before loading a reference file. [azure-kubernetes/SKILL.md:139]",
+    "Do not ask the user to paste subscription IDs. Discover subscription and resource scope via MCP tools (e.g., list subscriptions, list resource groups) or az account show / az account list so the agent can resolve context without exposing identifiers. [azure-kubernetes/SKILL.md:143]",
+    "If requirements are ambiguous for day-0 critical decisions, ask the user clarifying questions. For day-1 enabled features, propose 2–3 safe options with tradeoffs and choose a conservative default. [azure-kubernetes/SKILL.md:144]",
+    "MCP tool call fails or times out Invalid credentials, subscription, or AKS context Verify az login, confirm the active subscription context with az account show, and check the target resource group without echoing subscription identifiers back to the user [azure-kubernetes/SKILL.md:155]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:a5d09eecf5af6dd2a03397689c37aed69c4fef7965b3ff559878f2238a9464b5",
+        "content-review:159-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "azure-kubernetes/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:715444b6f1fd638c57b0275d822ff9117e99e0f52d6d0dc2d6584fa81c08e967",
+        "content-review:91-lines"
+      ],
+      "path": "azure-kubernetes/references/azure-aks-autoscaler.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8c9edefed4b07ca3c914732e6fb3b43ff4f43fc93451ad58f169981efd5f4358",
+        "content-review:112-lines"
+      ],
+      "path": "azure-kubernetes/references/azure-aks-rightsizing.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3e91bb2bc5cb3b11a05bc9dcc4a33e7cc8f1fc3d61bf8c3712cc26cea5f52c11",
+        "content-review:115-lines"
+      ],
+      "path": "azure-kubernetes/references/azure-aks-spot.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:3dae1c706ebe394f4964b581bd9537fdb7625c3784a03e76bcce52cd7bb80cb6",
+        "content-review:44-lines"
+      ],
+      "path": "azure-kubernetes/references/azure-aks-vpa.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b3c5588bd3abf50244c984f6ee79cfa4d6d157a9ac488a1cc6bf20060087d7f3",
+        "content-review:35-lines"
+      ],
+      "path": "azure-kubernetes/references/cli-reference.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: azure-kubernetes/references/cli-reference.md [azure-kubernetes/SKILL.md:14]",
+    "Local dependency: azure-kubernetes/azure-kubernetes-app-deploy [azure-kubernetes/SKILL.md:39]",
+    "Local dependency: azure-kubernetes/references/azure-aks-rightsizing.md [azure-kubernetes/SKILL.md:134]",
+    "Local dependency: azure-kubernetes/references/azure-aks-vpa.md [azure-kubernetes/SKILL.md:135]",
+    "Local dependency: azure-kubernetes/references/azure-aks-autoscaler.md [azure-kubernetes/SKILL.md:136]",
+    "Local dependency: azure-kubernetes/references/azure-aks-spot.md [azure-kubernetes/SKILL.md:137]"
+  ],
+  "trigger": "\"Plan, create, and configure production-ready Azure Kubernetes Service (AKS) clusters. Covers Day-0 checklist, SKU selection (Automatic vs Standard), networking options (private API server, Azure CNI Overlay, egress configuration), security, and operations (autoscaling, upgrade strategy, cost analys [azure-kubernetes/SKILL.md:7]",
+  "unique_methods": [
+    "Azure Kubernetes Service [azure-kubernetes/SKILL.md:10]",
+    "Quick Reference [azure-kubernetes/SKILL.md:16]",
+    "When to Use This Skill [azure-kubernetes/SKILL.md:24]",
+    "Required Inputs (Ask only what’s needed) [azure-kubernetes/SKILL.md:48]",
+    "1. Cluster Type [azure-kubernetes/SKILL.md:60]",
+    "2. Networking (Pod IP, Egress, Ingress, Dataplane) [azure-kubernetes/SKILL.md:64]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [azure-kubernetes/SKILL.md:7]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [azure-kubernetes/SKILL.md:7]"
+  ],
+  "workflow": [
+    "Workflow [azure-kubernetes/SKILL.md:58]"
+  ]
+}

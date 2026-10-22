@@ -1,0 +1,75 @@
+{
+  "artifact_types": [
+    "APM verification matrix",
+    "current trace evidence",
+    "expected-observed identity and coverage",
+    "gap and troubleshooting handoff",
+    "service coverage matrix with per-row evidence, owner, gap and next action",
+    "stale-evidence register"
+  ],
+  "capability_id": "capability:apm-instrumentation-verification",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Instrumentation verifies only with current known-request evidence carrying the correct service, environment, version, relationships, sampling, and governed fields; configuration presence alone is insufficient.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "apm-instrumentation-verification",
+  "inputs": [
+    "Instrumented environment, expected service identity, provider read access, and observation window."
+  ],
+  "mode_permissions": {
+    "apm-instrumentation-verification": "external-read"
+  },
+  "modes": [],
+  "outputs": [
+    "APM verification matrix",
+    "current trace evidence",
+    "expected-observed identity and coverage",
+    "gap and troubleshooting handoff",
+    "service coverage matrix with per-row evidence, owner, gap and next action",
+    "stale-evidence register"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "known-request",
+      "current-trace",
+      "service-environment-version",
+      "trace-linkage",
+      "redaction",
+      "no-config-change"
+    ],
+    "data_governance": true,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Verify from read-only current evidence that APM instrumentation emits correct service, environment, version, trace linkage, sampling, and governed fields, and summarize multi-service onboarding coverage with its evidence and gaps.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

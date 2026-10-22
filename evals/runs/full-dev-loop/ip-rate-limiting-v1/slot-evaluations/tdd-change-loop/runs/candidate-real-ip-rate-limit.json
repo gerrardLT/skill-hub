@@ -1,0 +1,153 @@
+{
+  "slot_id": "tdd-change-loop",
+  "case_id": "real-ip-rate-limit",
+  "duration_ms": 38685.263,
+  "tool_events": [
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": true
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": true
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": true
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": true
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "read",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_start",
+      "tool": "edit",
+      "is_error": false
+    },
+    {
+      "type": "tool_execution_end",
+      "tool": "edit",
+      "is_error": false
+    }
+  ],
+  "command_results": [
+    {
+      "argv": [
+        "python",
+        "-c",
+        "import os,pytest; os.chdir('apps/api'); raise SystemExit(pytest.main(['-q','tests/test_ip_rate_limit_eval.py']))"
+      ],
+      "returncode": 0,
+      "duration_ms": 3230.175,
+      "stdout": "............                                                             [100%]\n12 passed in 1.31s\n",
+      "stderr": "C:\\Users\\gerrard\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pytest_asyncio\\plugin.py:247: PytestDeprecationWarning: The configuration option \"asyncio_default_fixture_loop_scope\" is unset.\nThe event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: \"function\", \"class\", \"module\", \"package\", \"session\"\n\n  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))\n"
+    }
+  ],
+  "output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/implement.md",
+  "source_result": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/result.json",
+  "gates": [
+    {
+      "gate": "evidence-present",
+      "passed": true,
+      "evidence": [
+        "Evidence:"
+      ]
+    },
+    {
+      "gate": "unknowns-preserved",
+      "passed": true,
+      "evidence": [
+        "unknowns:",
+        "unknown"
+      ]
+    },
+    {
+      "gate": "authority-boundary",
+      "passed": true,
+      "evidence": [
+        "authority"
+      ]
+    },
+    {
+      "gate": "responsibility-boundary",
+      "passed": true,
+      "evidence": [
+        "responsibility"
+      ]
+    }
+  ]
+}

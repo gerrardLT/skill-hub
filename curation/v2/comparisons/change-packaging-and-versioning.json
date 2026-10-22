@@ -1,0 +1,244 @@
+{
+  "candidate_responsibility": "Package verified changes into bisectable commits, coherent versions, changelogs, credential checks, and PR metadata.",
+  "canonical_unit_ids": [
+    "ship:unit-004",
+    "ship:unit-005",
+    "ship:unit-008"
+  ],
+  "cluster_id": "cluster:change-packaging-and-versioning",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "ship/SKILL.md:1040-1046",
+    "ship/SKILL.md:706-726",
+    "ship/SKILL.md:871-905"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "cluster:change-packaging-and-versioning:fusion:boundary",
+      "rule": "Package verified changes into bisectable commits, coherent versions, changelogs, credential checks, and PR metadata."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "cluster:change-packaging-and-versioning:fusion:inputs",
+      "rule": "Accept only: Implemented and reviewed changes with fresh verification evidence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:change-packaging-and-versioning"
+      ],
+      "id": "cluster:change-packaging-and-versioning:fusion:outputs",
+      "rule": "Produce only: A safe, traceable, version-consistent change package and pull-request description."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:change-packaging-and-versioning:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Implemented and reviewed changes with fresh verification evidence.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ship"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ship"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ship"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "ship"
+      ]
+    }
+  ],
+  "output_boundary": "A safe, traceable, version-consistent change package and pull-request description.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "语义版本判定与自动自增规则：基于差异规模与特征信号分类版本级别（MICRO/PATCH/MINOR/MAJOR），结合状态机驱动写入; 可二分原子提交拆分规程：将差异按基础设施、模型与服务、控制器与视图、版本元数据的顺序分层拆解为独立可编译验证的原子提交; PR 标题版本前缀与文档同步强制不变式：PR/MR 标题强制遵循 v<NEW_VERSION> 前缀规范，且必须先派发文档同步子代理",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Explicit limits: 测试与审查通过后的版本递增步骤; 多文件综合性功能发布时的代码提交组织; 创建或更新 PR/MR 的最终收尾阶段",
+      "source_id": "ship",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-004",
+        "ship:unit-005",
+        "ship:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "测试与审查通过后的版本递增步骤; 多文件综合性功能发布时的代码提交组织; 创建或更新 PR/MR 的最终收尾阶段",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Explicit limits: 测试与审查通过后的版本递增步骤; 多文件综合性功能发布时的代码提交组织; 创建或更新 PR/MR 的最终收尾阶段",
+      "source_id": "ship",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-004",
+        "ship:unit-005",
+        "ship:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "按代码差异特征准确推导版本递增层级，大版本变动主动请求确认; 生成的提交历史支持线性追溯与 git bisect 排障，无坏死中间态提交; 创建的 PR 标题带有规范版本前缀，且包含与变更同步的文档更新",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Explicit limits: 测试与审查通过后的版本递增步骤; 多文件综合性功能发布时的代码提交组织; 创建或更新 PR/MR 的最终收尾阶段",
+      "source_id": "ship",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ship:unit-004",
+        "ship:unit-005",
+        "ship:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ship",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 3
+      },
+      "evidence": [
+        "ship/SKILL.md:1040-1046",
+        "ship/SKILL.md:706-726",
+        "ship/SKILL.md:871-905"
+      ],
+      "source_id": "ship",
+      "unit_ids": [
+        "ship:unit-004",
+        "ship:unit-005",
+        "ship:unit-008"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "ship:unit-004",
+    "ship:unit-005",
+    "ship:unit-008"
+  ]
+}

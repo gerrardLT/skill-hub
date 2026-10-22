@@ -1,0 +1,159 @@
+{
+  "identities": [
+    {
+      "external": "none",
+      "host_actions": [],
+      "id": "read-only",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "none",
+      "host_actions": [],
+      "id": "workspace-write",
+      "model_tools": [
+        "read",
+        "edit",
+        "write"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "none",
+      "host_actions": [
+        "approved-local-commands"
+      ],
+      "id": "workspace-write-local-exec",
+      "model_tools": [
+        "read",
+        "edit",
+        "write"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "read-only",
+      "host_actions": [
+        "approved-provider-read"
+      ],
+      "id": "workspace-write-external-read",
+      "model_tools": [
+        "read",
+        "edit",
+        "write"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "read-only",
+      "host_actions": [
+        "approved-local-commands",
+        "approved-provider-read"
+      ],
+      "id": "workspace-write-local-exec-external-read",
+      "model_tools": [
+        "read",
+        "edit",
+        "write"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "none",
+      "host_actions": [
+        "approved-local-commands",
+        "approved-artifact-write"
+      ],
+      "id": "artifact-write-local-exec",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "read-only",
+      "host_actions": [
+        "approved-local-commands",
+        "approved-artifact-write",
+        "approved-provider-read"
+      ],
+      "id": "artifact-write-local-exec-external-read",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "read-only",
+      "host_actions": [
+        "approved-local-commands",
+        "approved-provider-read"
+      ],
+      "id": "local-exec-external-read",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "scoped-session-write-with-per-action-authorization",
+      "host_actions": [
+        "approved-local-system-write",
+        "approved-network-exposure",
+        "approved-credential-mint"
+      ],
+      "id": "local-system-write-external-session-authorized-only",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": true
+    },
+    {
+      "external": "none",
+      "host_actions": [
+        "approved-local-system-write"
+      ],
+      "id": "local-system-write-authorized-only",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "none",
+      "host_actions": [
+        "approved-local-commands"
+      ],
+      "id": "local-exec",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "read-only",
+      "host_actions": [
+        "approved-provider-read"
+      ],
+      "id": "external-read",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": false
+    },
+    {
+      "external": "write-with-per-action-authorization",
+      "host_actions": [
+        "approved-provider-write"
+      ],
+      "id": "remote-write-authorized-only",
+      "model_tools": [
+        "read"
+      ],
+      "remote_write": true
+    }
+  ],
+  "schema_version": "2.0"
+}

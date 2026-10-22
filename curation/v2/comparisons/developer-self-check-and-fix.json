@@ -1,0 +1,339 @@
+{
+  "candidate_responsibility": "Have the implementer inspect specification coverage, quality, scope, and test truth, then fix discovered issues.",
+  "canonical_unit_ids": [
+    "subagent-driven-development:unit-015",
+    "subagent-driven-development:unit-016",
+    "writing-plans:unit-009"
+  ],
+  "cluster_id": "cluster:developer-self-check-and-fix",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "subagent-driven-development/implementer-prompt.md:100-113",
+    "subagent-driven-development/implementer-prompt.md:74-99",
+    "writing-plans/SKILL.md:122-133"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:developer-self-check-and-fix"
+      ],
+      "id": "cluster:developer-self-check-and-fix:fusion:boundary",
+      "rule": "Have the implementer inspect specification coverage, quality, scope, and test truth, then fix discovered issues."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:developer-self-check-and-fix"
+      ],
+      "id": "cluster:developer-self-check-and-fix:fusion:inputs",
+      "rule": "Accept only: Implemented code, its task specification, test output, and change list."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:developer-self-check-and-fix"
+      ],
+      "id": "cluster:developer-self-check-and-fix:fusion:outputs",
+      "rule": "Produce only: A corrected implementation and structured self-review evidence, not an independent verdict."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:developer-self-check-and-fix:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Implemented code, its task specification, test output, and change list.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "subagent-driven-development",
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "subagent-driven-development",
+        "writing-plans"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "subagent-driven-development",
+        "writing-plans"
+      ]
+    }
+  ],
+  "output_boundary": "A corrected implementation and structured self-review evidence, not an independent verdict.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "交付前四维自审清单（Self-Review）：要求以审视眼光自查四维度——完整性（是否覆盖所有规格与边界）、质量（命名是否反映功能而非实现机理、代码整洁易维护）、克制守则（是否践行 YAGNI、杜绝过度工程、对齐现有模式）、测试真实性（测试是否检验真实行为而非仅测 Mock、全面覆盖）；发现问题立即原地修复方可汇报。; 实现子智能体结构化返回报文规范：标准报文必须包含状态 Status（DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT）、实现/尝试内容、测试用例与运行结果、变更文件列表、自审发现项、以及任何遗留问题或顾虑；严禁对存疑代码保持沉默。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Explicit limits: 实现子智能体在向主控提交成果前必须履行的自我核对流程。; 实现子智能体向主控汇报交付成果时的格式规约。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-015",
+        "subagent-driven-development:unit-016"
+      ]
+    },
+    {
+      "approach": "交付前四维自审清单（Self-Review）：要求以审视眼光自查四维度——完整性（是否覆盖所有规格与边界）、质量（命名是否反映功能而非实现机理、代码整洁易维护）、克制守则（是否践行 YAGNI、杜绝过度工程、对齐现有模式）、测试真实性（测试是否检验真实行为而非仅测 Mock、全面覆盖）；发现问题立即原地修复方可汇报。; 实现子智能体结构化返回报文规范：标准报文必须包含状态 Status（DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT）、实现/尝试内容、测试用例与运行结果、变更文件列表、自审发现项、以及任何遗留问题或顾虑；严禁对存疑代码保持沉默。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Explicit limits: 实现子智能体在向主控提交成果前必须履行的自我核对流程。; 实现子智能体向主控汇报交付成果时的格式规约。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=1, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-015",
+        "subagent-driven-development:unit-016"
+      ]
+    },
+    {
+      "approach": "实现子智能体在向主控提交成果前必须履行的自我核对流程。; 实现子智能体向主控汇报交付成果时的格式规约。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Explicit limits: 实现子智能体在向主控提交成果前必须履行的自我核对流程。; 实现子智能体向主控汇报交付成果时的格式规约。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-015",
+        "subagent-driven-development:unit-016"
+      ]
+    },
+    {
+      "approach": "实现子智能体结构化返回报文规范：标准报文必须包含状态 Status（DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT）、实现/尝试内容、测试用例与运行结果、变更文件列表、自审发现项、以及任何遗留问题或顾虑；严禁对存疑代码保持沉默。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113"
+      ],
+      "limitations": "Explicit limits: 实现子智能体向主控汇报交付成果时的格式规约。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "计划自审查清单（Self-Review Checklist）：编写完成后自行对照需求规格检视：1. 需求覆盖度（每条规格要求均能对应到具体实现任务）；2. 占位符扫描（剔除所有 TODO/模糊描述）；3. 类型与签名一致性（前后任务的类型、函数签名、属性名严密对应）；发现问题就地行内修正。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Explicit limits: 完成整份计划落盘前必须执行的自审流程。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "计划自审查清单（Self-Review Checklist）：编写完成后自行对照需求规格检视：1. 需求覆盖度（每条规格要求均能对应到具体实现任务）；2. 占位符扫描（剔除所有 TODO/模糊描述）；3. 类型与签名一致性（前后任务的类型、函数签名、属性名严密对应）；发现问题就地行内修正。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Explicit limits: 完成整份计划落盘前必须执行的自审流程。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "完成整份计划落盘前必须执行的自审流程。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Explicit limits: 完成整份计划落盘前必须执行的自审流程。",
+      "source_id": "writing-plans",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "writing-plans:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "writing-plans",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1,
+        "template": 1
+      },
+      "evidence": [
+        "subagent-driven-development/implementer-prompt.md:100-113",
+        "subagent-driven-development/implementer-prompt.md:74-99"
+      ],
+      "source_id": "subagent-driven-development",
+      "unit_ids": [
+        "subagent-driven-development:unit-015",
+        "subagent-driven-development:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "writing-plans/SKILL.md:122-133"
+      ],
+      "source_id": "writing-plans",
+      "unit_ids": [
+        "writing-plans:unit-009"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "subagent-driven-development:unit-015",
+    "subagent-driven-development:unit-016",
+    "writing-plans:unit-009"
+  ]
+}

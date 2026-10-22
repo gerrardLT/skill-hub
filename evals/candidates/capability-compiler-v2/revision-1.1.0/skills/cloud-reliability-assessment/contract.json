@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "cloud reliability assessment",
+    "failure-domain and dependency map",
+    "RTO/RPO and recovery gaps",
+    "prioritized validation and remediation recommendations",
+    "per-resource reliability table with severity, downtime impact and cost impact"
+  ],
+  "capability_id": "capability:cloud-reliability-assessment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Reliability assessment is read-only and evidence-bounded; it cannot perform failover, scale, restart, reconfigure, restore, or claim resilience from architecture diagrams alone.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "cloud-reliability-assessment",
+  "inputs": [
+    "Architecture evidence, provider, availability target, dependencies, traffic, and recovery objectives."
+  ],
+  "outputs": [
+    "cloud reliability assessment",
+    "failure-domain and dependency map",
+    "RTO/RPO and recovery gaps",
+    "prioritized validation and remediation recommendations",
+    "per-resource reliability table with severity, downtime impact and cost impact"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "failure-domains",
+      "RTO-RPO",
+      "backups-restore",
+      "failover",
+      "dependency-map",
+      "read-only",
+      "no-destructive-test"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Assess an authorized cloud architecture against provider-specific failure, recovery, scaling, dependency, and operational practices using read-only evidence.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

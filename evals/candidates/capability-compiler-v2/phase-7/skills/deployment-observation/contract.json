@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "deployment observation evidence",
+    "health and guardrail comparison",
+    "anomaly and confidence report",
+    "continue, investigate, or rollback recommendation"
+  ],
+  "capability_id": "capability:deployment-observation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-artifact-write",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Observation is read-only and cannot mutate production; a rollback recommendation is not rollback authorization or execution.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "deployment-observation",
+  "inputs": [
+    "A deployed change identity, provider read access, observation window, expected signals, and health thresholds."
+  ],
+  "outputs": [
+    "deployment observation evidence",
+    "health and guardrail comparison",
+    "anomaly and confidence report",
+    "continue, investigate, or rollback recommendation"
+  ],
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "deployment-identity",
+      "observation-window",
+      "current-signals",
+      "baseline-thresholds",
+      "read-only",
+      "rollback-recommendation-not-action"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Observe one deployed change through read-only provider status and production health signals, persist bounded evidence, and recommend continue, investigate, or rollback without recovery execution.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

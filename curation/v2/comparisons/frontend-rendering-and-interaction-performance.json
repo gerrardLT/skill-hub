@@ -1,0 +1,432 @@
+{
+  "candidate_responsibility": "Optimize rendering, interaction, animation, and layout performance against measured runtime behavior.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-016",
+    "review-animations:unit-016",
+    "ui-ux-pro-max:unit-018"
+  ],
+  "cluster_id": "cluster:frontend-rendering-and-interaction-performance",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:509-516",
+    "review-animations/STANDARDS.md:110-129",
+    "ui-ux-pro-max/references/quick-reference.md:55-76"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "cluster:frontend-rendering-and-interaction-performance:fusion:boundary",
+      "rule": "Optimize rendering, interaction, animation, and layout performance against measured runtime behavior."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "cluster:frontend-rendering-and-interaction-performance:fusion:inputs",
+      "rule": "Accept only: A rendered frontend, interaction traces, performance measurements, and device constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:frontend-rendering-and-interaction-performance"
+      ],
+      "id": "cluster:frontend-rendering-and-interaction-performance:fusion:outputs",
+      "rule": "Produce only: Performance findings, budgets, implementation constraints, and regression evidence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:frontend-rendering-and-interaction-performance:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A rendered frontend, interaction traces, performance measurements, and device constraints.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "Performance findings, budgets, implementation constraints, and regression evidence.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义严禁采用的动效反模式清单（Forbidden Animation Patterns）：绝对禁止使用 window.addEventListener('scroll', ...) 监听滚动；绝对禁止在 React 状态中通过 window.scrollY 计算滚动进度；绝对禁止在 requestAnimationFrame 循环中频繁触发生态重渲染；静态内容严禁滥加 layout prop 增加测量开销；交错编排（staggerChildren）要求父子组件位于同一 Client Component 树内。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Explicit limits: 任何直接绑定全局滚动事件或高频触发 React state 重渲染的代码均构成性能严重缺陷，予以阻断。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "任何直接绑定全局滚动事件或高频触发 React state 重渲染的代码均构成性能严重缺陷，予以阻断。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Explicit limits: 任何直接绑定全局滚动事件或高频触发 React state 重渲染的代码均构成性能严重缺陷，予以阻断。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在代码中检索是否存在 window.addEventListener('scroll') 或在滚动中频繁调用 setState，存在即判定违规。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Explicit limits: 任何直接绑定全局滚动事件或高频触发 React state 重渲染的代码均构成性能严重缺陷，予以阻断。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立 GPU 渲染性能硬性约束：仅允许 transform 和 opacity 属性动画；禁止父级 CSS 变量驱动子级 transform（避免重算风暴）；警惕 Framer Motion 快捷属性主线程掉帧，优先采用完整 transform 字符串或 WAAPI。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Explicit limits: 严禁使用引发 layout/paint 的几何布局属性进行高频动画。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "严禁使用引发 layout/paint 的几何布局属性进行高频动画。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Explicit limits: 严禁使用引发 layout/paint 的几何布局属性进行高频动画。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验动画属性是否受限在 GPU 加速层且防范主线程重算风暴。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Explicit limits: 严禁使用引发 layout/paint 的几何布局属性进行高频动画。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义核心分类3：性能（Performance - HIGH）与体验流畅度细则：采用 WebP/AVIF 格式与响应式图片；声明图片宽高或 aspect-ratio 消除布局抖动（Core Web Vitals CLS < 0.1）；字体加载采用 font-display: swap 预留空间规避 FOIT；内联首屏关键 CSS 并延迟非首屏资源；利用代码分割与动态懒加载降低首屏 TTI；避免频繁读取/写入 DOM 导致的强制重排；对 50+ 项长列表实行虚拟化（virtualize-lists）；单帧主线程工作限制在 ~16ms 以维持 60fps；>1s 操作使用骨架屏/微光 shimmer 代替长时间阻塞转圈；对滚动/缩放/输入等高频事件实施防抖节流；提供离线与弱网降级模式。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Explicit limits: 适用于前端界面加载性能、动画帧率与 Core Web Vitals 体验指标控制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于前端界面加载性能、动画帧率与 Core Web Vitals 体验指标控制。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Explicit limits: 适用于前端界面加载性能、动画帧率与 Core Web Vitals 体验指标控制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查图片是否显式声明尺寸以杜绝 CLS，检查 50+ 长列表是否实施虚拟滚动，检查是否有离线弱网降级处理。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Explicit limits: 适用于前端界面加载性能、动画帧率与 Core Web Vitals 体验指标控制。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:509-516"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "review-animations/STANDARDS.md:110-129"
+      ],
+      "source_id": "review-animations",
+      "unit_ids": [
+        "review-animations:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:55-76"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-018"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-016",
+    "review-animations:unit-016",
+    "ui-ux-pro-max:unit-018"
+  ]
+}

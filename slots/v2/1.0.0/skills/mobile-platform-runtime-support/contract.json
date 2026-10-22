@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "mobile runtime readiness record",
+    "build or test execution evidence",
+    "device and toolchain manifest",
+    "bounded diagnosis and cleanup status"
+  ],
+  "capability_id": "capability:mobile-platform-runtime-support",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Mobile runtime evidence must name the exact source, platform, toolchain, target, simulator or device, command, exit, duration, and artifacts; missing signing or setup authority blocks rather than prompting for secrets.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "mobile-platform-runtime-support",
+  "inputs": [
+    "Mobile project, platform tools, simulator or device, local authority, and cleanup boundary."
+  ],
+  "outputs": [
+    "mobile runtime readiness record",
+    "build or test execution evidence",
+    "device and toolchain manifest",
+    "bounded diagnosis and cleanup status"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "platform",
+      "toolchain",
+      "simulator-device",
+      "target",
+      "command-evidence",
+      "no-secret-values",
+      "no-source-edit"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Run and diagnose an approved mobile build or test target in a declared local simulator or device environment without changing project source.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

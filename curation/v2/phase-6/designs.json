@@ -1,0 +1,2958 @@
+{
+  "count": 54,
+  "designs": [
+    {
+      "anti": [
+        [
+          "Compose the domain capabilities and conditional edges for the workflow.",
+          "workflow-orchestration-and-lifecycle"
+        ],
+        [
+          "Execute the selected atomic implementation task.",
+          "isolated-task-implementation"
+        ]
+      ],
+      "artifacts": [
+        "workflow runtime state",
+        "consent and capability record",
+        "checkpoint and artifact pointers",
+        "degradation and cleanup notice"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "session-identity",
+        "consent",
+        "host-capabilities",
+        "checkpoint",
+        "artifact-pointer",
+        "degradation",
+        "no-domain-work"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Runtime support may manage session mechanics only; it cannot execute, approve, or mark any domain capability complete from orchestration state.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Initialize one workflow session with consent, host capabilities, checkpoints, and artifact pointers, preserving degraded state.",
+        "Execute the selected implementation task and edit source."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "workflow-orchestration-and-lifecycle",
+        "plan-execution-control",
+        "artifact-persistence-and-tool-actions",
+        "tool-runtime-readiness"
+      ],
+      "procedure": [
+        "Freeze workflow and session identity, host capabilities, project path, consent, privacy, runtime configuration, artifact store, and checkpoint policy.",
+        "Initialize or load bounded state and verify source and artifact identities without inventing domain completion.",
+        "Expose only approved host-tool directives, artifact pointers, checkpoints, pause or resume state, and degradation notices.",
+        "Record runtime commands, exits, versions, duration, state hash, cleanup, and invalidation; route domain work to its owner."
+      ],
+      "skill_id": "agent-workflow-runtime-support",
+      "trigger": "Provide bounded session, consent, checkpoint, artifact-pointer, degradation, and host-tool runtime state once for an approved workflow without performing domain steps.",
+      "triggers": [
+        "Initialize the approved workflow session state, consent record, checkpoint ledger, and artifact pointers.",
+        "Resume this workflow runtime from a valid checkpoint and report unavailable host capabilities without doing the work itself."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Render and validate the document's layout, links, and accessibility before persistence.",
+          "document-rendering-and-validation"
+        ],
+        [
+          "Publish this artifact to an external provider or repository.",
+          "evaluation-dataset-publication"
+        ]
+      ],
+      "artifacts": [
+        "bounded tool-action record",
+        "persisted lifecycle artifact or no-write outcome",
+        "path and hash evidence",
+        "overwrite or recovery record"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "bounded-action",
+        "declared-path",
+        "path-containment",
+        "artifact-hash",
+        "no-extra-files",
+        "recovery"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Persistence authority applies only to the declared artifact and location; it cannot authorize adjacent analysis, product-source edits, external publication, or additional files.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Persist the frozen test report to the approved run-output path, recording normalization, size, and hash without touching product source.",
+        "Validate the document's rendering and accessibility before deciding whether its output is fit to persist."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "document-rendering-and-validation",
+        "evaluation-dataset-publication",
+        "completion-evidence-gate",
+        "workflow-skill-authoring"
+      ],
+      "procedure": [
+        "Verify the validated input, exact tool or write action, destination class, overwrite policy, authorization, and expected artifact identity.",
+        "Refuse path escape, undeclared files, source mutation disguised as persistence, remote targets, or destructive replacement without recovery.",
+        "Perform only the bounded action; preserve source bytes or declared normalization and record before/after identity.",
+        "Return the saved artifact or explicit no-write outcome with path, tool, exit status when applicable, hash, and limitations."
+      ],
+      "skill_id": "artifact-persistence-and-tool-actions",
+      "trigger": "Select the already-authorized tool action and persist one validated lifecycle artifact at the declared bounded location without expanding the task.",
+      "triggers": [
+        "Save this approved specification to its declared project artifact path and record the resulting hash.",
+        "Invoke the approved local renderer for this frozen source and persist only the declared output artifact."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Design the project-wide mix of test layers and quality checks.",
+          "testing-portfolio-strategy"
+        ],
+        [
+          "Apply the accepted repair for a confirmed regression.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "matched baseline and candidate evidence",
+        "regression attribution matrix",
+        "variance and comparability report",
+        "bounded repair handoff"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "baseline-identity",
+        "candidate-identity",
+        "matched-environment",
+        "threshold",
+        "variance",
+        "warmup",
+        "regression-attribution"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A regression verdict requires frozen identities and matched commands, environment, data, seeds, warmup, thresholds, and retry policy; unmatched or stale evidence is incomparable, not passing.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Run the same focused suite against frozen base and candidate refs and classify each delta as regression, intended change, flake, or incomparable.",
+        "Repair the confirmed newly introduced serialization regression."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "testing-portfolio-strategy",
+        "resilience-and-determinism",
+        "defect-remediation",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Freeze baseline and candidate identities, environment, commands, data, seeds, warmup, thresholds, allowed variance, and comparison exclusions.",
+        "Run approved checks in matched conditions and record commands, versions, exits, duration, artifacts, hashes, and retries.",
+        "Separate new regression, pre-existing failure, flaky or environmental variance, intended change, and incomparable evidence.",
+        "Return a comparison and attribution report; never repair source, delete failures, or move thresholds after results."
+      ],
+      "skill_id": "baseline-regression-control",
+      "trigger": "Run and compare a frozen baseline and candidate check set under matched conditions, attribute regressions, and preserve current evidence without source repair.",
+      "triggers": [
+        "Compare this branch with the approved baseline using the same tests, environment, data, and thresholds.",
+        "Run the frozen regression contract and identify new failures, resolved failures, variance, and invalid comparisons."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Verify an existing pairing's connection and observed scope without changing it.",
+          "browser-agent-pairing-verification"
+        ],
+        [
+          "Configure browser authentication material for a target origin locally.",
+          "browser-authentication-setup"
+        ]
+      ],
+      "artifacts": [
+        "scoped pairing identity",
+        "non-secret local configuration receipt",
+        "expiry and revocation instructions",
+        "network exposure and cleanup evidence"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "per-action-authorization",
+        "scoped-agent",
+        "origin-action-scope",
+        "expiry",
+        "revocation",
+        "network-exposure",
+        "no-secret-output"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Pairing requires per-action authorization for exact agent, origins, actions, transport, exposure, and expiry; wildcard, hidden, reusable, or non-revocable credentials are blocked.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Provision one expiring read-only pairing for the selected agent and approved origins, recording revocation and exposure without credential values.",
+        "Diagnose whether the already-created pairing is connected and scoped correctly."
+      ],
+      "human_decision": true,
+      "mutation_scope": "external-session-write",
+      "neighbors": [
+        "browser-agent-pairing-verification",
+        "browser-authentication-setup",
+        "browser-session-and-runtime-configuration",
+        "provider-cli-authentication-setup"
+      ],
+      "procedure": [
+        "Verify daemon identity and health, selected agent, local or remote mode, origins and actions, network exposure, credential owner, expiry, retention, revocation, cleanup, and per-action authorization.",
+        "Preview exact listening interface, transport, credential storage, scope, lifetime, and exposure; refuse wildcard or indefinite access by default.",
+        "Perform only the approved pairing and local receipt update without revealing credential values in output or evidence.",
+        "Record non-secret pairing identity, scope, expiry, connection instructions, storage boundary, revocation command, exposure, and cleanup status."
+      ],
+      "skill_id": "browser-agent-pairing-provisioning",
+      "trigger": "Provision one scoped expiring browser-agent pairing identity after explicit local-system, credential, and network-exposure authorization, with revocation and cleanup.",
+      "triggers": [
+        "Provision a 30-minute read-only browser pairing for the named agent and origin scope after explicit authorization.",
+        "Create one remote pairing identity with exact exposure boundary, expiry, revocation command, and local config receipt."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Create or renew the pairing credential and local configuration.",
+          "browser-agent-pairing-provisioning"
+        ],
+        [
+          "Configure target-origin authentication material in the browser profile.",
+          "browser-authentication-setup"
+        ]
+      ],
+      "artifacts": [
+        "pairing connection verdict",
+        "expected-versus-observed scope",
+        "diagnosis evidence",
+        "bounded re-provisioning recommendation"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "existing-pairing",
+        "expected-observed-scope",
+        "read-only-verification",
+        "no-mint",
+        "no-config-change",
+        "no-data-authority"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Verification authority is read-only: it cannot mint or renew credentials, restart the daemon, change config, widen scope, or treat connectivity as data-access authorization.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Verify the existing pairing identity, expiry, connection, and observed origin scope without changing it.",
+        "Provision a replacement credential and update local pairing configuration."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "browser-agent-pairing-provisioning",
+        "browser-authentication-setup",
+        "browser-data-acquisition-runtime",
+        "tool-runtime-readiness"
+      ],
+      "procedure": [
+        "Freeze pairing identity, expected agent, transport, origins, actions, expiry, browser status, permitted external read, and prohibited changes.",
+        "Run approved health, connection, expiry, origin, and observed-scope checks without reading credential values.",
+        "Compare expected and observed identity and scope; classify disconnected, expired, mismatched, overbroad, healthy, or unverifiable.",
+        "Return evidence and a bounded re-provisioning recommendation; do not mint, renew, restart, widen, or edit configuration."
+      ],
+      "skill_id": "browser-agent-pairing-verification",
+      "trigger": "Verify and diagnose an existing browser-agent pairing through approved local checks and read-only external observation without creating credentials or changing configuration.",
+      "triggers": [
+        "Verify that this existing pairing connects to the named browser and exposes only the expected read scope.",
+        "Diagnose a failed pairing handshake and recommend bounded re-provisioning without restarting or changing anything."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Acquire governed page data using an already-authenticated browser session.",
+          "browser-data-acquisition-runtime"
+        ],
+        [
+          "Provision credentials that pair an external agent with the browser.",
+          "browser-agent-pairing-provisioning"
+        ]
+      ],
+      "artifacts": [
+        "configured local authentication state",
+        "non-secret validation receipt",
+        "storage and origin boundary",
+        "expiry, cleanup, and rollback instructions"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "exact-origin",
+        "secure-storage",
+        "no-credential-output",
+        "non-secret-validation",
+        "expiry",
+        "cleanup",
+        "no-data-authority"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Authentication setup grants neither page-data authority nor general browsing scope; credential values never enter prompts, logs, hashes, receipts, or artifacts.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Configure one isolated browser profile for the exact authorized origin and record non-secret status, expiry, and deletion steps.",
+        "Use the authenticated profile to extract account data from the page."
+      ],
+      "human_decision": true,
+      "mutation_scope": "local-system-write",
+      "neighbors": [
+        "browser-data-acquisition-runtime",
+        "browser-agent-pairing-provisioning",
+        "browser-session-and-runtime-configuration",
+        "secrets-and-environment-governance"
+      ],
+      "procedure": [
+        "Verify browser profile, exact origins, credential owner, authentication method, local-system authorization, storage, retention, expiry, deletion, allowed validation, and prohibited output.",
+        "Back up or identify reversible profile state and preview exact files or browser stores affected without reading values into model context.",
+        "Perform only the approved local setup through the host, using native secure storage where available and never logging or persisting credential values in evidence.",
+        "Validate non-secret authentication status for the exact origin and record storage boundary, expiry, cleanup, rollback, and failure evidence."
+      ],
+      "skill_id": "browser-authentication-setup",
+      "trigger": "Configure authorized authentication state in one local browser profile for exact origins without exposing values or granting unrelated browsing authority.",
+      "triggers": [
+        "Configure the approved local browser profile for this origin and record non-secret expiry and cleanup evidence.",
+        "Import authorized authentication material into one isolated browser profile without printing cookie or token values."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Configure authentication material in the local browser profile first.",
+          "browser-authentication-setup"
+        ],
+        [
+          "Perform a narrow unauthenticated public-page probe with no governed data extraction.",
+          "safe-browser-probing"
+        ]
+      ],
+      "artifacts": [
+        "captured evidence or structured data",
+        "route and field provenance",
+        "access and reuse limits",
+        "cleanup and deletion status"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "authorized-origin",
+        "authorized-fields",
+        "purpose-limitation",
+        "read-only",
+        "provenance",
+        "reuse-boundary",
+        "cleanup-deletion"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "A valid login does not authorize acquisition or reuse: each origin, field, purpose, action, transfer, retention, and deletion boundary must be explicit, and all acquisition remains read-only.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Extract only the approved fields from allowlisted authenticated routes and preserve source, purpose, retention, and cleanup limits.",
+        "Configure the missing authentication material in the browser profile."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "browser-authentication-setup",
+        "safe-browser-probing",
+        "browser-session-and-runtime-configuration",
+        "website-audit-assessment"
+      ],
+      "procedure": [
+        "Verify exact URLs and origins, authentication authority, data purpose, fields, minimization, consent or rights, external-transfer, retention, deletion, rate, session, and prohibited actions.",
+        "Use the approved existing runtime and read-only navigation or extraction; refuse forms, purchases, messages, account changes, deletes, privilege changes, or anti-access-control bypass.",
+        "Capture only declared fields or evidence and record route, timestamp, state, browser, session identity, request or selector, count, truncation, and source provenance without credential values.",
+        "Return captured artifact or structured data, access limitations, cleanup, deletion deadline, and blocked gaps; acquired data is not automatically authorized for reuse."
+      ],
+      "skill_id": "browser-data-acquisition-runtime",
+      "trigger": "Acquire only authorized page evidence or structured data through an approved read-only browser session, preserving provenance, limits, and cleanup.",
+      "triggers": [
+        "Extract the approved account table from this authenticated page under the stated minimization and retention policy.",
+        "Capture structured evidence from these allowlisted routes without clicks or requests that mutate state."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Persist authentication material into a browser profile.",
+          "browser-authentication-setup"
+        ],
+        [
+          "Acquire page data or captures through the configured session.",
+          "browser-data-acquisition-runtime"
+        ]
+      ],
+      "artifacts": [
+        "ephemeral browser session state",
+        "reproducible wrapper and CLI invocation",
+        "runtime evidence",
+        "cleanup and degradation notice"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "ephemeral-session",
+        "wrapper-contract",
+        "project-isolation",
+        "reproducible-invocation",
+        "no-persistent-config",
+        "cleanup"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Session configuration is ephemeral runtime state: it cannot persist credentials or system config, pair agents, authorize data access, or perform the browser task itself.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Prepare an isolated ephemeral browser invocation with exact wrapper, session, project, and cleanup settings.",
+        "Use the configured browser to capture governed target-page data."
+      ],
+      "human_decision": false,
+      "mutation_scope": "runtime-session",
+      "neighbors": [
+        "browser-authentication-setup",
+        "browser-agent-pairing-provisioning",
+        "browser-data-acquisition-runtime",
+        "tool-runtime-readiness"
+      ],
+      "procedure": [
+        "Verify validated task, session identity, project path, wrapper contract, runtime and CLI versions, profile reference, ports, isolation, cleanup, and no-persistence rule.",
+        "Resolve invocation flags, environment references, output directories, timeouts, and wrapper dispatch without exposing credentials.",
+        "Run approved readiness or startup commands only for the ephemeral session and record command, version, exit, duration, runtime identifiers, and logs.",
+        "Return reproducible invocation settings, session state, degradation, and cleanup; do not authenticate, pair agents, acquire target data, or persist config."
+      ],
+      "skill_id": "browser-session-and-runtime-configuration",
+      "trigger": "Create an isolated ephemeral browser runtime invocation from validated prerequisites without writing persistent auth, pairing, or project source.",
+      "triggers": [
+        "Configure the approved wrapper, session ID, project path, and browser CLI arguments for one isolated run.",
+        "Prepare a reproducible ephemeral browser invocation after runtime and authentication prerequisites are already satisfied."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Implement the already-frozen task in an isolated workspace.",
+          "isolated-task-implementation"
+        ],
+        [
+          "Investigate the unresolved cause and determine what the scope should include.",
+          "root-cause-investigation"
+        ]
+      ],
+      "artifacts": [
+        "frozen change-scope contract",
+        "allowed and prohibited artifact map",
+        "invariant and non-goal register",
+        "scope invalidation conditions"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "scope-freeze",
+        "single-writer",
+        "authorized-workspace",
+        "invariants",
+        "non-goals",
+        "invalidation"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "No implementation begins until the required behavior, authorized workspace, single writer, allowed mutation boundary, tests, invariants, and non-goals are explicit.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Freeze a two-file rate-limit repair with explicit behavior, exclusions, test obligations, and scope-reopen conditions.",
+        "Trace the failing request path and establish the root cause before deciding which files belong in scope."
+      ],
+      "human_decision": true,
+      "mutation_scope": "run-output",
+      "neighbors": [
+        "root-cause-investigation",
+        "isolated-task-implementation",
+        "plan-execution-control",
+        "implementation-spec-compliance-review"
+      ],
+      "procedure": [
+        "Record approved requirement or finding IDs, target source identity, allowed files or modules, observable behavior, tests, invariants, and explicit exclusions.",
+        "Separate required change, permitted incidental cleanup, prohibited expansion, and unresolved prerequisite.",
+        "Name the writer, workspace, evidence owner, review boundary, and conditions that invalidate or reopen scope.",
+        "Emit the frozen scope and stop; do not implement, test, review, or approve the change."
+      ],
+      "skill_id": "change-scope-freeze",
+      "trigger": "Freeze one authorized change boundary, affected artifacts, non-goals, invariants, owners, and invalidation conditions before implementation begins.",
+      "triggers": [
+        "Freeze the exact files, behaviors, tests, and non-goals for this approved defect repair.",
+        "Create a change-scope contract that prevents this implementation task from absorbing nearby refactors."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Independently review this specific patch for correctness and security.",
+          "independent-code-review"
+        ],
+        [
+          "Apply the accepted code-health repairs to source.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "code-health findings",
+        "maintainability evidence map",
+        "priority and leave-unchanged rationale",
+        "bounded remediation options"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "maintainability",
+        "complexity",
+        "duplication",
+        "coupling",
+        "error-handling",
+        "test-health",
+        "leave-unchanged"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A code-health finding needs a cited source location and plausible maintenance consequence; stylistic dislike, hypothetical reuse, and aggregate scores alone do not justify remediation.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Rank the concrete maintenance risks in this module with source citations and change scenarios, preserving low-value leave-unchanged cases.",
+        "Review the current patch only for correctness, security, and requirement compliance."
+      ],
+      "human_decision": false,
+      "mutation_scope": "none",
+      "neighbors": [
+        "independent-code-review",
+        "architecture-deepening-discovery",
+        "defect-remediation",
+        "developer-experience-assessment"
+      ],
+      "procedure": [
+        "Freeze repository scope, source identity, languages, generated or vendor exclusions, change history evidence, and assessment criteria.",
+        "Trace concrete duplication, complexity, coupling, cohesion, dead code, error handling, dependency, test, and ownership signals with citations.",
+        "Distinguish measurable risk from style preference and identify leave-unchanged cases where remediation cost exceeds evidence.",
+        "Return prioritized findings, affected change scenarios, bounded options, and residual uncertainty without edits."
+      ],
+      "skill_id": "code-health-assessment",
+      "trigger": "Assess a codebase's maintainability, complexity, duplication, dependency, error-handling, and test-health risks from supplied source without editing it.",
+      "triggers": [
+        "Assess this module's code health and rank concrete maintainability risks with file and symbol evidence.",
+        "Identify duplication, complexity, dead paths, dependency tangles, weak errors, and brittle tests without proposing a broad rewrite."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Analyze the evidence and issue independent code-review findings.",
+          "independent-code-review"
+        ],
+        [
+          "Post an evidence-backed response to an identified pull-request review comment.",
+          "pull-request-comment-response"
+        ]
+      ],
+      "artifacts": [
+        "review evidence bundle",
+        "base-head and provider identity manifest",
+        "acquisition command records",
+        "evidence completeness result"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "base-head-refs",
+        "provider-read-only",
+        "evidence-provenance",
+        "no-findings",
+        "no-comments",
+        "completeness"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Review evidence is valid only when bound to exact base/head refs and provider identity; acquisition authority never includes findings, comments, labels, source edits, or remote writes.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Acquire a ref-bound diff, check results, commits, and read-only pull-request metadata for an independent reviewer.",
+        "Judge the evidence and issue correctness and security findings."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "independent-code-review",
+        "provider-review-comment-response",
+        "implementation-spec-compliance-review",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Freeze repository, base and head refs, review scope, provider-read authorization, target PR or change identity, and excluded material.",
+        "Acquire only approved local diff, history, files, tests, and read-only provider checks or metadata; perform no comments, labels, updates, or other writes.",
+        "Record commands or provider requests, timestamps, refs, tool versions, exits, artifact hashes, truncation, and unavailable evidence.",
+        "Return an evidence manifest and completeness status for the reviewer; do not infer findings or approve the change."
+      ],
+      "skill_id": "code-review-evidence-acquisition",
+      "trigger": "Acquire authorized repository and provider-read evidence for a code review, bind it to exact refs, and stop before issuing findings or comments.",
+      "triggers": [
+        "Collect the exact diff, commits, changed files, checks, and read-only provider context needed for this review.",
+        "Build a provenance-bound review evidence bundle for this pull request without posting comments."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Run the missing tests or build commands needed to create evidence.",
+          "baseline-regression-control"
+        ],
+        [
+          "Fix the defects exposed by the completion check.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "criterion-to-evidence matrix",
+        "completion gate result",
+        "stale or missing evidence register",
+        "limitations and invalidation conditions"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "current-evidence",
+        "source-identity",
+        "command",
+        "exit-code",
+        "duration",
+        "artifact-hash",
+        "no-self-attestation",
+        "limitations"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A completion claim cannot pass from prose, status text, model confidence, stale output, or partial success; each required criterion needs current target-bound executable or artifact evidence.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Recompute whether the frozen change is complete from current command records, target refs, exits, durations, and output hashes.",
+        "Execute the missing regression suite to produce the command evidence that a later completion gate can verify."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "baseline-regression-control",
+        "artifact-persistence-and-tool-actions",
+        "defect-remediation",
+        "change-delivery-preflight"
+      ],
+      "procedure": [
+        "Freeze the claimed outcome, target source or artifact identity, acceptance criteria, required checks, and evidence freshness window.",
+        "Validate every command, tool version, environment, exit code, duration, output summary, artifact path, and normalized hash against the current target.",
+        "Reject missing, stale, mismatched, self-attested, partial, skipped, or manually edited evidence and preserve failed checks.",
+        "Map each acceptance criterion to evidence and return a bounded status with limitations; never rerun commands, repair source, or upgrade a claim."
+      ],
+      "skill_id": "completion-evidence-gate",
+      "trigger": "Verify a completion claim from current reproducible commands, exits, durations, source identity, artifacts, hashes, and declared limitations without changing the work.",
+      "triggers": [
+        "Check whether this implementation is actually complete from the current test, lint, build, and artifact evidence.",
+        "Issue passed, needs-input, blocked, or failed for this completion claim using current command records and hashes."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Investigate the symptom and establish a reproducible root cause first.",
+          "root-cause-investigation"
+        ],
+        [
+          "Independently review the completed patch and report findings without edits.",
+          "independent-code-review"
+        ]
+      ],
+      "artifacts": [
+        "minimal source and test patch",
+        "before-and-after reproduction evidence",
+        "focused and regression command records",
+        "rollback and residual-risk note"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "confirmed-root-cause",
+        "shared-fix-point",
+        "minimal-patch",
+        "single-writer",
+        "focused-regression",
+        "rollback"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Remediation cannot start from an unconfirmed symptom, and it cannot pass without a root-cause-linked patch plus current focused and affected-regression evidence.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Repair the confirmed cross-tenant cache-key defect in the shared lookup and preserve focused and sibling regression evidence.",
+        "Reproduce and trace the intermittent cache miss before any source repair is authorized."
+      ],
+      "human_decision": true,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "root-cause-investigation",
+        "tdd-change-loop",
+        "developer-self-check-and-fix",
+        "independent-code-review"
+      ],
+      "procedure": [
+        "Verify the confirmed cause, frozen scope, authorized workspace, single writer, reproduction, expected behavior, regression surface, and rollback path.",
+        "Inspect every caller and affected invariant; choose the highest shared correction point and avoid symptom guards or speculative refactors.",
+        "Write the smallest source and test patch that makes the reproduction fail before and pass after while preserving unrelated contracts.",
+        "Run approved focused and regression commands through the host, preserve failures, and return patch, evidence, changed files, and residual risk for independent review."
+      ],
+      "skill_id": "defect-remediation",
+      "trigger": "Apply the smallest authorized source repair for a confirmed root cause and verify the changed behavior plus relevant regressions in one isolated workspace.",
+      "triggers": [
+        "Fix this confirmed shared parser defect at the common root and run the approved focused and sibling regression checks.",
+        "Apply the accepted security finding's bounded source repair without altering unrelated behavior."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Review the proposed developer-experience plan before implementation.",
+          "developer-experience-plan-review"
+        ],
+        [
+          "Fix the documentation, scripts, or tooling exposed by the assessment.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "developer journey trace",
+        "time-to-first-success evidence",
+        "friction and recovery findings",
+        "bounded DX recommendations"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "real-journey",
+        "time-to-first-success",
+        "environment",
+        "commands",
+        "errors",
+        "recovery",
+        "cleanup"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Developer experience claims require a real target-bound journey with recorded environment, commands, elapsed time, errors, recovery, and cleanup; reading docs alone is insufficient.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Run the documented contributor setup in a clean local environment and measure time, failures, workarounds, and recovery.",
+        "Fix the setup script and documentation after the findings are accepted."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "developer-experience-plan-review",
+        "defect-remediation",
+        "tool-runtime-readiness",
+        "documentation-authoring"
+      ],
+      "procedure": [
+        "Freeze persona, journey, clean environment, source identity, supported platform, documented commands, credentials boundary, success criterion, and time budget.",
+        "Run only approved local commands and record elapsed time, decisions, errors, retries, workarounds, outputs, and cleanup.",
+        "Compare actual behavior with documentation, compatibility promises, error messages, discoverability, and recovery expectations.",
+        "Return reproducible friction and success evidence with severity and bounded recommendations; do not repair source."
+      ],
+      "skill_id": "developer-experience-assessment",
+      "trigger": "Execute an authorized developer journey and measure time-to-first-success, setup, errors, documentation, compatibility, and recovery without changing product source.",
+      "triggers": [
+        "Run the documented SDK quickstart in a clean environment and record every setup, error, recovery, and success step.",
+        "Assess this repository's contributor onboarding, test invocation, upgrade, and failure messages from a real local journey."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Perform the independent code review and issue findings without changing source.",
+          "independent-code-review"
+        ],
+        [
+          "Investigate a newly observed behavior whose root cause is not established.",
+          "root-cause-investigation"
+        ]
+      ],
+      "artifacts": [
+        "self-review checklist",
+        "bounded correction patch",
+        "updated focused evidence",
+        "independent-review handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "self-review",
+        "changed-files",
+        "bounded-correction",
+        "no-scope-expansion",
+        "no-independent-approval",
+        "handoff"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A developer correction pass may fix deterministic in-scope defects but must never impersonate independent review, erase failed evidence, or expand the frozen change.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Self-review this completed migration patch, correct an in-scope null-handling defect, rerun focused checks, and preserve independent review.",
+        "Independently judge the patch against requirements and architecture without making corrections."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "defect-remediation",
+        "root-cause-investigation",
+        "independent-code-review",
+        "implementation-spec-compliance-review"
+      ],
+      "procedure": [
+        "Freeze the patch, scope, acceptance criteria, changed files, existing test evidence, and independent-review handoff boundary.",
+        "Inspect the diff and affected callers for correctness, error handling, security, compatibility, dead code, formatting, and test gaps.",
+        "Fix only reproducible in-scope defects; route scope expansion or unknown cause to the owning capability instead of opportunistic refactoring.",
+        "Run approved focused checks, record every correction and remaining concern, and hand off without declaring independent approval."
+      ],
+      "skill_id": "developer-self-check-and-fix",
+      "trigger": "Self-review one completed authorized change, fix only deterministic defects within its frozen scope, and leave independent review ownership intact.",
+      "triggers": [
+        "Inspect this completed patch for changed-file defects, broken invariants, missing tests, and mechanical quality issues, then fix in-scope problems.",
+        "Run a bounded developer correction pass before handing the patch to independent review."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Author or substantively edit the source document first.",
+          "documentation-authoring"
+        ],
+        [
+          "Package and version the verified rendered artifact for change delivery.",
+          "change-packaging-and-versioning"
+        ]
+      ],
+      "artifacts": [
+        "rendered document artifact",
+        "renderer command evidence",
+        "layout, link, and accessibility validation",
+        "hash and residual-limitations report"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "source-hash",
+        "renderer-version",
+        "output-hash",
+        "layout-validation",
+        "link-validation",
+        "accessibility-limitations"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A successful renderer exit is insufficient: the declared output must have current hash and inspected layout, links, text, metadata, and accessibility evidence or explicit unsupported limitations.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Render the frozen report to PDF and validate clipping, links, headings, text extraction, metadata, and output hash.",
+        "Rewrite the report's argument and source content before rendering."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "documentation-authoring",
+        "artifact-persistence-and-tool-actions",
+        "artifact-publication",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Freeze source and template hashes, renderer and version, target format and path, fonts or assets, page and accessibility criteria, link policy, and overwrite authorization.",
+        "Render only the approved source through the declared local command and record exit, duration, logs, and output identity.",
+        "Inspect pagination, clipping, overflow, fonts, images, links, headings, metadata, text extraction, language, and accessible structure where tooling supports it.",
+        "Return artifact, hash, validation evidence, unresolved rendering limitations, and rollback or no-write outcome; do not rewrite content or publish."
+      ],
+      "skill_id": "document-rendering-and-validation",
+      "trigger": "Render one approved document source into a declared local artifact and validate layout, accessibility, links, output integrity, and limitations.",
+      "triggers": [
+        "Render this approved Markdown report to PDF and validate pages, links, headings, and text extraction.",
+        "Produce the declared document artifact and record renderer version, hash, layout defects, and accessibility limitations."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Design or modify the local evaluation samples and schema before publication.",
+          "test-case-design-and-export"
+        ],
+        [
+          "Run the reviewed LLM experiment against the published dataset.",
+          "llm-experiment-execution"
+        ]
+      ],
+      "artifacts": [
+        "versioned provider dataset identity",
+        "publication request and receipt",
+        "local-provider hash and count evidence",
+        "governance, retention, deletion, and failure-cleanup record"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "per-action-authorization",
+        "exact-provider-target",
+        "frozen-version",
+        "redaction",
+        "external-transfer",
+        "idempotency",
+        "publication-receipt",
+        "deletion-path"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Remote dataset publication is one per-action-authorized write to an exact provider target and version; missing rights, redaction, transfer, retention, deletion, visibility, idempotency, or cleanup terms blocks publication.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Publish the frozen redacted eval-v3 manifest to the exact private provider dataset target and record immutable identity and deletion evidence.",
+        "Generate or revise the evaluation cases and schema before a publication manifest is frozen."
+      ],
+      "human_decision": true,
+      "mutation_scope": "remote-provider-write",
+      "neighbors": [
+        "test-case-design-and-export",
+        "llm-experiment-execution",
+        "llm-evaluator-engineering",
+        "artifact-persistence-and-tool-actions"
+      ],
+      "procedure": [
+        "Verify frozen local manifest and hashes, schema, provenance, consent or license, minimization, redaction, sensitive fields, external-transfer authority, provider target, region, retention, deletion, owner, budget, and per-action authorization.",
+        "Preview the exact sample count, bytes, metadata, visibility, version identity, and provider request without exposing secret values.",
+        "Perform one idempotent provider create or upload action, refusing overwrite, public visibility, unrelated target, or mutable latest aliases unless explicitly authorized.",
+        "Record provider response, immutable dataset identity, request and local hashes, count, duration, cost if any, retention, deletion or rollback path, and partial-failure cleanup."
+      ],
+      "skill_id": "evaluation-dataset-publication",
+      "trigger": "Publish one frozen versioned evaluation dataset to one exact provider target only under per-action remote-write and data-governance authorization.",
+      "triggers": [
+        "Publish this approved redacted evaluation dataset version to the named provider target and record its deletion path.",
+        "Create one immutable provider dataset from the frozen manifest after confirming rights, retention, and per-action authorization."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Execute the reviewed experiment against the provider.",
+          "llm-experiment-execution"
+        ],
+        [
+          "Evaluate raw model outputs with metrics, judges, and human agreement first.",
+          "llm-quality-evaluation"
+        ]
+      ],
+      "artifacts": [
+        "experiment comparison",
+        "variance and uncertainty report",
+        "failure-slice and regression analysis",
+        "evidence-bounded human decision readout"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "frozen-metrics",
+        "variance",
+        "uncertainty",
+        "failure-slices",
+        "cost-latency",
+        "no-metric-shopping",
+        "human-decision"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Analysis cannot change metrics, thresholds, exclusions, or slices after seeing results without labeling the work exploratory; incomplete or incomparable runs cannot yield a pass claim.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Analyze the frozen paired runs under preregistered metrics and thresholds, preserving failed runs, variance, cost, and slice regressions.",
+        "Submit a new provider experiment because the current outcome is inconclusive."
+      ],
+      "human_decision": true,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "llm-experiment-execution",
+        "llm-quality-evaluation",
+        "model-and-workflow-benchmarking",
+        "results-analysis-and-decision-readout"
+      ],
+      "procedure": [
+        "Freeze run identities, dataset and evaluator versions, metric contract, thresholds, exclusions, statistical assumptions, baseline, costs, and known data limits.",
+        "Verify result completeness, pairing, missingness, duplicates, contamination, retries, failed runs, and comparable versions before analysis.",
+        "Compute declared aggregates, distributions, uncertainty, effect sizes or intervals, failure slices, cost and latency, and sensitivity without metric shopping.",
+        "Return supported and unsupported claims, regressions, tradeoffs, and a recommendation to the named human owner; do not rerun, approve, or deploy."
+      ],
+      "skill_id": "evaluation-results-analysis",
+      "trigger": "Analyze frozen experiment results against declared metrics, variance, failure slices, costs, and decision thresholds without rerunning experiments or approving product changes.",
+      "triggers": [
+        "Analyze these frozen experiment runs against the preregistered metrics, variance, cost, and failure-slice thresholds.",
+        "Compare baseline and candidate LLM results and identify uncertainty, regressions, slice failures, and unsupported conclusions."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Audit broad page-load, network, cache, image, and Core Web Vitals behavior.",
+          "web-performance-diagnostics"
+        ],
+        [
+          "Apply the approved performance optimization to frontend source.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "interaction performance baseline",
+        "trace and distribution evidence",
+        "repeatable bottleneck findings",
+        "optimization hypotheses and limits"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "frozen-journey",
+        "device-profile",
+        "warmup",
+        "sample-count",
+        "distribution",
+        "interaction-latency",
+        "trace"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A frontend performance finding requires a frozen journey, representative device profile, warmup, sample count, distribution, budget, and repeatable trace; one fast or slow run is not evidence.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Profile a frozen editor interaction over repeated warmed runs and report input latency, long tasks, render churn, and uncertainty.",
+        "Apply memoization and scheduling changes to fix the accepted bottleneck."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "web-performance-diagnostics",
+        "defect-remediation",
+        "purposeful-motion-and-animation-engineering",
+        "baseline-regression-control"
+      ],
+      "procedure": [
+        "Freeze source identity, journey, viewport, device or CPU profile, browser, data, cache state, warmup, sample count, budgets, and instrumentation.",
+        "Run approved local measurements for render phases, input delay, long tasks, layout work, hydration, state updates, and animation frames.",
+        "Report distributions and traces, distinguish noise from repeatable bottlenecks, and link suspected causes to source or runtime evidence.",
+        "Return baseline, bottlenecks, uncertainty, and optimization hypotheses without editing source or claiming production impact."
+      ],
+      "skill_id": "frontend-rendering-and-interaction-performance",
+      "trigger": "Measure current frontend rendering and interaction performance under a frozen user journey and identify evidence-backed bottlenecks without source repair.",
+      "triggers": [
+        "Measure render, input, and navigation latency for this frozen interaction across representative devices and states.",
+        "Profile the approved frontend journey and identify long tasks, rendering churn, hydration, and responsiveness bottlenecks."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Install the already-approved guard into the repository's local Git configuration.",
+          "local-git-guard-setup"
+        ],
+        [
+          "Integrate the approved base branch into the isolated local change branch.",
+          "local-branch-integration"
+        ]
+      ],
+      "artifacts": [
+        "guard policy source",
+        "allow and block fixture corpus",
+        "local validation evidence",
+        "separate installation handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "destructive-patterns",
+        "safe-command-pass",
+        "repository-artifact",
+        "no-silent-install",
+        "separate-local-setup"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Guard authoring may create tested repository artifacts but cannot modify Git config, hook paths, aliases, shell startup, or enable interception without separate local-system authorization.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Author a tested repository guard policy that blocks destructive reset and clean variants while allowing ordinary Git commands.",
+        "Install an already-approved guard into the local Git hooks path after classifying that path and obtaining consent."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "local-git-guard-setup",
+        "local-branch-integration",
+        "change-scope-freeze",
+        "tool-runtime-readiness"
+      ],
+      "procedure": [
+        "Freeze the dangerous-command policy, shell or hook environment, repository artifact boundary, bypass rules, user-confirmation behavior, and installation owner.",
+        "Represent exact and equivalent destructive forms without intercepting ordinary status, diff, add, commit, fetch, or safe restore use.",
+        "Write only the authorized guard source, configuration template, and deterministic allow/block fixtures in the workspace.",
+        "Run approved fixture checks and return the candidate guard; require a separate local-system setup capability for installation or enablement."
+      ],
+      "skill_id": "git-destructive-command-guard",
+      "trigger": "Author and validate a repository-scoped guard policy that intercepts declared destructive Git command patterns before execution without installing it silently.",
+      "triggers": [
+        "Create the approved hook policy and test fixture that blocks force reset, clean, and destructive checkout patterns.",
+        "Update this repository-owned guard script and verify safe commands pass while declared destructive forms stop."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Review the same patch broadly for correctness, security, and code-quality defects.",
+          "independent-code-review"
+        ],
+        [
+          "Fix accepted compliance gaps in the source.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "requirement-to-implementation matrix",
+        "compliance findings",
+        "extra and missing behavior register",
+        "human-owned disposition recommendation"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "frozen-spec",
+        "source-ref",
+        "traceability",
+        "missing-behavior",
+        "extra-behavior",
+        "no-source-edit"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Compliance passes only when every frozen requirement and design obligation has current implementation and verification evidence and no unapproved behavior is silently introduced.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Map every approved requirement and API invariant to the patch and current tests, reporting omissions and unapproved additions.",
+        "Review the patch for broader correctness, security, and maintainability defects."
+      ],
+      "human_decision": true,
+      "mutation_scope": "none",
+      "neighbors": [
+        "independent-code-review",
+        "defect-remediation",
+        "requirements-and-delivery-contract",
+        "engineering-plan-review"
+      ],
+      "procedure": [
+        "Freeze requirement and design versions, source ref, patch, scope contract, test evidence, and review exclusions.",
+        "Map each stable requirement and design decision to implementation locations, tests, runtime evidence, or an explicit missing item.",
+        "Identify omitted, extra, contradictory, stale, or unverifiable behavior and distinguish spec defects from implementation defects.",
+        "Return a compliance matrix, findings, and revise-or-block recommendation for the human owner without edits."
+      ],
+      "skill_id": "implementation-spec-compliance-review",
+      "trigger": "Independently compare an implementation and its evidence with frozen requirements, design, interfaces, and scope without editing source.",
+      "triggers": [
+        "Review whether this patch implements every frozen requirement and no unapproved behavior, citing code and test evidence.",
+        "Check this implementation against approved API, migration, authorization, and UX contracts and list compliance gaps."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Triage existing QA findings by reproducibility, severity, and owner.",
+          "qa-finding-triage"
+        ],
+        [
+          "Apply source repairs for accepted QA defects.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "black-box QA run record",
+        "reproducible numbered findings",
+        "route-state coverage matrix",
+        "blocked tests and residual risk"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "public-surfaces",
+        "current-build",
+        "reproducible-steps",
+        "expected-observed",
+        "independence",
+        "no-source-inspection",
+        "no-repair"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Black-box QA must use public product surfaces and current build evidence; source inspection, implementation knowledge, or self-repair invalidates reviewer independence.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Exercise the current build only through public browser and API surfaces and return reproducible findings with captures and state coverage.",
+        "Deduplicate and assign previously observed QA findings without rerunning the whole product."
+      ],
+      "human_decision": true,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "qa-finding-triage",
+        "defect-remediation",
+        "ui-review-scope-and-evidence-acquisition",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Freeze build identity, environment, user roles, test accounts or fixtures, public surfaces, acceptance criteria, supported devices, data boundary, and prohibited actions.",
+        "Exercise task, boundary, invalid, error, permission, concurrency, interruption, recovery, accessibility, responsive, and persistence behavior through public interfaces only.",
+        "Record exact setup, steps, observed and expected result, route or API, state, environment, screenshot or trace, logs allowed to a user, and reproducibility.",
+        "Return numbered findings, blocked tests, coverage, and residual risk; do not read source, infer internals as fact, or repair anything."
+      ],
+      "skill_id": "independent-blackbox-qa",
+      "trigger": "Independently exercise a built product through public user surfaces, record reproducible findings and evidence, and never inspect or repair source.",
+      "triggers": [
+        "Run black-box QA on the built checkout across happy, boundary, error, permission, recovery, and responsive states.",
+        "Test the release candidate as a user through its public browser and API surfaces and report reproducible defects."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Acquire the exact diff, provider metadata, and check evidence first.",
+          "code-review-evidence-acquisition"
+        ],
+        [
+          "Apply the accepted review fixes to source.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "independent code-review findings",
+        "affected-caller and risk analysis",
+        "test and evidence gaps",
+        "human-owned review recommendation"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "base-head-refs",
+        "callers",
+        "failure-scenario",
+        "source-citation",
+        "severity",
+        "no-fix",
+        "no-provider-write"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A finding requires a concrete failing or risky scenario, source citation, consequence, and contract; the reviewer never edits source, posts comments, or approves its own remediation.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Review the exact ref-bound diff for a concrete authorization bypass, failure path, and missing regression without editing source.",
+        "Collect the diff, checks, commits, and provider metadata needed before review."
+      ],
+      "human_decision": true,
+      "mutation_scope": "none",
+      "neighbors": [
+        "code-review-evidence-acquisition",
+        "defect-remediation",
+        "implementation-spec-compliance-review",
+        "provider-review-comment-response"
+      ],
+      "procedure": [
+        "Verify exact base/head refs, complete diff and files, requirements or scope, tests, evidence freshness, and reviewer independence.",
+        "Trace changed logic through callers, data and authorization boundaries, failure paths, concurrency, compatibility, cleanup, and relevant tests.",
+        "Issue only actionable findings with source citation, scenario, consequence, severity, and expected contract; omit style preference and speculative abstraction.",
+        "Return findings, unknowns, and review recommendation without edits, comments, provider writes, or approval impersonation."
+      ],
+      "skill_id": "independent-code-review",
+      "trigger": "Independently inspect a ref-bound code change for correctness, security, failure handling, compatibility, tests, and maintainability without editing it.",
+      "triggers": [
+        "Review this exact base-to-head diff and issue only evidence-backed correctness and security findings.",
+        "Independently assess the patch, affected callers, tests, error paths, and compatibility without making fixes."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Execute and track a multi-step implementation plan with checkpoints and invalidation.",
+          "plan-execution-control"
+        ],
+        [
+          "Repair an independently confirmed defect after root-cause evidence exists.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "isolated implementation patch",
+        "changed-file and scope evidence",
+        "focused verification records",
+        "review and integration handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "isolated-workspace",
+        "single-writer",
+        "frozen-task",
+        "minimal-diff",
+        "host-checks",
+        "no-integration"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "One task has one writer and one isolated workspace; missing isolation, dirty-state ambiguity, concurrent ownership, or scope expansion blocks implementation.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Implement the frozen CLI option in the allocated clean worktree with one writer and return a patch plus focused evidence.",
+        "Coordinate and checkpoint the entire approved multi-step implementation plan across several task slices."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "change-scope-freeze",
+        "plan-execution-control",
+        "defect-remediation",
+        "local-branch-integration"
+      ],
+      "procedure": [
+        "Verify frozen scope, clean isolated workspace, base identity, single-writer ownership, required inputs, acceptance criteria, tests, and prohibited paths.",
+        "Read the full affected flow and existing patterns before writing; reuse current helpers and keep the smallest coherent diff.",
+        "Implement only the assigned slice and its required tests or fixtures; stop on ambiguity, scope expansion, dependency conflict, or concurrent mutation.",
+        "Run approved focused checks through the host and return patch, changed files, evidence, assumptions, and handoff state without integration or remote actions."
+      ],
+      "skill_id": "isolated-task-implementation",
+      "trigger": "Implement one frozen task in one isolated authorized workspace with a single writer, bounded checks, and a reviewable handoff.",
+      "triggers": [
+        "Implement this frozen task in its allocated worktree without touching the user's dirty primary workspace.",
+        "Apply the approved small feature slice with one writer, required tests, and a patch handoff."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Run the frozen evaluator across model outputs and produce scores.",
+          "llm-quality-evaluation"
+        ],
+        [
+          "Activate an online provider experiment using the evaluator.",
+          "llm-experiment-execution"
+        ]
+      ],
+      "artifacts": [
+        "evaluator definitions and local source",
+        "rubric and labeled calibration fixtures",
+        "local executable check evidence",
+        "limitations and provider-activation handoff"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "quality-contract",
+        "deterministic-first",
+        "versioned-evaluator",
+        "calibration",
+        "abstention",
+        "malformed-input",
+        "no-provider-activation"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "An evaluator cannot pass from plausible rubric prose: it needs versioned executable behavior, labeled calibration cases, abstention and invalid handling, disagreement evidence, and no unauthorized provider call.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Implement a local groundedness evaluator with labeled calibration cases, abstention, malformed handling, and disagreement evidence.",
+        "Execute an online provider experiment using the frozen evaluator and dataset."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "llm-quality-evaluation",
+        "llm-experiment-execution",
+        "evaluation-results-analysis",
+        "test-case-design-and-export"
+      ],
+      "procedure": [
+        "Freeze quality dimensions, observable criteria, trace classes, labels, evaluator mode, judge policy, data governance, workspace, expected errors, and calibration target.",
+        "Choose deterministic checks before model judges; define inputs, outputs, abstention, invalid cases, parsing, versions, and cost or transfer boundary.",
+        "Implement the smallest local evaluator, rubric, fixtures, and executable checks; online calls remain stubs or draft configuration unless separately authorized.",
+        "Calibrate against labeled cases and human disagreement, test adversarial and malformed inputs, record false positives or negatives, and return limitations and activation handoff."
+      ],
+      "skill_id": "llm-evaluator-engineering",
+      "trigger": "Implement bounded local or draft-online evaluator definitions and calibration checks against an explicit quality contract; provider activation remains separate.",
+      "triggers": [
+        "Implement local evaluator code and calibration fixtures for groundedness, citation, and refusal quality.",
+        "Create a draft judge rubric and disagreement calibration using authorized redacted traces without calling a provider."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Design or calibrate the evaluator before experiment review.",
+          "llm-evaluator-engineering"
+        ],
+        [
+          "Analyze the frozen completed experiment results and advise the human owner.",
+          "evaluation-results-analysis"
+        ]
+      ],
+      "artifacts": [
+        "provider experiment run identity",
+        "frozen parameter and version manifest",
+        "raw result references and failure evidence",
+        "cost, duration, cancellation, and cleanup record"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "reviewed-definition",
+        "exact-provider-target",
+        "frozen-versions",
+        "per-action-authorization",
+        "budget",
+        "idempotency",
+        "run-receipt",
+        "no-post-submit-drift"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Experiment execution requires one exact reviewed definition and per-action provider authorization; any prompt, model, dataset, evaluator, metric, budget, transfer, or target drift invalidates or blocks the run.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Submit the reviewed frozen baseline-candidate experiment once and preserve exact run, parameter, cost, duration, retry, and failure evidence.",
+        "Analyze the completed runs against metrics and thresholds."
+      ],
+      "human_decision": true,
+      "mutation_scope": "remote-provider-write",
+      "neighbors": [
+        "llm-evaluator-engineering",
+        "evaluation-dataset-publication",
+        "evaluation-results-analysis",
+        "llm-quality-evaluation"
+      ],
+      "procedure": [
+        "Verify reviewed experiment definition, hypotheses, variants, model and prompt versions, dataset identity, evaluator versions, seeds, sampling parameters, provider target, region, budget, transfer policy, retention, stop rules, and per-action authorization.",
+        "Preview exact request count, max cost, data fields leaving the boundary, retries, concurrency, idempotency key, and cancellation or partial-failure behavior.",
+        "Perform only the authorized provider run; do not change prompts, samples, evaluators, metrics, thresholds, or budget after submission.",
+        "Record provider run identity, exact parameters, raw result references and hashes, failed cases, retries, cost, duration, status, cancellation, and cleanup for later analysis."
+      ],
+      "skill_id": "llm-experiment-execution",
+      "trigger": "Execute one reviewed frozen LLM experiment against exact dataset and evaluator versions under per-action provider-write, budget, and data-transfer authorization.",
+      "triggers": [
+        "Run this approved experiment once against the named provider, frozen dataset version, evaluator versions, and budget.",
+        "Submit the reviewed candidate-versus-baseline LLM run and record immutable run identity, parameters, cost, duration, and failures."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Implement or revise the evaluator definitions and calibration fixtures.",
+          "llm-evaluator-engineering"
+        ],
+        [
+          "Execute a new provider experiment to generate outputs.",
+          "llm-experiment-execution"
+        ]
+      ],
+      "artifacts": [
+        "repeatable quality scores",
+        "factuality and groundedness evidence",
+        "human-judge agreement and calibration",
+        "confidence, regression, and failure-slice report"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "deterministic-metrics",
+        "factuality",
+        "judge-calibration",
+        "human-agreement",
+        "confidence",
+        "regression",
+        "external-judge-authorization"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "External LLM Judge use is not implicit in local evaluation authority; without explicit data-transfer, provider, retention, deletion, and cost authorization, judge-dependent results remain blocked.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Evaluate supplied outputs locally with deterministic checks and calibrated labels, blocking any external judge that lacks transfer authorization.",
+        "Generate new outputs by running a provider experiment."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "llm-evaluator-engineering",
+        "llm-experiment-execution",
+        "evaluation-results-analysis",
+        "model-and-workflow-benchmarking"
+      ],
+      "procedure": [
+        "Freeze output, reference, dataset, model and prompt identities, criteria, evaluator versions, annotations, baseline, statistical plan, and governance boundary.",
+        "Validate completeness, contamination, label quality, inter-annotator agreement, slice definitions, and evaluator applicability.",
+        "Run approved local deterministic metrics and supplied or locally available judges; an external LLM Judge requires explicit transfer and provider authorization or remains blocked.",
+        "Compute scores, confidence or variance, agreement, regressions, failure slices, examples, and evaluator limitations; preserve invalid and failed cases."
+      ],
+      "skill_id": "llm-quality-evaluation",
+      "trigger": "Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation.",
+      "triggers": [
+        "Evaluate these supplied model outputs for groundedness, factuality, relevance, refusal, and regression with confidence intervals.",
+        "Compare automated and judge scores with human labels, calibrate disagreement, and report failure slices."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Save and search actual project context after the runtime exists.",
+          "project-context-and-learning-store"
+        ],
+        [
+          "Upgrade the installed workflow runtime version.",
+          "workflow-runtime-upgrade"
+        ]
+      ],
+      "artifacts": [
+        "project-isolated memory runtime",
+        "non-sensitive configuration receipt",
+        "health and isolation evidence",
+        "removal and rollback instructions"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "project-isolation",
+        "privacy",
+        "retention",
+        "deletion",
+        "no-implicit-sync",
+        "health-check",
+        "rollback"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Local memory setup requires explicit project isolation, privacy, retention, deletion, and rollback; it cannot ingest arbitrary project data or enable external synchronization implicitly.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Initialize one project-scoped local index with explicit exclusions, retention, health check, and removal instructions.",
+        "Store and synchronize actual project learnings after setup."
+      ],
+      "human_decision": true,
+      "mutation_scope": "local-system-write",
+      "neighbors": [
+        "project-context-and-learning-store",
+        "workflow-runtime-upgrade",
+        "tool-runtime-readiness",
+        "secrets-and-environment-governance"
+      ],
+      "procedure": [
+        "Verify project identity, runtime target and version, local-system authorization, paths, data classes, exclusions, privacy, encryption if required, retention, deletion, external sync policy, backup, and rollback.",
+        "Preview exact local files, directories, services, ports, or config keys and refuse shared or global stores unless explicitly approved.",
+        "Create only the bounded project-isolated runtime and health check without ingesting project content beyond the declared fixture.",
+        "Record non-sensitive config identity, health evidence, isolation, size, retention, removal, rollback, and failure cleanup."
+      ],
+      "skill_id": "local-agent-memory-setup",
+      "trigger": "Initialize one project-isolated local agent memory or indexing runtime under explicit privacy, retention, deletion, and rollback controls.",
+      "triggers": [
+        "Initialize the approved local project memory store with project isolation and a documented removal path.",
+        "Configure the local indexing runtime after explicit privacy and retention approval without synchronizing externally."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Create or update the remote pull request from a verified pushed ref.",
+          "remote-pull-request-change"
+        ],
+        [
+          "Install or configure a destructive Git command guard locally.",
+          "local-git-guard-setup"
+        ]
+      ],
+      "artifacts": [
+        "integrated local branch or conflict state",
+        "before and after ref evidence",
+        "changed-file or conflict report",
+        "exact recovery command"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "local-only",
+        "clean-worktree",
+        "pre-integration-ref",
+        "conflict-preservation",
+        "recovery-command",
+        "no-remote-write"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Local integration requires an approved local base ref, clean isolated change branch, recoverable pre-integration identity, and zero fetch, push, force, remote merge, or branch deletion.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Integrate the approved local main ref into a clean evaluation branch and record the recoverable old HEAD and conflict status.",
+        "Push the integrated branch and update its remote pull request."
+      ],
+      "human_decision": true,
+      "mutation_scope": "authorized-local-git",
+      "neighbors": [
+        "isolated-task-implementation",
+        "local-git-guard-setup",
+        "change-delivery-preflight",
+        "pull-request-update"
+      ],
+      "procedure": [
+        "Verify repository and worktree identity, current branch, clean state, approved local base ref, expected ancestry, local-only authority, and no concurrent writer.",
+        "Record pre-integration HEAD and create a recoverable local reference before the approved non-destructive merge or rebase mode.",
+        "Perform only the declared local integration; stop on conflicts and preserve index, worktree, refs, and exact recovery commands.",
+        "Record post-state, changed files, conflicts or success, before/after refs, and required host checks; never fetch, push, force, delete, or merge remotely."
+      ],
+      "skill_id": "local-branch-integration",
+      "trigger": "Integrate an approved local base ref into an isolated change branch while preserving a recoverable pre-integration ref and performing no remote writes.",
+      "triggers": [
+        "Merge the approved local base branch into this clean isolated change branch and record conflict and recovery evidence.",
+        "Update this evaluation worktree from the approved local baseline before tests without fetching, pushing, or opening a PR."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Author or change the guard policy and fixtures in project source.",
+          "git-destructive-command-guard"
+        ],
+        [
+          "Integrate a base branch into a local change branch.",
+          "local-branch-integration"
+        ]
+      ],
+      "artifacts": [
+        "local guard installation receipt or refusal",
+        "hooks-path classification",
+        "installed verification evidence",
+        "backup, restore, and uninstall instructions"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "hooks-path-classification",
+        "explicit-consent",
+        "no-committed-hook-change",
+        "backup",
+        "verification",
+        "uninstall"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Never silently enable a guard or modify a committed, shared, custom, or ambiguous hooks directory; explicit consent, backup, verification, and uninstall are mandatory.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Install the approved guard only in the classified repository-local untracked hook path, preserving backup and uninstall evidence.",
+        "Author new destructive-command patterns and test fixtures for the guard."
+      ],
+      "human_decision": true,
+      "mutation_scope": "local-system-write",
+      "neighbors": [
+        "git-destructive-command-guard",
+        "local-branch-integration",
+        "tool-runtime-readiness",
+        "workflow-runtime-upgrade"
+      ],
+      "procedure": [
+        "Verify repository Git-dir, current hooksPath and ownership, tracked or committed status, existing hooks, approved guard artifact hash, consent, local-system authority, backup, and uninstall plan.",
+        "Refuse committed, shared, custom, managed, or ambiguous hook paths unless an exact non-destructive plan is separately approved.",
+        "Back up affected local config or hook state, install only the approved artifact, and do not rename or overwrite unrelated hooks silently.",
+        "Verify safe and blocked fixtures in the installed path and record config, hash, exit, backup, restore, uninstall, or safe refusal."
+      ],
+      "skill_id": "local-git-guard-setup",
+      "trigger": "Install or configure one approved repository-local Git guard after classifying the hooks path, with consent, verification, backup, and uninstall instructions.",
+      "triggers": [
+        "Install the approved destructive-command guard in this repository's untracked local hook path after user consent.",
+        "Configure the repository-local guard only if the hooks path is safe and record restore and uninstall steps."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Install or upgrade the mobile toolchain or SDK on the local system.",
+          "workflow-runtime-upgrade"
+        ],
+        [
+          "Change application source to fix the diagnosed mobile defect.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "mobile runtime readiness record",
+        "build or test execution evidence",
+        "device and toolchain manifest",
+        "bounded diagnosis and cleanup status"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "platform",
+        "toolchain",
+        "simulator-device",
+        "target",
+        "command-evidence",
+        "no-secret-values",
+        "no-source-edit"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Mobile runtime evidence must name the exact source, platform, toolchain, target, simulator or device, command, exit, duration, and artifacts; missing signing or setup authority blocks rather than prompting for secrets.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Run the frozen Android instrumentation target on the approved emulator and capture exact toolchain and artifact evidence.",
+        "Install a missing mobile SDK and change the global toolchain configuration."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "workflow-runtime-upgrade",
+        "defect-remediation",
+        "baseline-regression-control",
+        "tool-runtime-readiness"
+      ],
+      "procedure": [
+        "Freeze source identity, platform, toolchain, runtime, simulator or device, target, command, signing or credential boundary, and allowed local actions.",
+        "Verify readiness without exposing credentials or mutating global toolchains; run only the approved build or test target.",
+        "Record command, versions, device identity, exit, duration, logs, artifacts, cleanup, and environmental limitations.",
+        "Return run evidence or bounded diagnosis and handoff; do not install system components or edit source."
+      ],
+      "skill_id": "mobile-platform-runtime-support",
+      "trigger": "Run and diagnose an approved mobile build or test target in a declared local simulator or device environment without changing project source.",
+      "triggers": [
+        "Run this approved Android test target in the declared emulator and record toolchain, device, result, and artifacts.",
+        "Diagnose why the iOS local simulator target cannot start, preserving environment and command evidence."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Run a remote provider experiment to produce missing outputs.",
+          "llm-experiment-execution"
+        ],
+        [
+          "Perform detailed LLM quality scoring with judges and human agreement.",
+          "llm-quality-evaluation"
+        ]
+      ],
+      "artifacts": [
+        "matched benchmark run evidence",
+        "metric distributions and variance",
+        "cost-quality-latency comparison",
+        "regression and recommendation report"
+      ],
+      "batch": "llm-evaluation-and-experimentation",
+      "coverage": [
+        "frozen-cases",
+        "matched-environment",
+        "warmup",
+        "repeated-runs",
+        "variance",
+        "failed-case-retention",
+        "cost-quality-latency"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "A benchmark requires frozen cases and versions, matched environment and budgets, warmup, repeated runs, variance, failed-case retention, and exact artifacts; leaderboard point estimates alone fail.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Benchmark three local workflow versions on frozen cases with warmup, repeats, timeouts, failures, variance, cost, and latency.",
+        "Submit missing candidate outputs to a remote model provider."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "llm-quality-evaluation",
+        "llm-experiment-execution",
+        "evaluation-results-analysis",
+        "baseline-regression-control"
+      ],
+      "procedure": [
+        "Freeze cases, variants, versions, runner, environment, hardware, seeds, warmup, repeats, timeouts, budget, metrics, thresholds, and exclusions.",
+        "Verify comparable inputs and execution conditions and preserve failed, timed-out, invalid, and retried cases.",
+        "Run only approved local or supplied-output comparisons, recording versions, commands, exits, durations, cost assumptions, artifacts, and hashes.",
+        "Report distributions, variance, regressions, cost-quality-latency tradeoffs, sensitivity, and an evidence-bounded recommendation without choosing product strategy."
+      ],
+      "skill_id": "model-and-workflow-benchmarking",
+      "trigger": "Benchmark supplied model or workflow variants on frozen cases, matched environments, metrics, variance, cost, latency, and evidence without remote submission or product approval.",
+      "triggers": [
+        "Benchmark these local workflow variants over frozen cases with matched budgets, repeated runs, cost, latency, and variance.",
+        "Compare supplied model outputs or approved local runners under one metric and environment contract."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Write the implementation plan and dependency-ordered work slices.",
+          "implementation-planning-and-handoff"
+        ],
+        [
+          "Implement one already-selected isolated task slice.",
+          "isolated-task-implementation"
+        ]
+      ],
+      "artifacts": [
+        "plan execution state ledger",
+        "step and dependency status",
+        "checkpoint and evidence map",
+        "invalidation, pause, and resume instructions"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "step-state",
+        "dependency-DAG",
+        "checkpoint",
+        "evidence-hash",
+        "invalidation",
+        "pause-resume",
+        "no-specialist-work"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A controller may transition only steps whose dependencies, identity, authority, and gates are current; it cannot mark specialist work passed or reuse evidence after upstream invalidation.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Resume the approved plan from a valid checkpoint, preserving failed steps and invalidating descendants of the changed design artifact.",
+        "Write the implementation tasks and resolve missing requirements before execution control begins."
+      ],
+      "human_decision": false,
+      "mutation_scope": "run-output",
+      "neighbors": [
+        "implementation-planning-and-handoff",
+        "isolated-task-implementation",
+        "workflow-orchestration-and-lifecycle",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Freeze the approved plan version, step DAG, owners, permission identities, artifacts, gates, checkpoints, failure routes, and current source identity.",
+        "Validate prerequisites and assign one atomic owner per ready step; the controller changes state but does not perform specialist work itself.",
+        "Record pending, ready, running, passed, needs-input, blocked, failed, and invalidated transitions with input and output hashes.",
+        "On failure or upstream change, stop dependents, preserve evidence, invalidate affected outputs, and emit a bounded pause, retry, rollback, or resume instruction."
+      ],
+      "skill_id": "plan-execution-control",
+      "trigger": "Advance an approved implementation plan through explicit step states, dependencies, checkpoints, evidence, invalidation, pause, and resume without absorbing specialist work.",
+      "triggers": [
+        "Track this approved plan step by step, stopping on failed gates and recording evidence and downstream invalidation.",
+        "Resume the paused implementation plan from the last valid checkpoint after verifying source and artifact identities."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Install and configure Playwright in the project and write a real first test.",
+          "test-runtime-bootstrap"
+        ],
+        [
+          "Perform product-level black-box QA and issue release findings.",
+          "independent-blackbox-qa"
+        ]
+      ],
+      "artifacts": [
+        "Playwright candidate test artifact",
+        "fixture and locator design",
+        "existing-test execution evidence",
+        "flake and bootstrap handoff"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "candidate-test-artifact",
+        "role-locator",
+        "web-first-assertion",
+        "isolated-fixture",
+        "deterministic-wait",
+        "no-project-write"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A local-exec Playwright candidate cannot modify project tests or config; project installation or source writes require a separate authorized workspace capability.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Draft a candidate browser test artifact with role locators and web-first assertions, then run only the existing authorized suite.",
+        "Install Playwright dependencies and persist configuration and tests into the project."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "test-runtime-bootstrap",
+        "independent-blackbox-qa",
+        "safe-browser-probing",
+        "test-double-discipline"
+      ],
+      "procedure": [
+        "Freeze behavior, environment, project conventions, runtime availability, data and auth boundary, browser matrix, risks, and acceptance goal.",
+        "Prefer user-visible behavior, role or contract locators, web-first assertions, isolated data, complete auth state, and deterministic waiting; avoid implementation selectors and sleeps.",
+        "Emit candidate test, fixture, config, or locator changes as an artifact; only run authorized existing project tests and collect traces, screenshots, video, and exits.",
+        "Return candidate source, run evidence or blocked bootstrap handoff, flake controls, and limitations; do not modify project files under a local-exec identity."
+      ],
+      "skill_id": "playwright-test-engineering",
+      "trigger": "Design Playwright test source as a candidate artifact and execute or diagnose authorized existing Playwright tests without writing project source.",
+      "triggers": [
+        "Produce a candidate Playwright test for this approved user flow using role-based locators, web-first assertions, and isolated fixtures.",
+        "Diagnose this existing Playwright test's flaky waiting, authentication, isolation, and trace behavior through approved local runs."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Initialize the local memory runtime and project isolation first.",
+          "local-agent-memory-setup"
+        ],
+        [
+          "Persist one ordinary lifecycle artifact in the workspace.",
+          "artifact-persistence-and-tool-actions"
+        ]
+      ],
+      "artifacts": [
+        "local project context or learning records",
+        "provenance and retention metadata",
+        "search, restore, prune, or reconciliation result",
+        "deletion and conflict evidence"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "per-record-opt-in",
+        "project-isolation",
+        "provenance",
+        "retention",
+        "deletion",
+        "local-only",
+        "no-secrets"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Context storage is opt-in per record and project; secrets, unrelated sessions, unverified claims, indefinite retention, cross-machine sync, and external services are blocked under this local-only identity.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Save the selected source-linked project decisions locally with retention and deletion metadata, excluding secrets and sibling sessions.",
+        "Initialize the local indexing runtime and storage directories before any record exists."
+      ],
+      "human_decision": true,
+      "mutation_scope": "local-system-write",
+      "neighbors": [
+        "local-agent-memory-setup",
+        "artifact-persistence-and-tool-actions",
+        "workflow-runtime-upgrade",
+        "secrets-and-environment-governance"
+      ],
+      "procedure": [
+        "Verify project and store identity, selected records, provenance, privacy class, minimization, retention, deletion, local reconciliation mode, conflict policy, and local-system authorization.",
+        "Perform only the requested local save, restore, search, prune, or same-store reconciliation; never ingest broad logs, secrets, credentials, sibling projects, or external stores by default.",
+        "Preserve record IDs, source refs, timestamps, versions, tombstones, and conflict outcomes without converting guesses into learnings.",
+        "Return restorable pointers, local results, counts, hashes where safe, deletion evidence, and rollback or partial-failure status; block cross-machine or external synchronization pending a separate authorized capability."
+      ],
+      "skill_id": "project-context-and-learning-store",
+      "trigger": "Save, restore, search, prune, or reconcile explicitly selected records inside one project-isolated local context store under privacy, retention, provenance, and deletion controls.",
+      "triggers": [
+        "Save these approved project learnings with source refs, retention, and deletion metadata in the local store.",
+        "Search, restore, and locally reconcile the project context snapshot without exposing unrelated sessions or enabling remote sync."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Execute the reviewed provider experiment after authentication.",
+          "llm-experiment-execution"
+        ],
+        [
+          "Verify an existing browser-agent pairing rather than a provider CLI session.",
+          "browser-agent-pairing-verification"
+        ]
+      ],
+      "artifacts": [
+        "verified CLI version and non-secret identity",
+        "scope and storage boundary",
+        "expiry and revocation path",
+        "uninstall, cleanup, and failure evidence"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "exact-provider",
+        "approved-version",
+        "least-scope",
+        "non-secret-identity",
+        "expiry",
+        "revocation",
+        "no-provider-action"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "CLI authentication is setup authority only: it cannot execute provider mutations, and credential values or recovery codes never enter prompts, logs, hashes, or artifacts.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Authenticate the exact approved CLI and account with least scope, recording non-secret identity, expiry, revocation, and cleanup.",
+        "Submit the provider experiment after authentication."
+      ],
+      "human_decision": true,
+      "mutation_scope": "external-session-write",
+      "neighbors": [
+        "llm-experiment-execution",
+        "evaluation-dataset-publication",
+        "browser-agent-pairing-verification",
+        "secrets-and-environment-governance"
+      ],
+      "procedure": [
+        "Verify provider, CLI source and version, platform, account owner, authentication method, scopes, region, storage, expiry, revocation, cleanup, local-system and per-action external-session authorization.",
+        "Preview exact binary source, files, config keys, browser or device login flow, scopes, and persistent session effects; refuse pasted secrets or overbroad scopes.",
+        "Perform only the approved install or authentication through the host, keeping credential values out of model, logs, hashes, and receipts.",
+        "Validate non-secret CLI identity and scope, then record version, account alias, region, expiry, storage, revocation, uninstall, cleanup, and failure state."
+      ],
+      "skill_id": "provider-cli-authentication-setup",
+      "trigger": "Install or authenticate one exact provider CLI after explicit local-system, credential, and external-session authorization, preserving non-secret identity, expiry, revocation, and cleanup evidence.",
+      "triggers": [
+        "Install the approved provider CLI version and authenticate the named account through the approved method without exposing tokens.",
+        "Configure one scoped provider CLI session with exact account, region, expiry, revocation, and storage boundary."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Run a new black-box QA campaign against the product.",
+          "independent-blackbox-qa"
+        ],
+        [
+          "Apply the accepted defect repair to source.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "deduplicated QA finding register",
+        "reproducibility and severity rationale",
+        "ownership and routing map",
+        "blocked and missing-evidence list"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "deduplication",
+        "reproducibility",
+        "severity",
+        "ownership",
+        "routing",
+        "no-fix",
+        "no-risk-acceptance"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Triage may classify and route findings but cannot repair source, waive risk, close defects without current evidence, or overwrite independent severity ownership.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Deduplicate and route these current QA findings with reproducibility, severity, scope, and ownership evidence.",
+        "Exercise the whole product as a user to discover new QA defects."
+      ],
+      "human_decision": true,
+      "mutation_scope": "none",
+      "neighbors": [
+        "independent-blackbox-qa",
+        "root-cause-investigation",
+        "defect-remediation",
+        "rendered-ui-critique-and-release-disposition"
+      ],
+      "procedure": [
+        "Freeze finding identities, build or source identity, evidence, reproduction records, acceptance criteria, severity policy, and ownership map.",
+        "Normalize expected and observed behavior, environment, frequency, scope, impact, and evidence freshness.",
+        "Reproduce only from supplied evidence where permitted; merge true duplicates without losing affected variants or independent reports.",
+        "Assign disposition, severity rationale, owner, next capability, and missing evidence; do not fix, close from assertion, or accept risk."
+      ],
+      "skill_id": "qa-finding-triage",
+      "trigger": "Triage independently observed QA findings by reproducibility, severity, duplication, scope, ownership, and next capability without source repair.",
+      "triggers": [
+        "Deduplicate these QA findings, verify their evidence, rank severity, and route each to the correct owner.",
+        "Classify which reported defects are reproducible, blocked, duplicates, intended behavior, or need new investigation."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Integrate the source into a current candidate Skill after semantic review.",
+          "workflow-skill-authoring"
+        ],
+        [
+          "Store a verified active project decision as current context.",
+          "project-context-and-learning-store"
+        ]
+      ],
+      "artifacts": [
+        "reference or deferral record",
+        "provenance and freshness limit",
+        "conflict and supersession links",
+        "owner and revisit condition"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "provenance",
+        "freshness",
+        "applicability",
+        "non-operational",
+        "supersession",
+        "revisit-condition"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Reference retention never makes material current operational guidance; missing date, scope, provenance, applicability, or supersession status blocks adoption claims.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Record this dated framework as non-operational reference material with provenance, applicability, and revisit trigger.",
+        "Adopt the reference as a current executable Skill and package it."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "workflow-skill-authoring",
+        "project-context-and-learning-store",
+        "documentation-authoring",
+        "context-intake-and-routing"
+      ],
+      "procedure": [
+        "Freeze source identity, version or date, claim, intended audience, current task scope, reason for reference or deferral, owner, and revisit trigger.",
+        "Classify historical, illustrative, conditional, conflicting, superseded, deferred, or unsupported material without normalizing it into current policy.",
+        "Record exact provenance, applicability, freshness limit, conflicts, successor references, and non-operational warning.",
+        "Return a bounded reference record and revisit condition; do not execute source instructions or claim adoption."
+      ],
+      "skill_id": "reference-library-and-deferred-material",
+      "trigger": "Record source-linked reference or deferred material with applicability, freshness, supersession, and non-operational status without presenting it as current guidance.",
+      "triggers": [
+        "Add this historical framework to the reference ledger with date, scope, freshness, and why it is not operational guidance.",
+        "Defer this out-of-scope source while preserving exact provenance, revisit condition, and owner."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Apply the accepted source fix for the confirmed flaky root cause.",
+          "defect-remediation"
+        ],
+        [
+          "Design the overall test portfolio and layer allocation.",
+          "testing-portfolio-strategy"
+        ]
+      ],
+      "artifacts": [
+        "determinism experiment record",
+        "retry and timeout analysis",
+        "cleanup and recovery evidence",
+        "root-cause hypothesis and bounded recommendation"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "seed",
+        "ordering",
+        "timeout",
+        "retry-masking",
+        "idempotency",
+        "cleanup",
+        "failure-injection",
+        "repeated-evidence"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A resilience claim requires repeated target-bound evidence with recorded seeds, ordering, environment, retries, timeouts, side effects, cleanup, and failure injection; one passing retry proves nothing.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Repeat the frozen queue test across seeds and orderings to separate retry masking from idempotent recovery and leaked state.",
+        "Apply the confirmed clock-control repair and rerun the flaky test suite."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "root-cause-investigation",
+        "defect-remediation",
+        "baseline-regression-control",
+        "testing-portfolio-strategy"
+      ],
+      "procedure": [
+        "Freeze target identity, workload, environment, seeds, clocks, ordering, resources, retries, timeouts, and success criteria.",
+        "Repeat approved runs while varying one declared factor at a time and record exits, duration, logs, artifacts, and cleanup state.",
+        "Distinguish true recovery from retry masking, leaked state, non-idempotent side effects, race, external variance, and measurement noise.",
+        "Return a reproducible failure model, determinism or resilience verdict, and repair recommendation without editing source."
+      ],
+      "skill_id": "resilience-and-determinism",
+      "trigger": "Diagnose and verify nondeterminism, retries, timeouts, cleanup, isolation, ordering, and recovery behavior under a frozen workload without source repair.",
+      "triggers": [
+        "Measure whether this test fails from random seed, ordering, time, shared state, or retry masking and record reproducible evidence.",
+        "Verify this worker's timeout, retry, idempotency, cleanup, and crash-recovery behavior under a frozen scenario."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Apply the smallest patch for the already-confirmed root cause.",
+          "defect-remediation"
+        ],
+        [
+          "Run an independent broad code-quality review unrelated to one observed defect.",
+          "independent-code-review"
+        ]
+      ],
+      "artifacts": [
+        "minimal reproduction",
+        "hypothesis and experiment ledger",
+        "root-cause evidence chain",
+        "affected-surface and remediation handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "reproduction",
+        "callers",
+        "competing-hypotheses",
+        "first-divergent-invariant",
+        "cause-not-symptom",
+        "no-source-edit"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Investigation cannot declare root cause from correlation, the last stack frame, or one patched symptom; it needs a reproducible causal chain and sibling-path analysis.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Trace the reproducible stale-permission response through every caller to the first broken cache invalidation invariant.",
+        "Patch the confirmed invalidation defect and add the regression test."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "defect-remediation",
+        "resilience-and-determinism",
+        "independent-code-review",
+        "change-scope-freeze"
+      ],
+      "procedure": [
+        "Freeze the symptom, target identity, environment, reproduction, expected behavior, scope, permitted commands, and existing evidence.",
+        "Reproduce with the smallest controlled case and record command, exit, duration, output, state, and frequency without changing source.",
+        "Trace callers, data and control flow, boundaries, recent changes, and sibling paths; test competing hypotheses one variable at a time.",
+        "Locate the first violated invariant or common cause, distinguish cause from trigger and symptom, and return evidence, affected surface, and a bounded remediation handoff."
+      ],
+      "skill_id": "root-cause-investigation",
+      "trigger": "Reproduce and trace an observed defect to the highest shared evidence-backed cause without editing product source.",
+      "triggers": [
+        "Reproduce this failing authorization path and trace every caller to the shared policy defect before proposing a fix.",
+        "Investigate this intermittent crash by narrowing inputs, state, ordering, and the first divergent invariant."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Acquire authenticated page data using a governed browser session.",
+          "browser-data-acquisition-runtime"
+        ],
+        [
+          "Build maintainable Playwright test artifacts for repeated regression use.",
+          "playwright-test-engineering"
+        ]
+      ],
+      "artifacts": [
+        "bounded browser probe record",
+        "screenshot or trace evidence",
+        "origin and action log",
+        "cleanup and limitation report"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "one-question",
+        "allowlisted-origin",
+        "non-destructive",
+        "no-credentials",
+        "capture-provenance",
+        "cleanup"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A safe probe has one declared question, allowlisted origins and actions, no credential or destructive state change, and complete capture provenance and cleanup.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Probe the public docs route at one viewport to confirm redirect and content behavior without authentication or mutation.",
+        "Use an authenticated browser session to extract governed account data."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "browser-data-acquisition-runtime",
+        "playwright-test-engineering",
+        "website-audit-assessment",
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "procedure": [
+        "Freeze URL, question, allowed origin, browser runtime, viewport, authentication state, prohibited actions, data boundary, and capture plan.",
+        "Navigate only approved origins and perform read-only or explicitly reversible interactions; never submit destructive, purchase, publish, account, or privilege-changing actions.",
+        "Record route, timestamp, viewport, browser version, requests or console evidence where authorized, screenshot or trace, and cleanup.",
+        "Return observed evidence and limits; do not generalize one probe into a full audit or persistent test."
+      ],
+      "skill_id": "safe-browser-probing",
+      "trigger": "Run a bounded unauthenticated or already-authorized browser probe for one declared question and capture non-destructive evidence without source or session mutation.",
+      "triggers": [
+        "Probe this public page for the declared navigation and response behavior and capture the current result.",
+        "Run a bounded browser check for this one route and viewport without logging in, clicking destructive actions, or changing state."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Design the project-wide testing portfolio and choose test layers.",
+          "testing-portfolio-strategy"
+        ],
+        [
+          "Independently inspect and judge the finished patch.",
+          "independent-code-review"
+        ]
+      ],
+      "artifacts": [
+        "RED test and failure evidence",
+        "minimal GREEN source patch",
+        "refactor and regression evidence",
+        "reviewable patch handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "RED-before-code",
+        "minimal-GREEN",
+        "refactor-while-green",
+        "host-verification",
+        "affected-regression",
+        "single-writer"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "No TDD completion without a target-bound failing test observed before the production change, a minimal passing patch, and fresh post-change focused plus affected-regression evidence.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Implement the approved idempotency behavior with a preserved failing contract test, minimal code, and fresh focused and sibling checks.",
+        "Choose the testing layers, fixture policy, and portfolio for the whole service before individual changes."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "testing-portfolio-strategy",
+        "test-case-design-and-export",
+        "defect-remediation",
+        "independent-code-review"
+      ],
+      "procedure": [
+        "Verify frozen behavior, authorized workspace, target source identity, existing test convention, focused command, regression surface, and one writer.",
+        "Write the smallest user-observable or contract-level test and run it through the host; preserve proof that it fails for the expected reason before source repair.",
+        "Write the minimum production change to pass the RED test, then run focused tests and only the affected broader regressions.",
+        "Refactor only while green, rerun current checks, and return RED/GREEN/refactor command evidence, patch, hashes, and limitations for independent review."
+      ],
+      "skill_id": "tdd-change-loop",
+      "trigger": "Implement one authorized behavior change through a preserved RED, minimal GREEN, refactor, and current host-verification loop.",
+      "triggers": [
+        "Add this approved behavior by first creating a failing observable test, then the minimum passing code and focused refactor.",
+        "Fix this confirmed edge case with a RED regression, minimal GREEN patch, and affected regression run."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Choose the overall test-layer portfolio and ownership strategy.",
+          "testing-portfolio-strategy"
+        ],
+        [
+          "Implement the selected cases in Playwright.",
+          "playwright-test-engineering"
+        ]
+      ],
+      "artifacts": [
+        "traceable prioritized test cases",
+        "coverage and gap matrix",
+        "governed test-data plan",
+        "validated consumer-specific export"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "stable-case-id",
+        "requirement-traceability",
+        "preconditions",
+        "test-data",
+        "observable-result",
+        "priority",
+        "coverage-gap"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Every test case must trace to approved behavior or risk and state preconditions, data, action, observable expected result, priority, and test level; exported volume cannot substitute for coverage quality.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Derive risk-prioritized permission, boundary, concurrency, and recovery cases with stable requirement links and a validated CSV export.",
+        "Implement the approved browser cases in Playwright project files."
+      ],
+      "human_decision": false,
+      "mutation_scope": "run-output",
+      "neighbors": [
+        "testing-portfolio-strategy",
+        "playwright-test-engineering",
+        "vitest-tooling",
+        "requirements-and-delivery-contract"
+      ],
+      "procedure": [
+        "Freeze requirement and design versions, risks, platform, test level, data governance, downstream schema, and stable case IDs.",
+        "Derive normal, boundary, invalid, permission, concurrency, interruption, error, recovery, migration, and accessibility cases as applicable.",
+        "Define preconditions, data, steps, expected observable results, priority, layer, automation suitability, and traceability for each case.",
+        "Score coverage and gaps, validate the export structure, and write only the approved artifact format; do not install dependencies or implement tests."
+      ],
+      "skill_id": "test-case-design-and-export",
+      "trigger": "Derive traceable executable test cases, risk priority, data needs, coverage gaps, and one consumer-specific export from approved requirements without implementing tests.",
+      "triggers": [
+        "Turn these approved requirements into prioritized positive, boundary, negative, permission, failure, and recovery test cases.",
+        "Create a traceable test-case set and export it in the downstream team's approved format."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Implement and run the full test through the selected framework.",
+          "vitest-tooling"
+        ],
+        [
+          "Design the project-wide balance of unit, integration, contract, and end-to-end tests.",
+          "testing-portfolio-strategy"
+        ]
+      ],
+      "artifacts": [
+        "test-double decision",
+        "owned boundary and contract",
+        "complete fixture or fake design",
+        "anti-pattern and verification evidence"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "owned-boundary",
+        "real-code-first",
+        "complete-shape",
+        "meaningful-failure",
+        "no-internal-mock",
+        "no-test-only-production-api"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A double is justified only at a real owned boundary and must preserve complete contract shapes and meaningful failures; mocking internals or adding test-only production APIs fails.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Design a complete in-memory boundary fake for this owned repository contract instead of mocking internal calls.",
+        "Implement and execute the selected Vitest test in project source."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "vitest-tooling",
+        "playwright-test-engineering",
+        "testing-portfolio-strategy",
+        "tdd-change-loop"
+      ],
+      "procedure": [
+        "Freeze the behavior under test, real dependency contract, failure modes, speed or isolation need, existing double, and production boundary.",
+        "Prefer real code, in-memory implementation, fake server, contract fixture, or dependency injection before mocks and spies.",
+        "Keep the double at an owned boundary, provide complete realistic shapes and failures, and avoid test-only methods in production APIs.",
+        "Use approved local analysis or tests to expose brittle coupling and return a minimal strategy or candidate artifact without project-source mutation."
+      ],
+      "skill_id": "test-double-discipline",
+      "trigger": "Assess or design the smallest behavior-focused test double boundary so tests use complete data shapes and do not pollute production interfaces.",
+      "triggers": [
+        "Replace this brittle internal mock strategy with the smallest boundary double that preserves meaningful behavior.",
+        "Review these spies and fixtures for incomplete shapes, implementation coupling, and production API pollution."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Design the overall test strategy before a framework is selected.",
+          "testing-portfolio-strategy"
+        ],
+        [
+          "Author advanced tests once the runtime already exists.",
+          "vitest-tooling"
+        ]
+      ],
+      "artifacts": [
+        "minimal project test configuration",
+        "one passing real-behavior test",
+        "dependency and lockfile diff",
+        "verification or rollback evidence"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "project-local",
+        "minimal-install",
+        "real-behavior-test",
+        "dependency-diff",
+        "rollback-baseline",
+        "no-global-change"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Bootstrap passes only when the project-local runtime and one real-behavior test run successfully; failed setup must restore dependency and configuration files exactly.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Bootstrap the approved project-local test framework with minimal config and one passing real-behavior test, restoring files on failure.",
+        "Design advanced framework-specific test candidates after the runtime already works."
+      ],
+      "human_decision": true,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "testing-portfolio-strategy",
+        "vitest-tooling",
+        "playwright-test-engineering",
+        "workflow-runtime-upgrade"
+      ],
+      "procedure": [
+        "Freeze project runtime, selected framework and version, package manager, install source, package policy, authorized files, example behavior, commands, and rollback baseline.",
+        "Inspect existing dependencies and config; use the current toolchain and add the minimum packages and configuration only if absent.",
+        "Write one real-behavior smoke test, run the approved command through the host, and capture dependency diff, tool version, exit, duration, and output.",
+        "On any failed install, config, or proof, restore dependency and config files to the baseline and report failure; never change global tooling or remote systems."
+      ],
+      "skill_id": "test-runtime-bootstrap",
+      "trigger": "Install and configure one approved project-local test runtime, prove it with one real-behavior test, and restore dependency files if setup fails.",
+      "triggers": [
+        "Install the approved Vitest runtime minimally in this project and prove it with one real behavior test.",
+        "Bootstrap Playwright using the existing package manager and restore lock/config files if installation or proof fails."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Derive the concrete test cases and export format from approved requirements.",
+          "test-case-design-and-export"
+        ],
+        [
+          "Install the selected test framework in the project.",
+          "test-runtime-bootstrap"
+        ]
+      ],
+      "artifacts": [
+        "risk-to-test-layer matrix",
+        "test portfolio and ownership",
+        "runtime and data requirements",
+        "coverage gaps and sequencing"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "risk-based",
+        "test-layer",
+        "feedback-speed",
+        "hermeticity",
+        "ownership",
+        "flake-policy",
+        "budget"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A portfolio must justify every layer by observable risk and feedback value; test-count targets, pyramid dogma, and duplicate assertions across layers are not strategy.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Design a risk-based mix of contract, integration, unit, browser, security, and manual checks with owners and budgets.",
+        "Write concrete requirement-linked test cases for the selected layers."
+      ],
+      "human_decision": true,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "test-case-design-and-export",
+        "test-runtime-bootstrap",
+        "baseline-regression-control",
+        "independent-blackbox-qa"
+      ],
+      "procedure": [
+        "Freeze system boundaries, requirements, risks, failure cost, change frequency, environments, current tests, team skills, CI budget, and release policy.",
+        "Map each risk to the cheapest layer that can observe it while preserving critical cross-boundary and user-journey checks.",
+        "Define ownership, fixtures and data, hermeticity, execution cadence, budgets, flake policy, quarantine limits, and evidence consumers.",
+        "Return portfolio, gaps, sequencing, and framework requirements without implementing tests or installing tools."
+      ],
+      "skill_id": "testing-portfolio-strategy",
+      "trigger": "Design a risk-based portfolio of static, unit, integration, contract, browser, performance, accessibility, security, and manual checks with ownership and feedback goals.",
+      "triggers": [
+        "Choose the smallest test-layer portfolio that covers this service's highest risks and feedback needs.",
+        "Map requirements and failure costs to unit, integration, contract, end-to-end, performance, security, and manual checks."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Install or upgrade the missing workflow runtime.",
+          "workflow-runtime-upgrade"
+        ],
+        [
+          "Bootstrap a project-local test framework and modify dependency files.",
+          "test-runtime-bootstrap"
+        ]
+      ],
+      "artifacts": [
+        "tool readiness verdict",
+        "executable and version evidence",
+        "bounded smoke command record",
+        "upgrade or bootstrap handoff"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "executable-path",
+        "version",
+        "required-capability",
+        "bounded-smoke",
+        "no-install",
+        "failure-mode"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "PATH presence is not readiness: the exact executable, version, required capability, invocation, and bounded smoke behavior must be verified without installation or configuration changes.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Verify exact executable, version, capability, and bounded smoke behavior without installing anything.",
+        "Install or upgrade the missing runtime and change local-system configuration."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "workflow-runtime-upgrade",
+        "test-runtime-bootstrap",
+        "agent-workflow-runtime-support",
+        "document-rendering-and-validation"
+      ],
+      "procedure": [
+        "Freeze tool identity, required version or range, source, invocation, capability, platform, project context, prohibited actions, and expected smoke result.",
+        "Resolve the actual executable or wrapper and compare version and capability without trusting PATH presence alone.",
+        "Run only an approved non-destructive help, version, doctor, or bounded smoke command and record path, version, command, exit, duration, output, and side effects.",
+        "Return ready, incompatible, missing, blocked, or failed with exact upgrade or bootstrap handoff; do not install or modify configuration."
+      ],
+      "skill_id": "tool-runtime-readiness",
+      "trigger": "Verify one required local tool runtime, version, invocation, capability, and safe failure mode without installing or upgrading it.",
+      "triggers": [
+        "Check whether the required renderer exists at the approved version and supports the needed command before use.",
+        "Verify this local test CLI's exact path, version, capability, and non-destructive smoke invocation."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Independently critique current rendered UI and issue findings.",
+          "rendered-ui-critique-and-release-disposition"
+        ],
+        [
+          "Define the UI review matrix and acquire current captures before judgment.",
+          "ui-review-scope-and-evidence-acquisition"
+        ]
+      ],
+      "artifacts": [
+        "bounded UI repair patch",
+        "finding-to-change map",
+        "focused verification evidence",
+        "recapture bundle and independent-review handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "accepted-findings",
+        "bounded-source-repair",
+        "recapture",
+        "reviewer-separation",
+        "no-self-approval"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "UI remediation requires accepted reproducible findings and separate authorization; the remediator cannot create its own findings, waive risk, judge its recaptures, or issue release disposition.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Apply the three accepted UI findings to authorized files and produce new mobile and desktop captures for independent review.",
+        "Independently critique the current captures and decide which UI issues block release."
+      ],
+      "human_decision": true,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "rendered-ui-critique-and-release-disposition",
+        "ui-review-scope-and-evidence-acquisition",
+        "evidence-based-ui-review-and-release-gates",
+        "cross-domain-ui-preflight-checklists"
+      ],
+      "procedure": [
+        "Verify accepted finding IDs, evidence, severity, repair direction, authorized files, design contract, affected states, review owner, and recapture plan.",
+        "Trace each finding to the smallest source change and preserve product truth, responsive behavior, content, accessibility, and interaction invariants.",
+        "Apply only approved repairs; route ambiguous taste, expanded scope, or architecture changes back to their owners.",
+        "Run approved focused checks and recapture affected route-state-viewport evidence; hand off to an independent reviewer without issuing disposition."
+      ],
+      "skill_id": "ui-remediation",
+      "trigger": "Apply only accepted evidence-backed UI findings to authorized source and recapture the affected states without performing independent review.",
+      "triggers": [
+        "Fix these accepted responsive and focus findings in the authorized UI files, then recapture the affected states.",
+        "Apply the approved visual hierarchy corrections without redesigning unrelated surfaces or self-approving release."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Install and configure Vitest in a project that lacks a test runtime.",
+          "test-runtime-bootstrap"
+        ],
+        [
+          "Define the minimal test-double boundary before writing mocks.",
+          "test-double-discipline"
+        ]
+      ],
+      "artifacts": [
+        "Vitest candidate test artifact",
+        "configuration or fixture design",
+        "existing-suite execution evidence",
+        "diagnosis and bootstrap handoff"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "candidate-test-artifact",
+        "behavior-assertion",
+        "controlled-time",
+        "cleanup",
+        "isolation",
+        "no-project-write"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A local-exec Vitest candidate cannot modify project tests or config; project installation or source writes require a separate authorized workspace capability.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Draft a candidate Vitest regression artifact with complete fixtures and controlled time, then run only the existing suite.",
+        "Install Vitest and persist configuration and tests into the project."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "test-runtime-bootstrap",
+        "test-double-discipline",
+        "tdd-change-loop",
+        "testing-portfolio-strategy"
+      ],
+      "procedure": [
+        "Freeze behavior, project conventions, existing config, runtime availability, module boundaries, data, environment, and accepted command.",
+        "Use behavior-focused assertions, complete fixtures, controlled time, explicit cleanup, isolated modules, and stable snapshots only where semantically useful.",
+        "Emit candidate test or config source as an artifact; run only existing authorized project tests and record command, version, exit, duration, and output.",
+        "Return candidate source, diagnosis, test-double concerns, and bootstrap handoff; do not modify project files under a local-exec identity."
+      ],
+      "skill_id": "vitest-tooling",
+      "trigger": "Design Vitest test or configuration source as a candidate artifact and execute or diagnose authorized existing Vitest tests without writing project source.",
+      "triggers": [
+        "Produce a candidate Vitest test using the project's current patterns and meaningful behavior assertions.",
+        "Diagnose this existing Vitest suite's fake timers, mocks, isolation, snapshot, or configuration failure through approved runs."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Profile component-level rendering and interaction latency.",
+          "frontend-rendering-and-interaction-performance"
+        ],
+        [
+          "Apply the approved Web performance fixes.",
+          "defect-remediation"
+        ]
+      ],
+      "artifacts": [
+        "Web performance baseline",
+        "Core Web Vitals and waterfall evidence",
+        "repeatable bottleneck findings",
+        "optimization hypotheses and limitations"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "Core-Web-Vitals",
+        "waterfall",
+        "cache-mode",
+        "network-profile",
+        "warmup",
+        "sample-count",
+        "distribution"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A Web performance claim requires repeated runs with recorded browser, device, network, cache, warmup, sample count, distribution, budget, and target identity; a single Lighthouse score cannot pass.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Measure repeated cold and warm page loads under a fixed mobile network profile and report distributions and waterfall evidence.",
+        "Apply image, script, caching, and server fixes to improve the accepted bottlenecks."
+      ],
+      "human_decision": false,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "frontend-rendering-and-interaction-performance",
+        "defect-remediation",
+        "website-audit-assessment",
+        "baseline-regression-control"
+      ],
+      "procedure": [
+        "Freeze URL or build, source identity, journey, browser, device and network profile, cache mode, warmup, sample count, budgets, and third-party boundary.",
+        "Run approved local diagnostics and record navigation, Web Vitals, waterfall, CPU, assets, cache, server timing, and screenshots or traces.",
+        "Report distributions, outliers, repeatable bottlenecks, suspected ownership, and environmental uncertainty rather than one score.",
+        "Return baseline and prioritized hypotheses without editing source, changing production, or claiming user impact beyond conditions."
+      ],
+      "skill_id": "web-performance-diagnostics",
+      "trigger": "Measure a frozen Web page or journey for navigation, network, caching, assets, rendering, and Core Web Vitals under declared conditions without repair.",
+      "triggers": [
+        "Measure this page's current LCP, INP, CLS, request waterfall, caching, and asset cost over repeated controlled runs.",
+        "Diagnose whether network, image, script, font, server, or rendering work dominates the frozen page-load journey."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Apply the accepted website audit fixes to authorized source.",
+          "website-audit-remediation"
+        ],
+        [
+          "Run a narrow Web performance diagnostic under controlled conditions.",
+          "web-performance-diagnostics"
+        ]
+      ],
+      "artifacts": [
+        "website assessment evidence manifest",
+        "deduplicated reproducible findings",
+        "route and criterion coverage",
+        "reassessment and residual-risk report"
+      ],
+      "batch": "testing-review-and-performance",
+      "coverage": [
+        "authorized-origins",
+        "read-only-external",
+        "crawl-limit",
+        "criterion-evidence",
+        "reproducible-finding",
+        "no-remediation"
+      ],
+      "data_governance": true,
+      "distinctive_gate": "Assessment authority is read-only: no source repair, form submission with consequential state, account change, provider mutation, deployment, or finding closure is permitted.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Assess the authorized site with bounded read-only crawling and current route evidence, returning deduplicated findings only.",
+        "Apply the accepted audit findings to website source and prepare reassessment evidence."
+      ],
+      "human_decision": true,
+      "mutation_scope": "artifact-output",
+      "neighbors": [
+        "website-audit-remediation",
+        "web-performance-diagnostics",
+        "safe-browser-probing",
+        "ui-review-scope-and-evidence-acquisition"
+      ],
+      "procedure": [
+        "Freeze authorized origins, routes, crawl limits, authentication boundary, data policy, source or deployment identity, devices, criteria, and prohibited actions.",
+        "Use approved local commands and read-only external requests or browser actions; respect robots, rate, privacy, account, purchase, and destructive-state boundaries.",
+        "Record route, request, tool, version, timestamp, state, viewport, response, capture, hash, and reproducibility for each assessed criterion.",
+        "Issue deduplicated findings with severity, evidence, affected routes, owner, and reassessment requirement; do not repair, deploy, or post externally."
+      ],
+      "skill_id": "website-audit-assessment",
+      "trigger": "Independently assess an authorized website using local and read-only external evidence across content, accessibility, SEO, performance, security signals, links, and behavior without remediation.",
+      "triggers": [
+        "Audit this authorized website across routes, links, metadata, accessibility, performance, and behavior and issue reproducible findings.",
+        "Assess the current production site with bounded read-only crawling and browser evidence without changing source or provider state."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Assess the website and produce independent audit findings first.",
+          "website-audit-assessment"
+        ],
+        [
+          "Publish or deploy the repaired website.",
+          "deployment-trigger-execution"
+        ]
+      ],
+      "artifacts": [
+        "bounded website repair patch",
+        "finding-to-fix traceability",
+        "focused verification records",
+        "independent reassessment handoff"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "accepted-audit-findings",
+        "bounded-repair",
+        "SEO-preservation",
+        "reassessment",
+        "no-deploy",
+        "no-self-close"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "Website remediation cannot begin without accepted audit findings and cannot close them without separate current reassessment; repair authority never includes deployment.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Apply the approved audit fixes for canonical metadata, keyboard access, and broken routes, then prepare reassessment evidence.",
+        "Crawl and assess the current website to discover and prioritize defects."
+      ],
+      "human_decision": true,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "website-audit-assessment",
+        "ui-remediation",
+        "deployment-trigger-execution",
+        "completion-evidence-gate"
+      ],
+      "procedure": [
+        "Verify accepted finding IDs, original evidence, repair criteria, authorized files, content and SEO authority, test commands, and rollback boundary.",
+        "Deduplicate shared causes and order the smallest fixes that close findings without masking evidence or broad redesign.",
+        "Apply only authorized source, content, or local configuration changes; preserve unrelated routes, analytics, SEO, and behavior.",
+        "Run approved focused checks and prepare reassessment evidence; never deploy, close findings from self-attestation, or perform the independent audit."
+      ],
+      "skill_id": "website-audit-remediation",
+      "trigger": "Apply explicitly accepted website audit findings to authorized source, verify affected checks, and preserve a separate reassessment boundary.",
+      "triggers": [
+        "Fix the accepted broken-link, metadata, and accessibility findings in the authorized site source and provide verification evidence.",
+        "Apply the approved website audit remediation set without changing unrelated content or deployment configuration."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Verify whether the current runtime is already ready without changing it.",
+          "tool-runtime-readiness"
+        ],
+        [
+          "Install or authenticate a provider CLI and external session.",
+          "provider-cli-authentication-setup"
+        ]
+      ],
+      "artifacts": [
+        "runtime upgrade receipt",
+        "before and after version evidence",
+        "compatibility and health checks",
+        "backup, rollback, and cleanup record"
+      ],
+      "batch": "browser-tool-and-local-system",
+      "coverage": [
+        "detected-version",
+        "pinned-target",
+        "trusted-source",
+        "compatibility",
+        "backup",
+        "rollback",
+        "health-check"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A runtime upgrade requires a pinned trusted target, explicit affected paths, compatibility and migration plan, backup, rollback, and current post-upgrade health evidence; unpinned latest upgrades fail closed.",
+      "external_or_system_action": true,
+      "holdout": [
+        "Upgrade the detected runtime to the pinned approved version with backup, compatibility checks, and rollback evidence.",
+        "Check whether the current installed runtime already satisfies the required capability."
+      ],
+      "human_decision": true,
+      "mutation_scope": "local-system-write",
+      "neighbors": [
+        "tool-runtime-readiness",
+        "provider-cli-authentication-setup",
+        "local-agent-memory-setup",
+        "test-runtime-bootstrap"
+      ],
+      "procedure": [
+        "Verify installed runtime identity and version, source, target version and integrity, compatibility, local-system authority, files and services affected, configuration, data migration, backup, rollback, and downtime.",
+        "Preview exact commands, package or binary source, changes, migrations, restarts, and credential boundaries; refuse unpinned or untrusted updates.",
+        "Back up state, perform only the approved upgrade through the host, stop on migration or verification failure, and avoid provider login or unrelated global changes.",
+        "Run version and compatibility checks, record before and after identity, commands, exits, duration, changed paths, health, rollback test or instructions, and cleanup."
+      ],
+      "skill_id": "workflow-runtime-upgrade",
+      "trigger": "Upgrade one installed workflow runtime under explicit local-system authorization with version detection, backup, compatibility checks, rollback, and no hidden credential or provider changes.",
+      "triggers": [
+        "Upgrade this approved local workflow runtime from the detected version to the pinned target and verify rollback.",
+        "Apply the authorized runtime update after backing up config and checking project compatibility."
+      ]
+    },
+    {
+      "anti": [
+        [
+          "Assemble several released Skills into a conditional lifecycle Recipe.",
+          "workflow-orchestration-and-lifecycle"
+        ],
+        [
+          "Push the already packaged Skill branch to its approved remote ref.",
+          "remote-git-push"
+        ]
+      ],
+      "artifacts": [
+        "atomic workflow Skill candidate",
+        "trigger and anti-trigger fixtures",
+        "provenance and permission contract",
+        "local validation and packaging evidence"
+      ],
+      "batch": "implementation-and-evidence",
+      "coverage": [
+        "atomic-responsibility",
+        "provenance",
+        "trigger-anti-trigger",
+        "permission-identity",
+        "fixture-test",
+        "candidate-not-release"
+      ],
+      "data_governance": false,
+      "distinctive_gate": "A candidate Skill must have one atomic responsibility, exact provenance, tested trigger boundaries, least authority, and no release claim; multi-stage orchestration belongs to a Recipe.",
+      "external_or_system_action": false,
+      "holdout": [
+        "Author one candidate Skill from this frozen capability contract and fixture, then run its local schema and routing tests without publication.",
+        "Compose multiple approved Skills into a conditional end-to-end Recipe."
+      ],
+      "human_decision": false,
+      "mutation_scope": "authorized-workspace",
+      "neighbors": [
+        "workflow-orchestration-and-lifecycle",
+        "artifact-persistence-and-tool-actions",
+        "tool-runtime-readiness",
+        "artifact-publication"
+      ],
+      "procedure": [
+        "Freeze capability responsibility, non-responsibilities, source evidence, runtime target, permission identity, package path, fixtures, trigger and anti-trigger cases, and release boundary.",
+        "Read the canonical runtime SDK or schema and reuse existing package conventions before writing the smallest atomic Skill and support files.",
+        "Preserve exact provenance and authority, add deterministic schema and fixture checks, and test trigger boundaries and failure states through approved local commands.",
+        "Stage only the candidate package, report hashes and evidence, and require separate evaluation, human approval, and publication; do not commit or release."
+      ],
+      "skill_id": "workflow-skill-authoring",
+      "trigger": "Author and locally validate one atomic workflow Skill from an approved capability contract, provenance, fixtures, trigger policy, and package boundary.",
+      "triggers": [
+        "Turn this approved capability contract and fixtures into one candidate Skill with triggers, anti-triggers, provenance, and tests.",
+        "Update this candidate Skill's bounded implementation and validate it against its frozen fixture without publishing."
+      ]
+    }
+  ],
+  "prior_artifact_trees": {
+    "phase2": "57ff1aec49b2b7b370d74d36e52659d7338adf2f16260fe62be7ada870472601",
+    "phase3": "de60929ce7eb1877ffb64a9e8cd671beec389b433f843e10320701c890de8965",
+    "phase4": "968fd1e2175bdc35d77a4d9025a88ab35e5f096fba353137dbf9770e030d4695",
+    "phase5": "7b39fb29c0a25a4a97243e9a857840d14541a9f839e550970c29cc014122e1ee"
+  },
+  "schema_version": "2.0"
+}

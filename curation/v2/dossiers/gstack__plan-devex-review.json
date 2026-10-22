@@ -1,0 +1,184 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/plan-devex-review/SKILL.md:64]",
+    "Skill Invocation During Plan Mode [gstack/plan-devex-review/SKILL.md:68]",
+    "Model-Specific Behavioral Patch (claude) [gstack/plan-devex-review/SKILL.md:200]",
+    "Continuous Checkpoint Mode [gstack/plan-devex-review/SKILL.md:300]",
+    "Step 0: Detect platform and base branch [gstack/plan-devex-review/SKILL.md:434]",
+    "0B. Empathy Narrative as Conversation Starter [gstack/plan-devex-review/SKILL.md:847]"
+  ],
+  "inputs": [
+    "When the design doc check above prints \"No design doc found,\" offer the prerequisite [gstack/plan-devex-review/SKILL.md:628]",
+    "skill before proceeding. [gstack/plan-devex-review/SKILL.md:629]",
+    "Say to the user via AskUserQuestion [gstack/plan-devex-review/SKILL.md:631]",
+    "Options [gstack/plan-devex-review/SKILL.md:638]",
+    "A) Run /office-hours now (we'll pick up the review right after) [gstack/plan-devex-review/SKILL.md:639]",
+    "B) Skip — proceed with standard review [gstack/plan-devex-review/SKILL.md:640]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/plan-devex-review/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/plan-devex-review/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/plan-devex-review/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/plan-devex-review/SKILL.md:42]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/plan-devex-review/SKILL.md:47]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/plan-devex-review/SKILL.md:66]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-devex-review/SKILL.md:85]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/plan-devex-review/SKILL.md:109]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/plan-devex-review/SKILL.md:180]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/plan-devex-review/SKILL.md:304]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/plan-devex-review/SKILL.md:427]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/plan-devex-review/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Interactive developer experience plan review. [gstack/plan-devex-review/SKILL.md:5]",
+  "root_id": "skill-root:gstack/plan-devex-review",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/plan-devex-review/SKILL.md:19]",
+    "points before scoring. Three modes: DX EXPANSION (competitive advantage), [gstack/plan-devex-review/SKILL.md:27]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/plan-devex-review/SKILL.md:48]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/plan-devex-review/SKILL.md:49]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/plan-devex-review/SKILL.md:50]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/plan-devex-review/SKILL.md:57]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/plan-devex-review/SKILL.md:58]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/plan-devex-review/SKILL.md:61]"
+  ],
+  "skill_path": "gstack/plan-devex-review/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/plan-devex-review/SKILL.md"
+    },
+    {
+      "line_end": 23,
+      "line_start": 23,
+      "path": "gstack/plan-devex-review/SKILL.md"
+    },
+    {
+      "line_end": 36,
+      "line_start": 36,
+      "path": "gstack/plan-devex-review/SKILL.md"
+    },
+    {
+      "line_end": 64,
+      "line_start": 64,
+      "path": "gstack/plan-devex-review/SKILL.md"
+    },
+    {
+      "line_end": 68,
+      "line_start": 68,
+      "path": "gstack/plan-devex-review/SKILL.md"
+    }
+  ],
+  "source_sha256": "6ce1eaeb350b6c98f0e710891272fb19c04bd08ee603e1395a8b3855e1167e1c",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/plan-devex-review/SKILL.md:82]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/plan-devex-review/SKILL.md:83]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/plan-devex-review/SKILL.md:84]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/plan-devex-review/SKILL.md:85]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/plan-devex-review/SKILL.md:87]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/plan-devex-review/SKILL.md:91]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6ce1eaeb350b6c98f0e710891272fb19c04bd08ee603e1395a8b3855e1167e1c",
+        "content-review:1146-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/plan-devex-review/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:390b7d2b64cb2d4511101219524d2dc738b389a55b006e68a71d18f378eb1637",
+        "content-review:466-lines"
+      ],
+      "path": "gstack/plan-devex-review/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:661c199d78437f0b9f7f94d1691c3dd70076dd3dfaca8274bec36d41597b83a2",
+        "content-review:128-lines"
+      ],
+      "path": "gstack/plan-devex-review/dx-hall-of-fame.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:853b85219b05502f41a96b180eb255578384671dc0a255d2fc3212151ff53d2d",
+        "content-review:10-lines"
+      ],
+      "path": "gstack/plan-devex-review/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:facb8695f8aea51856b16c3653292f84c5c13d1365c4f40599cf8973d3d4655c",
+        "content-review:889-lines"
+      ],
+      "path": "gstack/plan-devex-review/sections/review-sections.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:c145872bcc5b5ef085faa25d99b3fdbc33900fff11e465f06e47aaf4aa2c1cfe",
+        "content-review:403-lines"
+      ],
+      "path": "gstack/plan-devex-review/sections/review-sections.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Read [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: Edit [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: Grep [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: Glob [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: Bash [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: AskUserQuestion [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Declared tool: WebSearch [gstack/plan-devex-review/SKILL.md:1-18]",
+    "Local dependency: gstack/plan-devex-review/sections/review-sections.md [gstack/plan-devex-review/SKILL.md:764]",
+    "Local dependency: gstack/plan-devex-review/sections/review-sections.md [gstack/plan-devex-review/SKILL.md:1115]"
+  ],
+  "trigger": "Interactive developer experience plan review. (gstack) [gstack/plan-devex-review/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/plan-devex-review/SKILL.md:148]",
+    "Self-check before emitting [gstack/plan-devex-review/SKILL.md:171]",
+    "Context Recovery [gstack/plan-devex-review/SKILL.md:239]",
+    "Completeness Principle — Boil the Ocean [gstack/plan-devex-review/SKILL.md:286]",
+    "Confusion Protocol [gstack/plan-devex-review/SKILL.md:292]",
+    "Claimed Limitations Need Evidence [gstack/plan-devex-review/SKILL.md:296]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/plan-devex-review/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/plan-devex-review/SKILL.md:300]",
+    "Step 0: Detect platform and base branch [gstack/plan-devex-review/SKILL.md:434]",
+    "PRE-REVIEW SYSTEM AUDIT (before Step 0) [gstack/plan-devex-review/SKILL.md:574]",
+    "Step 0: DX Investigation (before scoring) [gstack/plan-devex-review/SKILL.md:796]"
+  ]
+}

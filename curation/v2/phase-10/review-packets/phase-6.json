@@ -1,0 +1,3035 @@
+{
+  "phase": 6,
+  "records": [
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-agent-workflow-runtime-support-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0388",
+          "expected_decision": "reject",
+          "input": "Execute the selected implementation task and edit source.",
+          "matched_boundary": "execute selected atomic implementation task",
+          "reason": "The request is to execute an implementation task and edit source, which belongs to isolated-task-implementation rather than runtime support.",
+          "run_id": "run-0388"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-agent-workflow-runtime-support-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0386",
+          "expected_decision": "accept",
+          "input": "Initialize one workflow session with consent, host capabilities, checkpoints, and artifact pointers, preserving degraded state.",
+          "matched_boundary": "workflow runtime session initialization",
+          "reason": "The request exactly matches initialization of bounded workflow runtime state with consent, host capabilities, checkpoints, artifact pointers, and preserved degradation.",
+          "run_id": "run-0386"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "agent-workflow-runtime-support",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-artifact-persistence-and-tool-actions-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0394",
+          "expected_decision": "reject",
+          "input": "Validate the document's rendering and accessibility before deciding whether its output is fit to persist.",
+          "matched_boundary": "document-rendering-and-validation",
+          "reason": "The request is to validate document rendering and accessibility before persistence, which belongs to document-rendering-and-validation rather than artifact persistence.",
+          "run_id": "run-0394"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-artifact-persistence-and-tool-actions-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0392",
+          "expected_decision": "accept",
+          "input": "Persist the frozen test report to the approved run-output path, recording normalization, size, and hash without touching product source.",
+          "matched_boundary": "persist validated artifact at declared bounded location",
+          "reason": "The method owns bounded persistence of a validated artifact to a declared path with normalization, size, and hash evidence while preserving product source.",
+          "run_id": "run-0392"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "artifact-persistence-and-tool-actions",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-baseline-regression-control-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0400",
+          "expected_decision": "reject",
+          "input": "Repair the confirmed newly introduced serialization regression.",
+          "matched_boundary": "defect-remediation",
+          "reason": "Repairing a confirmed regression belongs to defect-remediation, whereas this method only compares and attributes regressions without source repair.",
+          "run_id": "run-0400"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-baseline-regression-control-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0398",
+          "expected_decision": "accept",
+          "input": "Run the same focused suite against frozen base and candidate refs and classify each delta as regression, intended change, flake, or incomparable.",
+          "matched_boundary": "matched baseline-candidate regression attribution",
+          "reason": "The method exactly owns running matched focused checks on frozen baseline and candidate refs and classifying deltas by regression attribution, including intended change, flake, and incomparable evidence.",
+          "run_id": "run-0398"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "baseline-regression-control",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-browser-agent-pairing-provisioning-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0406",
+          "expected_decision": "reject",
+          "input": "Diagnose whether the already-created pairing is connected and scoped correctly.",
+          "matched_boundary": "existing pairing verification",
+          "reason": "The request concerns verification of an existing pairing's connection and observed scope, which belongs to browser-agent-pairing-verification rather than provisioning.",
+          "run_id": "run-0406"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-browser-agent-pairing-provisioning-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0404",
+          "expected_decision": "accept",
+          "input": "Provision one expiring read-only pairing for the selected agent and approved origins, recording revocation and exposure without credential values.",
+          "matched_boundary": "scoped expiring browser-agent pairing provisioning",
+          "reason": "The request exactly matches provisioning one scoped, expiring browser-agent pairing with approved origins, read-only actions, revocation, exposure recording, and no credential disclosure.",
+          "run_id": "run-0404"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "external-session-write",
+      "permission_identity": "local-system-write-external-session-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "browser-agent-pairing-provisioning",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-browser-agent-pairing-verification-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0412",
+          "expected_decision": "reject",
+          "input": "Provision a replacement credential and update local pairing configuration.",
+          "matched_boundary": "browser-agent-pairing-provisioning",
+          "reason": "The request requires credential provisioning and local configuration mutation, which belongs to browser-agent-pairing-provisioning rather than read-only pairing verification.",
+          "run_id": "run-0412"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-browser-agent-pairing-verification-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0410",
+          "expected_decision": "accept",
+          "input": "Verify the existing pairing identity, expiry, connection, and observed origin scope without changing it.",
+          "matched_boundary": "existing-pairing read-only verification",
+          "reason": "The request exactly matches read-only verification of an existing browser-agent pairing’s identity, expiry, connection, and observed origin scope without modification.",
+          "run_id": "run-0410"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec-external-read",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "browser-agent-pairing-verification",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-browser-authentication-setup-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0418",
+          "expected_decision": "reject",
+          "input": "Use the authenticated profile to extract account data from the page.",
+          "matched_boundary": "authenticated browser data acquisition",
+          "reason": "The request is to acquire account data using an already-authenticated browser profile, which belongs to browser-data-acquisition-runtime rather than authentication setup.",
+          "run_id": "run-0418"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-browser-authentication-setup-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0416",
+          "expected_decision": "accept",
+          "input": "Configure one isolated browser profile for the exact authorized origin and record non-secret status, expiry, and deletion steps.",
+          "matched_boundary": "exact-origin browser authentication setup",
+          "reason": "The request exactly matches configuring authorized authentication state in one isolated browser profile for an exact origin and recording non-secret validation, expiry, and deletion information.",
+          "run_id": "run-0416"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "local-system-write",
+      "permission_identity": "local-system-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "browser-authentication-setup",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-browser-data-acquisition-runtime-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0424",
+          "expected_decision": "reject",
+          "input": "Configure the missing authentication material in the browser profile.",
+          "matched_boundary": "browser-authentication-setup",
+          "reason": "Configuring missing authentication material belongs to browser-authentication-setup, not the read-only browser data acquisition runtime.",
+          "run_id": "run-0424"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-browser-data-acquisition-runtime-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0422",
+          "expected_decision": "accept",
+          "input": "Extract only the approved fields from allowlisted authenticated routes and preserve source, purpose, retention, and cleanup limits.",
+          "matched_boundary": "authorized read-only browser data acquisition",
+          "reason": "The method owns read-only extraction of approved fields from authorized authenticated routes while preserving provenance, purpose, retention, and cleanup limits.",
+          "run_id": "run-0422"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "external-read",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "browser-data-acquisition-runtime",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-browser-session-and-runtime-configuration-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0430",
+          "expected_decision": "reject",
+          "input": "Use the configured browser to capture governed target-page data.",
+          "matched_boundary": "browser-data-acquisition-runtime",
+          "reason": "Capturing governed target-page data belongs to browser-data-acquisition-runtime, not browser session and runtime configuration.",
+          "run_id": "run-0430"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-browser-session-and-runtime-configuration-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0428",
+          "expected_decision": "accept",
+          "input": "Prepare an isolated ephemeral browser invocation with exact wrapper, session, project, and cleanup settings.",
+          "matched_boundary": "ephemeral browser runtime configuration",
+          "reason": "The method exactly owns preparation of an isolated ephemeral browser invocation with explicit wrapper, session, project isolation, and cleanup settings.",
+          "run_id": "run-0428"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "runtime-session",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "browser-session-and-runtime-configuration",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-change-scope-freeze-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0436",
+          "expected_decision": "reject",
+          "input": "Trace the failing request path and establish the root cause before deciding which files belong in scope.",
+          "matched_boundary": "root-cause-investigation",
+          "reason": "The request is to investigate an unresolved failure and determine scope, which belongs to root-cause-investigation rather than change-scope-freeze.",
+          "run_id": "run-0436"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-change-scope-freeze-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0434",
+          "expected_decision": "accept",
+          "input": "Freeze a two-file rate-limit repair with explicit behavior, exclusions, test obligations, and scope-reopen conditions.",
+          "matched_boundary": "scope-freeze",
+          "reason": "The request exactly seeks to freeze an authorized two-file repair boundary with behavior, exclusions, test obligations, and scope-reopen conditions before implementation.",
+          "run_id": "run-0434"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "run-output",
+      "permission_identity": "workspace-write",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "change-scope-freeze",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-code-health-assessment-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0442",
+          "expected_decision": "reject",
+          "input": "Review the current patch only for correctness, security, and requirement compliance.",
+          "matched_boundary": "independent-code-review",
+          "reason": "The request is a specific patch review for correctness, security, and requirement compliance, which belongs to independent-code-review rather than code-health-assessment.",
+          "run_id": "run-0442"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-code-health-assessment-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0440",
+          "expected_decision": "accept",
+          "input": "Rank the concrete maintenance risks in this module with source citations and change scenarios, preserving low-value leave-unchanged cases.",
+          "matched_boundary": "code-health risk assessment",
+          "reason": "The request exactly seeks a prioritized code-health assessment with source citations, maintenance change scenarios, and preserved leave-unchanged cases without requesting edits.",
+          "run_id": "run-0440"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "none",
+      "permission_identity": "read-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "code-health-assessment",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-code-review-evidence-acquisition-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0448",
+          "expected_decision": "reject",
+          "input": "Judge the evidence and issue correctness and security findings.",
+          "matched_boundary": "independent code review",
+          "reason": "The request is to analyze evidence and issue correctness and security findings, which belongs to independent-code-review rather than evidence acquisition.",
+          "run_id": "run-0448"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-code-review-evidence-acquisition-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0446",
+          "expected_decision": "accept",
+          "input": "Acquire a ref-bound diff, check results, commits, and read-only pull-request metadata for an independent reviewer.",
+          "matched_boundary": "ref-bound code-review evidence acquisition",
+          "reason": "The request exactly seeks ref-bound repository and read-only provider evidence acquisition for an independent reviewer, without findings, comments, or writes.",
+          "run_id": "run-0446"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec-external-read",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "code-review-evidence-acquisition",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-completion-evidence-gate-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0454",
+          "expected_decision": "reject",
+          "input": "Execute the missing regression suite to produce the command evidence that a later completion gate can verify.",
+          "matched_boundary": "run missing tests to create evidence",
+          "reason": "Executing the missing regression suite to create command evidence belongs to baseline-regression-control, whereas this method only verifies existing evidence.",
+          "run_id": "run-0454"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-completion-evidence-gate-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0452",
+          "expected_decision": "accept",
+          "input": "Recompute whether the frozen change is complete from current command records, target refs, exits, durations, and output hashes.",
+          "matched_boundary": "verify completion claim from current evidence",
+          "reason": "The request is to recompute completion status from current target-bound command evidence without rerunning commands or changing the frozen work.",
+          "run_id": "run-0452"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "completion-evidence-gate",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-defect-remediation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0460",
+          "expected_decision": "reject",
+          "input": "Reproduce and trace the intermittent cache miss before any source repair is authorized.",
+          "matched_boundary": "investigate symptom and establish reproducible root cause",
+          "reason": "The request seeks reproduction and tracing before repair authorization, which belongs to root-cause-investigation rather than defect-remediation.",
+          "run_id": "run-0460"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-defect-remediation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0458",
+          "expected_decision": "accept",
+          "input": "Repair the confirmed cross-tenant cache-key defect in the shared lookup and preserve focused and sibling regression evidence.",
+          "matched_boundary": "confirmed-root-cause minimal repair with focused regression verification",
+          "reason": "The request seeks a minimal repair for a confirmed defect and preservation of focused and sibling regression evidence, exactly matching defect remediation.",
+          "run_id": "run-0458"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "defect-remediation",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-developer-experience-assessment-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0466",
+          "expected_decision": "reject",
+          "input": "Fix the setup script and documentation after the findings are accepted.",
+          "matched_boundary": "defect-remediation",
+          "reason": "Fixing the setup script and documentation is remediation explicitly owned by defect-remediation, not developer-experience-assessment.",
+          "run_id": "run-0466"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-developer-experience-assessment-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0464",
+          "expected_decision": "accept",
+          "input": "Run the documented contributor setup in a clean local environment and measure time, failures, workarounds, and recovery.",
+          "matched_boundary": "authorized developer journey assessment",
+          "reason": "The request exactly matches executing a documented developer journey in a clean local environment while measuring setup time, failures, workarounds, and recovery.",
+          "run_id": "run-0464"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "developer-experience-assessment",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-developer-self-check-and-fix-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0472",
+          "expected_decision": "reject",
+          "input": "Independently judge the patch against requirements and architecture without making corrections.",
+          "matched_boundary": "independent code review without correction",
+          "reason": "The request seeks an independent judgment without source changes, which belongs to independent-code-review rather than developer-self-check-and-fix.",
+          "run_id": "run-0472"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-developer-self-check-and-fix-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0470",
+          "expected_decision": "accept",
+          "input": "Self-review this completed migration patch, correct an in-scope null-handling defect, rerun focused checks, and preserve independent review.",
+          "matched_boundary": "self-review with bounded correction and independent-review handoff",
+          "reason": "The request exactly matches self-review of a completed change, correction of a deterministic in-scope defect, focused check execution, and preservation of independent review ownership.",
+          "run_id": "run-0470"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "developer-self-check-and-fix",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-document-rendering-and-validation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0478",
+          "expected_decision": "reject",
+          "input": "Rewrite the report's argument and source content before rendering.",
+          "matched_boundary": "documentation-authoring",
+          "reason": "Rewriting the report's argument and source content is substantive editing owned by documentation-authoring, not document rendering and validation.",
+          "run_id": "run-0478"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-document-rendering-and-validation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0476",
+          "expected_decision": "accept",
+          "input": "Render the frozen report to PDF and validate clipping, links, headings, text extraction, metadata, and output hash.",
+          "matched_boundary": "document rendering and validation",
+          "reason": "The method exactly owns rendering an approved frozen document to PDF and validating clipping, links, headings, text extraction, metadata, and output hash.",
+          "run_id": "run-0476"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "document-rendering-and-validation",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-evaluation-dataset-publication-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0484",
+          "expected_decision": "reject",
+          "input": "Generate or revise the evaluation cases and schema before a publication manifest is frozen.",
+          "matched_boundary": "test-case-design-and-export",
+          "reason": "The request concerns designing or modifying evaluation cases and schema before publication, which belongs to test-case-design-and-export rather than dataset publication.",
+          "run_id": "run-0484"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-evaluation-dataset-publication-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0482",
+          "expected_decision": "accept",
+          "input": "Publish the frozen redacted eval-v3 manifest to the exact private provider dataset target and record immutable identity and deletion evidence.",
+          "matched_boundary": "frozen evaluation dataset publication",
+          "reason": "The request exactly matches publication of one frozen redacted evaluation dataset to an exact private provider target with immutable identity and deletion evidence.",
+          "run_id": "run-0482"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "remote-provider-write",
+      "permission_identity": "remote-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "evaluation-dataset-publication",
+      "stage_id": "stage:11-deployment-change",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-evaluation-results-analysis-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0490",
+          "expected_decision": "reject",
+          "input": "Submit a new provider experiment because the current outcome is inconclusive.",
+          "matched_boundary": "provider experiment execution",
+          "reason": "Submitting a new provider experiment is an execution responsibility owned by llm-experiment-execution, not analysis of frozen results.",
+          "run_id": "run-0490"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-evaluation-results-analysis-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0488",
+          "expected_decision": "accept",
+          "input": "Analyze the frozen paired runs under preregistered metrics and thresholds, preserving failed runs, variance, cost, and slice regressions.",
+          "matched_boundary": "frozen experiment results analysis",
+          "reason": "The request exactly matches analysis of frozen paired experiment results under preregistered metrics and thresholds, including failed runs, variance, cost, and slice regressions.",
+          "run_id": "run-0488"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "evaluation-results-analysis",
+      "stage_id": "stage:12-observation-canary",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-frontend-rendering-and-interaction-performance-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0496",
+          "expected_decision": "reject",
+          "input": "Apply memoization and scheduling changes to fix the accepted bottleneck.",
+          "matched_boundary": "apply approved frontend performance optimization",
+          "reason": "Applying memoization and scheduling changes modifies frontend source and belongs to defect-remediation, whereas this method only measures and identifies bottlenecks without repair.",
+          "run_id": "run-0496"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-frontend-rendering-and-interaction-performance-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0494",
+          "expected_decision": "accept",
+          "input": "Profile a frozen editor interaction over repeated warmed runs and report input latency, long tasks, render churn, and uncertainty.",
+          "matched_boundary": "frozen frontend interaction performance profiling",
+          "reason": "The request exactly matches measuring frontend interaction performance over a frozen journey with warmup, repeated samples, latency, long-task, render-churn, and uncertainty reporting.",
+          "run_id": "run-0494"
+        }
+      ],
+      "domain_id": "domain:performance-and-reliability",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "frontend-rendering-and-interaction-performance",
+      "stage_id": "stage:09-performance-reliability",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-git-destructive-command-guard-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0502",
+          "expected_decision": "reject",
+          "input": "Install an already-approved guard into the local Git hooks path after classifying that path and obtaining consent.",
+          "matched_boundary": "separate local Git guard installation",
+          "reason": "Installing an already-approved guard into the local Git hooks path belongs to local-git-guard-setup, not guard authoring and validation.",
+          "run_id": "run-0502"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-git-destructive-command-guard-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0500",
+          "expected_decision": "accept",
+          "input": "Author a tested repository guard policy that blocks destructive reset and clean variants while allowing ordinary Git commands.",
+          "matched_boundary": "author and validate destructive Git command guard",
+          "reason": "The method exactly owns authoring and validating a repository-scoped guard policy that blocks declared destructive Git reset and clean variants while allowing ordinary Git commands.",
+          "run_id": "run-0500"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "git-destructive-command-guard",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-implementation-spec-compliance-review-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0508",
+          "expected_decision": "reject",
+          "input": "Review the patch for broader correctness, security, and maintainability defects.",
+          "matched_boundary": "independent-code-review",
+          "reason": "The request seeks broad correctness, security, and maintainability review, which belongs to independent-code-review rather than implementation spec compliance review.",
+          "run_id": "run-0508"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-implementation-spec-compliance-review-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0506",
+          "expected_decision": "accept",
+          "input": "Map every approved requirement and API invariant to the patch and current tests, reporting omissions and unapproved additions.",
+          "matched_boundary": "implementation spec compliance traceability",
+          "reason": "The request exactly seeks requirement-and-interface traceability against the patch and tests, including missing and extra behavior, without requesting source edits.",
+          "run_id": "run-0506"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "none",
+      "permission_identity": "read-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "implementation-spec-compliance-review",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-independent-blackbox-qa-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0514",
+          "expected_decision": "reject",
+          "input": "Deduplicate and assign previously observed QA findings without rerunning the whole product.",
+          "matched_boundary": "qa-finding-triage",
+          "reason": "Deduplicating and assigning previously observed QA findings is triage of existing findings, which belongs to qa-finding-triage rather than independent-blackbox-qa.",
+          "run_id": "run-0514"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-independent-blackbox-qa-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0512",
+          "expected_decision": "accept",
+          "input": "Exercise the current build only through public browser and API surfaces and return reproducible findings with captures and state coverage.",
+          "matched_boundary": "independent black-box QA through public surfaces",
+          "reason": "The request exactly matches independent black-box QA of the current build through public browser and API surfaces with reproducible evidence and state coverage.",
+          "run_id": "run-0512"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "artifact-write-local-exec-external-read",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "independent-blackbox-qa",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-independent-code-review-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0520",
+          "expected_decision": "reject",
+          "input": "Collect the diff, checks, commits, and provider metadata needed before review.",
+          "matched_boundary": "code-review-evidence-acquisition",
+          "reason": "The request is to acquire review evidence, which belongs to code-review-evidence-acquisition rather than independent-code-review.",
+          "run_id": "run-0520"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-independent-code-review-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0518",
+          "expected_decision": "accept",
+          "input": "Review the exact ref-bound diff for a concrete authorization bypass, failure path, and missing regression without editing source.",
+          "matched_boundary": "independent ref-bound code review",
+          "reason": "The request exactly matches independent inspection of a ref-bound change for authorization, failure handling, and regression-test gaps without source edits.",
+          "run_id": "run-0518"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "none",
+      "permission_identity": "read-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "independent-code-review",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-isolated-task-implementation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0526",
+          "expected_decision": "reject",
+          "input": "Coordinate and checkpoint the entire approved multi-step implementation plan across several task slices.",
+          "matched_boundary": "plan-execution-control",
+          "reason": "Coordinating and checkpointing an approved multi-step implementation plan belongs to plan-execution-control, not isolated-task-implementation.",
+          "run_id": "run-0526"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-isolated-task-implementation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0524",
+          "expected_decision": "accept",
+          "input": "Implement the frozen CLI option in the allocated clean worktree with one writer and return a patch plus focused evidence.",
+          "matched_boundary": "frozen isolated single-writer implementation",
+          "reason": "The request exactly matches implementation of one frozen task in an allocated isolated worktree with a single writer, bounded evidence, and patch handoff.",
+          "run_id": "run-0524"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "isolated-task-implementation",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-llm-evaluator-engineering-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0532",
+          "expected_decision": "reject",
+          "input": "Execute an online provider experiment using the frozen evaluator and dataset.",
+          "matched_boundary": "no-provider-activation",
+          "reason": "The requested online provider experiment belongs to llm-experiment-execution, while this method explicitly excludes provider activation.",
+          "run_id": "run-0532"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-llm-evaluator-engineering-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0530",
+          "expected_decision": "accept",
+          "input": "Implement a local groundedness evaluator with labeled calibration cases, abstention, malformed handling, and disagreement evidence.",
+          "matched_boundary": "local evaluator implementation and calibration",
+          "reason": "The method explicitly owns implementing a bounded local evaluator with labeled calibration cases, abstention, malformed-input handling, and disagreement evidence.",
+          "run_id": "run-0530"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "llm-evaluator-engineering",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-llm-experiment-execution-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0538",
+          "expected_decision": "reject",
+          "input": "Analyze the completed runs against metrics and thresholds.",
+          "matched_boundary": "completed experiment results analysis",
+          "reason": "Analyzing completed runs against metrics and thresholds belongs to evaluation-results-analysis, not experiment execution.",
+          "run_id": "run-0538"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-llm-experiment-execution-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0536",
+          "expected_decision": "accept",
+          "input": "Submit the reviewed frozen baseline-candidate experiment once and preserve exact run, parameter, cost, duration, retry, and failure evidence.",
+          "matched_boundary": "reviewed frozen experiment execution and run evidence",
+          "reason": "The request exactly matches execution of one reviewed frozen experiment and preservation of run identity, parameters, cost, duration, retries, and failure evidence.",
+          "run_id": "run-0536"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "remote-provider-write",
+      "permission_identity": "remote-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "llm-experiment-execution",
+      "stage_id": "stage:11-deployment-change",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-llm-quality-evaluation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0544",
+          "expected_decision": "reject",
+          "input": "Generate new outputs by running a provider experiment.",
+          "matched_boundary": "execute a new provider experiment",
+          "reason": "Generating new outputs by running a provider experiment belongs to llm-experiment-execution, not llm-quality-evaluation.",
+          "run_id": "run-0544"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-llm-quality-evaluation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0542",
+          "expected_decision": "accept",
+          "input": "Evaluate supplied outputs locally with deterministic checks and calibrated labels, blocking any external judge that lacks transfer authorization.",
+          "matched_boundary": "local governed output evaluation",
+          "reason": "The method exactly owns local evaluation of supplied outputs using deterministic checks and calibrated labels while blocking unauthorized external judges.",
+          "run_id": "run-0542"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "llm-quality-evaluation",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-local-agent-memory-setup-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0550",
+          "expected_decision": "reject",
+          "input": "Store and synchronize actual project learnings after setup.",
+          "matched_boundary": "save and search actual project context after runtime exists",
+          "reason": "Storing and synchronizing actual project learnings after setup belongs to project-context-and-learning-store, not local-agent-memory-setup.",
+          "run_id": "run-0550"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-local-agent-memory-setup-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0548",
+          "expected_decision": "accept",
+          "input": "Initialize one project-scoped local index with explicit exclusions, retention, health check, and removal instructions.",
+          "matched_boundary": "project-isolated local indexing runtime setup",
+          "reason": "The method exactly owns initialization of one project-isolated local index with explicit exclusions, retention, health evidence, and removal instructions.",
+          "run_id": "run-0548"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "local-system-write",
+      "permission_identity": "local-system-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "local-agent-memory-setup",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-local-branch-integration-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0556",
+          "expected_decision": "reject",
+          "input": "Push the integrated branch and update its remote pull request.",
+          "matched_boundary": "remote pull request update from pushed ref",
+          "reason": "The request requires pushing a branch and updating a remote pull request, whereas this method permits local integration only and expressly forbids remote writes.",
+          "run_id": "run-0556"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-local-branch-integration-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0554",
+          "expected_decision": "accept",
+          "input": "Integrate the approved local main ref into a clean evaluation branch and record the recoverable old HEAD and conflict status.",
+          "matched_boundary": "local branch integration with recoverable pre-integration ref",
+          "reason": "The method exactly owns integrating an approved local main ref into a clean isolated evaluation branch while preserving the old HEAD and recording conflict status without remote writes.",
+          "run_id": "run-0554"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-local-git",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "local-branch-integration",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-local-git-guard-setup-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0562",
+          "expected_decision": "reject",
+          "input": "Author new destructive-command patterns and test fixtures for the guard.",
+          "matched_boundary": "guard policy and fixture authoring",
+          "reason": "Authoring destructive-command patterns and test fixtures is owned by git-destructive-command-guard, not local-git-guard-setup.",
+          "run_id": "run-0562"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-local-git-guard-setup-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0560",
+          "expected_decision": "accept",
+          "input": "Install the approved guard only in the classified repository-local untracked hook path, preserving backup and uninstall evidence.",
+          "matched_boundary": "approved repository-local Git guard installation",
+          "reason": "The method exactly owns installing an approved repository-local Git guard in a classified untracked hooks path while preserving backup, verification, and uninstall evidence.",
+          "run_id": "run-0560"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "local-system-write",
+      "permission_identity": "local-system-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "local-git-guard-setup",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-mobile-platform-runtime-support-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0568",
+          "expected_decision": "reject",
+          "input": "Install a missing mobile SDK and change the global toolchain configuration.",
+          "matched_boundary": "workflow-runtime-upgrade",
+          "reason": "Installing a missing mobile SDK and changing global toolchain configuration belong to workflow-runtime-upgrade, not mobile-platform-runtime-support.",
+          "run_id": "run-0568"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-mobile-platform-runtime-support-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0566",
+          "expected_decision": "accept",
+          "input": "Run the frozen Android instrumentation target on the approved emulator and capture exact toolchain and artifact evidence.",
+          "matched_boundary": "approved mobile test execution and evidence capture",
+          "reason": "The method owns running an approved frozen Android instrumentation target on a declared emulator and capturing exact toolchain and artifact evidence without source changes.",
+          "run_id": "run-0566"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "mobile-platform-runtime-support",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-model-and-workflow-benchmarking-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0574",
+          "expected_decision": "reject",
+          "input": "Submit missing candidate outputs to a remote model provider.",
+          "matched_boundary": "remote provider experiment execution",
+          "reason": "Remote submission to produce missing candidate outputs belongs to llm-experiment-execution, not model-and-workflow-benchmarking.",
+          "run_id": "run-0574"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-model-and-workflow-benchmarking-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0572",
+          "expected_decision": "accept",
+          "input": "Benchmark three local workflow versions on frozen cases with warmup, repeats, timeouts, failures, variance, cost, and latency.",
+          "matched_boundary": "local workflow benchmarking on frozen cases",
+          "reason": "The method exactly owns benchmarking supplied local workflow variants on frozen cases with warmup, repeated runs, timeouts, failed-case retention, variance, cost, and latency.",
+          "run_id": "run-0572"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "model-and-workflow-benchmarking",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-plan-execution-control-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0580",
+          "expected_decision": "reject",
+          "input": "Write the implementation tasks and resolve missing requirements before execution control begins.",
+          "matched_boundary": "implementation planning and handoff",
+          "reason": "Writing implementation tasks and resolving missing requirements belongs to implementation-planning-and-handoff, before plan execution control begins.",
+          "run_id": "run-0580"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-plan-execution-control-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0578",
+          "expected_decision": "accept",
+          "input": "Resume the approved plan from a valid checkpoint, preserving failed steps and invalidating descendants of the changed design artifact.",
+          "matched_boundary": "checkpoint resume and descendant invalidation",
+          "reason": "The request exactly matches resuming an approved plan from a checkpoint while preserving failed-step evidence and invalidating descendants after an upstream artifact change.",
+          "run_id": "run-0578"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "run-output",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "plan-execution-control",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-playwright-test-engineering-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0586",
+          "expected_decision": "reject",
+          "input": "Install Playwright dependencies and persist configuration and tests into the project.",
+          "matched_boundary": "test-runtime-bootstrap",
+          "reason": "Installing Playwright dependencies and persisting project configuration and tests belongs to test-runtime-bootstrap, not playwright-test-engineering.",
+          "run_id": "run-0586"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-playwright-test-engineering-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0584",
+          "expected_decision": "accept",
+          "input": "Draft a candidate browser test artifact with role locators and web-first assertions, then run only the existing authorized suite.",
+          "matched_boundary": "candidate artifact and authorized existing-test execution",
+          "reason": "The method exactly owns drafting a candidate Playwright artifact with role locators and web-first assertions and running only authorized existing tests.",
+          "run_id": "run-0584"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "playwright-test-engineering",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-project-context-and-learning-store-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0592",
+          "expected_decision": "reject",
+          "input": "Initialize the local indexing runtime and storage directories before any record exists.",
+          "matched_boundary": "local memory runtime initialization",
+          "reason": "Initializing the local indexing runtime and storage directories before records exist belongs to local-agent-memory-setup, not project-context-and-learning-store.",
+          "run_id": "run-0592"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-project-context-and-learning-store-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0590",
+          "expected_decision": "accept",
+          "input": "Save the selected source-linked project decisions locally with retention and deletion metadata, excluding secrets and sibling sessions.",
+          "matched_boundary": "local project context save",
+          "reason": "The method owns saving explicitly selected source-linked records in a project-isolated local store with provenance, retention, deletion, no-secrets, and sibling-session exclusion controls.",
+          "run_id": "run-0590"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "local-system-write",
+      "permission_identity": "local-system-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "project-context-and-learning-store",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-provider-cli-authentication-setup-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0598",
+          "expected_decision": "reject",
+          "input": "Submit the provider experiment after authentication.",
+          "matched_boundary": "execute reviewed provider experiment",
+          "reason": "Submitting the provider experiment after authentication is owned by llm-experiment-execution, not provider CLI authentication setup.",
+          "run_id": "run-0598"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-provider-cli-authentication-setup-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0596",
+          "expected_decision": "accept",
+          "input": "Authenticate the exact approved CLI and account with least scope, recording non-secret identity, expiry, revocation, and cleanup.",
+          "matched_boundary": "provider CLI authentication setup",
+          "reason": "The method exactly owns authenticating one approved provider CLI with least scope while recording non-secret identity, expiry, revocation, and cleanup evidence.",
+          "run_id": "run-0596"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "external-session-write",
+      "permission_identity": "local-system-write-external-session-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "provider-cli-authentication-setup",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-qa-finding-triage-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0604",
+          "expected_decision": "reject",
+          "input": "Exercise the whole product as a user to discover new QA defects.",
+          "matched_boundary": "independent-blackbox-qa",
+          "reason": "The request seeks a new product-wide black-box QA campaign, whereas this method only triages independently observed findings.",
+          "run_id": "run-0604"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-qa-finding-triage-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0602",
+          "expected_decision": "accept",
+          "input": "Deduplicate and route these current QA findings with reproducibility, severity, scope, and ownership evidence.",
+          "matched_boundary": "QA finding triage and routing",
+          "reason": "The request exactly matches triage of current QA findings by deduplication, reproducibility, severity, scope, ownership evidence, and routing without source repair.",
+          "run_id": "run-0602"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "none",
+      "permission_identity": "read-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "qa-finding-triage",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-reference-library-and-deferred-material-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0610",
+          "expected_decision": "reject",
+          "input": "Adopt the reference as a current executable Skill and package it.",
+          "matched_boundary": "workflow-skill-authoring",
+          "reason": "Adopting a reference as a current executable Skill and packaging it belongs to workflow-skill-authoring, whereas this method only records non-operational reference or deferred material.",
+          "run_id": "run-0610"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-reference-library-and-deferred-material-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0608",
+          "expected_decision": "accept",
+          "input": "Record this dated framework as non-operational reference material with provenance, applicability, and revisit trigger.",
+          "matched_boundary": "reference-library-and-deferred-material",
+          "reason": "The method exactly owns recording dated framework material as a non-operational reference with provenance, applicability, and a revisit trigger.",
+          "run_id": "run-0608"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "reference-library-and-deferred-material",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-resilience-and-determinism-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0616",
+          "expected_decision": "reject",
+          "input": "Apply the confirmed clock-control repair and rerun the flaky test suite.",
+          "matched_boundary": "accepted source fix for confirmed flaky root cause",
+          "reason": "The request applies a confirmed source repair, which belongs to defect-remediation rather than resilience-and-determinism.",
+          "run_id": "run-0616"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-resilience-and-determinism-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0614",
+          "expected_decision": "accept",
+          "input": "Repeat the frozen queue test across seeds and orderings to separate retry masking from idempotent recovery and leaked state.",
+          "matched_boundary": "resilience and determinism verification",
+          "reason": "The request exactly matches repeated seed and ordering experiments to distinguish retry masking, idempotent recovery, and leaked state under a frozen workload.",
+          "run_id": "run-0614"
+        }
+      ],
+      "domain_id": "domain:performance-and-reliability",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "resilience-and-determinism",
+      "stage_id": "stage:09-performance-reliability",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-root-cause-investigation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0622",
+          "expected_decision": "reject",
+          "input": "Patch the confirmed invalidation defect and add the regression test.",
+          "matched_boundary": "defect-remediation",
+          "reason": "The request seeks source repair and a regression test for an already-confirmed defect, which belongs to defect-remediation rather than root-cause-investigation.",
+          "run_id": "run-0622"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-root-cause-investigation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0620",
+          "expected_decision": "accept",
+          "input": "Trace the reproducible stale-permission response through every caller to the first broken cache invalidation invariant.",
+          "matched_boundary": "reproduction, caller tracing, and first-divergent invariant",
+          "reason": "The request is to trace a reproducible observed defect through callers to the first violated cache invalidation invariant, exactly the responsibility of root-cause investigation.",
+          "run_id": "run-0620"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "root-cause-investigation",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-safe-browser-probing-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0628",
+          "expected_decision": "reject",
+          "input": "Use an authenticated browser session to extract governed account data.",
+          "matched_boundary": "browser-data-acquisition-runtime",
+          "reason": "Authenticated governed account-data extraction belongs to browser-data-acquisition-runtime, not safe-browser-probing.",
+          "run_id": "run-0628"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-safe-browser-probing-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0626",
+          "expected_decision": "accept",
+          "input": "Probe the public docs route at one viewport to confirm redirect and content behavior without authentication or mutation.",
+          "matched_boundary": "bounded unauthenticated browser probe",
+          "reason": "The request is a bounded unauthenticated, non-destructive browser probe of one route at one viewport for one declared question.",
+          "run_id": "run-0626"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "safe-browser-probing",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-tdd-change-loop-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0634",
+          "expected_decision": "reject",
+          "input": "Choose the testing layers, fixture policy, and portfolio for the whole service before individual changes.",
+          "matched_boundary": "testing-portfolio-strategy",
+          "reason": "The request concerns project-wide testing strategy, which belongs to testing-portfolio-strategy rather than implementation of one authorized behavior change.",
+          "run_id": "run-0634"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-tdd-change-loop-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0632",
+          "expected_decision": "accept",
+          "input": "Implement the approved idempotency behavior with a preserved failing contract test, minimal code, and fresh focused and sibling checks.",
+          "matched_boundary": "authorized TDD behavior-change loop",
+          "reason": "The request exactly matches implementing an approved behavior change through preserved RED, minimal GREEN, and fresh focused plus affected-regression verification.",
+          "run_id": "run-0632"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "tdd-change-loop",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-test-case-design-and-export-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0640",
+          "expected_decision": "reject",
+          "input": "Implement the approved browser cases in Playwright project files.",
+          "matched_boundary": "Playwright test implementation",
+          "reason": "The request is to implement approved browser cases in Playwright, which belongs to playwright-test-engineering rather than test-case-design-and-export.",
+          "run_id": "run-0640"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-test-case-design-and-export-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0638",
+          "expected_decision": "accept",
+          "input": "Derive risk-prioritized permission, boundary, concurrency, and recovery cases with stable requirement links and a validated CSV export.",
+          "matched_boundary": "traceable test-case design and export",
+          "reason": "The method owns deriving risk-prioritized permission, boundary, concurrency, and recovery test cases with stable requirement traceability and a validated consumer-specific CSV export.",
+          "run_id": "run-0638"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "run-output",
+      "permission_identity": "workspace-write",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "test-case-design-and-export",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-test-double-discipline-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0646",
+          "expected_decision": "reject",
+          "input": "Implement and execute the selected Vitest test in project source.",
+          "matched_boundary": "vitest-tooling",
+          "reason": "Implementing and executing a selected Vitest test belongs to vitest-tooling, not test-double-discipline.",
+          "run_id": "run-0646"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-test-double-discipline-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0644",
+          "expected_decision": "accept",
+          "input": "Design a complete in-memory boundary fake for this owned repository contract instead of mocking internal calls.",
+          "matched_boundary": "complete in-memory fake at owned boundary",
+          "reason": "The method directly owns designing a complete behavior-focused in-memory fake at an owned repository boundary instead of mocking internal calls.",
+          "run_id": "run-0644"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "test-double-discipline",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-test-runtime-bootstrap-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0652",
+          "expected_decision": "reject",
+          "input": "Design advanced framework-specific test candidates after the runtime already works.",
+          "matched_boundary": "advanced tests on existing runtime",
+          "reason": "The request concerns advanced framework-specific tests after runtime setup, which belongs to vitest-tooling rather than test-runtime-bootstrap.",
+          "run_id": "run-0652"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-test-runtime-bootstrap-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0650",
+          "expected_decision": "accept",
+          "input": "Bootstrap the approved project-local test framework with minimal config and one passing real-behavior test, restoring files on failure.",
+          "matched_boundary": "project-local test runtime bootstrap",
+          "reason": "The request exactly matches installing and minimally configuring an approved project-local test runtime, proving it with one real-behavior test, and restoring files on failure.",
+          "run_id": "run-0650"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "test-runtime-bootstrap",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-testing-portfolio-strategy-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0658",
+          "expected_decision": "reject",
+          "input": "Write concrete requirement-linked test cases for the selected layers.",
+          "matched_boundary": "test-case-design-and-export",
+          "reason": "Concrete requirement-linked test cases are owned by test-case-design-and-export, whereas this method only designs the risk-based testing portfolio and selected layers.",
+          "run_id": "run-0658"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-testing-portfolio-strategy-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0656",
+          "expected_decision": "accept",
+          "input": "Design a risk-based mix of contract, integration, unit, browser, security, and manual checks with owners and budgets.",
+          "matched_boundary": "risk-based test portfolio strategy",
+          "reason": "The request exactly matches designing a risk-based testing portfolio across specified layers with ownership and budgets.",
+          "run_id": "run-0656"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "testing-portfolio-strategy",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-tool-runtime-readiness-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0664",
+          "expected_decision": "reject",
+          "input": "Install or upgrade the missing runtime and change local-system configuration.",
+          "matched_boundary": "workflow runtime installation or upgrade",
+          "reason": "The request requires installing or upgrading a runtime and changing local-system configuration, both outside this verification-only method and owned by workflow-runtime-upgrade.",
+          "run_id": "run-0664"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-tool-runtime-readiness-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0662",
+          "expected_decision": "accept",
+          "input": "Verify exact executable, version, capability, and bounded smoke behavior without installing anything.",
+          "matched_boundary": "tool runtime readiness verification",
+          "reason": "The request exactly matches verification of a local tool's executable, version, capability, and bounded smoke behavior without installation.",
+          "run_id": "run-0662"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "tool-runtime-readiness",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-ui-remediation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0670",
+          "expected_decision": "reject",
+          "input": "Independently critique the current captures and decide which UI issues block release.",
+          "matched_boundary": "independent rendered UI critique and release disposition",
+          "reason": "The request seeks independent UI critique and release-blocking disposition, which belongs to rendered-ui-critique-and-release-disposition rather than UI remediation.",
+          "run_id": "run-0670"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-ui-remediation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0668",
+          "expected_decision": "accept",
+          "input": "Apply the three accepted UI findings to authorized files and produce new mobile and desktop captures for independent review.",
+          "matched_boundary": "bounded-source-repair and recapture",
+          "reason": "The request exactly matches applying accepted UI findings to authorized files and recapturing mobile and desktop states for independent review.",
+          "run_id": "run-0668"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "ui-remediation",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-vitest-tooling-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0676",
+          "expected_decision": "reject",
+          "input": "Install Vitest and persist configuration and tests into the project.",
+          "matched_boundary": "test-runtime-bootstrap",
+          "reason": "Installing Vitest and persisting configuration and tests belong to test-runtime-bootstrap, while this method only produces candidate artifacts and cannot write project source.",
+          "run_id": "run-0676"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-vitest-tooling-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0674",
+          "expected_decision": "accept",
+          "input": "Draft a candidate Vitest regression artifact with complete fixtures and controlled time, then run only the existing suite.",
+          "matched_boundary": "candidate Vitest artifact and existing-suite execution",
+          "reason": "The method exactly owns drafting a Vitest regression candidate with complete fixtures and controlled time, then executing only the existing authorized suite.",
+          "run_id": "run-0674"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "vitest-tooling",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-web-performance-diagnostics-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0682",
+          "expected_decision": "reject",
+          "input": "Apply image, script, caching, and server fixes to improve the accepted bottlenecks.",
+          "matched_boundary": "apply approved Web performance fixes",
+          "reason": "The request seeks implementation of accepted Web performance fixes, which belongs to defect-remediation rather than diagnostics without repair.",
+          "run_id": "run-0682"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-web-performance-diagnostics-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0680",
+          "expected_decision": "accept",
+          "input": "Measure repeated cold and warm page loads under a fixed mobile network profile and report distributions and waterfall evidence.",
+          "matched_boundary": "Web page load and network performance diagnostics",
+          "reason": "The method owns repeated cold and warm page-load measurement under a declared network profile, including distributions and waterfall evidence.",
+          "run_id": "run-0680"
+        }
+      ],
+      "domain_id": "domain:performance-and-reliability",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "web-performance-diagnostics",
+      "stage_id": "stage:09-performance-reliability",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-website-audit-assessment-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0688",
+          "expected_decision": "reject",
+          "input": "Apply the accepted audit findings to website source and prepare reassessment evidence.",
+          "matched_boundary": "website-audit-remediation",
+          "reason": "Applying accepted audit findings to website source is remediation, which belongs to website-audit-remediation rather than this read-only assessment capability.",
+          "run_id": "run-0688"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-website-audit-assessment-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0686",
+          "expected_decision": "accept",
+          "input": "Assess the authorized site with bounded read-only crawling and current route evidence, returning deduplicated findings only.",
+          "matched_boundary": "read-only website audit assessment",
+          "reason": "The method owns authorized read-only website assessment using bounded crawling and current route evidence to produce deduplicated findings without remediation.",
+          "run_id": "run-0686"
+        }
+      ],
+      "domain_id": "domain:testing-and-quality-assurance",
+      "mutation_scope": "artifact-output",
+      "permission_identity": "local-exec-external-read",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "website-audit-assessment",
+      "stage_id": "stage:08-verification-quality",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-website-audit-remediation-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0694",
+          "expected_decision": "reject",
+          "input": "Crawl and assess the current website to discover and prioritize defects.",
+          "matched_boundary": "website-audit-assessment",
+          "reason": "The request seeks independent website crawling, defect assessment, and prioritization, whereas this method only remediates explicitly accepted audit findings.",
+          "run_id": "run-0694"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-website-audit-remediation-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0692",
+          "expected_decision": "accept",
+          "input": "Apply the approved audit fixes for canonical metadata, keyboard access, and broken routes, then prepare reassessment evidence.",
+          "matched_boundary": "accepted-audit-findings bounded repair and reassessment handoff",
+          "reason": "The request explicitly asks to apply approved website audit fixes and prepare reassessment evidence without deployment or independent self-assessment.",
+          "run_id": "run-0692"
+        }
+      ],
+      "domain_id": "domain:implementation-and-code-quality",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "website-audit-remediation",
+      "stage_id": "stage:07-implementation-integration",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-workflow-runtime-upgrade-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0700",
+          "expected_decision": "reject",
+          "input": "Check whether the current installed runtime already satisfies the required capability.",
+          "matched_boundary": "tool-runtime-readiness",
+          "reason": "The request seeks readiness verification without changing the installed runtime, which belongs to tool-runtime-readiness rather than workflow-runtime-upgrade.",
+          "run_id": "run-0700"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-workflow-runtime-upgrade-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0698",
+          "expected_decision": "accept",
+          "input": "Upgrade the detected runtime to the pinned approved version with backup, compatibility checks, and rollback evidence.",
+          "matched_boundary": "workflow runtime upgrade",
+          "reason": "The method exactly owns upgrading a detected installed workflow runtime to a pinned approved version with backup, compatibility checks, and rollback evidence.",
+          "run_id": "run-0698"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "local-system-write",
+      "permission_identity": "local-system-write-authorized-only",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "workflow-runtime-upgrade",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    },
+    {
+      "cases": [
+        {
+          "actual_decision": "reject",
+          "case_id": "V2-P6-workflow-skill-authoring-holdout-anti-01",
+          "case_kind": "should-not-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0706",
+          "expected_decision": "reject",
+          "input": "Compose multiple approved Skills into a conditional end-to-end Recipe.",
+          "matched_boundary": "multi-Skill conditional lifecycle Recipe",
+          "reason": "The request concerns composing multiple approved Skills into a conditional end-to-end Recipe, which belongs to workflow-orchestration-and-lifecycle rather than atomic Skill authoring.",
+          "run_id": "run-0706"
+        },
+        {
+          "actual_decision": "accept",
+          "case_id": "V2-P6-workflow-skill-authoring-holdout-trigger-01",
+          "case_kind": "should-trigger",
+          "checks": {
+            "candidate_action_false": true,
+            "decision_exact": true,
+            "matched_boundary_present": true,
+            "objective_grade_passed": true,
+            "reason_present": true,
+            "run_completed_and_parsed": true,
+            "tools_denied": true,
+            "would_execute_false": true
+          },
+          "evidence_path": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0704",
+          "expected_decision": "accept",
+          "input": "Author one candidate Skill from this frozen capability contract and fixture, then run its local schema and routing tests without publication.",
+          "matched_boundary": "author and locally validate one atomic workflow Skill candidate",
+          "reason": "The request exactly matches authoring and locally validating one atomic workflow Skill from a frozen capability contract and fixture without publication.",
+          "run_id": "run-0704"
+        }
+      ],
+      "domain_id": "domain:tool-runtime-and-artifact-support",
+      "mutation_scope": "authorized-workspace",
+      "permission_identity": "workspace-write-local-exec",
+      "phase": 6,
+      "review_basis": "Both unseen ownership and adjacent-boundary outputs were checked against frozen expectations, semantic reasons, action denial, tool denial, and run evidence.",
+      "reviewed_output_count": 2,
+      "revision_required": false,
+      "skill_id": "workflow-skill-authoring",
+      "stage_id": "stage:15-tool-runtime-support",
+      "verdict": "accepted"
+    }
+  ],
+  "reviewed_output_count": 108,
+  "schema_version": "2.0",
+  "skill_count": 54,
+  "verdict_counts": {
+    "accepted": 54
+  }
+}

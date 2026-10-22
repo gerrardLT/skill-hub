@@ -1,0 +1,98 @@
+{
+  "artifact_types": [
+    "remote push receipt",
+    "source and destination ref identity",
+    "before and after remote SHA",
+    "failure and pull-request handoff",
+    "pull-request create or update receipt",
+    "PR identity and URL",
+    "base, head, and metadata evidence",
+    "failure and readiness handoff",
+    "pull-request merge receipt",
+    "resulting merge commit identity",
+    "fresh readiness and provider evidence",
+    "failure and separate deployment handoff"
+  ],
+  "capability_id": "capability:git-remote-delivery",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-git-push",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Push authorization covers one exact non-force refspec and expected remote state; it does not authorize force, deletion, tags, other refs, PR changes, merge, or deploy.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "PR-change authorization covers one exact create or update and cannot push, edit source, respond to unrelated comments, enable auto-merge, merge, or deploy.",
+    "Merge authorization is one-shot for one PR at one exact head SHA after a fresh gate; it never authorizes deployment or any action after readiness drift."
+  ],
+  "id": "git-remote-delivery",
+  "inputs": [
+    "Verified source ref, approved remote and target ref, current authorization, credential boundary, and redaction result.",
+    "Verified remote refs, approved base, title and body artifacts, redaction result, provider, and current authorization.",
+    "Pull request identity, fresh CI and review evidence, mergeability, approved method, current authorization, and rollback plan."
+  ],
+  "mode_permissions": {
+    "remote-git-push": "remote-write-authorized-only",
+    "remote-pull-request-change": "remote-write-authorized-only",
+    "remote-pull-request-merge": "remote-write-authorized-only"
+  },
+  "modes": [
+    "remote-git-push",
+    "remote-pull-request-change",
+    "remote-pull-request-merge"
+  ],
+  "outputs": [
+    "remote push receipt",
+    "source and destination ref identity",
+    "before and after remote SHA",
+    "failure and pull-request handoff",
+    "pull-request create or update receipt",
+    "PR identity and URL",
+    "base, head, and metadata evidence",
+    "failure and readiness handoff",
+    "pull-request merge receipt",
+    "resulting merge commit identity",
+    "fresh readiness and provider evidence",
+    "failure and separate deployment handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "exact-refspec",
+      "non-force",
+      "expected-remote-SHA",
+      "per-action-authorization",
+      "push-receipt",
+      "no-PR-action"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Consolidated capability covering 3 related modes: Push one verified local branch to one approved remote ref without force under fresh per-action authorization and exact lease expectations.; Create or update one pull or merge request from one verified pushed ref after redaction and per-action authorization, without merge or deployment.; Merge one identified pull request with one allowed repository method after a fresh passing readiness gate and explicit per-action authorization, without deployment.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

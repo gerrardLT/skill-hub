@@ -1,0 +1,115 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [test-driven-development/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [test-driven-development/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [test-driven-development/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [test-driven-development/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Write the test first. Watch it fail. Write minimal code to pass. [test-driven-development/SKILL.md:10]",
+    "Write code before the test? Delete it. Start over. [test-driven-development/SKILL.md:37]",
+    "Delete means delete [test-driven-development/SKILL.md:43]",
+    "Remove duplication [test-driven-development/SKILL.md:188]",
+    "Delete and rewrite with TDD (X more hours, high confidence) [test-driven-development/SKILL.md:231]",
+    "\"Keep as reference, write tests first\" You'll adapt it. That's testing after. Delete means delete. [test-driven-development/SKILL.md:265]",
+    "All of these mean: Delete code. Start over with TDD. [test-driven-development/SKILL.md:288]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Use when implementing any feature or bugfix, before writing implementation code [test-driven-development/SKILL.md:3]",
+  "root_id": "skill-root:test-driven-development",
+  "rules_gates": [
+    "description: Use when implementing any feature or bugfix, before writing implementation code [test-driven-development/SKILL.md:3]",
+    "Core principle: If you didn't watch the test fail, you don't know if it tests the right thing. [test-driven-development/SKILL.md:12]",
+    "Always [test-driven-development/SKILL.md:18]",
+    "Write code before the test? Delete it. Start over. [test-driven-development/SKILL.md:37]",
+    "Don't keep it as \"reference\" [test-driven-development/SKILL.md:40]",
+    "Don't \"adapt\" it while writing tests [test-driven-development/SKILL.md:41]",
+    "Don't look at it [test-driven-development/SKILL.md:42]",
+    "verifyred [label=\"Verify fails\\ncorrectly\", shape=diamond]; [test-driven-development/SKILL.md:53]"
+  ],
+  "skill_path": "test-driven-development/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "test-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "test-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 8,
+      "line_start": 8,
+      "path": "test-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "test-driven-development/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "test-driven-development/SKILL.md"
+    }
+  ],
+  "source_sha256": "7dee67b4af6bdccc7a914ca34533184d64592d0f5b23aeae631538168db14994",
+  "stop_conditions": [
+    "Write the test first. Watch it fail. Write minimal code to pass. [test-driven-development/SKILL.md:10]",
+    "Core principle: If you didn't watch the test fail, you don't know if it tests the right thing. [test-driven-development/SKILL.md:12]",
+    "Thinking \"skip TDD just this once\"? Stop. That's rationalization. [test-driven-development/SKILL.md:29]",
+    "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST [test-driven-development/SKILL.md:34]",
+    "red [label=\"RED\\nWrite failing test\", shape=box, style=filled, fillcolor=\"ffcccc\"]; [test-driven-development/SKILL.md:52]",
+    "verifyred [label=\"Verify fails\\ncorrectly\", shape=diamond]; [test-driven-development/SKILL.md:53]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7dee67b4af6bdccc7a914ca34533184d64592d0f5b23aeae631538168db14994",
+        "content-review:372-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "test-driven-development/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bde453bc258f06543987477c837939afaa774ea2acbd9f308d702fc452bc4283",
+        "content-review:300-lines"
+      ],
+      "path": "test-driven-development/testing-anti-patterns.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Use when implementing any feature or bugfix, before writing implementation code [test-driven-development/SKILL.md:3]",
+  "unique_methods": [
+    "Test-Driven Development (TDD) [test-driven-development/SKILL.md:6]",
+    "When to Use [test-driven-development/SKILL.md:16]",
+    "The Iron Law [test-driven-development/SKILL.md:31]",
+    "Red-Green-Refactor [test-driven-development/SKILL.md:47]",
+    "RED - Write Failing Test [test-driven-development/SKILL.md:71]",
+    "Verify RED - Watch It Fail [test-driven-development/SKILL.md:113]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [test-driven-development/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [test-driven-development/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Test-Driven Development (TDD) [test-driven-development/SKILL.md:6]",
+    "Overview [test-driven-development/SKILL.md:8]",
+    "When to Use [test-driven-development/SKILL.md:16]",
+    "The Iron Law [test-driven-development/SKILL.md:31]",
+    "Red-Green-Refactor [test-driven-development/SKILL.md:47]",
+    "RED - Write Failing Test [test-driven-development/SKILL.md:71]"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "repeated-fixture-repair-failure-requires-reconstruction",
+  "candidate_changed": false,
+  "attempts_preserved": [1, 2, 3, 4, 5],
+  "root_cause": "Local rubric patches repeatedly leave ambiguous source semantics elsewhere in the generated task. The complete evidence model must be reconstructed, not patched clause by clause.",
+  "next_action": "Create a separately versioned pair with explicit desired Deployment/Ingress/PDB manifests, explicit observed live state, exact authorization scope including artifact/env/window, and separately defined rollback coverage. Keep all original/revised failures. Review fully before freeze. No candidate change, threshold change, or model switch is justified by fixture defects.",
+  "review_evidence": "evals/runs/capability-compiler-v2/optimization-1.1.0/supplement-review/kubernetes-application-deployment/attempt-5/review.json",
+  "acceptance": "No Kubernetes supplement accepted yet; do not count it toward 154-Skill fresh coverage."
+}

@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "rollback execution receipt",
+    "before and after release identity",
+    "health and recovery evidence",
+    "partial-failure and incident handoff"
+  ],
+  "capability_id": "capability:release-rollback-execution",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-release-rollback",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Rollback requires a named exact recovery target, met predeclared condition, current evidence, migration compatibility, bounded blast radius, health verification, and fresh per-action authorization; observation alone cannot execute it.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "release-rollback-execution",
+  "inputs": [
+    "A deployed change, health evidence, provider state, and rollback authorization."
+  ],
+  "outputs": [
+    "rollback execution receipt",
+    "before and after release identity",
+    "health and recovery evidence",
+    "partial-failure and incident handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "exact-recovery-target",
+      "rollback-condition",
+      "current-evidence",
+      "migration-compatibility",
+      "blast-radius",
+      "health-verification",
+      "rollback-receipt"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Execute one exact approved release rollback when current post-deploy evidence meets a predeclared rollback condition, with bounded blast radius and recovery verification.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

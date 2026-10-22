@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "versioned canary baseline artifacts",
+    "capture provenance manifest",
+    "threshold and masking policy",
+    "supersession and deletion record"
+  ],
+  "capability_id": "capability:canary-baseline-management",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-artifact-write",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "A canary baseline is an immutable evidence artifact for explicit pages and states; replacing it requires approval and preserves the prior version, reason, and comparison continuity.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "canary-baseline-management",
+  "inputs": [
+    "Approved URL and pages, external read authority, artifact directory, prior baseline, and baseline-write decision."
+  ],
+  "outputs": [
+    "versioned canary baseline artifacts",
+    "capture provenance manifest",
+    "threshold and masking policy",
+    "supersession and deletion record"
+  ],
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "policy": {
+    "coverage": [
+      "allowlisted-pages",
+      "immutable-baseline",
+      "capture-provenance",
+      "masking",
+      "thresholds",
+      "supersession"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Create or update immutable local canary baseline evidence only for explicitly selected production pages, without application or provider mutation.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

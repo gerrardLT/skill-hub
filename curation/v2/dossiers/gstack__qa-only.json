@@ -1,0 +1,155 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/qa-only/SKILL.md:59]",
+    "Skill Invocation During Plan Mode [gstack/qa-only/SKILL.md:63]",
+    "Model-Specific Behavioral Patch (claude) [gstack/qa-only/SKILL.md:195]",
+    "Continuous Checkpoint Mode [gstack/qa-only/SKILL.md:295]",
+    "Modes [gstack/qa-only/SKILL.md:592]",
+    "Diff-aware (automatic when on a feature branch with no URL) [gstack/qa-only/SKILL.md:594]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/qa-only/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/qa-only/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/qa-only/SKILL.md:5]",
+  "outputs": [
+    "Write the report to both local and project-scoped locations [gstack/qa-only/SKILL.md:914]",
+    "Local: .gstack/qa-reports/qa-report-{domain}-{YYYY-MM-DD}.md [gstack/qa-only/SKILL.md:916]",
+    "Project-scoped: Write test outcome artifact for cross-session context [gstack/qa-only/SKILL.md:918]",
+    "Write to ~/.gstack/projects/{slug}/{user}-{branch}-test-outcome-{datetime}.md [gstack/qa-only/SKILL.md:922]",
+    "Output Structure [gstack/qa-only/SKILL.md:924]",
+    ".gstack/qa-reports/ [gstack/qa-only/SKILL.md:927]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/qa-only/SKILL.md:37]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/qa-only/SKILL.md:42]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/qa-only/SKILL.md:61]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/qa-only/SKILL.md:80]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/qa-only/SKILL.md:104]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/qa-only/SKILL.md:175]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/qa-only/SKILL.md:299]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/qa-only/SKILL.md:422]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "SKILL.md body is byte-identical in the V2 coverage ledger.",
+      "evidence": [
+        "curation/v2/coverage.json:duplicate_skill_body_groups",
+        "sha256:b7b313f0e1e9485911cef82c95983b8f2031f6a5872fd1693596f40f8e92515d"
+      ],
+      "target": "skill-root:qa-only",
+      "type": "duplicate"
+    },
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/qa-only/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Report-only QA testing. [gstack/qa-only/SKILL.md:5]",
+  "root_id": "skill-root:gstack/qa-only",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/qa-only/SKILL.md:17]",
+    "structured report with health score, screenshots, and repro steps — but never [gstack/qa-only/SKILL.md:24]",
+    "\"test but don't fix\". For the full test-fix-verify loop, use /qa instead. [gstack/qa-only/SKILL.md:26]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/qa-only/SKILL.md:43]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/qa-only/SKILL.md:44]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/qa-only/SKILL.md:45]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/qa-only/SKILL.md:52]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/qa-only/SKILL.md:53]"
+  ],
+  "skill_path": "gstack/qa-only/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/qa-only/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "gstack/qa-only/SKILL.md"
+    },
+    {
+      "line_end": 31,
+      "line_start": 31,
+      "path": "gstack/qa-only/SKILL.md"
+    },
+    {
+      "line_end": 59,
+      "line_start": 59,
+      "path": "gstack/qa-only/SKILL.md"
+    },
+    {
+      "line_end": 63,
+      "line_start": 63,
+      "path": "gstack/qa-only/SKILL.md"
+    }
+  ],
+  "source_sha256": "b7b313f0e1e9485911cef82c95983b8f2031f6a5872fd1693596f40f8e92515d",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/qa-only/SKILL.md:77]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/qa-only/SKILL.md:78]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/qa-only/SKILL.md:79]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/qa-only/SKILL.md:80]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/qa-only/SKILL.md:82]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/qa-only/SKILL.md:86]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b7b313f0e1e9485911cef82c95983b8f2031f6a5872fd1693596f40f8e92515d",
+        "content-review:971-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-engineering.md"
+      ],
+      "path": "gstack/qa-only/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:41e1833ac95badf4bceae440bf88036cfeb43e24c730874e5d07ad4a5471c104",
+        "content-review:118-lines"
+      ],
+      "path": "gstack/qa-only/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/qa-only/SKILL.md:1-16]",
+    "Declared tool: Read [gstack/qa-only/SKILL.md:1-16]",
+    "Declared tool: Write [gstack/qa-only/SKILL.md:1-16]",
+    "Declared tool: AskUserQuestion [gstack/qa-only/SKILL.md:1-16]",
+    "Declared tool: WebSearch [gstack/qa-only/SKILL.md:1-16]"
+  ],
+  "trigger": "Report-only QA testing. (gstack) [gstack/qa-only/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/qa-only/SKILL.md:143]",
+    "Self-check before emitting [gstack/qa-only/SKILL.md:166]",
+    "Context Recovery [gstack/qa-only/SKILL.md:234]",
+    "Completeness Principle — Boil the Ocean [gstack/qa-only/SKILL.md:281]",
+    "Confusion Protocol [gstack/qa-only/SKILL.md:287]",
+    "Claimed Limitations Need Evidence [gstack/qa-only/SKILL.md:291]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/qa-only/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/qa-only/SKILL.md:295]",
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/qa-only/SKILL.md:449]",
+    "Translate the Aside scripts step by step [gstack/qa-only/SKILL.md:500]",
+    "Workflow [gstack/qa-only/SKILL.md:658]",
+    "Phase 1: Initialize [gstack/qa-only/SKILL.md:660]",
+    "Phase 2: Authenticate (if needed) [gstack/qa-only/SKILL.md:667]",
+    "Phase 3: Orient [gstack/qa-only/SKILL.md:677]",
+    "Phase 4: Explore [gstack/qa-only/SKILL.md:722]",
+    "Phase 5: Document [gstack/qa-only/SKILL.md:750]",
+    "Phase 6: Wrap Up [gstack/qa-only/SKILL.md:801]"
+  ]
+}

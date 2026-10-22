@@ -1,0 +1,88 @@
+{
+  "execution_state": "not-run-phase-10-revision-2",
+  "mutations": [
+    {
+      "expected_gate": "mandatory-handoff-completeness",
+      "id": "V2-P8-MUT-handoff",
+      "operation": "remove V2-HANDOFF-006",
+      "target": "full-software-lifecycle"
+    },
+    {
+      "expected_gate": "conditional-step-only",
+      "id": "V2-P8-MUT-always-on",
+      "operation": "mark independent-code-review always-on",
+      "target": "stage-08-verification-quality"
+    },
+    {
+      "expected_gate": "permission-preservation",
+      "id": "V2-P8-MUT-review-write",
+      "operation": "widen independent-code-review to authorized-workspace",
+      "target": "stage-08-verification-quality"
+    },
+    {
+      "expected_gate": "protected-action-disabled",
+      "id": "V2-P8-MUT-remote-activation",
+      "operation": "activate remote-git-push without current authorization",
+      "target": "stage-11-deployment-change"
+    },
+    {
+      "expected_gate": "human-checkpoint-completeness",
+      "id": "V2-P8-MUT-human-checkpoint",
+      "operation": "remove release-readiness human checkpoint",
+      "target": "verified-change-delivery-and-observation"
+    },
+    {
+      "expected_gate": "handoff-invalidation",
+      "id": "V2-P8-MUT-invalidation",
+      "operation": "remove source capability re-runs invalidation",
+      "target": "full-software-lifecycle"
+    }
+  ],
+  "recipe_case_ids": [
+    "V2-P8-RECIPE-optional-ai",
+    "V2-P8-RECIPE-support-insert",
+    "V2-P8-RECIPE-invalidation",
+    "V2-P8-RECIPE-review-repair",
+    "V2-P8-RECIPE-observe-rollback",
+    "V2-P8-RECIPE-remote-stop",
+    "V2-P8-RECIPE-resume",
+    "V2-P8-RECIPE-handoff"
+  ],
+  "recipe_holdout_ids": [
+    "V2-P8-RECIPE-HOLDOUT-skip-ui",
+    "V2-P8-RECIPE-HOLDOUT-stage15",
+    "V2-P8-RECIPE-HOLDOUT-stale",
+    "V2-P8-RECIPE-HOLDOUT-merge-deploy",
+    "V2-P8-RECIPE-HOLDOUT-canary",
+    "V2-P8-RECIPE-HOLDOUT-learning"
+  ],
+  "router_case_ids": [
+    "V2-P8-ROUTER-atomic-root-cause",
+    "V2-P8-ROUTER-stage-verification",
+    "V2-P8-ROUTER-specialized-ui",
+    "V2-P8-ROUTER-composite-product",
+    "V2-P8-ROUTER-composite-feature",
+    "V2-P8-ROUTER-composite-delivery",
+    "V2-P8-ROUTER-composite-incident",
+    "V2-P8-ROUTER-full-explicit",
+    "V2-P8-ROUTER-fallback-ambiguous",
+    "V2-P8-ROUTER-block-data",
+    "V2-P8-ROUTER-split-review-repair",
+    "V2-P8-ROUTER-split-observe-rollback",
+    "V2-P8-ROUTER-remote-stop",
+    "V2-P8-ROUTER-support"
+  ],
+  "router_holdout_ids": [
+    "V2-P8-HOLDOUT-atomic",
+    "V2-P8-HOLDOUT-stage",
+    "V2-P8-HOLDOUT-ui",
+    "V2-P8-HOLDOUT-delivery",
+    "V2-P8-HOLDOUT-ambiguous",
+    "V2-P8-HOLDOUT-remote",
+    "V2-P8-HOLDOUT-review-repair",
+    "V2-P8-HOLDOUT-tool"
+  ],
+  "schema_version": "2.0",
+  "status": "planned",
+  "version": "0.1.1-v2-candidate"
+}

@@ -1,0 +1,53 @@
+{
+  "artifact_types": [
+    "intake register",
+    "routing decision",
+    "missing-input list",
+    "authority boundary"
+  ],
+  "capability_id": "capability:context-intake-and-routing",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Never manufacture domain analysis merely to justify a route; route only from supplied evidence and declared scope.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "context-intake-and-routing",
+  "inputs": [
+    "A request, existing artifacts, project context, and known constraints."
+  ],
+  "outputs": [
+    "intake register",
+    "routing decision",
+    "missing-input list",
+    "authority boundary"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Classify a request, authority, evidence state, lifecycle stage, and next atomic capability without doing downstream work.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

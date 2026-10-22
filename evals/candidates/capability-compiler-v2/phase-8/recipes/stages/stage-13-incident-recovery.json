@@ -1,0 +1,334 @@
+{
+  "condition": "production failure requires investigation, coordination, or one separately authorized recovery action",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:deployment-observation-and-recovery",
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "V2-DEPENDENCY-0046",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:deployment-observation-and-recovery",
+      "legacy_target_cluster_id": "cluster:incident-response-coordination",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:deployment-observation",
+      "target_capability_id": "capability:incident-response-coordination"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:deployment-observation-and-recovery",
+        "curation/clusters.json:cluster:release-rollback-execution"
+      ],
+      "id": "V2-DEPENDENCY-0048",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:deployment-observation-and-recovery",
+      "legacy_target_cluster_id": "cluster:release-rollback-execution",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:deployment-observation",
+      "target_capability_id": "capability:release-rollback-execution"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:production-canary-monitoring",
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "V2-DEPENDENCY-0112",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:production-canary-monitoring",
+      "legacy_target_cluster_id": "cluster:incident-response-coordination",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:production-canary-monitoring",
+      "target_capability_id": "capability:incident-response-coordination"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:release-rollback-execution",
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "V2-DEPENDENCY-0116",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:release-rollback-execution",
+      "legacy_target_cluster_id": "cluster:incident-response-coordination",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:release-rollback-execution",
+      "target_capability_id": "capability:incident-response-coordination"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation",
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "V2-DEPENDENCY-0130",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:root-cause-investigation",
+      "legacy_target_cluster_id": "cluster:incident-response-coordination",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:root-cause-investigation",
+      "target_capability_id": "capability:incident-response-coordination"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "agent-observability-eval-pipeline/SKILL.md:207-246",
+        "agent-observability-eval-pipeline/SKILL.md:280-298"
+      ],
+      "id": "V2-DEPENDENCY-0218",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Root-cause analysis consumes classified production traces.",
+      "source_capability_id": "capability:production-trace-classification",
+      "target_capability_id": "capability:production-llm-trace-root-cause-analysis"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:32-33",
+        "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:121-143"
+      ],
+      "id": "V2-DEPENDENCY-0247",
+      "kind": "optional",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Provider troubleshooting may consume separately authorized CLI authentication.",
+      "source_capability_id": "capability:provider-cli-authentication-setup",
+      "target_capability_id": "capability:apm-instrumentation-troubleshooting"
+    }
+  ],
+  "description": "Investigate production failures, coordinate incidents, and execute rollback or recovery.",
+  "execution_state": "not-run-phase-9",
+  "exit_contract": "recovery evidence, closure recommendation, and immutable incident record",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human authorizes mitigation or rollback actions and owns incident closure",
+  "id": "stage-13-incident-recovery",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:13-incident-recovery",
+  "stage_order": 13,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/apm-instrumentation-troubleshooting",
+      "condition": "Select only when the atomic requested outcome matches: Diagnose missing, duplicate, malformed, or misidentified APM signals from read-only platform evidence and route fixes to authorized enablement or installation owners.",
+      "contract_sha256": "0b818c208156b0e2458628285f76b8be60a595230b5927763178664d5d71ed7a",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0247"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Troubleshooting is read-only: it cannot install agents, change sampling or tags, restart services, remap identity, or claim a fix from diagnosis alone.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "apm-instrumentation-troubleshooting",
+      "inputs": [
+        "Failed verification evidence, platform variant, service configuration, logs, and authority boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "APM troubleshooting evidence",
+        "hypothesis and root-cause analysis",
+        "signal-path diagnosis",
+        "authorized fix and verification handoff"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "apm-instrumentation-troubleshooting@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/error-monitoring-issue-investigation",
+      "condition": "Select only when the atomic requested outcome matches: Investigate one error-monitoring issue from read-only event evidence to an evidence-bounded root-cause hypothesis and repair recommendation without provider or source mutation.",
+      "contract_sha256": "9279d606fb16b4bf05cf15b82e9acffee249d98db4235c809feb3120ca59f181",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Issue investigation is read-only: it cannot resolve, mute, assign, comment, change grouping, edit source, or treat one stack trace as proven root cause.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "error-monitoring-issue-investigation",
+      "inputs": [
+        "Issue identity, event context, release, environment, source access, and authority boundary."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "error issue evidence bundle",
+        "hypothesis and root-cause analysis",
+        "release and impact correlation",
+        "bounded repair or instrumentation recommendation"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "error-monitoring-issue-investigation@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/incident-response-coordination",
+      "condition": "Select only when the atomic requested outcome matches: Coordinate an active incident's severity, roles, timeline, hypotheses, mitigation options, communications, recovery criteria, and closure recommendation from read-only evidence without executing provider actions.",
+      "contract_sha256": "d8992af1896cd2d986f1caed0183546298beddba60f446a2fb69bfcc97323250",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0046",
+        "V2-DEPENDENCY-0112",
+        "V2-DEPENDENCY-0116",
+        "V2-DEPENDENCY-0130"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Coordination under external-read authority cannot acknowledge, silence, assign, comment, change traffic, scale, restart, deploy, rollback, remediate, or close provider incidents; every action routes to a separately authorized owner.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "incident-response-coordination",
+      "inputs": [
+        "An active production anomaly, impact evidence, alerts, and available mitigation controls."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "incident coordination record",
+        "roles, timeline, fact, hypothesis, and decision log",
+        "mitigation and specialist action handoffs",
+        "recovery evidence and closure recommendation"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "incident-response-coordination@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/production-llm-trace-root-cause-analysis",
+      "condition": "Select only when the atomic requested outcome matches: Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation.",
+      "contract_sha256": "6e2bf5a5edf000cffd32128d880e5cf366436eef86407ee7af6627d8567128a6",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0218"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Production LLM root cause requires governed trace provenance, versioned components, successful comparison cases, competing hypotheses, and a first divergent invariant; one bad output or model label is insufficient.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "production-llm-trace-root-cause-analysis",
+      "inputs": [
+        "Authorized trace data, incident scope, time window, privacy boundary, and service context."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "LLM trace root-cause evidence",
+        "competing hypothesis ledger",
+        "first-divergent-stage analysis",
+        "bounded remediation and owner handoff"
+      ],
+      "permission_identity": "external-read",
+      "remote_write": false,
+      "skill_ref": "production-llm-trace-root-cause-analysis@0.1.0-v2-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/phase-7/skills/release-rollback-execution",
+      "condition": "Select only when the atomic requested outcome matches: Execute one exact approved release rollback when current post-deploy evidence meets a predeclared rollback condition, with bounded blast radius and recovery verification.",
+      "contract_sha256": "b5e2518620dc292c9cb90225ddbb2a1afc7ef02af787aee03a5561164625206c",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0048"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Rollback requires a named exact recovery target, met predeclared condition, current evidence, migration compatibility, bounded blast radius, health verification, and fresh per-action authorization; observation alone cannot execute it.",
+        "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+      ],
+      "id": "release-rollback-execution",
+      "inputs": [
+        "A deployed change, health evidence, provider state, and rollback authorization."
+      ],
+      "mutation_scope": "remote-release-rollback",
+      "outputs": [
+        "rollback execution receipt",
+        "before and after release identity",
+        "health and recovery evidence",
+        "partial-failure and incident handoff"
+      ],
+      "permission_identity": "remote-write-authorized-only",
+      "remote_write": true,
+      "skill_ref": "release-rollback-execution@0.1.0-v2-candidate"
+    }
+  ],
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,828 @@
+{
+  "candidate_responsibility": "Independently compare specifications and diffs for correctness, security, performance, architecture, tests, and maintainability.",
+  "canonical_unit_ids": [
+    "cr-desc-review-lens-overview",
+    "cr-method-usage-invocation",
+    "cr-rule-standalone-capabilities",
+    "cr-rule-tips-context-focus",
+    "cr-template-correctness-checklist",
+    "cr-template-maintainability-checklist",
+    "cr-template-performance-checklist",
+    "cr-template-report-format",
+    "cr-template-security-checklist",
+    "requesting-code-review:unit-001",
+    "requesting-code-review:unit-002",
+    "requesting-code-review:unit-003",
+    "requesting-code-review:unit-004",
+    "requesting-code-review:unit-005",
+    "requesting-code-review:unit-006",
+    "requesting-code-review:unit-007",
+    "requesting-code-review:unit-008",
+    "requesting-code-review:unit-009",
+    "requesting-code-review:unit-010",
+    "requesting-code-review:unit-011",
+    "requesting-code-review:unit-012",
+    "requesting-code-review:unit-013",
+    "requesting-code-review:unit-014",
+    "requesting-code-review:unit-015",
+    "requesting-code-review:unit-016",
+    "requesting-code-review:unit-017",
+    "requesting-code-review:unit-018",
+    "requesting-code-review:unit-019",
+    "requesting-code-review:unit-020",
+    "subagent-driven-development:unit-017",
+    "subagent-driven-development:unit-018",
+    "subagent-driven-development:unit-019",
+    "subagent-driven-development:unit-020"
+  ],
+  "cluster_id": "cluster:independent-code-review",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "code-review/SKILL.md:11-11",
+    "code-review/SKILL.md:116-118",
+    "code-review/SKILL.md:16-21",
+    "code-review/SKILL.md:29-35",
+    "code-review/SKILL.md:46-53",
+    "code-review/SKILL.md:54-61",
+    "code-review/SKILL.md:62-68",
+    "code-review/SKILL.md:69-75",
+    "code-review/SKILL.md:78-99",
+    "requesting-code-review/SKILL.md:1-10",
+    "requesting-code-review/SKILL.md:1-5",
+    "requesting-code-review/SKILL.md:12-23",
+    "requesting-code-review/SKILL.md:26-30",
+    "requesting-code-review/SKILL.md:32-41",
+    "requesting-code-review/SKILL.md:42-47",
+    "requesting-code-review/SKILL.md:48-73",
+    "requesting-code-review/SKILL.md:75-89",
+    "requesting-code-review/SKILL.md:90-103",
+    "requesting-code-review/code-reviewer.md:1-13",
+    "requesting-code-review/code-reviewer.md:107-122",
+    "requesting-code-review/code-reviewer.md:124-131",
+    "requesting-code-review/code-reviewer.md:133-168",
+    "requesting-code-review/code-reviewer.md:15-32",
+    "requesting-code-review/code-reviewer.md:34-39",
+    "requesting-code-review/code-reviewer.md:40-46",
+    "requesting-code-review/code-reviewer.md:47-52",
+    "requesting-code-review/code-reviewer.md:53-58",
+    "requesting-code-review/code-reviewer.md:59-64",
+    "requesting-code-review/code-reviewer.md:65-75",
+    "requesting-code-review/code-reviewer.md:76-106",
+    "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+    "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+    "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+    "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "cluster:independent-code-review:fusion:boundary",
+      "rule": "Independently compare specifications and diffs for correctness, security, performance, architecture, tests, and maintainability."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "cluster:independent-code-review:fusion:inputs",
+      "rule": "Accept only: A specification, change description, and precise code-diff boundary."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-code-review"
+      ],
+      "id": "cluster:independent-code-review:fusion:outputs",
+      "rule": "Produce only: Prioritized findings with locations, rationale, remediation, and a merge verdict; no direct repair by default."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:independent-code-review:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A specification, change description, and precise code-diff boundary.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "code-review",
+        "subagent-driven-development"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "code-review",
+        "requesting-code-review",
+        "subagent-driven-development"
+      ]
+    }
+  ],
+  "output_boundary": "Prioritized findings with locations, rationale, remediation, and a merge verdict; no direct repair by default.",
+  "retained_auxiliary_unit_ids": [
+    "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "以安全性、性能表现、逻辑正确性与可维护性四大结构化视角对代码变更展开全面审查。; 调用规范：支持传入PR URL或文件路径，若未提供具体文件或URL则主动向用户询问待审查目标。; 单机独立审查模式基础能力：支持粘贴diff/PR URL/文件路径，涵盖OWASP安全、性能泄漏与复杂度、边界与异常正确性、代码规范并给出带代码示例的可执行建议。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:29-35",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Explicit limits: 适用于任何拉取请求（PR）、diff补丁或独立源码文件的审查任务。; 初始化审查时的入参解析与缺省交互协议。; 在无任何外部连接器集成的默认环境下始终稳定可用。",
+      "source_id": "code-review",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (method=2, rule=2, template=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "cr-desc-review-lens-overview",
+        "cr-method-usage-invocation",
+        "cr-rule-standalone-capabilities",
+        "cr-rule-tips-context-focus",
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist"
+      ]
+    },
+    {
+      "approach": "以安全性、性能表现、逻辑正确性与可维护性四大结构化视角对代码变更展开全面审查。; 调用规范：支持传入PR URL或文件路径，若未提供具体文件或URL则主动向用户询问待审查目标。; 正确性审查清单：极端边界情况（空输入、null、溢出）、竞态条件与并发问题、错误处理与传播链、差一错误（off-by-one）以及类型安全。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Explicit limits: 适用于任何拉取请求（PR）、diff补丁或独立源码文件的审查任务。; 初始化审查时的入参解析与缺省交互协议。; 确保业务逻辑严密性与运行期鲁棒性的审查标准。",
+      "source_id": "code-review",
+      "strengths": "Provides 7 source-grounded atom(s) for method (method=2, template=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "cr-desc-review-lens-overview",
+        "cr-method-usage-invocation",
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist"
+      ]
+    },
+    {
+      "approach": "适用于任何拉取请求（PR）、diff补丁或独立源码文件的审查任务。; 初始化审查时的入参解析与缺省交互协议。; 在无任何外部连接器集成的默认环境下始终稳定可用。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:29-35",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Explicit limits: 适用于任何拉取请求（PR）、diff补丁或独立源码文件的审查任务。; 初始化审查时的入参解析与缺省交互协议。; 在无任何外部连接器集成的默认环境下始终稳定可用。",
+      "source_id": "code-review",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (method=2, rule=2, template=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "cr-desc-review-lens-overview",
+        "cr-method-usage-invocation",
+        "cr-rule-standalone-capabilities",
+        "cr-rule-tips-context-focus",
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist"
+      ]
+    },
+    {
+      "approach": "正确性审查清单：极端边界情况（空输入、null、溢出）、竞态条件与并发问题、错误处理与传播链、差一错误（off-by-one）以及类型安全。; 可维护性审查清单：命名清晰度、单一职责原则、代码重复度、测试覆盖率以及非直观逻辑的文档与注释。; 性能审查清单：N+1查询、不必要内存分配、热点路径O(n²)算法复杂度、缺失数据库索引、无界查询或循环、资源句柄泄漏。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Explicit limits: 确保业务逻辑严密性与运行期鲁棒性的审查标准。; 保障代码长期健康度与团队协作效率的审查标准。; 针对系统吞吐、内存及计算资源消耗的审查标准。",
+      "source_id": "code-review",
+      "strengths": "Provides 5 source-grounded atom(s) for inputs-and-outputs (template=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist"
+      ]
+    },
+    {
+      "approach": "纯本地无需外部依赖即可完成全套四维审查与示例生成。; 能够吸收背景上下文并针对性强化特定维度的审查深度。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:29-35"
+      ],
+      "limitations": "Explicit limits: 在无任何外部连接器集成的默认环境下始终稳定可用。; 提升AI代码审查针对性与深度的工程交互准则。",
+      "source_id": "code-review",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "cr-rule-standalone-capabilities",
+        "cr-rule-tips-context-focus"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:29-35",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "code-review",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:29-35",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "code-review",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "代码审查核心原则与上下文隔离契约：派发独立子智能体进行代码审查，审查员仅获取精心准备的代码差异与规格上下文，绝对不传入历史会话记录，以避免思维盲区并保护主会话上下文；坚持'早审查、勤审查'（Review early, review often）的核心原则。; 审查触发时机分级规范：强制场景包含子任务完成时、核心重大功能完成后、以及合并到 main 主干前；可选推荐场景包含任务陷入停滞时（获取新视角）、重大重构前（基准核验）以及复杂缺陷修复后。; Git 差异比对边界解析方法：通过执行 git rev-parse 获取准确的起始 BASE_SHA（如 HEAD~1 或 origin/main）与目标 HEAD_SHA（HEAD），作为审查的精确比对基准。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-10",
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:12-23",
+        "requesting-code-review/SKILL.md:26-30",
+        "requesting-code-review/SKILL.md:32-41",
+        "requesting-code-review/SKILL.md:42-47",
+        "requesting-code-review/SKILL.md:48-73",
+        "requesting-code-review/SKILL.md:75-89",
+        "requesting-code-review/SKILL.md:90-103",
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:107-122",
+        "requesting-code-review/code-reviewer.md:124-131",
+        "requesting-code-review/code-reviewer.md:133-168",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:34-39",
+        "requesting-code-review/code-reviewer.md:40-46",
+        "requesting-code-review/code-reviewer.md:47-52",
+        "requesting-code-review/code-reviewer.md:53-58",
+        "requesting-code-review/code-reviewer.md:59-64",
+        "requesting-code-review/code-reviewer.md:65-75",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "limitations": "Explicit limits: 在准备派发代码审查时作为首要架构约束执行，严禁向审查子智能体灌入历史聊天上下文。; 适用于任何阶段任务或代码分支的流转节点判定。; 在派发审查前在 Git 工作区中执行以确定比对范围。",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 21 source-grounded atom(s) for responsibility (example=2, gate=1, method=3, rule=10, template=3, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-001",
+        "requesting-code-review:unit-002",
+        "requesting-code-review:unit-003",
+        "requesting-code-review:unit-004",
+        "requesting-code-review:unit-005",
+        "requesting-code-review:unit-006",
+        "requesting-code-review:unit-007",
+        "requesting-code-review:unit-008",
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-011",
+        "requesting-code-review:unit-012",
+        "requesting-code-review:unit-013",
+        "requesting-code-review:unit-014",
+        "requesting-code-review:unit-015",
+        "requesting-code-review:unit-016",
+        "requesting-code-review:unit-017",
+        "requesting-code-review:unit-018",
+        "requesting-code-review:unit-019",
+        "requesting-code-review:unit-020",
+        "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+      ]
+    },
+    {
+      "approach": "Git 差异比对边界解析方法：通过执行 git rev-parse 获取准确的起始 BASE_SHA（如 HEAD~1 或 origin/main）与目标 HEAD_SHA（HEAD），作为审查的精确比对基准。; 子智能体派发与占位符填充协议：调用通用 Task 工具（general-purpose 类型），以 code-reviewer.md 模板为底座，填充 DESCRIPTION（实现摘要）、PLAN_OR_REQUIREMENTS（需求/计划规格）、BASE_SHA 与 HEAD_SHA 四个必要占位符。; 端到端审查执行会话范例：演示在完成 Task 2 后提取 Git SHA、派发审查子智能体、解析包含 Strengths、Important、Minor 与 Assessment 的审查报告、就地修复进度指示器缺陷并流转到 Task 3 的完整过程。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:26-30",
+        "requesting-code-review/SKILL.md:32-41",
+        "requesting-code-review/SKILL.md:48-73",
+        "requesting-code-review/SKILL.md:75-89",
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:133-168",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:65-75",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "limitations": "Explicit limits: 在派发审查前在 Git 工作区中执行以确定比对范围。; 在调用 Task 工具派发审查智能体时严格填充 4 项元数据。; 供智能体与开发者理解审查接入与缺陷闭环全生命周期的参考范式。",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 10 source-grounded atom(s) for method (example=2, method=3, template=3, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-003",
+        "requesting-code-review:unit-004",
+        "requesting-code-review:unit-006",
+        "requesting-code-review:unit-007",
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-016",
+        "requesting-code-review:unit-017",
+        "requesting-code-review:unit-020",
+        "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+      ]
+    },
+    {
+      "approach": "在准备派发代码审查时作为首要架构约束执行，严禁向审查子智能体灌入历史聊天上下文。; 适用于任何阶段任务或代码分支的流转节点判定。; 在派发审查前在 Git 工作区中执行以确定比对范围。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-10",
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:12-23",
+        "requesting-code-review/SKILL.md:26-30",
+        "requesting-code-review/SKILL.md:32-41",
+        "requesting-code-review/SKILL.md:42-47",
+        "requesting-code-review/SKILL.md:48-73",
+        "requesting-code-review/SKILL.md:75-89",
+        "requesting-code-review/SKILL.md:90-103",
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:107-122",
+        "requesting-code-review/code-reviewer.md:124-131",
+        "requesting-code-review/code-reviewer.md:133-168",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:34-39",
+        "requesting-code-review/code-reviewer.md:40-46",
+        "requesting-code-review/code-reviewer.md:47-52",
+        "requesting-code-review/code-reviewer.md:53-58",
+        "requesting-code-review/code-reviewer.md:59-64",
+        "requesting-code-review/code-reviewer.md:65-75",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "limitations": "Explicit limits: 在准备派发代码审查时作为首要架构约束执行，严禁向审查子智能体灌入历史聊天上下文。; 适用于任何阶段任务或代码分支的流转节点判定。; 在派发审查前在 Git 工作区中执行以确定比对范围。",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 21 source-grounded atom(s) for boundary-and-applicability (example=2, gate=1, method=3, rule=10, template=3, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-001",
+        "requesting-code-review:unit-002",
+        "requesting-code-review:unit-003",
+        "requesting-code-review:unit-004",
+        "requesting-code-review:unit-005",
+        "requesting-code-review:unit-006",
+        "requesting-code-review:unit-007",
+        "requesting-code-review:unit-008",
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-011",
+        "requesting-code-review:unit-012",
+        "requesting-code-review:unit-013",
+        "requesting-code-review:unit-014",
+        "requesting-code-review:unit-015",
+        "requesting-code-review:unit-016",
+        "requesting-code-review:unit-017",
+        "requesting-code-review:unit-018",
+        "requesting-code-review:unit-019",
+        "requesting-code-review:unit-020",
+        "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+      ]
+    },
+    {
+      "approach": "审查员人设与核心职责提示词模板：设定为资深代码审查员，精通软件架构、设计模式与最佳工程实践，核心职责是对照规划与质量标准对交付物进行客观审查并在问题蔓延前精准阻断。; 审查输入参数与差异比对命令模板：包含已实现内容说明 {DESCRIPTION}、需求计划规格 {PLAN_OR_REQUIREMENTS}，以及审查区间 {BASE_SHA}..{HEAD_SHA} 对应的 git diff --stat 与 git diff 检查指令。; 标准化审查输出格式协议：要求输出包括 Strengths（具体亮点）、Issues（分级为 Critical 必须修复、Important 应该修复、Minor 建议优化，每个问题包含 file:line、缺陷描述、原因与修复建议）、Recommendations（架构流程建议）、Assessment（是否允许合并及 1-2 句技术裁决）。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "limitations": "Explicit limits: 用于派发审查子智能体的提示词开头定义。; 审查子智能体加载任务元数据并执行代码差异分析的基础上下文。; 审查子智能体生成最终审查报告时必须遵循的输出格式模板。",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 3 source-grounded atom(s) for inputs-and-outputs (template=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-017"
+      ]
+    },
+    {
+      "approach": "核验是否明确审查员上下文隔离规范及 Review early, review often 核心原则。; 核验是否清晰定义强制审查节点（task/feature/merge）与可选审查时机（stuck/refactor/complex-bug）。; 核验是否具备 Critical 立即修、Important 推进前修、Minor 留存与合理抗辩的技术分流准则。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-10",
+        "requesting-code-review/SKILL.md:12-23",
+        "requesting-code-review/SKILL.md:42-47",
+        "requesting-code-review/SKILL.md:90-103",
+        "requesting-code-review/code-reviewer.md:107-122",
+        "requesting-code-review/code-reviewer.md:124-131",
+        "requesting-code-review/code-reviewer.md:34-39",
+        "requesting-code-review/code-reviewer.md:40-46",
+        "requesting-code-review/code-reviewer.md:47-52",
+        "requesting-code-review/code-reviewer.md:53-58",
+        "requesting-code-review/code-reviewer.md:59-64"
+      ],
+      "limitations": "Explicit limits: 在准备派发代码审查时作为首要架构约束执行，严禁向审查子智能体灌入历史聊天上下文。; 适用于任何阶段任务或代码分支的流转节点判定。; 在接收到审查子智能体的返回报告后执行的强制处置策略。",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 11 source-grounded atom(s) for gates-and-validation (gate=1, rule=10); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-001",
+        "requesting-code-review:unit-002",
+        "requesting-code-review:unit-005",
+        "requesting-code-review:unit-008",
+        "requesting-code-review:unit-011",
+        "requesting-code-review:unit-012",
+        "requesting-code-review:unit-013",
+        "requesting-code-review:unit-014",
+        "requesting-code-review:unit-015",
+        "requesting-code-review:unit-018",
+        "requesting-code-review:unit-019"
+      ]
+    },
+    {
+      "approach": "Git 差异比对边界解析方法：通过执行 git rev-parse 获取准确的起始 BASE_SHA（如 HEAD~1 或 origin/main）与目标 HEAD_SHA（HEAD），作为审查的精确比对基准。; 请求代码审查时机：完成任务、实现重大特性或合并前进行验证。用于确保工作满足要求并获得他人视角的反馈。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:26-30"
+      ],
+      "limitations": "Explicit limits: 在派发审查前在 Git 工作区中执行以确定比对范围。; 重大特性必须请求审查；小修可以放宽",
+      "source_id": "requesting-code-review",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "requesting-code-review:unit-003",
+        "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-10",
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:12-23",
+        "requesting-code-review/SKILL.md:26-30",
+        "requesting-code-review/SKILL.md:32-41",
+        "requesting-code-review/SKILL.md:42-47",
+        "requesting-code-review/SKILL.md:48-73",
+        "requesting-code-review/SKILL.md:75-89",
+        "requesting-code-review/SKILL.md:90-103",
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:107-122",
+        "requesting-code-review/code-reviewer.md:124-131",
+        "requesting-code-review/code-reviewer.md:133-168",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:34-39",
+        "requesting-code-review/code-reviewer.md:40-46",
+        "requesting-code-review/code-reviewer.md:47-52",
+        "requesting-code-review/code-reviewer.md:53-58",
+        "requesting-code-review/code-reviewer.md:59-64",
+        "requesting-code-review/code-reviewer.md:65-75",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "requesting-code-review",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "规格审查员提示词与零信任审计训诫：核心职责为核验实现内容是否严格符合需求（不多不少、不偏不倚）；核心警告为绝不信任实现者的汇报（可能因迅速完成而盲目乐观或存在偏差），审查员必须独立通读实际改动的源码，并与原始需求进行逐行对齐比对。; 规格三维核查项与判定报告标准：核验需求漏失（是否全部实现、有无跳步或未实现的虚假宣称）、无用过度开发（是否构建未要求功能、过度设计或添加非规格加分项）、理解偏差（是否偏离初衷或错误实现）；最终必须给出明确结论——全吻合出具'✅ Spec compliant'，存在问题出具'❌ Issues found'并附精准 file:line 引用。; 代码质量审查前置门禁与模板映射：核心职责为验证代码健壮、整洁、充分测试与可维护；强门禁规则：仅在规格审查完全通过（Spec compliant）后方可派发；调用 requesting-code-review/code-reviewer.md 模板并注入实现摘要、方案需求、BASE_SHA 与 HEAD_SHA。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "limitations": "Explicit limits: 派发第一阶段规格审查子智能体时的角色定义与审计立场。; 规格审查子智能体在判定代码是否符合规划时的硬性检查项与输出协议。; 启动第二阶段代码质量审查子智能体的先决条件与参数接口。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (gate=1, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-017",
+        "subagent-driven-development:unit-018",
+        "subagent-driven-development:unit-019",
+        "subagent-driven-development:unit-020"
+      ]
+    },
+    {
+      "approach": "规格审查员提示词与零信任审计训诫：核心职责为核验实现内容是否严格符合需求（不多不少、不偏不倚）；核心警告为绝不信任实现者的汇报（可能因迅速完成而盲目乐观或存在偏差），审查员必须独立通读实际改动的源码，并与原始需求进行逐行对齐比对。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36"
+      ],
+      "limitations": "Explicit limits: 派发第一阶段规格审查子智能体时的角色定义与审计立场。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for method (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-017"
+      ]
+    },
+    {
+      "approach": "派发第一阶段规格审查子智能体时的角色定义与审计立场。; 规格审查子智能体在判定代码是否符合规划时的硬性检查项与输出协议。; 启动第二阶段代码质量审查子智能体的先决条件与参数接口。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "limitations": "Explicit limits: 派发第一阶段规格审查子智能体时的角色定义与审计立场。; 规格审查子智能体在判定代码是否符合规划时的硬性检查项与输出协议。; 启动第二阶段代码质量审查子智能体的先决条件与参数接口。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (gate=1, rule=2, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-017",
+        "subagent-driven-development:unit-018",
+        "subagent-driven-development:unit-019",
+        "subagent-driven-development:unit-020"
+      ]
+    },
+    {
+      "approach": "规格审查员提示词与零信任审计训诫：核心职责为核验实现内容是否严格符合需求（不多不少、不偏不倚）；核心警告为绝不信任实现者的汇报（可能因迅速完成而盲目乐观或存在偏差），审查员必须独立通读实际改动的源码，并与原始需求进行逐行对齐比对。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36"
+      ],
+      "limitations": "Explicit limits: 派发第一阶段规格审查子智能体时的角色定义与审计立场。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-017"
+      ]
+    },
+    {
+      "approach": "核验是否包含漏项、过度、偏差三维核查以及带精准行号的裁决输出格式。; 核验是否确立规格通过方可派发的严格前置门禁及与 requesting-code-review 的接口映射。; 核验是否覆盖文件单一职责、独立可测解耦性、方案结构遵循度及文件膨胀增量审计四项要求。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "limitations": "Explicit limits: 规格审查子智能体在判定代码是否符合规划时的硬性检查项与输出协议。; 启动第二阶段代码质量审查子智能体的先决条件与参数接口。; 在多智能体协同场景下对单任务代码改动进行的架构防腐审计要求。",
+      "source_id": "subagent-driven-development",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (gate=1, rule=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "subagent-driven-development:unit-018",
+        "subagent-driven-development:unit-019",
+        "subagent-driven-development:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "subagent-driven-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 2,
+        "rule": 2,
+        "template": 5
+      },
+      "evidence": [
+        "code-review/SKILL.md:11-11",
+        "code-review/SKILL.md:116-118",
+        "code-review/SKILL.md:16-21",
+        "code-review/SKILL.md:29-35",
+        "code-review/SKILL.md:46-53",
+        "code-review/SKILL.md:54-61",
+        "code-review/SKILL.md:62-68",
+        "code-review/SKILL.md:69-75",
+        "code-review/SKILL.md:78-99"
+      ],
+      "source_id": "code-review",
+      "unit_ids": [
+        "cr-desc-review-lens-overview",
+        "cr-method-usage-invocation",
+        "cr-rule-standalone-capabilities",
+        "cr-rule-tips-context-focus",
+        "cr-template-correctness-checklist",
+        "cr-template-maintainability-checklist",
+        "cr-template-performance-checklist",
+        "cr-template-report-format",
+        "cr-template-security-checklist"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 2,
+        "gate": 1,
+        "method": 3,
+        "rule": 10,
+        "template": 3,
+        "tool-action": 2
+      },
+      "evidence": [
+        "requesting-code-review/SKILL.md:1-10",
+        "requesting-code-review/SKILL.md:1-5",
+        "requesting-code-review/SKILL.md:12-23",
+        "requesting-code-review/SKILL.md:26-30",
+        "requesting-code-review/SKILL.md:32-41",
+        "requesting-code-review/SKILL.md:42-47",
+        "requesting-code-review/SKILL.md:48-73",
+        "requesting-code-review/SKILL.md:75-89",
+        "requesting-code-review/SKILL.md:90-103",
+        "requesting-code-review/code-reviewer.md:1-13",
+        "requesting-code-review/code-reviewer.md:107-122",
+        "requesting-code-review/code-reviewer.md:124-131",
+        "requesting-code-review/code-reviewer.md:133-168",
+        "requesting-code-review/code-reviewer.md:15-32",
+        "requesting-code-review/code-reviewer.md:34-39",
+        "requesting-code-review/code-reviewer.md:40-46",
+        "requesting-code-review/code-reviewer.md:47-52",
+        "requesting-code-review/code-reviewer.md:53-58",
+        "requesting-code-review/code-reviewer.md:59-64",
+        "requesting-code-review/code-reviewer.md:65-75",
+        "requesting-code-review/code-reviewer.md:76-106"
+      ],
+      "source_id": "requesting-code-review",
+      "unit_ids": [
+        "requesting-code-review:unit-001",
+        "requesting-code-review:unit-002",
+        "requesting-code-review:unit-003",
+        "requesting-code-review:unit-004",
+        "requesting-code-review:unit-005",
+        "requesting-code-review:unit-006",
+        "requesting-code-review:unit-007",
+        "requesting-code-review:unit-008",
+        "requesting-code-review:unit-009",
+        "requesting-code-review:unit-010",
+        "requesting-code-review:unit-011",
+        "requesting-code-review:unit-012",
+        "requesting-code-review:unit-013",
+        "requesting-code-review:unit-014",
+        "requesting-code-review:unit-015",
+        "requesting-code-review:unit-016",
+        "requesting-code-review:unit-017",
+        "requesting-code-review:unit-018",
+        "requesting-code-review:unit-019",
+        "requesting-code-review:unit-020",
+        "skills/requesting-code-review/SKILL.md:summary:when-to-use"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "rule": 2,
+        "template": 1
+      },
+      "evidence": [
+        "subagent-driven-development/code-quality-reviewer-prompt.md:1-18",
+        "subagent-driven-development/code-quality-reviewer-prompt.md:19-25",
+        "subagent-driven-development/spec-reviewer-prompt.md:1-36",
+        "subagent-driven-development/spec-reviewer-prompt.md:37-61"
+      ],
+      "source_id": "subagent-driven-development",
+      "unit_ids": [
+        "subagent-driven-development:unit-017",
+        "subagent-driven-development:unit-018",
+        "subagent-driven-development:unit-019",
+        "subagent-driven-development:unit-020"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "cr-desc-review-lens-overview",
+    "cr-method-usage-invocation",
+    "cr-rule-standalone-capabilities",
+    "cr-rule-tips-context-focus",
+    "cr-template-correctness-checklist",
+    "cr-template-maintainability-checklist",
+    "cr-template-performance-checklist",
+    "cr-template-report-format",
+    "cr-template-security-checklist",
+    "requesting-code-review:unit-001",
+    "requesting-code-review:unit-002",
+    "requesting-code-review:unit-003",
+    "requesting-code-review:unit-004",
+    "requesting-code-review:unit-005",
+    "requesting-code-review:unit-006",
+    "requesting-code-review:unit-007",
+    "requesting-code-review:unit-008",
+    "requesting-code-review:unit-009",
+    "requesting-code-review:unit-010",
+    "requesting-code-review:unit-011",
+    "requesting-code-review:unit-012",
+    "requesting-code-review:unit-013",
+    "requesting-code-review:unit-014",
+    "requesting-code-review:unit-015",
+    "requesting-code-review:unit-016",
+    "requesting-code-review:unit-017",
+    "requesting-code-review:unit-018",
+    "requesting-code-review:unit-019",
+    "requesting-code-review:unit-020",
+    "skills/requesting-code-review/SKILL.md:summary:when-to-use",
+    "subagent-driven-development:unit-017",
+    "subagent-driven-development:unit-018",
+    "subagent-driven-development:unit-019",
+    "subagent-driven-development:unit-020"
+  ]
+}

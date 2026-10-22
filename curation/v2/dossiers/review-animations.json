@@ -1,0 +1,114 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [review-animations/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [review-animations/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [review-animations/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [review-animations/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "5. Origin & physical correctness. Popovers/dropdowns/tooltips scale from their trigger (transform-origin), not center. Never animate from scale(0) — start from scale(0.9–0.97) + opacity (Modals are exempt — they stay centered.) [review-animations/SKILL.md:31]",
+    "6. Interruptibility. Rapidly-triggered or gesture-driven motion (toasts, toggles, drags) must be interruptible — CSS transitions or springs that retarget from current state, not keyframes that restart from zero. [review-animations/SKILL.md:33]",
+    "7. GPU-only properties. Animate transform and opacity only. Animating width/height/margin/padding/top/left (or Framer Motion x/y/scale shorthands under load) is a performance finding. [review-animations/SKILL.md:35]",
+    "scale(0) or pure-fade entrances with no initial transform [review-animations/SKILL.md:48]",
+    "Framer Motion x/y/scale props on motion that runs while the page is busy [review-animations/SKILL.md:55]",
+    "1. Delete the animation (high-frequency / no purpose / keyboard-triggered). [review-animations/SKILL.md:66]",
+    "4. Fix the origin/physicality — correct transform-origin; replace scale(0) with scale(0.95)+opacity. [review-animations/SKILL.md:69]",
+    "transform: scale(0) transform: scale(0.95); opacity: 0 Nothing appears from nothing — scale(0) looks like it came from nowhere [review-animations/SKILL.md:87]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. [review-animations/SKILL.md:3]",
+  "root_id": "skill-root:review-animations",
+  "rules_gates": [
+    "1. Justified motion. Every animation must answer \"why does this animate?\" — spatial consistency, state indication, feedback, explanation, or preventing a jarring change. \"It looks cool\" on a frequently-seen element is a block. [review-animations/SKILL.md:23]",
+    "5. Origin & physical correctness. Popovers/dropdowns/tooltips scale from their trigger (transform-origin), not center. Never animate from scale(0) — start from scale(0.9–0.97) + opacity (Modals are exempt — they stay centered.) [review-animations/SKILL.md:31]",
+    "6. Interruptibility. Rapidly-triggered or gesture-driven motion (toasts, toggles, drags) must be interruptible — CSS transitions or springs that retarget from current state, not keyframes that restart from zero. [review-animations/SKILL.md:33]",
+    "8. Accessibility. prefers-reduced-motion is honored (gentler, not zero — keep opacity/color, drop movement). Hover animations are gated behind @media (hover: hover) and (pointer: fine). [review-animations/SKILL.md:37]",
+    "Required Output Format [review-animations/SKILL.md:76]",
+    "Part 1 — Findings table (REQUIRED) [review-animations/SKILL.md:80]",
+    "A single markdown table. One row per issue. Never a \"Before:/After:\" list. [review-animations/SKILL.md:82]",
+    "Before After Why [review-animations/SKILL.md:84]"
+  ],
+  "skill_path": "review-animations/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "review-animations/SKILL.md"
+    },
+    {
+      "line_end": 7,
+      "line_start": 7,
+      "path": "review-animations/SKILL.md"
+    },
+    {
+      "line_end": 11,
+      "line_start": 11,
+      "path": "review-animations/SKILL.md"
+    },
+    {
+      "line_end": 19,
+      "line_start": 19,
+      "path": "review-animations/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "review-animations/SKILL.md"
+    }
+  ],
+  "source_sha256": "61cf8ac0c4c8e1f63385298c546b16c65ca9aec34abddcd04e821c16712d671d",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:61cf8ac0c4c8e1f63385298c546b16c65ca9aec34abddcd04e821c16712d671d",
+        "content-review:113-lines",
+        "semantic-review-report:curation/v2/reviews/design.md"
+      ],
+      "path": "review-animations/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:e7d3605034acda54ca13e43aec9e64d65b53de20f75b11b8d694e373012fbe07",
+        "content-review:188-lines"
+      ],
+      "path": "review-animations/STANDARDS.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: review-animations/STANDARDS.md [review-animations/SKILL.md:17]",
+    "Local dependency: review-animations/STANDARDS.md [review-animations/SKILL.md:29]",
+    "Local dependency: review-animations/STANDARDS.md [review-animations/SKILL.md:107]"
+  ],
+  "trigger": "Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to flagging; approval is earned. [review-animations/SKILL.md:3]",
+  "unique_methods": [
+    "Reviewing Animations [review-animations/SKILL.md:7]",
+    "Operating Posture [review-animations/SKILL.md:11]",
+    "The Ten Non-Negotiable Standards [review-animations/SKILL.md:19]",
+    "Aggressive Escalation Triggers [review-animations/SKILL.md:43]",
+    "Remedial Preference Hierarchy [review-animations/SKILL.md:62]",
+    "Required Output Format [review-animations/SKILL.md:76]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [review-animations/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [review-animations/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [review-animations/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Reviewing Animations [review-animations/SKILL.md:7]",
+    "Operating Posture [review-animations/SKILL.md:11]",
+    "The Ten Non-Negotiable Standards [review-animations/SKILL.md:19]",
+    "Aggressive Escalation Triggers [review-animations/SKILL.md:43]",
+    "Remedial Preference Hierarchy [review-animations/SKILL.md:62]",
+    "Required Output Format [review-animations/SKILL.md:76]"
+  ]
+}

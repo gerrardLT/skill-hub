@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "identity": "github-actions-hardening",
+    "kind": "source-skill",
+    "reason": "Closest immutable source behavior; no released V1 Slot has this exact atomic responsibility."
+  },
+  "candidate": {
+    "contract_sha256": "7a1d3eb0bec534cd753877d235d50b346b7954eda11df81f4800dfc8dd42a5b3",
+    "identity": "secrets-and-environment-governance@0.1.0-v2-candidate",
+    "skill_sha256": "b435d15de4981f5f16401f771f51a572a5d3636dfb7c0ae2663a110599586be3"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P5-secrets-and-environment-governance-holdout-trigger-01",
+    "V2-P5-secrets-and-environment-governance-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P5-MUT-secrets-and-environment-governance-01",
+      "remove_exact_text": "Secret values must never be requested, read, printed, copied, transformed, hashed into evidence, persisted, or sent to a model; verification uses names, references, metadata, policy, and behavior only.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "architecture and trust-boundary traceability",
+    "authorization data and secret governance",
+    "compatibility migration and rollback completeness",
+    "failure abuse and residual-risk coverage",
+    "atomic responsibility and mutation-scope adherence",
+    "human approval and evidence integrity"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "secrets-and-environment-governance",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

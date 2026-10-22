@@ -1,0 +1,64 @@
+{
+  "artifact_types": [
+    "criterion-to-evidence matrix",
+    "deduplicated release findings",
+    "UI release recommendation",
+    "risk and recapture ledger"
+  ],
+  "capability_id": "capability:evidence-based-ui-review-and-release-gates",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, merge, deploy, release, cloud mutation, or external-system write",
+    "invent product facts, brand authority, copy claims, customer data, assets, evidence, or approval",
+    "perform an adjacent capability or combine independent review with source repair",
+    "treat static inspection, stale capture, or model self-report as current rendered evidence",
+    "claim Phase 9 evaluation, Phase 10 approval, or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "No release criterion may pass from source inspection, prior screenshots, or reviewer assertion when current rendered or interaction evidence is required.",
+    "Review, evidence acquisition, preflight, and preservation audit never imply source remediation or release authority."
+  ],
+  "id": "evidence-based-ui-review-and-release-gates",
+  "inputs": [
+    "An implementation, desktop and mobile captures, a brief, direction contract, target files, and findings."
+  ],
+  "outputs": [
+    "criterion-to-evidence matrix",
+    "deduplicated release findings",
+    "UI release recommendation",
+    "risk and recapture ledger"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "coverage": [
+      "criterion-evidence",
+      "current-render",
+      "blocking-findings",
+      "release-recommendation",
+      "recapture"
+    ],
+    "human_decision": true,
+    "rendered_evidence": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Apply explicit UI release criteria to current rendered evidence, aggregate blocking findings, and recommend a bounded release disposition without source repair.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

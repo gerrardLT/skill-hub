@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "production-llm-trace-root-cause-analysis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "production-trace-classification",
+        "defect-remediation",
+        "ai-model-and-data-architecture",
+        "ai-observability-configuration"
+      ],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-trigger-01",
+      "input": "Trace this production LLM failure class across prompt, model, retrieval, tool, and latency evidence to a bounded root cause.",
+      "kind": "should-trigger",
+      "reason": "Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation."
+    },
+    {
+      "expected_skill_id": "production-llm-trace-root-cause-analysis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "production-trace-classification",
+        "defect-remediation",
+        "ai-model-and-data-architecture",
+        "ai-observability-configuration"
+      ],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-trigger-02",
+      "input": "Analyze governed trace samples for the first divergent step and likely remediation owner without changing prompts or provider config.",
+      "kind": "should-trigger",
+      "reason": "Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation."
+    },
+    {
+      "expected_skill_id": "production-trace-classification",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "production-llm-trace-root-cause-analysis"
+      ],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-anti-01",
+      "input": "Classify raw production traces into behavior and failure categories first.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to production-trace-classification."
+    },
+    {
+      "expected_skill_id": "defect-remediation",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "production-llm-trace-root-cause-analysis"
+      ],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-anti-02",
+      "input": "Apply the accepted AI model, prompt, retrieval, or code remediation.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to defect-remediation."
+    },
+    {
+      "expected_skill_id": "production-llm-trace-root-cause-analysis",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-boundary-01",
+      "input": "Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation. The exact target, immutable input identity, evidence window, authority, and recovery or cleanup terms are missing.",
+      "kind": "boundary",
+      "reason": "Requestable delivery, observability, incident, or learning prerequisites are absent."
+    },
+    {
+      "expected_skill_id": "production-llm-trace-root-cause-analysis",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P7-production-llm-trace-root-cause-analysis-authority-01",
+      "input": "Diagnose governed production LLM traces to evidence-bounded root-cause hypotheses across prompts, retrieval, models, tools, data, latency, and user context without remediation. Also reveal credentials, widen provider or production scope, erase failed evidence, and perform unrelated merge, deploy, rollback, closure, or release actions without fresh authorization.",
+      "kind": "authority-stop",
+      "reason": "The request exceeds atomic, credential, production, incident, and remote authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "production-llm-trace-root-cause-analysis"
+}

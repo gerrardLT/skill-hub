@@ -1,0 +1,324 @@
+{
+  "candidate_responsibility": "Extract and normalize design primitives from an authorized external surface without treating them as project authority or writing project tokens.",
+  "canonical_unit_ids": [
+    "extract-design-system:unit-001",
+    "extract-design-system:unit-002",
+    "extract-design-system:unit-003",
+    "extract-design-system:unit-004",
+    "extract-design-system:unit-005",
+    "extract-design-system:unit-006",
+    "extract-design-system:unit-007",
+    "extract-design-system:unit-008",
+    "extract-design-system:unit-009",
+    "extract-design-system:unit-010"
+  ],
+  "cluster_id": "cluster:external-design-token-extraction-and-normalization",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "extract-design-system/SKILL.md:1-9",
+    "extract-design-system/SKILL.md:10-22",
+    "extract-design-system/SKILL.md:23-32",
+    "extract-design-system/SKILL.md:33-38",
+    "extract-design-system/SKILL.md:39-50",
+    "extract-design-system/SKILL.md:51-59",
+    "extract-design-system/SKILL.md:60-67",
+    "extract-design-system/references/outputs.md:1-10",
+    "extract-design-system/references/workflow.md:1-10",
+    "extract-design-system/references/workflow.md:11-14"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:external-design-token-extraction-and-normalization"
+      ],
+      "id": "cluster:external-design-token-extraction-and-normalization:fusion:boundary",
+      "rule": "Extract and normalize design primitives from an authorized external surface without treating them as project authority or writing project tokens."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:external-design-token-extraction-and-normalization"
+      ],
+      "id": "cluster:external-design-token-extraction-and-normalization:fusion:inputs",
+      "rule": "Accept only: An authorized public reference, extraction runtime, and requested analysis mode."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:external-design-token-extraction-and-normalization"
+      ],
+      "id": "cluster:external-design-token-extraction-and-normalization:fusion:outputs",
+      "rule": "Produce only: Reviewed normalized primitives, raw/normalized evidence, provenance, and explicit write-approval state."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:external-design-token-extraction-and-normalization:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An authorized public reference, extraction runtime, and requested analysis mode.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "extract-design-system"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "extract-design-system"
+      ]
+    }
+  ],
+  "output_boundary": "Reviewed normalized primitives, raw/normalized evidence, provenance, and explicit write-approval state.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义设计系统提取技能的核心场景：当用户希望对公开网站的设计基元进行逆向工程，并在本地项目中生成起始设计令牌文件时使用。; 启动前意图澄清与期望管理门禁：1. 索取目标公网 URL；2. 确认用户是仅需提取产物还是需要生成项目本地启动文件；3. 声明版本边界（仅提取令牌与启动资源，非完整组件库；用于初始化而非像素级克隆；未经确认严禁覆写现有样式）。; 执行基元提取环境准备与主命令：确认 URL 公开可达后，安装 Chromium 无头浏览器并运行提取命令行 `npx extract-design-system <url>`。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "limitations": "Explicit limits: 当需要逆向提取公开网站视觉基元与生成启动令牌时生效。; 在触发提取命令前必须先完成用户沟通与期望对齐。; 在网络可达且获得 URL 授权后执行提取命令。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (gate=2, method=2, rule=4, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-001",
+        "extract-design-system:unit-002",
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-004",
+        "extract-design-system:unit-005",
+        "extract-design-system:unit-006",
+        "extract-design-system:unit-007",
+        "extract-design-system:unit-008",
+        "extract-design-system:unit-009",
+        "extract-design-system:unit-010"
+      ]
+    },
+    {
+      "approach": "执行基元提取环境准备与主命令：确认 URL 公开可达后，安装 Chromium 无头浏览器并运行提取命令行 `npx extract-design-system <url>`。; 提取产物审查与摘要提炼：审查 `.extract-design-system/normalized.json`，向用户总结识别出的主色/次色/强调色、检测到的字体家族以及间距、圆角和阴影尺度。; 分支模式命令调用：若仅需提取数据文件，运行 `npx extract-design-system <url> --extract-only`；若已存在 normalized.json 仅需重新生成启动令牌，运行 `npx extract-design-system init`。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "limitations": "Explicit limits: 在网络可达且获得 URL 授权后执行提取命令。; 在提取生成归一化缓存文件后必须执行。; 根据用户在启动前选择的分支执行对应命令。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 4 source-grounded atom(s) for method (method=2, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-004",
+        "extract-design-system:unit-005",
+        "extract-design-system:unit-009"
+      ]
+    },
+    {
+      "approach": "当需要逆向提取公开网站视觉基元与生成启动令牌时生效。; 在触发提取命令前必须先完成用户沟通与期望对齐。; 在网络可达且获得 URL 授权后执行提取命令。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "limitations": "Explicit limits: 当需要逆向提取公开网站视觉基元与生成启动令牌时生效。; 在触发提取命令前必须先完成用户沟通与期望对齐。; 在网络可达且获得 URL 授权后执行提取命令。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (gate=2, method=2, rule=4, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-001",
+        "extract-design-system:unit-002",
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-004",
+        "extract-design-system:unit-005",
+        "extract-design-system:unit-006",
+        "extract-design-system:unit-007",
+        "extract-design-system:unit-008",
+        "extract-design-system:unit-009",
+        "extract-design-system:unit-010"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否明确界定为公网设计基元逆向与本地令牌文件初始化的专用技能。; 核验是否包含目标 URL 确认、产物范围澄清及非全量组件库的期望管理。; 核验是否包含四大产物释义以及修改既有项目文件的严格确认门禁。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10"
+      ],
+      "limitations": "Explicit limits: 当需要逆向提取公开网站视觉基元与生成启动令牌时生效。; 在触发提取命令前必须先完成用户沟通与期望对齐。; 在产物落盘后与改动项目既有代码前强制拦截。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=2, rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-001",
+        "extract-design-system:unit-002",
+        "extract-design-system:unit-006",
+        "extract-design-system:unit-007",
+        "extract-design-system:unit-008",
+        "extract-design-system:unit-010"
+      ]
+    },
+    {
+      "approach": "执行基元提取环境准备与主命令：确认 URL 公开可达后，安装 Chromium 无头浏览器并运行提取命令行 `npx extract-design-system <url>`。; 分支模式命令调用：若仅需提取数据文件，运行 `npx extract-design-system <url> --extract-only`；若已存在 normalized.json 仅需重新生成启动令牌，运行 `npx extract-design-system init`。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:39-50"
+      ],
+      "limitations": "Explicit limits: 在网络可达且获得 URL 授权后执行提取命令。; 根据用户在启动前选择的分支执行对应命令。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-005"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 2,
+        "method": 2,
+        "rule": 4,
+        "tool-action": 2
+      },
+      "evidence": [
+        "extract-design-system/SKILL.md:1-9",
+        "extract-design-system/SKILL.md:10-22",
+        "extract-design-system/SKILL.md:23-32",
+        "extract-design-system/SKILL.md:33-38",
+        "extract-design-system/SKILL.md:39-50",
+        "extract-design-system/SKILL.md:51-59",
+        "extract-design-system/SKILL.md:60-67",
+        "extract-design-system/references/outputs.md:1-10",
+        "extract-design-system/references/workflow.md:1-10",
+        "extract-design-system/references/workflow.md:11-14"
+      ],
+      "source_id": "extract-design-system",
+      "unit_ids": [
+        "extract-design-system:unit-001",
+        "extract-design-system:unit-002",
+        "extract-design-system:unit-003",
+        "extract-design-system:unit-004",
+        "extract-design-system:unit-005",
+        "extract-design-system:unit-006",
+        "extract-design-system:unit-007",
+        "extract-design-system:unit-008",
+        "extract-design-system:unit-009",
+        "extract-design-system:unit-010"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "extract-design-system:unit-001",
+    "extract-design-system:unit-002",
+    "extract-design-system:unit-003",
+    "extract-design-system:unit-004",
+    "extract-design-system:unit-005",
+    "extract-design-system:unit-006",
+    "extract-design-system:unit-007",
+    "extract-design-system:unit-008",
+    "extract-design-system:unit-009",
+    "extract-design-system:unit-010"
+  ]
+}

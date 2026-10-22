@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "wrangler",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "2d67c3cf8c871285768876eb1046d3419131533d53748464035b3382b9db120b",
+    "identity": "edge-worker-deployment@0.1.0-v2-candidate",
+    "skill_sha256": "f0b7cf648184f92129b649c81e17bcb29545c64320641844589fffab76543330"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-edge-worker-deployment-holdout-trigger-01",
+    "V2-P7-edge-worker-deployment-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-edge-worker-deployment-01",
+      "remove_exact_text": "Edge deployment requires exact immutable code, bindings, routes, limits, traffic scope, health criteria, and rollback target; wildcard route or binding changes and unrelated resource mutations are blocked.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "edge-worker-deployment",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

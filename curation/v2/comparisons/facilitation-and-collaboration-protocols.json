@@ -1,0 +1,619 @@
+{
+  "candidate_responsibility": "Run explicit collaboration, participation, clarification, and decision protocols across roles.",
+  "canonical_unit_ids": [
+    "discovery-process:unit-002",
+    "discovery-process:unit-005",
+    "discovery-process:unit-006",
+    "discovery-process:unit-043",
+    "discovery-process:unit-044",
+    "prd-development:unit-005",
+    "prd-development:unit-048",
+    "product-strategy-session:unit-002",
+    "product-strategy-session:unit-003",
+    "product-strategy-session:unit-005",
+    "product-strategy-session:unit-006",
+    "product-strategy-session:unit-008",
+    "product-strategy-session:unit-009",
+    "product-strategy-session:unit-034",
+    "product-strategy-session:unit-035",
+    "product-strategy-session:unit-036",
+    "product-strategy-session:unit-037"
+  ],
+  "cluster_id": "cluster:facilitation-and-collaboration-protocols",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "discovery-process/SKILL.md:25-34",
+    "discovery-process/SKILL.md:460-465",
+    "discovery-process/SKILL.md:469-474",
+    "discovery-process/SKILL.md:55-69",
+    "discovery-process/SKILL.md:73-85",
+    "prd-development/SKILL.md:126-138",
+    "prd-development/template.md:115-118",
+    "product-strategy-session/SKILL.md:25-30",
+    "product-strategy-session/SKILL.md:30-34",
+    "product-strategy-session/SKILL.md:365-370",
+    "product-strategy-session/SKILL.md:374-379",
+    "product-strategy-session/SKILL.md:383-388",
+    "product-strategy-session/SKILL.md:392-397",
+    "product-strategy-session/SKILL.md:47-51",
+    "product-strategy-session/SKILL.md:53-56",
+    "product-strategy-session/SKILL.md:71-83",
+    "product-strategy-session/SKILL.md:85-89"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:facilitation-and-collaboration-protocols"
+      ],
+      "id": "cluster:facilitation-and-collaboration-protocols:fusion:boundary",
+      "rule": "Run explicit collaboration, participation, clarification, and decision protocols across roles."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:facilitation-and-collaboration-protocols"
+      ],
+      "id": "cluster:facilitation-and-collaboration-protocols:fusion:inputs",
+      "rule": "Accept only: A multi-role task, incomplete context, stakeholder set, and decision boundary."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:facilitation-and-collaboration-protocols"
+      ],
+      "id": "cluster:facilitation-and-collaboration-protocols:fusion:outputs",
+      "rule": "Produce only: Facilitated inputs, aligned decisions, unresolved questions, and ownership."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:facilitation-and-collaboration-protocols:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A multi-role task, incomplete context, stakeholder set, and decision boundary.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "prd-development"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "prd-development",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "prd-development"
+      ]
+    }
+  ],
+  "output_boundary": "Facilitated inputs, aligned decisions, unresolved questions, and ownership.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "接受粗略 hypothesis 和补充 context，复用调用中已回答内容；空输入时从问题框定构造 hypothesis。; 路由到有真实 discovery uncertainty 的场景，并排除已知问题、既定方案、bug/technical debt。; guided conversation 使用 workshop-facilitation 协议，但 discovery 阶段与领域输出优先。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Explicit limits: 不得重复询问已有答案，也不得把示例 hypothesis 当默认输入。; weekly touchpoint 是来源 cadence；solution 已锁定时先解决 alignment。; 仅对 guided interaction 生效；supplement 不产生 discovery 领域方法 unit。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (gate=2, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-002",
+        "discovery-process:unit-005",
+        "discovery-process:unit-006",
+        "discovery-process:unit-043",
+        "discovery-process:unit-044"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "不得重复询问已有答案，也不得把示例 hypothesis 当默认输入。; weekly touchpoint 是来源 cadence；solution 已锁定时先解决 alignment。; 仅对 guided interaction 生效；supplement 不产生 discovery 领域方法 unit。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Explicit limits: 不得重复询问已有答案，也不得把示例 hypothesis 当默认输入。; weekly touchpoint 是来源 cadence；solution 已锁定时先解决 alignment。; 仅对 guided interaction 生效；supplement 不产生 discovery 领域方法 unit。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (gate=2, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-002",
+        "discovery-process:unit-005",
+        "discovery-process:unit-006",
+        "discovery-process:unit-043",
+        "discovery-process:unit-044"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "识别已给 context 并跳过对应问题；无 hypothesis 时明确进入 framing。; 调用记录匹配正向场景且不命中反向边界。; 区分 interaction protocol 与 domain workflow，并保留 discovery precedence。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Explicit limits: 不得重复询问已有答案，也不得把示例 hypothesis 当默认输入。; weekly touchpoint 是来源 cadence；solution 已锁定时先解决 alignment。; 仅对 guided interaction 生效；supplement 不产生 discovery 领域方法 unit。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for gates-and-validation (gate=2, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-002",
+        "discovery-process:unit-005",
+        "discovery-process:unit-006",
+        "discovery-process:unit-043",
+        "discovery-process:unit-044"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "guided conversation 的节奏委托 workshop-facilitation，但领域顺序和输出冲突时仍由 prd-development 决定。; 用一句话表达和项目外人员复述测试检查摘要范围与可理解性。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Explicit limits: 仅在交互运行时适用；通用 facilitation 不得改写 PRD 领域逻辑。; 这是摘要清晰度 Gate，不证明问题证据或方案正确；失败时应简化或澄清范围。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-005",
+        "prd-development:unit-048"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "仅在交互运行时适用；通用 facilitation 不得改写 PRD 领域逻辑。; 这是摘要清晰度 Gate，不证明问题证据或方案正确；失败时应简化或澄清范围。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Explicit limits: 仅在交互运行时适用；通用 facilitation 不得改写 PRD 领域逻辑。; 这是摘要清晰度 Gate，不证明问题证据或方案正确；失败时应简化或澄清范围。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-005",
+        "prd-development:unit-048"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "交互使用入口模式、单问题、进度和中断处理，同时保持八阶段领域逻辑。; 摘要可被压缩为完整单句，且非项目参与者能准确复述 solution、persona、problem 与 impact。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Explicit limits: 仅在交互运行时适用；通用 facilitation 不得改写 PRD 领域逻辑。; 这是摘要清晰度 Gate，不证明问题证据或方案正确；失败时应简化或澄清范围。",
+      "source_id": "prd-development",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prd-development:unit-005",
+        "prd-development:unit-048"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prd-development",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "以产品或产品线和推动 session 的 strategic question 为核心输入，复用调用中已经提供的 context，不重复追问已覆盖的问题。; 空手调用不是阻塞条件：从 positioning 开始；已有 artifacts 可以让流程跳过已完成阶段。; 该流程通过结构化 discovery、防止过早方案化、跨职能共享心智模型、提交资源前测试假设，把高层策略连接到具体工作。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "product-strategy-session/SKILL.md:25-30",
+        "product-strategy-session/SKILL.md:30-34",
+        "product-strategy-session/SKILL.md:365-370",
+        "product-strategy-session/SKILL.md:374-379",
+        "product-strategy-session/SKILL.md:383-388",
+        "product-strategy-session/SKILL.md:392-397",
+        "product-strategy-session/SKILL.md:47-51",
+        "product-strategy-session/SKILL.md:53-56",
+        "product-strategy-session/SKILL.md:71-83",
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "limitations": "Explicit limits: 缺少核心战略问题时应标记输入不足；已有文本、context dump 或 ARGUMENTS 已回答的部分必须跳过重复询问。; 仅在没有可复用上游材料时从 positioning 起步；不能因为缺少初始 context 擅自补造事实。; 只能作为设计流程的价值与验收方向，不能把这些原则当作已经发生的客户验证或 stakeholder approval。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 10 source-grounded atom(s) for responsibility (exception=1, gate=3, rule=5, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-002",
+        "product-strategy-session:unit-003",
+        "product-strategy-session:unit-005",
+        "product-strategy-session:unit-006",
+        "product-strategy-session:unit-008",
+        "product-strategy-session:unit-009",
+        "product-strategy-session:unit-034",
+        "product-strategy-session:unit-035",
+        "product-strategy-session:unit-036",
+        "product-strategy-session:unit-037"
+      ]
+    },
+    {
+      "approach": "使用 template.md 记录完整填充结构，并以六阶段、2–4 周、多组件/交互能力编排整个 session。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "limitations": "Explicit limits: template 是输出结构，不是已完成的 strategy；已提供的 artifacts 可让流程 skip ahead，但不能跳过必要 Gate。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for method (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-009"
+      ]
+    },
+    {
+      "approach": "缺少核心战略问题时应标记输入不足；已有文本、context dump 或 ARGUMENTS 已回答的部分必须跳过重复询问。; 仅在没有可复用上游材料时从 positioning 起步；不能因为缺少初始 context 擅自补造事实。; 只能作为设计流程的价值与验收方向，不能把这些原则当作已经发生的客户验证或 stakeholder approval。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "product-strategy-session/SKILL.md:25-30",
+        "product-strategy-session/SKILL.md:30-34",
+        "product-strategy-session/SKILL.md:365-370",
+        "product-strategy-session/SKILL.md:374-379",
+        "product-strategy-session/SKILL.md:383-388",
+        "product-strategy-session/SKILL.md:392-397",
+        "product-strategy-session/SKILL.md:47-51",
+        "product-strategy-session/SKILL.md:53-56",
+        "product-strategy-session/SKILL.md:71-83",
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "limitations": "Explicit limits: 缺少核心战略问题时应标记输入不足；已有文本、context dump 或 ARGUMENTS 已回答的部分必须跳过重复询问。; 仅在没有可复用上游材料时从 positioning 起步；不能因为缺少初始 context 擅自补造事实。; 只能作为设计流程的价值与验收方向，不能把这些原则当作已经发生的客户验证或 stakeholder approval。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 10 source-grounded atom(s) for boundary-and-applicability (exception=1, gate=3, rule=5, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-002",
+        "product-strategy-session:unit-003",
+        "product-strategy-session:unit-005",
+        "product-strategy-session:unit-006",
+        "product-strategy-session:unit-008",
+        "product-strategy-session:unit-009",
+        "product-strategy-session:unit-034",
+        "product-strategy-session:unit-035",
+        "product-strategy-session:unit-036",
+        "product-strategy-session:unit-037"
+      ]
+    },
+    {
+      "approach": "使用 template.md 记录完整填充结构，并以六阶段、2–4 周、多组件/交互能力编排整个 session。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "limitations": "Explicit limits: template 是输出结构，不是已完成的 strategy；已提供的 artifacts 可让流程 skip ahead，但不能跳过必要 Gate。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-009"
+      ]
+    },
+    {
+      "approach": "输入记录产品/产品线、strategic question、已有 artifacts 和需对齐者，并能证明已提供内容没有被重复询问。; 最终记录假设验证、跨职能 alignment 和从 strategy 到 concrete work 的连接证据。; 审查记录必须证明已框定问题、存在迭代反馈，并列出跨职能参与者。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "product-strategy-session/SKILL.md:25-30",
+        "product-strategy-session/SKILL.md:365-370",
+        "product-strategy-session/SKILL.md:374-379",
+        "product-strategy-session/SKILL.md:383-388",
+        "product-strategy-session/SKILL.md:392-397",
+        "product-strategy-session/SKILL.md:47-51",
+        "product-strategy-session/SKILL.md:53-56",
+        "product-strategy-session/SKILL.md:71-83"
+      ],
+      "limitations": "Explicit limits: 缺少核心战略问题时应标记输入不足；已有文本、context dump 或 ARGUMENTS 已回答的部分必须跳过重复询问。; 只能作为设计流程的价值与验收方向，不能把这些原则当作已经发生的客户验证或 stakeholder approval。; 当需求只是列功能、一次性排计划或 PM 独自产出时，应路由到更窄的能力或先补协作与发现。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 8 source-grounded atom(s) for gates-and-validation (gate=3, rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-002",
+        "product-strategy-session:unit-005",
+        "product-strategy-session:unit-006",
+        "product-strategy-session:unit-008",
+        "product-strategy-session:unit-034",
+        "product-strategy-session:unit-035",
+        "product-strategy-session:unit-036",
+        "product-strategy-session:unit-037"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "product-strategy-session/SKILL.md:25-30",
+        "product-strategy-session/SKILL.md:30-34",
+        "product-strategy-session/SKILL.md:365-370",
+        "product-strategy-session/SKILL.md:374-379",
+        "product-strategy-session/SKILL.md:383-388",
+        "product-strategy-session/SKILL.md:392-397",
+        "product-strategy-session/SKILL.md:47-51",
+        "product-strategy-session/SKILL.md:53-56",
+        "product-strategy-session/SKILL.md:71-83",
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "空手调用不是阻塞条件：从 positioning 开始；已有 artifacts 可以让流程跳过已完成阶段。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "product-strategy-session/SKILL.md:30-34"
+      ],
+      "limitations": "Explicit limits: 仅在没有可复用上游材料时从 positioning 起步；不能因为缺少初始 context 擅自补造事实。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-003"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 2,
+        "rule": 3
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:25-34",
+        "discovery-process/SKILL.md:460-465",
+        "discovery-process/SKILL.md:469-474",
+        "discovery-process/SKILL.md:55-69",
+        "discovery-process/SKILL.md:73-85"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-002",
+        "discovery-process:unit-005",
+        "discovery-process:unit-006",
+        "discovery-process:unit-043",
+        "discovery-process:unit-044"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "prd-development/SKILL.md:126-138",
+        "prd-development/template.md:115-118"
+      ],
+      "source_id": "prd-development",
+      "unit_ids": [
+        "prd-development:unit-005",
+        "prd-development:unit-048"
+      ]
+    },
+    {
+      "contribution_types": {
+        "exception": 1,
+        "gate": 3,
+        "rule": 5,
+        "template": 1
+      },
+      "evidence": [
+        "product-strategy-session/SKILL.md:25-30",
+        "product-strategy-session/SKILL.md:30-34",
+        "product-strategy-session/SKILL.md:365-370",
+        "product-strategy-session/SKILL.md:374-379",
+        "product-strategy-session/SKILL.md:383-388",
+        "product-strategy-session/SKILL.md:392-397",
+        "product-strategy-session/SKILL.md:47-51",
+        "product-strategy-session/SKILL.md:53-56",
+        "product-strategy-session/SKILL.md:71-83",
+        "product-strategy-session/SKILL.md:85-89"
+      ],
+      "source_id": "product-strategy-session",
+      "unit_ids": [
+        "product-strategy-session:unit-002",
+        "product-strategy-session:unit-003",
+        "product-strategy-session:unit-005",
+        "product-strategy-session:unit-006",
+        "product-strategy-session:unit-008",
+        "product-strategy-session:unit-009",
+        "product-strategy-session:unit-034",
+        "product-strategy-session:unit-035",
+        "product-strategy-session:unit-036",
+        "product-strategy-session:unit-037"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "discovery-process:unit-002",
+    "discovery-process:unit-005",
+    "discovery-process:unit-006",
+    "discovery-process:unit-043",
+    "discovery-process:unit-044",
+    "prd-development:unit-005",
+    "prd-development:unit-048",
+    "product-strategy-session:unit-002",
+    "product-strategy-session:unit-003",
+    "product-strategy-session:unit-005",
+    "product-strategy-session:unit-006",
+    "product-strategy-session:unit-008",
+    "product-strategy-session:unit-009",
+    "product-strategy-session:unit-034",
+    "product-strategy-session:unit-035",
+    "product-strategy-session:unit-036",
+    "product-strategy-session:unit-037"
+  ]
+}

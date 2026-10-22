@@ -1,0 +1,72 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:ci-pipeline-security-hardening",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0325",
+    "V2-FUSION-0326",
+    "V2-FUSION-0327",
+    "V2-FUSION-0328",
+    "V2-FUSION-0329",
+    "V2-FUSION-0331",
+    "V2-FUSION-0333"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "CI workflow files, repository policy, trust boundaries, permissions, and runner context."
+  ],
+  "lifecycle_stage_id": "stage:06-architecture-risk-security",
+  "name": "Ci Pipeline Security Hardening",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Threat findings, hardened workflow candidate, verification, and residual risk."
+  ],
+  "owning_phase": 5,
+  "permission_identity": "workspace-write",
+  "primary_domain_id": "domain:architecture-data-api-and-security",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=github-actions and environment=ci; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "ci",
+      "id": "variant:github-actions:workflow",
+      "provider": "github-actions",
+      "source_root": "workflow"
+    }
+  ],
+  "responsibility": "Audit and harden CI workflows for least privilege, pinning, secret boundaries, injection, and supply-chain risk.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:github-actions-hardening:001:root-responsibility",
+    "v2-root:github-actions-hardening:002:execution-workflow",
+    "v2-root:github-actions-hardening:003:step-1-map-the-triggers-and-trust-level",
+    "v2-root:github-actions-hardening:004:step-2-hunt-for-script-injection",
+    "v2-root:github-actions-hardening:005:step-3-check-privileged-triggers-don-t-execute-untrusted-code",
+    "v2-root:github-actions-hardening:007:step-5-audit-action-references-supply-chain",
+    "v2-root:github-actions-hardening:009:step-7-produce-the-report"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "github-actions-hardening/SKILL.md:116-121",
+    "github-actions-hardening/SKILL.md:3-7",
+    "github-actions-hardening/SKILL.md:43-82",
+    "github-actions-hardening/SKILL.md:47-58",
+    "github-actions-hardening/SKILL.md:59-72",
+    "github-actions-hardening/SKILL.md:73-81",
+    "github-actions-hardening/SKILL.md:92-105"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

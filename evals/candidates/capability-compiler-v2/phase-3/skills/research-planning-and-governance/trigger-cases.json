@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "research-planning-and-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution",
+        "data-analysis-validation",
+        "qualitative-evidence-synthesis"
+      ],
+      "id": "V2-P3-research-planning-and-governance-trigger-01",
+      "input": "Plan customer research for this decision with sampling and data-governance controls.",
+      "kind": "should-trigger",
+      "reason": "Design a research plan with decision linkage, method, sampling, consent, minimization, retention, external-transfer, and deletion boundaries."
+    },
+    {
+      "expected_skill_id": "research-planning-and-governance",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "customer-interview-execution",
+        "data-analysis-validation",
+        "qualitative-evidence-synthesis"
+      ],
+      "id": "V2-P3-research-planning-and-governance-trigger-02",
+      "input": "Choose a research method and evidence threshold without contacting participants yet.",
+      "kind": "should-trigger",
+      "reason": "Design a research plan with decision linkage, method, sampling, consent, minimization, retention, external-transfer, and deletion boundaries."
+    },
+    {
+      "expected_skill_id": "customer-interview-execution",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "research-planning-and-governance"
+      ],
+      "id": "V2-P3-research-planning-and-governance-anti-01",
+      "input": "Conduct the already approved customer interviews.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility customer-interview-execution."
+    },
+    {
+      "expected_skill_id": "qualitative-evidence-synthesis",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "research-planning-and-governance"
+      ],
+      "id": "V2-P3-research-planning-and-governance-anti-02",
+      "input": "Synthesize the completed qualitative corpus.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility qualitative-evidence-synthesis."
+    },
+    {
+      "expected_skill_id": "research-planning-and-governance",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-research-planning-and-governance-boundary-01",
+      "input": "Design a research plan with decision linkage, method, sampling, consent, minimization, retention, external-transfer, and deletion boundaries. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "research-planning-and-governance",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-research-planning-and-governance-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "research-planning-and-governance"
+}

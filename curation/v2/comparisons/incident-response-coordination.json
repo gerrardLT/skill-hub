@@ -1,0 +1,321 @@
+{
+  "candidate_responsibility": "Coordinate incident acknowledgement, severity, roles, mitigation-first action, communication, recovery, and closure.",
+  "canonical_unit_ids": [
+    "incident-response:unit-001",
+    "incident-response:unit-002",
+    "incident-response:unit-003",
+    "incident-response:unit-004",
+    "incident-response:unit-005",
+    "incident-response:unit-006",
+    "incident-response:unit-007",
+    "incident-response:unit-008",
+    "incident-response:unit-009"
+  ],
+  "cluster_id": "cluster:incident-response-coordination",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "incident-response/SKILL.md:121-135",
+    "incident-response/SKILL.md:138-149",
+    "incident-response/SKILL.md:55-61",
+    "incident-response/SKILL.md:66-76",
+    "incident-response/SKILL.md:77-92",
+    "incident-response/SKILL.md:93-117",
+    "incident-response/references/incident-playbook.md:136-165",
+    "incident-response/references/incident-playbook.md:169-182",
+    "incident-response/references/incident-playbook.md:238-251"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "cluster:incident-response-coordination:fusion:boundary",
+      "rule": "Coordinate incident acknowledgement, severity, roles, mitigation-first action, communication, recovery, and closure."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "cluster:incident-response-coordination:fusion:inputs",
+      "rule": "Accept only: An active production anomaly, impact evidence, alerts, and available mitigation controls."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:incident-response-coordination"
+      ],
+      "id": "cluster:incident-response-coordination:fusion:outputs",
+      "rule": "Produce only: A structured response, mitigation, communications, escalation, recovery evidence, and closure record."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:incident-response-coordination:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "An active production anomaly, impact evidence, alerts, and available mitigation controls.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "incident-response"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "incident-response"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "incident-response"
+      ]
+    }
+  ],
+  "output_boundary": "A structured response, mitigation, communications, escalation, recovery evidence, and closure record.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "事故探测确认与响应 SLA 门禁：在告警触发后的目标时限内（严重事故通常 5-15 分钟）必须完成确权，评估等级、呼叫值班人员并建立专属应急频道; 事故严重度分级准则与定损分类规则：基于核心功能影响面、数据完整性风险、安全渗透及收入损失将事故划分为 SEV-1 到 SEV-4 并绑定对应组织响应标准; 止血优先于排查根因铁律门禁：在用户受损状态下，以最快速度采取回滚、关停开关、主从切换、扩容限流等止血模式，坚决禁止带病排查根因",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Explicit limits: 收到监控报警、用户报告或内部异常上报时的初次响应入口门禁; 探测后确定响应规模与资源投入的分级定损阶段; 用户仍在遭受业务中断时的技术处置第一优先级",
+      "source_id": "incident-response",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (gate=3, method=1, rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "incident-response:unit-001",
+        "incident-response:unit-002",
+        "incident-response:unit-003",
+        "incident-response:unit-004",
+        "incident-response:unit-005",
+        "incident-response:unit-006",
+        "incident-response:unit-007",
+        "incident-response:unit-008",
+        "incident-response:unit-009"
+      ]
+    },
+    {
+      "approach": "常见故障症状快速止血模式映射表：针对发布后报错、配置变更、数据库连接池耗尽、延迟飙升、安全攻击等典型场景，提供首选止血动作映射",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Explicit limits: 技术排查阶段依据初始症状快速决定首要止血手段",
+      "source_id": "incident-response",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "incident-response:unit-009"
+      ]
+    },
+    {
+      "approach": "收到监控报警、用户报告或内部异常上报时的初次响应入口门禁; 探测后确定响应规模与资源投入的分级定损阶段; 用户仍在遭受业务中断时的技术处置第一优先级",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Explicit limits: 收到监控报警、用户报告或内部异常上报时的初次响应入口门禁; 探测后确定响应规模与资源投入的分级定损阶段; 用户仍在遭受业务中断时的技术处置第一优先级",
+      "source_id": "incident-response",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (gate=3, method=1, rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "incident-response:unit-001",
+        "incident-response:unit-002",
+        "incident-response:unit-003",
+        "incident-response:unit-004",
+        "incident-response:unit-005",
+        "incident-response:unit-006",
+        "incident-response:unit-007",
+        "incident-response:unit-008",
+        "incident-response:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "incident-response",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在规定时限内完成确权响应并成功拉起应急沟通渠道; 依据明确特征界定事故严重级别，并支持随处置信息逐步修正; 优先执行有效止血动作阻止用户影响扩散，根因分析移至后续排查",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182"
+      ],
+      "limitations": "Explicit limits: 收到监控报警、用户报告或内部异常上报时的初次响应入口门禁; 探测后确定响应规模与资源投入的分级定损阶段; 用户仍在遭受业务中断时的技术处置第一优先级",
+      "source_id": "incident-response",
+      "strengths": "Provides 8 source-grounded atom(s) for gates-and-validation (gate=3, rule=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "incident-response:unit-001",
+        "incident-response:unit-002",
+        "incident-response:unit-003",
+        "incident-response:unit-004",
+        "incident-response:unit-005",
+        "incident-response:unit-006",
+        "incident-response:unit-007",
+        "incident-response:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "incident-response",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "incident-response",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 3,
+        "method": 1,
+        "rule": 5
+      },
+      "evidence": [
+        "incident-response/SKILL.md:121-135",
+        "incident-response/SKILL.md:138-149",
+        "incident-response/SKILL.md:55-61",
+        "incident-response/SKILL.md:66-76",
+        "incident-response/SKILL.md:77-92",
+        "incident-response/SKILL.md:93-117",
+        "incident-response/references/incident-playbook.md:136-165",
+        "incident-response/references/incident-playbook.md:169-182",
+        "incident-response/references/incident-playbook.md:238-251"
+      ],
+      "source_id": "incident-response",
+      "unit_ids": [
+        "incident-response:unit-001",
+        "incident-response:unit-002",
+        "incident-response:unit-003",
+        "incident-response:unit-004",
+        "incident-response:unit-005",
+        "incident-response:unit-006",
+        "incident-response:unit-007",
+        "incident-response:unit-008",
+        "incident-response:unit-009"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "incident-response:unit-001",
+    "incident-response:unit-002",
+    "incident-response:unit-003",
+    "incident-response:unit-004",
+    "incident-response:unit-005",
+    "incident-response:unit-006",
+    "incident-response:unit-007",
+    "incident-response:unit-008",
+    "incident-response:unit-009"
+  ]
+}

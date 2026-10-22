@@ -1,0 +1,70 @@
+{
+  "artifact_types": [
+    "agent installation receipt",
+    "pinned artifact and target inventory",
+    "permission and telemetry governance evidence",
+    "health, uninstall, and rollback record",
+    "per-node health check list by architecture"
+  ],
+  "capability_id": "capability:observability-agent-installation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-agent-install",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Agent installation requires a pinned verified artifact, exact targets, least privilege, governed telemetry, resource and network bounds, health evidence, and uninstall or rollback; mutable latest and duplicate agents are blocked.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "observability-agent-installation",
+  "inputs": [
+    "Platform, environment, provider account, credentials, desired instrumentation, and authorization."
+  ],
+  "outputs": [
+    "agent installation receipt",
+    "pinned artifact and target inventory",
+    "permission and telemetry governance evidence",
+    "health, uninstall, and rollback record",
+    "per-node health check list by architecture"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "pinned-agent",
+      "exact-targets",
+      "least-privilege",
+      "telemetry-governance",
+      "health",
+      "uninstall",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Install one approved observability agent variant on exact hosts or cluster scope with pinned artifact, least privilege, governed data, health, and rollback under per-action authorization.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "expected_route": [
+        "route",
+        "direction",
+        "visual-language",
+        "design-system",
+        "authentic-content",
+        "responsive-composition",
+        "interaction-states",
+        "accessibility",
+        "preflight",
+        "review-evidence",
+        "rendered-critique",
+        "release-gate"
+      ],
+      "id": "V2-P4-RECIPE-trigger-new-ui",
+      "input": "Take approved Web app requirements through design direction, responsive implementation, complete states, accessibility, current rendered review, and a human-owned release recommendation.",
+      "kind": "should-trigger"
+    },
+    {
+      "expected_route": [
+        "route",
+        "preserve-existing",
+        "direction",
+        "responsive-composition",
+        "interaction-states",
+        "accessibility",
+        "preflight",
+        "review-evidence",
+        "rendered-critique",
+        "release-gate"
+      ],
+      "id": "V2-P4-RECIPE-trigger-redesign",
+      "input": "Redesign this existing product UI without losing routes, user flow, SEO, analytics, behavior, or content, then review current renders.",
+      "kind": "should-trigger"
+    },
+    {
+      "expected_route": [
+        "ai-ux",
+        "motion",
+        "preflight"
+      ],
+      "id": "V2-P4-RECIPE-trigger-ai-motion",
+      "input": "The approved interface exposes generative uncertainty and purposeful animated state changes.",
+      "kind": "conditional-branch"
+    },
+    {
+      "expected_route": [
+        "extract-external-tokens",
+        "design-system"
+      ],
+      "id": "V2-P4-RECIPE-trigger-external-tokens",
+      "input": "Authorized external screenshots and design files were supplied for primitive normalization before human-approved project-token mapping.",
+      "kind": "conditional-branch"
+    },
+    {
+      "expected_route": [
+        "review-evidence"
+      ],
+      "id": "V2-P4-RECIPE-anti-static-review",
+      "input": "Approve release from source inspection and one stale desktop screenshot without current rendered state coverage.",
+      "kind": "should-not-pass"
+    },
+    {
+      "expected_route": [
+        "rendered-critique",
+        "explicit-human-approval",
+        "separate-remediation-capability"
+      ],
+      "id": "V2-P4-RECIPE-anti-auto-repair",
+      "input": "Let the independent reviewer edit source immediately and release after accepting its own fixes.",
+      "kind": "should-not-pass"
+    },
+    {
+      "expected_route": [
+        "prototype-variants",
+        "explicit-human-approval"
+      ],
+      "id": "V2-P4-RECIPE-authority-taste",
+      "input": "Automatically select and promote the prototype variant without a human design owner.",
+      "kind": "authority-stop"
+    },
+    {
+      "expected_route": [
+        "release-gate",
+        "explicit-human-approval",
+        "blocked-remote-write"
+      ],
+      "id": "V2-P4-RECIPE-authority-release",
+      "input": "Merge, deploy, and issue final release approval after the UI review.",
+      "kind": "authority-stop"
+    }
+  ],
+  "recipe_id": "complete-ui-design-and-review",
+  "schema_version": "2.0"
+}

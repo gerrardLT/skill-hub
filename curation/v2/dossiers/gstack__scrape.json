@@ -1,0 +1,133 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/scrape/SKILL.md:54]",
+    "Skill Invocation During Plan Mode [gstack/scrape/SKILL.md:58]",
+    "Model-Specific Behavioral Patch (claude) [gstack/scrape/SKILL.md:77]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/scrape/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/scrape/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/scrape/SKILL.md:5]",
+  "outputs": [
+    "One JSON document, on stdout: the bytes between JSONSTART / [gstack/scrape/SKILL.md:385]",
+    "JSONEND, or the object built from the aside exec reply. Not [gstack/scrape/SKILL.md:386]",
+    "pretty-printed. Use a stable shape — typically [gstack/scrape/SKILL.md:387]",
+    "{ \"items\": [...], \"count\": N } — so downstream consumers can treat it [gstack/scrape/SKILL.md:388]",
+    "as data. [gstack/scrape/SKILL.md:389]",
+    "Chat is for logs. [gstack/scrape/SKILL.md:390]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/scrape/SKILL.md:32]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/scrape/SKILL.md:37]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/scrape/SKILL.md:56]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/scrape/SKILL.md:147]",
+    "in, click X, fill the form, delete, create, order, book — [gstack/scrape/SKILL.md:278]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/scrape/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Pull data from a web page through the Aside browser — your real, already signed-in sessions. [gstack/scrape/SKILL.md:5]",
+  "root_id": "skill-root:gstack/scrape",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/scrape/SKILL.md:17]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/scrape/SKILL.md:38]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/scrape/SKILL.md:39]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/scrape/SKILL.md:40]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/scrape/SKILL.md:47]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/scrape/SKILL.md:48]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/scrape/SKILL.md:51]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/scrape/SKILL.md:62]"
+  ],
+  "skill_path": "gstack/scrape/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/scrape/SKILL.md"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "path": "gstack/scrape/SKILL.md"
+    },
+    {
+      "line_end": 26,
+      "line_start": 26,
+      "path": "gstack/scrape/SKILL.md"
+    },
+    {
+      "line_end": 54,
+      "line_start": 54,
+      "path": "gstack/scrape/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/scrape/SKILL.md"
+    }
+  ],
+  "source_sha256": "89717be718b6dff8a506f70a6432b7ec3dc0002f8abad5bc2ca6d43445ab945e",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/scrape/SKILL.md:73]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/scrape/SKILL.md:80]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/scrape/SKILL.md:108]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/scrape/SKILL.md:111]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/scrape/SKILL.md:132]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/scrape/SKILL.md:142]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:89717be718b6dff8a506f70a6432b7ec3dc0002f8abad5bc2ca6d43445ab945e",
+        "content-review:419-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/scrape/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:b56865d2a2f79c1c95a86d5cd0662fedf030a1a468e32fec8270e0e269e8920b",
+        "content-review:181-lines"
+      ],
+      "path": "gstack/scrape/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/scrape/SKILL.md:1-16]",
+    "Declared tool: Read [gstack/scrape/SKILL.md:1-16]",
+    "Declared tool: AskUserQuestion [gstack/scrape/SKILL.md:1-16]"
+  ],
+  "trigger": "Pull data from a web page through the Aside browser — your real, already signed-in sessions. (gstack) [gstack/scrape/SKILL.md:5]",
+  "unique_methods": [
+    "Completion Status Protocol [gstack/scrape/SKILL.md:103]",
+    "Operational Self-Improvement [gstack/scrape/SKILL.md:113]",
+    "Telemetry (run last) [gstack/scrape/SKILL.md:129]",
+    "Plan Status Footer [gstack/scrape/SKILL.md:150]",
+    "Rules for driving a real browser [gstack/scrape/SKILL.md:174]",
+    "Browser fallback: gstack's own headless browser [gstack/scrape/SKILL.md:189]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/scrape/SKILL.md:5]"
+  ],
+  "workflow": [
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/scrape/SKILL.md:154]",
+    "Translate the Aside scripts step by step [gstack/scrape/SKILL.md:205]",
+    "Step 1 — Determine intent [gstack/scrape/SKILL.md:264]",
+    "Step 2 — Refuse mutating intents [gstack/scrape/SKILL.md:275]",
+    "Step 3 — Read the page [gstack/scrape/SKILL.md:287]"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:apm-instrumentation-troubleshooting",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0214",
+    "V2-FUSION-0215",
+    "V2-FUSION-0216",
+    "V2-FUSION-0217",
+    "V2-FUSION-0218",
+    "V2-FUSION-0219",
+    "V2-FUSION-0222",
+    "V2-FUSION-0253",
+    "V2-FUSION-0254",
+    "V2-FUSION-0255",
+    "V2-FUSION-0256",
+    "V2-FUSION-0257",
+    "V2-FUSION-0258",
+    "V2-FUSION-0259",
+    "V2-FUSION-0260",
+    "V2-FUSION-0261",
+    "V2-FUSION-0265"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Failed verification evidence, platform variant, service configuration, logs, and authority boundary."
+  ],
+  "lifecycle_stage_id": "stage:13-incident-recovery",
+  "name": "Apm Instrumentation Troubleshooting",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Root cause, repair plan, handoff to an authorized mutating capability, and re-verification criteria."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "external-read",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/troubleshoot-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/troubleshoot-ssi"
+    }
+  ],
+  "responsibility": "Troubleshoot missing or incorrect APM signals through platform-specific evidence and route remote fixes to the authorized installation or enablement capability.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:004:step-1-triage",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:005:step-2-state-your-hypotheses",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:006:step-3-investigate",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:007:cluster-side-investigation-tools",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:008:datadog-side-investigation-tools",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:009:step-4-reflect-before-concluding",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:012:security-constraints",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:004:step-1-triage-with-pup-no-ssh-required",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:005:check-for-injection-errors-failures-only-successful-injections-don-t-app",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:006:check-full-tracer-config-look-at-apmenabled-traceagenturl-site",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:007:check-what-services-have-sent-traces-reveals-actual-service-names-visibl",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:008:check-if-traces-exist-at-all",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:009:step-2-state-your-hypotheses",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:010:step-3-investigate-with-pup-deeper",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:011:step-4-investigate-via-ssh-if-pup-didn-t-reveal-the-cause",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:012:step-5-reflect-before-concluding",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:016:security-constraints"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:121-143",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:158-176",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:177-204",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:183-194",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:329-360",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:361-371",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:421-426",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:138-144",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:145-147",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:148-150",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:151-153",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:154-156",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:186-207",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:208-213",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:240-279",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:348-358",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:411-416"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

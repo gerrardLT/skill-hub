@@ -1,0 +1,173 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/design-shotgun/SKILL.md:78]",
+    "Skill Invocation During Plan Mode [gstack/design-shotgun/SKILL.md:82]",
+    "Model-Specific Behavioral Patch (claude) [gstack/design-shotgun/SKILL.md:214]",
+    "Continuous Checkpoint Mode [gstack/design-shotgun/SKILL.md:314]",
+    "Step 3: Generate Variants [gstack/design-shotgun/SKILL.md:631]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/design-shotgun/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/design-shotgun/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/design-shotgun/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/design-shotgun/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/design-shotgun/SKILL.md:56]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/design-shotgun/SKILL.md:61]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/design-shotgun/SKILL.md:80]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-shotgun/SKILL.md:99]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/design-shotgun/SKILL.md:123]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/design-shotgun/SKILL.md:194]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/design-shotgun/SKILL.md:318]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/design-shotgun/SKILL.md:413]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/design-shotgun/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. [gstack/design-shotgun/SKILL.md:5]",
+  "root_id": "skill-root:gstack/design-shotgun",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/design-shotgun/SKILL.md:38]",
+    "\"visual brainstorm\", or \"I don't like how this looks\". [gstack/design-shotgun/SKILL.md:46]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/design-shotgun/SKILL.md:62]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/design-shotgun/SKILL.md:63]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/design-shotgun/SKILL.md:64]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/design-shotgun/SKILL.md:71]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/design-shotgun/SKILL.md:72]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/design-shotgun/SKILL.md:75]"
+  ],
+  "skill_path": "gstack/design-shotgun/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/design-shotgun/SKILL.md"
+    },
+    {
+      "line_end": 42,
+      "line_start": 42,
+      "path": "gstack/design-shotgun/SKILL.md"
+    },
+    {
+      "line_end": 50,
+      "line_start": 50,
+      "path": "gstack/design-shotgun/SKILL.md"
+    },
+    {
+      "line_end": 78,
+      "line_start": 78,
+      "path": "gstack/design-shotgun/SKILL.md"
+    },
+    {
+      "line_end": 82,
+      "line_start": 82,
+      "path": "gstack/design-shotgun/SKILL.md"
+    }
+  ],
+  "source_sha256": "bee6f0de3d6bd278f7f3766154be7bd311c037246ca67a6f6f360172ee2e1de3",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/design-shotgun/SKILL.md:96]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/design-shotgun/SKILL.md:97]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/design-shotgun/SKILL.md:98]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-shotgun/SKILL.md:99]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/design-shotgun/SKILL.md:101]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/design-shotgun/SKILL.md:105]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bee6f0de3d6bd278f7f3766154be7bd311c037246ca67a6f6f360172ee2e1de3",
+        "content-review:929-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/design-shotgun/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:74fdefd970b7afec35199ff639f65fe9419deb98946049de9eadb2f9cc149f87",
+        "content-review:365-lines"
+      ],
+      "path": "gstack/design-shotgun/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:db00be4d927e48ebeff614f761a8d118b294c527fab4596bf48b54a7296503fd",
+        "content-review:87-lines"
+      ],
+      "path": "gstack/design-shotgun/sections/doctrine.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:476b80f37edb2ef0210fbc74c67e3aec22e3d08b51e7e1e93df7dd22caa307d3",
+        "content-review:2-lines"
+      ],
+      "path": "gstack/design-shotgun/sections/doctrine.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:7ef50a5737fed945edb8e37fdbe3048b8227cb66acc38a166cb5f45ecc7a1378",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/design-shotgun/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/design-shotgun/SKILL.md:1-37]",
+    "Declared tool: Read [gstack/design-shotgun/SKILL.md:1-37]",
+    "Declared tool: Glob [gstack/design-shotgun/SKILL.md:1-37]",
+    "Declared tool: Grep [gstack/design-shotgun/SKILL.md:1-37]",
+    "Declared tool: Agent [gstack/design-shotgun/SKILL.md:1-37]",
+    "Declared tool: AskUserQuestion [gstack/design-shotgun/SKILL.md:1-37]",
+    "Local dependency: gstack/design-shotgun/sections/doctrine.md [gstack/design-shotgun/SKILL.md:435]"
+  ],
+  "trigger": "\"Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. (gstack)\" [gstack/design-shotgun/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/design-shotgun/SKILL.md:162]",
+    "Self-check before emitting [gstack/design-shotgun/SKILL.md:185]",
+    "Context Recovery [gstack/design-shotgun/SKILL.md:253]",
+    "Completeness Principle — Boil the Ocean [gstack/design-shotgun/SKILL.md:300]",
+    "Confusion Protocol [gstack/design-shotgun/SKILL.md:306]",
+    "Claimed Limitations Need Evidence [gstack/design-shotgun/SKILL.md:310]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/design-shotgun/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/design-shotgun/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/design-shotgun/SKILL.md:314]",
+    "Step 0: Session Detection [gstack/design-shotgun/SKILL.md:477]",
+    "Step 1: Context Gathering [gstack/design-shotgun/SKILL.md:509]",
+    "Step 2: Taste Memory [gstack/design-shotgun/SKILL.md:565]",
+    "Step 3: Generate Variants [gstack/design-shotgun/SKILL.md:631]",
+    "Step 3a: Concept Generation [gstack/design-shotgun/SKILL.md:644]",
+    "Step 3b: Concept Confirmation [gstack/design-shotgun/SKILL.md:669]",
+    "Step 3c: Parallel Generation [gstack/design-shotgun/SKILL.md:686]",
+    "Step 3d: Results [gstack/design-shotgun/SKILL.md:749]",
+    "Step 4: Comparison Board + Feedback Loop [gstack/design-shotgun/SKILL.md:772]"
+  ]
+}

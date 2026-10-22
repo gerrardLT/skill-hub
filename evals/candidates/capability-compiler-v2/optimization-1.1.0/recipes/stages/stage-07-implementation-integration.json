@@ -1,0 +1,691 @@
+{
+  "condition": "authorized source implementation, repair, integration, or developer self-check is required",
+  "dependency_records": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff",
+        "curation/clusters.json:cluster:plan-execution-control"
+      ],
+      "id": "V2-DEPENDENCY-0074",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:implementation-planning-and-handoff",
+      "legacy_target_cluster_id": "cluster:plan-execution-control",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:implementation-planning-and-handoff",
+      "target_capability_id": "capability:plan-execution-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff",
+        "curation/clusters.json:cluster:subagent-task-pipeline"
+      ],
+      "id": "V2-DEPENDENCY-0075",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:implementation-planning-and-handoff",
+      "legacy_target_cluster_id": "cluster:subagent-task-pipeline",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:implementation-planning-and-handoff",
+      "target_capability_id": "capability:isolated-task-implementation"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:implementation-planning-and-handoff",
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "V2-DEPENDENCY-0076",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:implementation-planning-and-handoff",
+      "legacy_target_cluster_id": "cluster:tdd-change-loop",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:implementation-planning-and-handoff",
+      "target_capability_id": "capability:tdd-change-loop"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:incident-response-coordination",
+        "curation/clusters.json:cluster:root-cause-investigation"
+      ],
+      "id": "V2-DEPENDENCY-0078",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:incident-response-coordination",
+      "legacy_target_cluster_id": "cluster:root-cause-investigation",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:incident-response-coordination",
+      "target_capability_id": "capability:root-cause-investigation"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:independent-plan-review",
+        "curation/clusters.json:cluster:plan-execution-control"
+      ],
+      "id": "V2-DEPENDENCY-0083",
+      "kind": "hard",
+      "legacy_source_cluster_id": "cluster:independent-plan-review",
+      "legacy_target_cluster_id": "cluster:plan-execution-control",
+      "rationale": "Earlier-stage evidence is a hard prerequisite for the later-stage capability.",
+      "source_capability_id": "capability:independent-plan-review",
+      "target_capability_id": "capability:plan-execution-control"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation",
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "V2-DEPENDENCY-0132",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:root-cause-investigation",
+      "legacy_target_cluster_id": "cluster:tdd-change-loop",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:root-cause-investigation",
+      "target_capability_id": "capability:tdd-change-loop"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:subagent-task-pipeline",
+        "curation/clusters.json:cluster:developer-self-check-and-fix"
+      ],
+      "id": "V2-DEPENDENCY-0148",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:subagent-task-pipeline",
+      "legacy_target_cluster_id": "cluster:developer-self-check-and-fix",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:isolated-task-implementation",
+      "target_capability_id": "capability:developer-self-check-and-fix"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop",
+        "curation/clusters.json:cluster:developer-self-check-and-fix"
+      ],
+      "id": "V2-DEPENDENCY-0151",
+      "kind": "optional",
+      "legacy_source_cluster_id": "cluster:tdd-change-loop",
+      "legacy_target_cluster_id": "cluster:developer-self-check-and-fix",
+      "rationale": "Capabilities share a stage; preserve coordination without imposing an unproven order.",
+      "source_capability_id": "capability:tdd-change-loop",
+      "target_capability_id": "capability:developer-self-check-and-fix"
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:testing-portfolio-strategy",
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "V2-DEPENDENCY-0158",
+      "kind": "feedback",
+      "legacy_source_cluster_id": "cluster:testing-portfolio-strategy",
+      "legacy_target_cluster_id": "cluster:tdd-change-loop",
+      "rationale": "Later-stage evidence feeds a future lifecycle pass; it is not a same-run prerequisite.",
+      "source_capability_id": "capability:testing-portfolio-strategy",
+      "target_capability_id": "capability:tdd-change-loop"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "github-actions-hardening/SKILL.md:82-91",
+        "test-driven-development/SKILL.md:1-15"
+      ],
+      "id": "V2-DEPENDENCY-0186",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Implementation must inherit approved authorization and permission boundaries.",
+      "source_capability_id": "capability:authorization-and-permission-contracts",
+      "target_capability_id": "capability:tdd-change-loop"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/spec/SKILL.md:714-718",
+        "test-driven-development/SKILL.md:1-15"
+      ],
+      "id": "V2-DEPENDENCY-0193",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Implementation consumes approved data and API contracts.",
+      "source_capability_id": "capability:data-and-api-contract-design",
+      "target_capability_id": "capability:tdd-change-loop"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "gstack/design-review/SKILL.md:1545-1556",
+        "gstack/qa/SKILL.md:736-742"
+      ],
+      "id": "V2-DEPENDENCY-0221",
+      "kind": "feedback",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Confirmed QA findings return to implementation under a separate write identity.",
+      "source_capability_id": "capability:qa-finding-triage",
+      "target_capability_id": "capability:defect-remediation"
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion/decisions.jsonl",
+        "github-actions-hardening/SKILL.md:106-115",
+        "test-driven-development/SKILL.md:1-15"
+      ],
+      "id": "V2-DEPENDENCY-0224",
+      "kind": "hard",
+      "legacy_source_cluster_id": null,
+      "legacy_target_cluster_id": null,
+      "rationale": "Implementation must preserve approved secret and environment boundaries.",
+      "source_capability_id": "capability:secrets-and-environment-governance",
+      "target_capability_id": "capability:tdd-change-loop"
+    }
+  ],
+  "description": "Implement, integrate, debug, and self-check bounded source changes.",
+  "execution_state": "candidate-definition-not-executed",
+  "exit_contract": "bounded patch, current evidence, and independent-review handoff",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "never_execute_adjacent_step_implicitly": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "select only atomic steps whose trigger matches and prerequisites are current",
+    "preserve candidate permission identity and mutation scope exactly",
+    "remote, local-system, external-session, and local-git steps remain disabled without fresh current authorization",
+    "hard dependencies are current-run prerequisites; optional dependencies never force activation; feedback dependencies feed a future pass and never block current-run execution",
+    "no passed handoff without complete four-part evidence contract"
+  ],
+  "human_checkpoint": "human authorizes exact workspace, writer, mutation scope, and accepted remediation",
+  "id": "stage-07-implementation-integration",
+  "mandatory_stage": true,
+  "schema_version": "2.0",
+  "stage_id": "stage:07-implementation-integration",
+  "stage_order": 7,
+  "status": "evaluating",
+  "steps": [
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/change-scope-freeze",
+      "condition": "Select only when the atomic requested outcome matches: Freeze one authorized change boundary, affected artifacts, non-goals, invariants, owners, and invalidation conditions before implementation begins.",
+      "contract_sha256": "fabba3d1a8a81f1a8f5ddf1b410ef897276da7a45429a5aa3713c1d7e8218827",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "No implementation begins until the required behavior, authorized workspace, single writer, allowed mutation boundary, tests, invariants, and non-goals are explicit.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "change-scope-freeze",
+      "inputs": [
+        "Authorized scope, protected paths, change identity, and expiry condition."
+      ],
+      "mutation_scope": "run-output",
+      "outputs": [
+        "frozen change-scope contract",
+        "allowed and prohibited artifact map",
+        "invariant and non-goal register",
+        "scope invalidation conditions"
+      ],
+      "permission_identity": "workspace-write",
+      "remote_write": false,
+      "skill_ref": "change-scope-freeze@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/code-health-assessment",
+      "condition": "Select only when the atomic requested outcome matches: Assess a codebase's maintainability, complexity, duplication, dependency, error-handling, and test-health risks from supplied source without editing it.",
+      "contract_sha256": "0519126222f4504f005f464017b7cd7a516b743ff608d61293f0521d7e55d3c2",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A code-health finding needs a cited source location and plausible maintenance consequence; stylistic dislike, hypothetical reuse, and aggregate scores alone do not justify remediation.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "code-health-assessment",
+      "inputs": [
+        "Repository, time window, quality signals, ownership, and exclusions."
+      ],
+      "mutation_scope": "none",
+      "outputs": [
+        "code-health findings",
+        "maintainability evidence map",
+        "priority and leave-unchanged rationale",
+        "bounded remediation options",
+        "per-category status table from tool exits (composite score only when weights are supplied)"
+      ],
+      "permission_identity": "read-only",
+      "remote_write": false,
+      "skill_ref": "code-health-assessment@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/defect-remediation",
+      "condition": "Select only when the atomic requested outcome matches: Apply the smallest authorized source repair for a confirmed root cause and verify the changed behavior plus relevant regressions in one isolated workspace.",
+      "contract_sha256": "63d9d7ff45c905c2c2eb7cf13ebef2f5f3a79629d93c9e6348e6fe45a4331783",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0221"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Remediation cannot start from an unconfirmed symptom, and it cannot pass without a root-cause-linked patch plus current focused and affected-regression evidence.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "defect-remediation",
+      "inputs": [
+        "Confirmed finding, reproduction evidence, source workspace, repair authority, and regression contract."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "minimal source and test patch",
+        "before-and-after reproduction evidence",
+        "focused and regression command records",
+        "rollback and residual-risk note"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "defect-remediation@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/developer-self-check-and-fix",
+      "condition": "Select only when the atomic requested outcome matches: Self-review one completed authorized change, fix only deterministic defects within its frozen scope, and leave independent review ownership intact.",
+      "contract_sha256": "31d0f54e91763d9f1fa12da43406a5b4802ab27f76f9340337d3215c5c95b75c",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0148",
+        "V2-DEPENDENCY-0151"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A developer correction pass may fix deterministic in-scope defects but must never impersonate independent review, erase failed evidence, or expand the frozen change.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "developer-self-check-and-fix",
+      "inputs": [
+        "Implemented code, its task specification, test output, and change list."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "self-review checklist",
+        "bounded correction patch",
+        "updated focused evidence",
+        "independent-review handoff",
+        "report state (DONE, DONE_WITH_CONCERNS, BLOCKED, NEEDS_CONTEXT) with concerns listed"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "developer-self-check-and-fix@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/git-destructive-command-guard",
+      "condition": "Select only when the atomic requested outcome matches: Author and validate a repository-scoped guard policy that intercepts declared destructive Git command patterns before execution without installing it silently.",
+      "contract_sha256": "50d53b678934e537a7389a0734c257cd401e8d3895688388e2cdbba7fc20fc1e",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Guard authoring may create tested repository artifacts but cannot modify Git config, hook paths, aliases, shell startup, or enable interception without separate local-system authorization.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "git-destructive-command-guard",
+      "inputs": [
+        "A command hook environment, dangerous-command policy, and local configuration."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "guard policy source",
+        "allow and block fixture corpus",
+        "local validation evidence",
+        "separate installation handoff",
+        "default destructive-pattern table with near-miss pass cases"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "git-destructive-command-guard@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/isolated-task-implementation",
+      "condition": "Select only when the atomic requested outcome matches: Implement one frozen task in one isolated authorized workspace with a single writer, bounded checks, and a reviewable handoff.",
+      "contract_sha256": "670275b67d7bb27ad7bfcd69c13e024b64a90b2d0aa41548920c00c31f8e4461",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0075"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "One task has one writer and one isolated workspace; missing isolation, dirty-state ambiguity, concurrent ownership, or scope expansion blocks implementation.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "isolated-task-implementation",
+      "inputs": [
+        "One approved task, complete task-local context, isolated workspace, edit scope, test command, and escalation boundary."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "isolated implementation patch",
+        "changed-file and scope evidence",
+        "focused verification records",
+        "review and integration handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "isolated-task-implementation@1.1.0-candidate"
+    },
+    {
+      "activation": "disabled-pending-current-authorization",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/local-branch-integration",
+      "condition": "Select only when the atomic requested outcome matches: Integrate an approved local base ref into an isolated change branch while preserving a recoverable pre-integration ref and performing no remote writes.",
+      "contract_sha256": "0b6418e664d60e581c0c2c2223c42ae7fc91552301d7950702c4327154b7221b",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Local integration requires an approved local base ref, clean isolated change branch, recoverable pre-integration identity, and zero fetch, push, force, remote merge, or branch deletion.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "local-branch-integration",
+      "inputs": [
+        "Isolated worktree, change branch, approved base reference, clean-state evidence, and local mutation authority."
+      ],
+      "mutation_scope": "authorized-local-git",
+      "outputs": [
+        "integrated local branch or conflict state",
+        "before and after ref evidence",
+        "changed-file or conflict report",
+        "exact recovery command"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "local-branch-integration@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/plan-execution-control",
+      "condition": "Select only when the atomic requested outcome matches: Advance an approved implementation plan through explicit step states, dependencies, checkpoints, evidence, invalidation, pause, and resume without absorbing specialist work.",
+      "contract_sha256": "6d7048b5931134ad83ceba9481979b256c54dc60b4870c960cb578f871a74a29",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0074",
+        "V2-DEPENDENCY-0083"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "A controller may transition only steps whose dependencies, identity, authority, and gates are current; it cannot mark specialist work passed or reuse evidence after upstream invalidation.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "plan-execution-control",
+      "inputs": [
+        "An executable implementation plan and an isolated work environment."
+      ],
+      "mutation_scope": "run-output",
+      "outputs": [
+        "plan execution state ledger",
+        "step and dependency status",
+        "checkpoint and evidence map",
+        "invalidation, pause, and resume instructions"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "plan-execution-control@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/root-cause-investigation",
+      "condition": "Select only when the atomic requested outcome matches: Reproduce and trace an observed defect to the highest shared evidence-backed cause without editing product source.",
+      "contract_sha256": "9e913b8e3921e23414ee67642b7b5009a76bc3db3f194c6c1e69e5e07c2f34a9",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0078"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Investigation cannot declare root cause from correlation, the last stack frame, or one patched symptom; it needs a reproducible causal chain and sibling-path analysis.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "root-cause-investigation",
+      "inputs": [
+        "A test failure, production incident, unexpected behavior, build issue, or performance problem."
+      ],
+      "mutation_scope": "artifact-output",
+      "outputs": [
+        "minimal reproduction",
+        "hypothesis and experiment ledger",
+        "root-cause evidence chain",
+        "affected-surface and remediation handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "root-cause-investigation@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/tdd-change-loop",
+      "condition": "Select only when the atomic requested outcome matches: Implement one authorized behavior change through a preserved RED, minimal GREEN, refactor, and current host-verification loop.",
+      "contract_sha256": "4b9b20f5ea524ec3eb92f07daf8ec1283d1da65e634d9fdc10444e4e695163bc",
+      "default_state": "skipped",
+      "dependency_refs": [
+        "V2-DEPENDENCY-0076",
+        "V2-DEPENDENCY-0132",
+        "V2-DEPENDENCY-0158",
+        "V2-DEPENDENCY-0186",
+        "V2-DEPENDENCY-0193",
+        "V2-DEPENDENCY-0224"
+      ],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "No TDD completion without a target-bound failing test observed before the production change, a minimal passing patch, and fresh post-change focused plus affected-regression evidence.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "tdd-change-loop",
+      "inputs": [
+        "A feature, defect, refactor, or other behavior change."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "RED test and failure evidence",
+        "minimal GREEN source patch",
+        "refactor and regression evidence",
+        "reviewable patch handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "tdd-change-loop@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/ui-remediation",
+      "condition": "Select only when the atomic requested outcome matches: Apply only accepted evidence-backed UI findings to authorized source and recapture the affected states without performing independent review.",
+      "contract_sha256": "394286fd912404a272cd25f60497c61856e442f9a8759399a7db939d29b9a530",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "UI remediation requires accepted reproducible findings and separate authorization; the remediator cannot create its own findings, waive risk, judge its recaptures, or issue release disposition.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "ui-remediation",
+      "inputs": [
+        "UI findings, source workspace, design system, platform variant, and write authority."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "bounded UI repair patch",
+        "finding-to-change map",
+        "focused verification evidence",
+        "recapture bundle and independent-review handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "ui-remediation@1.1.0-candidate"
+    },
+    {
+      "activation": "conditional",
+      "candidate_path": "evals/candidates/capability-compiler-v2/optimization-1.1.0/skills/website-audit-remediation",
+      "condition": "Select only when the atomic requested outcome matches: Apply explicitly accepted website audit findings to authorized source, verify affected checks, and preserve a separate reassessment boundary.",
+      "contract_sha256": "71d7472f0e7dbff76e7aedb628613ba4141ad9233536d12bbde21494940a2b9e",
+      "default_state": "skipped",
+      "dependency_refs": [],
+      "evidence_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "failure_routes": {
+        "blocked": "stop-and-preserve-evidence",
+        "failed": "stop-invalidate-dependents-and-record",
+        "needs-input": "stop-and-request-owner-input",
+        "passed": "emit-artifact-contract"
+      },
+      "hard_gates": [
+        "Website remediation cannot begin without accepted audit findings and cannot close them without separate current reassessment; repair authority never includes deployment.",
+        "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+      ],
+      "id": "website-audit-remediation",
+      "inputs": [
+        "Confirmed audit finding, source mapping, approved repair scope, workspace, and local verification command."
+      ],
+      "mutation_scope": "authorized-workspace",
+      "outputs": [
+        "bounded website repair patch",
+        "finding-to-fix traceability",
+        "focused verification records",
+        "independent reassessment handoff"
+      ],
+      "permission_identity": "workspace-write-local-exec",
+      "remote_write": false,
+      "skill_ref": "website-audit-remediation@1.1.0-candidate"
+    }
+  ],
+  "version": "1.1.0-candidate"
+}

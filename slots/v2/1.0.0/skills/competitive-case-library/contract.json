@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "competitive case records",
+    "evidence-quality register",
+    "case taxonomy",
+    "staleness queue"
+  ],
+  "capability_id": "capability:competitive-case-library",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "A case without a source, observation date, and fact-versus-inference label cannot enter the library.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "competitive-case-library",
+  "inputs": [
+    "A competitive question, case material, historical context, and applicability boundary."
+  ],
+  "outputs": [
+    "competitive case records",
+    "evidence-quality register",
+    "case taxonomy",
+    "staleness queue"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Build a traceable case library from supplied or authorized competitor evidence for later comparison.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

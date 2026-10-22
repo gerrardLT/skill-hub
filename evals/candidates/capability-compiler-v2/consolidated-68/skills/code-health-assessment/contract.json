@@ -1,0 +1,72 @@
+{
+  "artifact_types": [
+    "code-health findings",
+    "maintainability evidence map",
+    "priority and leave-unchanged rationale",
+    "bounded remediation options",
+    "per-category status table from tool exits (composite score only when weights are supplied)"
+  ],
+  "capability_id": "capability:code-health-assessment",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A code-health finding needs a cited source location and plausible maintenance consequence; stylistic dislike, hypothetical reuse, and aggregate scores alone do not justify remediation.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "code-health-assessment",
+  "inputs": [
+    "Repository, time window, quality signals, ownership, and exclusions."
+  ],
+  "mode_permissions": {
+    "code-health-assessment": "read-only"
+  },
+  "modes": [],
+  "outputs": [
+    "code-health findings",
+    "maintainability evidence map",
+    "priority and leave-unchanged rationale",
+    "bounded remediation options",
+    "per-category status table from tool exits (composite score only when weights are supplied)"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "maintainability",
+      "complexity",
+      "duplication",
+      "coupling",
+      "error-handling",
+      "test-health",
+      "leave-unchanged"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Assess a codebase's maintainability, complexity, duplication, dependency, error-handling, and test-health risks from supplied source without editing it.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

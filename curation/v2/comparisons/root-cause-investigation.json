@@ -1,0 +1,577 @@
+{
+  "candidate_responsibility": "Reproduce failures, trace data to its source, compare working patterns, form one hypothesis, and test it minimally.",
+  "canonical_unit_ids": [
+    "playwright-best-practices:unit-004",
+    "systematic-debugging:unit-001",
+    "systematic-debugging:unit-002",
+    "systematic-debugging:unit-003",
+    "systematic-debugging:unit-004",
+    "systematic-debugging:unit-005",
+    "systematic-debugging:unit-006",
+    "systematic-debugging:unit-007",
+    "systematic-debugging:unit-008",
+    "systematic-debugging:unit-009",
+    "systematic-debugging:unit-010",
+    "systematic-debugging:unit-011",
+    "systematic-debugging:unit-012",
+    "systematic-debugging:unit-013",
+    "systematic-debugging:unit-014",
+    "systematic-debugging:unit-015"
+  ],
+  "cluster_id": "cluster:root-cause-investigation",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "playwright-best-practices/SKILL.md:71-86",
+    "systematic-debugging/SKILL.md:1-23",
+    "systematic-debugging/SKILL.md:110-121",
+    "systematic-debugging/SKILL.md:12-14",
+    "systematic-debugging/SKILL.md:122-145",
+    "systematic-debugging/SKILL.md:146-170",
+    "systematic-debugging/SKILL.md:171-192",
+    "systematic-debugging/SKILL.md:174-180",
+    "systematic-debugging/SKILL.md:193-214",
+    "systematic-debugging/SKILL.md:196-212",
+    "systematic-debugging/SKILL.md:215-277",
+    "systematic-debugging/SKILL.md:228-233",
+    "systematic-debugging/SKILL.md:24-46",
+    "systematic-debugging/SKILL.md:278-296",
+    "systematic-debugging/SKILL.md:46-87",
+    "systematic-debugging/SKILL.md:47-72",
+    "systematic-debugging/SKILL.md:73-109",
+    "systematic-debugging/root-cause-tracing.md:1-33",
+    "systematic-debugging/root-cause-tracing.md:109-169",
+    "systematic-debugging/root-cause-tracing.md:34-66",
+    "systematic-debugging/root-cause-tracing.md:67-108"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation"
+      ],
+      "id": "cluster:root-cause-investigation:fusion:boundary",
+      "rule": "Reproduce failures, trace data to its source, compare working patterns, form one hypothesis, and test it minimally."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation"
+      ],
+      "id": "cluster:root-cause-investigation:fusion:inputs",
+      "rule": "Accept only: A test failure, production incident, unexpected behavior, build issue, or performance problem."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:root-cause-investigation"
+      ],
+      "id": "cluster:root-cause-investigation:fusion:outputs",
+      "rule": "Produce only: An evidence-backed root cause and a bounded correction path, never a symptom-only guess."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:root-cause-investigation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A test failure, production incident, unexpected behavior, build issue, or performance problem.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices",
+        "systematic-debugging"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "playwright-best-practices",
+        "systematic-debugging"
+      ]
+    }
+  ],
+  "output_boundary": "An evidence-backed root cause and a bounded correction path, never a symptom-only guess.",
+  "retained_auxiliary_unit_ids": [
+    "skills/systematic-debugging/SKILL.md:12-14",
+    "skills/systematic-debugging/SKILL.md:174-180",
+    "skills/systematic-debugging/SKILL.md:196-212",
+    "skills/systematic-debugging/SKILL.md:228-233",
+    "skills/systematic-debugging/SKILL.md:46-87"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "测试调试与排障活动指南：涵盖测试失败诊断、偶发脆弱测试根治、并行运行排障、多 Worker 状态泄漏隔离、选择器修复、超时调查、Trace 查看器、竞态排查与控制台报错捕获",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Explicit limits: 当用例失败、选择器漂移、超时报错或测试在 CI 中不稳定时查阅",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-004"
+      ]
+    },
+    {
+      "approach": "测试调试与排障活动指南：涵盖测试失败诊断、偶发脆弱测试根治、并行运行排障、多 Worker 状态泄漏隔离、选择器修复、超时调查、Trace 查看器、竞态排查与控制台报错捕获",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Explicit limits: 当用例失败、选择器漂移、超时报错或测试在 CI 中不稳定时查阅",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-004"
+      ]
+    },
+    {
+      "approach": "当用例失败、选择器漂移、超时报错或测试在 CI 中不稳定时查阅",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Explicit limits: 当用例失败、选择器漂移、超时报错或测试在 CI 中不稳定时查阅",
+      "source_id": "playwright-best-practices",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "playwright-best-practices:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "playwright-best-practices",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "系统化调试总览与铁律：随意盲猜修改浪费时间并引发新 Bug，表面修补掩盖底层缺陷；核心原则：在动手修复前必须始终找到根因，仅修症状等同失败。铁律：未完成阶段 1 根因调查，绝不提出修复方案。; 适用场景与紧迫环境纪律：适用于所有测试失败、生产 Bug、异常行为、性能衰减及构建失败；尤其在面临紧急上线时间压力、催促进度或已有修补失效时必须坚守；严禁以'问题很简单'或'着急赶时间'为由跳过流程。; 阶段 1 根因调查基础三部曲：1. 仔细通读错误信息与完整堆栈（行号、路径、错误码）；2. 稳定复现问题，若无法稳定复现则持续收集数据拒绝瞎猜；3. 核对近期改动（Git diff、依赖包、配置文件及环境漂移）。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:1-33",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Explicit limits: 当遭遇任何 Bug、测试失败或意外行为时，在提出修复方案前强制生效。; 排查各类软硬件与系统级技术故障时生效。; 排查任何 Bug 的第一执行阶段。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 20 source-grounded atom(s) for responsibility (example=1, gate=3, method=7, rule=7, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:12-14",
+        "skills/systematic-debugging/SKILL.md:174-180",
+        "skills/systematic-debugging/SKILL.md:196-212",
+        "skills/systematic-debugging/SKILL.md:228-233",
+        "skills/systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging:unit-001",
+        "systematic-debugging:unit-002",
+        "systematic-debugging:unit-003",
+        "systematic-debugging:unit-004",
+        "systematic-debugging:unit-005",
+        "systematic-debugging:unit-006",
+        "systematic-debugging:unit-007",
+        "systematic-debugging:unit-008",
+        "systematic-debugging:unit-009",
+        "systematic-debugging:unit-010",
+        "systematic-debugging:unit-011",
+        "systematic-debugging:unit-012",
+        "systematic-debugging:unit-013",
+        "systematic-debugging:unit-014",
+        "systematic-debugging:unit-015"
+      ]
+    },
+    {
+      "approach": "阶段 1 根因调查基础三部曲：1. 仔细通读错误信息与完整堆栈（行号、路径、错误码）；2. 稳定复现问题，若无法稳定复现则持续收集数据拒绝瞎猜；3. 核对近期改动（Git diff、依赖包、配置文件及环境漂移）。; 多组件系统边界证据收集规范：在涉及工作流、构建脚本、签名及运行时的多层级系统中，在提出修复前必须在各层组件边界植入诊断日志，核验出入数据与环境传播，精准锁定在哪个边界发生断裂。; 阶段 2 模式对比分析：1. 寻找代码库中正常运行的同类代码；2. 完整阅读参考实现源码，不遗漏任何一行；3. 详列正常与故障代码的所有细微差异；4. 梳理全部环境、配置与上下文依赖假设。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Explicit limits: 排查任何 Bug 的第一执行阶段。; 处理多模块、微服务或跨 CI/CD 管道问题时强制使用。; 完成基础数据收集后、形成修复假设前执行。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 10 source-grounded atom(s) for method (example=1, method=7, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:174-180",
+        "skills/systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging:unit-003",
+        "systematic-debugging:unit-004",
+        "systematic-debugging:unit-006",
+        "systematic-debugging:unit-007",
+        "systematic-debugging:unit-008",
+        "systematic-debugging:unit-013",
+        "systematic-debugging:unit-014",
+        "systematic-debugging:unit-015"
+      ]
+    },
+    {
+      "approach": "当遭遇任何 Bug、测试失败或意外行为时，在提出修复方案前强制生效。; 排查各类软硬件与系统级技术故障时生效。; 排查任何 Bug 的第一执行阶段。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:1-33",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Explicit limits: 当遭遇任何 Bug、测试失败或意外行为时，在提出修复方案前强制生效。; 排查各类软硬件与系统级技术故障时生效。; 排查任何 Bug 的第一执行阶段。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 20 source-grounded atom(s) for boundary-and-applicability (example=1, gate=3, method=7, rule=7, tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:12-14",
+        "skills/systematic-debugging/SKILL.md:174-180",
+        "skills/systematic-debugging/SKILL.md:196-212",
+        "skills/systematic-debugging/SKILL.md:228-233",
+        "skills/systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging:unit-001",
+        "systematic-debugging:unit-002",
+        "systematic-debugging:unit-003",
+        "systematic-debugging:unit-004",
+        "systematic-debugging:unit-005",
+        "systematic-debugging:unit-006",
+        "systematic-debugging:unit-007",
+        "systematic-debugging:unit-008",
+        "systematic-debugging:unit-009",
+        "systematic-debugging:unit-010",
+        "systematic-debugging:unit-011",
+        "systematic-debugging:unit-012",
+        "systematic-debugging:unit-013",
+        "systematic-debugging:unit-014",
+        "systematic-debugging:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:1-33",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "systematic-debugging",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否确立在根因查明前严禁提出修复方案的铁律与仅修症状即失败的原则。; 核验是否明确高压紧急场景下禁止跳过系统化流程的硬性约束。; 核验是否确立数据流反向追溯与源头修复机制。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/root-cause-tracing.md:1-33"
+      ],
+      "limitations": "Explicit limits: 当遭遇任何 Bug、测试失败或意外行为时，在提出修复方案前强制生效。; 排查各类软硬件与系统级技术故障时生效。; 深层调用栈或数据污染缺陷排查时遵循。",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 10 source-grounded atom(s) for gates-and-validation (gate=3, rule=7); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:12-14",
+        "skills/systematic-debugging/SKILL.md:196-212",
+        "skills/systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging:unit-001",
+        "systematic-debugging:unit-002",
+        "systematic-debugging:unit-005",
+        "systematic-debugging:unit-009",
+        "systematic-debugging:unit-010",
+        "systematic-debugging:unit-011",
+        "systematic-debugging:unit-012"
+      ]
+    },
+    {
+      "approach": "调用栈注入取证与二分排查工具联动：在关键危险操作前注入 `new Error().stack` 并使用 `console.error` 输出上下文目录与环境变量；对于跨用例隐蔽污染，调用 `find-polluter.sh` 进行自动化二分检索。; 调试四阶段中 Phase4 的第一步：用最简单的方式重现实例（自动化测试或一次性脚本）。必须在修复前有。使用 test-driven-development 技能编写正确的失败测试。",
+      "coverage": "explicit",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Explicit limits: 人工静态无法追踪或测试环境遭受幽灵污染时使用。; 必须有测试证明 bug 存在；不能用口头描述代替",
+      "source_id": "systematic-debugging",
+      "strengths": "Provides 2 source-grounded atom(s) for permissions-and-side-effects (tool-action=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging:unit-014"
+      ]
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:1-33",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "systematic-debugging",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "playwright-best-practices/SKILL.md:71-86"
+      ],
+      "source_id": "playwright-best-practices",
+      "unit_ids": [
+        "playwright-best-practices:unit-004"
+      ]
+    },
+    {
+      "contribution_types": {
+        "example": 1,
+        "gate": 3,
+        "method": 7,
+        "rule": 7,
+        "tool-action": 2
+      },
+      "evidence": [
+        "systematic-debugging/SKILL.md:1-23",
+        "systematic-debugging/SKILL.md:110-121",
+        "systematic-debugging/SKILL.md:12-14",
+        "systematic-debugging/SKILL.md:122-145",
+        "systematic-debugging/SKILL.md:146-170",
+        "systematic-debugging/SKILL.md:171-192",
+        "systematic-debugging/SKILL.md:174-180",
+        "systematic-debugging/SKILL.md:193-214",
+        "systematic-debugging/SKILL.md:196-212",
+        "systematic-debugging/SKILL.md:215-277",
+        "systematic-debugging/SKILL.md:228-233",
+        "systematic-debugging/SKILL.md:24-46",
+        "systematic-debugging/SKILL.md:278-296",
+        "systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging/SKILL.md:47-72",
+        "systematic-debugging/SKILL.md:73-109",
+        "systematic-debugging/root-cause-tracing.md:1-33",
+        "systematic-debugging/root-cause-tracing.md:109-169",
+        "systematic-debugging/root-cause-tracing.md:34-66",
+        "systematic-debugging/root-cause-tracing.md:67-108"
+      ],
+      "source_id": "systematic-debugging",
+      "unit_ids": [
+        "skills/systematic-debugging/SKILL.md:12-14",
+        "skills/systematic-debugging/SKILL.md:174-180",
+        "skills/systematic-debugging/SKILL.md:196-212",
+        "skills/systematic-debugging/SKILL.md:228-233",
+        "skills/systematic-debugging/SKILL.md:46-87",
+        "systematic-debugging:unit-001",
+        "systematic-debugging:unit-002",
+        "systematic-debugging:unit-003",
+        "systematic-debugging:unit-004",
+        "systematic-debugging:unit-005",
+        "systematic-debugging:unit-006",
+        "systematic-debugging:unit-007",
+        "systematic-debugging:unit-008",
+        "systematic-debugging:unit-009",
+        "systematic-debugging:unit-010",
+        "systematic-debugging:unit-011",
+        "systematic-debugging:unit-012",
+        "systematic-debugging:unit-013",
+        "systematic-debugging:unit-014",
+        "systematic-debugging:unit-015"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "playwright-best-practices:unit-004",
+    "skills/systematic-debugging/SKILL.md:12-14",
+    "skills/systematic-debugging/SKILL.md:174-180",
+    "skills/systematic-debugging/SKILL.md:196-212",
+    "skills/systematic-debugging/SKILL.md:228-233",
+    "skills/systematic-debugging/SKILL.md:46-87",
+    "systematic-debugging:unit-001",
+    "systematic-debugging:unit-002",
+    "systematic-debugging:unit-003",
+    "systematic-debugging:unit-004",
+    "systematic-debugging:unit-005",
+    "systematic-debugging:unit-006",
+    "systematic-debugging:unit-007",
+    "systematic-debugging:unit-008",
+    "systematic-debugging:unit-009",
+    "systematic-debugging:unit-010",
+    "systematic-debugging:unit-011",
+    "systematic-debugging:unit-012",
+    "systematic-debugging:unit-013",
+    "systematic-debugging:unit-014",
+    "systematic-debugging:unit-015"
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/design-consultation/SKILL.md:83]",
+    "Skill Invocation During Plan Mode [gstack/design-consultation/SKILL.md:87]",
+    "Model-Specific Behavioral Patch (claude) [gstack/design-consultation/SKILL.md:219]",
+    "Continuous Checkpoint Mode [gstack/design-consultation/SKILL.md:319]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/design-consultation/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/design-consultation/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/design-consultation/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/design-consultation/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/design-consultation/SKILL.md:61]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/design-consultation/SKILL.md:66]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/design-consultation/SKILL.md:85]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-consultation/SKILL.md:104]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/design-consultation/SKILL.md:128]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/design-consultation/SKILL.md:199]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/design-consultation/SKILL.md:323]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/design-consultation/SKILL.md:446]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/design-consultation/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "\"Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography, color, layout, spacing, motion), and generates font+color preview... [gstack/design-consultation/SKILL.md:5]",
+  "root_id": "skill-root:gstack/design-consultation",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/design-consultation/SKILL.md:43]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/design-consultation/SKILL.md:67]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/design-consultation/SKILL.md:68]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/design-consultation/SKILL.md:69]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/design-consultation/SKILL.md:76]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/design-consultation/SKILL.md:77]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/design-consultation/SKILL.md:80]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/design-consultation/SKILL.md:91]"
+  ],
+  "skill_path": "gstack/design-consultation/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/design-consultation/SKILL.md"
+    },
+    {
+      "line_end": 47,
+      "line_start": 47,
+      "path": "gstack/design-consultation/SKILL.md"
+    },
+    {
+      "line_end": 55,
+      "line_start": 55,
+      "path": "gstack/design-consultation/SKILL.md"
+    },
+    {
+      "line_end": 83,
+      "line_start": 83,
+      "path": "gstack/design-consultation/SKILL.md"
+    },
+    {
+      "line_end": 87,
+      "line_start": 87,
+      "path": "gstack/design-consultation/SKILL.md"
+    }
+  ],
+  "source_sha256": "6c97a13228810ebc202228d053102b51d8378261059dd32f0c999b232d7963f5",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/design-consultation/SKILL.md:101]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/design-consultation/SKILL.md:102]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/design-consultation/SKILL.md:103]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/design-consultation/SKILL.md:104]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/design-consultation/SKILL.md:106]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/design-consultation/SKILL.md:110]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:6c97a13228810ebc202228d053102b51d8378261059dd32f0c999b232d7963f5",
+        "content-review:943-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-design.md"
+      ],
+      "path": "gstack/design-consultation/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ada052d08a15741577fa6f1aa482ba72a4185e7767183ba0b0eba8df7f3374d6",
+        "content-review:237-lines"
+      ],
+      "path": "gstack/design-consultation/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:bdae65759579347ef0a81412a84b888421ed066340cde2a70633cd47daf160d3",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/design-consultation/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:90396a78db3b967031013bf86f4c4519b023b1d31570a48806e6ef473f8b7c59",
+        "content-review:409-lines"
+      ],
+      "path": "gstack/design-consultation/sections/proposal-and-preview.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:adbcb43dbc8cd2d5e05ba9d07beb1912e7ccd5620ee5c6ce519061d561e9bbb5",
+        "content-review:295-lines"
+      ],
+      "path": "gstack/design-consultation/sections/proposal-and-preview.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: Read [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: Write [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: Edit [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: Glob [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: Grep [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: AskUserQuestion [gstack/design-consultation/SKILL.md:1-42]",
+    "Declared tool: WebSearch [gstack/design-consultation/SKILL.md:1-42]",
+    "Local dependency: gstack/design-consultation/sections/proposal-and-preview.md [gstack/design-consultation/SKILL.md:668]"
+  ],
+  "trigger": "\"Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography, color, layout, spacing, motion), and generates font+color preview... (gstack)\" [gstack/design-consultation/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/design-consultation/SKILL.md:167]",
+    "Self-check before emitting [gstack/design-consultation/SKILL.md:190]",
+    "Context Recovery [gstack/design-consultation/SKILL.md:258]",
+    "Completeness Principle — Boil the Ocean [gstack/design-consultation/SKILL.md:305]",
+    "Confusion Protocol [gstack/design-consultation/SKILL.md:311]",
+    "Claimed Limitations Need Evidence [gstack/design-consultation/SKILL.md:315]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/design-consultation/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/design-consultation/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/design-consultation/SKILL.md:319]",
+    "Phase 0: Pre-checks [gstack/design-consultation/SKILL.md:461]",
+    "BROWSER SETUP (Aside — run this check BEFORE any browser step) [gstack/design-consultation/SKILL.md:495]",
+    "Translate the Aside scripts step by step [gstack/design-consultation/SKILL.md:546]",
+    "Phase 1: Product Context [gstack/design-consultation/SKILL.md:672]",
+    "Phase 2: Research (only if user said yes) [gstack/design-consultation/SKILL.md:772]"
+  ]
+}

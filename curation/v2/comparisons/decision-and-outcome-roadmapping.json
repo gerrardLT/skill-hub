@@ -1,0 +1,475 @@
+{
+  "candidate_responsibility": "Make evidence-backed choices and sequence measurable outcomes, dependencies, and capacity constraints.",
+  "canonical_unit_ids": [
+    "outcome-roadmap:unit-002",
+    "outcome-roadmap:unit-003",
+    "outcome-roadmap:unit-006",
+    "outcome-roadmap:unit-007",
+    "outcome-roadmap:unit-008",
+    "outcome-roadmap:unit-010",
+    "outcome-roadmap:unit-015",
+    "outcome-roadmap:unit-016",
+    "outcome-roadmap:unit-017",
+    "product-strategy-session:unit-025",
+    "product-strategy-session:unit-027",
+    "product-strategy-session:unit-028"
+  ],
+  "cluster_id": "cluster:decision-and-outcome-roadmapping",
+  "decision_references": [
+    "V2-DEC-003"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "outcome-roadmap/SKILL.md:12-14",
+    "outcome-roadmap/SKILL.md:20-25",
+    "outcome-roadmap/SKILL.md:27-28",
+    "outcome-roadmap/SKILL.md:29-29",
+    "outcome-roadmap/SKILL.md:35-40",
+    "outcome-roadmap/SKILL.md:58-58",
+    "outcome-roadmap/SKILL.md:59-59",
+    "outcome-roadmap/SKILL.md:6-10",
+    "outcome-roadmap/SKILL.md:60-60",
+    "product-strategy-session/SKILL.md:225-228",
+    "product-strategy-session/SKILL.md:239-250",
+    "product-strategy-session/SKILL.md:252-263"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping:fusion:boundary",
+      "rule": "Make evidence-backed choices and sequence measurable outcomes, dependencies, and capacity constraints."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping:fusion:inputs",
+      "rule": "Accept only: Strategy, candidate initiatives, experiment conclusions, priorities, capacity, and dependencies."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:decision-and-outcome-roadmapping"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping:fusion:outputs",
+      "rule": "Produce only: A go, pivot, or kill decision; an outcome roadmap; sequencing; and a decision record."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-003"
+      ],
+      "id": "cluster:decision-and-outcome-roadmapping:policy:human-decision",
+      "rule": "Produce evidence-backed recommendations and unknowns; GO, PIVOT, KILL, prioritization adoption, roadmap commitment, and build approval remain human decisions."
+    }
+  ],
+  "input_boundary": "Strategy, candidate initiatives, experiment conclusions, priorities, capacity, and dependencies.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "outcome-roadmap",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "outcome-roadmap",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "outcome-roadmap",
+        "product-strategy-session"
+      ]
+    }
+  ],
+  "output_boundary": "A go, pivot, or kill decision; an outcome roadmap; sequencing; and a decision record.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "以 product-manager 视角把强调 features 的 roadmap initiatives 改写为强调 customer/business impact 的 outcome statements。; 用 outcome roadmap 减少 feature/date false precision，并围绕 customer problem、business value 与 flexible execution 对齐。; 逐 initiative 追问 outcome、customer problem、business metric、impact 与 alternative path。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: $ARGUMENTS 是调用上下文占位符；改写不等于验证 impact 或批准 roadmap。; 这是来源提出的机制与风险，不证明具体 roadmap 已实现 alignment 或 business value。; 问题引导揭示意图，不自动提供验证证据；未知答案必须保留或追问。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (example=1, method=5, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-002",
+        "outcome-roadmap:unit-003",
+        "outcome-roadmap:unit-006",
+        "outcome-roadmap:unit-007",
+        "outcome-roadmap:unit-008",
+        "outcome-roadmap:unit-010",
+        "outcome-roadmap:unit-015",
+        "outcome-roadmap:unit-016",
+        "outcome-roadmap:unit-017"
+      ]
+    },
+    {
+      "approach": "以 product-manager 视角把强调 features 的 roadmap initiatives 改写为强调 customer/business impact 的 outcome statements。; 逐 initiative 追问 outcome、customer problem、business metric、impact 与 alternative path。; 先识别每项 roadmap initiative 当前计划的 feature/project output。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: $ARGUMENTS 是调用上下文占位符；改写不等于验证 impact 或批准 roadmap。; 问题引导揭示意图，不自动提供验证证据；未知答案必须保留或追问。; 识别 output 是保留对照，不是继续以 feature 作为最终目标。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 6 source-grounded atom(s) for method (example=1, method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-002",
+        "outcome-roadmap:unit-006",
+        "outcome-roadmap:unit-007",
+        "outcome-roadmap:unit-008",
+        "outcome-roadmap:unit-010",
+        "outcome-roadmap:unit-017"
+      ]
+    },
+    {
+      "approach": "$ARGUMENTS 是调用上下文占位符；改写不等于验证 impact 或批准 roadmap。; 这是来源提出的机制与风险，不证明具体 roadmap 已实现 alignment 或 business value。; 问题引导揭示意图，不自动提供验证证据；未知答案必须保留或追问。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: $ARGUMENTS 是调用上下文占位符；改写不等于验证 impact 或批准 roadmap。; 这是来源提出的机制与风险，不证明具体 roadmap 已实现 alignment 或 business value。; 问题引导揭示意图，不自动提供验证证据；未知答案必须保留或追问。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (example=1, method=5, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-002",
+        "outcome-roadmap:unit-003",
+        "outcome-roadmap:unit-006",
+        "outcome-roadmap:unit-007",
+        "outcome-roadmap:unit-008",
+        "outcome-roadmap:unit-010",
+        "outcome-roadmap:unit-015",
+        "outcome-roadmap:unit-016",
+        "outcome-roadmap:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "转换结果表达 problem/value 且不把 feature 或精确日期写成不可变承诺。; outcome 与实现手段分离，并保留替代 outputs 的可能性。; roadmap 不把当前 output 或 specific date 设为不可变，并保留调整依据。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59"
+      ],
+      "limitations": "Explicit limits: 这是来源提出的机制与风险，不证明具体 roadmap 已实现 alignment 或 business value。; 不要求当前阶段选定唯一实现，也不表示所有 outputs 等价。; flexibility 不取消 success criteria、dependencies 或决策记录。",
+      "source_id": "outcome-roadmap",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "outcome-roadmap:unit-003",
+        "outcome-roadmap:unit-015",
+        "outcome-roadmap:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "outcome-roadmap",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "将 ranked epics 按 release 或 quarter 编排为 executable roadmap。; 在 major product launch 或需要 exec buy-in 时，可由 PM 与 marketing 创建 visionary press release，作为 stakeholder communication 的辅助产物。; 向 execs、product leadership 和 key stakeholders 展示 positioning、problem、solution/prioritization 和 roadmap，收集 feedback、open questions、approval to proceed，并在 1–2 天内更新 strategy artifacts。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Explicit limits: 示例中的 Q1/Q2 和 epic 字母只是格式示意；实际 sequencing 需要项目真实 capacity、依赖和约束输入。; 不是每个策略 session 的必需输出；press release 不能代替问题验证、路线证据或正式 approval。; presentation 必须消费前序阶段产物；approval 未获得时不能假定已获资源或进入 execution。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 3 source-grounded atom(s) for responsibility (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-025",
+        "product-strategy-session:unit-027",
+        "product-strategy-session:unit-028"
+      ]
+    },
+    {
+      "approach": "将 ranked epics 按 release 或 quarter 编排为 executable roadmap。; 在 major product launch 或需要 exec buy-in 时，可由 PM 与 marketing 创建 visionary press release，作为 stakeholder communication 的辅助产物。; 向 execs、product leadership 和 key stakeholders 展示 positioning、problem、solution/prioritization 和 roadmap，收集 feedback、open questions、approval to proceed，并在 1–2 天内更新 strategy artifacts。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Explicit limits: 示例中的 Q1/Q2 和 epic 字母只是格式示意；实际 sequencing 需要项目真实 capacity、依赖和约束输入。; 不是每个策略 session 的必需输出；press release 不能代替问题验证、路线证据或正式 approval。; presentation 必须消费前序阶段产物；approval 未获得时不能假定已获资源或进入 execution。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-025",
+        "product-strategy-session:unit-027",
+        "product-strategy-session:unit-028"
+      ]
+    },
+    {
+      "approach": "示例中的 Q1/Q2 和 epic 字母只是格式示意；实际 sequencing 需要项目真实 capacity、依赖和约束输入。; 不是每个策略 session 的必需输出；press release 不能代替问题验证、路线证据或正式 approval。; presentation 必须消费前序阶段产物；approval 未获得时不能假定已获资源或进入 execution。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Explicit limits: 示例中的 Q1/Q2 和 epic 字母只是格式示意；实际 sequencing 需要项目真实 capacity、依赖和约束输入。; 不是每个策略 session 的必需输出；press release 不能代替问题验证、路线证据或正式 approval。; presentation 必须消费前序阶段产物；approval 未获得时不能假定已获资源或进入 execution。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 3 source-grounded atom(s) for boundary-and-applicability (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-025",
+        "product-strategy-session:unit-027",
+        "product-strategy-session:unit-028"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "example": 1,
+        "method": 5,
+        "rule": 3
+      },
+      "evidence": [
+        "outcome-roadmap/SKILL.md:12-14",
+        "outcome-roadmap/SKILL.md:20-25",
+        "outcome-roadmap/SKILL.md:27-28",
+        "outcome-roadmap/SKILL.md:29-29",
+        "outcome-roadmap/SKILL.md:35-40",
+        "outcome-roadmap/SKILL.md:58-58",
+        "outcome-roadmap/SKILL.md:59-59",
+        "outcome-roadmap/SKILL.md:6-10",
+        "outcome-roadmap/SKILL.md:60-60"
+      ],
+      "source_id": "outcome-roadmap",
+      "unit_ids": [
+        "outcome-roadmap:unit-002",
+        "outcome-roadmap:unit-003",
+        "outcome-roadmap:unit-006",
+        "outcome-roadmap:unit-007",
+        "outcome-roadmap:unit-008",
+        "outcome-roadmap:unit-010",
+        "outcome-roadmap:unit-015",
+        "outcome-roadmap:unit-016",
+        "outcome-roadmap:unit-017"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 3
+      },
+      "evidence": [
+        "product-strategy-session/SKILL.md:225-228",
+        "product-strategy-session/SKILL.md:239-250",
+        "product-strategy-session/SKILL.md:252-263"
+      ],
+      "source_id": "product-strategy-session",
+      "unit_ids": [
+        "product-strategy-session:unit-025",
+        "product-strategy-session:unit-027",
+        "product-strategy-session:unit-028"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "outcome-roadmap:unit-002",
+    "outcome-roadmap:unit-003",
+    "outcome-roadmap:unit-006",
+    "outcome-roadmap:unit-007",
+    "outcome-roadmap:unit-008",
+    "outcome-roadmap:unit-010",
+    "outcome-roadmap:unit-015",
+    "outcome-roadmap:unit-016",
+    "outcome-roadmap:unit-017",
+    "product-strategy-session:unit-025",
+    "product-strategy-session:unit-027",
+    "product-strategy-session:unit-028"
+  ]
+}

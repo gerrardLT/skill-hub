@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "analysis validation report",
+    "metric definition register",
+    "reproduction notes",
+    "claim evidence table"
+  ],
+  "capability_id": "capability:data-analysis-validation",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "No analytical claim passes without reproducible inputs, a declared denominator, and preserved uncertainty.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "data-analysis-validation",
+  "inputs": [
+    "Product metrics, feedback, queries, an experiment design, or experiment results."
+  ],
+  "outputs": [
+    "analysis validation report",
+    "metric definition register",
+    "reproduction notes",
+    "claim evidence table"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": true,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Validate a dataset, metric definition, transformation, and analytical claim before decision use.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

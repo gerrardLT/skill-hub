@@ -1,0 +1,716 @@
+{
+  "candidate_responsibility": "Choose or generate an in-project design-system foundation, including component rules, theme decisions, and persistence policy.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-004",
+    "extract-design-system:unit-011",
+    "redesign-existing-projects:unit-002",
+    "redesign-existing-projects:unit-003",
+    "redesign-existing-projects:unit-007",
+    "redesign-existing-projects:unit-008",
+    "ui-ux-pro-max:unit-005",
+    "ui-ux-pro-max:unit-006"
+  ],
+  "cluster_id": "cluster:design-system-foundation-and-token-extraction",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:82-120",
+    "extract-design-system/references/outputs.md:11-17",
+    "impeccable/reference/craft-floor.md:40-41",
+    "redesign-existing-projects/SKILL.md:104-111",
+    "redesign-existing-projects/SKILL.md:18-30",
+    "redesign-existing-projects/SKILL.md:31-44",
+    "redesign-existing-projects/SKILL.md:91-103",
+    "ui-ux-pro-max/SKILL.md:73-87",
+    "ui-ux-pro-max/SKILL.md:88-110"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:design-system-foundation-and-token-extraction"
+      ],
+      "id": "cluster:design-system-foundation-and-token-extraction:fusion:boundary",
+      "rule": "Choose or generate an in-project design-system foundation, including component rules, theme decisions, and persistence policy."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:design-system-foundation-and-token-extraction"
+      ],
+      "id": "cluster:design-system-foundation-and-token-extraction:fusion:inputs",
+      "rule": "Accept only: A UI brief, stack, design references, existing tokens, and project conventions."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:design-system-foundation-and-token-extraction"
+      ],
+      "id": "cluster:design-system-foundation-and-token-extraction:fusion:outputs",
+      "rule": "Produce only: A selected or generated system foundation, component rules, theme decisions, and persistence contract."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:design-system-foundation-and-token-extraction:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A UI brief, stack, design references, existing tokens, and project conventions.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "extract-design-system",
+        "impeccable",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "extract-design-system",
+        "impeccable",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "impeccable"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "extract-design-system",
+        "impeccable",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "extract-design-system",
+        "redesign-existing-projects",
+        "ui-ux-pro-max"
+      ]
+    }
+  ],
+  "output_boundary": "A selected or generated system foundation, component rules, theme decisions, and persistence contract.",
+  "retained_auxiliary_unit_ids": [
+    "impeccable:craft-floor:refuse-unicode-icons"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义简报到设计系统的选型映射（Brief to Design System Map）：匹配官方系统时必须使用官方 npm 包（Fluent UI、Material 3、Carbon、Polaris、Primer、GOV.UK、USWDS、Radix Themes、shadcn/ui 等），严禁手写山寨 CSS 且全项目严格只采用一套系统；当简报属于无官方包的美学风格（Bento、Brutalism、Editorial、Liquid Glass 等）时，采用原生 CSS + Tailwind 并诚实声明为近似实现。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Explicit limits: 严禁在同一项目中混合多套设计系统（如同时引入 Fluent 与 Carbon，或向 Material 引入 shadcn）；美学风格必须在注释中诚实声明。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-004"
+      ]
+    },
+    {
+      "approach": "定义简报到设计系统的选型映射（Brief to Design System Map）：匹配官方系统时必须使用官方 npm 包（Fluent UI、Material 3、Carbon、Polaris、Primer、GOV.UK、USWDS、Radix Themes、shadcn/ui 等），严禁手写山寨 CSS 且全项目严格只采用一套系统；当简报属于无官方包的美学风格（Bento、Brutalism、Editorial、Liquid Glass 等）时，采用原生 CSS + Tailwind 并诚实声明为近似实现。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Explicit limits: 严禁在同一项目中混合多套设计系统（如同时引入 Fluent 与 Carbon，或向 Material 引入 shadcn）；美学风格必须在注释中诚实声明。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-004"
+      ]
+    },
+    {
+      "approach": "严禁在同一项目中混合多套设计系统（如同时引入 Fluent 与 Carbon，或向 Material 引入 shadcn）；美学风格必须在注释中诚实声明。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Explicit limits: 严禁在同一项目中混合多套设计系统（如同时引入 Fluent 与 Carbon，或向 Material 引入 shadcn）；美学风格必须在注释中诚实声明。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-004"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "项目交付令牌文件规范：`design-system/tokens.json` 是归一化输出的项目本地副本，供工程内检视与复用；`design-system/tokens.css` 包含提取出的色彩、字体、间距、圆角与阴影等 CSS 变量起始样式表。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Explicit limits: 在向工程输出最终令牌资产时遵循。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在向工程输出最终令牌资产时遵循。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Explicit limits: 在向工程输出最终令牌资产时遵循。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验是否明确 tokens.json 与 tokens.css 两个下游交付资产的具体格式与涵盖基元。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Explicit limits: 在向工程输出最终令牌资产时遵循。",
+      "source_id": "extract-design-system",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "extract-design-system:unit-011"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "extract-design-system",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "Unicode 符号例外：不要用 Unicode 字形或 emoji 代替图标系统。图标应绘制而来，来自真实库或手写的 SVG，具有统一的笔画和字重",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Explicit limits: emoji 可作为特殊内容类型（表情反馈）但不作为 UI 导航图标",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-unicode-icons"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "emoji 可作为特殊内容类型（表情反馈）但不作为 UI 导航图标",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Explicit limits: emoji 可作为特殊内容类型（表情反馈）但不作为 UI 导航图标",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-unicode-icons"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "impeccable",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "Unicode 符号例外：不要用 Unicode 字形或 emoji 代替图标系统。图标应绘制而来，来自真实库或手写的 SVG，具有统一的笔画和字重",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "limitations": "Explicit limits: emoji 可作为特殊内容类型（表情反馈）但不作为 UI 导航图标",
+      "source_id": "impeccable",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-unicode-icons"
+      ]
+    },
+    {
+      "approach": "确立排版（Typography）审查与改良准则：以有性格的字体（Geist、Outfit、Satoshi）取代 Inter 滥用；增强标题存在感；正文宽度限制在 65 字符内；引入 Medium/SemiBold 细化层级；数据启用等宽数字（tabular-nums）；标题启用紧凑字距；利用 text-wrap: balance 消除孤字。; 确立色彩与表面（Color and Surfaces）审查准则：使用炭黑替代纯黑；强调色饱和度限制在 80% 以下；锁定单一强调色；统一冷暖灰调；彻底清除 AI 蓝紫渐变指纹；阴影根据背景色染色；引入微噪点材质与非线性渐变；杜绝浅色页面突兀插入单块纯黑区块；借助高质感背景图营造空间景深。; 确立组件模式（Component Patterns）审查准则：卡片仅用于呈现层级投影，否则去掉多余边框；引入三级按钮或文本链接削减噪点；使用方角标签替代泛滥的药丸徽章；FAQ 采用并列或内联逐步展开；用户评价采用瀑布流或单句轮播；定价表着重色彩突出推荐项；极简操作优先内联编辑或滑块抽屉以避免弹窗轰炸；头像采用方圆角（squircles）；精简页脚链接。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Explicit limits: 适用于所有页面排版重构，强化文字呼吸感与视觉冲击力。; 全站必须保持一致的色温与光源方向，背景与表面具备层次深度。; 减少组件视觉冗余，降低认知负担并突破千篇一律的组件形态。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 4 source-grounded atom(s) for responsibility (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-002",
+        "redesign-existing-projects:unit-003",
+        "redesign-existing-projects:unit-007",
+        "redesign-existing-projects:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "适用于所有页面排版重构，强化文字呼吸感与视觉冲击力。; 全站必须保持一致的色温与光源方向，背景与表面具备层次深度。; 减少组件视觉冗余，降低认知负担并突破千篇一律的组件形态。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Explicit limits: 适用于所有页面排版重构，强化文字呼吸感与视觉冲击力。; 全站必须保持一致的色温与光源方向，背景与表面具备层次深度。; 减少组件视觉冗余，降低认知负担并突破千篇一律的组件形态。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 4 source-grounded atom(s) for boundary-and-applicability (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-002",
+        "redesign-existing-projects:unit-003",
+        "redesign-existing-projects:unit-007",
+        "redesign-existing-projects:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验排版调整是否覆盖字体置换、65ch 限制、字重阶梯与孤字防护。; 核验配色方案是否消除纯黑与 AI 蓝紫渐变，且具备统一强调色与有色阴影。; 核验组件模式是否消除了通用卡片框、弹窗泛滥与药丸徽章模式。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Explicit limits: 适用于所有页面排版重构，强化文字呼吸感与视觉冲击力。; 全站必须保持一致的色温与光源方向，背景与表面具备层次深度。; 减少组件视觉冗余，降低认知负担并突破千篇一律的组件形态。",
+      "source_id": "redesign-existing-projects",
+      "strengths": "Provides 4 source-grounded atom(s) for gates-and-validation (rule=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "redesign-existing-projects:unit-002",
+        "redesign-existing-projects:unit-003",
+        "redesign-existing-projects:unit-007",
+        "redesign-existing-projects:unit-008"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "redesign-existing-projects",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义设计系统生成流程（Step 2）：在新页面或新项目中通过聚合产品类型、风格、色彩、落地页与排版偏好，结合 ui-reasoning 推理矩阵，生成包含组件模式、视觉风格、色彩令牌、排版阶梯、阴影效果与反模式规避的完整设计系统。; 定义设计系统的主控与页面覆写持久化模式（Master + Overrides Pattern）：设计系统全局持久化于 design-system/<project-slug>/MASTER.md，页面级特化覆写持久化于 pages/<page-name>.md；严格保护既有 MASTER.md，存在时默认跳过写入且严禁未经明确授权擅自使用 --force 覆盖，以守护团队既定设计决策。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Explicit limits: 在新页面设计或全新产品视觉建立时为必选步骤，局部组件修复时可按需绕过。; 持久化路径必须相对于项目根目录；已有 MASTER.md 在未获授权情况下具有写入只读性与不可破坏性。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-005",
+        "ui-ux-pro-max:unit-006"
+      ]
+    },
+    {
+      "approach": "定义设计系统生成流程（Step 2）：在新页面或新项目中通过聚合产品类型、风格、色彩、落地页与排版偏好，结合 ui-reasoning 推理矩阵，生成包含组件模式、视觉风格、色彩令牌、排版阶梯、阴影效果与反模式规避的完整设计系统。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87"
+      ],
+      "limitations": "Explicit limits: 在新页面设计或全新产品视觉建立时为必选步骤，局部组件修复时可按需绕过。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for method (method=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-005"
+      ]
+    },
+    {
+      "approach": "在新页面设计或全新产品视觉建立时为必选步骤，局部组件修复时可按需绕过。; 持久化路径必须相对于项目根目录；已有 MASTER.md 在未获授权情况下具有写入只读性与不可破坏性。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Explicit limits: 在新页面设计或全新产品视觉建立时为必选步骤，局部组件修复时可按需绕过。; 持久化路径必须相对于项目根目录；已有 MASTER.md 在未获授权情况下具有写入只读性与不可破坏性。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-005",
+        "ui-ux-pro-max:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验设计文件是否严格组织在 MASTER.md 与 pages/ 目录中，且在既有 MASTER.md 存在时严禁擅自覆盖。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Explicit limits: 持久化路径必须相对于项目根目录；已有 MASTER.md 在未获授权情况下具有写入只读性与不可破坏性。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-006"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:82-120"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-004"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "extract-design-system/references/outputs.md:11-17"
+      ],
+      "source_id": "extract-design-system",
+      "unit_ids": [
+        "extract-design-system:unit-011"
+      ]
+    },
+    {
+      "contribution_types": {
+        "exception": 1
+      },
+      "evidence": [
+        "impeccable/reference/craft-floor.md:40-41"
+      ],
+      "source_id": "impeccable",
+      "unit_ids": [
+        "impeccable:craft-floor:refuse-unicode-icons"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 4
+      },
+      "evidence": [
+        "redesign-existing-projects/SKILL.md:104-111",
+        "redesign-existing-projects/SKILL.md:18-30",
+        "redesign-existing-projects/SKILL.md:31-44",
+        "redesign-existing-projects/SKILL.md:91-103"
+      ],
+      "source_id": "redesign-existing-projects",
+      "unit_ids": [
+        "redesign-existing-projects:unit-002",
+        "redesign-existing-projects:unit-003",
+        "redesign-existing-projects:unit-007",
+        "redesign-existing-projects:unit-008"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "ui-ux-pro-max/SKILL.md:73-87",
+        "ui-ux-pro-max/SKILL.md:88-110"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-005",
+        "ui-ux-pro-max:unit-006"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-004",
+    "extract-design-system:unit-011",
+    "impeccable:craft-floor:refuse-unicode-icons",
+    "redesign-existing-projects:unit-002",
+    "redesign-existing-projects:unit-003",
+    "redesign-existing-projects:unit-007",
+    "redesign-existing-projects:unit-008",
+    "ui-ux-pro-max:unit-005",
+    "ui-ux-pro-max:unit-006"
+  ]
+}

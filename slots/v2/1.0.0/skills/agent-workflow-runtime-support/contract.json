@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "workflow runtime state",
+    "consent and capability record",
+    "checkpoint and artifact pointers",
+    "degradation and cleanup notice"
+  ],
+  "capability_id": "capability:agent-workflow-runtime-support",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Runtime support may manage session mechanics only; it cannot execute, approve, or mark any domain capability complete from orchestration state.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "agent-workflow-runtime-support",
+  "inputs": [
+    "Session identity, host capabilities, local project, consent state, and runtime configuration."
+  ],
+  "outputs": [
+    "workflow runtime state",
+    "consent and capability record",
+    "checkpoint and artifact pointers",
+    "degradation and cleanup notice"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "session-identity",
+      "consent",
+      "host-capabilities",
+      "checkpoint",
+      "artifact-pointer",
+      "degradation",
+      "no-domain-work"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Provide bounded session, consent, checkpoint, artifact-pointer, degradation, and host-tool runtime state once for an approved workflow without performing domain steps.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

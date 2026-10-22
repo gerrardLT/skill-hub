@@ -1,0 +1,551 @@
+{
+  "candidate_responsibility": "Select and apply an appropriate prioritization method, score opportunities, and preserve the assumptions behind ranking.",
+  "canonical_unit_ids": [
+    "prioritization-frameworks:unit-002",
+    "prioritization-frameworks:unit-003",
+    "prioritization-frameworks:unit-004",
+    "prioritization-frameworks:unit-005",
+    "prioritization-frameworks:unit-006",
+    "prioritization-frameworks:unit-007",
+    "prioritization-frameworks:unit-008",
+    "prioritization-frameworks:unit-009",
+    "prioritization-frameworks:unit-010",
+    "prioritization-frameworks:unit-011",
+    "prioritization-frameworks:unit-012",
+    "prioritization-frameworks:unit-013",
+    "prioritization-frameworks:unit-014",
+    "prioritization-frameworks:unit-015",
+    "prioritization-frameworks:unit-016",
+    "product-strategy-session:unit-023",
+    "product-strategy-session:unit-024"
+  ],
+  "cluster_id": "cluster:opportunity-prioritization-and-frameworks",
+  "decision_references": [
+    "V2-DEC-003",
+    "V2-DEC-005"
+  ],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "prioritization-frameworks/SKILL.md:10-12",
+    "prioritization-frameworks/SKILL.md:14-18",
+    "prioritization-frameworks/SKILL.md:20-23",
+    "prioritization-frameworks/SKILL.md:25-25",
+    "prioritization-frameworks/SKILL.md:27-35",
+    "prioritization-frameworks/SKILL.md:37-46",
+    "prioritization-frameworks/SKILL.md:48-52",
+    "prioritization-frameworks/SKILL.md:53-53",
+    "prioritization-frameworks/SKILL.md:54-54",
+    "prioritization-frameworks/SKILL.md:55-55",
+    "prioritization-frameworks/SKILL.md:56-56",
+    "prioritization-frameworks/SKILL.md:57-57",
+    "prioritization-frameworks/SKILL.md:58-58",
+    "prioritization-frameworks/SKILL.md:59-59",
+    "prioritization-frameworks/SKILL.md:60-60",
+    "product-strategy-session/SKILL.md:207-217",
+    "product-strategy-session/SKILL.md:219-223"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:opportunity-prioritization-and-frameworks"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:fusion:boundary",
+      "rule": "Select and apply an appropriate prioritization method, score opportunities, and preserve the assumptions behind ranking."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:opportunity-prioritization-and-frameworks"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:fusion:inputs",
+      "rule": "Accept only: Validated problems, opportunities, evidence strength, constraints, and decision criteria."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:opportunity-prioritization-and-frameworks"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:fusion:outputs",
+      "rule": "Produce only: A ranked opportunity set, selected framework, scores, rationale, and uncertainty."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-005"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:policy:named-formulas",
+      "rule": "Preserve named formula variants. Every score must record framework name, exact formula, variable definitions, assumptions, and selected or custom variant."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json:V2-DEC-003"
+      ],
+      "id": "cluster:opportunity-prioritization-and-frameworks:policy:human-decision",
+      "rule": "Produce evidence-backed recommendations and unknowns; GO, PIVOT, KILL, prioritization adoption, roadmap commitment, and build approval remain human decisions."
+    }
+  ],
+  "input_boundary": "Validated problems, opportunities, evidence strength, constraints, and decision criteria.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prioritization-frameworks",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prioritization-frameworks",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prioritization-frameworks",
+        "product-strategy-session"
+      ]
+    }
+  ],
+  "output_boundary": "A ranked opportunity set, selected framework, scores, rationale, and uncertainty.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "以 problems/opportunities 而非 customer-designed features 为排序对象。; Opportunity Score 面向 customer problems，以每项 need 的 Importance 和 Satisfaction 调查值为输入。; 定义 current value、opportunity score 和 customer value created 三个相关计算。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: 该原则不替代问题发现、方案设计或最终决策授权。; 两项输入必须归一化到 0–1；来源未定义 survey 设计、样本或聚合方法。; S1/S2 分别是前后 satisfaction；公式只在输入量表与 population 口径一致时可比较。",
+      "source_id": "prioritization-frameworks",
+      "strengths": "Provides 15 source-grounded atom(s) for responsibility (method=12, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prioritization-frameworks:unit-002",
+        "prioritization-frameworks:unit-003",
+        "prioritization-frameworks:unit-004",
+        "prioritization-frameworks:unit-005",
+        "prioritization-frameworks:unit-006",
+        "prioritization-frameworks:unit-007",
+        "prioritization-frameworks:unit-008",
+        "prioritization-frameworks:unit-009",
+        "prioritization-frameworks:unit-010",
+        "prioritization-frameworks:unit-011",
+        "prioritization-frameworks:unit-012",
+        "prioritization-frameworks:unit-013",
+        "prioritization-frameworks:unit-014",
+        "prioritization-frameworks:unit-015",
+        "prioritization-frameworks:unit-016"
+      ]
+    },
+    {
+      "approach": "Opportunity Score 面向 customer problems，以每项 need 的 Importance 和 Satisfaction 调查值为输入。; 定义 current value、opportunity score 和 customer value created 三个相关计算。; ICE 用 Opportunity Score × affected customers 表示 Impact，再乘 1–10 Confidence 与 1–10 Ease 排 initiatives/ideas。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: 两项输入必须归一化到 0–1；来源未定义 survey 设计、样本或聚合方法。; S1/S2 分别是前后 satisfaction；公式只在输入量表与 population 口径一致时可比较。; Confidence/Ease 需校准；Ease 越高分越高，不能替换成同向 Effort；customer count 需明确时间窗与去重口径。",
+      "source_id": "prioritization-frameworks",
+      "strengths": "Provides 12 source-grounded atom(s) for method (method=12); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prioritization-frameworks:unit-003",
+        "prioritization-frameworks:unit-004",
+        "prioritization-frameworks:unit-006",
+        "prioritization-frameworks:unit-007",
+        "prioritization-frameworks:unit-008",
+        "prioritization-frameworks:unit-009",
+        "prioritization-frameworks:unit-010",
+        "prioritization-frameworks:unit-011",
+        "prioritization-frameworks:unit-013",
+        "prioritization-frameworks:unit-014",
+        "prioritization-frameworks:unit-015",
+        "prioritization-frameworks:unit-016"
+      ]
+    },
+    {
+      "approach": "该原则不替代问题发现、方案设计或最终决策授权。; 两项输入必须归一化到 0–1；来源未定义 survey 设计、样本或聚合方法。; S1/S2 分别是前后 satisfaction；公式只在输入量表与 population 口径一致时可比较。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Explicit limits: 该原则不替代问题发现、方案设计或最终决策授权。; 两项输入必须归一化到 0–1；来源未定义 survey 设计、样本或聚合方法。; S1/S2 分别是前后 satisfaction；公式只在输入量表与 population 口径一致时可比较。",
+      "source_id": "prioritization-frameworks",
+      "strengths": "Provides 15 source-grounded atom(s) for boundary-and-applicability (method=12, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prioritization-frameworks:unit-002",
+        "prioritization-frameworks:unit-003",
+        "prioritization-frameworks:unit-004",
+        "prioritization-frameworks:unit-005",
+        "prioritization-frameworks:unit-006",
+        "prioritization-frameworks:unit-007",
+        "prioritization-frameworks:unit-008",
+        "prioritization-frameworks:unit-009",
+        "prioritization-frameworks:unit-010",
+        "prioritization-frameworks:unit-011",
+        "prioritization-frameworks:unit-012",
+        "prioritization-frameworks:unit-013",
+        "prioritization-frameworks:unit-014",
+        "prioritization-frameworks:unit-015",
+        "prioritization-frameworks:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prioritization-frameworks",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "排序对象是可陈述的 problem/opportunity，不把 customer solution request 直接当作已验证问题。; 解释与公式一致，图表标明轴方向，并把输出保留为 opportunity 而非 feature commitment。; 输出只表达 expectation category 与证据，不生成冒充优先级的 Kano 排名。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:56-56"
+      ],
+      "limitations": "Explicit limits: 该原则不替代问题发现、方案设计或最终决策授权。; upper-left 依赖坐标轴方向；该结果排序 customer problems，不自动决定 solution。; 来源明确 Kano 不用于 prioritizing；未提供分类调研或计算流程。",
+      "source_id": "prioritization-frameworks",
+      "strengths": "Provides 3 source-grounded atom(s) for gates-and-validation (rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prioritization-frameworks:unit-002",
+        "prioritization-frameworks:unit-005",
+        "prioritization-frameworks:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prioritization-frameworks",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prioritization-frameworks",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "在形成候选 initiatives 后选择与决策场景匹配的 prioritization framework，输出推荐框架。; 由 PM、engineering lead 和 product leadership 使用已选框架为 epics 打分并形成 ranked backlog。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Explicit limits: 框架选择先于 epic scoring；RICE、ICE、Value/Effort 只是来源列举的候选，不应默认固定使用。; 必须使用前一步选定的框架；ranking 不是单纯按容易程度排序。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-023",
+        "product-strategy-session:unit-024"
+      ]
+    },
+    {
+      "approach": "在形成候选 initiatives 后选择与决策场景匹配的 prioritization framework，输出推荐框架。; 由 PM、engineering lead 和 product leadership 使用已选框架为 epics 打分并形成 ranked backlog。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Explicit limits: 框架选择先于 epic scoring；RICE、ICE、Value/Effort 只是来源列举的候选，不应默认固定使用。; 必须使用前一步选定的框架；ranking 不是单纯按容易程度排序。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 2 source-grounded atom(s) for method (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-023",
+        "product-strategy-session:unit-024"
+      ]
+    },
+    {
+      "approach": "框架选择先于 epic scoring；RICE、ICE、Value/Effort 只是来源列举的候选，不应默认固定使用。; 必须使用前一步选定的框架；ranking 不是单纯按容易程度排序。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Explicit limits: 框架选择先于 epic scoring；RICE、ICE、Value/Effort 只是来源列举的候选，不应默认固定使用。; 必须使用前一步选定的框架；ranking 不是单纯按容易程度排序。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (method=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-023",
+        "product-strategy-session:unit-024"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 12,
+        "rule": 3
+      },
+      "evidence": [
+        "prioritization-frameworks/SKILL.md:10-12",
+        "prioritization-frameworks/SKILL.md:14-18",
+        "prioritization-frameworks/SKILL.md:20-23",
+        "prioritization-frameworks/SKILL.md:25-25",
+        "prioritization-frameworks/SKILL.md:27-35",
+        "prioritization-frameworks/SKILL.md:37-46",
+        "prioritization-frameworks/SKILL.md:48-52",
+        "prioritization-frameworks/SKILL.md:53-53",
+        "prioritization-frameworks/SKILL.md:54-54",
+        "prioritization-frameworks/SKILL.md:55-55",
+        "prioritization-frameworks/SKILL.md:56-56",
+        "prioritization-frameworks/SKILL.md:57-57",
+        "prioritization-frameworks/SKILL.md:58-58",
+        "prioritization-frameworks/SKILL.md:59-59",
+        "prioritization-frameworks/SKILL.md:60-60"
+      ],
+      "source_id": "prioritization-frameworks",
+      "unit_ids": [
+        "prioritization-frameworks:unit-002",
+        "prioritization-frameworks:unit-003",
+        "prioritization-frameworks:unit-004",
+        "prioritization-frameworks:unit-005",
+        "prioritization-frameworks:unit-006",
+        "prioritization-frameworks:unit-007",
+        "prioritization-frameworks:unit-008",
+        "prioritization-frameworks:unit-009",
+        "prioritization-frameworks:unit-010",
+        "prioritization-frameworks:unit-011",
+        "prioritization-frameworks:unit-012",
+        "prioritization-frameworks:unit-013",
+        "prioritization-frameworks:unit-014",
+        "prioritization-frameworks:unit-015",
+        "prioritization-frameworks:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "method": 2
+      },
+      "evidence": [
+        "product-strategy-session/SKILL.md:207-217",
+        "product-strategy-session/SKILL.md:219-223"
+      ],
+      "source_id": "product-strategy-session",
+      "unit_ids": [
+        "product-strategy-session:unit-023",
+        "product-strategy-session:unit-024"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "prioritization-frameworks:unit-002",
+    "prioritization-frameworks:unit-003",
+    "prioritization-frameworks:unit-004",
+    "prioritization-frameworks:unit-005",
+    "prioritization-frameworks:unit-006",
+    "prioritization-frameworks:unit-007",
+    "prioritization-frameworks:unit-008",
+    "prioritization-frameworks:unit-009",
+    "prioritization-frameworks:unit-010",
+    "prioritization-frameworks:unit-011",
+    "prioritization-frameworks:unit-012",
+    "prioritization-frameworks:unit-013",
+    "prioritization-frameworks:unit-014",
+    "prioritization-frameworks:unit-015",
+    "prioritization-frameworks:unit-016",
+    "product-strategy-session:unit-023",
+    "product-strategy-session:unit-024"
+  ]
+}

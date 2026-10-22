@@ -1,0 +1,550 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/make-pdf/SKILL.md:96]",
+    "Skill Invocation During Plan Mode [gstack/make-pdf/SKILL.md:100]",
+    "Model-Specific Behavioral Patch (claude) [gstack/make-pdf/SKILL.md:119]",
+    "Publication mode — cover + TOC + chapter breaks [gstack/make-pdf/SKILL.md:234]",
+    "CI mode — fail loud on missing assets [gstack/make-pdf/SKILL.md:333]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/make-pdf/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/make-pdf/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/make-pdf/SKILL.md:5]",
+  "outputs": [
+    "stdout: /tmp/letter.pdf ← just the path, one line [gstack/make-pdf/SKILL.md:415]",
+    "stderr: Rendering HTML... ← progress spinner (unless --quiet) [gstack/make-pdf/SKILL.md:416]",
+    "Rendering PDF through Aside... ← or \"through gstack's browser\" [gstack/make-pdf/SKILL.md:417]",
+    "Done in 11.2s. 43 words · 22KB · /tmp/letter.pdf [gstack/make-pdf/SKILL.md:418]",
+    "exit code: 0 success / 1 bad args / 2 render error / 3 Paged.js timeout [gstack/make-pdf/SKILL.md:420]",
+    "/ 4 no browser available (Aside not open, fallback not built) [gstack/make-pdf/SKILL.md:421]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/make-pdf/SKILL.md:36]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/make-pdf/SKILL.md:41]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/make-pdf/SKILL.md:98]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/make-pdf/SKILL.md:189]",
+    "On Linux, install fonts-liberation for correct rendering — Helvetica and Arial [gstack/make-pdf/SKILL.md:203]",
+    "fallback. CI and Docker builds install it automatically via Dockerfile.ci. [gstack/make-pdf/SKILL.md:205]",
+    "Segoe / Noto emoji families. Set GSTACKSKIPFONTS=1 to skip the install (CI [gstack/make-pdf/SKILL.md:211]",
+    "no-syntax once that flag exists. For now, remove fenced code blocks [gstack/make-pdf/SKILL.md:404]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/make-pdf/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Turn any markdown file into a publication-quality PDF. [gstack/make-pdf/SKILL.md:5]",
+  "root_id": "skill-root:gstack/make-pdf",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/make-pdf/SKILL.md:16]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/make-pdf/SKILL.md:42]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/make-pdf/SKILL.md:43]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/make-pdf/SKILL.md:44]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/make-pdf/SKILL.md:51]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/make-pdf/SKILL.md:52]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/make-pdf/SKILL.md:55]",
+    "MAKE-PDF SETUP (run this check BEFORE any make-pdf command) [gstack/make-pdf/SKILL.md:58]"
+  ],
+  "skill_path": "gstack/make-pdf/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/make-pdf/SKILL.md"
+    },
+    {
+      "line_end": 20,
+      "line_start": 20,
+      "path": "gstack/make-pdf/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "gstack/make-pdf/SKILL.md"
+    },
+    {
+      "line_end": 58,
+      "line_start": 58,
+      "path": "gstack/make-pdf/SKILL.md"
+    },
+    {
+      "line_end": 96,
+      "line_start": 96,
+      "path": "gstack/make-pdf/SKILL.md"
+    }
+  ],
+  "source_sha256": "207499c5f5bee58eb78ef3fed15a5315cf0a264f23bc4c4311e07b9012a7e6e1",
+  "stop_conditions": [
+    "The one-time privacy stop-gate (artifacts-sync consent) arrives as a [gstack/make-pdf/SKILL.md:115]",
+    "subordinate to skill workflow, STOP points, AskUserQuestion gates, plan-mode [gstack/make-pdf/SKILL.md:122]",
+    "BLOCKED — cannot proceed; state blocker and what was tried. [gstack/make-pdf/SKILL.md:150]",
+    "Escalate after 3 failed attempts, uncertain security-sensitive changes, or scope you cannot verify. Format: STATUS, REASON, ATTEMPTED, RECOMMENDATION. [gstack/make-pdf/SKILL.md:153]",
+    "success/error/abort/unknown; SESSIONID and TELSTART are the values the [gstack/make-pdf/SKILL.md:174]",
+    "error-message \"ERRORMESSAGE\" --failed-step \"FAILEDSTEP\" 2>/dev/null true [gstack/make-pdf/SKILL.md:184]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:207499c5f5bee58eb78ef3fed15a5315cf0a264f23bc4c4311e07b9012a7e6e1",
+        "content-review:425-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-tooling.md"
+      ],
+      "path": "gstack/make-pdf/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:930896b7bb450ddc6a77e2ad99fbe4622285bea099b6eff9d6a977fdf3db1f9a",
+        "content-review:262-lines"
+      ],
+      "path": "gstack/make-pdf/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:bf28861e8b307ffbf342f57d2c80f89f0a73284ecf9599190874474bced40b2d",
+        "content-review:118-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/make-pdf/src/asideClient.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:2490b5f7da2c0987eaa4fdee6ce2d7ae91dbfcda03ed9840b31375bc0a9369d7",
+        "content-review:293-lines",
+        "behavior-signals:entrypoint"
+      ],
+      "path": "gstack/make-pdf/src/cli.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:cb0f1eeefbf3207dad470cd9f30327879df6382e448a7b0fbfadbfe2612917de",
+        "content-review:63-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/src/commands.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:439c1c3230ec92f086366c4ce0cc504eafc5efada7e5e1320ada4cd712398889",
+        "content-review:835-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/src/diagram-prepass.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:908d7d2a5e3ff5e8b46e419f206c37c80cd50144fa6add3ae6933de7bfb0ae0a",
+        "content-review:237-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/src/image-policy.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:46a97f49c01fa205aa138d9e6f4797fea027f5b1cefcc67c29e53c53cacef898",
+        "content-review:118-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/src/image-size.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:258d5b8f6b6940536de6697176ba174b7880a3097c275dbd2d15fa121f017b0b",
+        "content-review:336-lines",
+        "behavior-signals:entrypoint|process|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/src/orchestrator.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:813c44443a378d150517ad9ceef70d76d5cfa689c2492ca6bf300b3e5e83d5a6",
+        "content-review:319-lines",
+        "behavior-signals:process|network"
+      ],
+      "path": "gstack/make-pdf/src/pdftotext.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e5f4481f2614436799fe25a30e12bbecd49753e92a8100220dac5d1533e5b508",
+        "content-review:453-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/src/print-css.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0d5147b0b6686194bbb062375233f2c11e4dd7db2d84f5f7b08f0a9ee275804c",
+        "content-review:612-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/make-pdf/src/render.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:36d97ef3911bd62f0c716b996adce606e6586b919ba0a8a00404af407c85a35f",
+        "content-review:114-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/make-pdf/src/setup.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:8bc8fac1bdff179b192e248555db9b16c761ed8dd4db77f69803cb05718cf921",
+        "content-review:106-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/make-pdf/src/smartypants.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:e576cb59b7d5b5c9f925cd54fa3cbc40934f4f8ae19bd82aa980961bc107c076",
+        "content-review:110-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/src/types.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:51dd303a2232ef62899a39deac56aad392069dca537c3df14007639684d090a4",
+        "content-review:152-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/test/asideClient.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:9e3d269b6842d7f435e419a70aa862a58695721bec1d7bbd16c7108ee6e328d7",
+        "content-review:95-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/test/cli-args.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c308317d753bd7500c6324fd2eae7635e7060ab3b4124c9c9ac85e6719bc70e3",
+        "content-review:330-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/cli-exit-codes.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:713aec5f24775203050e4c578b14415c1f928a4a1bb73700b03a185fe9da5e92",
+        "content-review:235-lines",
+        "behavior-signals:filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/coverage-gaps.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0badd9b3ca7e52f14fc9e5433d777ce1ead1c934eabfa39dcd8541c36ded5f55",
+        "content-review:533-lines",
+        "behavior-signals:process|network|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/diagram-prepass.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:7e0a226b9ee1c2d460e010c7942e5ac5d9cc0a1aabd161680e991627ee032c18",
+        "content-review:16-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/test/e2e/browser-available.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d9c8aa0bd782e5fba9ed31952608c498654f353b1337ecc56828b7209a392553",
+        "content-review:49-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/test/e2e/ci-prereqs.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:a0d35a0862bfb46f6289e08ffe500cee63561bb02f5c85bf807af607863200fe",
+        "content-review:75-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/make-pdf/test/e2e/combined-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:d60b6d770b1672b62d381d42a9cbb7f0a5428c944d433ef1d1e32bd546d9fbea",
+        "content-review:174-lines",
+        "behavior-signals:process|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/e2e/diagram-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:c7224bfb07eff815c19bcda670f0d93aac93b0a98afa3dbe0a519c49a73d6ce1",
+        "content-review:192-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/make-pdf/test/e2e/emoji-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3c0289571ab97a79b5028c54dbf26e079d3039645faf713e9410f19069212adc",
+        "content-review:131-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/make-pdf/test/e2e/format-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:3100ec0d2d1fbe5acc6b15dcaa16a0ea9f1c21545322a7eeb8c8f01c5741460b",
+        "content-review:151-lines",
+        "behavior-signals:process"
+      ],
+      "path": "gstack/make-pdf/test/e2e/landscape-gate.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:0e7755d7068c0ca01d0cf527b1415bc2088c5c48c98a16e31ce0ed19b0a17e3a"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/combined-gate.expected.txt",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:10ec0c92dfc596f383472746e5346ccf1c93177699655fb456deeb87683eefcf"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/combined-gate.md",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:403f94f8cda1096add1284e65695e95fb0ac9063248a24f2b121ea24dee4b945"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/diagram-assets/huge-noise.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:e1a30d3de19d62283617a405c6cd8fdde0b87b775dec9f460b9231d12cf735d5"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/diagram-assets/red-box.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:1e9f78dce22668a6f3ed3f9964fb53141145e87593a2dbb8d1e5311cd9539bae"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/diagram-assets/wide-arch.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:c090f3269c7febaaab8f929a6814d0563cb5f85318c2e2546fae3373c4930e53"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/diagram-assets/wide-screenshot.png",
+      "reason": "Binary asset is hash-inventoried; it has no directly reviewable textual or executable capability semantics.",
+      "subkind": "binary"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:b91505046dbf6e3ba452497f6592dc3dc09300a25b858e4b299fc0c8f30ebbb4"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/diagram-gate.md",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:2a41d31ef5ad71d4e05a00ba555fc25d60823df35950996907202ef010314aa9"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/emoji-gate.md",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "excluded",
+      "evidence": [
+        "sha256:d46214bf485147dc6f521cfa9650624f54772bc36ce4b1d04dd4a0754b808f44"
+      ],
+      "path": "gstack/make-pdf/test/fixtures/landscape-gate.md",
+      "reason": "Test fixture is evidence for tests, not an independently reusable capability contract.",
+      "subkind": "fixture"
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f6464c64b3c244be4d3418fe623dc2abe2c0f4255a7699e559fa0d7167eb5b97",
+        "content-review:216-lines",
+        "behavior-signals:pure-or-declarative"
+      ],
+      "path": "gstack/make-pdf/test/image-policy.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:09864f5795ad39562df1690b94adf58ca10ea48ecc498876dc9e5e7feb37505f",
+        "content-review:328-lines",
+        "behavior-signals:network|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/pdftotext.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:20b947384775b45b632a861a35ff73d38007dc5fd118b116386101bcd0516ced",
+        "content-review:269-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/make-pdf/test/render-offline-sanitize.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:f6525dcb2cabef9e37ae6cc95817a31efd2afdc871f1148170fe0d8b61190eb5",
+        "content-review:594-lines",
+        "behavior-signals:network"
+      ],
+      "path": "gstack/make-pdf/test/render.test.ts",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "behavior-reviewed",
+      "evidence": [
+        "sha256:0958ea2d60a642f671383c09c9c68365fb8895ab4b00f97e67c5cbb5f756cade",
+        "content-review:260-lines",
+        "behavior-signals:entrypoint|filesystem-write"
+      ],
+      "path": "gstack/make-pdf/test/setup-smoke.test.ts",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/make-pdf/SKILL.md:1-15]",
+    "Declared tool: Read [gstack/make-pdf/SKILL.md:1-15]",
+    "Declared tool: AskUserQuestion [gstack/make-pdf/SKILL.md:1-15]"
+  ],
+  "trigger": "Turn any markdown file into a publication-quality PDF. (gstack) [gstack/make-pdf/SKILL.md:5]",
+  "unique_methods": [
+    "MAKE-PDF SETUP (run this check BEFORE any make-pdf command) [gstack/make-pdf/SKILL.md:58]",
+    "Completion Status Protocol [gstack/make-pdf/SKILL.md:145]",
+    "Operational Self-Improvement [gstack/make-pdf/SKILL.md:155]",
+    "Telemetry (run last) [gstack/make-pdf/SKILL.md:171]",
+    "Plan Status Footer [gstack/make-pdf/SKILL.md:192]",
+    "make-pdf: publication-quality PDFs from markdown [gstack/make-pdf/SKILL.md:196]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/make-pdf/SKILL.md:5]"
+  ],
+  "workflow": [
+    "When to invoke this skill [gstack/make-pdf/SKILL.md:20]",
+    "Preamble (run first) [gstack/make-pdf/SKILL.md:30]",
+    "MAKE-PDF SETUP (run this check BEFORE any make-pdf command) [gstack/make-pdf/SKILL.md:58]",
+    "Plan Mode Safe Operations [gstack/make-pdf/SKILL.md:96]",
+    "Skill Invocation During Plan Mode [gstack/make-pdf/SKILL.md:100]",
+    "Artifacts Sync (skill start) [gstack/make-pdf/SKILL.md:108]"
+  ]
+}

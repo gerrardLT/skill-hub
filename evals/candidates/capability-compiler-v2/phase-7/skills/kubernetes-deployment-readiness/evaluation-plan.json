@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "azure-kubernetes",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "997ffe8b7347a5b548b3945d96cbf0fb3e20cc9fbae9c35a4a0afa8834aad011",
+    "identity": "kubernetes-deployment-readiness@0.1.0-v2-candidate",
+    "skill_sha256": "c49a2075f6e32a0b83a4d74f81597cca5f48c20e307fc177bb74955128827777"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-kubernetes-deployment-readiness-holdout-trigger-01",
+    "V2-P7-kubernetes-deployment-readiness-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-kubernetes-deployment-readiness-01",
+      "remove_exact_text": "Readiness authority is read-only: no apply, patch, rollout, scale, restart, secret read, policy change, or namespace mutation is permitted.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "kubernetes-deployment-readiness",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

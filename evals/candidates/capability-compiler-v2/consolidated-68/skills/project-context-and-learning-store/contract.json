@@ -1,0 +1,94 @@
+{
+  "artifact_types": [
+    "persisted local learning identity",
+    "source, evidence-status, and provenance metadata",
+    "retention and deletion path",
+    "read-back, hash, conflict, and rollback evidence",
+    "normalized record in the store's schema, or in a labelled proposed schema",
+    "local project context or learning records",
+    "provenance and retention metadata",
+    "search, restore, prune, or reconciliation result",
+    "deletion and conflict evidence"
+  ],
+  "capability_id": "capability:project-context-and-learning-store",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "none",
+    "host_actions": [
+      "approved-local-system-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "local-system-write",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release"
+  ],
+  "hard_gates": [
+    "Local persistence accepts one validated approved record only; secrets, unverified inference, unrelated context, external synchronization, and indefinite retention are blocked.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "Context storage is opt-in per record and project; secrets, unrelated sessions, unverified claims, indefinite retention, cross-machine sync, and external services are blocked under this local-only identity.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "project-context-and-learning-store",
+  "inputs": [
+    "Validated record, project identity, local destination, privacy and retention policy, and local-system write authorization.",
+    "Project identity, context artifacts, privacy boundary, retention, synchronization mode, and local-system write authorization when persistence is requested."
+  ],
+  "mode_permissions": {
+    "local-learning-persistence": "local-system-write-authorized-only",
+    "project-context-and-learning-store": "local-system-write-authorized-only"
+  },
+  "modes": [
+    "local-learning-persistence",
+    "project-context-and-learning-store"
+  ],
+  "outputs": [
+    "persisted local learning identity",
+    "source, evidence-status, and provenance metadata",
+    "retention and deletion path",
+    "read-back, hash, conflict, and rollback evidence",
+    "normalized record in the store's schema, or in a labelled proposed schema",
+    "local project context or learning records",
+    "provenance and retention metadata",
+    "search, restore, prune, or reconciliation result",
+    "deletion and conflict evidence"
+  ],
+  "permission_identity": "local-system-write-authorized-only",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "one-validated-record",
+      "local-only",
+      "evidence-status",
+      "provenance",
+      "retention",
+      "deletion",
+      "read-back",
+      "rollback"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Persist one validated evidence-bounded learning, metric, review outcome, or project-context record to one approved local destination under privacy, retention, deletion, and rollback controls.; Restore, search, prune, or reconcile records inside one project-isolated local context store under privacy, retention, provenance, and deletion controls; writes of new records route to local-learning-persistence.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

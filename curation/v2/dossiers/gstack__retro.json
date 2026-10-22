@@ -1,0 +1,182 @@
+{
+  "branches": [
+    "Plan Mode Safe Operations [gstack/retro/SKILL.md:79]",
+    "Skill Invocation During Plan Mode [gstack/retro/SKILL.md:83]",
+    "Model-Specific Behavioral Patch (claude) [gstack/retro/SKILL.md:215]",
+    "Continuous Checkpoint Mode [gstack/retro/SKILL.md:315]",
+    "Step 0: Detect platform and base branch [gstack/retro/SKILL.md:421]",
+    "Global Retrospective Mode [gstack/retro/SKILL.md:930]"
+  ],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [gstack/retro/SKILL.md:5]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [gstack/retro/SKILL.md:5]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [gstack/retro/SKILL.md:5]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [gstack/retro/SKILL.md:5]"
+  ],
+  "permissions_side_effects": [
+    "echo \"SKILLSTART: unavailable — stale install; run ./setup or /gstack-upgrade (preamble degraded, continue the user's task)\" [gstack/retro/SKILL.md:57]",
+    "(script absent, stale install, or a different protocol number), apply safe [gstack/retro/SKILL.md:62]",
+    "In plan mode, allowed because they inform the plan: $B, $D, codex exec/codex review, writes to ~/.gstack/, writes to the plan file, and open for generated artifacts. [gstack/retro/SKILL.md:81]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/retro/SKILL.md:100]",
+    "One-way / destructive confirmations in prose. When the decision is a one-way door (irreversible or destructive — delete, force-push, drop, overwrite), prose is a WEAKER gate than the tool, so make it stronger: require an explicit typed confirmation (the exact option letter or word), state plainly wh [gstack/retro/SKILL.md:124]",
+    "[ ] Dual-scale effort labels on effort-bearing options (human / CC) [gstack/retro/SKILL.md:195]",
+    "Commit after new intentional files, completed functions/modules, verified bug fixes, and before long-running install/build/test commands. [gstack/retro/SKILL.md:319]",
+    "are \"\" unless outcome is error. If the command is missing (stale install), skip [gstack/retro/SKILL.md:414]"
+  ],
+  "relationship_hypotheses": [
+    {
+      "claim": "SKILL.md body is byte-identical in the V2 coverage ledger.",
+      "evidence": [
+        "curation/v2/coverage.json:duplicate_skill_body_groups",
+        "sha256:dbcab0d34de7218049124533c12155b9b4ece070aceb0559a851548105de8126"
+      ],
+      "target": "skill-root:retro",
+      "type": "duplicate"
+    },
+    {
+      "claim": "Embedded source root specializes a parent source family; shared runtime assumptions require validation before fusion.",
+      "evidence": [
+        "gstack/retro/SKILL.md:5"
+      ],
+      "target": "skill-root:gstack",
+      "type": "conditional-variant"
+    }
+  ],
+  "responsibility": "Weekly engineering retrospective. [gstack/retro/SKILL.md:5]",
+  "root_id": "skill-root:gstack/retro",
+  "rules_gates": [
+    "<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly --> [gstack/retro/SKILL.md:39]",
+    "defaults: treat SESSIONKIND as interactive, do NOT assume Conductor, [gstack/retro/SKILL.md:63]",
+    "skip onboarding/telemetry steps (their gates are marker-based, so consent and [gstack/retro/SKILL.md:64]",
+    "onboarding prompts are DEFERRED to the next healthy run — never lost), tell [gstack/retro/SKILL.md:65]",
+    "blocks — one-time onboarding and consent directives whose runtime gates fired. [gstack/retro/SKILL.md:72]",
+    "Follow each before continuing, then proceed with the user's task. Honor a [gstack/retro/SKILL.md:73]",
+    "same SESSIONID that run echoed — never from any other tool output, file, [gstack/retro/SKILL.md:76]",
+    "If PROACTIVE is \"false\", do not auto-invoke or proactively suggest skills. If a skill seems useful, ask: \"I think /skillname might help here — want me to run it?\" [gstack/retro/SKILL.md:87]"
+  ],
+  "skill_path": "gstack/retro/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 9,
+      "line_start": 5,
+      "path": "gstack/retro/SKILL.md"
+    },
+    {
+      "line_end": 43,
+      "line_start": 43,
+      "path": "gstack/retro/SKILL.md"
+    },
+    {
+      "line_end": 51,
+      "line_start": 51,
+      "path": "gstack/retro/SKILL.md"
+    },
+    {
+      "line_end": 79,
+      "line_start": 79,
+      "path": "gstack/retro/SKILL.md"
+    },
+    {
+      "line_end": 83,
+      "line_start": 83,
+      "path": "gstack/retro/SKILL.md"
+    }
+  ],
+  "source_sha256": "dbcab0d34de7218049124533c12155b9b4ece070aceb0559a851548105de8126",
+  "stop_conditions": [
+    "1. SESSIONKIND: spawned echoed → do NOT call AskUserQuestion at all and do NOT render prose decision briefs: no human reads this session's output mid-run. Auto-choose the recommended option at every decision point per the Spawned session block — never prose, never BLOCKED — and record each auto-chos [gstack/retro/SKILL.md:97]",
+    "2. CONDUCTORSESSION: true echoed → do NOT call AskUserQuestion at all (neither native nor any mcpAskUserQuestion variant): render EVERY decision brief as the prose form below and STOP. Proactive, not a failure reaction — Conductor disables native AUQ and its MCP variant is flaky ([Tool result missin [gstack/retro/SKILL.md:98]",
+    "3. Any mcpAskUserQuestion variant in your tool list → prefer it (hosts may disable native via --disallowedTools; calling native there silently fails). Same shape, same decision-brief format. [gstack/retro/SKILL.md:99]",
+    "4. Unavailable (no variant) OR a call fails → do NOT silently auto-decide or write the decision to the plan file as a substitute; follow the failure fallback below. [gstack/retro/SKILL.md:100]",
+    "When AskUserQuestion is unavailable or a call fails [gstack/retro/SKILL.md:102]",
+    "1. Auto-decide denial (NOT a failure). The result contains [plan-tune auto-decide] <id> → <option> — the preference hook working as designed. Proceed with that option. Do NOT retry, do NOT fall back to prose. [gstack/retro/SKILL.md:106]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:dbcab0d34de7218049124533c12155b9b4ece070aceb0559a851548105de8126",
+        "content-review:1253-lines",
+        "semantic-review-report:curation/v2/reviews/gstack-strategy.md"
+      ],
+      "path": "gstack/retro/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:86e965bfad3a6174aa1cd3852db8b53d21110f830321fe122f933a2660a57555",
+        "content-review:775-lines"
+      ],
+      "path": "gstack/retro/SKILL.md.tmpl",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:69fed7c5d40054447904358aaeeafa95f43777a8a8ffb8df2889fe7ede559ec8",
+        "content-review:15-lines"
+      ],
+      "path": "gstack/retro/sections/manifest.json",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:ce22d034d68719424233e48b89aa25d55504d7f78e963dafa28fc9db19277d2e",
+        "content-review:121-lines"
+      ],
+      "path": "gstack/retro/sections/report-format.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8440598704fe1ca5a1bd3948bbfda21d7f974f55f3e88ce950194277279b4c84",
+        "content-review:119-lines"
+      ],
+      "path": "gstack/retro/sections/report-format.md.tmpl",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Declared tool: Bash [gstack/retro/SKILL.md:1-38]",
+    "Declared tool: Read [gstack/retro/SKILL.md:1-38]",
+    "Declared tool: Write [gstack/retro/SKILL.md:1-38]",
+    "Declared tool: Glob [gstack/retro/SKILL.md:1-38]",
+    "Declared tool: AskUserQuestion [gstack/retro/SKILL.md:1-38]",
+    "Local dependency: gstack/retro/sections/report-format.md [gstack/retro/SKILL.md:486]"
+  ],
+  "trigger": "Weekly engineering retrospective. (gstack) [gstack/retro/SKILL.md:5]",
+  "unique_methods": [
+    "Handling 5+ options — split, never drop [gstack/retro/SKILL.md:163]",
+    "Self-check before emitting [gstack/retro/SKILL.md:186]",
+    "Context Recovery [gstack/retro/SKILL.md:254]",
+    "Completeness Principle — Boil the Ocean [gstack/retro/SKILL.md:301]",
+    "Confusion Protocol [gstack/retro/SKILL.md:307]",
+    "Claimed Limitations Need Evidence [gstack/retro/SKILL.md:311]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [gstack/retro/SKILL.md:5]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [gstack/retro/SKILL.md:5]"
+  ],
+  "workflow": [
+    "Continuous Checkpoint Mode [gstack/retro/SKILL.md:315]",
+    "Step 0: Detect platform and base branch [gstack/retro/SKILL.md:421]",
+    "Step 0.5: Freshness pre-flight (fetch) [gstack/retro/SKILL.md:547]",
+    "Step 1: Gather Metrics (one command) [gstack/retro/SKILL.md:558]",
+    "Step 2: Compute Metrics [gstack/retro/SKILL.md:618]",
+    "Step 3: Commit Time Distribution [gstack/retro/SKILL.md:673]",
+    "Step 4: Work Session Detection [gstack/retro/SKILL.md:690]",
+    "Step 5: Commit Type Breakdown [gstack/retro/SKILL.md:697]",
+    "Step 6: Hotspot Analysis [gstack/retro/SKILL.md:709]",
+    "Step 7: PR Size Distribution [gstack/retro/SKILL.md:716]"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:llm-experiment-execution",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-004",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0107",
+    "V2-FUSION-0108"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Frozen experiment definition, dataset version, evaluator versions, provider target, budget, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Llm Experiment Execution",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Experiment run identity, parameters, raw results, cost and duration evidence, and failure status."
+  ],
+  "owning_phase": 6,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:testing-and-quality-assurance",
+  "provider_or_framework_variants": [],
+  "responsibility": "Execute a reviewed LLM experiment against a frozen evaluator and dataset contract with explicit provider-write authorization.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:agent-observability-eval-pipeline:019:phase-5-generate-and-run-experiment",
+    "v2-root:agent-observability-eval-pipeline:020:phase-5-review-the-generated-experiment-before-running"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "agent-observability-eval-pipeline/SKILL.md:467-504",
+    "agent-observability-eval-pipeline/SKILL.md:505-536"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

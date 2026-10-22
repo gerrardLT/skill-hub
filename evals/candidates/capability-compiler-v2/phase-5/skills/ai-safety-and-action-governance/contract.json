@@ -1,0 +1,64 @@
+{
+  "artifact_types": [
+    "AI safety boundary",
+    "threat and abuse-case register",
+    "red-team and stop-condition plan",
+    "human-checkpoint and residual-risk report"
+  ],
+  "capability_id": "capability:ai-safety-and-action-governance",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "none",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim Phase 9 evaluation, Phase 10 approval, or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "High-impact, irreversible, privileged, privacy-sensitive, or externally consequential AI actions remain default-deny without explicit policy, task-scoped authorization, human confirmation, containment, and current safety evidence.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "ai-safety-and-action-governance",
+  "inputs": [
+    "An AI capability, tools and permissions, threat scenarios, failure evidence, and consequence level."
+  ],
+  "outputs": [
+    "AI safety boundary",
+    "threat and abuse-case register",
+    "red-team and stop-condition plan",
+    "human-checkpoint and residual-risk report"
+  ],
+  "permission_identity": "read-only",
+  "policy": {
+    "coverage": [
+      "prompt-injection",
+      "data-exfiltration",
+      "tool-abuse",
+      "default-deny",
+      "human-checkpoint",
+      "containment",
+      "stop-condition"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Independently assess AI prompt, data, tool, and action risks; define red-team scope, default-deny boundaries, human checkpoints, stop conditions, and residual risk without remediation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

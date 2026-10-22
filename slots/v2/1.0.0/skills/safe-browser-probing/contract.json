@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "bounded browser probe record",
+    "screenshot or trace evidence",
+    "origin and action log",
+    "cleanup and limitation report"
+  ],
+  "capability_id": "capability:safe-browser-probing",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "A safe probe has one declared question, allowlisted origins and actions, no credential or destructive state change, and complete capture provenance and cleanup.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "safe-browser-probing",
+  "inputs": [
+    "A target page, authorized interactions, and a ready browser runtime."
+  ],
+  "outputs": [
+    "bounded browser probe record",
+    "screenshot or trace evidence",
+    "origin and action log",
+    "cleanup and limitation report"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "one-question",
+      "allowlisted-origin",
+      "non-destructive",
+      "no-credentials",
+      "capture-provenance",
+      "cleanup"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Run a bounded unauthenticated or already-authorized browser probe for one declared question and capture non-destructive evidence without source or session mutation.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

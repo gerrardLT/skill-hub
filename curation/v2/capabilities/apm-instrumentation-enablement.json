@@ -1,0 +1,138 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:apm-instrumentation-enablement",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0187",
+    "V2-FUSION-0188",
+    "V2-FUSION-0189",
+    "V2-FUSION-0199",
+    "V2-FUSION-0200",
+    "V2-FUSION-0201",
+    "V2-FUSION-0202",
+    "V2-FUSION-0203",
+    "V2-FUSION-0204",
+    "V2-FUSION-0205",
+    "V2-FUSION-0206",
+    "V2-FUSION-0220",
+    "V2-FUSION-0239",
+    "V2-FUSION-0240",
+    "V2-FUSION-0241",
+    "V2-FUSION-0242",
+    "V2-FUSION-0243",
+    "V2-FUSION-0244",
+    "V2-FUSION-0245",
+    "V2-FUSION-0246",
+    "V2-FUSION-0247",
+    "V2-FUSION-0262"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Installed agent, service runtime, platform variant, environment, and authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Apm Instrumentation Enablement",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Instrumentation configuration, changed services, verification evidence, and rollback steps."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:observability-operations-and-incidents",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/enable-ssi",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/enable-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:datadog:k8s-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "k8s-ssi/troubleshoot-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/enable-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/enable-ssi"
+    },
+    {
+      "applies_when": "Select only when provider=datadog and environment=linux; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "linux",
+      "id": "variant:datadog:linux-ssi/troubleshoot-ssi",
+      "provider": "datadog",
+      "source_root": "linux-ssi/troubleshoot-ssi"
+    }
+  ],
+  "responsibility": "Enable APM instrumentation with platform-specific safeguards and no duplicate manual instrumentation.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:001:root-responsibility",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:002:enable-apm-on-kubernetes-via-single-step-instrumentation",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:003:step-0-only-if-existing-instrumentation-detected-remove-manual-instrumen",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:004:step-1-extend-the-datadogagent-manifest-with-apm",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:005:step-2-inform-the-user-about-unified-service-tags",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:006:add-to-both-metadata-labels-and-spec-template-metadata-labels",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:007:step-3-restart-application-pods",
+    "v2-root:dd-apm/k8s-ssi/enable-ssi:008:security-constraints",
+    "v2-root:dd-apm/k8s-ssi/troubleshoot-ssi:010:step-5-fix",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:001:root-responsibility",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:002:configure-ssi-and-unified-service-tags-on-linux",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:003:step-0-only-if-existing-instrumentation-detected-remove-manual-instrumen",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:004:step-1-set-unified-service-tags-on-the-application-process",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:005:step-2-restart-the-service",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:006:step-3-confirm-injection-and-ust-in-the-running-process",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:007:authoritative-injection-check",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:008:ust-vars-in-process-environment",
+    "v2-root:dd-apm/linux-ssi/enable-ssi:009:security-constraints",
+    "v2-root:dd-apm/linux-ssi/troubleshoot-ssi:013:step-6-fix",
+    "v2-root:dd-apm:001:root-responsibility",
+    "v2-root:dd-apm:002:with-specific-tag",
+    "v2-root:dd-apm:003:troubleshooting"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "dd-apm/SKILL.md:129-135",
+    "dd-apm/SKILL.md:166-174",
+    "dd-apm/SKILL.md:3-7",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:12-51",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:135-174",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:207-213",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:214-253",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:224-244",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:257-266",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:3-7",
+    "dd-apm/k8s-ssi/enable-ssi/SKILL.md:91-130",
+    "dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:372-403",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:109-148",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:12-51",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:167-187",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:188-199",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:200-203",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:204-235",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:231-235",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:3-7",
+    "dd-apm/linux-ssi/enable-ssi/SKILL.md:97-108",
+    "dd-apm/linux-ssi/troubleshoot-ssi/SKILL.md:359-365"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

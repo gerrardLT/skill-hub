@@ -1,0 +1,451 @@
+{
+  "version": "1.0.0",
+  "status": "evaluating",
+  "retry_policy": {
+    "max_attempts": 2,
+    "stop_on_repeated_failure": true
+  },
+  "id": "full-dev-loop",
+  "description": "Run requirements, design, implementation, QA, delivery, and retrospective as one fail-closed loop.",
+  "inputs": [
+    "validated-product-brief",
+    "evidence-sources",
+    "constraints",
+    "authority-metadata",
+    "design-authority",
+    "project-context",
+    "repository-context",
+    "execution-authorization",
+    "qa-authorization",
+    "repository-state",
+    "delivery-policy",
+    "delivery-authorization",
+    "expected-outcomes",
+    "decisions",
+    "feedback"
+  ],
+  "outputs": [
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-contract",
+    "change-artifact",
+    "completion-evidence",
+    "qa-verdict",
+    "release-package",
+    "next-requirements"
+  ],
+  "permissions": [
+    "bash",
+    "browser-readonly",
+    "edit",
+    "find",
+    "grep",
+    "ls",
+    "read",
+    "read-local-files",
+    "run-tests",
+    "write",
+    "write-run-output"
+  ],
+  "steps": [
+    {
+      "id": "write_prd",
+      "recipe": "write-prd@1.0.0",
+      "input_map": {
+        "validated-product-brief": "validated-product-brief",
+        "evidence-sources": "evidence-sources",
+        "constraints": "constraints",
+        "authority-metadata": "authority-metadata"
+      },
+      "output_map": {
+        "problem-frame-artifact": "problem-frame-artifact",
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "requirements-gate-report": "requirements-gate-report"
+      },
+      "depends_on": [],
+      "gates": [
+        "source-traceability",
+        "unknown-preservation",
+        "given-when-then-structure",
+        "observability",
+        "applicable-success-coverage",
+        "evidence-backed-verdict",
+        "read-only-review"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    },
+    {
+      "id": "design_web_flow",
+      "recipe": "design-web-flow@1.0.0",
+      "input_map": {
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-authority": "design-authority",
+        "project-context": "project-context"
+      },
+      "output_map": {
+        "design-contract": "design-contract"
+      },
+      "depends_on": [
+        "write_prd"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    },
+    {
+      "id": "build_feature_tdd",
+      "recipe": "build-feature-tdd@1.0.0",
+      "input_map": {
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "repository-context": "repository-context",
+        "execution-authorization": "execution-authorization"
+      },
+      "output_map": {
+        "change-artifact": "change-artifact",
+        "completion-evidence": "completion-evidence"
+      },
+      "depends_on": [
+        "design_web_flow"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "edit",
+        "write",
+        "run-tests"
+      ]
+    },
+    {
+      "id": "qa_only",
+      "recipe": "qa-only@1.0.0",
+      "input_map": {
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "change-artifact": "change-artifact",
+        "qa-authorization": "qa-authorization"
+      },
+      "output_map": {
+        "qa-verdict": "qa-verdict"
+      },
+      "depends_on": [
+        "build_feature_tdd"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "run-tests",
+        "browser-readonly"
+      ]
+    },
+    {
+      "id": "ship_release",
+      "recipe": "ship-release@1.0.0",
+      "input_map": {
+        "change-artifact": "change-artifact",
+        "completion-evidence": "completion-evidence",
+        "qa-verdict": "qa-verdict",
+        "repository-state": "repository-state",
+        "delivery-policy": "delivery-policy",
+        "delivery-authorization": "delivery-authorization"
+      },
+      "output_map": {
+        "release-package": "release-package"
+      },
+      "depends_on": [
+        "qa_only"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash"
+      ]
+    },
+    {
+      "id": "retro_to_requirements",
+      "recipe": "retro-to-requirements@1.0.0",
+      "input_map": {
+        "expected-outcomes": "expected-outcomes",
+        "actual-results": "qa-verdict",
+        "delivery-evidence": "release-package",
+        "decisions": "decisions",
+        "feedback": "feedback"
+      },
+      "output_map": {
+        "next-requirements": "next-requirements"
+      },
+      "depends_on": [
+        "ship_release"
+      ],
+      "gates": [
+        "evidence-present",
+        "unknowns-preserved",
+        "authority-boundary",
+        "responsibility-boundary"
+      ],
+      "permissions": [
+        "read-local-files",
+        "write-run-output"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "write_prd",
+      "to": "design_web_flow"
+    },
+    {
+      "from": "design_web_flow",
+      "to": "build_feature_tdd"
+    },
+    {
+      "from": "build_feature_tdd",
+      "to": "qa_only"
+    },
+    {
+      "from": "qa_only",
+      "to": "ship_release"
+    },
+    {
+      "from": "ship_release",
+      "to": "retro_to_requirements"
+    }
+  ],
+  "gates": [
+    "applicable-success-coverage",
+    "authority-boundary",
+    "evidence-backed-verdict",
+    "evidence-present",
+    "given-when-then-structure",
+    "observability",
+    "read-only-review",
+    "responsibility-boundary",
+    "source-traceability",
+    "unknown-preservation",
+    "unknowns-preserved"
+  ],
+  "failure_routes": [
+    {
+      "from": "write_prd",
+      "to": "write_prd",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "write_prd",
+      "to": "write_prd",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "write_prd",
+      "to": "write_prd",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "design_web_flow",
+      "to": "design_web_flow",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "design_web_flow",
+      "to": "design_web_flow",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "design_web_flow",
+      "to": "design_web_flow",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "build_feature_tdd",
+      "to": "build_feature_tdd",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "build_feature_tdd",
+      "to": "build_feature_tdd",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "build_feature_tdd",
+      "to": "build_feature_tdd",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "qa_only",
+      "to": "qa_only",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "qa_only",
+      "to": "build_feature_tdd",
+      "on_status": [
+        "failed"
+      ],
+      "action": "invalidate-and-rerun"
+    },
+    {
+      "from": "qa_only",
+      "to": "qa_only",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "ship_release",
+      "to": "ship_release",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "ship_release",
+      "to": "qa_only",
+      "on_status": [
+        "failed"
+      ],
+      "action": "invalidate-and-rerun"
+    },
+    {
+      "from": "ship_release",
+      "to": "ship_release",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "retro_to_requirements",
+      "to": "retro_to_requirements",
+      "on_status": [
+        "needs-input"
+      ],
+      "action": "stop"
+    },
+    {
+      "from": "retro_to_requirements",
+      "to": "retro_to_requirements",
+      "on_status": [
+        "failed"
+      ],
+      "action": "record-and-return"
+    },
+    {
+      "from": "retro_to_requirements",
+      "to": "retro_to_requirements",
+      "on_status": [
+        "blocked"
+      ],
+      "action": "record-and-return"
+    }
+  ],
+  "feedback_mappings": [
+    {
+      "from_step": "qa_only",
+      "to_step": "build_feature_tdd",
+      "artifact": "qa-verdict",
+      "target_input": "Correction feedback"
+    },
+    {
+      "from_step": "retro_to_requirements",
+      "to_step": "write_prd",
+      "artifact": "next-requirements",
+      "target_input": "validated-product-brief"
+    }
+  ],
+  "routing": {
+    "intents": [
+      "full dev loop",
+      "完整研发闭环",
+      "从 0 做一个产品"
+    ],
+    "negative_intents": [
+      "single step only",
+      "只做一步"
+    ],
+    "priority": 100
+  },
+  "evidence": {
+    "composition_runs": [
+      {
+        "path": "evals/runs/full-dev-loop/recipes/full-dev-loop-v1.0.0/result.json",
+        "sha256": "04c36ca066a178f46e047fd4e0a0a59ba3563587abd7cfeec2a2f6452aedc4d4"
+      }
+    ],
+    "review": {
+      "path": "evals/runs/full-dev-loop/recipes/full-dev-loop-v1.0.0/review.json",
+      "sha256": "19424638235a58c08e9531add02be7e81588fa53e7c80b394eb28ffef21c5902"
+    }
+  }
+}

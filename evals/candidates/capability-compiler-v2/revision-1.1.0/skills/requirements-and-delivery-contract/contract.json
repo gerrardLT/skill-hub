@@ -1,0 +1,56 @@
+{
+  "artifact_types": [
+    "requirements specification",
+    "acceptance criteria",
+    "traceability matrix",
+    "unknown and conflict register",
+    "explicit out-of-scope list with rationale and dependencies"
+  ],
+  "capability_id": "capability:requirements-and-delivery-contract",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Do not invent product behavior, choose architecture, or mark subjective and unobservable outcomes as acceptance criteria.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "requirements-and-delivery-contract",
+  "inputs": [
+    "Problem and solution evidence, target users, strategy, metrics, risks, and delivery constraints."
+  ],
+  "outputs": [
+    "requirements specification",
+    "acceptance criteria",
+    "traceability matrix",
+    "unknown and conflict register",
+    "explicit out-of-scope list with rationale and dependencies"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Translate approved intent into traceable, observable, testable requirements and acceptance criteria while preserving unknowns and scope.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

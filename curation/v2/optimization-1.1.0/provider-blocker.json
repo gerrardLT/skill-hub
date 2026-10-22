@@ -1,0 +1,26 @@
+{
+  "status": "blocked-provider-failure",
+  "stage": "full-fresh-execution",
+  "protocol": {
+    "execution_model": "router9-qoder/cx/gpt-5.6-sol",
+    "judge_model": "router9-qoder/kr/claude-opus-5.5",
+    "task_count": 308,
+    "expected_execution_calls": 616,
+    "concurrency_attempted": 6
+  },
+  "evidence": {
+    "completed_execution_calls": 169,
+    "failed_execution_calls": 44,
+    "failure_reason": "no-assistant-output",
+    "failed_stop_reason": "error",
+    "failed_recorded_tokens_each": 0,
+    "partial_calls": 0,
+    "first_failed_job": "deployment-environment-setup__T1__optimized",
+    "failure_cluster": "44 calls from deployment-environment-setup through document-and-artifact-governance",
+    "log": "evals/runs/capability-compiler-v2/optimization-1.1.0/logs/full-exec-concurrent.log"
+  },
+  "diagnosis": "The fixed execution provider returned stop_reason=error and no assistant output across 44 calls. This is infrastructure/provider failure, not a candidate quality result. Two unchanged retries of the execution method have failed: the original sequential continuation did not finish within the interactive execution window, and the bounded concurrent run produced a provider-wide no-output failure cluster.",
+  "preservation": "All failed run.json, events.jsonl, stderr.txt and prompts remain preserved. They must not be overwritten or relabelled as passing. Candidate and 1.0.0 are unchanged.",
+  "required_decision": "Choose one: wait and retry the identical fixed-provider protocol in a new isolated attempt after service recovery, or explicitly authorize a model/provider/protocol change. Continuing now would violate the two-failure stop rule and fixed-protocol contract.",
+  "release_approved": false
+}

@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "documentation artifact",
+    "source map",
+    "validation notes",
+    "unresolved-facts register"
+  ],
+  "capability_id": "capability:documentation-authoring",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Never blend documentation types or turn an unverified command, feature, or future plan into present-tense fact.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "documentation-authoring",
+  "inputs": [
+    "Approved source facts, audience, documentation type, scope, style, and output path."
+  ],
+  "outputs": [
+    "documentation artifact",
+    "source map",
+    "validation notes",
+    "unresolved-facts register"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": false,
+    "named_formula_variants": false
+  },
+  "responsibility": "Author one evidence-grounded reference, explanation, how-to, or tutorial for a declared audience and purpose.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

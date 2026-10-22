@@ -1,0 +1,67 @@
+{
+  "artifact_types": [
+    "pull-request merge receipt",
+    "resulting merge commit identity",
+    "fresh readiness and provider evidence",
+    "failure and separate deployment handoff"
+  ],
+  "capability_id": "capability:remote-pull-request-merge",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "write-with-per-action-authorization",
+    "host_actions": [
+      "approved-provider-write"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "remote-pr-merge",
+    "remote_write": true
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Merge authorization is one-shot for one PR at one exact head SHA after a fresh gate; it never authorizes deployment or any action after readiness drift.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "remote-pull-request-merge",
+  "inputs": [
+    "Pull request identity, fresh CI and review evidence, mergeability, approved method, current authorization, and rollback plan."
+  ],
+  "outputs": [
+    "pull-request merge receipt",
+    "resulting merge commit identity",
+    "fresh readiness and provider evidence",
+    "failure and separate deployment handoff"
+  ],
+  "permission_identity": "remote-write-authorized-only",
+  "policy": {
+    "coverage": [
+      "exact-PR-head",
+      "fresh-readiness",
+      "allowed-merge-method",
+      "per-action-authorization",
+      "merge-receipt",
+      "no-deploy"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": true
+  },
+  "responsibility": "Merge one identified pull request with one allowed repository method after a fresh passing readiness gate and explicit per-action authorization, without deployment.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

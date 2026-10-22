@@ -1,0 +1,20 @@
+{
+  "slot_id": "change-delivery-preflight",
+  "case_id": "baseline-draft-is-not-executable",
+  "duration_ms": 27.084,
+  "tool_events": [],
+  "command_results": [
+    {
+      "argv": [
+        "git",
+        "show",
+        "1979516:slots/change-delivery-preflight/contract.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"artifact_types\": [\n    \"SKILL.md\",\n    \"contract.json\",\n    \"provenance.json\"\n  ],\n  \"boundaries\": {\n    \"input\": \"A reviewed change, repository state, delivery policy, and intended publication boundary.\",\n    \"output\": \"A delivery-ready package or explicit preflight blockers; no merge or deployment action.\"\n  },\n  \"dependencies\": [\n    \"cluster:completion-evidence-gate\"\n  ],\n  \"forbidden_actions\": [\n    \"claim purification or release\",\n    \"execute without required permissions and evidence\",\n    \"fabricate or infer missing evidence\"\n  ],\n  \"gates\": [\n    \"source-review\",\n    \"semantic-evaluation\",\n    \"dependency-validation\",\n    \"release-evidence\"\n  ],\n  \"hard_failures\": [\n    \"missing-source-evidence\",\n    \"missing-required-permission\",\n    \"unresolved-dependency\",\n    \"fabricated-evidence\",\n    \"incorrect-gate-pass\"\n  ],\n  \"id\": \"change-delivery-preflight\",\n  \"inputs\": [\n    \"A reviewed change, repository state, delivery policy, and intended publication boundary.\"\n  ],\n  \"outputs\": [\n    \"A delivery-ready package or explicit preflight blockers; no merge or deployment action.\"\n  ],\n  \"permissions\": {\n    \"default\": \"none\",\n    \"requires_explicit_authorization\": true\n  },\n  \"responsibility\": \"Prepare a verified change for delivery by checking branch state, merge base, credentials, automation stops, and documentation invariants.\",\n  \"schema_version\": \"1.0\",\n  \"status\": \"draft\",\n  \"statuses\": [\n    \"draft\"\n  ],\n  \"version\": \"0.0.0-draft\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "output_file": "evals/runs/full-dev-loop/ip-rate-limiting-v1/slot-evaluations/change-delivery-preflight/runs/baseline-draft-contract.json",
+  "observed_status": "draft"
+}

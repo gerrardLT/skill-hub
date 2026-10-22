@@ -1,0 +1,101 @@
+{
+  "artifact_types": [
+    "delivery preflight report",
+    "branch and ref evidence",
+    "credential and automation-stop status",
+    "blocker and next-owner register",
+    "bisectable local commits",
+    "version and changelog updates",
+    "redacted PR and release metadata",
+    "local packaging evidence and push handoff",
+    "semver decision with chosen level, alternative level and reason",
+    "merge readiness result",
+    "deployment readiness result",
+    "fresh PR and artifact evidence",
+    "blocker, authorization, and rollback register"
+  ],
+  "capability_id": "capability:release-packaging-and-preflight",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Preflight is read-only: readiness never authorizes packaging, push, pull-request change, merge, deployment, or provider mutation.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "Packaging is local only: it may create approved commits and metadata but cannot push, create or update a PR, merge, tag remotely, deploy, or claim remote delivery.",
+    "Readiness cannot mutate remote state and must issue separate merge and deploy verdicts; a passing merge gate neither performs nor authorizes deployment."
+  ],
+  "id": "release-packaging-and-preflight",
+  "inputs": [
+    "A reviewed change, repository state, delivery policy, and intended publication boundary.",
+    "Implemented and reviewed changes with fresh verification evidence.",
+    "A pull request, target branch, CI state, version state, and deployment configuration."
+  ],
+  "mode_permissions": {
+    "change-delivery-preflight": "local-exec-external-read",
+    "change-packaging-and-versioning": "workspace-write-local-exec",
+    "merge-and-deploy-readiness": "local-exec-external-read"
+  },
+  "modes": [
+    "change-delivery-preflight",
+    "change-packaging-and-versioning",
+    "merge-and-deploy-readiness"
+  ],
+  "outputs": [
+    "delivery preflight report",
+    "branch and ref evidence",
+    "credential and automation-stop status",
+    "blocker and next-owner register",
+    "bisectable local commits",
+    "version and changelog updates",
+    "redacted PR and release metadata",
+    "local packaging evidence and push handoff",
+    "semver decision with chosen level, alternative level and reason",
+    "merge readiness result",
+    "deployment readiness result",
+    "fresh PR and artifact evidence",
+    "blocker, authorization, and rollback register"
+  ],
+  "permission_identity": "local-exec-external-read",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "branch-ref-identity",
+      "merge-base",
+      "clean-state",
+      "credential-status",
+      "automation-stops",
+      "no-remote-mutation"
+    ],
+    "data_governance": false,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Consolidated capability covering 3 related modes: Preflight one verified local change for delivery by checking branch and ref identity, merge base, credentials status, automation stops, evidence, documentation, and remote readiness without mutation.; Package verified local changes into bisectable commits, coherent version and changelog metadata, credential-safe PR material, and a push handoff without remote writes.; Perform a fresh read-only gate over branch, pull request, conflicts, CI, reviews, version drift, deployment preview, rollback, and authorization before merge or deploy.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

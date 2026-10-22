@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "release": "1.1.0-candidate",
+  "merges": {
+    "ai-capability-architecture-and-autonomy": "ai-model-and-data-architecture",
+    "cross-domain-ui-preflight-checklists": "evidence-based-ui-review-and-release-gates",
+    "apm-onboarding-summary": "apm-instrumentation-verification"
+  },
+  "split": {
+    "frontend-runtime-boundaries-and-dependency-safety": {
+      "stays": "read-only runtime-boundary audit; id unchanged",
+      "repair_owner": "defect-remediation",
+      "new_skill_created": false
+    }
+  },
+  "reference_fixes": {
+    "provider-review-comment-response": "pull-request-comment-response",
+    "schema-migration-safety": null,
+    "artifact-publication": "artifact-persistence-and-tool-actions",
+    "pull-request-update": "remote-pull-request-change"
+  },
+  "downgrade_remapped_hard": [
+    "V2-DEPENDENCY-0014",
+    "V2-DEPENDENCY-0089"
+  ],
+  "downgrade_rationale": "These hard dependencies pointed at the absorbed routing-only Skill; after the merge they would newly require ai-model-and-data-architecture, which 1.0.0 did not, so they become optional.",
+  "overlap_pairs": [
+    [
+      "ai-observability-configuration",
+      "log-observability-configuration"
+    ],
+    [
+      "context-intake-and-routing",
+      "ui-task-routing-and-governance"
+    ],
+    [
+      "playwright-test-engineering",
+      "vitest-tooling"
+    ],
+    [
+      "remote-pull-request-change",
+      "remote-pull-request-merge"
+    ]
+  ],
+  "deferred_renames": {
+    "problem-framing-and-customer-research": "problem-framing",
+    "evidence-synthesis-and-opportunity-prioritization": "evidence-synthesis-and-opportunity-framing",
+    "rendered-ui-critique-and-release-disposition": "rendered-ui-critique"
+  },
+  "deferred_rename_rationale": "Ids are referenced by Recipes, the router and evaluation evidence; boundaries are fixed in text now and renames are left to a later release with a redirect table.",
+  "cross_resolutions": {
+    "X1": "fixed: merge + discriminator guidance on the four AI Skills",
+    "X2": "fixed: discriminators and mutual anti-triggers",
+    "X3": "fixed: one discriminator per repair Skill",
+    "X4": "fixed: three-way boundary sentence and mutual anti-triggers",
+    "X5": "fixed: signal-type discriminators and mutual anti-triggers",
+    "X6": "fixed: merge",
+    "X7": "fixed: INP ownership stated in both",
+    "X8": "fixed: mutual anti-triggers",
+    "X9": "fixed: analysis split sentence and anti-triggers",
+    "X10": "fixed: routing ownership guidance",
+    "X11": "fixed: shared reviewer-selection table and anti-triggers",
+    "X12": "fixed: mutual anti-triggers",
+    "X13": "fixed: reference_fixes",
+    "X14": "fixed: setup / write-one / read-maintain split",
+    "X15": "fixed: reference_fixes",
+    "X16": "fixed: boundary guidance and merge"
+  }
+}

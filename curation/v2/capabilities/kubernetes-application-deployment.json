@@ -1,0 +1,85 @@
+{
+  "canonical_unit_ids": [],
+  "capability_id": "capability:kubernetes-application-deployment",
+  "completion_evidence": [
+    "Source-derived atoms and provider or framework variants are cited; required checks and authorization evidence are recorded."
+  ],
+  "decision_references": [
+    "V2-DEC-001",
+    "V2-DEC-006"
+  ],
+  "fusion_decision_ids": [
+    "V2-FUSION-0155",
+    "V2-FUSION-0156",
+    "V2-FUSION-0157",
+    "V2-FUSION-0158",
+    "V2-FUSION-0159",
+    "V2-FUSION-0160",
+    "V2-FUSION-0161",
+    "V2-FUSION-0162",
+    "V2-FUSION-0163"
+  ],
+  "hard_gates": [
+    "Fail closed on missing authority, credentials, source evidence, required data governance, or verification."
+  ],
+  "inputs": [
+    "Application artifact, existing cluster context, provider adapter, manifests, credentials, and deployment authorization."
+  ],
+  "lifecycle_stage_id": "stage:11-deployment-change",
+  "name": "Kubernetes Application Deployment",
+  "non_responsibility": "Does not absorb unrelated lifecycle responsibilities or expand provider, workspace, or remote-write authority implicitly.",
+  "outputs": [
+    "Validated manifests, deployment result, verification evidence, and rollback handle."
+  ],
+  "owning_phase": 7,
+  "permission_identity": "remote-write-authorized-only",
+  "primary_domain_id": "domain:delivery-deployment-and-release",
+  "provider_or_framework_variants": [
+    {
+      "applies_when": "Select only when provider=azure and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:azure:azure-kubernetes",
+      "provider": "azure",
+      "source_root": "azure-kubernetes"
+    },
+    {
+      "applies_when": "Select only when provider=azure and environment=kubernetes; otherwise route to another evidenced adapter or return needs-input.",
+      "environment": "kubernetes",
+      "id": "variant:azure:azure-kubernetes/azure-kubernetes-app-deploy",
+      "provider": "azure",
+      "source_root": "azure-kubernetes/azure-kubernetes-app-deploy"
+    }
+  ],
+  "responsibility": "Deploy an application to an existing Kubernetes platform through provider-specific validated manifests and explicit authorization.",
+  "retained_auxiliary_unit_ids": [],
+  "root_derived_atom_ids": [
+    "v2-root:azure-kubernetes/azure-kubernetes-app-deploy:001:root-responsibility",
+    "v2-root:azure-kubernetes/azure-kubernetes-app-deploy:002:deploy-to-aks",
+    "v2-root:azure-kubernetes/azure-kubernetes-app-deploy:003:workflow",
+    "v2-root:azure-kubernetes:001:root-responsibility",
+    "v2-root:azure-kubernetes:002:workflow",
+    "v2-root:azure-kubernetes:003:3-security",
+    "v2-root:azure-kubernetes:004:4-observability",
+    "v2-root:azure-kubernetes:005:8-reliability",
+    "v2-root:azure-kubernetes:006:guardrails-safety"
+  ],
+  "schema_version": "2.0",
+  "source_cluster_ids": [],
+  "source_defect_refs": [],
+  "source_evidence": [
+    "azure-kubernetes/SKILL.md:118-124",
+    "azure-kubernetes/SKILL.md:141-146",
+    "azure-kubernetes/SKILL.md:58-97",
+    "azure-kubernetes/SKILL.md:7-11",
+    "azure-kubernetes/SKILL.md:86-93",
+    "azure-kubernetes/SKILL.md:94-98",
+    "azure-kubernetes/azure-kubernetes-app-deploy/SKILL.md:10-34",
+    "azure-kubernetes/azure-kubernetes-app-deploy/SKILL.md:16-19",
+    "azure-kubernetes/azure-kubernetes-app-deploy/SKILL.md:7-11"
+  ],
+  "source_fragment_ids": [],
+  "status": "candidate-taxonomy",
+  "stop_conditions": [
+    "Stop before destructive, external-write, merge, deploy, or production action without current explicit authorization."
+  ]
+}

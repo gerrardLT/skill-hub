@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "bounded tool-action record",
+    "persisted lifecycle artifact or no-write outcome",
+    "path and hash evidence",
+    "overwrite or recovery record"
+  ],
+  "capability_id": "capability:artifact-persistence-and-tool-actions",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Persistence authority applies only to the declared artifact and location; it cannot authorize adjacent analysis, product-source edits, external publication, or additional files.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "artifact-persistence-and-tool-actions",
+  "inputs": [
+    "A validated task, tool boundary, output location, and write authorization."
+  ],
+  "outputs": [
+    "bounded tool-action record",
+    "persisted lifecycle artifact or no-write outcome",
+    "path and hash evidence",
+    "overwrite or recovery record"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "bounded-action",
+      "declared-path",
+      "path-containment",
+      "artifact-hash",
+      "no-extra-files",
+      "recovery"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Select the already-authorized tool action and persist one validated lifecycle artifact at the declared bounded location without expanding the task.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

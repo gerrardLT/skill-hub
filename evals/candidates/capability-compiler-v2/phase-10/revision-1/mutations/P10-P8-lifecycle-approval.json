@@ -1,0 +1,103 @@
+{
+  "description": "Package and preflight a verified change, perform only separately authorized remote actions, then observe production read-only.",
+  "execution_state": "not-run-phase-9",
+  "failure_policy": {
+    "fail_closed": true,
+    "invalidate_downstream_on": [
+      "source artifact hash changes",
+      "source decision or authority changes",
+      "source capability re-runs",
+      "source evidence becomes stale or fails verification"
+    ],
+    "resume_only_from_valid_checkpoint": true,
+    "stop_on": [
+      "needs-input",
+      "blocked",
+      "failed"
+    ]
+  },
+  "gates": [
+    "stage recipes remain conditional and skip non-applicable atomic steps",
+    "mandatory handoffs preserve identities, authority, completion evidence, gaps, residual risk, and invalidation",
+    "support stage never grants lifecycle approval and always returns to the blocked owner",
+    "every remote or local-system action requires fresh non-cascading authorization"
+  ],
+  "handoffs": [
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-010",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:10-release-readiness",
+      "target_stage_id": "stage:11-deployment-change"
+    },
+    {
+      "artifact_contract": [
+        "artifact identities and hashes",
+        "decision and authority record",
+        "completion evidence",
+        "known gaps and residual risk"
+      ],
+      "id": "V2-HANDOFF-011",
+      "invalidation": [
+        "source artifact hash changes",
+        "source decision or authority changes",
+        "source capability re-runs",
+        "source evidence becomes stale or fails verification"
+      ],
+      "source_stage_id": "stage:11-deployment-change",
+      "target_stage_id": "stage:12-observation-canary"
+    }
+  ],
+  "human_checkpoints": [
+    "human grants fresh per-action authorization for one exact target and immutable input",
+    "human selects continue, extend, investigate, or separately authorize rollback"
+  ],
+  "id": "verified-change-delivery-and-observation",
+  "schema_version": "2.0",
+  "stage_steps": [
+    {
+      "condition": "verified change needs local packaging, documentation, delivery preflight, or merge/deploy readiness",
+      "depends_on": [],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-10-release-readiness@0.1.0-v2-candidate",
+      "stage_id": "stage:10-release-readiness"
+    },
+    {
+      "condition": "one explicitly authorized remote repository, provider, deployment, or configuration action is requested",
+      "depends_on": [
+        "stage-10-release-readiness"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-11-deployment-change@0.1.0-v2-candidate",
+      "stage_id": "stage:11-deployment-change"
+    },
+    {
+      "condition": "a deployed change or production baseline needs read-only observation, canary, alerts, or health evidence",
+      "depends_on": [
+        "stage-11-deployment-change"
+      ],
+      "mandatory_in_recipe": true,
+      "recipe_ref": "stage-12-observation-canary@0.1.0-v2-candidate",
+      "stage_id": "stage:12-observation-canary"
+    }
+  ],
+  "status": "evaluating",
+  "support_stage": {
+    "condition": "a selected owner is blocked by a local tool, browser, artifact, memory, auth, or workflow-runtime prerequisite",
+    "mandatory_in_recipe": false,
+    "recipe_ref": "stage-15-tool-runtime-support@0.1.0-v2-candidate",
+    "return_to_blocked_owner": true,
+    "stage_id": "stage:15-tool-runtime-support"
+  },
+  "version": "0.1.0-v2-candidate"
+}

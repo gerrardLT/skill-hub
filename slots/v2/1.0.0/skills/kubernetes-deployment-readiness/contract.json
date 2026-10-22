@@ -1,0 +1,68 @@
+{
+  "artifact_types": [
+    "Kubernetes readiness assessment",
+    "cluster and workload evidence",
+    "blocker and safeguard register",
+    "deployment prerequisites and rollback requirements"
+  ],
+  "capability_id": "capability:kubernetes-deployment-readiness",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Readiness authority is read-only: no apply, patch, rollout, scale, restart, secret read, policy change, or namespace mutation is permitted.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades."
+  ],
+  "id": "kubernetes-deployment-readiness",
+  "inputs": [
+    "Cluster and workload configuration, provider controls, expected traffic, failure budget, and deployment plan."
+  ],
+  "outputs": [
+    "Kubernetes readiness assessment",
+    "cluster and workload evidence",
+    "blocker and safeguard register",
+    "deployment prerequisites and rollback requirements"
+  ],
+  "permission_identity": "external-read",
+  "policy": {
+    "coverage": [
+      "read-only",
+      "cluster-namespace",
+      "identity-policy",
+      "network-storage",
+      "probes-resources",
+      "rollback-readiness",
+      "no-apply"
+    ],
+    "data_governance": true,
+    "human_decision": false,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Read-only assess Kubernetes workload, cluster, identity, policy, scaling, networking, migration, health, and rollback readiness before deployment.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

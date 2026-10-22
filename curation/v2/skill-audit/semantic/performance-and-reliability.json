@@ -1,0 +1,71 @@
+{
+  "domain": "performance-and-reliability",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "cloud-reliability-assessment",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Read-only boundary is explicit and lists forbidden operations (failover, scale, restore).", "Failure-domain, RTO/RPO and dependency coverage are concrete."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Provider-specific checks from the Azure source are reduced to a generic list; the per-resource assessment table (zone redundancy per plan, health-check path, storage LRS/ZRS) is gone.", "evidence": "skills/azure-reliability/SKILL.md:10-49; slots/v2/1.0.0/skills/cloud-reliability-assessment/SKILL.md:29", "recommendation": "Add a provider-variant checklist section (Azure first) with the per-resource table columns from the source."},
+        {"priority": "P2", "dimension": "output_verifiability", "issue": "Findings are 'prioritized' without a declared severity or effort scheme; source classifies quick wins (no downtime) versus migrations with cost impact.", "evidence": "skills/azure-reliability/SKILL.md:137-176; SKILL.md:31", "recommendation": "Require each finding to carry severity, downtime impact and cost-impact fields."}
+      ],
+      "lost_source_techniques": ["per-resource reliability assessment table", "quick-win vs migration classification with cost and downtime flags"]
+    },
+    {
+      "id": "frontend-rendering-and-interaction-performance",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Measurement discipline (frozen journey, warmup, sample count, distribution) is strong.", "Clean split from web-performance-diagnostics via mutual anti-triggers."],
+      "findings": [
+        {"priority": "P1", "dimension": "procedure", "issue": "No quantitative budgets: no long-task (50 ms), frame (16.7 ms) or INP (200 ms) thresholds, so 'bottleneck' has no objective cut-off.", "evidence": "slots/v2/1.0.0/skills/frontend-rendering-and-interaction-performance/SKILL.md:28-31", "recommendation": "Add default budgets used when the user supplies none, and require reporting against them."},
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Known cause catalog from sources is absent: animating non-transform/opacity properties, parent CSS-variable driven child transforms, main-thread Framer Motion shorthands.", "evidence": "skills/review-animations/STANDARDS.md:110-129", "recommendation": "Add a hypothesis catalog mapping trace symptoms to these causes."}
+      ],
+      "lost_source_techniques": ["animate only transform/opacity", "avoid parent CSS variable driving child transforms", "Framer Motion shorthand is not hardware-accelerated"]
+    },
+    {
+      "id": "kubernetes-deployment-readiness",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 1, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Dry-run is allowed only when guaranteed non-mutating; otherwise marked unavailable.", "No-apply authority is explicit."],
+      "findings": [
+        {"priority": "P1", "dimension": "output_verifiability", "issue": "Output is a free-form 'ready or blocked' list; the source's severity taxonomy (incompatible / requiresChanges / autoFixed) and per-issue Current/Required/Fix/Docs format are dropped.", "evidence": "skills/azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:161-200; SKILL.md:31", "recommendation": "Adopt the severity taxonomy, blocker-first ordering and per-issue record format."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "AKS Automatic constraint-spec checks are not exposed as a provider variant.", "evidence": "skills/azure-kubernetes/azure-kubernetes-automatic-readiness/SKILL.md:10-49", "recommendation": "Add an AKS Automatic variant referencing safeguard constraints such as container resource requests."}
+      ],
+      "lost_source_techniques": ["incompatible/requiresChanges/autoFixed severity", "group by constraint when more than 10 issues", "per-issue Current/Required/Fix/Docs record"]
+    },
+    {
+      "id": "resilience-and-determinism",
+      "scores": {"boundary": 1, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One-factor-at-a-time variation and retry-masking detection are well specified."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Required input demands 'a confirmed cause' while the responsibility is to diagnose; the Skill cannot start on an unexplained flaky test, which is its main use case.", "evidence": "slots/v2/1.0.0/skills/resilience-and-determinism/SKILL.md:10,22", "recommendation": "Change input to 'an observed nondeterministic or resilience failure with reproduction context'."},
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Condition-based waiting, the source's proven fix pattern for timing flakiness (15 flaky tests fixed), is not named as a hypothesis or recommendation.", "evidence": "skills/systematic-debugging/condition-based-waiting-example.ts:1-158", "recommendation": "List 'arbitrary sleep/timeout' as a first-class hypothesis and recommend condition-based waiting."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Defense-in-depth validation layers are cited as evidence but not used in recommendations.", "evidence": "skills/systematic-debugging/defense-in-depth.md:21-86", "recommendation": "Reference the four validation layers when recommending repairs for invalid-data causes."}
+      ],
+      "lost_source_techniques": ["condition-based waiting replacing arbitrary timeouts", "defense-in-depth validation layers"]
+    },
+    {
+      "id": "web-performance-diagnostics",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects single Lighthouse score as evidence.", "Third-party boundary is part of the frozen setup."],
+      "findings": [
+        {"priority": "P1", "dimension": "procedure", "issue": "Core Web Vitals are named without thresholds (LCP 2.5 s, INP 200 ms, CLS 0.1 at p75) and without lab-vs-field distinction.", "evidence": "slots/v2/1.0.0/skills/web-performance-diagnostics/SKILL.md:29-30", "recommendation": "Add good/needs-improvement/poor thresholds and require labelling lab versus field data."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Framework/bundler detection and tree-shaking checks that drive attribution are dropped.", "evidence": "skills/web-perf/SKILL.md:150-193", "recommendation": "Add bundler detection and bundle-attribution step to ownership analysis."}
+      ],
+      "lost_source_techniques": ["framework and bundler detection table", "tree-shaking/sideEffects checks"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["frontend-rendering-and-interaction-performance", "web-performance-diagnostics"], "issue": "Both measure INP-adjacent interaction latency; ownership of INP is not stated.", "recommendation": "Assign field INP to web-performance-diagnostics and component-level interaction traces to frontend-rendering-and-interaction-performance."}
+  ]
+}

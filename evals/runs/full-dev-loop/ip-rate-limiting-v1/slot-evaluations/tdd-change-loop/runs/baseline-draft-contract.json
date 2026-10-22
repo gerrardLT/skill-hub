@@ -1,0 +1,50 @@
+{
+  "artifact_types": [
+    "SKILL.md",
+    "contract.json",
+    "provenance.json"
+  ],
+  "boundaries": {
+    "input": "A feature, defect, refactor, or other behavior change.",
+    "output": "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence."
+  },
+  "dependencies": [
+    "cluster:implementation-planning-and-handoff"
+  ],
+  "forbidden_actions": [
+    "claim purification or release",
+    "execute without required permissions and evidence",
+    "fabricate or infer missing evidence"
+  ],
+  "gates": [
+    "source-review",
+    "semantic-evaluation",
+    "dependency-validation",
+    "release-evidence"
+  ],
+  "hard_failures": [
+    "missing-source-evidence",
+    "missing-required-permission",
+    "unresolved-dependency",
+    "fabricated-evidence",
+    "incorrect-gate-pass"
+  ],
+  "id": "tdd-change-loop",
+  "inputs": [
+    "A feature, defect, refactor, or other behavior change."
+  ],
+  "outputs": [
+    "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence."
+  ],
+  "permissions": {
+    "default": "none",
+    "requires_explicit_authorization": true
+  },
+  "responsibility": "Drive behavior changes through a real red-green-refactor loop and a final fresh verification.",
+  "schema_version": "1.0",
+  "status": "draft",
+  "statuses": [
+    "draft"
+  ],
+  "version": "0.0.0-draft"
+}

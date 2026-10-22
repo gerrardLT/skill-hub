@@ -1,0 +1,50 @@
+"""Review and evaluate unseen remediation tasks for the final 15 repaired Skills."""
+import argparse,hashlib,json,shutil
+from collections import Counter
+from pathlib import Path
+import v2_skill_audit_phase_d as pd
+import v2_optimization_budget as budget
+SKILLS=['agent-workflow-runtime-support','architecture-interface-alternative-evaluation','artifact-persistence-and-tool-actions','browser-agent-pairing-provisioning','browser-session-and-runtime-configuration','developer-self-check-and-fix','documentation-authoring','evidence-based-ui-review-and-release-gates','independent-plan-review','persona-jtbd-and-journey-modeling','project-context-and-learning-store','qa-finding-triage','structural-power-and-moats','testing-portfolio-strategy','workflow-orchestration-and-lifecycle']
+CAND=Path('evals/candidates/capability-compiler-v2/optimization-1.1.0/skills');JUDGE='router9-qoder/cx/gpt-5.6-sol'
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument('stage',choices=['review','exec','judge','report']);a=ap.parse_args();w=Path('.').resolve();base=w/budget.RUNS;root=base/'final-remediation';exe=shutil.which('pi.cmd') or shutil.which('pi')
+ def call(d,m,think,p):
+  if not (d/'run.json').exists():budget.require_budget(base,100000)
+  r=pd.call(d,m,think,p,exe,900)
+  if r['exit_status']!='completed' or r['prompt_sha256']!=pd.sha(p) or r['output_sha256']!=pd.sha(r['output']):raise RuntimeError(str(d))
+  return r
+ if a.stage=='review':
+  for sid in SKILLS:
+   if sid=='agent-workflow-runtime-support':fixture=w/'curation/v2/optimization-1.1.0/agent-runtime-final-fixtures-revision-2.json';attempt='attempt-2'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-7.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-7.json';attempt='attempt-7'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-6.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-6.json';attempt='attempt-6'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-5.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-5.json';attempt='attempt-5'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-4.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-4.json';attempt='attempt-4'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-3.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-3.json';attempt='attempt-3'
+   elif (w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-2.json').exists():fixture=w/f'curation/v2/optimization-1.1.0/{sid}-final-fixtures-revision-2.json';attempt='attempt-2'
+   else:fixture=base/'fresh-gen'/sid/'attempt-2/fixture-validation.json';attempt='attempt-1'
+   f=pd.load(fixture);cap=pd.load(w/f'curation/v2/capabilities/{sid}.json');p='Return ONLY raw JSON {"accepted":boolean,"issues":[string],"per_task":[{"id":string,"accepted":boolean,"reason":string}]}. This is fixture-design review, not answer grading. Independently review both new task prompts and rubrics against only the original contract for technical accuracy, complete observable contract coverage, self-contained inputs, no-tools boundaries and independence from seen scenarios. No answer outputs should exist and optimized Skill text is unavailable.\nCONTRACT:\n'+json.dumps({k:cap[k] for k in pd.CONTRACT_FIELDS},ensure_ascii=False)+'\nTASK PROMPTS AND RUBRICS:\n'+json.dumps(f['tasks'],ensure_ascii=False);d=root/'review'/sid/attempt;r=call(d,JUDGE,'medium',p);v,n=pd.parse_json(r['output']);ok=isinstance(v,dict) and v.get('accepted') is True and len(v.get('per_task',[]))==2 and all(x.get('accepted') is True for x in v['per_task']);pd.write(d/'review.json',{'accepted':ok,'result':v,'notes':n,'fixture_path':fixture.relative_to(w).as_posix()});print(sid,ok,flush=True)
+   if not ok:return 1
+  return 0
+ rows=[]
+ for sid in SKILLS:
+  reviews=sorted((root/'review'/sid).rglob('review.json'),key=lambda p:p.stat().st_mtime);accepted=[p for p in reviews if pd.load(p).get('accepted') is True];review=pd.load(accepted[-1] if accepted else root/'review'/sid/'review.json');
+  if not review['accepted']:raise RuntimeError(f'unaccepted fixture: {sid}')
+  f=pd.load(w/review['fixture_path'] if 'fixture_path' in review else base/'fresh-gen'/sid/'attempt-2/fixture-validation.json')
+  for t in f['tasks']:rows.append((sid,t))
+ results=[]
+ for sid,t in rows:
+  outs={}
+  for v,folder in [('v100',w/'slots/v2/1.0.0/skills'),('optimized',w/CAND)]:
+   skill=(folder/sid/'SKILL.md').read_text(encoding='utf-8');p=pd.EXEC_PROMPT.format(method=pd.METHOD_BLOCK.format(skill=skill),task=t['prompt']);d=root/'exec'/f'{sid}__{t["id"]}__{v}';r=call(d,pd.EXEC_MODEL,'low',p) if a.stage=='exec' else pd.load(d/'run.json');outs[v]=r['output']
+  if a.stage=='exec':continue
+  orders=[]
+  for order in ('xy','yx'):
+   x,y=('optimized','v100') if order=='xy' else ('v100','optimized');p=pd.JUDGE_PROMPT.format(task=t['prompt'],rubric='\n'.join('- '+z for z in t['rubric']),a=outs[x],b=outs[y]);d=root/'judge'/f'{sid}__{t["id"]}__{order}';r=call(d,JUDGE,'medium',p) if a.stage=='judge' else pd.load(d/'run.json');v,n=pd.parse_json(r['output']);
+   if not isinstance(v,dict) or v.get('overall') not in ('A','B','tie'):raise RuntimeError('invalid judge')
+   mine='A' if order=='xy' else 'B';other='B' if mine=='A' else 'A';orders.append({'order':order,'outcome':'tie' if v['overall']=='tie' else 'win' if v['overall']==mine else 'loss','new_overreach':bool(v['overreach'][mine]) and not bool(v['overreach'][other]),'new_fabrication':bool(v['fabrication'][mine]) and not bool(v['fabrication'][other]),'reason':v['reason']})
+  if a.stage=='report':results.append({'skill':sid,'task':t['id'],'outcome':orders[0]['outcome'] if orders[0]['outcome']==orders[1]['outcome'] else 'tie','new_overreach':all(x['new_overreach'] for x in orders),'new_fabrication':all(x['new_fabrication'] for x in orders),'orders':orders})
+ if a.stage=='report':
+  counts=dict(Counter(x['outcome'] for x in results));safe=not any(x['new_overreach'] or x['new_fabrication'] for x in results);loss={x['skill'] for x in results if x['outcome']=='loss'};pd.write(root/'report.json',{'status':'passed' if counts.get('win',0)>=counts.get('loss',0) and safe and not loss else 'failed','outcomes':counts,'safety_clear':safe,'loss_skills':sorted(loss),'tasks':results,'judge_model':JUDGE});print(json.dumps({'outcomes':counts,'safety_clear':safe,'loss_skills':sorted(loss)}))
+ return 0
+if __name__=='__main__':raise SystemExit(main())

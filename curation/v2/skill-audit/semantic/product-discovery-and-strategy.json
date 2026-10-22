@@ -1,0 +1,227 @@
+{
+  "domain": "product-discovery-and-strategy",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "ai-product-opportunity-and-wedge",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Forces a non-AI alternative and falsification conditions."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Two named source frameworks are absent: the differentiation stack (data > interface > model, most to least defensible) and the promise-to-payoff wedge selection matrix.", "evidence": "skills/ai-product-strategy/references/artifacts.md:101-115,148-157; slots/v2/1.0.0/skills/ai-product-opportunity-and-wedge/SKILL.md:29-31", "recommendation": "Score candidate wedges on promise-to-payoff and classify defensibility by the data/interface/model stack."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case where a model-only advantage must be rated weak."}
+      ],
+      "lost_source_techniques": ["data > interface > model differentiation stack", "promise-to-payoff wedge matrix"]
+    },
+    {
+      "id": "competitive-case-library",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Case schema (actor, context, move, outcome, source, date, confidence) and fact-vs-inference label are enforceable."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Phase 9 baseline routed a holdout to qualitative-evidence-synthesis; the boundary between normalizing competitor cases and synthesizing research is not stated.", "evidence": "evals/runs/capability-compiler-v2/phase-9/attempts/run-0007", "recommendation": "Add anti-trigger: customer research corpus routes to qualitative-evidence-synthesis; this Skill handles competitor/comparable moves."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "competitive-response-and-monitoring",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Noise/watch/investigate/decision thresholds; no auto-change of price or messaging."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source distinction between competitors and comparables (similar problem, different market) and the 'adopt proven industry patterns' response option are not included.", "evidence": "skills/competitive-strategy/references/guest-insights.md:277-286,367-376", "recommendation": "Monitor comparables explicitly and list 'adopt proven pattern' as a response option."}
+      ],
+      "lost_source_techniques": ["competitors vs comparables", "adopt industry-standard patterns as a response"]
+    },
+    {
+      "id": "customer-interview-execution",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Past-behavior questions, no pitching; consent before anything.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Probing techniques ('tell me more', gentle repeated why, ask for a specific example, what happened next) and the note template fields are not carried.", "evidence": "skills/interview-script/SKILL.md:61-98", "recommendation": "Add probe list and observation-log template."}
+      ],
+      "lost_source_techniques": ["probing technique list", "note-taking template"]
+    },
+    {
+      "id": "data-analysis-validation",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Recompute aggregates; denominators and leakage checks."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with a denominator error."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source reproducibility documentation template (question, sources with as-of date, definitions, caveats) is not the required output.", "evidence": "skills/validate-data/SKILL.md:289-330", "recommendation": "Adopt it as the reproduction-notes schema."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Close to evaluation-results-analysis (0.157); product metrics vs LLM eval results not separated.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger to evaluation-results-analysis."}
+      ],
+      "lost_source_techniques": ["analysis documentation template"]
+    },
+    {
+      "id": "decision-and-outcome-roadmapping",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Now/next/later without false dates; kill criteria explicit."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources describe stakeholder presentation, not roadmap construction; roadmap technique is authored.", "evidence": "skills/product-strategy-session/SKILL.md:239-263", "recommendation": "Mark authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "evidence-synthesis-and-opportunity-prioritization",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Triangulation and dissent register; no rank from source count."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Name and output both include 'prioritization' and a priority recommendation, overlapping opportunity-prioritization-and-frameworks; the difference (qualitative judgment vs named formula) is only in anti-triggers.", "evidence": "SKILL.md:10,32,39", "recommendation": "Rename to evidence-synthesis-and-opportunity-framing; output a comparison on explicit dimensions, leave ranking to the frameworks Skill or the human."}
+      ],
+      "lost_source_techniques": ["PRD self-assessment diagnostic"]
+    },
+    {
+      "id": "executive-plan-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One-way-door register; no scope acceptance without human selection."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source review modes (scope expansion, selective expansion, hold scope, scope reduction) chosen up front, and the anti-skip rule over 11 sections, are absent; the Skill has no posture selection.", "evidence": "skills/gstack/openclaw/skills/gstack-openclaw-ceo-review/SKILL.md:6-45,125-164", "recommendation": "Require choosing one review mode first and evaluating every section, stating 'no issues' explicitly."}
+      ],
+      "lost_source_techniques": ["four review modes", "anti-skip rule"]
+    },
+    {
+      "id": "market-positioning-and-competitive-power",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Claim-proof register; copyability of position checked.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source lesson that the real alternative may be internal (spending the same resources elsewhere) is not part of the alternatives step.", "evidence": "skills/product-strategy-session/examples/sample-lifesciences.md:76-92", "recommendation": "Include 'internal alternative / do nothing' in the comparison frame."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "market-segmentation-and-demand-intelligence",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Demographics alone are not a segment; no fabricated TAM."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Underserved long-tail segment strategy (compete where incumbents cannot) is a cited source pattern but not an evaluation lens.", "evidence": "skills/competitive-strategy/references/artifacts.md:207-220", "recommendation": "Add 'incumbent access gap' to attractiveness comparison."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "opportunity-prioritization-and-frameworks",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Exact formula variant, scales and sensitivity required; hybrids rejected."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie and the Phase 9 mutation control was invalid, so no valid behavioral evidence exists.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case requiring an exact RICE computation with sensitivity."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source RICE definition uses Opportunity Score as Impact; the Skill does not show canonical variable definitions, so models may use the common Impact 0.25-3 scale silently.", "evidence": "skills/prioritization-frameworks/SKILL.md:37-46", "recommendation": "List canonical definitions per framework variant."}
+      ],
+      "lost_source_techniques": ["RICE with Opportunity Score as Impact"]
+    },
+    {
+      "id": "persona-jtbd-and-journey-modeling",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Forces only when supported; no invented demographics."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "No JTBD statement format (When [situation], I want to [motivation], so I can [outcome]) or four-forces model is specified.", "evidence": "SKILL.md:29-31,38", "recommendation": "Specify the JTBD statement template and push/pull/anxiety/habit forces."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "problem-framing-and-customer-research",
+      "scores": {"boundary": 2, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Solution-free frame is a crisp gate."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "41 source refs include the office-hours forcing questions (demand reality, status quo, desperate specificity, narrowest wedge) and the problem-statement format; none are retained. The Skill classifies claims but does not interrogate them.", "evidence": "skills/gstack/office-hours/SKILL.md:540-557,636-675; skills/prd-development/SKILL.md:173-217", "recommendation": "Add the forcing-question set as the interrogation step and a structured problem statement output."},
+        {"priority": "P2", "dimension": "boundary", "issue": "Name says 'customer research' but the Skill only processes supplied evidence; research planning and interviews belong elsewhere.", "evidence": "SKILL.md:10", "recommendation": "Rename to problem-framing."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with solution-laden input notes."}
+      ],
+      "lost_source_techniques": ["office-hours forcing questions", "problem statement template"]
+    },
+    {
+      "id": "qualitative-evidence-synthesis",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Quote counts not presented as prevalence; counterexamples kept."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case with a minority contradicting theme."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source depth-by-breadth 2x2 for feedback is cited but unused.", "evidence": "skills/analyzing-user-feedback/references/artifacts.md:46-66", "recommendation": "Offer depth x breadth as optional theme characterization (not prioritization)."}
+      ],
+      "lost_source_techniques": ["depth x breadth feedback matrix"]
+    },
+    {
+      "id": "research-planning-and-governance",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Decision linkage and stopping rule; full governance contract before contact.", "Both holdouts are candidate wins."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "results-analysis-and-decision-readout",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Post-hoc thresholds labelled; GO/PIVOT/KILL as recommendation only."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap 0.34 with evaluation-results-analysis; product experiment vs model evaluation not stated in anti-triggers.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add mutual anti-triggers."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "solution-hypothesis-and-experiment-design",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Falsifiable prediction, counterfactual and kill criterion required."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Experiment type menu (concierge, fake door, prototype, A/B) from discovery sources is not listed.", "evidence": "skills/discovery-process/SKILL.md:393-410", "recommendation": "List experiment types by risk and cost."}
+      ],
+      "lost_source_techniques": ["experiment type menu"]
+    },
+    {
+      "id": "strategic-choice-and-differentiation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Mutually exclusive choices; reversal evidence stated."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Niche-network corollary (disruptive products start with weird niche audiences) is cited but not a lens.", "evidence": "skills/competitive-strategy/references/artifacts.md:77-88", "recommendation": "Optional lens for networked products."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "structural-power-and-moats",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Seven Powers enumerated with mechanism, barrier and decay."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie; mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case where growth is mislabeled as a moat."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source switching-cost model (time + money + organizational + emotional) is reduced to the label.", "evidence": "skills/competitive-strategy/references/artifacts.md:137-158", "recommendation": "Expand switching-cost assessment to the four components."}
+      ],
+      "lost_source_techniques": ["four-component switching cost"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["evidence-synthesis-and-opportunity-prioritization", "opportunity-prioritization-and-frameworks"], "issue": "Both rank opportunities.", "recommendation": "Synthesis frames and compares; frameworks Skill alone ranks with a named formula."},
+    {"skills": ["results-analysis-and-decision-readout", "evaluation-results-analysis", "data-analysis-validation"], "issue": "Three analysis Skills with partial anti-triggers.", "recommendation": "Validation checks data; readout interprets product experiments; evaluation-results interprets model evals."}
+  ]
+}

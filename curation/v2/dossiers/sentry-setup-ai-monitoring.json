@@ -1,0 +1,108 @@
+{
+  "branches": [],
+  "inputs": [
+    "AI monitoring requires tracing enabled (tracesSampleRate > 0). [sentry-setup-ai-monitoring/SKILL.md:26]",
+    "If the app has multi-turn chats, set a conversation ID by default anywhere it makes sense to identify a chat session. Sentry uses genai.conversation.id to group related AI spans into Conversations. Some integrations infer it automatically, but many setups need to set it explicitly. [sentry-setup-ai-monitoring/SKILL.md:28]",
+    "Tracing enabled with tracesSampleRate > 0 [sentry-setup-ai-monitoring/SKILL.md:396]",
+    "Gen AI span streaming is on by default — streamGenAiSpans defaults to true since JS SDK 10.61.0 and streamgenaispans defaults to True since Python SDK 2.64.0. This sends AI spans as standalone items, so spans with large inputs/outputs don't hit transaction payload size limits and get dropped. (The o [sentry-setup-ai-monitoring/SKILL.md:397]",
+    "Input and output capture enabled — Conversations reconstructs the chat from genai.input.messages and genai.output.messages attributes. In JS this is on by default (via dataCollection); in Python, set senddefaultpii=True; in Laravel, set SENTRYSENDDEFAULTPII=true. Without it, conversations appear emp [sentry-setup-ai-monitoring/SKILL.md:398]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [sentry-setup-ai-monitoring/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [sentry-setup-ai-monitoring/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [sentry-setup-ai-monitoring/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "php artisan vendor:publish --provider=\"Laravel\\Ai\\AiServiceProvider\" [sentry-setup-ai-monitoring/SKILL.md:240]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Setup Sentry AI Agent Monitoring in any project. [sentry-setup-ai-monitoring/SKILL.md:3]",
+  "root_id": "skill-root:sentry-setup-ai-monitoring",
+  "rules_gates": [
+    "Important: The SDK versions, API names, and code samples below are examples. Always verify against [docs.sentry.io](https://docs.sentry.io) before implementing, as APIs and minimum versions may have changed. [sentry-setup-ai-monitoring/SKILL.md:22]",
+    "Prompt and output recording captures user content that is likely PII. In JavaScript, genAI input/output capture is on by default (governed by dataCollection.genAI); in Python it is enabled via senddefaultpii=True; in Laravel it is enabled via SENTRYSENDDEFAULTPII=true. Before relying on this capture [sentry-setup-ai-monitoring/SKILL.md:32]",
+    "Ask the user whether they want prompt/output capture enabled. Do not enable prompt/output capture without explicit confirmation. Use tracesSampleRate: 1.0 only in development; in production, use a lower value or a tracesSampler function. [sentry-setup-ai-monitoring/SKILL.md:38]",
+    "Always detect installed AI SDKs before configuring [sentry-setup-ai-monitoring/SKILL.md:42]",
+    "Vercel AI: 10.53.0+ required. Requires experimentaltelemetry per-call. [sentry-setup-ai-monitoring/SKILL.md:92]",
+    "Browser / Next.js OpenAI (manual wrapping required) [sentry-setup-ai-monitoring/SKILL.md:155]",
+    "Sentry treats LLM and tool inputs/outputs as PII and does not capture them by default. Do not enable SENTRYSENDDEFAULTPII=true without confirming the Data Capture Warning above. [sentry-setup-ai-monitoring/SKILL.md:256]",
+    "For LLM-call spans, the op follows the pattern genai.{genai.operation.name} — use genai.chat, genai.embeddings, genai.generatecontent, or genai.textcompletion where the operation is known. Span attributes only accept primitives; arrays/objects must be JSON-stringified. [sentry-setup-ai-monitoring/SKILL.md:282]"
+  ],
+  "skill_path": "sentry-setup-ai-monitoring/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "sentry-setup-ai-monitoring/SKILL.md"
+    },
+    {
+      "line_end": 12,
+      "line_start": 12,
+      "path": "sentry-setup-ai-monitoring/SKILL.md"
+    },
+    {
+      "line_end": 16,
+      "line_start": 16,
+      "path": "sentry-setup-ai-monitoring/SKILL.md"
+    },
+    {
+      "line_end": 24,
+      "line_start": 24,
+      "path": "sentry-setup-ai-monitoring/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "sentry-setup-ai-monitoring/SKILL.md"
+    }
+  ],
+  "source_sha256": "8dfd0fecddd70fde305556347fcc1e777b2091c902447714ad126d909cab11fa",
+  "stop_conditions": [
+    "Ask the user whether they want prompt/output capture enabled. Do not enable prompt/output capture without explicit confirmation. Use tracesSampleRate: 1.0 only in development; in production, use a lower value or a tracesSampler function. [sentry-setup-ai-monitoring/SKILL.md:38]",
+    "Ask the user [sentry-setup-ai-monitoring/SKILL.md:73]"
+  ],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8dfd0fecddd70fde305556347fcc1e777b2091c902447714ad126d909cab11fa",
+        "content-review:492-lines",
+        "semantic-review-report:curation/v2/reviews/platform.md"
+      ],
+      "path": "sentry-setup-ai-monitoring/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:0374538e22c4f4204e3c859441084dce46125c201c71879c2150d22f9e193215",
+        "content-review:83-lines"
+      ],
+      "path": "sentry-setup-ai-monitoring/references/sampling.md",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [],
+  "trigger": "Setup Sentry AI Agent Monitoring in any project. Use when asked to monitor LLM calls, track AI agents, track conversations, or instrument OpenAI/Anthropic/Vercel AI/LangChain/Google GenAI/Pydantic AI/Laravel AI. Detects installed AI SDKs and configures appropriate integrations. [sentry-setup-ai-monitoring/SKILL.md:3]",
+  "unique_methods": [
+    "Setup Sentry AI Agent Monitoring [sentry-setup-ai-monitoring/SKILL.md:12]",
+    "Invoke This Skill When [sentry-setup-ai-monitoring/SKILL.md:16]",
+    "Prerequisites [sentry-setup-ai-monitoring/SKILL.md:24]",
+    "Data Capture Warning [sentry-setup-ai-monitoring/SKILL.md:30]",
+    "Detection First [sentry-setup-ai-monitoring/SKILL.md:40]",
+    "JavaScript [sentry-setup-ai-monitoring/SKILL.md:45]"
+  ],
+  "weaknesses_failure_modes": [
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [sentry-setup-ai-monitoring/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Setup Sentry AI Agent Monitoring [sentry-setup-ai-monitoring/SKILL.md:12]",
+    "Invoke This Skill When [sentry-setup-ai-monitoring/SKILL.md:16]",
+    "Prerequisites [sentry-setup-ai-monitoring/SKILL.md:24]",
+    "Data Capture Warning [sentry-setup-ai-monitoring/SKILL.md:30]",
+    "Detection First [sentry-setup-ai-monitoring/SKILL.md:40]",
+    "JavaScript [sentry-setup-ai-monitoring/SKILL.md:45]"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "minimal reproduction",
+    "hypothesis and experiment ledger",
+    "root-cause evidence chain",
+    "affected-surface and remediation handoff"
+  ],
+  "capability_id": "capability:root-cause-investigation",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim Phase 9 evaluation, Phase 10 approval, or released status"
+  ],
+  "hard_gates": [
+    "Investigation cannot declare root cause from correlation, the last stack frame, or one patched symptom; it needs a reproducible causal chain and sibling-path analysis.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "root-cause-investigation",
+  "inputs": [
+    "A test failure, production incident, unexpected behavior, build issue, or performance problem."
+  ],
+  "outputs": [
+    "minimal reproduction",
+    "hypothesis and experiment ledger",
+    "root-cause evidence chain",
+    "affected-surface and remediation handoff"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "policy": {
+    "coverage": [
+      "reproduction",
+      "callers",
+      "competing-hypotheses",
+      "first-divergent-invariant",
+      "cause-not-symptom",
+      "no-source-edit"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Reproduce and trace an observed defect to the highest shared evidence-backed cause without editing product source.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "0.1.0-v2-candidate"
+}

@@ -1,0 +1,392 @@
+{
+  "candidate_responsibility": "Build genuinely different working UI variants in isolation and support fair comparison and promotion.",
+  "canonical_unit_ids": [
+    "prototype:unit-001",
+    "prototype:unit-002",
+    "prototype:unit-003",
+    "prototype:unit-006",
+    "prototype:unit-007",
+    "prototype:unit-010",
+    "prototype:unit-011",
+    "prototype:unit-012",
+    "prototype:unit-013",
+    "prototype:unit-014",
+    "prototype:unit-015",
+    "prototype:unit-016",
+    "prototype:unit-017",
+    "prototype:unit-018",
+    "prototype:unit-019"
+  ],
+  "cluster_id": "cluster:divergent-prototyping-and-variant-selection",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "prototype/PICKER.md:1-6",
+    "prototype/PICKER.md:124-130",
+    "prototype/PICKER.md:131-139",
+    "prototype/PICKER.md:140-197",
+    "prototype/PICKER.md:24-51",
+    "prototype/PICKER.md:53-73",
+    "prototype/PICKER.md:7-23",
+    "prototype/PICKER.md:74-122",
+    "prototype/SKILL.md:1-10",
+    "prototype/SKILL.md:11-16",
+    "prototype/SKILL.md:17-24",
+    "prototype/SKILL.md:42-49",
+    "prototype/SKILL.md:50-58",
+    "prototype/SKILL.md:78-87",
+    "prototype/SKILL.md:88-90"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:divergent-prototyping-and-variant-selection"
+      ],
+      "id": "cluster:divergent-prototyping-and-variant-selection:fusion:boundary",
+      "rule": "Build genuinely different working UI variants in isolation and support fair comparison and promotion."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:divergent-prototyping-and-variant-selection"
+      ],
+      "id": "cluster:divergent-prototyping-and-variant-selection:fusion:inputs",
+      "rule": "Accept only: One UI brief, project tokens, authentic context, and named axes of divergence."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:divergent-prototyping-and-variant-selection"
+      ],
+      "id": "cluster:divergent-prototyping-and-variant-selection:fusion:outputs",
+      "rule": "Produce only: Isolated variants, a picker, tradeoffs, a user selection, and a promotion handoff."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:divergent-prototyping-and-variant-selection:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "One UI brief, project tokens, authentic context, and named axes of divergence.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prototype"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "prototype"
+      ]
+    }
+  ],
+  "output_boundary": "Isolated variants, a picker, tradeoffs, a user selection, and a promotion handoff.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义快速原型变体发散技能的专属定位：针对给定的 UI 组件描述构建多个真正不同的版本，并装配于可视化切换器后供实时比选与晋升；明确不参与非发散类任务（如现有动效审查或库选型）。; 确立原型发散的工作姿态：作为高级设计工程师，将实质发散（Divergence）作为核心价值，严禁产出同质化微调变体；同时坚守顶级工艺门禁，所有变体皆须满足自然物理缓动与性能预算。; 确立原型探索的五大硬性红线：1. 探索期严禁触碰生产代码；2. 变体必须在命名轴上发散；3. 每个变体必须功能完整可交互；4. 切换器作为标准仪表盘严格逐字复制；5. 胜出者晋升后彻底清理临时测试场。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:53-73",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87",
+        "prototype/SKILL.md:88-90"
+      ],
+      "limitations": "Explicit limits: 专用于新交互或组件变体的发散性原型构建与比选。; 变体间必须提供截然不同的解答，杜绝仅换色调的假性发散。; 贯穿原型生命周期始终的铁律，杜绝代码污染与空洞占位。",
+      "source_id": "prototype",
+      "strengths": "Provides 15 source-grounded atom(s) for responsibility (method=3, rule=8, template=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prototype:unit-001",
+        "prototype:unit-002",
+        "prototype:unit-003",
+        "prototype:unit-006",
+        "prototype:unit-007",
+        "prototype:unit-010",
+        "prototype:unit-011",
+        "prototype:unit-012",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-015",
+        "prototype:unit-016",
+        "prototype:unit-017",
+        "prototype:unit-018",
+        "prototype:unit-019"
+      ]
+    },
+    {
+      "approach": "定义 Phase 3 规划发散方向方法：默认规划 3 个（最多 5 个）变体；赋予每个变体性格化命名（如 Quiet, Editorial, Playful, Dense）与明确的发散维度；禁止雷同轴位。; 定义 Phase 4 构建原型测试场方法：在项目独立路由或单个自包含 HTML 中搭建；逐字引入标准切换器；在真实比例与背景中全尺寸渲染单变体；变体切换保持绝对即时（0ms 无过渡）。; 规范原型交互调用指令契约：支持基础调用、数量扩充 x5、针对特定方向细化的 riff <variant>、确认晋升的 keep <variant> 以及保留测试场的 keep <variant>, leave the picker。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87"
+      ],
+      "limitations": "Explicit limits: 严禁使用 Option A/B 命名，每个变体必须拥有不可替代的发散主张。; 杜绝邮票式缩略图并列，高频切换严禁添加过渡动画干扰手感判断。; 用户交互指令的标准化语法映射表。",
+      "source_id": "prototype",
+      "strengths": "Provides 7 source-grounded atom(s) for method (method=3, template=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prototype:unit-006",
+        "prototype:unit-007",
+        "prototype:unit-010",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-016",
+        "prototype:unit-019"
+      ]
+    },
+    {
+      "approach": "专用于新交互或组件变体的发散性原型构建与比选。; 变体间必须提供截然不同的解答，杜绝仅换色调的假性发散。; 贯穿原型生命周期始终的铁律，杜绝代码污染与空洞占位。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:53-73",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87",
+        "prototype/SKILL.md:88-90"
+      ],
+      "limitations": "Explicit limits: 专用于新交互或组件变体的发散性原型构建与比选。; 变体间必须提供截然不同的解答，杜绝仅换色调的假性发散。; 贯穿原型生命周期始终的铁律，杜绝代码污染与空洞占位。",
+      "source_id": "prototype",
+      "strengths": "Provides 15 source-grounded atom(s) for boundary-and-applicability (method=3, rule=8, template=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prototype:unit-001",
+        "prototype:unit-002",
+        "prototype:unit-003",
+        "prototype:unit-006",
+        "prototype:unit-007",
+        "prototype:unit-010",
+        "prototype:unit-011",
+        "prototype:unit-012",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-015",
+        "prototype:unit-016",
+        "prototype:unit-017",
+        "prototype:unit-018",
+        "prototype:unit-019"
+      ]
+    },
+    {
+      "approach": "规范原型交互调用指令契约：支持基础调用、数量扩充 x5、针对特定方向细化的 riff <variant>、确认晋升的 keep <variant> 以及保留测试场的 keep <variant>, leave the picker。; 规范悬浮切换器的标准 HTML 结构：由滑块高亮层 span、变体切换按钮组（包含 data-active 与 aria-current 标记）、细发丝分割线以及动效重放按钮（↻）构成。; 规定悬浮切换器底座的 CSS 样式规范：固定定位 bottom: 24px 水平居中、最高 z-index（2147483647）、胶囊圆角 999px、暗黑半透明底色伴随 12px 高斯模糊与 1.4 倍饱和度、1px 细微内描边与多重柔和投影。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:78-87"
+      ],
+      "limitations": "Explicit limits: 用户交互指令的标准化语法映射表。; 在框架或原生环境中必须严格维持该层级关系与类名语义。; 逐字照搬的标准 CSS 容器样式，确保切换器在任何页面中拥有最高可见度。",
+      "source_id": "prototype",
+      "strengths": "Provides 4 source-grounded atom(s) for inputs-and-outputs (template=4); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prototype:unit-010",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-016"
+      ]
+    },
+    {
+      "approach": "核验原型发散技能边界是否清晰界定于多变体构建与切换器装配。; 核验工作姿态是否贯彻实质发散与工业级工艺标准双重约束。; 核验五大硬性红线是否覆盖隔离、命名轴、全交互、固定切换器与事后清理。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:53-73",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:88-90"
+      ],
+      "limitations": "Explicit limits: 专用于新交互或组件变体的发散性原型构建与比选。; 变体间必须提供截然不同的解答，杜绝仅换色调的假性发散。; 贯穿原型生命周期始终的铁律，杜绝代码污染与空洞占位。",
+      "source_id": "prototype",
+      "strengths": "Provides 8 source-grounded atom(s) for gates-and-validation (rule=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "prototype:unit-001",
+        "prototype:unit-002",
+        "prototype:unit-003",
+        "prototype:unit-011",
+        "prototype:unit-012",
+        "prototype:unit-015",
+        "prototype:unit-017",
+        "prototype:unit-018"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:53-73",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87",
+        "prototype/SKILL.md:88-90"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prototype",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:53-73",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87",
+        "prototype/SKILL.md:88-90"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "prototype",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 3,
+        "rule": 8,
+        "template": 4
+      },
+      "evidence": [
+        "prototype/PICKER.md:1-6",
+        "prototype/PICKER.md:124-130",
+        "prototype/PICKER.md:131-139",
+        "prototype/PICKER.md:140-197",
+        "prototype/PICKER.md:24-51",
+        "prototype/PICKER.md:53-73",
+        "prototype/PICKER.md:7-23",
+        "prototype/PICKER.md:74-122",
+        "prototype/SKILL.md:1-10",
+        "prototype/SKILL.md:11-16",
+        "prototype/SKILL.md:17-24",
+        "prototype/SKILL.md:42-49",
+        "prototype/SKILL.md:50-58",
+        "prototype/SKILL.md:78-87",
+        "prototype/SKILL.md:88-90"
+      ],
+      "source_id": "prototype",
+      "unit_ids": [
+        "prototype:unit-001",
+        "prototype:unit-002",
+        "prototype:unit-003",
+        "prototype:unit-006",
+        "prototype:unit-007",
+        "prototype:unit-010",
+        "prototype:unit-011",
+        "prototype:unit-012",
+        "prototype:unit-013",
+        "prototype:unit-014",
+        "prototype:unit-015",
+        "prototype:unit-016",
+        "prototype:unit-017",
+        "prototype:unit-018",
+        "prototype:unit-019"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "prototype:unit-001",
+    "prototype:unit-002",
+    "prototype:unit-003",
+    "prototype:unit-006",
+    "prototype:unit-007",
+    "prototype:unit-010",
+    "prototype:unit-011",
+    "prototype:unit-012",
+    "prototype:unit-013",
+    "prototype:unit-014",
+    "prototype:unit-015",
+    "prototype:unit-016",
+    "prototype:unit-017",
+    "prototype:unit-018",
+    "prototype:unit-019"
+  ]
+}

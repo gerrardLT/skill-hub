@@ -1,0 +1,54 @@
+{
+  "status": "resolved",
+  "title": "V2 prose hard_gates have no machine evaluator",
+  "discovered_by": "real end-to-end run of stage-04-requirements-planning against the consolidated-68 recipes",
+  "evidence": [
+    "evals/runs/capability-compiler-v2/optimization-1.1.0/consolidated-68-e2e/stage-04-requirements-planning/result.json",
+    "tools/curation/slot_gate.py:evaluate_gate implements ~11 fixed gate IDs",
+    "340 of 340 V2 gate strings return {'error': 'no deterministic evaluator'}"
+  ],
+  "detail": {
+    "v2_gate_strings_total": 340,
+    "v2_gate_strings_evaluable": 0,
+    "v1_released_recipe_gates_total": 7,
+    "v1_released_recipe_gates_evaluable": 7
+  },
+  "observed_failure": "Running one real step produced: gate-failed: ['Review evidence only; do not create design artifacts, mutate the plan, or treat contextual aesthetics as universal law.', 'Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries.'] — the model output was a correct requirements contract, but the prose gates could not be evaluated and were therefore treated as failures.",
+  "root_cause": "V1 recipes use short machine-checkable gate identifiers (source-traceability, unknown-preservation, ...). V2 recipes carry human-readable hard_gates that state obligations for the model. The executor has no evaluator for the V2 form, so every V2 step fails closed at the gate layer.",
+  "impact": "The consolidated-68 recipes can be loaded, topologically ordered, and executed, but no step can pass its gates. The complete flow cannot run end to end until this layer is bridged.",
+  "bounded_next_step": "Compile each V2 hard_gate into a machine predicate, either by mapping to an existing evaluator id or by adding a small set of new deterministic evaluators. Keep gate evaluation deterministic; do not replace it with model self-report.",
+  "what_already_works": [
+    "recipe loading, mode-aware step resolution, and hard-dependency topological ordering",
+    "candidate_path and skill_ref resolution for all 170 steps",
+    "real model invocation with per-mode document loading",
+    "artifact persistence, state files, and per-step evidence records",
+    "fail-closed stopping on needs-input"
+  ],
+  "resolution": {
+    "approach": "Two-layer gate model. Blocking gates are machine-checkable ids derived from the contract's own structural properties; the original prose obligations are preserved as recorded advisory gates and handed to independent review instead of being faked as regex checks.",
+    "machine_gates": [
+      "status-declared",
+      "non-execution-stated",
+      "unknowns-preserved",
+      "authority-named",
+      "evidence-binding"
+    ],
+    "advisory_gates_preserved": 340,
+    "blocking_gate_instances": 565,
+    "unevaluable_blocking_gates": 0,
+    "calibration": "Evaluated against 304 real model outputs: non-execution-stated 99%, authority-named 71%, unknowns-preserved 70%, status-declared 58% (the eval prompt never asked for a status line; the executor prompt does and passes 100%), evidence-binding 46%. 36% of outputs pass every gate that applies to them. A claim-only negative control fails every gate.",
+    "evidence": [
+      "tools/curation/v2_machine_gates.py",
+      "tools/curation/recipe_execute.py:evaluate_gates bridges V1 and V2 gate ids",
+      "tests/curation/test_v2_stage_recipe_execute.py",
+      "evals/runs/capability-compiler-v2/optimization-1.1.0/consolidated-68-e2e/"
+    ]
+  },
+  "additional_fixes": {
+    "conditional_steps": "127 steps are `conditional` with `default_state: skipped`; the executor now treats a stage as an opt-in menu and reports needs-input with the available menu when nothing is activated. 27 steps marked disabled-pending-current-authorization never run.",
+    "step_ordering": "Dependency records name capabilities while steps are keyed by mode; the resolver now maps both. Only `hard` edges order steps: `optional` means use-if-present and `feedback` is explicitly a future-pass edge, and treating either as ordering creates cycles.",
+    "caller_order": "An ordered activation list is honoured for steps whose prerequisites hold.",
+    "composite_runner": "Added execute_composite: walks stage_steps in dependency order, enforces the four handoff obligations between stages, carries artifacts forward, and stops the whole composite when a stage does not pass.",
+    "stage_id_normalisation": "depends_on writes stage-NN while stage_id writes stage:NN."
+  }
+}

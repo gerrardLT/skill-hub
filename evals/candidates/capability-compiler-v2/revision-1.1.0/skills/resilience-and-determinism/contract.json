@@ -1,0 +1,69 @@
+{
+  "artifact_types": [
+    "determinism experiment record",
+    "retry and timeout analysis",
+    "cleanup and recovery evidence",
+    "root-cause hypothesis and bounded recommendation"
+  ],
+  "capability_id": "capability:resilience-and-determinism",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A resilience claim requires repeated target-bound evidence with recorded seeds, ordering, environment, retries, timeouts, side effects, cleanup, and failure injection; one passing retry proves nothing.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority."
+  ],
+  "id": "resilience-and-determinism",
+  "inputs": [
+    "An observed nondeterministic or resilience failure with reproduction context: the failing test or job, logs, environment, and any suspected cause (invalid data, race, contamination, fragile wait)."
+  ],
+  "outputs": [
+    "determinism experiment record",
+    "retry and timeout analysis",
+    "cleanup and recovery evidence",
+    "root-cause hypothesis and bounded recommendation"
+  ],
+  "permission_identity": "local-exec",
+  "policy": {
+    "coverage": [
+      "seed",
+      "ordering",
+      "timeout",
+      "retry-masking",
+      "idempotency",
+      "cleanup",
+      "failure-injection",
+      "repeated-evidence"
+    ],
+    "data_governance": false,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Diagnose and verify nondeterminism, retries, timeouts, cleanup, isolation, ordering, and recovery behavior under a frozen workload without source repair.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

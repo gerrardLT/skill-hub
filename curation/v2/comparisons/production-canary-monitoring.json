@@ -1,0 +1,453 @@
+{
+  "candidate_responsibility": "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise.",
+  "canonical_unit_ids": [
+    "canary:unit-001",
+    "canary:unit-003",
+    "canary:unit-004",
+    "canary:unit-005",
+    "canary:unit-006",
+    "canary:unit-007",
+    "land-and-deploy:unit-008",
+    "land-and-deploy:unit-009"
+  ],
+  "cluster_id": "cluster:production-canary-monitoring",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "canary/SKILL.md:21-27",
+    "canary/SKILL.md:23-25",
+    "canary/SKILL.md:537-547",
+    "canary/SKILL.md:593-614",
+    "canary/SKILL.md:6-11",
+    "canary/SKILL.md:625-646",
+    "canary/SKILL.md:647-655",
+    "canary/SKILL.md:656-678",
+    "canary/SKILL.md:680-714",
+    "land-and-deploy/SKILL.md:857-890",
+    "land-and-deploy/SKILL.md:906-920"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:production-canary-monitoring:fusion:boundary",
+      "rule": "Capture a production baseline, discover safe pages, sample continuously, diff signals, and control alert noise."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:production-canary-monitoring:fusion:inputs",
+      "rule": "Accept only: A deployed application, safely accessible pages, and a trusted initial baseline."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:production-canary-monitoring"
+      ],
+      "id": "cluster:production-canary-monitoring:fusion:outputs",
+      "rule": "Produce only: Ongoing health status, differential alerts, evidence, and controlled baseline updates."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:production-canary-monitoring:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A deployed application, safely accessible pages, and a trusted initial baseline.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "canary",
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "canary",
+        "land-and-deploy"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "canary",
+        "land-and-deploy"
+      ]
+    }
+  ],
+  "output_boundary": "Ongoing health status, differential alerts, evidence, and controlled baseline updates.",
+  "retained_auxiliary_unit_ids": [
+    "skills/canary/SKILL.md:21-27",
+    "skills/canary/SKILL.md:23-25",
+    "skills/canary/SKILL.md:6-11"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "金丝雀探针运行环境与报告目录初始化门禁：解析项目 Slug 并初始化 canary-reports、baselines 与 screenshots 存储拓扑，设置默认监测时长与页面发现模式; 同源安全路由自动发现与敏感动作过滤方法：抓取首页同源链接并剔除注销、删除、退订等危险动作，提取 Top 5 核心导航供用户确认; 无状态高频金丝雀轮询监听方法：在监测周期内每 60 秒为各页面开启全新上下文，重新注入错误捕获钩子并采集新鲜截图与性能数据",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Explicit limits: 执行任何金丝雀基线采集或监控之前的初始化阶段; 未显式指定 --pages 参数时的自动化路由探测阶段; 部署后持续长时观察阶段的执行循环",
+      "source_id": "canary",
+      "strengths": "Provides 9 source-grounded atom(s) for responsibility (gate=3, method=3, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-001",
+        "canary:unit-003",
+        "canary:unit-004",
+        "canary:unit-005",
+        "canary:unit-006",
+        "canary:unit-007",
+        "skills/canary/SKILL.md:21-27",
+        "skills/canary/SKILL.md:23-25",
+        "skills/canary/SKILL.md:6-11"
+      ]
+    },
+    {
+      "approach": "同源安全路由自动发现与敏感动作过滤方法：抓取首页同源链接并剔除注销、删除、退订等危险动作，提取 Top 5 核心导航供用户确认; 无状态高频金丝雀轮询监听方法：在监测周期内每 60 秒为各页面开启全新上下文，重新注入错误捕获钩子并采集新鲜截图与性能数据; 金丝雀监测三要素方法：①监控对象——控制台错误、性能回归、页面故障；②监测手段——周期截图+基线对比；③输出——异常告警。形成部署后的持续观察闭环。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:625-646"
+      ],
+      "limitations": "Explicit limits: 未显式指定 --pages 参数时的自动化路由探测阶段; 部署后持续长时观察阶段的执行循环; 监测频率和时长由部署类型决定（灰度 vs 全量）",
+      "source_id": "canary",
+      "strengths": "Provides 3 source-grounded atom(s) for method (method=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-003",
+        "canary:unit-004",
+        "skills/canary/SKILL.md:23-25"
+      ]
+    },
+    {
+      "approach": "执行任何金丝雀基线采集或监控之前的初始化阶段; 未显式指定 --pages 参数时的自动化路由探测阶段; 部署后持续长时观察阶段的执行循环",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Explicit limits: 执行任何金丝雀基线采集或监控之前的初始化阶段; 未显式指定 --pages 参数时的自动化路由探测阶段; 部署后持续长时观察阶段的执行循环",
+      "source_id": "canary",
+      "strengths": "Provides 9 source-grounded atom(s) for boundary-and-applicability (gate=3, method=3, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-001",
+        "canary:unit-003",
+        "canary:unit-004",
+        "canary:unit-005",
+        "canary:unit-006",
+        "canary:unit-007",
+        "skills/canary/SKILL.md:21-27",
+        "skills/canary/SKILL.md:23-25",
+        "skills/canary/SKILL.md:6-11"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "本地报表与截图目录正确建立，参数合法解析; 准确识别相对基线的劣化，排除恒定旧缺陷造成的误报干扰; 过滤偶发单次网络噪点，仅在故障持续时弹出结构化警报",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Explicit limits: 执行任何金丝雀基线采集或监控之前的初始化阶段; 单次轮询数据采集后的差分异常计算阶段; 触发高危用户中断警报前的容错校验门禁",
+      "source_id": "canary",
+      "strengths": "Provides 6 source-grounded atom(s) for gates-and-validation (gate=3, rule=3); each is bound to an exact source citation.",
+      "unit_ids": [
+        "canary:unit-001",
+        "canary:unit-005",
+        "canary:unit-006",
+        "canary:unit-007",
+        "skills/canary/SKILL.md:21-27",
+        "skills/canary/SKILL.md:6-11"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "canary",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "部署后生产金丝雀探针与错误预算门禁：按变动范围实施分级金丝雀探针，注入 JS 错误捕获、性能指标提取与带标注视觉截图; 生产金丝雀健康判定规则与回滚建议协商：基于状态码、控制台异常与性能分级判定 PASS/FAIL，异常时给出回滚推荐选项",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Explicit limits: 生产发布完成后的即时生产就绪健康验收; 金丝雀探针数据采集完成后的质量裁决步骤",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 2 source-grounded atom(s) for responsibility (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-008",
+        "land-and-deploy:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "生产发布完成后的即时生产就绪健康验收; 金丝雀探针数据采集完成后的质量裁决步骤",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Explicit limits: 生产发布完成后的即时生产就绪健康验收; 金丝雀探针数据采集完成后的质量裁决步骤",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 2 source-grounded atom(s) for boundary-and-applicability (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-008",
+        "land-and-deploy:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "页面加载返回 200，无严重 Uncaught 错误，且耗时在 10 秒以内; 任何严重错误发生时立即引导用户审查证据并提供一键回滚",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Explicit limits: 生产发布完成后的即时生产就绪健康验收; 金丝雀探针数据采集完成后的质量裁决步骤",
+      "source_id": "land-and-deploy",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=1, rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "land-and-deploy:unit-008",
+        "land-and-deploy:unit-009"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "land-and-deploy",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "gate": 3,
+        "method": 3,
+        "rule": 3
+      },
+      "evidence": [
+        "canary/SKILL.md:21-27",
+        "canary/SKILL.md:23-25",
+        "canary/SKILL.md:537-547",
+        "canary/SKILL.md:593-614",
+        "canary/SKILL.md:6-11",
+        "canary/SKILL.md:625-646",
+        "canary/SKILL.md:647-655",
+        "canary/SKILL.md:656-678",
+        "canary/SKILL.md:680-714"
+      ],
+      "source_id": "canary",
+      "unit_ids": [
+        "canary:unit-001",
+        "canary:unit-003",
+        "canary:unit-004",
+        "canary:unit-005",
+        "canary:unit-006",
+        "canary:unit-007",
+        "skills/canary/SKILL.md:21-27",
+        "skills/canary/SKILL.md:23-25",
+        "skills/canary/SKILL.md:6-11"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "rule": 1
+      },
+      "evidence": [
+        "land-and-deploy/SKILL.md:857-890",
+        "land-and-deploy/SKILL.md:906-920"
+      ],
+      "source_id": "land-and-deploy",
+      "unit_ids": [
+        "land-and-deploy:unit-008",
+        "land-and-deploy:unit-009"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "canary:unit-001",
+    "canary:unit-003",
+    "canary:unit-004",
+    "canary:unit-005",
+    "canary:unit-006",
+    "canary:unit-007",
+    "land-and-deploy:unit-008",
+    "land-and-deploy:unit-009",
+    "skills/canary/SKILL.md:21-27",
+    "skills/canary/SKILL.md:23-25",
+    "skills/canary/SKILL.md:6-11"
+  ]
+}

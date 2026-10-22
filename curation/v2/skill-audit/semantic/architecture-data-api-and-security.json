@@ -1,0 +1,182 @@
+{
+  "domain": "architecture-data-api-and-security",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "ai-agent-autonomy-and-human-control",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Decomposes agency into six graduated rights instead of one autonomy label.", "Graduation and revocation require evidence thresholds."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie; no measured lift over baseline.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case requiring per-right preconditions and revocation triggers."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "The source's version-scoped agency ladder (v1/v2/v3 each with agency level, control mechanism and data flywheel) is not used to stage graduation.", "evidence": "skills/ai-product-strategy/references/artifacts.md:422-449", "recommendation": "Express graduation as versioned rungs each naming its control and the data it collects."}
+      ],
+      "lost_source_techniques": ["versioned agency ladder with data flywheel"]
+    },
+    {
+      "id": "ai-capability-architecture-and-autonomy",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 2, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "merge",
+      "merge_or_split_target": "ai-model-and-data-architecture",
+      "strengths": ["Keeps a non-AI fallback explicit."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "A routing-only Skill that classifies AI needs and hands them to four specialists; its name says 'architecture and autonomy' but it designs neither. It duplicates intake routing and adds a hop.", "evidence": "slots/v2/1.0.0/skills/ai-capability-architecture-and-autonomy/SKILL.md:10,28-32", "recommendation": "Fold the capability-classification step and non-AI fallback into ai-model-and-data-architecture step 1; route specialist questions via the stage Recipe."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "One source reference (a three-line summary).", "evidence": "skills/ai-product-strategy/SKILL.md:14-17", "recommendation": "Covered by merge."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "ai-model-and-data-architecture",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Data rights, lineage, freshness and rollback required before any recommendation.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The core source decision, RAG for live or external context versus fine-tuning for consistent behavior, is not stated as a decision rule; nor is the prompt-technique selection guide.", "evidence": "skills/ai-product-strategy/references/guest-insights.md:334-343; skills/ai-product-strategy/references/artifacts.md:588-607; SKILL.md:29-31", "recommendation": "Add a technique decision table: prompt / RAG / fine-tune / tool by need (dynamic context vs behavior specialization)."}
+      ],
+      "lost_source_techniques": ["RAG vs fine-tuning decision rule", "prompt technique selection guide"]
+    },
+    {
+      "id": "ai-safety-and-action-governance",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Concrete abuse-path list (indirect injection, confused deputy, tool composition).", "Default-deny for high-impact actions."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source states prompt injection cannot be fully solved; the Skill does not forbid claiming it is mitigated, so a report could overstate safety.", "evidence": "skills/ai-product-strategy/references/guest-insights.md:625-632", "recommendation": "Add: injection residual risk is always reported as non-zero; controls reduce impact, never eliminate it."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "architecture-candidate-reporting",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Same criteria for all candidates; abstention allowed."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source report format (self-contained HTML, diagram pattern chosen per candidate: dependency graph, mass diagram, cross-section) is reduced to 'tables and cards'.", "evidence": "skills/improve-codebase-architecture/HTML-REPORT.md:1-34,57-93", "recommendation": "Name the diagram pattern per candidate type as guidance."},
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case with unequal evidence across candidates."}
+      ],
+      "lost_source_techniques": ["diagram pattern selection per candidate"]
+    },
+    {
+      "id": "architecture-deep-module-design",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Rejects boundaries based on file layout; challenges for shallow delegation."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Testability rules (accept dependencies, return results instead of side effects) are not named.", "evidence": "skills/codebase-design/SKILL.md:67-97", "recommendation": "Add them to step 5 challenge list."}
+      ],
+      "lost_source_techniques": ["accept dependencies, return results"]
+    },
+    {
+      "id": "architecture-deepening-discovery",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 2},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["YAGNI and leave-unchanged are first-class."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source scopes the scan by recent change history ('walk back a good stretch of commits') before looking; the Skill freezes history but does not weight recent churn.", "evidence": "skills/improve-codebase-architecture/SKILL.md:17-26", "recommendation": "Prioritize areas by recent change frequency when no direction is given."}
+      ],
+      "lost_source_techniques": ["recent-churn scoping before scan"]
+    },
+    {
+      "id": "architecture-interface-alternative-evaluation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Cosmetic signature variants explicitly rejected."],
+      "findings": [
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both holdouts tie.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json", "recommendation": "Phase D case scoring structural independence of alternatives."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source 'Design It Twice' uses 3+ independent generators each with a separate brief to force radical difference; the Skill asks for 'at least two' generated in one pass, which tends to produce variants.", "evidence": "skills/codebase-design/DESIGN-IT-TWICE.md:1-39", "recommendation": "Default to three alternatives generated from independent briefs; two only when constrained."}
+      ],
+      "lost_source_techniques": ["3+ independent generators with separate briefs"]
+    },
+    {
+      "id": "authorization-and-permission-contracts",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Negative case list (IDOR, confused deputy, stale role, bulk, export) is strong.", "Authentication is not authorization."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Only two source refs (attack-surface census, CI permissions); the content is largely authored. Quality is high, provenance is thin.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Record as authored with OWASP ASVS access-control mapping."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "ci-pipeline-security-hardening",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Untrusted input tracing into expressions and privileged jobs; immutable pinning."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "The source's high-risk context list (issue/PR title and body, head_ref, comment body) and the pull_request_target danger are not enumerated.", "evidence": "skills/github-actions-hardening/SKILL.md:43-72", "recommendation": "Add the attacker-controllable context list and flag pull_request_target with checkout of PR head."}
+      ],
+      "lost_source_techniques": ["attacker-controllable github context list", "pull_request_target classification"]
+    },
+    {
+      "id": "data-and-api-contract-design",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Expand-migrate-contract, idempotency and concurrency required."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `schema-migration-safety`, which does not exist in the catalog.", "evidence": "slots/v2/1.0.0/skills/data-and-api-contract-design/SKILL.md:86", "recommendation": "Remove or point to the actual owner (this Skill owns migration design; execution routes to tdd-change-loop)."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source demands actual SQL and request/response shapes 'so the implementer makes zero design decisions'; the Skill asks for shapes but not concrete DDL and examples.", "evidence": "skills/gstack/spec/SKILL.md:714-718", "recommendation": "Require concrete DDL or schema files and at least one request/response example per endpoint."}
+      ],
+      "lost_source_techniques": ["actual SQL and payloads, zero implementer design decisions"]
+    },
+    {
+      "id": "engineering-plan-review",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Every claim must trace to approved intent and an executable evidence path."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source Step 0 scope challenge (what existing code already solves each sub-problem; what is the minimum change) is absent; the Skill reviews the plan as given and cannot flag reinvention.", "evidence": "skills/gstack/plan-eng-review/SKILL.md:667-706; SKILL.md:28-32", "recommendation": "Add step: for each sub-problem, cite existing code that already solves it or record none found."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlap with independent-code-review and implementation-spec-compliance-review (0.216); the plan-vs-code distinction is implicit.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger: completed diff routes to independent-code-review."}
+      ],
+      "lost_source_techniques": ["scope challenge against existing code"]
+    },
+    {
+      "id": "frontend-runtime-boundaries-and-dependency-safety",
+      "scores": {"boundary": 2, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "split",
+      "merge_or_split_target": "audit vs repair (repair to defect-remediation)",
+      "strengths": ["No server credential may cross into a client bundle.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Combines audit and repair in one identity ('audit and minimally repair'), contradicting the V2 review/repair separation decision applied everywhere else.", "evidence": "slots/v2/1.0.0/skills/frontend-runtime-boundaries-and-dependency-safety/SKILL.md:10,31", "recommendation": "Make it read-only audit; route accepted repairs to defect-remediation."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are a design-taste stack default and a redesign checklist; RSC/client boundary rules ('use client' isolation, providers in client components) are cited but not stated.", "evidence": "skills/design-taste-frontend/SKILL.md:122-159", "recommendation": "Add framework-variant rules for RSC client/server boundaries."}
+      ],
+      "lost_source_techniques": ["RSC interactivity isolation rules"]
+    },
+    {
+      "id": "secrets-and-environment-governance",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Value-free verification; leak-response order.", "Both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Specific leak paths from the source (set -x tracing, untrusted multiline data into $GITHUB_ENV/$GITHUB_OUTPUT) are not listed.", "evidence": "skills/github-actions-hardening/SKILL.md:106-115", "recommendation": "Add them to the leak-path map examples."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "security-audit-and-threat-modeling",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["STRIDE plus supply chain; one reproducible finding per problem with exploit preconditions."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source Phase 0 stack detection and Phase 1 attack-surface census (count endpoints, admin routes, webhooks, jobs) are not explicit; and source stance 'the real attack surface is your dependencies' is not prioritized.", "evidence": "skills/gstack/cso/SKILL.md:407-446,493-532", "recommendation": "Add a census step with counts per surface category before tracing threats."}
+      ],
+      "lost_source_techniques": ["attack surface census with counts"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["ai-capability-architecture-and-autonomy", "ai-model-and-data-architecture", "ai-agent-autonomy-and-human-control", "ai-safety-and-action-governance", "ai-interaction-and-probabilistic-ux"], "issue": "Five AI Skills; the router-only one adds a hop without design value.", "recommendation": "Merge router-only Skill into ai-model-and-data-architecture; keep the other four."}
+  ]
+}

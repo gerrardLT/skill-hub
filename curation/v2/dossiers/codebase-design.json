@@ -1,0 +1,127 @@
+{
+  "branches": [],
+  "inputs": [
+    "Source has no explicit input section; only the task target implied by the positive trigger is evidenced. [codebase-design/SKILL.md:3]"
+  ],
+  "non_responsibility": "Does not independently authorize remote writes, deployment, destructive action, or product approval unless a separate contract grants it. [codebase-design/SKILL.md:3]",
+  "non_trigger": "Source does not declare an explicit non-trigger; V2 routing must constrain it to the positive trigger and reject unrelated work. [codebase-design/SKILL.md:3]",
+  "outputs": [
+    "Source has no explicit output section; V2 must define a concrete artifact before this capability can be released. [codebase-design/SKILL.md:3]"
+  ],
+  "permissions_side_effects": [
+    "Module: anything with an interface and an implementation. Deliberately scale-agnostic: a function, class, package, or tier-spanning slice. Avoid: unit, component, service. [codebase-design/SKILL.md:14]"
+  ],
+  "relationship_hypotheses": [],
+  "responsibility": "Shared vocabulary for designing deep modules. [codebase-design/SKILL.md:3]",
+  "root_id": "skill-root:codebase-design",
+  "rules_gates": [
+    "Use these terms exactly: don't substitute \"component,\" \"service,\" \"API,\" or \"boundary.\" Consistent language is the whole point. [codebase-design/SKILL.md:12]",
+    "Interface: everything a caller must know to use the module correctly: the type signature, but also invariants, ordering constraints, error modes, required configuration, and performance characteristics. Avoid: API, signature (too narrow, they refer only to the type-level surface). [codebase-design/SKILL.md:16]",
+    "One adapter means a hypothetical seam. Two adapters means a real one. Don't introduce a seam unless something actually varies across it. [codebase-design/SKILL.md:65]",
+    "1. Accept dependencies, don't create them. [codebase-design/SKILL.md:71]",
+    "const gateway = new StripeGateway(); [codebase-design/SKILL.md:79]",
+    "2. Return results, don't produce side effects. [codebase-design/SKILL.md:83]",
+    "\"Interface\" as the TypeScript interface keyword or a class's public methods: too narrow: interface here includes every fact a caller must know. [codebase-design/SKILL.md:108]",
+    "Deepening a cluster given its dependencies, see [DEEPENING.md](DEEPENING.md): dependency categories, seam discipline, and replace-don't-layer testing. [codebase-design/SKILL.md:113]"
+  ],
+  "skill_path": "codebase-design/SKILL.md",
+  "source_citations": [
+    {
+      "line_end": 7,
+      "line_start": 3,
+      "path": "codebase-design/SKILL.md"
+    },
+    {
+      "line_end": 6,
+      "line_start": 6,
+      "path": "codebase-design/SKILL.md"
+    },
+    {
+      "line_end": 10,
+      "line_start": 10,
+      "path": "codebase-design/SKILL.md"
+    },
+    {
+      "line_end": 30,
+      "line_start": 30,
+      "path": "codebase-design/SKILL.md"
+    },
+    {
+      "line_end": 60,
+      "line_start": 60,
+      "path": "codebase-design/SKILL.md"
+    }
+  ],
+  "source_sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+  "stop_conditions": [],
+  "support_file_reviews": [
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+        "content-review:38-lines"
+      ],
+      "path": "codebase-design/DEEPENING.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:8e740bf98446dbd4dfdc132ac4346d9a7eedaf93de6a495889171cf7f99f16bd",
+        "content-review:45-lines"
+      ],
+      "path": "codebase-design/DESIGN-IT-TWICE.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+        "content-review:115-lines",
+        "semantic-review-report:curation/v2/reviews/engineering.md"
+      ],
+      "path": "codebase-design/SKILL.md",
+      "reason": null,
+      "subkind": null
+    },
+    {
+      "disposition": "semantic-read",
+      "evidence": [
+        "sha256:edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f",
+        "content-review:4-lines"
+      ],
+      "path": "codebase-design/agents/openai.yaml",
+      "reason": null,
+      "subkind": null
+    }
+  ],
+  "tools_dependencies": [
+    "Local dependency: codebase-design/DEEPENING.md [codebase-design/SKILL.md:113]",
+    "Local dependency: codebase-design/DESIGN-IT-TWICE.md [codebase-design/SKILL.md:114]"
+  ],
+  "trigger": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary. [codebase-design/SKILL.md:3]",
+  "unique_methods": [
+    "Codebase Design [codebase-design/SKILL.md:6]",
+    "Glossary [codebase-design/SKILL.md:10]",
+    "Deep vs shallow [codebase-design/SKILL.md:30]",
+    "Principles [codebase-design/SKILL.md:60]",
+    "Designing for testability [codebase-design/SKILL.md:67]",
+    "Relationships [codebase-design/SKILL.md:97]"
+  ],
+  "weaknesses_failure_modes": [
+    "Input contract is implicit in the trigger rather than declared as a bounded input section. [codebase-design/SKILL.md:3]",
+    "Output contract is implicit; downstream composition must bind an explicit artifact before release. [codebase-design/SKILL.md:3]",
+    "Source describes side effects without a complete explicit authorization boundary; V2 must add one. [codebase-design/SKILL.md:3]",
+    "No explicit stop or abort condition was found; V2 must fail closed on missing authority, input, or evidence. [codebase-design/SKILL.md:3]"
+  ],
+  "workflow": [
+    "Codebase Design [codebase-design/SKILL.md:6]",
+    "Glossary [codebase-design/SKILL.md:10]",
+    "Deep vs shallow [codebase-design/SKILL.md:30]",
+    "Principles [codebase-design/SKILL.md:60]",
+    "Designing for testability [codebase-design/SKILL.md:67]",
+    "Relationships [codebase-design/SKILL.md:97]"
+  ]
+}

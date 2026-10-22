@@ -1,0 +1,435 @@
+{
+  "candidate_responsibility": "Drive behavior changes through a real red-green-refactor loop and a final fresh verification.",
+  "canonical_unit_ids": [
+    "test-driven-development:unit-001",
+    "test-driven-development:unit-002",
+    "test-driven-development:unit-003",
+    "test-driven-development:unit-004",
+    "test-driven-development:unit-005",
+    "test-driven-development:unit-006",
+    "test-driven-development:unit-007",
+    "test-driven-development:unit-008",
+    "test-driven-development:unit-009",
+    "test-driven-development:unit-010",
+    "test-driven-development:unit-011",
+    "test-driven-development:unit-012",
+    "test-driven-development:unit-013",
+    "test-driven-development:unit-015"
+  ],
+  "cluster_id": "cluster:tdd-change-loop",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "test-driven-development/SKILL.md:1-15",
+    "test-driven-development/SKILL.md:113-130",
+    "test-driven-development/SKILL.md:12-12",
+    "test-driven-development/SKILL.md:130-167",
+    "test-driven-development/SKILL.md:131-167",
+    "test-driven-development/SKILL.md:16-30",
+    "test-driven-development/SKILL.md:168-184",
+    "test-driven-development/SKILL.md:185-197",
+    "test-driven-development/SKILL.md:198-206",
+    "test-driven-development/SKILL.md:206-256",
+    "test-driven-development/SKILL.md:207-256",
+    "test-driven-development/SKILL.md:257-289",
+    "test-driven-development/SKILL.md:272-289",
+    "test-driven-development/SKILL.md:290-327",
+    "test-driven-development/SKILL.md:31-46",
+    "test-driven-development/SKILL.md:32-45",
+    "test-driven-development/SKILL.md:343-371",
+    "test-driven-development/SKILL.md:47-70",
+    "test-driven-development/SKILL.md:71-112",
+    "test-driven-development/SKILL.md:73-92"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "cluster:tdd-change-loop:fusion:boundary",
+      "rule": "Drive behavior changes through a real red-green-refactor loop and a final fresh verification."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "cluster:tdd-change-loop:fusion:inputs",
+      "rule": "Accept only: A feature, defect, refactor, or other behavior change."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:tdd-change-loop"
+      ],
+      "id": "cluster:tdd-change-loop:fusion:outputs",
+      "rule": "Produce only: Minimal code supported by observed RED, GREEN, cleanup, and completion evidence."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:tdd-change-loop:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "A feature, defect, refactor, or other behavior change.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "test-driven-development"
+      ]
+    }
+  ],
+  "output_boundary": "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence.",
+  "retained_auxiliary_unit_ids": [
+    "skills/test-driven-development/SKILL.md:113-130",
+    "skills/test-driven-development/SKILL.md:12-12",
+    "skills/test-driven-development/SKILL.md:130-167",
+    "skills/test-driven-development/SKILL.md:206-256",
+    "skills/test-driven-development/SKILL.md:272-289",
+    "skills/test-driven-development/SKILL.md:32-45",
+    "skills/test-driven-development/SKILL.md:73-92"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义测试驱动开发核心总则：测试先行，亲见失败，写最少代码使之通过。核心原则：未见证测试失败，就无法知晓是否测试了正确的事物。违背规则字面即违背规则实质。; 强制适用场景与例外审批边界：始终适用于新特性、缺陷修复、代码重构与行为变更；仅在经人类伙伴许可的抛弃型原型、生成代码与配置文件等极少数场景下豁免；拒绝任何'就跳过这一次'的自我借口。; TDD 铁律（The Iron Law）：没有失败测试，绝不写生产代码。若在测试前写了代码，必须立刻彻底删除并从零重来；严禁保留作为参考、严禁边写测试边适配现有代码、严禁查看违规代码，从测试中重新实现。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "test-driven-development/SKILL.md:1-15",
+        "test-driven-development/SKILL.md:113-130",
+        "test-driven-development/SKILL.md:12-12",
+        "test-driven-development/SKILL.md:130-167",
+        "test-driven-development/SKILL.md:131-167",
+        "test-driven-development/SKILL.md:16-30",
+        "test-driven-development/SKILL.md:168-184",
+        "test-driven-development/SKILL.md:185-197",
+        "test-driven-development/SKILL.md:198-206",
+        "test-driven-development/SKILL.md:206-256",
+        "test-driven-development/SKILL.md:207-256",
+        "test-driven-development/SKILL.md:257-289",
+        "test-driven-development/SKILL.md:272-289",
+        "test-driven-development/SKILL.md:290-327",
+        "test-driven-development/SKILL.md:31-46",
+        "test-driven-development/SKILL.md:32-45",
+        "test-driven-development/SKILL.md:343-371",
+        "test-driven-development/SKILL.md:47-70",
+        "test-driven-development/SKILL.md:71-112",
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "limitations": "Explicit limits: 实现任何功能或修复缺陷，在动笔写实现代码前强制生效。; 在进入任何代码编写决策时强制检查。; 编写任何生产代码时的一票否决拦截门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 21 source-grounded atom(s) for responsibility (example=1, exception=1, gate=6, method=4, rule=8, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:113-130",
+        "skills/test-driven-development/SKILL.md:12-12",
+        "skills/test-driven-development/SKILL.md:130-167",
+        "skills/test-driven-development/SKILL.md:206-256",
+        "skills/test-driven-development/SKILL.md:272-289",
+        "skills/test-driven-development/SKILL.md:32-45",
+        "skills/test-driven-development/SKILL.md:73-92",
+        "test-driven-development:unit-001",
+        "test-driven-development:unit-002",
+        "test-driven-development:unit-003",
+        "test-driven-development:unit-004",
+        "test-driven-development:unit-005",
+        "test-driven-development:unit-006",
+        "test-driven-development:unit-007",
+        "test-driven-development:unit-008",
+        "test-driven-development:unit-009",
+        "test-driven-development:unit-010",
+        "test-driven-development:unit-011",
+        "test-driven-development:unit-012",
+        "test-driven-development:unit-013",
+        "test-driven-development:unit-015"
+      ]
+    },
+    {
+      "approach": "红-绿-重构标准循环（Red-Green-Refactor Cycle）：编写失败测试 -> 验证其正确失败 -> 编写最小代码 -> 验证全绿通过 -> 清洁重构 -> 验证保持全绿 -> 推进下一个循环。; RED 阶段编写失败测试规范：编写一个表达预期行为的最小化测试；要求测试单一行为、命名清晰直白、测试真实代码（非极端不可避免绝不使用 Mock）。; GREEN 阶段编写最小代码规范：编写刚好足以让测试通过的最简代码；严禁添加测试未要求的任何额外参数、重构非关联代码或过度设计（贯彻 YAGNI）。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "test-driven-development/SKILL.md:131-167",
+        "test-driven-development/SKILL.md:185-197",
+        "test-driven-development/SKILL.md:290-327",
+        "test-driven-development/SKILL.md:47-70",
+        "test-driven-development/SKILL.md:71-112",
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "limitations": "Explicit limits: TDD 实施全生命周期内的标准状态转移模型。; 在进入每个特性的 RED 编写阶段适用。; 验证测试失败后进入生产代码编写阶段时遵循。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 6 source-grounded atom(s) for method (example=1, method=4, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:73-92",
+        "test-driven-development:unit-004",
+        "test-driven-development:unit-005",
+        "test-driven-development:unit-007",
+        "test-driven-development:unit-009",
+        "test-driven-development:unit-013"
+      ]
+    },
+    {
+      "approach": "实现任何功能或修复缺陷，在动笔写实现代码前强制生效。; 在进入任何代码编写决策时强制检查。; 编写任何生产代码时的一票否决拦截门禁。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "test-driven-development/SKILL.md:1-15",
+        "test-driven-development/SKILL.md:113-130",
+        "test-driven-development/SKILL.md:12-12",
+        "test-driven-development/SKILL.md:130-167",
+        "test-driven-development/SKILL.md:131-167",
+        "test-driven-development/SKILL.md:16-30",
+        "test-driven-development/SKILL.md:168-184",
+        "test-driven-development/SKILL.md:185-197",
+        "test-driven-development/SKILL.md:198-206",
+        "test-driven-development/SKILL.md:206-256",
+        "test-driven-development/SKILL.md:207-256",
+        "test-driven-development/SKILL.md:257-289",
+        "test-driven-development/SKILL.md:272-289",
+        "test-driven-development/SKILL.md:290-327",
+        "test-driven-development/SKILL.md:31-46",
+        "test-driven-development/SKILL.md:32-45",
+        "test-driven-development/SKILL.md:343-371",
+        "test-driven-development/SKILL.md:47-70",
+        "test-driven-development/SKILL.md:71-112",
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "limitations": "Explicit limits: 实现任何功能或修复缺陷，在动笔写实现代码前强制生效。; 在进入任何代码编写决策时强制检查。; 编写任何生产代码时的一票否决拦截门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 21 source-grounded atom(s) for boundary-and-applicability (example=1, exception=1, gate=6, method=4, rule=8, template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:113-130",
+        "skills/test-driven-development/SKILL.md:12-12",
+        "skills/test-driven-development/SKILL.md:130-167",
+        "skills/test-driven-development/SKILL.md:206-256",
+        "skills/test-driven-development/SKILL.md:272-289",
+        "skills/test-driven-development/SKILL.md:32-45",
+        "skills/test-driven-development/SKILL.md:73-92",
+        "test-driven-development:unit-001",
+        "test-driven-development:unit-002",
+        "test-driven-development:unit-003",
+        "test-driven-development:unit-004",
+        "test-driven-development:unit-005",
+        "test-driven-development:unit-006",
+        "test-driven-development:unit-007",
+        "test-driven-development:unit-008",
+        "test-driven-development:unit-009",
+        "test-driven-development:unit-010",
+        "test-driven-development:unit-011",
+        "test-driven-development:unit-012",
+        "test-driven-development:unit-013",
+        "test-driven-development:unit-015"
+      ]
+    },
+    {
+      "approach": "优秀测试模板：①清晰的行为描述作为名称②测试真实行为而非 mock 细节③单一职责（和 in name 就拆分）。示例展示了如何写出期望 API 的测试。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "limitations": "Explicit limits: 适用于所有新函数/方法的测试编写；是 RED 阶段的核心产出物",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for inputs-and-outputs (template=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:73-92"
+      ]
+    },
+    {
+      "approach": "核验是否确立测试先行、亲见失败的核心原则与严格遵守字面规则的要求。; 核验是否包含新特性/缺陷修复/重构/行为变更的四项强制适用及人类审批要求。; 核验是否明确确立无失败测试绝不写代码铁律，以及先写代码必须彻底删除从零重来的惩罚机制。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "test-driven-development/SKILL.md:1-15",
+        "test-driven-development/SKILL.md:113-130",
+        "test-driven-development/SKILL.md:12-12",
+        "test-driven-development/SKILL.md:130-167",
+        "test-driven-development/SKILL.md:16-30",
+        "test-driven-development/SKILL.md:168-184",
+        "test-driven-development/SKILL.md:198-206",
+        "test-driven-development/SKILL.md:207-256",
+        "test-driven-development/SKILL.md:257-289",
+        "test-driven-development/SKILL.md:272-289",
+        "test-driven-development/SKILL.md:31-46",
+        "test-driven-development/SKILL.md:32-45",
+        "test-driven-development/SKILL.md:343-371"
+      ],
+      "limitations": "Explicit limits: 实现任何功能或修复缺陷，在动笔写实现代码前强制生效。; 在进入任何代码编写决策时强制检查。; 编写任何生产代码时的一票否决拦截门禁。",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 14 source-grounded atom(s) for gates-and-validation (gate=6, rule=8); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:113-130",
+        "skills/test-driven-development/SKILL.md:12-12",
+        "skills/test-driven-development/SKILL.md:130-167",
+        "skills/test-driven-development/SKILL.md:272-289",
+        "skills/test-driven-development/SKILL.md:32-45",
+        "test-driven-development:unit-001",
+        "test-driven-development:unit-002",
+        "test-driven-development:unit-003",
+        "test-driven-development:unit-006",
+        "test-driven-development:unit-008",
+        "test-driven-development:unit-010",
+        "test-driven-development:unit-011",
+        "test-driven-development:unit-012",
+        "test-driven-development:unit-015"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "test-driven-development/SKILL.md:1-15",
+        "test-driven-development/SKILL.md:113-130",
+        "test-driven-development/SKILL.md:12-12",
+        "test-driven-development/SKILL.md:130-167",
+        "test-driven-development/SKILL.md:131-167",
+        "test-driven-development/SKILL.md:16-30",
+        "test-driven-development/SKILL.md:168-184",
+        "test-driven-development/SKILL.md:185-197",
+        "test-driven-development/SKILL.md:198-206",
+        "test-driven-development/SKILL.md:206-256",
+        "test-driven-development/SKILL.md:207-256",
+        "test-driven-development/SKILL.md:257-289",
+        "test-driven-development/SKILL.md:272-289",
+        "test-driven-development/SKILL.md:290-327",
+        "test-driven-development/SKILL.md:31-46",
+        "test-driven-development/SKILL.md:32-45",
+        "test-driven-development/SKILL.md:343-371",
+        "test-driven-development/SKILL.md:47-70",
+        "test-driven-development/SKILL.md:71-112",
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "test-driven-development",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "对常见借口的系统性反驳：\"以后写测试\"vs 立即证明测试价值、\"已手动测试\"vs 自动化的系统性保障、\"删 X 小时代码浪费\"vs sunk cost fallacy 认知偏差。核心论点：测试后置=你测试的是实现而非需求。",
+      "coverage": "explicit",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "test-driven-development/SKILL.md:206-256"
+      ],
+      "limitations": "Explicit limits: 用于教育目的；帮助团队理解为什么 TDD 比\"测试后置\"更有效",
+      "source_id": "test-driven-development",
+      "strengths": "Provides 1 source-grounded atom(s) for failure-modes (exception=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:206-256"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "example": 1,
+        "exception": 1,
+        "gate": 6,
+        "method": 4,
+        "rule": 8,
+        "template": 1
+      },
+      "evidence": [
+        "test-driven-development/SKILL.md:1-15",
+        "test-driven-development/SKILL.md:113-130",
+        "test-driven-development/SKILL.md:12-12",
+        "test-driven-development/SKILL.md:130-167",
+        "test-driven-development/SKILL.md:131-167",
+        "test-driven-development/SKILL.md:16-30",
+        "test-driven-development/SKILL.md:168-184",
+        "test-driven-development/SKILL.md:185-197",
+        "test-driven-development/SKILL.md:198-206",
+        "test-driven-development/SKILL.md:206-256",
+        "test-driven-development/SKILL.md:207-256",
+        "test-driven-development/SKILL.md:257-289",
+        "test-driven-development/SKILL.md:272-289",
+        "test-driven-development/SKILL.md:290-327",
+        "test-driven-development/SKILL.md:31-46",
+        "test-driven-development/SKILL.md:32-45",
+        "test-driven-development/SKILL.md:343-371",
+        "test-driven-development/SKILL.md:47-70",
+        "test-driven-development/SKILL.md:71-112",
+        "test-driven-development/SKILL.md:73-92"
+      ],
+      "source_id": "test-driven-development",
+      "unit_ids": [
+        "skills/test-driven-development/SKILL.md:113-130",
+        "skills/test-driven-development/SKILL.md:12-12",
+        "skills/test-driven-development/SKILL.md:130-167",
+        "skills/test-driven-development/SKILL.md:206-256",
+        "skills/test-driven-development/SKILL.md:272-289",
+        "skills/test-driven-development/SKILL.md:32-45",
+        "skills/test-driven-development/SKILL.md:73-92",
+        "test-driven-development:unit-001",
+        "test-driven-development:unit-002",
+        "test-driven-development:unit-003",
+        "test-driven-development:unit-004",
+        "test-driven-development:unit-005",
+        "test-driven-development:unit-006",
+        "test-driven-development:unit-007",
+        "test-driven-development:unit-008",
+        "test-driven-development:unit-009",
+        "test-driven-development:unit-010",
+        "test-driven-development:unit-011",
+        "test-driven-development:unit-012",
+        "test-driven-development:unit-013",
+        "test-driven-development:unit-015"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "skills/test-driven-development/SKILL.md:113-130",
+    "skills/test-driven-development/SKILL.md:12-12",
+    "skills/test-driven-development/SKILL.md:130-167",
+    "skills/test-driven-development/SKILL.md:206-256",
+    "skills/test-driven-development/SKILL.md:272-289",
+    "skills/test-driven-development/SKILL.md:32-45",
+    "skills/test-driven-development/SKILL.md:73-92",
+    "test-driven-development:unit-001",
+    "test-driven-development:unit-002",
+    "test-driven-development:unit-003",
+    "test-driven-development:unit-004",
+    "test-driven-development:unit-005",
+    "test-driven-development:unit-006",
+    "test-driven-development:unit-007",
+    "test-driven-development:unit-008",
+    "test-driven-development:unit-009",
+    "test-driven-development:unit-010",
+    "test-driven-development:unit-011",
+    "test-driven-development:unit-012",
+    "test-driven-development:unit-013",
+    "test-driven-development:unit-015"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "artifact_types": [
+    "workflow graph",
+    "routing decisions",
+    "typed handoffs",
+    "state and invalidation record"
+  ],
+  "capability_id": "capability:workflow-orchestration-and-lifecycle",
+  "execution": {
+    "adapter": "artifact",
+    "model_tools": [
+      "read",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "remote Git, pull-request mutation, merge, deploy, cloud mutation, or external-system write",
+    "invent facts, evidence, authority, approval, or customer data",
+    "perform adjacent or downstream capability responsibilities",
+    "claim Phase 9 evaluation or release evidence that has not run"
+  ],
+  "hard_gates": [
+    "Orchestration may route, stop, retry, or invalidate, but must never impersonate a selected capability or merge incompatible execution identities.",
+    "Preserve conflicts, counterevidence, unknowns, source identity, and authority boundaries."
+  ],
+  "id": "workflow-orchestration-and-lifecycle",
+  "inputs": [
+    "A request, phase state, available capabilities, and execution constraints."
+  ],
+  "outputs": [
+    "workflow graph",
+    "routing decisions",
+    "typed handoffs",
+    "state and invalidation record"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "data_governance": false,
+    "human_decision": true,
+    "named_formula_variants": false
+  },
+  "responsibility": "Select and sequence atomic capabilities, preserve state and artifact identities, enforce gates, and route feedback without performing downstream work.",
+  "schema_version": "2.0",
+  "status": "released",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.0.0"
+}

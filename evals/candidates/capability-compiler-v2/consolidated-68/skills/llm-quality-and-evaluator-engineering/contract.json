@@ -1,0 +1,89 @@
+{
+  "artifact_types": [
+    "evaluator definitions and local source",
+    "rubric and labeled calibration fixtures",
+    "local executable check evidence",
+    "limitations and provider-activation handoff",
+    "repeatable quality scores",
+    "factuality and groundedness evidence",
+    "human-judge agreement and calibration",
+    "confidence, regression, and failure-slice report"
+  ],
+  "capability_id": "capability:llm-quality-and-evaluator-engineering",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "authorized-workspace",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "An evaluator cannot pass from plausible rubric prose: it needs versioned executable behavior, labeled calibration cases, abstention and invalid handling, disagreement evidence, and no unauthorized provider call.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority.",
+    "External LLM Judge use is not implicit in local evaluation authority; without explicit data-transfer, provider, retention, deletion, and cost authorization, judge-dependent results remain blocked."
+  ],
+  "id": "llm-quality-and-evaluator-engineering",
+  "inputs": [
+    "Quality target, classified traces, evaluator mode, judge policy, local workspace, and data-governance boundary.",
+    "Model outputs, references, criteria, annotations, and trusted historical baselines."
+  ],
+  "mode_permissions": {
+    "llm-evaluator-engineering": "workspace-write-local-exec",
+    "llm-quality-evaluation": "local-exec"
+  },
+  "modes": [
+    "llm-evaluator-engineering",
+    "llm-quality-evaluation"
+  ],
+  "outputs": [
+    "evaluator definitions and local source",
+    "rubric and labeled calibration fixtures",
+    "local executable check evidence",
+    "limitations and provider-activation handoff",
+    "repeatable quality scores",
+    "factuality and groundedness evidence",
+    "human-judge agreement and calibration",
+    "confidence, regression, and failure-slice report"
+  ],
+  "permission_identity": "workspace-write-local-exec",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "quality-contract",
+      "deterministic-first",
+      "versioned-evaluator",
+      "calibration",
+      "abstention",
+      "malformed-input",
+      "no-provider-activation"
+    ],
+    "data_governance": true,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Implement bounded local or draft-online evaluator definitions and calibration checks against an explicit quality contract; provider activation remains separate.; Evaluate supplied model outputs with governed deterministic metrics, factuality checks, calibrated judges, human agreement, statistics, and regression comparisons without provider activation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

@@ -1,0 +1,467 @@
+{
+  "candidate_responsibility": "Model users, jobs, pain points, and cross-touchpoint journeys without upgrading hypotheses into facts.",
+  "canonical_unit_ids": [
+    "discovery-process:unit-008",
+    "discovery-process:unit-009",
+    "discovery-process:unit-010",
+    "discovery-process:unit-011",
+    "discovery-process:unit-012",
+    "product-strategy-session:unit-011",
+    "product-strategy-session:unit-012",
+    "product-strategy-session:unit-013",
+    "product-strategy-session:unit-014",
+    "product-strategy-session:unit-015",
+    "product-strategy-session:unit-016",
+    "product-strategy-session:unit-017"
+  ],
+  "cluster_id": "cluster:persona-jtbd-and-journey-modeling",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "discovery-process/SKILL.md:107-111",
+    "discovery-process/SKILL.md:113-117",
+    "discovery-process/SKILL.md:119-123",
+    "discovery-process/SKILL.md:125-129",
+    "discovery-process/SKILL.md:95-105",
+    "product-strategy-session/SKILL.md:105-109",
+    "product-strategy-session/SKILL.md:111-115",
+    "product-strategy-session/SKILL.md:117-126",
+    "product-strategy-session/SKILL.md:129-139",
+    "product-strategy-session/SKILL.md:141-145",
+    "product-strategy-session/SKILL.md:147-153",
+    "product-strategy-session/SKILL.md:154-162"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:persona-jtbd-and-journey-modeling"
+      ],
+      "id": "cluster:persona-jtbd-and-journey-modeling:fusion:boundary",
+      "rule": "Model users, jobs, pain points, and cross-touchpoint journeys without upgrading hypotheses into facts."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:persona-jtbd-and-journey-modeling"
+      ],
+      "id": "cluster:persona-jtbd-and-journey-modeling:fusion:inputs",
+      "rule": "Accept only: Interview evidence, behavioral context, user hypotheses, and touchpoint observations."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:persona-jtbd-and-journey-modeling"
+      ],
+      "id": "cluster:persona-jtbd-and-journey-modeling:fusion:outputs",
+      "rule": "Produce only: Traceable personas, jobs, journey maps, problem statements, and validation needs."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:persona-jtbd-and-journey-modeling:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "Interview evidence, behavioral context, user hypotheses, and touchpoint observations.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "gates-and-validation",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "product-strategy-session"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "discovery-process",
+        "product-strategy-session"
+      ]
+    }
+  ],
+  "output_boundary": "Traceable personas, jobs, journey maps, problem statements, and validation needs.",
+  "retained_auxiliary_unit_ids": [],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "用 problem framing canvas 定义调查对象、受影响者和成功标准，并产出问题陈述与 HMW。; 将 framing 结果转为带 hypothesis 的正式结构化问题陈述。; 仅在目标客户 segment 不清时建立 hypothesis-driven proto-personas。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Explicit limits: 120 分钟是来源 planning heuristic；依赖 Skill 本轮未读取、未验证、未执行。; 依赖 problem-statement 本轮未读取、未验证、未执行；30 分钟是 heuristic。; 条件未满足则跳过；依赖 Skill 未读取、未验证、未执行；60 分钟是 heuristic。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for responsibility (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-008",
+        "discovery-process:unit-009",
+        "discovery-process:unit-010",
+        "discovery-process:unit-011",
+        "discovery-process:unit-012"
+      ]
+    },
+    {
+      "approach": "用 problem framing canvas 定义调查对象、受影响者和成功标准，并产出问题陈述与 HMW。; 将 framing 结果转为带 hypothesis 的正式结构化问题陈述。; 仅在目标客户 segment 不清时建立 hypothesis-driven proto-personas。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Explicit limits: 120 分钟是来源 planning heuristic；依赖 Skill 本轮未读取、未验证、未执行。; 依赖 problem-statement 本轮未读取、未验证、未执行；30 分钟是 heuristic。; 条件未满足则跳过；依赖 Skill 未读取、未验证、未执行；60 分钟是 heuristic。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-008",
+        "discovery-process:unit-009",
+        "discovery-process:unit-010",
+        "discovery-process:unit-011",
+        "discovery-process:unit-012"
+      ]
+    },
+    {
+      "approach": "120 分钟是来源 planning heuristic；依赖 Skill 本轮未读取、未验证、未执行。; 依赖 problem-statement 本轮未读取、未验证、未执行；30 分钟是 heuristic。; 条件未满足则跳过；依赖 Skill 未读取、未验证、未执行；60 分钟是 heuristic。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Explicit limits: 120 分钟是来源 planning heuristic；依赖 Skill 本轮未读取、未验证、未执行。; 依赖 problem-statement 本轮未读取、未验证、未执行；30 分钟是 heuristic。; 条件未满足则跳过；依赖 Skill 未读取、未验证、未执行；60 分钟是 heuristic。",
+      "source_id": "discovery-process",
+      "strengths": "Provides 5 source-grounded atom(s) for boundary-and-applicability (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "discovery-process:unit-008",
+        "discovery-process:unit-009",
+        "discovery-process:unit-010",
+        "discovery-process:unit-011",
+        "discovery-process:unit-012"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit gates-and-validation atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Missing explicit gates-and-validation coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for gates-and-validation.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "discovery-process",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "由 PM、design 和 customer-facing teams 在定位阶段建立 1–3 个 hypothesis-driven proto-personas。; 为每个 proto-persona 映射 JTBD，输出对应的 JTBD statements。; Phase 1 后判断 customer context 是否足够；足够则进入问题框定，不足则准备 discovery interview、安排 5–10 次客户访谈、验证 positioning assumptions 并增加一周。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Explicit limits: proto-persona 是假设而非已验证用户画像；需要客户证据时必须进入 discovery 分支。; 仅在 persona 假设已形成后执行；JTBD statements 不等于已验证的需求证据。; 不能以没有明确证据为由默认 YES；5–10 是来源给出的操作参数，不应脱离项目上下文当作普遍统计阈值。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 7 source-grounded atom(s) for responsibility (gate=2, method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-011",
+        "product-strategy-session:unit-012",
+        "product-strategy-session:unit-013",
+        "product-strategy-session:unit-014",
+        "product-strategy-session:unit-015",
+        "product-strategy-session:unit-016",
+        "product-strategy-session:unit-017"
+      ]
+    },
+    {
+      "approach": "由 PM、design 和 customer-facing teams 在定位阶段建立 1–3 个 hypothesis-driven proto-personas。; 为每个 proto-persona 映射 JTBD，输出对应的 JTBD statements。; 在 Week 1 Days 3–5 运行 problem framing canvas，框定核心客户问题并初步判断其值得解决，输出 refined problem statement 和 How Might We question。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153"
+      ],
+      "limitations": "Explicit limits: proto-persona 是假设而非已验证用户画像；需要客户证据时必须进入 discovery 分支。; 仅在 persona 假设已形成后执行；JTBD statements 不等于已验证的需求证据。; 问题框定先于方案探索；参与者、时长和 MITRE 标注来自来源，不能推断额外方法步骤。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 5 source-grounded atom(s) for method (method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-011",
+        "product-strategy-session:unit-012",
+        "product-strategy-session:unit-014",
+        "product-strategy-session:unit-015",
+        "product-strategy-session:unit-016"
+      ]
+    },
+    {
+      "approach": "proto-persona 是假设而非已验证用户画像；需要客户证据时必须进入 discovery 分支。; 仅在 persona 假设已形成后执行；JTBD statements 不等于已验证的需求证据。; 不能以没有明确证据为由默认 YES；5–10 是来源给出的操作参数，不应脱离项目上下文当作普遍统计阈值。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Explicit limits: proto-persona 是假设而非已验证用户画像；需要客户证据时必须进入 discovery 分支。; 仅在 persona 假设已形成后执行；JTBD statements 不等于已验证的需求证据。; 不能以没有明确证据为由默认 YES；5–10 是来源给出的操作参数，不应脱离项目上下文当作普遍统计阈值。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 7 source-grounded atom(s) for boundary-and-applicability (gate=2, method=5); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-011",
+        "product-strategy-session:unit-012",
+        "product-strategy-session:unit-013",
+        "product-strategy-session:unit-014",
+        "product-strategy-session:unit-015",
+        "product-strategy-session:unit-016",
+        "product-strategy-session:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "记录 customer context 判定证据；NO 分支必须有访谈计划、定位假设验证和 +1 周时间影响。; 记录问题验证证据；NO 分支必须包含客户访谈、基于发现的问题陈述迭代和 +1 周影响。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Explicit limits: 不能以没有明确证据为由默认 YES；5–10 是来源给出的操作参数，不应脱离项目上下文当作普遍统计阈值。; formal problem statement 或团队共识不能单独证明 validated；访谈数量和时间影响是来源参数，不是跨项目硬阈值。",
+      "source_id": "product-strategy-session",
+      "strengths": "Provides 2 source-grounded atom(s) for gates-and-validation (gate=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "product-strategy-session:unit-013",
+        "product-strategy-session:unit-017"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "product-strategy-session",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "method": 5
+      },
+      "evidence": [
+        "discovery-process/SKILL.md:107-111",
+        "discovery-process/SKILL.md:113-117",
+        "discovery-process/SKILL.md:119-123",
+        "discovery-process/SKILL.md:125-129",
+        "discovery-process/SKILL.md:95-105"
+      ],
+      "source_id": "discovery-process",
+      "unit_ids": [
+        "discovery-process:unit-008",
+        "discovery-process:unit-009",
+        "discovery-process:unit-010",
+        "discovery-process:unit-011",
+        "discovery-process:unit-012"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 2,
+        "method": 5
+      },
+      "evidence": [
+        "product-strategy-session/SKILL.md:105-109",
+        "product-strategy-session/SKILL.md:111-115",
+        "product-strategy-session/SKILL.md:117-126",
+        "product-strategy-session/SKILL.md:129-139",
+        "product-strategy-session/SKILL.md:141-145",
+        "product-strategy-session/SKILL.md:147-153",
+        "product-strategy-session/SKILL.md:154-162"
+      ],
+      "source_id": "product-strategy-session",
+      "unit_ids": [
+        "product-strategy-session:unit-011",
+        "product-strategy-session:unit-012",
+        "product-strategy-session:unit-013",
+        "product-strategy-session:unit-014",
+        "product-strategy-session:unit-015",
+        "product-strategy-session:unit-016",
+        "product-strategy-session:unit-017"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "discovery-process:unit-008",
+    "discovery-process:unit-009",
+    "discovery-process:unit-010",
+    "discovery-process:unit-011",
+    "discovery-process:unit-012",
+    "product-strategy-session:unit-011",
+    "product-strategy-session:unit-012",
+    "product-strategy-session:unit-013",
+    "product-strategy-session:unit-014",
+    "product-strategy-session:unit-015",
+    "product-strategy-session:unit-016",
+    "product-strategy-session:unit-017"
+  ]
+}

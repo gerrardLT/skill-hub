@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "identity": "dd-apm",
+    "kind": "source-skill",
+    "reason": "Closest immutable provenance root; Phase 9 compares the atomic candidate with this broader or provider-specific source behavior."
+  },
+  "candidate": {
+    "contract_sha256": "6df0f1b20a7923ffa07533903ff79cf73b6d36b4075a30bd3ece85d46873f96f",
+    "identity": "apm-instrumentation-verification@0.1.0-v2-candidate",
+    "skill_sha256": "2b15d1829c0d8af11aa8bbf73882cc9dad11352bf48ac5fa8945c3b1d87f61bf"
+  },
+  "execution_state": "not-run-phase-9",
+  "holdout_case_ids": [
+    "V2-P7-apm-instrumentation-verification-holdout-trigger-01",
+    "V2-P7-apm-instrumentation-verification-holdout-anti-01"
+  ],
+  "mutations": [
+    {
+      "expected_gate": "required-semantic-marker",
+      "id": "V2-P7-MUT-apm-instrumentation-verification-01",
+      "remove_exact_text": "Instrumentation verifies only with current known-request evidence carrying the correct service, environment, version, relationships, sampling, and governed fields; configuration presence alone is insufficient.",
+      "target": "SKILL.md"
+    }
+  ],
+  "rubric": [
+    "exact target and immutable identity",
+    "atomic permission and action scope",
+    "current provider or production evidence integrity",
+    "data credential and telemetry governance",
+    "failure rollback revocation and cleanup",
+    "readiness observation rollback and incident separation",
+    "human authorization and durable receipt"
+  ],
+  "schema_version": "2.0",
+  "skill_id": "apm-instrumentation-verification",
+  "status": "planned",
+  "version": "0.1.0-v2-candidate"
+}

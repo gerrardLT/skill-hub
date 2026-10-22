@@ -1,0 +1,91 @@
+{
+  "artifact_types": [
+    "traceable prioritized test cases",
+    "coverage and gap matrix",
+    "governed test-data plan",
+    "validated consumer-specific export",
+    "five-dimension case quality score in the coverage matrix",
+    "per-case synthetic data mapping",
+    "risk-to-test-layer matrix",
+    "test portfolio and ownership",
+    "runtime and data requirements",
+    "coverage gaps and sequencing"
+  ],
+  "capability_id": "capability:test-design-and-strategy",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Every test case must trace to approved behavior or risk and state preconditions, data, action, observable expected result, priority, and test level; exported volume cannot substitute for coverage quality.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority.",
+    "A portfolio must justify every layer by observable risk and feedback value; test-count targets, pyramid dogma, and duplicate assertions across layers are not strategy."
+  ],
+  "id": "test-design-and-strategy",
+  "inputs": [
+    "Approved requirements, risk profile, platform, test level, data constraints, and downstream format.",
+    "System architecture, risks, component types, environments, and data constraints."
+  ],
+  "mode_permissions": {
+    "test-case-design-and-export": "workspace-write",
+    "testing-portfolio-strategy": "read-only"
+  },
+  "modes": [
+    "test-case-design-and-export",
+    "testing-portfolio-strategy"
+  ],
+  "outputs": [
+    "traceable prioritized test cases",
+    "coverage and gap matrix",
+    "governed test-data plan",
+    "validated consumer-specific export",
+    "five-dimension case quality score in the coverage matrix",
+    "per-case synthetic data mapping",
+    "risk-to-test-layer matrix",
+    "test portfolio and ownership",
+    "runtime and data requirements",
+    "coverage gaps and sequencing"
+  ],
+  "permission_identity": "workspace-write",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "stable-case-id",
+      "requirement-traceability",
+      "preconditions",
+      "test-data",
+      "observable-result",
+      "priority",
+      "coverage-gap"
+    ],
+    "data_governance": true,
+    "external_or_system_action": false,
+    "human_decision": false,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 2 related modes: Derive traceable executable test cases, risk priority, data needs, coverage gaps, and one consumer-specific export from approved requirements without implementing tests.; Design a risk-based portfolio of static, unit, integration, contract, browser, performance, accessibility, security, and manual checks with ownership and feedback goals.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": "2.0",
+  "phase": 11,
+  "case_id": "benchshare-v1",
+  "status": "passed-local-end-to-end-validation-pending-final-approval",
+  "reviewer": "parent-direct-evidence-review",
+  "product_decision": {
+    "product": "BenchShare",
+    "selected_by": "user",
+    "visual_direction": "municipal-wayfinding",
+    "visual_direction_selected_by": "user"
+  },
+  "accepted_candidate": {
+    "version": "0.1.4-v2-candidate",
+    "status": "evaluating",
+    "released": false,
+    "phase10_tree_sha256": "7fd6640a563789257da77e1015be3f37033a3baf40ecaf9a4b9fa1fde7828d56"
+  },
+  "runtime": {
+    "tree_sha256": "708ea6b7ec0b169bcb7d2a36e77f5d6df9a3ff9a9df2446fee978419e7af7266",
+    "stack": ["Python 3.12 standard library", "ThreadingHTTPServer", "SQLite", "native HTML/CSS/JavaScript"],
+    "third_party_runtime_dependencies": 0
+  },
+  "implementation": {
+    "model_provider": "router9-qoder",
+    "model": "cx/gpt-5.6-sol",
+    "allowed_tools": ["read", "edit", "write"],
+    "observed_tools": ["read", "edit", "write"],
+    "host_tests_claimed_by_model": false,
+    "host_first_green": "8 passed",
+    "independent_findings": 6,
+    "remediation_batches": 1,
+    "post_remediation": "14 passed"
+  },
+  "independent_review": {
+    "initial_verdict": "findings",
+    "accepted_findings": ["IR-001", "IR-002", "IR-003", "IR-004", "IR-005", "IR-006"],
+    "initial_severity": {"high": 1, "medium": 5},
+    "confirmation_verdict": "pass",
+    "closed_findings": 6,
+    "open_findings": []
+  },
+  "browser": {
+    "runtime_tree_sha256": "708ea6b7ec0b169bcb7d2a36e77f5d6df9a3ff9a9df2446fee978419e7af7266",
+    "iterations": [
+      {"iteration": 1, "status": "failed-harness-classification", "preserved": true},
+      {"iteration": 2, "status": "machine-pass-independent-qa-findings", "preserved": true},
+      {"iteration": 3, "status": "pass", "screenshots": 12}
+    ],
+    "independent_blackbox_qa": {
+      "initial_verdict": "findings",
+      "findings": ["BQA-001", "BQA-002"],
+      "confirmation_verdict": "pass",
+      "open_findings": []
+    },
+    "unexpected_console_errors": 0,
+    "page_errors": 0,
+    "rendered_review": "accepted-for-phase-11-local-validation"
+  },
+  "performance": {
+    "status": "passed-local-only",
+    "health_p95_ms": 17.893,
+    "list_p95_ms": 19.031,
+    "create_p95_ms": 33.8,
+    "concurrent_approval_attempts": 10,
+    "approved": 1,
+    "conflicts": 9,
+    "server_errors": 0,
+    "production_capacity_claim": false
+  },
+  "delivery": {
+    "package_sha256": "8fb653c637294f2a10edd3f9d540d6dabf74a9d1d1dded71e6ab3c0445cf3309",
+    "patch_sha256": "15bf934015d39cdb2f0bb04185216474ba7641ceeec8293727c9c47907040a7f",
+    "package_tree_sha256": "f2944d37e772da78b818a3210fe84fdea536a3be04b6c2f099f4c132840a1566",
+    "reproducible_build_match": true,
+    "fresh_unpack_tests": "14 passed",
+    "fresh_server_health": true,
+    "backup_restore_rehearsed": true,
+    "patch_rebuild_exact": true,
+    "released": false
+  },
+  "failure_retention": {
+    "implementation_launch_failures": 1,
+    "invalid_checker_attempts": 1,
+    "review_red_runs": 1,
+    "browser_failed_or_rejected_iterations": 2,
+    "package_rejected_iterations": 1,
+    "deleted_failures": 0,
+    "thresholds_lowered": false
+  },
+  "authority": {
+    "remote_actions": [],
+    "provider_actions": [],
+    "production_actions": [],
+    "commit_performed": false,
+    "push_performed": false,
+    "pull_request_performed": false,
+    "merge_performed": false,
+    "deployment_performed": false,
+    "final_user_release_approval": false
+  },
+  "residual_risks": [
+    "The case uses synthetic assumptions and does not establish market demand.",
+    "Demo identity selection is not production authentication; local HTTP lacks Secure cookies.",
+    "ThreadingHTTPServer and one-process SQLite are demonstration infrastructure.",
+    "Production target, privacy/retention, real identity, rate limiting, SLO ownership, backup objectives, canary, and provider rollback remain unapproved.",
+    "Remote deployment, production observation, provider rollback, and real incident response were planned or rehearsed locally, not executed."
+  ],
+  "release_disposition": "eligible-for-phase-12-final-human-approval-not-released",
+  "prohibited_claims": [
+    "final user release approval",
+    "candidate released",
+    "production ready",
+    "remote deployment completed",
+    "provider canary or rollback executed"
+  ]
+}

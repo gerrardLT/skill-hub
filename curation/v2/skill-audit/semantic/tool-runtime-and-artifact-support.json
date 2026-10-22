@@ -1,0 +1,223 @@
+{
+  "domain": "tool-runtime-and-artifact-support",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "agent-workflow-runtime-support",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Cannot mark domain work complete from orchestration state."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The dominant cited source pattern is 'prior learnings' lookup with an explicit cross-project consent setting; the Skill mentions consent but not the per-project vs cross-project learning boundary that the sources gate on.", "evidence": "skills/gstack/cso/SKILL.md:535-574; skills/gstack/investigate/SKILL.md:470-509; slots/v2/1.0.0/skills/agent-workflow-runtime-support/SKILL.md:28-30", "recommendation": "Add an explicit cross-project learning consent state (unset/false/true) defaulting to project-only."},
+        {"priority": "P2", "dimension": "boundary", "issue": "Session mechanics overlap plan-execution-control (checkpoint, pause/resume) and workflow-orchestration-and-lifecycle.", "evidence": "SKILL.md:30", "recommendation": "State that step state belongs to plan-execution-control; this Skill owns host/session mechanics only."}
+      ],
+      "lost_source_techniques": ["cross-project learnings consent flag"]
+    },
+    {
+      "id": "artifact-persistence-and-tool-actions",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Path containment, no extra files, explicit no-write outcome."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Nearest neighbour local-learning-persistence (0.2) is not an anti-trigger; workspace artifact vs local-system learning store is implicit.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "browser-agent-pairing-provisioning",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Scoped, expiring, revocable; no wildcard access."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source one-way-door warning is missing: pairing may relaunch the browser daemon, killing open tabs, cookies and logged-in sessions. The Skill's preview lists exposure but not session-loss consequence.", "evidence": "skills/gstack/pair-agent/SKILL.md:520-559; slots/v2/1.0.0/skills/browser-agent-pairing-provisioning/SKILL.md:29", "recommendation": "Add daemon-relaunch and session-loss to the preview and require explicit consent for it."}
+      ],
+      "lost_source_techniques": ["live-daemon relaunch consent (session loss)"]
+    },
+    {
+      "id": "browser-agent-pairing-verification",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Six-state diagnosis; connectivity is not data authority."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source troubleshooting table ('tab not owned by your agent', 'domain not allowed') maps errors to causes; not carried.", "evidence": "skills/gstack/pair-agent/SKILL.md:713-730", "recommendation": "Add an error-to-diagnosis table."}
+      ],
+      "lost_source_techniques": ["pairing error message diagnosis table"]
+    },
+    {
+      "id": "browser-authentication-setup",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["No value exposure; non-secret validation; both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source checks whether the runtime is already attached to the real browser (CDP mode) before importing anything; the Skill lacks this no-op path.", "evidence": "skills/gstack/setup-browser-cookies/SKILL.md:153-192", "recommendation": "Add 'already authenticated via attached real browser' as a no-write outcome."}
+      ],
+      "lost_source_techniques": ["CDP mode check before cookie import"]
+    },
+    {
+      "id": "browser-data-acquisition-runtime",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Login does not authorize acquisition or reuse; read-only actions only."],
+      "findings": [
+        {"priority": "P2", "dimension": "measured_efficacy", "issue": "Mutation needs behavioral challenge.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Phase D case with a form-submit temptation."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are browser launch setup, not acquisition technique; the governance content is authored.", "evidence": "skills/gstack/open-gstack-browser/SKILL.md:162-313", "recommendation": "Mark authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "browser-session-and-runtime-configuration",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Ephemeral only; reproducible invocation."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source prerequisite (npx availability, pause and ask if absent) and the playwright-cli.json config file convention are not named.", "evidence": "skills/playwright/SKILL.md:12-32; skills/playwright/references/workflows.md:72-89", "recommendation": "Name the prerequisite check and config file."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "diagram-and-architecture-artifact-generation",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Every node and edge traced or marked unknown; syntactically valid invented diagram fails."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Write .mmd source first, then render once as a triplet; rendering mechanics are reduced to a 'host request', which is correct given no renderer owner, but the source-first ordering should be stated.", "evidence": "skills/gstack/diagram/SKILL.md:194-262", "recommendation": "State source file is persisted before any render request."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "document-rendering-and-validation",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Renderer exit is insufficient; inspected layout and accessibility required."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `artifact-publication`, which does not exist.", "evidence": "slots/v2/1.0.0/skills/document-rendering-and-validation/SKILL.md:73", "recommendation": "Replace with artifact-persistence-and-tool-actions or evaluation-dataset-publication as appropriate."}
+      ],
+      "lost_source_techniques": ["publication mode with cover, TOC, chapter breaks"]
+    },
+    {
+      "id": "local-agent-memory-setup",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 3},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Project isolation; no implicit sync; both holdouts are candidate wins."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "The primary source sets up a remote-backed knowledge base using an access token; the Skill narrows to local only, a deliberate tightening, but does not say remote-backed setups are out of scope.", "evidence": "skills/gstack/setup-gbrain/SKILL.md:401-440,1007-1046", "recommendation": "State that remote or hosted memory backends are not covered and block."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "local-git-guard-setup",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Hooks-path classification; refuses committed or shared hooks paths."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Single one-line source; content is authored. The core risk it guards (chaining installer renaming a team's committed hooks) is well captured.", "evidence": "skills/gstack/ship/SKILL.md:965", "recommendation": "Mark authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "mobile-platform-runtime-support",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Missing signing blocks rather than prompting for secrets."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources describe codegen regeneration and debug-bridge removal, which are source edits; the Skill forbids source edits, so the cited technique is not applicable and the Skill's own procedure is generic.", "evidence": "skills/gstack/ios-sync/SKILL.md:426-448; skills/gstack/ios-clean/SKILL.md:447-460", "recommendation": "Re-ground in simulator/device run diagnostics or mark authored; add platform-specific readiness checks (xcodebuild -showsdks, adb devices)."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "project-context-and-learning-store",
+      "scores": {"boundary": 2, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Per-record opt-in; tombstones; no cross-machine sync."],
+      "findings": [
+        {"priority": "P1", "dimension": "boundary", "issue": "Save operation duplicates local-learning-persistence (one validated record to a local store); the two differ only in that this one also restores/searches/prunes.", "evidence": "curation/v2/skill-audit/static-scan.json (0.283); SKILL.md:10", "recommendation": "Make this the read/maintain Skill (restore, search, prune, reconcile) and route all writes of new records to local-learning-persistence."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source restore-point pattern (capture verbatim prior plan state with branch and commit, prepend restore pointer) is the best-developed technique and is not named.", "evidence": "skills/gstack/autoplan/SKILL.md:705-751", "recommendation": "Add restore-point record type."}
+      ],
+      "lost_source_techniques": ["restore point with verbatim prior state and re-run instructions"]
+    },
+    {
+      "id": "provider-cli-authentication-setup",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 0, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["Refuses pasted secrets and overbroad scopes; setup authority only."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Only source is a section heading; the Skill is fully authored.", "evidence": "skills/dd-apm/k8s-ssi/troubleshoot-ssi/SKILL.md:32-33", "recommendation": "Mark authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "reference-library-and-deferred-material",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 2, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Retention never makes material operational guidance."],
+      "findings": [
+        {"priority": "P2", "dimension": "permission_fit", "issue": "Identity is local-exec although the procedure only records metadata; no command is executed.", "evidence": "slots/v2/1.0.0/skills/reference-library-and-deferred-material/contract.json; SKILL.md:28-31", "recommendation": "Reduce to workspace-write run-output."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are arbitrary deferred fragments (workflow summary, ASL levels); this is the right home for them, but no technique is required.", "evidence": "skills/discovery-process/SKILL.md:87-91", "recommendation": "None beyond marking authored."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "test-runtime-bootstrap",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["One real-behavior test proves setup; exact restore on failure."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Framework selection by ecosystem marker table is in the sibling source and not referenced.", "evidence": "skills/gstack/design-review/SKILL.md:590-629,663-671", "recommendation": "Reference marker-to-framework defaults when none is selected."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "tool-runtime-readiness",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "keep",
+      "merge_or_split_target": null,
+      "strengths": ["PATH presence is not readiness; five-state verdict."],
+      "findings": [],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "workflow-runtime-upgrade",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Pinned target, backup, rollback, post-upgrade health."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source warns that a running daemon keeps serving the old binary after upgrade and must be stopped unconditionally, and that a local vendored copy must be handled; without this the post-upgrade health check can pass against stale code.", "evidence": "skills/gstack/gstack-upgrade/SKILL.md:192-231,269-308; SKILL.md:31", "recommendation": "Add stop-stale-daemon and vendored-copy steps before health verification."}
+      ],
+      "lost_source_techniques": ["stop stale daemon after upgrade", "handle local vendored copy"]
+    },
+    {
+      "id": "workflow-skill-authoring",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 3, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One atomic responsibility; candidate not release."],
+      "findings": [
+        {"priority": "P1", "dimension": "trigger_precision", "issue": "Non-Responsibilities references `artifact-publication`, which does not exist.", "evidence": "slots/v2/1.0.0/skills/workflow-skill-authoring/SKILL.md:74", "recommendation": "Replace with the real owner or remove."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source naming constraints (lowercase, digits, dashes, <=32 chars, starts with a letter) and 3-5 trigger phrases are not stated.", "evidence": "skills/gstack/skillify/SKILL.md:460-499", "recommendation": "Add naming and trigger-count rules."}
+      ],
+      "lost_source_techniques": ["skill name constraints", "3-5 trigger phrases"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["local-learning-persistence", "project-context-and-learning-store", "local-agent-memory-setup"], "issue": "Write path duplicated.", "recommendation": "Setup / write-one / read-maintain split."},
+    {"skills": ["document-rendering-and-validation", "workflow-skill-authoring"], "issue": "Both reference a nonexistent artifact-publication Skill.", "recommendation": "Fix references."}
+  ]
+}

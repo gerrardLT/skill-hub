@@ -1,0 +1,65 @@
+{
+  "artifact_types": [
+    "independent interface alternatives",
+    "contract and failure comparison",
+    "migration and compatibility matrix",
+    "human-owned recommendation"
+  ],
+  "capability_id": "capability:architecture-interface-alternative-evaluation",
+  "execution": {
+    "external": "none",
+    "host_actions": [],
+    "model_tools": [
+      "read",
+      "edit",
+      "write"
+    ],
+    "mutation_scope": "run-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, read, print, persist, hash, or transmit secret values",
+    "remote Git, merge, deploy, release, provider-policy mutation, production-data mutation, or AI action-right activation",
+    "invent architecture facts, data rights, authorization, evidence, approval, migration safety, or risk acceptance",
+    "combine independent review or audit with source remediation",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Alternatives must differ in responsibility boundary or information hiding; cosmetic signature variants do not satisfy divergent architecture evaluation.",
+    "Review, reporting, contract, and audit candidates never imply implementation, live policy change, production mutation, or risk acceptance."
+  ],
+  "id": "architecture-interface-alternative-evaluation",
+  "inputs": [
+    "A bounded module problem, constraints, and an interface-design objective."
+  ],
+  "outputs": [
+    "independent interface alternatives",
+    "contract and failure comparison",
+    "migration and compatibility matrix",
+    "human-owned recommendation"
+  ],
+  "permission_identity": "workspace-write",
+  "policy": {
+    "coverage": [
+      "independent-alternatives",
+      "information-hiding",
+      "caller-complexity",
+      "failure-semantics",
+      "compatibility",
+      "migration"
+    ],
+    "data_governance": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Generate at least two independent interface alternatives and compare information hiding, caller complexity, dependencies, failure behavior, testability, compatibility, and migration cost.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-candidate"
+}

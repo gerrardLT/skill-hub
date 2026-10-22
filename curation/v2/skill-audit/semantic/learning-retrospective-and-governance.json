@@ -1,0 +1,84 @@
+{
+  "domain": "learning-retrospective-and-governance",
+  "reviewer": "parent-direct",
+  "reviewer_read_only": true,
+  "skills": [
+    {
+      "id": "ai-organizational-adoption-and-leadership",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Reversible smallest pilot plus explicit non-adoption option.", "Gate rejects enthusiasm or tool availability as evidence."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Source adoption patterns are absent: top-down sponsorship paired with bottom-up 'tiger team' evangelists, a divergence period followed by top-down convergence on few bets, and preferring repeatable processes over open-ended knowledge work.", "evidence": "skills/ai-product-strategy/references/guest-insights.md:800-807,848-855; slots/v2/1.0.0/skills/ai-organizational-adoption-and-leadership/SKILL.md:28-31", "recommendation": "Add a pilot-selection step that scores candidate workflows on repeatability and names the diverge/converge phase plan."},
+        {"priority": "P1", "dimension": "measured_efficacy", "issue": "Both Phase 9 holdouts tie: baseline already routes correctly, so the Skill shows no measured lift.", "evidence": "evals/runs/capability-compiler-v2/phase-9/grading-report.json paired_skill_holdouts", "recommendation": "Add execution-quality cases that require the source patterns, then re-measure in phase D."}
+      ],
+      "lost_source_techniques": ["tiger teams of early adopters", "diverge-then-converge on high-conviction bets", "audit AI features against core objectives to avoid bloat"]
+    },
+    {
+      "id": "engineering-retrospective-and-improvement",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Blameless fact/interpretation separation is explicit.", "Every action needs owner, date, signal and stop condition."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "The source's quantitative metric set (commits, LOC delta, active days, shipping streak, context switches/day, per-project breakdown) and snapshot-to-snapshot trend comparison are reduced to 'identify patterns'.", "evidence": "skills/gstack/retro/SKILL.md:1091-1130,1172-1211; SKILL.md:30", "recommendation": "Define a default metric table and require comparison with the previous retrospective snapshot when one is supplied."},
+        {"priority": "P2", "dimension": "output_verifiability", "issue": "'Trend and debt register' has no schema, so two runs cannot be compared.", "evidence": "SKILL.md:37", "recommendation": "Specify register columns: pattern, evidence refs, first seen, frequency, owner, status."}
+      ],
+      "lost_source_techniques": ["global metric overview table", "per-project breakdown", "retro snapshot JSON for trend comparison"]
+    },
+    {
+      "id": "feedback-and-continuous-learning-loop",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 1, "output_verifiability": 1, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 0, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Preserves dissent and minority evidence; rejects correlation as learning."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "Cited sources do not support the responsibility: deploy follow-up messages and an AI cost-lever framework. The Skill is effectively unsourced synthesis.", "evidence": "skills/gstack/land-and-deploy/SKILL.md:1006-1022; skills/ai-product-strategy/references/artifacts.md:33-44", "recommendation": "Re-ground in continuous-discovery or experiment-readout sources, or mark as authored without source technique."},
+        {"priority": "P1", "dimension": "procedure", "issue": "'Update hypothesis confidence' has no confidence scale or update rule, so calibration is not reproducible.", "evidence": "slots/v2/1.0.0/skills/feedback-and-continuous-learning-loop/SKILL.md:30", "recommendation": "Declare a confidence scale (e.g. 5-level with evidence criteria per level) and require before/after values with the evidence that moved them."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Overlaps engineering-retrospective (outcome review) and data-analysis-validation (metric interpretation) without anti-triggers to either.", "evidence": "SKILL.md:17-18", "recommendation": "Add anti-triggers to engineering-retrospective-and-improvement and data-analysis-validation."}
+      ],
+      "lost_source_techniques": []
+    },
+    {
+      "id": "local-learning-persistence",
+      "scores": {"boundary": 3, "trigger_precision": 2, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["One record, local only, read-back verified, rollback declared.", "Rejects secrets and indefinite retention."],
+      "findings": [
+        {"priority": "P1", "dimension": "source_fidelity", "issue": "No record schema: the source's learning types (pattern, pitfall, preference, architecture, tool, operational), confidence, source and files fields are dropped, so 'normalized record' is undefined.", "evidence": "skills/gstack/design-review/SKILL.md:1714-1740; SKILL.md:30", "recommendation": "Embed the minimal record schema with the type taxonomy."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Source pitfall about hand-built paths (branch names with '/' create subdirectories) is not preserved.", "evidence": "skills/gstack/ship/SKILL.md:1047-1075", "recommendation": "Add a destination-path normalization check to step 1."},
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Nearest neighbours project-context-and-learning-store (0.283) and local-agent-memory-setup (0.265) are close; only one is an anti-trigger.", "evidence": "curation/v2/skill-audit/static-scan.json", "recommendation": "Add anti-trigger to local-agent-memory-setup (setup of the store versus writing one record)."}
+      ],
+      "lost_source_techniques": ["learning type taxonomy", "route writes through the logging helper, never hand-built paths"]
+    },
+    {
+      "id": "release-documentation-maintenance",
+      "scores": {"boundary": 3, "trigger_precision": 3, "procedure": 2, "output_verifiability": 2, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 2, "measured_efficacy": 0},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Coverage map and no-deploy-claim gate are faithful to the source.", "Change classification (added/changed/fixed/deprecated/removed) is concrete."],
+      "findings": [
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Public-surface extraction list (exports, CLI flags, config options, endpoints, env vars, renamed/removed surface) and the Diataxis audit lens are dropped.", "evidence": "skills/gstack/document-release/SKILL.md:537-576; SKILL.md:29", "recommendation": "Add the surface-extraction checklist and tag each doc as tutorial/how-to/reference/explanation."},
+        {"priority": "P2", "dimension": "procedure", "issue": "Source distinguishes obvious factual updates (apply) from risky or subjective ones (ask); the Skill has no such split.", "evidence": "skills/gstack/document-release/SKILL.md:442-481", "recommendation": "Return subjective edits as proposals requiring owner decision."}
+      ],
+      "lost_source_techniques": ["Diataxis audit lens", "public surface extraction from diff", "auto-apply factual vs ask for subjective"]
+    },
+    {
+      "id": "source-metadata-and-provenance",
+      "scores": {"boundary": 3, "trigger_precision": 1, "procedure": 2, "output_verifiability": 3, "gate_specificity": 3, "permission_fit": 3, "source_fidelity": 1, "measured_efficacy": 1},
+      "verdict": "improve",
+      "merge_or_split_target": null,
+      "strengths": ["Fact / provider claim / inference / interpretation separation is precise.", "Explicitly refuses to infer deployment from a commit."],
+      "findings": [
+        {"priority": "P2", "dimension": "trigger_precision", "issue": "Both anti-triggers point to provider-configuration Skills that are not its real confusables; release-documentation-maintenance and reference-library-and-deferred-material are closer in intent.", "evidence": "SKILL.md:17-18", "recommendation": "Replace or add anti-triggers to release-documentation-maintenance and reference-library-and-deferred-material."},
+        {"priority": "P2", "dimension": "source_fidelity", "issue": "Sources are a license text and a decision audit-trail table; no provenance technique (e.g. SPDX identifiers, lineage graph format) is carried.", "evidence": "skills/frontend-design/LICENSE.txt:1-177; skills/gstack/autoplan/SKILL.md:877-887", "recommendation": "Adopt SPDX license identifiers and a declared lineage-edge format."}
+      ],
+      "lost_source_techniques": ["incremental decision audit-trail table"]
+    }
+  ],
+  "cross_skill_findings": [
+    {"skills": ["local-learning-persistence", "project-context-and-learning-store", "local-agent-memory-setup"], "issue": "Three local-memory Skills with overlapping vocabulary; split is write-one-record vs store setup vs agent memory setup but not stated in all three.", "recommendation": "Add a shared three-way boundary sentence and mutual anti-triggers."}
+  ]
+}

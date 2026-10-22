@@ -1,0 +1,104 @@
+{
+  "artifact_types": [
+    "versioned canary baseline artifacts",
+    "capture provenance manifest",
+    "threshold and masking policy",
+    "supersession and deletion record",
+    "supersession record and baseline invalidation triggers",
+    "deployment observation evidence",
+    "health and guardrail comparison",
+    "anomaly and confidence report",
+    "continue, investigate, or rollback recommendation",
+    "explicit rollback recommendation addressed to an authorized operator, with missing-evidence list",
+    "production canary samples",
+    "baseline diff and classification",
+    "noise-control and confidence record",
+    "investigation or rollback recommendation"
+  ],
+  "capability_id": "capability:canary-baseline-and-monitoring",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-7",
+    "external": "read-only",
+    "host_actions": [
+      "approved-local-commands",
+      "approved-artifact-write",
+      "approved-provider-read"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform repository, provider, production, telemetry, incident, local-system, deployment, merge, or rollback mutation outside the exact atomic scope and fresh per-action authorization",
+    "invent commands, provider receipts, deployment status, production evidence, incident actions, rollback result, approval, or release evidence",
+    "combine readiness with action, observation with rollback, coordination with mitigation execution, or learning with unapproved persistence",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "A canary baseline is an immutable evidence artifact for explicit pages and states; replacing it requires approval and preserves the prior version, reason, and comparison continuity.",
+    "Preflight never changes remote state; observation never executes recovery; coordination never performs specialist actions; one remote authorization never cascades.",
+    "Observation is read-only and cannot mutate production; a rollback recommendation is not rollback authorization or execution.",
+    "Canary monitoring is read-only: immutable baselines cannot be silently updated, and a threshold breach may recommend but never execute promotion, repair, traffic change, or rollback."
+  ],
+  "id": "canary-baseline-and-monitoring",
+  "inputs": [
+    "Approved URL and pages, external read authority, artifact directory, prior baseline, and baseline-write decision.",
+    "A deployed change identity, provider read access, observation window, expected signals, and health thresholds.",
+    "A deployed application, safely accessible pages, and a trusted initial baseline."
+  ],
+  "mode_permissions": {
+    "canary-baseline-management": "artifact-write-local-exec-external-read",
+    "deployment-observation": "artifact-write-local-exec-external-read",
+    "production-canary-monitoring": "artifact-write-local-exec-external-read"
+  },
+  "modes": [
+    "canary-baseline-management",
+    "deployment-observation",
+    "production-canary-monitoring"
+  ],
+  "outputs": [
+    "versioned canary baseline artifacts",
+    "capture provenance manifest",
+    "threshold and masking policy",
+    "supersession and deletion record",
+    "supersession record and baseline invalidation triggers",
+    "deployment observation evidence",
+    "health and guardrail comparison",
+    "anomaly and confidence report",
+    "continue, investigate, or rollback recommendation",
+    "explicit rollback recommendation addressed to an authorized operator, with missing-evidence list",
+    "production canary samples",
+    "baseline diff and classification",
+    "noise-control and confidence record",
+    "investigation or rollback recommendation"
+  ],
+  "permission_identity": "artifact-write-local-exec-external-read",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "allowlisted-pages",
+      "immutable-baseline",
+      "capture-provenance",
+      "masking",
+      "thresholds",
+      "supersession"
+    ],
+    "data_governance": true,
+    "human_decision": true,
+    "observation_action_separation": true,
+    "remote_or_system_action": false
+  },
+  "responsibility": "Consolidated capability covering 3 related modes: Create or update immutable local canary baseline evidence only for explicitly selected production pages, without application or provider mutation.; Observe one deployed change through read-only provider status and production health signals, persist bounded evidence, and recommend continue, investigate, or rollback without recovery execution.; Continuously sample approved production pages or signals against immutable baselines, control alert noise, and recommend investigation or rollback without production mutation.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

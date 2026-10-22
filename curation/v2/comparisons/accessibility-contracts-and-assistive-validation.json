@@ -1,0 +1,911 @@
+{
+  "candidate_responsibility": "Define semantic, keyboard, focus, assistive-technology, visual-input, and error-recovery contracts.",
+  "canonical_unit_ids": [
+    "design-taste-frontend:unit-019",
+    "review-animations:unit-021",
+    "ui-ux-pro-max:unit-016",
+    "web-accessibility:unit-001",
+    "web-accessibility:unit-002",
+    "web-accessibility:unit-003",
+    "web-accessibility:unit-004",
+    "web-accessibility:unit-006",
+    "web-accessibility:unit-007",
+    "web-accessibility:unit-008",
+    "web-accessibility:unit-009",
+    "web-accessibility:unit-010",
+    "web-accessibility:unit-011",
+    "web-accessibility:unit-012",
+    "web-accessibility:unit-013",
+    "web-accessibility:unit-015",
+    "web-accessibility:unit-016",
+    "web-accessibility:unit-017",
+    "web-accessibility:unit-018",
+    "web-accessibility:unit-020"
+  ],
+  "cluster_id": "cluster:accessibility-contracts-and-assistive-validation",
+  "decision_references": [],
+  "dimensions": [
+    {
+      "id": "responsibility",
+      "question": "What responsibility the source contributes to this cluster."
+    },
+    {
+      "id": "method",
+      "question": "Methods, phases, tools, or templates contributed by the source."
+    },
+    {
+      "id": "boundary-and-applicability",
+      "question": "Applicability, exceptions, variants, and non-responsibilities."
+    },
+    {
+      "id": "inputs-and-outputs",
+      "question": "Inputs consumed and artifacts or decisions produced."
+    },
+    {
+      "id": "gates-and-validation",
+      "question": "Rules, gates, evidence checks, and validation criteria."
+    },
+    {
+      "id": "permissions-and-side-effects",
+      "question": "Tools, mutation authority, external effects, and consent boundaries."
+    },
+    {
+      "id": "failure-modes",
+      "question": "Known limitations, failure modes, and unsupported assumptions."
+    }
+  ],
+  "evidence_citations": [
+    "design-taste-frontend/SKILL.md:572-592",
+    "review-animations/STANDARDS.md:160-177",
+    "ui-ux-pro-max/references/quick-reference.md:7-34",
+    "web-accessibility/SKILL.md:1-14",
+    "web-accessibility/SKILL.md:16-29",
+    "web-accessibility/SKILL.md:18-18",
+    "web-accessibility/SKILL.md:22-22",
+    "web-accessibility/SKILL.md:23-23",
+    "web-accessibility/SKILL.md:24-24",
+    "web-accessibility/SKILL.md:26-26",
+    "web-accessibility/SKILL.md:28-28",
+    "web-accessibility/SKILL.md:30-44",
+    "web-accessibility/SKILL.md:45-53",
+    "web-accessibility/SKILL.md:47-47",
+    "web-accessibility/SKILL.md:48-48",
+    "web-accessibility/SKILL.md:49-49",
+    "web-accessibility/SKILL.md:50-50",
+    "web-accessibility/SKILL.md:51-51",
+    "web-accessibility/SKILL.md:52-52",
+    "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+    "web-accessibility/references/composite-widgets.md:1-10",
+    "web-accessibility/references/composite-widgets.md:11-23",
+    "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+    "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+    "web-accessibility/references/forms-errors-authentication.md:1-13",
+    "web-accessibility/references/forms-errors-authentication.md:14-24",
+    "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+    "web-accessibility/references/routing.md:1-15",
+    "web-accessibility/references/semantics-and-names.md:1-14",
+    "web-accessibility/references/semantics-and-names.md:15-22",
+    "web-accessibility/references/source-index.md:1-32",
+    "web-accessibility/references/visual-input-and-motion.md:1-17"
+  ],
+  "fusion_rules": [
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:accessibility-contracts-and-assistive-validation"
+      ],
+      "id": "cluster:accessibility-contracts-and-assistive-validation:fusion:boundary",
+      "rule": "Define semantic, keyboard, focus, assistive-technology, visual-input, and error-recovery contracts."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:accessibility-contracts-and-assistive-validation"
+      ],
+      "id": "cluster:accessibility-contracts-and-assistive-validation:fusion:inputs",
+      "rule": "Accept only: User tasks, supported browser and assistive technology, interaction states, WCAG scope, and an implementation."
+    },
+    {
+      "evidence": [
+        "curation/clusters.json:cluster:accessibility-contracts-and-assistive-validation"
+      ],
+      "id": "cluster:accessibility-contracts-and-assistive-validation:fusion:outputs",
+      "rule": "Produce only: Accessibility acceptance criteria, semantics, focus behavior, a test matrix, evidence, and residual risk."
+    },
+    {
+      "evidence": [
+        "curation/v2/fusion-policy.json"
+      ],
+      "id": "cluster:accessibility-contracts-and-assistive-validation:fusion:evidence",
+      "rule": "Preserve explicit source variants and gaps; never upgrade a missing dimension or source preference into a universal rule."
+    }
+  ],
+  "input_boundary": "User tasks, supported browser and assistive technology, interaction states, WCAG scope, and an implementation.",
+  "missing_dimensions": [
+    {
+      "dimension_id": "method",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "inputs-and-outputs",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "dimension_id": "permissions-and-side-effects",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max",
+        "web-accessibility"
+      ]
+    },
+    {
+      "dimension_id": "failure-modes",
+      "disposition": "preserve-as-gap-for-phase-2",
+      "sources": [
+        "design-taste-frontend",
+        "review-animations",
+        "ui-ux-pro-max",
+        "web-accessibility"
+      ]
+    }
+  ],
+  "output_boundary": "Accessibility acceptance criteria, semantics, focus behavior, a test matrix, evidence, and residual risk.",
+  "retained_auxiliary_unit_ids": [
+    "skills/web-accessibility/SKILL.md:18-18",
+    "skills/web-accessibility/SKILL.md:22-22",
+    "skills/web-accessibility/SKILL.md:23-23",
+    "skills/web-accessibility/SKILL.md:24-24",
+    "skills/web-accessibility/SKILL.md:26-26",
+    "skills/web-accessibility/SKILL.md:28-28",
+    "skills/web-accessibility/SKILL.md:47-47",
+    "skills/web-accessibility/SKILL.md:48-48",
+    "skills/web-accessibility/SKILL.md:49-49",
+    "skills/web-accessibility/SKILL.md:50-50",
+    "skills/web-accessibility/SKILL.md:51-51",
+    "skills/web-accessibility/SKILL.md:52-52"
+  ],
+  "schema_version": "2.0",
+  "source_dimension_matrix": [
+    {
+      "approach": "定义暗色模式协议（Dark Mode Protocol）：默认双主题支持；采用 Tailwind dark: 变体或语义 CSS 变量方案（每个项目严格保持策略单一）；正文满足 WCAG AA 最小对比度（大标题冲刺 AAA）；保持亮暗两态视觉层级与主品牌色辨识度对齐；严禁使用纯黑（#000000）或纯白（#ffffff），采用 zinc-950、炭灰与暖灰 off-black 保证层级深度；默认尊重系统偏好，交付前必须在双模式下完整实测。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Explicit limits: 严禁在未经过双模式实测的情况下交付页面，纯黑背景直接判定为缺乏深度设计。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "严禁在未经过双模式实测的情况下交付页面，纯黑背景直接判定为缺乏深度设计。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Explicit limits: 严禁在未经过双模式实测的情况下交付页面，纯黑背景直接判定为缺乏深度设计。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "检查深色背景是否避免了纯黑 #000000，检查 Tailwind 类中是否为每个关键颜色配对了 dark: 变体或统一切换变量。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Explicit limits: 严禁在未经过双模式实测的情况下交付页面，纯黑背景直接判定为缺乏深度设计。",
+      "source_id": "design-taste-frontend",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "design-taste-frontend:unit-019"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "design-taste-frontend",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "确立动效无障碍与悬停适配铁律：必须响应 prefers-reduced-motion（保留透明度过渡、剔除剧烈位移）；悬停动画必须嵌套在 @media (hover: hover) and (pointer: fine) 内，防止移动端误触。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Explicit limits: 移动端或触屏设备严禁触发无保护悬停动画；减弱动态必须有对应的降级媒体查询。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "移动端或触屏设备严禁触发无保护悬停动画；减弱动态必须有对应的降级媒体查询。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Explicit limits: 移动端或触屏设备严禁触发无保护悬停动画；减弱动态必须有对应的降级媒体查询。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "核验减弱动态与指针悬停门禁媒体查询是否配置完整。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Explicit limits: 移动端或触屏设备严禁触发无保护悬停动画；减弱动态必须有对应的降级媒体查询。",
+      "source_id": "review-animations",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "review-animations:unit-021"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "review-animations",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义核心分类1：无障碍（Accessibility - CRITICAL）细则：正文最低 4.5:1 对比度（大文本 3:1）；交互元素具有 2-4px 可见焦点环；图标按钮提供描述性 aria-label / accessibilityLabel；Tab 键顺序匹配视觉流；支持 Dynamic Type 系统字体缩放防截断；遵守 prefers-reduced-motion；模态提供 Esc 退出通道；遵守 WCAG 2.2 AA 标准：固定/悬浮 UI 严禁遮挡键盘焦点元素（focus-not-obscured）、所有拖拽动作提供单指针与键盘替代方案、网页指针热区达到 24x24 CSS 像素、身份认证支持密码管理器与非认知路径、自动轮播具备暂停/停止控件、实时角标以完整情境短语播报。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Explicit limits: 所有用户交互界面与表单控件的强制性底层无障碍合规基线。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for responsibility (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit method atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "method",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Missing explicit method coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for method.",
+      "unit_ids": []
+    },
+    {
+      "approach": "所有用户交互界面与表单控件的强制性底层无障碍合规基线。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Explicit limits: 所有用户交互界面与表单控件的强制性底层无障碍合规基线。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for boundary-and-applicability (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit inputs-and-outputs atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Missing explicit inputs-and-outputs coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for inputs-and-outputs.",
+      "unit_ids": []
+    },
+    {
+      "approach": "验证焦点防遮挡、拖拽替代、24x24 目标尺寸、4.5:1 对比度与可见焦点环是否符合 WCAG 2.2 AA 要求。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Explicit limits: 所有用户交互界面与表单控件的强制性底层无障碍合规基线。",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "Provides 1 source-grounded atom(s) for gates-and-validation (rule=1); each is bound to an exact source citation.",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-016"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "ui-ux-pro-max",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    },
+    {
+      "approach": "定义 Web 可访问性技能的元数据与标准版本基准：确立以 WCAG 2.2 (2023-10-05 推荐标准) 与 WAI-ARIA 1.2 为权威规范，覆盖原生语义、键盘焦点、表单容错、动效与辅助技术测试。; 定义可访问性实施的核心七步工作流：1. 明确任务与容错；2. 原生 HTML 优先；3. 详尽定义所有交互状态契约；4. 视觉与动效自适应；5. 评估原生与成熟组件后再行自定义；6. 人机混合验证并记录证据；7. 严禁仅凭自动化扫描下达合规裁决。; 建立按需加载的可访问性规范矩阵索引：针对标准版本、语义名称、键盘路由、表单错误、弹窗导航、复合组件、视觉动效、测试证据及结果探针等不同诉求定向加载专业指南。",
+      "coverage": "explicit",
+      "dimension_id": "responsibility",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "limitations": "Explicit limits: 适用于跨技术栈的无障碍设计、实现与审查工作，框架无关且无运行时依赖。; 可访问性核心是以残障用户成功完成任务为准绳，而非扫描工具分数。; 审查与设计过程中按需检索对应参考模块，避免全量泛化加载。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 29 source-grounded atom(s) for responsibility (gate=1, method=6, rule=20, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/web-accessibility/SKILL.md:18-18",
+        "skills/web-accessibility/SKILL.md:22-22",
+        "skills/web-accessibility/SKILL.md:23-23",
+        "skills/web-accessibility/SKILL.md:24-24",
+        "skills/web-accessibility/SKILL.md:26-26",
+        "skills/web-accessibility/SKILL.md:28-28",
+        "skills/web-accessibility/SKILL.md:47-47",
+        "skills/web-accessibility/SKILL.md:48-48",
+        "skills/web-accessibility/SKILL.md:49-49",
+        "skills/web-accessibility/SKILL.md:50-50",
+        "skills/web-accessibility/SKILL.md:51-51",
+        "skills/web-accessibility/SKILL.md:52-52",
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-002",
+        "web-accessibility:unit-003",
+        "web-accessibility:unit-004",
+        "web-accessibility:unit-006",
+        "web-accessibility:unit-007",
+        "web-accessibility:unit-008",
+        "web-accessibility:unit-009",
+        "web-accessibility:unit-010",
+        "web-accessibility:unit-011",
+        "web-accessibility:unit-012",
+        "web-accessibility:unit-013",
+        "web-accessibility:unit-015",
+        "web-accessibility:unit-016",
+        "web-accessibility:unit-017",
+        "web-accessibility:unit-018",
+        "web-accessibility:unit-020"
+      ]
+    },
+    {
+      "approach": "定义 Web 可访问性技能的元数据与标准版本基准：确立以 WCAG 2.2 (2023-10-05 推荐标准) 与 WAI-ARIA 1.2 为权威规范，覆盖原生语义、键盘焦点、表单容错、动效与辅助技术测试。; 定义可访问性实施的核心七步工作流：1. 明确任务与容错；2. 原生 HTML 优先；3. 详尽定义所有交互状态契约；4. 视觉与动效自适应；5. 评估原生与成熟组件后再行自定义；6. 人机混合验证并记录证据；7. 严禁仅凭自动化扫描下达合规裁决。; 定义可访问性验收标准模板（Acceptance Criteria Template）：规范用户流程定义（目标、起始触发、支持环境、成功与恢复）、核心核验准则（原生结构、全键盘可操作、指针替代、表单错误恢复、自适应）以及结构化证据计划表。",
+      "coverage": "explicit",
+      "dimension_id": "method",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10"
+      ],
+      "limitations": "Explicit limits: 适用于跨技术栈的无障碍设计、实现与审查工作，框架无关且无运行时依赖。; 可访问性核心是以残障用户成功完成任务为准绳，而非扫描工具分数。; 任何复杂无障碍特性的研发前必须先以该模板确立验收契约。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 8 source-grounded atom(s) for method (method=6, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/web-accessibility/SKILL.md:18-18",
+        "skills/web-accessibility/SKILL.md:22-22",
+        "skills/web-accessibility/SKILL.md:24-24",
+        "skills/web-accessibility/SKILL.md:49-49",
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-002",
+        "web-accessibility:unit-006",
+        "web-accessibility:unit-007"
+      ]
+    },
+    {
+      "approach": "适用于跨技术栈的无障碍设计、实现与审查工作，框架无关且无运行时依赖。; 可访问性核心是以残障用户成功完成任务为准绳，而非扫描工具分数。; 审查与设计过程中按需检索对应参考模块，避免全量泛化加载。",
+      "coverage": "explicit",
+      "dimension_id": "boundary-and-applicability",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "limitations": "Explicit limits: 适用于跨技术栈的无障碍设计、实现与审查工作，框架无关且无运行时依赖。; 可访问性核心是以残障用户成功完成任务为准绳，而非扫描工具分数。; 审查与设计过程中按需检索对应参考模块，避免全量泛化加载。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 29 source-grounded atom(s) for boundary-and-applicability (gate=1, method=6, rule=20, template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/web-accessibility/SKILL.md:18-18",
+        "skills/web-accessibility/SKILL.md:22-22",
+        "skills/web-accessibility/SKILL.md:23-23",
+        "skills/web-accessibility/SKILL.md:24-24",
+        "skills/web-accessibility/SKILL.md:26-26",
+        "skills/web-accessibility/SKILL.md:28-28",
+        "skills/web-accessibility/SKILL.md:47-47",
+        "skills/web-accessibility/SKILL.md:48-48",
+        "skills/web-accessibility/SKILL.md:49-49",
+        "skills/web-accessibility/SKILL.md:50-50",
+        "skills/web-accessibility/SKILL.md:51-51",
+        "skills/web-accessibility/SKILL.md:52-52",
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-002",
+        "web-accessibility:unit-003",
+        "web-accessibility:unit-004",
+        "web-accessibility:unit-006",
+        "web-accessibility:unit-007",
+        "web-accessibility:unit-008",
+        "web-accessibility:unit-009",
+        "web-accessibility:unit-010",
+        "web-accessibility:unit-011",
+        "web-accessibility:unit-012",
+        "web-accessibility:unit-013",
+        "web-accessibility:unit-015",
+        "web-accessibility:unit-016",
+        "web-accessibility:unit-017",
+        "web-accessibility:unit-018",
+        "web-accessibility:unit-020"
+      ]
+    },
+    {
+      "approach": "定义 Web 可访问性技能的元数据与标准版本基准：确立以 WCAG 2.2 (2023-10-05 推荐标准) 与 WAI-ARIA 1.2 为权威规范，覆盖原生语义、键盘焦点、表单容错、动效与辅助技术测试。; 定义可访问性验收标准模板（Acceptance Criteria Template）：规范用户流程定义（目标、起始触发、支持环境、成功与恢复）、核心核验准则（原生结构、全键盘可操作、指针替代、表单错误恢复、自适应）以及结构化证据计划表。",
+      "coverage": "explicit",
+      "dimension_id": "inputs-and-outputs",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23"
+      ],
+      "limitations": "Explicit limits: 适用于跨技术栈的无障碍设计、实现与审查工作，框架无关且无运行时依赖。; 任何复杂无障碍特性的研发前必须先以该模板确立验收契约。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 2 source-grounded atom(s) for inputs-and-outputs (template=2); each is bound to an exact source citation.",
+      "unit_ids": [
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-006"
+      ]
+    },
+    {
+      "approach": "核验是否准确建立模块化按需加载索引表。; 核验是否贯彻原生模态、普通折叠导航与 24x24 目标尺寸规则。; 核验是否明确定义各组件的角色结构、按键模型与可访问树核验要求。",
+      "coverage": "explicit",
+      "dimension_id": "gates-and-validation",
+      "evidence": [
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "limitations": "Explicit limits: 审查与设计过程中按需检索对应参考模块，避免全量泛化加载。; 设计与实现必须严格遵守第一法则、AccName 计算模型与原生 API 优先。; 不得混合不同模式的角色，严禁单纯为了样式向普通列表添加 ARIA 角色。",
+      "source_id": "web-accessibility",
+      "strengths": "Provides 21 source-grounded atom(s) for gates-and-validation (gate=1, rule=20); each is bound to an exact source citation.",
+      "unit_ids": [
+        "skills/web-accessibility/SKILL.md:23-23",
+        "skills/web-accessibility/SKILL.md:26-26",
+        "skills/web-accessibility/SKILL.md:28-28",
+        "skills/web-accessibility/SKILL.md:47-47",
+        "skills/web-accessibility/SKILL.md:48-48",
+        "skills/web-accessibility/SKILL.md:50-50",
+        "skills/web-accessibility/SKILL.md:51-51",
+        "skills/web-accessibility/SKILL.md:52-52",
+        "web-accessibility:unit-003",
+        "web-accessibility:unit-004",
+        "web-accessibility:unit-008",
+        "web-accessibility:unit-009",
+        "web-accessibility:unit-010",
+        "web-accessibility:unit-011",
+        "web-accessibility:unit-012",
+        "web-accessibility:unit-013",
+        "web-accessibility:unit-015",
+        "web-accessibility:unit-016",
+        "web-accessibility:unit-017",
+        "web-accessibility:unit-018",
+        "web-accessibility:unit-020"
+      ]
+    },
+    {
+      "approach": "No explicit permissions-and-side-effects atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "permissions-and-side-effects",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "limitations": "Missing explicit permissions-and-side-effects coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-accessibility",
+      "strengths": "No evidenced strength is claimed for permissions-and-side-effects.",
+      "unit_ids": []
+    },
+    {
+      "approach": "No explicit failure-modes atom is present; infer nothing beyond the cited source units.",
+      "coverage": "missing-explicit-atom",
+      "dimension_id": "failure-modes",
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "limitations": "Missing explicit failure-modes coverage; Phase 2 synthesis must add or defer it.",
+      "source_id": "web-accessibility",
+      "strengths": "No evidenced strength is claimed for failure-modes.",
+      "unit_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "design-taste-frontend/SKILL.md:572-592"
+      ],
+      "source_id": "design-taste-frontend",
+      "unit_ids": [
+        "design-taste-frontend:unit-019"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "review-animations/STANDARDS.md:160-177"
+      ],
+      "source_id": "review-animations",
+      "unit_ids": [
+        "review-animations:unit-021"
+      ]
+    },
+    {
+      "contribution_types": {
+        "rule": 1
+      },
+      "evidence": [
+        "ui-ux-pro-max/references/quick-reference.md:7-34"
+      ],
+      "source_id": "ui-ux-pro-max",
+      "unit_ids": [
+        "ui-ux-pro-max:unit-016"
+      ]
+    },
+    {
+      "contribution_types": {
+        "gate": 1,
+        "method": 6,
+        "rule": 20,
+        "template": 2
+      },
+      "evidence": [
+        "web-accessibility/SKILL.md:1-14",
+        "web-accessibility/SKILL.md:16-29",
+        "web-accessibility/SKILL.md:18-18",
+        "web-accessibility/SKILL.md:22-22",
+        "web-accessibility/SKILL.md:23-23",
+        "web-accessibility/SKILL.md:24-24",
+        "web-accessibility/SKILL.md:26-26",
+        "web-accessibility/SKILL.md:28-28",
+        "web-accessibility/SKILL.md:30-44",
+        "web-accessibility/SKILL.md:45-53",
+        "web-accessibility/SKILL.md:47-47",
+        "web-accessibility/SKILL.md:48-48",
+        "web-accessibility/SKILL.md:49-49",
+        "web-accessibility/SKILL.md:50-50",
+        "web-accessibility/SKILL.md:51-51",
+        "web-accessibility/SKILL.md:52-52",
+        "web-accessibility/assets/acceptance-criteria-template.md:1-23",
+        "web-accessibility/references/composite-widgets.md:1-10",
+        "web-accessibility/references/composite-widgets.md:11-23",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:1-10",
+        "web-accessibility/references/dialogs-disclosures-navigation.md:11-15",
+        "web-accessibility/references/forms-errors-authentication.md:1-13",
+        "web-accessibility/references/forms-errors-authentication.md:14-24",
+        "web-accessibility/references/keyboard-focus-and-routing.md:1-18",
+        "web-accessibility/references/routing.md:1-15",
+        "web-accessibility/references/semantics-and-names.md:1-14",
+        "web-accessibility/references/semantics-and-names.md:15-22",
+        "web-accessibility/references/source-index.md:1-32",
+        "web-accessibility/references/visual-input-and-motion.md:1-17"
+      ],
+      "source_id": "web-accessibility",
+      "unit_ids": [
+        "skills/web-accessibility/SKILL.md:18-18",
+        "skills/web-accessibility/SKILL.md:22-22",
+        "skills/web-accessibility/SKILL.md:23-23",
+        "skills/web-accessibility/SKILL.md:24-24",
+        "skills/web-accessibility/SKILL.md:26-26",
+        "skills/web-accessibility/SKILL.md:28-28",
+        "skills/web-accessibility/SKILL.md:47-47",
+        "skills/web-accessibility/SKILL.md:48-48",
+        "skills/web-accessibility/SKILL.md:49-49",
+        "skills/web-accessibility/SKILL.md:50-50",
+        "skills/web-accessibility/SKILL.md:51-51",
+        "skills/web-accessibility/SKILL.md:52-52",
+        "web-accessibility:unit-001",
+        "web-accessibility:unit-002",
+        "web-accessibility:unit-003",
+        "web-accessibility:unit-004",
+        "web-accessibility:unit-006",
+        "web-accessibility:unit-007",
+        "web-accessibility:unit-008",
+        "web-accessibility:unit-009",
+        "web-accessibility:unit-010",
+        "web-accessibility:unit-011",
+        "web-accessibility:unit-012",
+        "web-accessibility:unit-013",
+        "web-accessibility:unit-015",
+        "web-accessibility:unit-016",
+        "web-accessibility:unit-017",
+        "web-accessibility:unit-018",
+        "web-accessibility:unit-020"
+      ]
+    }
+  ],
+  "unit_ids": [
+    "design-taste-frontend:unit-019",
+    "review-animations:unit-021",
+    "skills/web-accessibility/SKILL.md:18-18",
+    "skills/web-accessibility/SKILL.md:22-22",
+    "skills/web-accessibility/SKILL.md:23-23",
+    "skills/web-accessibility/SKILL.md:24-24",
+    "skills/web-accessibility/SKILL.md:26-26",
+    "skills/web-accessibility/SKILL.md:28-28",
+    "skills/web-accessibility/SKILL.md:47-47",
+    "skills/web-accessibility/SKILL.md:48-48",
+    "skills/web-accessibility/SKILL.md:49-49",
+    "skills/web-accessibility/SKILL.md:50-50",
+    "skills/web-accessibility/SKILL.md:51-51",
+    "skills/web-accessibility/SKILL.md:52-52",
+    "ui-ux-pro-max:unit-016",
+    "web-accessibility:unit-001",
+    "web-accessibility:unit-002",
+    "web-accessibility:unit-003",
+    "web-accessibility:unit-004",
+    "web-accessibility:unit-006",
+    "web-accessibility:unit-007",
+    "web-accessibility:unit-008",
+    "web-accessibility:unit-009",
+    "web-accessibility:unit-010",
+    "web-accessibility:unit-011",
+    "web-accessibility:unit-012",
+    "web-accessibility:unit-013",
+    "web-accessibility:unit-015",
+    "web-accessibility:unit-016",
+    "web-accessibility:unit-017",
+    "web-accessibility:unit-018",
+    "web-accessibility:unit-020"
+  ]
+}

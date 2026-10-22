@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "expected_skill_id": "results-analysis-and-decision-readout",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "solution-hypothesis-and-experiment-design",
+        "decision-and-outcome-roadmapping",
+        "data-analysis-validation"
+      ],
+      "id": "V2-P3-results-analysis-and-decision-readout-trigger-01",
+      "input": "Analyze these experiment results against the preset success and kill thresholds.",
+      "kind": "should-trigger",
+      "reason": "Interpret frozen experiment or decision results against predeclared criteria, uncertainty, failure slices, and alternatives without making the final product decision."
+    },
+    {
+      "expected_skill_id": "results-analysis-and-decision-readout",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "solution-hypothesis-and-experiment-design",
+        "decision-and-outcome-roadmapping",
+        "data-analysis-validation"
+      ],
+      "id": "V2-P3-results-analysis-and-decision-readout-trigger-02",
+      "input": "Prepare a decision readout with uncertainty, failure slices, and a GO/PIVOT/KILL recommendation.",
+      "kind": "should-trigger",
+      "reason": "Interpret frozen experiment or decision results against predeclared criteria, uncertainty, failure slices, and alternatives without making the final product decision."
+    },
+    {
+      "expected_skill_id": "solution-hypothesis-and-experiment-design",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "results-analysis-and-decision-readout"
+      ],
+      "id": "V2-P3-results-analysis-and-decision-readout-anti-01",
+      "input": "Design the experiment and its success criteria before execution.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility solution-hypothesis-and-experiment-design."
+    },
+    {
+      "expected_skill_id": "decision-and-outcome-roadmapping",
+      "expected_status": "route",
+      "forbidden_skill_ids": [
+        "results-analysis-and-decision-readout"
+      ],
+      "id": "V2-P3-results-analysis-and-decision-readout-anti-02",
+      "input": "Commit the roadmap to the recommended decision.",
+      "kind": "should-not-trigger",
+      "reason": "The request belongs to the adjacent responsibility decision-and-outcome-roadmapping."
+    },
+    {
+      "expected_skill_id": "results-analysis-and-decision-readout",
+      "expected_status": "needs-input",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-results-analysis-and-decision-readout-boundary-01",
+      "input": "Interpret frozen experiment or decision results against predeclared criteria, uncertainty, failure slices, and alternatives without making the final product decision. The request provides no source identity, scope, or decision owner needed to proceed safely.",
+      "kind": "boundary",
+      "reason": "A requestable prerequisite is missing and must remain explicit."
+    },
+    {
+      "expected_skill_id": "results-analysis-and-decision-readout",
+      "expected_status": "blocked",
+      "forbidden_skill_ids": [],
+      "id": "V2-P3-results-analysis-and-decision-readout-authority-01",
+      "input": "Use raw customer or proprietary records and send them to an external LLM Judge now; no consent, minimization, redaction, retention, transfer, access, or deletion terms are available.",
+      "kind": "authority-stop",
+      "reason": "The requested action exceeds this atomic capability or its authority."
+    }
+  ],
+  "schema_version": "2.0",
+  "skill_id": "results-analysis-and-decision-readout"
+}

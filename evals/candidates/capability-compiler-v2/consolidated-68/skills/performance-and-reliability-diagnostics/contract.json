@@ -1,0 +1,111 @@
+{
+  "artifact_types": [
+    "experiment comparison",
+    "variance and uncertainty report",
+    "failure-slice and regression analysis",
+    "evidence-bounded human decision readout",
+    "interaction performance baseline",
+    "trace and distribution evidence",
+    "repeatable bottleneck findings",
+    "optimization hypotheses and limits",
+    "matched benchmark run evidence",
+    "metric distributions and variance",
+    "cost-quality-latency comparison",
+    "regression and recommendation report",
+    "Web performance baseline",
+    "Core Web Vitals and waterfall evidence",
+    "optimization hypotheses and limitations",
+    "threshold table with lab or field label per metric"
+  ],
+  "capability_id": "capability:performance-and-reliability-diagnostics",
+  "execution": {
+    "candidate_execution_state": "not-executed-phase-6",
+    "external": "none",
+    "host_actions": [
+      "approved-local-commands"
+    ],
+    "model_tools": [
+      "read"
+    ],
+    "mutation_scope": "artifact-output",
+    "remote_write": false
+  },
+  "forbidden_actions": [
+    "request, reveal, print, persist, hash, or transmit credential or secret values",
+    "perform source, local-system, browser, provider, publication, or remote mutations outside the exact atomic scope and fresh authorization",
+    "invent commands, exits, duration, artifacts, captures, provider receipts, benchmark results, approval, or completion evidence",
+    "combine independent evidence or findings with remediation, risk acceptance, publication, deployment, or release",
+    "claim evaluation, approval, release, or completion evidence that has not been produced"
+  ],
+  "hard_gates": [
+    "Analysis cannot change metrics, thresholds, exclusions, or slices after seeing results without labeling the work exploratory; incomplete or incomparable runs cannot yield a pass claim.",
+    "Independent review, QA, audit, acquisition, analysis, and triage never imply remediation; setup or authentication never implies downstream action authority.",
+    "A frontend performance finding requires a frozen journey, representative device profile, warmup, sample count, distribution, budget, and repeatable trace; one fast or slow run is not evidence.",
+    "A benchmark requires frozen cases and versions, matched environment and budgets, warmup, repeated runs, variance, failed-case retention, and exact artifacts; leaderboard point estimates alone fail.",
+    "A Web performance claim requires repeated runs with recorded browser, device, network, cache, warmup, sample count, distribution, budget, and target identity; a single Lighthouse score cannot pass."
+  ],
+  "id": "performance-and-reliability-diagnostics",
+  "inputs": [
+    "Experiment results, metric contract, baseline, statistical assumptions, and known data limits.",
+    "A rendered frontend, interaction traces, performance measurements, and device constraints.",
+    "Frozen cases, candidate variants, metric contract, environment, and budget.",
+    "A web application, controlled sampling environment, network waterfall, and build information."
+  ],
+  "mode_permissions": {
+    "evaluation-results-analysis": "local-exec",
+    "frontend-rendering-and-interaction-performance": "local-exec",
+    "model-and-workflow-benchmarking": "local-exec",
+    "web-performance-diagnostics": "local-exec"
+  },
+  "modes": [
+    "evaluation-results-analysis",
+    "frontend-rendering-and-interaction-performance",
+    "model-and-workflow-benchmarking",
+    "web-performance-diagnostics"
+  ],
+  "outputs": [
+    "experiment comparison",
+    "variance and uncertainty report",
+    "failure-slice and regression analysis",
+    "evidence-bounded human decision readout",
+    "interaction performance baseline",
+    "trace and distribution evidence",
+    "repeatable bottleneck findings",
+    "optimization hypotheses and limits",
+    "matched benchmark run evidence",
+    "metric distributions and variance",
+    "cost-quality-latency comparison",
+    "regression and recommendation report",
+    "Web performance baseline",
+    "Core Web Vitals and waterfall evidence",
+    "optimization hypotheses and limitations",
+    "threshold table with lab or field label per metric"
+  ],
+  "permission_identity": "local-exec",
+  "permission_identity_is_default": "most common of mode_permissions; the effective identity for a run is mode_permissions[selected_mode]",
+  "policy": {
+    "coverage": [
+      "frozen-metrics",
+      "variance",
+      "uncertainty",
+      "failure-slices",
+      "cost-latency",
+      "no-metric-shopping",
+      "human-decision"
+    ],
+    "data_governance": true,
+    "external_or_system_action": false,
+    "human_decision": true,
+    "review_source_separation": true
+  },
+  "responsibility": "Consolidated capability covering 4 related modes: Analyze frozen experiment results against declared metrics, variance, failure slices, costs, and decision thresholds without rerunning experiments or approving product changes.; Measure current frontend rendering and interaction performance under a frozen user journey and identify evidence-backed bottlenecks without source repair.; Benchmark supplied model or workflow variants on frozen cases, matched environments, metrics, variance, cost, latency, and evidence without remote submission or product approval.; Measure a frozen Web page or journey for navigation, network, caching, assets, rendering, and Core Web Vitals under declared conditions without repair.",
+  "schema_version": "2.0",
+  "status": "evaluating",
+  "statuses": [
+    "passed",
+    "needs-input",
+    "blocked",
+    "failed"
+  ],
+  "version": "1.1.0-consolidated"
+}

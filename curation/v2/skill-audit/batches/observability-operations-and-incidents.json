@@ -1,0 +1,929 @@
+{
+  "brief": ".specs/capability-compiler-v2/skill-audit/reviewer-brief.md",
+  "domain": "observability-operations-and-incidents",
+  "skill_count": 19,
+  "skills": [
+    {
+      "id": "ai-observability-configuration",
+      "path": "slots/v2/1.0.0/skills/ai-observability-configuration/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "ai-model-and-data-architecture",
+          "production-trace-classification"
+        ],
+        "boilerplate_line_ratio": 0.37,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "ai-observability-configuration",
+        "mutation_scope": "remote-ai-observability-config",
+        "nearest_neighbours": [
+          {
+            "id": "log-observability-configuration",
+            "jaccard": 0.386
+          },
+          {
+            "id": "evaluation-dataset-publication",
+            "jaccard": 0.271
+          },
+          {
+            "id": "observability-agent-installation",
+            "jaccard": 0.222
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 7,
+        "source_evidence_refs": 7,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived",
+          "high-semantic-overlap"
+        ],
+        "words": 697
+      }
+    },
+    {
+      "id": "apm-instrumentation-enablement",
+      "path": "slots/v2/1.0.0/skills/apm-instrumentation-enablement/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "apm-instrumentation-verification",
+          "observability-agent-installation"
+        ],
+        "boilerplate_line_ratio": 0.386,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "apm-instrumentation-enablement",
+        "mutation_scope": "remote-apm-enablement",
+        "nearest_neighbours": [
+          {
+            "id": "observability-agent-installation",
+            "jaccard": 0.235
+          },
+          {
+            "id": "release-observability-configuration",
+            "jaccard": 0.217
+          },
+          {
+            "id": "release-rollback-execution",
+            "jaccard": 0.188
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 22,
+        "source_evidence_refs": 22,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 695
+      }
+    },
+    {
+      "id": "apm-instrumentation-troubleshooting",
+      "path": "slots/v2/1.0.0/skills/apm-instrumentation-troubleshooting/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "apm-instrumentation-enablement",
+          "apm-instrumentation-verification"
+        ],
+        "boilerplate_line_ratio": 0.381,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "apm-instrumentation-troubleshooting",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "apm-instrumentation-enablement",
+            "jaccard": 0.18
+          },
+          {
+            "id": "production-llm-trace-root-cause-analysis",
+            "jaccard": 0.155
+          },
+          {
+            "id": "apm-onboarding-summary",
+            "jaccard": 0.151
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "behavioral-challenge-needed",
+        "procedure_steps": 4,
+        "root_atoms": 17,
+        "source_evidence_refs": 17,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-behavioral-challenge-needed"
+        ],
+        "words": 587
+      }
+    },
+    {
+      "id": "apm-instrumentation-verification",
+      "path": "slots/v2/1.0.0/skills/apm-instrumentation-verification/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "apm-instrumentation-enablement",
+          "apm-instrumentation-troubleshooting"
+        ],
+        "boilerplate_line_ratio": 0.381,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "apm-instrumentation-verification",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "apm-onboarding-summary",
+            "jaccard": 0.176
+          },
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.164
+          },
+          {
+            "id": "apm-instrumentation-enablement",
+            "jaccard": 0.16
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 14,
+        "source_evidence_refs": 14,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 574
+      }
+    },
+    {
+      "id": "apm-onboarding-summary",
+      "path": "slots/v2/1.0.0/skills/apm-onboarding-summary/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "apm-instrumentation-verification",
+          "apm-instrumentation-enablement"
+        ],
+        "boilerplate_line_ratio": 0.366,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "apm-onboarding-summary",
+        "mutation_scope": "none",
+        "nearest_neighbours": [
+          {
+            "id": "apm-instrumentation-verification",
+            "jaccard": 0.176
+          },
+          {
+            "id": "apm-instrumentation-troubleshooting",
+            "jaccard": 0.151
+          },
+          {
+            "id": "apm-instrumentation-enablement",
+            "jaccard": 0.098
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "read-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 7,
+        "source_evidence_refs": 7,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 501
+      }
+    },
+    {
+      "id": "canary-baseline-management",
+      "path": "slots/v2/1.0.0/skills/canary-baseline-management/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "production-canary-monitoring",
+          "defect-remediation"
+        ],
+        "boilerplate_line_ratio": 0.419,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "canary-baseline-management",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "production-canary-monitoring",
+            "jaccard": 0.158
+          },
+          {
+            "id": "web-hosting-deployment",
+            "jaccard": 0.119
+          },
+          {
+            "id": "evaluation-dataset-publication",
+            "jaccard": 0.119
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "artifact-write-local-exec-external-read",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 3,
+        "source_evidence_refs": 3,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 629
+      }
+    },
+    {
+      "id": "deployment-observation",
+      "path": "slots/v2/1.0.0/skills/deployment-observation/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "deployment-trigger-execution",
+          "release-rollback-execution"
+        ],
+        "boilerplate_line_ratio": 0.395,
+        "canonical_units": 1,
+        "hard_gates": 2,
+        "id": "deployment-observation",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "release-rollback-execution",
+            "jaccard": 0.189
+          },
+          {
+            "id": "browser-agent-pairing-verification",
+            "jaccard": 0.175
+          },
+          {
+            "id": "apm-instrumentation-verification",
+            "jaccard": 0.164
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "artifact-write-local-exec-external-read",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 2,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 640
+      }
+    },
+    {
+      "id": "error-monitoring-issue-investigation",
+      "path": "slots/v2/1.0.0/skills/error-monitoring-issue-investigation/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "defect-remediation",
+          "pull-request-comment-response"
+        ],
+        "boilerplate_line_ratio": 0.405,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "error-monitoring-issue-investigation",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "resilience-and-determinism",
+            "jaccard": 0.161
+          },
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.151
+          },
+          {
+            "id": "production-llm-trace-root-cause-analysis",
+            "jaccard": 0.145
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 4,
+        "source_evidence_refs": 4,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 592
+      }
+    },
+    {
+      "id": "incident-response-coordination",
+      "path": "slots/v2/1.0.0/skills/incident-response-coordination/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "release-rollback-execution",
+          "engineering-retrospective-and-improvement"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 9,
+        "hard_gates": 2,
+        "id": "incident-response-coordination",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.117
+          },
+          {
+            "id": "solution-hypothesis-and-experiment-design",
+            "jaccard": 0.111
+          },
+          {
+            "id": "error-monitoring-issue-investigation",
+            "jaccard": 0.107
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "candidate-win",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 9,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 666
+      }
+    },
+    {
+      "id": "log-observability-configuration",
+      "path": "slots/v2/1.0.0/skills/log-observability-configuration/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "metrics-system-and-observability",
+          "observability-agent-installation"
+        ],
+        "boilerplate_line_ratio": 0.37,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "log-observability-configuration",
+        "mutation_scope": "remote-log-config",
+        "nearest_neighbours": [
+          {
+            "id": "ai-observability-configuration",
+            "jaccard": 0.386
+          },
+          {
+            "id": "release-observability-configuration",
+            "jaccard": 0.25
+          },
+          {
+            "id": "monitoring-and-alert-configuration",
+            "jaccard": 0.2
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 5,
+        "source_evidence_refs": 5,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "no-measured-holdout-lift",
+          "mutation-survived",
+          "high-semantic-overlap"
+        ],
+        "words": 700
+      }
+    },
+    {
+      "id": "metrics-system-and-observability",
+      "path": "slots/v2/1.0.0/skills/metrics-system-and-observability/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "monitoring-and-alert-configuration",
+          "log-observability-configuration"
+        ],
+        "boilerplate_line_ratio": 0.386,
+        "canonical_units": 25,
+        "hard_gates": 2,
+        "id": "metrics-system-and-observability",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "testing-portfolio-strategy",
+            "jaccard": 0.097
+          },
+          {
+            "id": "requirements-and-delivery-contract",
+            "jaccard": 0.083
+          },
+          {
+            "id": "service-identity-remapping",
+            "jaccard": 0.081
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "tie",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 0,
+        "source_evidence_refs": 25,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "no-measured-holdout-lift",
+          "mutation-survived"
+        ],
+        "words": 637
+      }
+    },
+    {
+      "id": "monitoring-and-alert-configuration",
+      "path": "slots/v2/1.0.0/skills/monitoring-and-alert-configuration/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "metrics-system-and-observability",
+          "incident-response-coordination"
+        ],
+        "boilerplate_line_ratio": 0.37,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "monitoring-and-alert-configuration",
+        "mutation_scope": "remote-monitor-config",
+        "nearest_neighbours": [
+          {
+            "id": "log-observability-configuration",
+            "jaccard": 0.2
+          },
+          {
+            "id": "ai-observability-configuration",
+            "jaccard": 0.182
+          },
+          {
+            "id": "service-identity-remapping",
+            "jaccard": 0.179
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "tie"
+        ],
+        "phase9_mutation": "behavioral-challenge-needed",
+        "procedure_steps": 4,
+        "root_atoms": 32,
+        "source_evidence_refs": 32,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "no-measured-holdout-lift",
+          "mutation-behavioral-challenge-needed"
+        ],
+        "words": 703
+      }
+    },
+    {
+      "id": "observability-agent-installation",
+      "path": "slots/v2/1.0.0/skills/observability-agent-installation/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "apm-instrumentation-enablement",
+          "apm-instrumentation-verification"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "observability-agent-installation",
+        "mutation_scope": "remote-agent-install",
+        "nearest_neighbours": [
+          {
+            "id": "apm-instrumentation-enablement",
+            "jaccard": 0.235
+          },
+          {
+            "id": "ai-observability-configuration",
+            "jaccard": 0.222
+          },
+          {
+            "id": "service-identity-remapping",
+            "jaccard": 0.196
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 20,
+        "source_evidence_refs": 20,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 724
+      }
+    },
+    {
+      "id": "production-canary-monitoring",
+      "path": "slots/v2/1.0.0/skills/production-canary-monitoring/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "canary-baseline-management",
+          "release-rollback-execution"
+        ],
+        "boilerplate_line_ratio": 0.395,
+        "canonical_units": 8,
+        "hard_gates": 2,
+        "id": "production-canary-monitoring",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "canary-baseline-management",
+            "jaccard": 0.158
+          },
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.123
+          },
+          {
+            "id": "metrics-system-and-observability",
+            "jaccard": 0.081
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "artifact-write-local-exec-external-read",
+        "phase9_holdouts": [
+          "tie",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 7,
+        "source_evidence_refs": 18,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "no-measured-holdout-lift",
+          "mutation-survived"
+        ],
+        "words": 632
+      }
+    },
+    {
+      "id": "production-llm-trace-root-cause-analysis",
+      "path": "slots/v2/1.0.0/skills/production-llm-trace-root-cause-analysis/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "production-trace-classification",
+          "defect-remediation"
+        ],
+        "boilerplate_line_ratio": 0.405,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "production-llm-trace-root-cause-analysis",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "production-trace-classification",
+            "jaccard": 0.207
+          },
+          {
+            "id": "root-cause-investigation",
+            "jaccard": 0.155
+          },
+          {
+            "id": "apm-instrumentation-troubleshooting",
+            "jaccard": 0.155
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 38,
+        "source_evidence_refs": 38,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 622
+      }
+    },
+    {
+      "id": "production-trace-classification",
+      "path": "slots/v2/1.0.0/skills/production-trace-classification/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "production-llm-trace-root-cause-analysis",
+          "ai-observability-configuration"
+        ],
+        "boilerplate_line_ratio": 0.372,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "production-trace-classification",
+        "mutation_scope": "artifact-output",
+        "nearest_neighbours": [
+          {
+            "id": "production-llm-trace-root-cause-analysis",
+            "jaccard": 0.207
+          },
+          {
+            "id": "ai-observability-configuration",
+            "jaccard": 0.14
+          },
+          {
+            "id": "browser-data-acquisition-runtime",
+            "jaccard": 0.119
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "external-read",
+        "phase9_holdouts": [
+          "tie",
+          "tie"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 1,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "no-measured-holdout-lift",
+          "mutation-survived"
+        ],
+        "words": 589
+      }
+    },
+    {
+      "id": "release-observability-configuration",
+      "path": "slots/v2/1.0.0/skills/release-observability-configuration/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "source-metadata-and-provenance",
+          "deployment-trigger-execution"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "release-observability-configuration",
+        "mutation_scope": "remote-release-observability",
+        "nearest_neighbours": [
+          {
+            "id": "log-observability-configuration",
+            "jaccard": 0.25
+          },
+          {
+            "id": "service-identity-remapping",
+            "jaccard": 0.224
+          },
+          {
+            "id": "apm-instrumentation-enablement",
+            "jaccard": 0.217
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 6,
+        "source_evidence_refs": 6,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 698
+      }
+    },
+    {
+      "id": "release-rollback-execution",
+      "path": "slots/v2/1.0.0/skills/release-rollback-execution/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "deployment-observation",
+          "incident-response-coordination"
+        ],
+        "boilerplate_line_ratio": 0.378,
+        "canonical_units": 1,
+        "hard_gates": 2,
+        "id": "release-rollback-execution",
+        "mutation_scope": "remote-release-rollback",
+        "nearest_neighbours": [
+          {
+            "id": "service-identity-remapping",
+            "jaccard": 0.196
+          },
+          {
+            "id": "remote-pull-request-merge",
+            "jaccard": 0.192
+          },
+          {
+            "id": "deployment-observation",
+            "jaccard": 0.189
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "tie",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 1,
+        "source_evidence_refs": 2,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "thin-source-evidence",
+          "mutation-survived"
+        ],
+        "words": 747
+      }
+    },
+    {
+      "id": "service-identity-remapping",
+      "path": "slots/v2/1.0.0/skills/service-identity-remapping/",
+      "source_root": "skills/",
+      "static": {
+        "anti_triggers": [
+          "source-metadata-and-provenance",
+          "apm-instrumentation-verification"
+        ],
+        "boilerplate_line_ratio": 0.386,
+        "canonical_units": 0,
+        "hard_gates": 2,
+        "id": "service-identity-remapping",
+        "mutation_scope": "remote-service-identity",
+        "nearest_neighbours": [
+          {
+            "id": "release-observability-configuration",
+            "jaccard": 0.224
+          },
+          {
+            "id": "ai-observability-configuration",
+            "jaccard": 0.22
+          },
+          {
+            "id": "observability-agent-installation",
+            "jaccard": 0.196
+          }
+        ],
+        "outputs": 4,
+        "permission_identity": "remote-write-authorized-only",
+        "phase9_holdouts": [
+          "candidate-win",
+          "candidate-win"
+        ],
+        "phase9_mutation": "survived",
+        "procedure_steps": 4,
+        "root_atoms": 14,
+        "source_evidence_refs": 14,
+        "static_findings": [
+          "trigger-restates-responsibility",
+          "skill-md-omits-contract-hard-gate",
+          "skill-md-omits-forbidden-actions",
+          "stale-prerelease-forbidden-action",
+          "mutation-survived"
+        ],
+        "words": 710
+      }
+    }
+  ]
+}
