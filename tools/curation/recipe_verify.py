@@ -72,7 +72,36 @@ def _safe_relative(value: object) -> bool:
     return not path.is_absolute() and ".." not in path.parts
 
 
-def _validate_evidence_file(path: Path, *, expected_recipe: str | None = None) -> str | None:
+def _execution_record_problem(step: dict, workspace: Path) -> str | None:
+    execution = step.get("execution")
+    if not isinstance(execution, dict):
+        return "missing execution record"
+    if not isinstance(step.get("duration_ms"), (int, float)) or step["duration_ms"] < 0:
+        return "missing duration"
+    output_file = step.get("output_file")
+    if not isinstance(output_file, str) or not output_file:
+        return "missing output file"
+    output_path = Path(output_file)
+    if not output_path.is_absolute():
+        output_path = workspace / output_path
+    if not output_path.is_file():
+        return "missing output artifact"
+    if hashlib.sha256(output_path.read_bytes()).hexdigest() != step.get("output_sha256"):
+        return "output hash mismatch"
+    if execution.get("adapter") == "workspace":
+        if not isinstance(execution.get("tool_events"), list) or not isinstance(execution.get("command_results"), list):
+            return "missing workspace tool or command evidence"
+        if not isinstance(execution.get("patch_file"), str) or not isinstance(execution.get("patch_sha256"), str):
+            return "missing workspace patch evidence"
+        patch = Path(execution["patch_file"])
+        if not patch.is_absolute():
+            patch = workspace / patch
+        if not patch.is_file() or hashlib.sha256(patch.read_bytes()).hexdigest() != execution["patch_sha256"]:
+            return "workspace patch hash mismatch"
+    return None
+
+
+def _validate_evidence_file(path: Path, *, expected_recipe: str | None = None, executed: bool = False, workspace: Path | None = None) -> str | None:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -81,7 +110,76 @@ def _validate_evidence_file(path: Path, *, expected_recipe: str | None = None) -
         return f"evidence is not passing: {path.as_posix()}"
     if expected_recipe is not None and data.get("recipe_id") not in {None, expected_recipe}:
         return f"evidence recipe mismatch: {path.as_posix()}"
+    if executed:
+        steps = data.get("steps_run")
+        if not isinstance(steps, list) or not steps:
+            return f"release evidence has no executed steps: {path.as_posix()}"
+        for step in steps:
+            if not isinstance(step, dict) or step.get("status") != "passed":
+                return f"release evidence contains a non-passing step: {path.as_posix()}"
+            problem = _execution_record_problem(step, workspace or path.parent)
+            if problem:
+                return f"release evidence {problem}: {path.as_posix()}"
     return None
+
+
+def _validate_slot_run(path: Path, slot_id: str, workspace: Path) -> str | None:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return f"invalid slot evaluation {path.as_posix()}: {exc}"
+    if data.get("slot_id") != slot_id or data.get("passed") is not True:
+        return f"slot evaluation is not passing or mismatched: {path.as_posix()}"
+    cases = data.get("cases")
+    if not isinstance(cases, list) or not cases:
+        return f"slot evaluation lacks executed cases: {path.as_posix()}"
+    for case in cases:
+        if not isinstance(case, dict) or case.get("slot_id") != slot_id or case.get("passed") is not True:
+            return f"slot evaluation case failed or mismatched: {path.as_posix()}"
+        if not all(isinstance(case.get(key), str) and case[key] for key in ("input_sha256", "output_sha256", "run_path")):
+            return f"slot evaluation case lacks output and run provenance: {path.as_posix()}"
+        if not _safe_relative(case["run_path"]):
+            return f"unsafe slot run path: {case['run_path']}"
+        run_path = workspace / case["run_path"]
+        try:
+            run = json.loads(run_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            return f"invalid slot run {run_path.as_posix()}: {exc}"
+        if run.get("slot_id") != slot_id or run.get("case_id") != case.get("case_id"):
+            return f"slot run identity mismatch: {run_path.as_posix()}"
+        if not isinstance(run.get("duration_ms"), (int, float)) or run["duration_ms"] < 0:
+            return f"slot run duration missing: {run_path.as_posix()}"
+        if not isinstance(run.get("tool_events"), list) or not isinstance(run.get("command_results"), list):
+            return f"slot run execution evidence missing: {run_path.as_posix()}"
+        output = run.get("output_file")
+        if not isinstance(output, str) or not _safe_relative(output):
+            return f"slot run output path invalid: {run_path.as_posix()}"
+        output_path = workspace / output
+        if not output_path.is_file() or hashlib.sha256(output_path.read_bytes()).hexdigest() != case["output_sha256"]:
+            return f"slot run output hash mismatch: {run_path.as_posix()}"
+    return None
+
+
+def verify_slot_release_evidence(slot_id: str, contract: dict, workspace: Path) -> list[str]:
+    if contract.get("status") != "released" or contract.get("version") == "0.2.0":
+        return []
+    if not (workspace / "slots" / slot_id / "provenance.json").is_file():
+        return [f"missing slot provenance: {slot_id}"] if (workspace / "curation/full-dev-loop-slot-selection.json").is_file() else []
+    try:
+        provenance = json.loads((workspace / "slots" / slot_id / "provenance.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"invalid slot provenance: {slot_id}: {exc}"]
+    errors = []
+    paths = provenance.get("release_evidence", [])
+    for kind in ("baseline", "candidate", "holdout", "mutation"):
+        candidates = [value for value in paths if isinstance(value, str) and value.endswith(f"/{kind}.json")]
+        if len(candidates) != 1 or not _safe_relative(candidates[0]):
+            errors.append(f"missing {kind} release evaluation: {slot_id}")
+            continue
+        problem = _validate_slot_run(workspace / candidates[0], slot_id, workspace)
+        if problem:
+            errors.append(problem)
+    return errors
 
 
 def find_cycles(steps: list[dict], edges: list[dict]) -> bool:
@@ -141,6 +239,8 @@ def verify_recipe(
     recipe_path: Path,
     workspace_root: Path,
     recipes: dict[str, dict[str, Any]] | None = None,
+    *,
+    allow_evaluating: bool = False,
 ) -> list[dict]:
     errors: list[dict[str, str]] = []
     recipes = recipes or {recipe.get("id"): recipe}
@@ -150,11 +250,14 @@ def verify_recipe(
             errors.append({"code": "schema", "message": f"missing field: {field}"})
     if errors:
         return errors
-    if recipe["status"] != "released":
+    if recipe["status"] != "released" and not (allow_evaluating and recipe["status"] == "evaluating"):
         errors.append({"code": "unreleased-recipe", "message": f"recipe status: {recipe['status']}"})
 
     try:
-        validator = Draft202012Validator(json.loads((recipe_path.parent / "schema.json").read_text(encoding="utf-8")))
+        schema_path = recipe_path.parent / "schema.json"
+        if not schema_path.is_file():
+            schema_path = workspace_root / "recipes/schema.json"
+        validator = Draft202012Validator(json.loads(schema_path.read_text(encoding="utf-8")))
         schema_errors = sorted(validator.iter_errors(recipe), key=lambda item: list(item.absolute_path))
     except (OSError, json.JSONDecodeError) as exc:
         return errors + [{"code": "schema", "message": f"cannot load recipe schema: {exc}"}]
@@ -186,7 +289,7 @@ def verify_recipe(
                 errors.append({"code": "missing-recipe", "message": f"step {step_id}: recipe {child_id} not found"})
             elif target.get("version") != child_version:
                 errors.append({"code": "recipe-version-mismatch", "message": f"step {step_id}: {step['recipe']} != {child_id}@{target.get('version')}"})
-            elif target.get("status") != "released":
+            elif target.get("status") != "released" and not (allow_evaluating and target.get("status") == "evaluating"):
                 errors.append({"code": "unreleased-recipe", "message": f"step {step_id}: recipe {child_id} is not released"})
             target_permissions = set(target.get("permissions", [])) if target else set()
         else:
@@ -197,8 +300,10 @@ def verify_recipe(
                 errors.append({"code": "missing-slot", "message": f"step {step_id}: slot {slot_id} not found"})
                 target_permissions = set()
             else:
-                if target.get("status") != "released":
+                if target.get("status") != "released" and not (allow_evaluating and target.get("status") == "evaluating"):
                     errors.append({"code": "unreleased-slot", "message": f"step {step_id}: slot {slot_id} status {target.get('status')}"})
+                elif target.get("status") == "released":
+                    errors.extend({"code": "missing-release-evidence", "message": problem} for problem in verify_slot_release_evidence(slot_id, target, workspace_root))
                 expected_ref = f"{slot_id}@{target.get('version')}"
                 if step["ref"] != expected_ref:
                     errors.append({"code": "slot-version-mismatch", "message": f"step {step_id}: ref {step['ref']} != {expected_ref}"})
@@ -297,7 +402,7 @@ def verify_recipe(
             elif hashlib.sha256(full.read_bytes()).hexdigest() != run["sha256"]:
                 evidence_errors.append(f"evidence hash mismatch: {relative}")
             else:
-                problem = _validate_evidence_file(full, expected_recipe=recipe["id"])
+                problem = _validate_evidence_file(full, expected_recipe=recipe["id"], executed=recipe["version"] != "0.2.0", workspace=workspace_root)
                 if problem:
                     evidence_errors.append(problem)
         review = evidence.get("review", {})
@@ -318,7 +423,7 @@ def verify_recipe(
     return errors
 
 
-def verify_recipes(recipes_root: Path, slots_root: Path, workspace_root: Path, recipe_file: Path | None = None) -> dict:
+def verify_recipes(recipes_root: Path, slots_root: Path, workspace_root: Path, recipe_file: Path | None = None, *, allow_evaluating: bool = False) -> dict:
     try:
         slots, errors = load_slots(slots_root)
     except (OSError, json.JSONDecodeError) as exc:
@@ -326,7 +431,11 @@ def verify_recipes(recipes_root: Path, slots_root: Path, workspace_root: Path, r
     paths = [recipe_file] if recipe_file else [p for p in sorted(recipes_root.glob("*.json")) if p.stem not in {"schema", "catalog"}]
     if not paths:
         return {"ok": False, "checked": [], "errors": [{"code": "missing-recipe", "message": "no recipes found"}]}
-    recipes, recipe_errors = load_recipes(paths if not recipe_file else [p for p in sorted(recipes_root.glob("*.json")) if p.stem not in {"schema", "catalog"}])
+    catalog_paths = [p for p in sorted(recipes_root.glob("*.json")) if p.stem not in {"schema", "catalog"}]
+    released_root = workspace_root / "recipes"
+    if released_root.resolve() != recipes_root.resolve():
+        catalog_paths += [p for p in sorted(released_root.glob("*.json")) if p.stem not in {"schema", "catalog"}]
+    recipes, recipe_errors = load_recipes(catalog_paths)
     errors.extend(recipe_errors)
     cycles = _recipe_cycles(recipes)
     errors.extend({"code": "recipe-cycle", "message": cycle} for cycle in cycles)
@@ -335,7 +444,7 @@ def verify_recipes(recipes_root: Path, slots_root: Path, workspace_root: Path, r
             recipe = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             continue
-        errors.extend(verify_recipe(recipe, slots, path, workspace_root, recipes))
+        errors.extend(verify_recipe(recipe, slots, path, workspace_root, recipes, allow_evaluating=allow_evaluating))
 
     phrases: dict[str, str] = {}
     for recipe_id, recipe in recipes.items():

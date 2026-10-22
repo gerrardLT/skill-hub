@@ -25,20 +25,15 @@ def routes(step_ids: list[str], rerun_target: dict[str, str] | None = None) -> l
     return values
 
 def write_evidence(root: Path, recipe_id: str, *, notes: list[str]) -> dict:
-    evidence = root / f"evals/runs/full-dev-loop/recipes/{recipe_id}-v{VERSION}"
-    evidence.mkdir(parents=True, exist_ok=True)
-    result = evidence / "result.json"
-    result.write_text(json.dumps({"recipe_id": recipe_id, "passed": True, "status": "passed", "checks": notes}, indent=2) + "\n", encoding="utf-8", newline="\n")
-    review = evidence / "review.json"
-    review.write_text(json.dumps({"verdict": "approved-for-release", "reviewer": "repository owner", "reviewed_at": "2026-09-28", "approval_source": "interactive release review", "recipe_id": recipe_id}, indent=2) + "\n", encoding="utf-8", newline="\n")
-    return {"composition_runs": [{"path": result.relative_to(root).as_posix(), "sha256": sha(result)}], "review": {"path": review.relative_to(root).as_posix(), "sha256": sha(review)}}
+    """Do not create self-attested composition results."""
+    raise RuntimeError("release-disabled: composition evidence must come from executed runs")
 
 def slot_step(step_id: str, slot: str, inputs: dict, outputs: dict, *, depends: list[str] | None = None, adapter: str = "artifact", permissions: list[str] | None = None) -> dict:
     return {"id": step_id, "slot": slot, "ref": f"{slot}@1.0.0", "input_map": inputs, "output_map": outputs, "depends_on": depends or [], "gates": GATES, "permissions": permissions or ["read-local-files", "write-run-output"], "execution_adapter": adapter}
 
 def create(root: Path) -> list[str]:
     recipes: dict[str, dict] = {}
-    common = {"version": VERSION, "status": "released", "retry_policy": {"max_attempts": 2, "stop_on_repeated_failure": True}}
+    common = {"version": VERSION, "status": "evaluating", "retry_policy": {"max_attempts": 2, "stop_on_repeated_failure": True}}
     recipes["write-prd"] = {
         **common, "id": "write-prd", "description": "Create a traceable PRD and acceptance criteria from a validated brief.",
         "inputs": ["validated-product-brief", "evidence-sources", "constraints", "authority-metadata"],
@@ -122,9 +117,11 @@ def create(root: Path) -> list[str]:
         "routing": {"intents": ["full dev loop", "完整研发闭环", "从 0 做一个产品"], "negative_intents": ["single step only", "只做一步"], "priority": 100},
     }
     written = []
+    candidate_root = root / "evals/candidates/full-dev-loop/recipes"
+    candidate_root.mkdir(parents=True, exist_ok=True)
     for recipe_id, recipe in recipes.items():
-        recipe["evidence"] = write_evidence(root, recipe_id, notes=["schema", "exact references", "failure routes", "permission boundary", "composition contract"])
-        path = root / "recipes" / f"{recipe_id}.json"
+        recipe["evidence"] = {"composition_runs": [], "review": {"path": "pending", "sha256": "0" * 64}}
+        path = candidate_root / f"{recipe_id}.json"
         path.write_text(json.dumps(recipe, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
         written.append(path.name)
     return written

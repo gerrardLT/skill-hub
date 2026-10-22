@@ -12,7 +12,8 @@
     "acceptance-criteria-artifact",
     "design-contract",
     "repository-context",
-    "execution-authorization"
+    "execution-authorization",
+    "Correction feedback"
   ],
   "outputs": [
     "change-artifact",
@@ -34,10 +35,15 @@
       "slot": "tdd-change-loop",
       "ref": "tdd-change-loop@1.0.0",
       "input_map": {
-        "A feature, defect, refactor, or other behavior change.": "requirements-artifact"
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "design-contract": "design-contract",
+        "repository-context": "repository-context",
+        "execution-authorization": "execution-authorization",
+        "Correction feedback": "Correction feedback"
       },
       "output_map": {
-        "Minimal code supported by observed RED, GREEN, cleanup, and completion evidence.": "change-artifact"
+        "change-artifact": "change-artifact"
       },
       "depends_on": [],
       "gates": [
@@ -63,10 +69,12 @@
       "slot": "completion-evidence-gate",
       "ref": "completion-evidence-gate@1.0.0",
       "input_map": {
-        "A proposed status claim and the command capable of proving it.": "change-artifact"
+        "change-artifact": "change-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "repository-context": "repository-context"
       },
       "output_map": {
-        "An evidence-supported conclusion or an explicit failure, never confidence or delegated self-report.": "completion-evidence"
+        "completion-evidence": "completion-evidence"
       },
       "depends_on": [
         "implement"
@@ -173,13 +181,13 @@
   "evidence": {
     "composition_runs": [
       {
-        "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/result.json",
-        "sha256": "10eabcdbda2a5f62bc3ebc94188fd7dd6fd0909e233bacd29b4df853f53adb40"
+        "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/build_feature_tdd/result.json",
+        "sha256": "b51564f9f38d7d8a59bcdb62469e3bf5bebb3dbdef2ad60cad52f3eb242d93d9"
       }
     ],
     "review": {
-      "path": "evals/runs/full-dev-loop/recipes/build-feature-tdd-v1.0.0/review.json",
-      "sha256": "2517367f43e05cecee9c66985a3595608fe7eb561a873043fa9898dd4e1be59c"
+      "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/human-review.json",
+      "sha256": "f7db75ea9364e99a32ef4791da8892c138900a6a2f4ac7e5fbd350fa2aee67f3"
     }
   }
 }

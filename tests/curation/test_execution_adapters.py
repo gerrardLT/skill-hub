@@ -43,6 +43,21 @@ def test_remote_git_network_merge_and_deploy_require_their_own_scopes(tmp_path: 
     assert "remote-git" in str(error.value)
 
 
+def test_existing_patch_is_copied_as_baseline_for_incremental_fix(tmp_path: Path) -> None:
+    repo = repository(tmp_path)
+    (repo / "file.txt").write_text("first patch\n", encoding="utf-8")
+    def runner(prompt: str, cwd: Path, tools: list[str], timeout: int):
+        assert (cwd / "file.txt").read_text(encoding="utf-8") == "first patch\n"
+        (cwd / "file.txt").write_text("second patch\n", encoding="utf-8")
+        return "Status: passed", []
+    _, evidence = workspace_adapter("change", 10, repository=repo, tools=["write"], mutation="isolated-worktree", policy=ExecutionPolicy(frozenset({"workspace-write"})), runner=runner, evidence_dir=tmp_path / "incremental", deliver_changes=True)
+    assert evidence["delivered"] is True
+    assert (repo / "file.txt").read_text(encoding="utf-8") == "second patch\n"
+    assert b"second patch" in Path(evidence["patch_file"]).read_bytes()
+    incremental = Path(evidence["incremental_patch_file"]).read_bytes()
+    assert b"first patch" in incremental and b"second patch" in incremental
+
+
 def test_authorized_change_runs_in_isolated_worktree_and_captures_diff(tmp_path: Path) -> None:
     repo = repository(tmp_path)
     seen: list[Path] = []
@@ -51,10 +66,46 @@ def test_authorized_change_runs_in_isolated_worktree_and_captures_diff(tmp_path:
         (cwd / "file.txt").write_text("after\n", encoding="utf-8")
         return "Status: passed\nchanged", [{"type": "tool_execution_end", "tool": "write", "is_error": False}]
 
-    output, evidence = workspace_adapter("change", 10, repository=repo, tools=["read", "write"], mutation="isolated-worktree", policy=ExecutionPolicy(frozenset({"workspace-write"})), runner=runner)
+    evidence_dir = tmp_path / "evidence"
+    output, evidence = workspace_adapter("change", 10, repository=repo, tools=["read", "write"], mutation="isolated-worktree", policy=ExecutionPolicy(frozenset({"workspace-write"})), runner=runner, evidence_dir=evidence_dir)
 
     assert output.startswith("Status: passed")
-    assert "-before" in evidence["diff"] and "+after" in evidence["diff"]
+    patch = Path(evidence["patch_file"]).read_text(encoding="utf-8")
+    assert "-before" in patch and "+after" in patch
     assert evidence["tool_events"][0]["tool"] == "write"
+    assert evidence["tools"] == ["read", "edit", "write"]
+    assert (evidence_dir / "execution.json").is_file()
     assert (repo / "file.txt").read_text(encoding="utf-8") == "before\n"
     assert seen and not seen[0].exists()
+
+
+def test_authorized_change_can_be_delivered_to_clean_repository(tmp_path: Path) -> None:
+    repo = repository(tmp_path)
+    def runner(prompt: str, cwd: Path, tools: list[str], timeout: int):
+        (cwd / "file.txt").write_text("delivered\n", encoding="utf-8")
+        return "Status: passed", []
+    _, evidence = workspace_adapter("change", 10, repository=repo, tools=["write"], mutation="isolated-worktree", policy=ExecutionPolicy(frozenset({"workspace-write"})), runner=runner, evidence_dir=tmp_path / "delivery", deliver_changes=True)
+    assert evidence["delivered"] is True
+    assert (repo / "file.txt").read_text(encoding="utf-8") == "delivered\n"
+
+
+def test_failed_run_keeps_patch_and_execution_evidence(tmp_path: Path) -> None:
+    repo = repository(tmp_path)
+    evidence_dir = tmp_path / "failed-evidence"
+    def runner(prompt: str, cwd: Path, tools: list[str], timeout: int):
+        (cwd / "file.txt").write_text("failed change\n", encoding="utf-8")
+        raise RuntimeError("boom")
+    with pytest.raises(RuntimeError, match="boom"):
+        workspace_adapter("change", 10, repository=repo, tools=["write"], mutation="isolated-worktree", policy=ExecutionPolicy(frozenset({"workspace-write"})), runner=runner, evidence_dir=evidence_dir)
+    assert "failed change" in (evidence_dir / "changes.patch").read_text(encoding="utf-8")
+    assert (evidence_dir / "execution.json").is_file()
+
+
+def test_read_only_run_detects_source_mutation(tmp_path: Path) -> None:
+    repo = repository(tmp_path)
+    def runner(prompt: str, cwd: Path, tools: list[str], timeout: int):
+        assert tools == ["read"]
+        (cwd / "file.txt").write_text("illegal\n", encoding="utf-8")
+        return "Status: passed", []
+    with pytest.raises(RuntimeError, match="read-only-worktree-modified"):
+        workspace_adapter("qa", 10, repository=repo, tools=["read", "bash"], mutation="none", policy=ExecutionPolicy(), runner=runner, evidence_dir=tmp_path / "qa-evidence")

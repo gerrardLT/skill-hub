@@ -12,32 +12,26 @@
     "evidence-sources",
     "constraints",
     "authority-metadata",
-    "requirements-artifact",
-    "acceptance-criteria-artifact",
     "design-authority",
     "project-context",
-    "design-contract",
     "repository-context",
     "execution-authorization",
-    "change-artifact",
     "qa-authorization",
-    "completion-evidence",
-    "qa-verdict",
     "repository-state",
     "delivery-policy",
     "delivery-authorization",
     "expected-outcomes",
-    "actual-results",
-    "delivery-evidence",
     "decisions",
     "feedback"
   ],
   "outputs": [
-    "requirements-bundle",
-    "design-bundle",
-    "implementation-bundle",
-    "qa-bundle",
-    "delivery-bundle",
+    "requirements-artifact",
+    "acceptance-criteria-artifact",
+    "design-contract",
+    "change-artifact",
+    "completion-evidence",
+    "qa-verdict",
+    "release-package",
     "next-requirements"
   ],
   "permissions": [
@@ -64,10 +58,10 @@
         "authority-metadata": "authority-metadata"
       },
       "output_map": {
-        "problem-frame-artifact": "requirements-bundle",
-        "requirements-artifact": "requirements-bundle",
-        "acceptance-criteria-artifact": "requirements-bundle",
-        "requirements-gate-report": "requirements-bundle"
+        "problem-frame-artifact": "problem-frame-artifact",
+        "requirements-artifact": "requirements-artifact",
+        "acceptance-criteria-artifact": "acceptance-criteria-artifact",
+        "requirements-gate-report": "requirements-gate-report"
       },
       "depends_on": [],
       "gates": [
@@ -88,13 +82,13 @@
       "id": "design_web_flow",
       "recipe": "design-web-flow@1.0.0",
       "input_map": {
-        "requirements-artifact": "requirements-bundle",
+        "requirements-artifact": "requirements-artifact",
         "acceptance-criteria-artifact": "acceptance-criteria-artifact",
         "design-authority": "design-authority",
         "project-context": "project-context"
       },
       "output_map": {
-        "design-contract": "design-bundle"
+        "design-contract": "design-contract"
       },
       "depends_on": [
         "write_prd"
@@ -114,15 +108,15 @@
       "id": "build_feature_tdd",
       "recipe": "build-feature-tdd@1.0.0",
       "input_map": {
-        "requirements-artifact": "design-bundle",
+        "requirements-artifact": "requirements-artifact",
         "acceptance-criteria-artifact": "acceptance-criteria-artifact",
         "design-contract": "design-contract",
         "repository-context": "repository-context",
         "execution-authorization": "execution-authorization"
       },
       "output_map": {
-        "change-artifact": "implementation-bundle",
-        "completion-evidence": "implementation-bundle"
+        "change-artifact": "change-artifact",
+        "completion-evidence": "completion-evidence"
       },
       "depends_on": [
         "design_web_flow"
@@ -148,14 +142,14 @@
       "id": "qa_only",
       "recipe": "qa-only@1.0.0",
       "input_map": {
-        "requirements-artifact": "implementation-bundle",
+        "requirements-artifact": "requirements-artifact",
         "acceptance-criteria-artifact": "acceptance-criteria-artifact",
         "design-contract": "design-contract",
         "change-artifact": "change-artifact",
         "qa-authorization": "qa-authorization"
       },
       "output_map": {
-        "qa-verdict": "qa-bundle"
+        "qa-verdict": "qa-verdict"
       },
       "depends_on": [
         "build_feature_tdd"
@@ -180,7 +174,7 @@
       "id": "ship_release",
       "recipe": "ship-release@1.0.0",
       "input_map": {
-        "change-artifact": "qa-bundle",
+        "change-artifact": "change-artifact",
         "completion-evidence": "completion-evidence",
         "qa-verdict": "qa-verdict",
         "repository-state": "repository-state",
@@ -188,7 +182,7 @@
         "delivery-authorization": "delivery-authorization"
       },
       "output_map": {
-        "release-package": "delivery-bundle"
+        "release-package": "release-package"
       },
       "depends_on": [
         "qa_only"
@@ -211,9 +205,9 @@
       "id": "retro_to_requirements",
       "recipe": "retro-to-requirements@1.0.0",
       "input_map": {
-        "expected-outcomes": "delivery-bundle",
-        "actual-results": "actual-results",
-        "delivery-evidence": "delivery-evidence",
+        "expected-outcomes": "expected-outcomes",
+        "actual-results": "qa-verdict",
+        "delivery-evidence": "release-package",
         "decisions": "decisions",
         "feedback": "feedback"
       },
@@ -418,6 +412,12 @@
   ],
   "feedback_mappings": [
     {
+      "from_step": "qa_only",
+      "to_step": "build_feature_tdd",
+      "artifact": "qa-verdict",
+      "target_input": "Correction feedback"
+    },
+    {
       "from_step": "retro_to_requirements",
       "to_step": "write_prd",
       "artifact": "next-requirements",
@@ -439,13 +439,13 @@
   "evidence": {
     "composition_runs": [
       {
-        "path": "evals/runs/full-dev-loop/recipes/full-dev-loop-v1.0.0/result.json",
-        "sha256": "04c36ca066a178f46e047fd4e0a0a59ba3563587abd7cfeec2a2f6452aedc4d4"
+        "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/result.json",
+        "sha256": "91784a74740033673388f918ff43e3796f2a135bb2bab18bbae5c2ff9e6b06b0"
       }
     ],
     "review": {
-      "path": "evals/runs/full-dev-loop/recipes/full-dev-loop-v1.0.0/review.json",
-      "sha256": "19424638235a58c08e9531add02be7e81588fa53e7c80b394eb28ffef21c5902"
+      "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/human-review.json",
+      "sha256": "f7db75ea9364e99a32ef4791da8892c138900a6a2f4ac7e5fbd350fa2aee67f3"
     }
   }
 }

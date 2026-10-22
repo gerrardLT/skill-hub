@@ -75,7 +75,8 @@ def test_executor_rejects_status_pass_when_deterministic_gate_fails(tmp_path: Pa
     result = execute_recipe(recipe, input_path, root / "runs/gate-fail", workspace_root=root, worker=lambda *_: "Status: passed\nUnsupported prose.")
 
     assert result["status"] == "failed"
-    assert result["steps_run"] == []
+    assert result["steps_run"][0]["status"] == "failed"
+    assert "Unsupported prose." in Path(root / result["steps_run"][0]["output_file"]).read_text(encoding="utf-8")
     assert result["errors"] == ["step-1-frame: gate-failed: ['source-traceability']"]
 
 
@@ -85,7 +86,8 @@ def test_executor_rejects_invalid_status(tmp_path: Path) -> None:
     result = execute_recipe(recipe, input_path, root / "runs/invalid", workspace_root=root, worker=lambda *_: "Status: maybe\nArtifact.")
 
     assert result["status"] == "failed"
-    assert result["steps_run"] == []
+    assert result["steps_run"][0]["status"] == "failed"
+    assert "Status: maybe" in Path(root / result["steps_run"][0]["output_file"]).read_text(encoding="utf-8")
     assert result["errors"] == ["step-1-frame: invalid-status"]
 
 
@@ -224,3 +226,28 @@ def test_invalidate_and_rerun_stops_at_retry_budget(tmp_path: Path) -> None:
     assert any("retry-budget-or-repeated-failure" in error for error in result["errors"])
     state = json.loads((root / ".workflow/state.json").read_text(encoding="utf-8"))
     assert state["attempts"]["step-1-frame"] == 2
+
+
+def test_failure_feedback_reaches_rerun_and_invalidates_downstream(tmp_path: Path) -> None:
+    root, recipe, input_path = routed_recipe(tmp_path, max_attempts=2)
+    outputs = list(released_outputs())
+    call = 0
+    def worker(prompt: str, timeout: int) -> str:
+        nonlocal call
+        call += 1
+        if call == 1:
+            return outputs[0]
+        if call == 2:
+            return "Status: failed\nCorrection feedback: preserve the exact route."
+        if call == 3:
+            assert "preserve the exact route" in prompt
+            return outputs[0]
+        return outputs[call - 3]
+
+    result = execute_recipe(recipe, input_path, root / "runs/feedback", workspace_root=root, worker=worker, require_release_evidence=False, state_dir=root / ".workflow")
+
+    assert result["passed"] is True, result
+    assert call == 6
+    state = json.loads((root / ".workflow/state.json").read_text(encoding="utf-8"))
+    assert state["attempts"]["step-1-frame"] == 2
+    assert any("failure-route:step-2-rules->step-1-frame" in item["reason"] for item in state["invalidated_evidence"])

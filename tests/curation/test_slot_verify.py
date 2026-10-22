@@ -20,6 +20,7 @@ def copy_fixture(tmp_path: Path) -> dict[str, Path]:
         "queue": tmp_path / "queue.json",
         "status": tmp_path / "status.json",
         "inventory": tmp_path / "inventory.json",
+        "evaluation": tmp_path / "evals/runs/full-dev-loop/ip-rate-limiting-v1",
     }
     shutil.copy(ROOT / "curation" / "clusters.json", paths["clusters"])
     shutil.copytree(ROOT / "curation" / "units", paths["units"])
@@ -27,6 +28,7 @@ def copy_fixture(tmp_path: Path) -> dict[str, Path]:
     shutil.copy(ROOT / "curation" / "slot-review-queue.json", paths["queue"])
     shutil.copy(ROOT / "curation" / "slot-release-status.json", paths["status"])
     shutil.copy(ROOT / "curation" / "inventory.json", paths["inventory"])
+    shutil.copytree(ROOT / "evals/runs/full-dev-loop/ip-rate-limiting-v1", paths["evaluation"])
     return paths
 
 

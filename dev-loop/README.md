@@ -1,6 +1,6 @@
 # Dev Loop 研发闭环
 
-基于 Capability Compiler 发布契约的六步研发工作流编排器。
+基于 Capability Compiler 发布契约的六步研发工作流编排器。六阶段目前为评测候选，尚未发布；仅 `requirements-to-acceptance-criteria@0.2.0` 可路由执行。
 
 ```text
 用户意图 -> released recipe -> released slot contract -> 可验证产物
@@ -23,13 +23,13 @@
 
 | 意图 | Recipe |
 |---|---|
-| 需求或 PRD | `recipes/write-prd.json` |
-| Web 流程设计 | `recipes/design-web-flow.json` |
-| TDD 功能实现 | `recipes/build-feature-tdd.json` |
-| 只做 QA | `recipes/qa-only.json` |
-| 发布交付 | `recipes/ship-release.json` |
-| 复盘回流需求 | `recipes/retro-to-requirements.json` |
-| 完整研发闭环 | `recipes/full-dev-loop.json` |
+| 需求或 PRD | `evals/candidates/full-dev-loop/recipes/write-prd.json`（未发布） |
+| Web 流程设计 | `evals/candidates/full-dev-loop/recipes/design-web-flow.json`（未发布） |
+| TDD 功能实现 | `evals/candidates/full-dev-loop/recipes/build-feature-tdd.json`（未发布） |
+| 只做 QA | `evals/candidates/full-dev-loop/recipes/qa-only.json`（未发布） |
+| 发布交付 | `evals/candidates/full-dev-loop/recipes/ship-release.json`（未发布） |
+| 复盘回流需求 | `evals/candidates/full-dev-loop/recipes/retro-to-requirements.json`（未发布） |
+| 完整研发闭环 | `evals/candidates/full-dev-loop/recipes/full-dev-loop.json`（未发布） |
 
 只有 recipe 自身、其 release evidence 以及全部依赖 slot 都验证为 released 时才可执行。否则返回 `blocked`；若 recipe 已发布但缺少 contract 要求的必要输入，则返回 `needs-input`。
 
@@ -41,19 +41,14 @@
 
 ## 当前发布路径
 
-- `write-prd@1.0.0`
-- `design-web-flow@1.0.0`
-- `build-feature-tdd@1.0.0`
-- `qa-only@1.0.0`
-- `ship-release@1.0.0`
-- `retro-to-requirements@1.0.0`
-- `full-dev-loop@1.0.0`
-- 兼容入口：`requirements-to-acceptance-criteria@0.2.0`
+- `requirements-to-acceptance-criteria@0.2.0`
+
+六阶段候选不得由路由器执行。既有 `evals/runs/full-dev-loop/` 只含生成的通过声明，不能作为真实评测。
 
 ## 安全行为
 
 - 歧义返回 `needs-input`，不猜测。
 - QA 只报不修。
-- 代码写入仅在显式授权的隔离 worktree 中发生。
-- 远端 Git、网络、合并与部署须分别显式授权。
+- 六阶段实现仍处评测中；不可视作生产级权限隔离。
+- `bash` 可绕过工具名权限，网络、远端 Git 和部署的宿主强制隔离尚待实现与验证。
 - `ship-release` 默认只生成 release-ready 包，不 push、merge 或 deploy。

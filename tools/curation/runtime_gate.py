@@ -30,7 +30,7 @@ def verify(workspace: Path) -> dict[str, Any]:
         errors.append(str(exc))
     missing = sorted(REQUIRED - catalog.keys())
     if missing:
-        errors.append(f"missing released recipes: {missing}")
+        errors.append(f"missing released recipes: {missing}; six-stage runtime is not released")
     else:
         route = route_request("请运行完整研发闭环", catalog)
         if route.get("recipe_ref") != "full-dev-loop@1.0.0":
@@ -50,7 +50,10 @@ def verify(workspace: Path) -> dict[str, Any]:
         selected = set(sum(json.loads(selection_path.read_text(encoding="utf-8"))["selected"].values(), []))
         released = {item["slot_id"] for item in json.loads(status_path.read_text(encoding="utf-8"))["items"] if item["disposition"] == "released"}
         original = {"problem-framing", "requirements-rules", "acceptance-criteria", "requirements-quality-gate"}
-        if released != selected | original:
+        unexpected = released - (selected | original)
+        if unexpected:
+            errors.append(f"unexpected released slots: {sorted(unexpected)}")
+        if not missing and released != selected | original:
             errors.append(f"released slot boundary mismatch: {sorted(released ^ (selected | original))}")
     return {"gate": "full-dev-loop-runtime", "ok": not errors, "released_recipes": len(catalog), "errors": errors}
 

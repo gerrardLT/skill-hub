@@ -120,7 +120,9 @@ def run_verify(tmp_path: Path, value: dict, *, one_file: bool = False):
     )
     composition_run = tmp_path / "evals" / "runs" / "composition" / "build-and-check"
     composition_run.mkdir(parents=True, exist_ok=True)
-    (composition_run / "result.json").write_text('{"passed": true, "recipe_id": "build-and-check"}\n', encoding="utf-8")
+    artifact = composition_run / "step.md"
+    artifact.write_text("observed output\n", encoding="utf-8")
+    (composition_run / "result.json").write_text(json.dumps({"passed": True, "recipe_id": "build-and-check", "steps_run": [{"status": "passed", "duration_ms": 1.0, "execution": {"adapter": "artifact"}, "output_file": str(artifact), "output_sha256": hashlib.sha256(artifact.read_bytes()).hexdigest()}]}) + "\n", encoding="utf-8")
     review = composition_run / "review.json"
     review.write_text('{"verdict": "approved"}\n', encoding="utf-8")
     value["evidence"]["composition_runs"][0]["sha256"] = hashlib.sha256((composition_run / "result.json").read_bytes()).hexdigest()
@@ -140,6 +142,31 @@ def assert_rejected(result, report, code: str) -> None:
     assert result.returncode == 1
     assert report["ok"] is False
     assert code in {error["code"] for error in report["errors"]}
+
+
+def test_rejects_self_reported_recipe_pass_without_executed_steps(tmp_path: Path) -> None:
+    result, report, _ = run_verify(tmp_path, recipe())
+    run = tmp_path / "evals/runs/composition/build-and-check/result.json"
+    run.write_text(json.dumps({"passed": True, "recipe_id": "build-and-check", "checks": ["schema"]}), encoding="utf-8")
+    value = json.loads((tmp_path / "recipes/recipe.json").read_text(encoding="utf-8"))
+    value["evidence"]["composition_runs"][0]["sha256"] = hashlib.sha256(run.read_bytes()).hexdigest()
+    (tmp_path / "recipes/recipe.json").write_text(json.dumps(value), encoding="utf-8")
+    assert result.returncode == 0, report
+    retry = subprocess.run([sys.executable, str(VERIFY), "--recipes-root", str(tmp_path / "recipes"), "--slots-root", str(tmp_path / "slots"), "--workspace-root", str(tmp_path)], capture_output=True, text=True)
+    assert_rejected(retry, json.loads(retry.stdout), "missing-release-evidence")
+
+
+def test_rejects_recipe_run_without_duration(tmp_path: Path) -> None:
+    result, report, _ = run_verify(tmp_path, recipe())
+    run = tmp_path / "evals/runs/composition/build-and-check/result.json"
+    data = json.loads(run.read_text(encoding="utf-8"))
+    del data["steps_run"][0]["duration_ms"]
+    run.write_text(json.dumps(data), encoding="utf-8")
+    value = json.loads((tmp_path / "recipes/recipe.json").read_text(encoding="utf-8"))
+    value["evidence"]["composition_runs"][0]["sha256"] = hashlib.sha256(run.read_bytes()).hexdigest()
+    (tmp_path / "recipes/recipe.json").write_text(json.dumps(value), encoding="utf-8")
+    retry = subprocess.run([sys.executable, str(VERIFY), "--recipes-root", str(tmp_path / "recipes"), "--slots-root", str(tmp_path / "slots"), "--workspace-root", str(tmp_path)], capture_output=True, text=True)
+    assert_rejected(retry, json.loads(retry.stdout), "missing-release-evidence")
 
 
 def test_accepts_valid_graph_and_explicit_recipe_input(tmp_path: Path) -> None:

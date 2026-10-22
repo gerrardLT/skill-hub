@@ -10,6 +10,11 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+try:
+    from tools.curation.recipe_verify import verify_slot_release_evidence
+except ModuleNotFoundError:  # direct script execution
+    from recipe_verify import verify_slot_release_evidence
+
 FINAL_DISPOSITIONS = {"released", "unreleased"}
 
 
@@ -66,7 +71,7 @@ def verify(
     validator = Draft202012Validator(schema)
     contracts: dict[str, dict[str, Any]] = {}
     provenances: dict[str, dict[str, Any]] = {}
-    for slot_dir in sorted(path for path in slots_root.iterdir() if path.is_dir()):
+    for slot_dir in sorted(path for path in slots_root.iterdir() if path.is_dir() and path.name != "v2"):
         contract = _load(slot_dir / "contract.json", errors)
         provenance = _load(slot_dir / "provenance.json", errors)
         if not isinstance(contract, dict) or not isinstance(provenance, dict):
@@ -115,6 +120,7 @@ def verify(
         elif disposition == "released":
             if not _nonempty(item.get("evaluation_references")) or not _nonempty(item.get("release_evidence")):
                 errors.append(f"released slot lacks evidence: {slot_id}")
+            errors.extend(verify_slot_release_evidence(slot_id, contract, slots_root.parent))
             review = item.get("review")
             if not isinstance(review, dict) or review.get("human_review") in (None, "", False):
                 errors.append(f"released slot lacks valid review evidence: {slot_id}")

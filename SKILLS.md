@@ -8,6 +8,6 @@
 - 965 个 semantic units，88 个 capability clusters
 - 10 个 released slots，82 个 unreleased slots
 - 8 个 released recipes
-- 自动测试：206 passed, 1 warning
+- 自动测试：219 passed, 1 warning
 - Phase 1–8：全部通过
 - 权威审计：`curation/final-audit.json`

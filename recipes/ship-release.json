@@ -31,10 +31,15 @@
       "slot": "change-delivery-preflight",
       "ref": "change-delivery-preflight@1.0.0",
       "input_map": {
-        "A reviewed change, repository state, delivery policy, and intended publication boundary.": "repository-state"
+        "change-artifact": "change-artifact",
+        "completion-evidence": "completion-evidence",
+        "qa-verdict": "qa-verdict",
+        "repository-state": "repository-state",
+        "delivery-policy": "delivery-policy",
+        "delivery-authorization": "delivery-authorization"
       },
       "output_map": {
-        "A delivery-ready package or explicit preflight blockers; no merge or deployment action.": "release-package"
+        "release-package": "release-package"
       },
       "depends_on": [],
       "gates": [
@@ -102,13 +107,13 @@
   "evidence": {
     "composition_runs": [
       {
-        "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/result.json",
-        "sha256": "e2dbb10c2ac6291002aabbd14a7cdd3164b821e353941cfae2c8f89a6ada5ad9"
+        "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/run/ship_release/result.json",
+        "sha256": "9ff7d78a95d187bd1cd05ef6087edd8abe1a8387e71dc533cac263edd17ca45d"
       }
     ],
     "review": {
-      "path": "evals/runs/full-dev-loop/recipes/ship-release-v1.0.0/review.json",
-      "sha256": "a00ce94f68bc6e2dcae606494f63fed7e6af6c14c27dff990686e051f76483fd"
+      "path": "evals/runs/full-dev-loop/ip-rate-limiting-v1/human-review.json",
+      "sha256": "f7db75ea9364e99a32ef4791da8892c138900a6a2f4ac7e5fbd350fa2aee67f3"
     }
   }
 }

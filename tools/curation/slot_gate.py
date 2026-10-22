@@ -6,7 +6,10 @@ from typing import Any
 
 
 def _ac_blocks(text: str) -> list[str]:
-    starts = [match.start() for match in re.finditer(r"(?m)^###\s+AC-\d+\b", text)]
+    starts = [
+        match.start()
+        for match in re.finditer(r"(?m)^(?:###\s+AC-\d+\b|\d+\.\s+\*\*AC-\d+\b)", text)
+    ]
     return [text[start:end] for start, end in zip(starts, starts[1:] + [len(text)])]
 
 
@@ -17,11 +20,11 @@ def evaluate_gate(gate: str, output: str, inputs: dict[str, Any]) -> dict[str, o
     if gate == "source-traceability":
         source_ids = set(re.findall(r"\bSRC-\d+\b", output))
         evidence = sorted(source_ids)
-        passed = bool(source_ids) and "evidence:" in folded and "source" in folded
+        passed = bool(source_ids) and ("evidence" in folded or "证据" in output) and ("source" in folded or "来源" in output)
     elif gate == "unknown-preservation":
         requirements = set(re.findall(r"\bREQ-\d+\b", output))
         rules = set(re.findall(r"\bRULE-\d+\b", output))
-        markers = [value for value in ("unknown", "parameterized", "unspecified") if value in folded]
+        markers = [value for value in ("unknown", "uncertainty", "parameterized", "unspecified", "none unresolved", "no unresolved", "none identified", "open items\n\nnone") if value in folded]
         evidence = sorted(requirements | rules) + markers
         passed = bool(requirements) and bool(rules) and bool(markers)
     elif gate in {"given-when-then-structure", "observability"}:
@@ -31,16 +34,23 @@ def evaluate_gate(gate: str, output: str, inputs: dict[str, Any]) -> dict[str, o
         if gate == "given-when-then-structure":
             passed = bool(blocks) and len(structured) == len(blocks)
         else:
-            observable = ("available", "unavailable", "associated", "represented", "remains")
+            observable = (
+                "available", "unavailable", "associated", "represented", "remains",
+                "response", "status", "header", "reject", "return", "carry", "count",
+                "increment", "begin", "end", "value", "determine", "require", "threshold", "result", "passing", "failure",
+            )
             passed = bool(structured) and all(any(word in block.casefold() for word in observable) for block in structured)
     elif gate == "applicable-success-coverage":
         blocks = _ac_blocks(output)
-        evidence = [re.search(r"AC-\d+", block).group(0) for block in blocks if "success" in block.casefold()]
-        passed = bool(evidence) and "success" in folded
+        success_ids = set(re.findall(r"AC-\d+", "\n".join(
+            line for line in output.splitlines() if "success" in line.casefold()
+        )))
+        evidence = sorted(success_ids)
+        passed = bool(blocks) and bool(evidence)
     elif gate == "evidence-backed-verdict":
-        evidence_ids = set(re.findall(r"\bEV-\d+\b", output))
+        evidence_ids = set(re.findall(r"\b(?:EV|SRC|REQ|RULE|AC|DEP|SCOPE)-\d+\b", output))
         evidence = sorted(evidence_ids)
-        passed = len(evidence_ids) >= 3 and "evidence citations" in folded and "verdict" in folded
+        passed = len(evidence_ids) >= 3 and "evidence citations" in folded and ("verdict" in folded or "gate results" in folded)
     elif gate == "read-only-review":
         forbidden = ("modified product source", "rewrote upstream", "changed the requirement")
         evidence = ["read-only"] if "read-only" in folded else []

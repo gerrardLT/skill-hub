@@ -266,6 +266,9 @@ def generate(
             write_bytes(slot / "SKILL.md", skill_markdown(cluster).encode("utf-8"))
             write_bytes(slot / "contract.json", json_bytes(contract(cluster)))
             write_bytes(slot / "provenance.json", json_bytes(provenance(cluster, units, decisions)))
+        released_v2 = slots_root / "v2"
+        if released_v2.exists():
+            shutil.copytree(released_v2, temp_root / "v2")
         if slots_root.exists():
             shutil.rmtree(slots_root)
         os.replace(temp_root, slots_root)

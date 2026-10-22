@@ -6,6 +6,8 @@ description: >-
 
 # Dev Loop
 
+六阶段候选尚未发布；本入口当前只可运行 `requirements-to-acceptance-criteria@0.2.0`。完整闭环请求必须返回 `blocked`，不得执行候选 Recipe。
+
 唯一运行链：
 
 ```text
@@ -33,14 +35,8 @@ description: >-
 
 ## 入口
 
-- 完整闭环：`full-dev-loop@1.0.0`
-- 需求：`write-prd@1.0.0`
-- 设计：`design-web-flow@1.0.0`
-- 实现：`build-feature-tdd@1.0.0`
-- 验收：`qa-only@1.0.0`
-- 交付：`ship-release@1.0.0`
-- 复盘：`retro-to-requirements@1.0.0`
-- 兼容入口：`requirements-to-acceptance-criteria@0.2.0`
+- 已发布：`requirements-to-acceptance-criteria@0.2.0`
+- 六阶段与完整闭环：候选文件位于 `evals/candidates/full-dev-loop/recipes/`，不可运行。
 
 ## 执行
 
@@ -62,7 +58,7 @@ python tools/curation/recipe_execute.py \
 --authorize workspace-write
 ```
 
-任何 remote Git、network、merge 或 deploy 授权必须分别显式提供；当前发布的 `ship-release` 不请求这些权限。
+六阶段实现尚未具备宿主强制的命令级权限隔离；不得将 `--authorize` 视为 `bash` 的网络或远端 Git 隔离。
 
 ## 状态
 
